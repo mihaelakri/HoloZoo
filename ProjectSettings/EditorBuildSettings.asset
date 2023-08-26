@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Done/LoadingScreen.unity
+    guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/Done/Home.unity
+    guid: d607051e200fe7c40badf960dedc6471
+  - enabled: 1
+    path: Assets/Scenes/Done/Instructions_one.unity
+    guid: 4e631b5182d481645b30c714d4ac39f8
+  - enabled: 1
+    path: Assets/Scenes/Done/choose_difficulty.unity
+    guid: cff87afb0095eb6468bf925e6090d23a
+  - enabled: 1
+    path: Assets/Scenes/Done/choose_mode.unity
+    guid: d9a474cad70876547bab5700c4a5ca2d
+  - enabled: 1
+    path: Assets/Scenes/HologramTablet.unity
+    guid: 10a2d4e38ffb195468ff14606a20b727
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/HologramAnimalMobile.unity
+    guid: 1026f513746867c4491e3ca2959bbd01
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Done/LogIn.unity
+    guid: 2b92b9f39b6811d49be06eb0c820098d
+  - enabled: 1
+    path: Assets/Scenes/Done/LogIn_Register.unity
+    guid: ba966e5d853b2b64aa60feef53119f4c
+  - enabled: 1
+    path: Assets/Scenes/Done/Profile.unity
+    guid: 1b897daaeb4d90b40913c9eabd88532e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Done/Quiz_questions.unity
+    guid: 72ed3b7f1f72cbc4085656b14f9f69f9
+  - enabled: 1
+    path: Assets/Scenes/Done/Register.unity
+    guid: e29c25def3a828d439e530053000ea6a
+  - enabled: 1
+    path: Assets/Scenes/Done/Score.unity
+    guid: 7a4014e1e6cbb444aba9ee82c1287f54
+  - enabled: 1
+    path: Assets/Scenes/Done/List.unity
+    guid: 0f6dd3010e086c04eb1af9bd383a8684
+  - enabled: 1
+    path: Assets/Scenes/Done/Animal_list.unity
+    guid: 53ed3226e7c285d4f9a99658b9fde001
+  - enabled: 1
+    path: Assets/Scenes/HologramGlobe.unity
+    guid: d3865d9a99b867d49b35ade29fa53f5f
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9e979bb7d4709704f88632c24ce9f442,
+      type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 4fc890db925dad54d8293ed5533ce92a, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: c7c6df422ad8b3843b24c1637ce3a9b1, type: 2}
