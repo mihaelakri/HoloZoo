@@ -5,6 +5,12 @@
 [Bb]uilds/
 [Ll]ogs/
 
+# Custom edit
+ex/
+ex_BurstDebugInformation_DoNotShip/
+Assets/Resources/ANIMALS FULL PACK/
+Assets/Resources/ANIMALS FULL PACK.meta
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
 
