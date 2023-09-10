@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class Load3DmodelTablet : MonoBehaviour
+public class Load3DModelTablet : MonoBehaviour
 {
     public GameObject variableForPrefab;
     public String model_url;
@@ -19,8 +19,10 @@ public class Load3DmodelTablet : MonoBehaviour
     }
 
     IEnumerator GetModel(){
+        Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
+        string id_animal = PlayerPrefs.GetString("id_animal", "1");
 
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/HoloZoo/animal_view.php")){
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
 
             yield return www.SendWebRequest();
 
@@ -34,6 +36,18 @@ public class Load3DmodelTablet : MonoBehaviour
                     Debug.Log(www.downloadHandler.text);
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
                     Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+
+                    foreach (var s in www.GetResponseHeader("Set-Cookie").Split(';')) {
+                        if(s.Contains("holozoo_session")){
+                            CommConstants.Auth = s.Substring(s.IndexOf("holozoo_session")).Split('=')[1].Split(';')[0];
+                            Debug.Log(CommConstants.Auth);
+
+                        } else if (s.Contains("XSRF-TOKEN")){
+                            CommConstants.XSRF = s.Substring(s.IndexOf("XSRF-TOKEN")).Split('=')[1].Split(';')[0];
+                            Debug.Log(CommConstants.XSRF);
+
+                        }
+                    }
                 }
         }
     }
