@@ -26,7 +26,7 @@ public class Registration : MonoBehaviour
     WWWForm form = new WWWForm();
     form.AddField("username", usernameField.text);
     form.AddField("password", passwordField.text);
-    form.AddField("flag", "2");
+   //  form.AddField("flag", "2");
 
     if(usernameField.text.Length < 6){
       toast.text = "Username too short";
@@ -35,7 +35,7 @@ public class Registration : MonoBehaviour
     } else if (retypepasswordField.text!=passwordField.text){
       toast.text = "Passwords do not match";
     } else{
-      WWW www = new WWW("http://localhost/HoloZoo/middle_man.php", form);
+      WWW www = new WWW(CommConstants.ServerURL+"register", form);
       yield return www;
 
       Debug.Log(www.text);

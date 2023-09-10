@@ -44,9 +44,9 @@ public class FillLearnAnimals : MonoBehaviour
     IEnumerator FillAnimals(){
 
         WWWForm form = new WWWForm();
-        form.AddField("learn_list", "learn");
+        // form.AddField("learn_list", "learn");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL + "animal/names")){
 
             yield return www.SendWebRequest();
 

@@ -42,11 +42,11 @@ public class FillProfile : MonoBehaviour
 
     IEnumerator Profileinfo(){
 
-        WWWForm form = new WWWForm();
-        form.AddField("id", id);
-        form.AddField("flag", "3");
+        // WWWForm form = new WWWForm();
+        // form.AddField("id", id);
+        // form.AddField("flag", "3");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"profile/"+id)){
 
             yield return www.SendWebRequest();
 

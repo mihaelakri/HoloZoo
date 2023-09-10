@@ -61,10 +61,11 @@ public class Quiz : MonoBehaviour
 
     IEnumerator FillQuestion(){
 
-        WWWForm form = new WWWForm();
-        form.AddField("difficulty", PlayerPrefs.GetInt("diff"));
+        // WWWForm form = new WWWForm();
+        // form.AddField("difficulty", PlayerPrefs.GetInt("diff"));
+        int difficulty = PlayerPrefs.GetInt("diff");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/quiz_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"questions/random/"+difficulty)){
 
             yield return www.SendWebRequest();
 

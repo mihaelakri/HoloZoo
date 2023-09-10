@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Android;
 
 public class Login : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Login : MonoBehaviour
  public Button submitButton;
 
  public void CallLogin(){
+   if (!Permission.HasUserAuthorizedPermission("android.permission.INTERNET"))
+                            Permission.RequestUserPermission("android.permission.INTERNET");
     StartCoroutine(Log_in());
  }
 
@@ -25,7 +28,7 @@ public class Login : MonoBehaviour
     form.AddField("password", passwordField.text);
     form.AddField("flag", "1");
 
-    WWW www = new WWW("http://localhost/HoloZoo/middle_man.php", form);
+    WWW www = new WWW(CommConstants.ServerURL+"login", form);
     yield return www;
 
     Debug.Log(www.text);

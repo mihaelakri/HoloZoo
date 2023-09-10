@@ -70,10 +70,11 @@ namespace WPM {
 
         IEnumerator FillAnimalInfoo(){
 
-        WWWForm form = new WWWForm();
-        form.AddField("id_area", 1);
+        // WWWForm form = new WWWForm();
+        // form.AddField("id_area", 1);
+        int id_area = 1;
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/area/"+id_area)){
 
             yield return www.SendWebRequest();
 
@@ -114,7 +115,7 @@ namespace WPM {
 
                             animalNamePrefab.text = a.name;
 
-                            UnityWebRequest request = UnityWebRequestTexture.GetTexture("http://localhost/HoloZoo/" + a.url_slika);
+                            UnityWebRequest request = UnityWebRequestTexture.GetTexture(CommConstants.ServerURL + a.url_slika);
                             yield return request.SendWebRequest();
 
                             Texture2D myTexture = ((DownloadHandlerTexture)request.downloadHandler).texture;

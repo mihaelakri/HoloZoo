@@ -32,7 +32,7 @@ public class FillScore : MonoBehaviour
         form.AddField("points", PlayerPrefs.GetInt("Score"));
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/quiz_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"questions/exp", form)){
 
             yield return www.SendWebRequest();
 
