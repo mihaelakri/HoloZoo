@@ -1,25 +1,13 @@
 {
-    "m_SelectedDeviceId": "H4NPCV049830VU6",
+    "m_SelectedDeviceId": "R52N904W62D",
     "m_SelectedPackage": {
-        "deviceId": "H4NPCV049830VU6",
+        "deviceId": "R52N904W62D",
         "name": "com.DefaultCompany.HoloZoo",
-        "processId": 12939,
+        "processId": 10621,
         "exited": false
     },
     "m_SelectedPriority": 2,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "40bc16be",
-            "name": "com.miui.home",
-            "processId": 3047,
-            "exited": false
-        },
-        {
-            "deviceId": "40bc16be",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 30652,
-            "exited": true
-        },
         {
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
@@ -42,6 +30,12 @@
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 17593,
+            "exited": true
+        },
+        {
+            "deviceId": "40bc16be",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 30906,
             "exited": false
         },
         {
@@ -84,6 +78,48 @@
             "deviceId": "e411baaa",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 13400,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.sec.android.app.launcher",
+            "processId": 2250,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 27163,
+            "exited": true
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 28248,
+            "exited": true
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 29288,
+            "exited": true
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 8362,
+            "exited": true
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 9017,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 10621,
             "exited": false
         }
     ],
