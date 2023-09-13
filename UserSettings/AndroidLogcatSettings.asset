@@ -1,25 +1,13 @@
 {
-    "m_SelectedDeviceId": "R52N904W62D",
+    "m_SelectedDeviceId": "R8DEEMYXS4V4FUFY",
     "m_SelectedPackage": {
-        "deviceId": "R52N904W62D",
+        "deviceId": "R8DEEMYXS4V4FUFY",
         "name": "com.DefaultCompany.HoloZoo",
-        "processId": 10621,
+        "processId": 29353,
         "exited": false
     },
-    "m_SelectedPriority": 2,
+    "m_SelectedPriority": 1,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "40bc16be",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 30919,
-            "exited": true
-        },
-        {
-            "deviceId": "40bc16be",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 31479,
-            "exited": true
-        },
         {
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
@@ -36,6 +24,24 @@
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 30906,
+            "exited": true
+        },
+        {
+            "deviceId": "40bc16be",
+            "name": "com.miui.home",
+            "processId": 2870,
+            "exited": true
+        },
+        {
+            "deviceId": "40bc16be",
+            "name": "com.miui.home",
+            "processId": 2872,
+            "exited": false
+        },
+        {
+            "deviceId": "40bc16be",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 13261,
             "exited": false
         },
         {
@@ -89,24 +95,6 @@
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 27163,
-            "exited": true
-        },
-        {
-            "deviceId": "R52N904W62D",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 28248,
-            "exited": true
-        },
-        {
-            "deviceId": "R52N904W62D",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 29288,
-            "exited": true
-        },
-        {
-            "deviceId": "R52N904W62D",
-            "name": "com.DefaultCompany.HoloZoo",
             "processId": 8362,
             "exited": true
         },
@@ -114,12 +102,54 @@
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 9017,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 10621,
+            "exited": true
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 12790,
+            "exited": true
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 27613,
+            "exited": false
+        },
+        {
+            "deviceId": "R8DEEMYXS4V4FUFY",
+            "name": "com.miui.home",
+            "processId": 2296,
+            "exited": false
+        },
+        {
+            "deviceId": "R8DEEMYXS4V4FUFY",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 27636,
+            "exited": true
+        },
+        {
+            "deviceId": "R8DEEMYXS4V4FUFY",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 28706,
+            "exited": true
+        },
+        {
+            "deviceId": "R8DEEMYXS4V4FUFY",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 28869,
+            "exited": true
+        },
+        {
+            "deviceId": "R8DEEMYXS4V4FUFY",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 29353,
             "exited": false
         }
     ],
@@ -174,7 +204,7 @@
         "Behavior": 0
     },
     "m_FilterOptions": {
-        "m_Filter": "",
+        "m_Filter": "holozoo",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },
