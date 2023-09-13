@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Threading.Tasks;
 using PusherClient;
+using SVSBluetooth;
 
 public class RotateModel : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class RotateModel : MonoBehaviour
     private Channel channel;
     private bool is_websocket_open = false;
     private int player_id;
-
+    private string conn_method;
     private class RotationMsg {
         public string x;
         public string y;
@@ -44,19 +45,37 @@ public class RotateModel : MonoBehaviour
     async Task Start()
     {
         player_id = PlayerPrefs.GetInt("ID");
-        lastUpdateTime = Time.time;
-        Debug.Log("Player id: "+player_id);
-        if (instance == null)
-        {
-            instance = this;
+
+        conn_method = PlayerPrefs.GetString("conn_method");
+        Debug.Log("conn_method: "+conn_method);
+
+        if (conn_method == "websocket") {
+            lastUpdateTime = Time.time;
+            Debug.Log("Player id: "+player_id);
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+            DontDestroyOnLoad(gameObject);
+            await InitialisePusher();
+        } else {
+            BluetoothForAndroid.Initialize();
+            if (PlayerPrefs.GetString("device")=="mobile") {
+                Debug.Log("Bluetooth - CreateServer");
+                BluetoothForAndroid.CreateServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
+            } else {
+                Debug.Log("Bluetooth - ConnectToServer");
+                BluetoothForAndroid.ConnectToServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
+            }
         }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-        await InitialisePusher();
+
     }
+
+    // Websockets
 
     private async Task InitialisePusher()
     {
@@ -77,9 +96,10 @@ public class RotateModel : MonoBehaviour
             pusher = new Pusher("8264e84d03d49bc6ff4f", new PusherOptions()
             {
                 Cluster = "eu",
-                Encrypted = false,
+                Encrypted = true,
                 // Authorizer = new HttpAuthorizer(CommConstants.ServerURL+"broadcasting/auth")
-                Authorizer = authorizer
+                Authorizer = authorizer,
+                ClientTimeout = TimeSpan.FromSeconds(20),
             });
 
             pusher.Error += OnPusherOnError;
@@ -92,18 +112,24 @@ public class RotateModel : MonoBehaviour
     }
 
     public void rotateModel(){
-        if (!is_websocket_open)
-            return;
         Quaternion localRotation = Quaternion.Euler(sideSlider.value,bottomSlider.value, 0f);
         model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
 
-        float timeSinceLastUpdate = Time.time - lastUpdateTime;
+        if (conn_method == "websocket") {
+            if (!is_websocket_open)
+                return;
 
-        if (timeSinceLastUpdate >= updateFrequency)
-        {
-            StartCoroutine(SendRotate3DModel());
-            lastUpdateTime = Time.time;
+            float timeSinceLastUpdate = Time.time - lastUpdateTime;
+
+            if (timeSinceLastUpdate >= updateFrequency)
+            {
+                StartCoroutine(SendRotate3DModel());
+                lastUpdateTime = Time.time;
+            }
+        } else {    // Bluetooth
+            BTSendRotate3DModel();
         }
+
     }
 
     IEnumerator SendRotate3DModel(){
@@ -184,6 +210,32 @@ public class RotateModel : MonoBehaviour
         {
             await pusher.DisconnectAsync();
         }
+    }
+
+    // Bluetooth
+
+    private void OnEnable () {
+        BluetoothForAndroid.ReceivedStringMessage += BTReceiveRotate3DModel;
+    }
+    private void OnDisable () {
+        BluetoothForAndroid.ReceivedStringMessage -= BTReceiveRotate3DModel;
+    }
+
+    private void BTSendRotate3DModel () {
+        Debug.Log("Bluetooth - BTSendRotate3DModel");
+        RotationMsg rotationMsg = new RotationMsg(
+            sideSlider.value.ToString(),
+            bottomSlider.value.ToString(),
+            player_id
+        );
+        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(rotationMsg));
+    }
+
+    private void BTReceiveRotate3DModel (string data) {
+        Debug.Log("Bluetooth - BTReceiveRotate3DModel");
+        RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(data);
+        Quaternion localRotation = Quaternion.Euler(float.Parse(rotationMsg.x), float.Parse(rotationMsg.y), 0f);
+        model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
     }
 }
 
