@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 using System.Threading.Tasks;
 using PusherClient;
 using SVSBluetooth;
+using System.Threading;
 
 public class RotateModel : MonoBehaviour
 {
@@ -30,15 +31,21 @@ public class RotateModel : MonoBehaviour
     private bool is_websocket_open = false;
     private int player_id;
     private string conn_method;
+    bool is_BTConnected = false;
+    private string new_animal_id;
+    private string old_animal_id;
+    private string paired_BT_server;
     private class RotationMsg {
         public string x;
         public string y;
         public int player_id;
+        public string animal_id;
 
-        public RotationMsg(string x, string y, int player_id){
+        public RotationMsg(string x, string y, int player_id, string animal_id){
             this.x = x;
             this.y = y;
             this.player_id = player_id;
+            this.animal_id = animal_id;
         }
     }
 
@@ -78,13 +85,45 @@ public class RotateModel : MonoBehaviour
                 BluetoothForAndroid.ConnectToServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
             }
         }
+    }
+    IEnumerator SwapModel() {
+        GameObject parent = GameObject.FindGameObjectWithTag("3d");
+        Destroy(parent.transform.GetChild(0).gameObject);
+
+        string id_animal = this.new_animal_id;
+        // id_animal = "2";
+
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.Log(www.error);
+                }
+            else
+                {
+                    string model_url = (www.downloadHandler.text);
+                    Debug.Log(www.downloadHandler.text);
+                    GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
+                    Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                }
+        }
 
     }
-
     void Update() 
     {
-        Quaternion localRotation = Quaternion.Euler(this.x, this.y, 0f);
-        model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+        if (this.old_animal_id != this.new_animal_id) {
+            StartCoroutine(SwapModel());
+            this.old_animal_id = this.new_animal_id;
+        }
+
+        try {
+            Quaternion localRotation = Quaternion.Euler(this.x, this.y, 0f);
+            model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+        } catch (Exception e) {
+            Debug.Log(e);
+        }
     }
 
     // Websockets
@@ -94,22 +133,11 @@ public class RotateModel : MonoBehaviour
         if (pusher == null)
         {
             MyHttpChannelAuthorizer authorizer = new MyHttpChannelAuthorizer(CommConstants.ServerURL+"broadcasting/auth");
-            // {
-            //     AuthenticationHeader = new AuthenticationHeaderValue("Cookie", "holozoo_session=eyJpdiI6IkE1eDZNOWg5cFMzR29aNnZNeDhxd2c9PSIsInZhbHVlIjoieTNrcnJzajNOL1ZIaXVwQ1MyUlNFZUNGSk9Od3Zoc0UzUy9TL1l5K2d5TFdJaVcwWDVDOGZGYXdOM2NDdUI0R3J3aDRLUUkrdFRBRDhyT1FLYzE4U0JMdURacnRMeHlZdEpGMlg2amp5Q3ZteTNRZVNBSlpidDZsVm56MTl0NDQiLCJtYWMiOiI3ODU2ZDgzYjkxMzI0MjYzODc4YmUzZDljMGJlNzlkMDJiYTk4ZTA4ZmIxZGJiODQyMDM0N2YwZTU1Y2YyZjVhIiwidGFnIjoiIn0%3D"),
-            // };
-            // Dictionary<string, string> headers = new Dictionary<string, string>();
-
-            // If using session-based auth, add session cookie to headers
-            // headers.Add("Cookie", "laravel_session=eyJpdiI6IkE1eDZNOWg5cFMzR29aNnZNeDhxd2c9PSIsInZhbHVlIjoieTNrcnJzajNOL1ZIaXVwQ1MyUlNFZUNGSk9Od3Zoc0UzUy9TL1l5K2d5TFdJaVcwWDVDOGZGYXdOM2NDdUI0R3J3aDRLUUkrdFRBRDhyT1FLYzE4U0JMdURacnRMeHlZdEpGMlg2amp5Q3ZteTNRZVNBSlpidDZsVm56MTl0NDQiLCJtYWMiOiI3ODU2ZDgzYjkxMzI0MjYzODc4YmUzZDljMGJlNzlkMDJiYTk4ZTA4ZmIxZGJiODQyMDM0N2YwZTU1Y2YyZjVhIiwidGFnIjoiIn0%3D");
-            // headers.Add("Cookie", "XSRF-TOKEN=eyJpdiI6IkxEUlQ2SEZCK0QxUnhLTFpiRjJrU1E9PSIsInZhbHVlIjoieXNvNXp1UjJFeFB1bEE4a0o5RDlwOXlVTzRHa2RMNmwwUFlENGZjMHNBeTdvS2ZRbm5xMGZBeU5yM1ladjlWaXRNUncrUlpFR1VyT3dHUmg0TE5JSFJsU1ZGZFF4OWNlbzh5T1lLS2MzVkJRditNVVg1KzVGL0M3SmE2cUg1MGQiLCJtYWMiOiI4NjliNDJkNWE0ZDZkN2E5MDMzZjhiYTg1Y2IwNWZmODYxOWFhZmYwODc5NjdjN2IwZTk3ZmUzM2Q3ZGVmNWM1IiwidGFnIjoiIn0%3D");
-
-            // authorizer.setAuthenticationHeader(headers);
 
             pusher = new Pusher("8264e84d03d49bc6ff4f", new PusherOptions()
             {
                 Cluster = "eu",
                 Encrypted = true,
-                // Authorizer = new HttpAuthorizer(CommConstants.ServerURL+"broadcasting/auth")
                 Authorizer = authorizer,
                 ClientTimeout = TimeSpan.FromSeconds(20),
             });
@@ -124,8 +152,10 @@ public class RotateModel : MonoBehaviour
     }
 
     public void rotateModel(){
-        Quaternion localRotation = Quaternion.Euler(sideSlider.value,bottomSlider.value, 0f);
-        model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+        this.x = sideSlider.value;
+        this.y = bottomSlider.value;
+        // Quaternion localRotation = Quaternion.Euler(sideSlider.value,bottomSlider.value, 0f);
+        // model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
 
         if (conn_method == "websocket") {
             if (!is_websocket_open)
@@ -150,7 +180,8 @@ public class RotateModel : MonoBehaviour
         RotationMsg rotationMsg = new RotationMsg(
             sideSlider.value.ToString(),
             bottomSlider.value.ToString(),
-            player_id
+            player_id,
+            PlayerPrefs.GetString("id_animal", "1")
         );
 
         channel.Trigger(
@@ -172,6 +203,7 @@ public class RotateModel : MonoBehaviour
             Debug.Log("Rotation Msg; X: "+rotationMsg.x+" Y: "+rotationMsg.y);
             this.x = float.Parse(rotationMsg.x);
             this.y = float.Parse(rotationMsg.y);
+            this.new_animal_id = rotationMsg.animal_id;
         });
         is_websocket_open = true;
     }
@@ -204,17 +236,58 @@ public class RotateModel : MonoBehaviour
 
     private void OnEnable () {
         BluetoothForAndroid.ReceivedStringMessage += BTReceiveRotate3DModel;
+        if (PlayerPrefs.GetString("device")!="mobile") {
+            BluetoothForAndroid.FailConnectToServer += BTReconnect;
+            BluetoothForAndroid.DeviceDisconnected += BTReconnect;
+            BluetoothForAndroid.DeviceConnected += BTConnected;
+            BluetoothForAndroid.DeviceDisconnected += BTDisconnected;
+            BluetoothForAndroid.DeviceSelected += BTDeviceSelected;
+        }
     }
     private void OnDisable () {
-        BluetoothForAndroid.ReceivedStringMessage -= BTReceiveRotate3DModel;
+        if (PlayerPrefs.GetString("device")!="mobile") {
+            BluetoothForAndroid.ReceivedStringMessage -= BTReceiveRotate3DModel;
+            BluetoothForAndroid.FailConnectToServer -= BTReconnect;
+            BluetoothForAndroid.DeviceDisconnected -= BTReconnect;
+            BluetoothForAndroid.DeviceConnected -= BTConnected;
+            BluetoothForAndroid.DeviceDisconnected -= BTDisconnected;
+            BluetoothForAndroid.DeviceSelected -= BTDeviceSelected;
+        }
+    }
+    private void BTDeviceSelected(string data) {
+        Debug.Log("Bluetooth - BTDeviceSelected");
+        Debug.Log("Bluetooth - Data: " + data);
+        this.paired_BT_server = data.Split(',')[1];
+    }
+    private void BTConnected(){
+        Debug.Log("Bluetooth - BTConnected");
+        this.is_BTConnected = true;
+    }
+    private void BTDisconnected(){
+        Debug.Log("Bluetooth - BTDisconnected");
+        this.is_BTConnected = false;
+        BTReconnect();
     }
 
+    private void BTReconnect(){
+        Debug.Log("Bluetooth - BTReconnect");
+        BluetoothForAndroid.ConnectToServerByAddress("d81a5833-37f4-460d-8a9f-347ff95474ad", this.paired_BT_server);
+    }
+
+    // private void BTKeepReconnecting(){
+    //     Debug.Log("Bluetooth - BTKeepReconnecting");
+    //     while (!this.is_BTConnected) {
+    //         BTReconnect();
+    //         Thread.Sleep(2000);
+    //     }
+    // }
     private void BTSendRotate3DModel () {
         Debug.Log("Bluetooth - BTSendRotate3DModel");
         RotationMsg rotationMsg = new RotationMsg(
             sideSlider.value.ToString(),
             bottomSlider.value.ToString(),
-            player_id
+            player_id,
+            PlayerPrefs.GetString("id_animal", "1")
         );
         BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(rotationMsg));
     }
@@ -226,6 +299,7 @@ public class RotateModel : MonoBehaviour
         // model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
         this.x = float.Parse(rotationMsg.x);
         this.y = float.Parse(rotationMsg.y);
+        this.new_animal_id = rotationMsg.animal_id;
     }
 }
 
