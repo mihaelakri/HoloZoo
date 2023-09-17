@@ -41,14 +41,12 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
 
     public async Task<string> AuthorizeAsync(string channelName, string socketId)
     {
-        // Guard.ChannelName(channelName);
-
         string authToken = null;
 
 
         var baseAddress = new Uri(CommConstants.ServerURL);
 
-        if (CommConstants.Auth == "")
+        if (CommConstants.XSRF == "")
             Thread.Sleep(20);
 
         var cookieContainer = new CookieContainer();
@@ -63,6 +61,7 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
             {
                 new KeyValuePair<string, string>("channel_name", channelName),
                 new KeyValuePair<string, string>("socket_id", socketId),
+                new KeyValuePair<string, string>("id_user", CommConstants.IdUser),
             };
 
             using (HttpContent content = new FormUrlEncodedContent(data))
@@ -71,7 +70,9 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
                 try
                 {
                     PreAuthorize(httpClient);
+                    Debug.Log("Pusher - PreAuthorize done");
                     response = await httpClient.PostAsync(_authEndpoint, content).ConfigureAwait(false);
+                    Debug.Log("Pusher - response code: "+response.StatusCode);
                 }
                 catch (Exception e)
                 {
@@ -80,7 +81,9 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
                     {
                         code = ErrorCodes.ChannelAuthorizationTimeout;
                     }
-
+                    Debug.Log("Pusher - error code: "+code);
+                    Debug.Log("Pusher - _authEndpoint: "+_authEndpoint.OriginalString);
+                    Debug.Log("Pusher - err: "+e);
                     throw new ChannelAuthorizationFailureException(code, _authEndpoint.OriginalString, channelName, socketId, e);
                 }
 
@@ -105,24 +108,16 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
             }
         }
 
+        Debug.Log("Pusher - auth token: "+authToken);
         return authToken;
-        
-        // var tcs = new TaskCompletionSource<string>();
-        // StartCoroutine(GetAuth(channelName, socketId, tcs));
-        // return await MakePostRequestAsync(channelName, socketId);
     }
 
     public Task<string> MakePostRequestAsync(string channel_name, string socket_id) {
         var tcs = new TaskCompletionSource<string>();
-        // WWWForm form = new WWWForm();
-        // form.AddField("channel_name", channel_name);
-        // form.AddField("socket_id", socket_id);
 
         UnityWebRequest request = new UnityWebRequest(CommConstants.ServerURL+"broadcasting/auth", "POST");
         request.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes("{\"channel_name\":\"channel_name\", \"socket_id\":\"socket_id\"}"));
         request.downloadHandler = new DownloadHandlerBuffer();
-
-        // using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"broadcasting/auth", form))
 
         var operation = request.SendWebRequest();
 
@@ -143,31 +138,6 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
         
         
     }
-
-    // IEnumerator GetAuth(string channel_name, string socket_id, TaskCompletionSource<string> tcs){
-
-        
-    //     // Debug.Log(PlayerPrefs.GetString("id_animal"));
-    //     WWWForm form = new WWWForm();
-    //     form.AddField("channel_name", channel_name);
-    //     form.AddField("socket_id", socket_id);
-    //     // string id_animal = PlayerPrefs.GetString("id_animal");
-
-    //     using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"broadcasting/auth", form)){
-
-    //         yield return www.SendWebRequest();
-
-    //         if (www.result != UnityWebRequest.Result.Success)
-    //             {
-    //                 Debug.Log(www.error);
-    //             }
-    //         else
-    //             {
-    //                 Debug.Log(www.downloadHandler.text);
-    //                 tcs.SetResult(www.downloadHandler.text);
-    //             }
-    //     }
-    // }
 
     public virtual void PreAuthorize(HttpClient httpClient)
     {

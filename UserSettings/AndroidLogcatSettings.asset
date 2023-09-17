@@ -1,25 +1,13 @@
 {
-    "m_SelectedDeviceId": "R8DEEMYXS4V4FUFY",
+    "m_SelectedDeviceId": "R52N904W62D",
     "m_SelectedPackage": {
-        "deviceId": "R8DEEMYXS4V4FUFY",
+        "deviceId": "R52N904W62D",
         "name": "com.DefaultCompany.HoloZoo",
-        "processId": 29353,
+        "processId": 7161,
         "exited": false
     },
     "m_SelectedPriority": 1,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "40bc16be",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 16113,
-            "exited": true
-        },
-        {
-            "deviceId": "40bc16be",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 17593,
-            "exited": true
-        },
         {
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
@@ -36,12 +24,18 @@
             "deviceId": "40bc16be",
             "name": "com.miui.home",
             "processId": 2872,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 13261,
+            "exited": true
+        },
+        {
+            "deviceId": "40bc16be",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 3578,
             "exited": false
         },
         {
@@ -95,31 +89,43 @@
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 8362,
+            "processId": 28474,
             "exited": true
         },
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 9017,
+            "processId": 1080,
             "exited": true
         },
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 10621,
+            "processId": 9786,
             "exited": true
         },
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 12790,
+            "processId": 4898,
             "exited": true
         },
         {
             "deviceId": "R52N904W62D",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 27613,
+            "processId": 5641,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 6717,
+            "exited": false
+        },
+        {
+            "deviceId": "R52N904W62D",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 7161,
             "exited": false
         },
         {
@@ -204,7 +210,7 @@
         "Behavior": 0
     },
     "m_FilterOptions": {
-        "m_Filter": "holozoo",
+        "m_Filter": "",
         "m_UseRegularExpressions": false,
         "m_MatchCase": false
     },

@@ -61,6 +61,7 @@ public class Login : MonoBehaviour
    public void Setint(int Value)
     {
         PlayerPrefs.SetInt("ID", Value);
+        CommConstants.IdUser = Value.ToString();
     }
  }
 

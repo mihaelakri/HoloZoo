@@ -19,7 +19,7 @@ public class RotateModel : MonoBehaviour
     public Slider sideSlider;
     public GameObject model;
     public GameObject target;
-    public float x,y;
+    public float x=0,y=0;
     public float sliderLastX=0, sliderLastY=0;
 
     private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
@@ -40,6 +40,12 @@ public class RotateModel : MonoBehaviour
             this.y = y;
             this.player_id = player_id;
         }
+    }
+
+    private class PusherRotationMsg {
+        public string @event;
+        public string data;
+        public string channel;
     }
 
     async Task Start()
@@ -73,6 +79,12 @@ public class RotateModel : MonoBehaviour
             }
         }
 
+    }
+
+    void Update() 
+    {
+        Quaternion localRotation = Quaternion.Euler(this.x, this.y, 0f);
+        model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
     }
 
     // Websockets
@@ -146,25 +158,6 @@ public class RotateModel : MonoBehaviour
             JsonUtility.ToJson(rotationMsg)
         );
         yield return 0;
-
-        // WWWForm form = new WWWForm();
-        // form.AddField("x", sideSlider.value.ToString());
-        // form.AddField("y", bottomSlider.value.ToString());
-        // form.AddField("id", PlayerPrefs.GetInt("ID"));
-
-        // using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"rotate", form)){
-
-        //     yield return www.SendWebRequest();
-
-        //     if (www.result != UnityWebRequest.Result.Success)
-        //         {
-        //             Debug.Log(www.error);
-        //         }
-        //     else
-        //         {
-        //              Debug.Log(www.downloadHandler.text);
-        //         }
-        // }
     }
 
     private void PusherOnConnected(object sender)
@@ -174,20 +167,15 @@ public class RotateModel : MonoBehaviour
         {
             Debug.Log("client-rotation"+player_id);
             Debug.Log(data);
-            // StartCoroutine(ReceiveRotate3DModel(JsonUtility.FromJson<RotationMsg>(data)));
-            RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(data);
-            Quaternion localRotation = Quaternion.Euler(float.Parse(rotationMsg.x), float.Parse(rotationMsg.y), 0f);
-            model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+            PusherRotationMsg pusherRotationMsg = JsonUtility.FromJson<PusherRotationMsg>(data);
+            RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(pusherRotationMsg.data);
+            Debug.Log("Rotation Msg; X: "+rotationMsg.x+" Y: "+rotationMsg.y);
+            this.x = float.Parse(rotationMsg.x);
+            this.y = float.Parse(rotationMsg.y);
         });
         is_websocket_open = true;
     }
-    // IEnumerator ReceiveRotate3DModel(RotationMsg rotationMsg){
-    //     Quaternion localRotation = Quaternion.Euler(rotationMsg.x, rotationMsg.y, 0f);
-    //     model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
 
-    //     yield return 0;
-
-    // }
     private void PusherOnConnectionStateChanged(object sender, ConnectionState state)
     {
         Debug.Log("Pusher - Connection state changed");
@@ -234,8 +222,10 @@ public class RotateModel : MonoBehaviour
     private void BTReceiveRotate3DModel (string data) {
         Debug.Log("Bluetooth - BTReceiveRotate3DModel");
         RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(data);
-        Quaternion localRotation = Quaternion.Euler(float.Parse(rotationMsg.x), float.Parse(rotationMsg.y), 0f);
-        model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+        // Quaternion localRotation = Quaternion.Euler(float.Parse(rotationMsg.x), float.Parse(rotationMsg.y), 0f);
+        // model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+        this.x = float.Parse(rotationMsg.x);
+        this.y = float.Parse(rotationMsg.y);
     }
 }
 
