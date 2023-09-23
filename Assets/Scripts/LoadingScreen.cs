@@ -21,17 +21,18 @@ public class LoadingScreen : MonoBehaviour
         timeElapsed += Time.deltaTime;
 
         if (timeElapsed >= delayBeforeLoading){
-            if(PlayerPrefs.HasKey("ID")){
-                id = Getint("ID");
-                StartCoroutine(setSession());
-                if(PlayerPrefs.GetString("device")=="mobile"){
-                SceneManager.LoadScene("Home");
-                }else{
-                    SceneManager.LoadScene("HologramTablet");
-                }
-            }else{
-                SceneManager.LoadScene(sceneNameToLoad);
-            }  
+            SceneManager.LoadScene(sceneNameToLoad);
+            // if(PlayerPrefs.HasKey("ID")){
+            //     id = Getint("ID");
+            //     // StartCoroutine(setSession());
+            //     if(PlayerPrefs.GetString("device")=="mobile"){
+            //     SceneManager.LoadScene("Home");
+            //     }else{
+            //         SceneManager.LoadScene("HologramTablet");
+            //     }
+            // }else{
+            //     SceneManager.LoadScene(sceneNameToLoad);
+            // }  
         }
     }
 

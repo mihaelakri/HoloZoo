@@ -3374,8 +3374,8 @@ MonoBehaviour:
       GUIContent:
         m_Text: ADDITIONAL ASSETS CONFIG
         m_Image: {fileID: 0}
-        m_Tooltip: Once you have imported one of the third party assets that the
-          FCU supports,\nyou need to activate them in this section.
+        m_Tooltip: Once you have imported one of the third party assets that the FCU
+          supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
       CheckBoxValue: 0

@@ -41,13 +41,14 @@ public class CreateRoom : MonoBehaviourPunCallbacks
     IEnumerator GetUsername(){
 
         WWWForm form = new WWWForm();
-        form.AddField("id", id);
-        form.AddField("flag", "3");
+        // form.AddField("id", id);
+        // form.AddField("flag", "3");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"session/username")){
 
             yield return www.SendWebRequest();
 
+            Debug.Log(www.downloadHandler.text);
             if (www.result != UnityWebRequest.Result.Success)
                 {
                     Debug.Log(www.error);
@@ -56,6 +57,7 @@ public class CreateRoom : MonoBehaviourPunCallbacks
             else
                 {
                     profile_info = JsonUtility.FromJson<Profile_info>(www.downloadHandler.text);
+                    Debug.Log(profile_info.username);
                     PlayerPrefs.SetString("username", profile_info.username);
                 }
         }

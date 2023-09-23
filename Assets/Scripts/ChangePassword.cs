@@ -24,8 +24,8 @@ public class ChangePassword : MonoBehaviour
         } else{
             WWWForm form = new WWWForm();
             form.AddField("password", newPasswordField.text);
-            form.AddField("flag", "4");
-            using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
+            // form.AddField("flag", "4");
+            using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"password", form)){
 
             yield return www.SendWebRequest();
 

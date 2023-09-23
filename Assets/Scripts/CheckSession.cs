@@ -12,7 +12,7 @@ public class CheckSession : MonoBehaviour
 
    IEnumerator Session(){
 
-      WWW www = new WWW("http://localhost/HoloZoo/session.php");
+      WWW www = new WWW(CommConstants.ServerURL+"session/id");
       yield return www;
 
       Debug.Log(www.text);
