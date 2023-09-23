@@ -7,7 +7,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Accessibility : MonoBehaviour
-{
+{   
+    public GameObject panel;
     public Scrollbar fontSizeScrollBar; 
     public Toggle dyslexiaToggle;
     public Toggle contrastToggle;
@@ -21,11 +22,10 @@ public class Accessibility : MonoBehaviour
             if(fontSize < 0.5f){
                 PlayerPrefs.SetInt("font_size", 16);
             }else if(fontSize >= 0.5f && fontSize < 0.8){
-                PlayerPrefs.SetInt("font_size", 17);
-            }else{
                 PlayerPrefs.SetInt("font_size", 18);
+            }else{
+                PlayerPrefs.SetInt("font_size", 20);
             }
-            Debug.Log(PlayerPrefs.GetInt("font_size"));
     }
 
     public void SetDyslexia(){
@@ -35,6 +35,7 @@ public class Accessibility : MonoBehaviour
         } else{
             PlayerPrefs.SetInt("dyslexia", 0);
             dyslexiaText.text = "Off";
+
         }
     }
     public void SetContrast(){
@@ -53,6 +54,39 @@ public class Accessibility : MonoBehaviour
         } else{
             PlayerPrefs.SetInt("textToSpeech", 0);
             ttsText.text = "Off";
+        }
+    }
+
+    public void showAccesibility(){
+        if(PlayerPrefs.GetInt("font_size")==16){
+            fontSizeScrollBar.value = 0;
+        }else if(PlayerPrefs.GetInt("font_size")==17){
+            fontSizeScrollBar.value = 0.5f;
+        }else{
+            fontSizeScrollBar.value = 1;
+        }
+        if (PlayerPrefs.GetInt("dyslexia")==1) dyslexiaToggle.isOn = true;
+        if (PlayerPrefs.GetInt("contrast")==1) contrastToggle.isOn = true;
+        if (PlayerPrefs.GetInt("tts")==1) textToSpeechToggle.isOn = true;
+        panel.transform.LeanMoveLocal(new Vector2(0,0),1).setEaseOutQuart();
+    }
+    public void hideAccesibility(){
+        panel.transform.LeanMoveLocal(new Vector2(0,-645),1).setEaseOutQuart();
+        if(PlayerPrefs.GetInt("contrast")==1){
+            
+            if(GameObject.Find("Bar") != null){
+                GameObject.Find("Bar").GetComponent<Image>().color = Color.black;
+            }
+             
+            GameObject.Find("btn1").GetComponent<Image>().color = Color.black; 
+            GameObject.Find("btn2").GetComponent<Image>().color = Color.black; 
+        }else{
+            if(GameObject.Find("Bar") != null){
+                GameObject.Find("Bar").GetComponent<Image>().color = Color.white;
+            }
+            
+            GameObject.Find("btn1").GetComponent<Image>().color = Color.white; 
+            GameObject.Find("btn2").GetComponent<Image>().color = Color.white; 
         }
     }
 

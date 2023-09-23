@@ -14,8 +14,12 @@ public class FillLearnAnimals : MonoBehaviour
     public int id;
     public GameObject list_element;
     public Animals animals;
+    public Font liberationFont;
+    public Font jostFont;
 
     Text[] yourTexts;
+    Text[] textComponents;
+    Button[] buttons;
     
     [Serializable]
     public class Animal{
@@ -34,11 +38,6 @@ public class FillLearnAnimals : MonoBehaviour
         if(PlayerPrefs.HasKey("ID")){
            StartCoroutine(FillAnimals());
         }
-        /* yourTexts = FindObjectsOfType<Text>();
-        foreach (Text text in yourTexts)
-        {
-            text.fontSize = PlayerPrefs.GetInt("font_size");
-        }*/
     }
 
     IEnumerator FillAnimals(){
@@ -59,16 +58,48 @@ public class FillLearnAnimals : MonoBehaviour
                     Debug.Log(www.downloadHandler.text);
                     animals = JsonUtility.FromJson<Animals>(www.downloadHandler.text);
                     var x = 0;
-                    var y = 263;
+                    var y = 234;
                     foreach (var a in animals.animal)
                     {
-                       GameObject newobj = Instantiate(list_element, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Content").transform);
+                       GameObject newobj = Instantiate<GameObject>(list_element);
+                       newobj.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform);
                        newobj.transform.localPosition = new Vector3(0, y, 0);
                        y -= 85;
-                        Text newText = newobj.GetComponentInChildren<Text>(); 
-                        newText.text = a.name;
-                        newobj.tag = a.id_animal.ToString();
-                        Debug.Log(a.name);
+                       Text newText = newobj.GetComponentInChildren<Text>(); 
+                       newText.text = a.name;
+                       newobj.tag = a.id_animal.ToString();
+                    }
+                    // font size
+                    yourTexts = FindObjectsOfType<Text>();
+                    foreach (Text text in yourTexts)
+                    {
+                        text.fontSize = PlayerPrefs.GetInt("font_size");
+                    }
+                    if(PlayerPrefs.GetInt("contrast")==1){
+                        buttons = FindObjectsOfType<Button>();
+                        foreach (Button button in buttons)
+                        {
+                            if (button.name != "Back"){
+                                Image imageComponent = button.gameObject.GetComponentInChildren<Image>();
+                                if (imageComponent != null)
+                                {
+                                    imageComponent.color = Color.black;
+                                }
+                            }
+                        }
+                    }
+                    //dyslexia
+                    textComponents = FindObjectsOfType<Text>();
+                    if(PlayerPrefs.GetInt("dyslexia")==1){
+                        foreach (Text textComponent in textComponents)
+                        {
+                            textComponent.font = liberationFont;
+                        }
+                    }else{
+                        foreach (Text textComponent in textComponents)
+                        {
+                            textComponent.font = jostFont;
+                        }
                     }
                 }
         }

@@ -19,6 +19,13 @@ public class FillAnimal : MonoBehaviour
     public Text populationText;
     public GameObject animal_photo;
 
+    public Font liberationFont;
+    public Font jostFont;
+
+    Button[] buttons;
+    GameObject[] objectsWithTag;
+    Text[] textComponents;
+
     [Serializable]
     public class Animal{
         public String area;
@@ -36,6 +43,42 @@ public class FillAnimal : MonoBehaviour
     void Start()
     {
         StartCoroutine(FillAnimalInfo());
+        //contrast
+        if(PlayerPrefs.GetInt("contrast")==1){
+            buttons = FindObjectsOfType<Button>();
+            foreach (Button button in buttons)
+            {
+                Debug.Log(buttons.Length);
+                if (button.name != "Back"){
+                    Image imageComponent = button.gameObject.GetComponentInChildren<Image>();
+                    imageComponent.color = Color.black;
+                    Text textComponent = button.GetComponentInChildren<Text>();
+                    if(textComponent!=null){
+                        textComponent.color = Color.white;
+                    }
+                }
+            }
+            objectsWithTag = GameObject.FindGameObjectsWithTag("dropdownItem");
+            foreach (GameObject obj in objectsWithTag)
+            {
+                Image imageComponent2 = obj.GetComponent<Image>();
+                Color newColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+                imageComponent2.color = newColor;
+            } 
+        }
+    	//dyslexia
+        textComponents = FindObjectsOfType<Text>();
+        if(PlayerPrefs.GetInt("dyslexia")==1){
+            foreach (Text textComponent in textComponents)
+            {
+                textComponent.font = liberationFont;
+            }
+        }else{
+            foreach (Text textComponent in textComponents)
+            {
+                textComponent.font = jostFont;
+            }
+        }
     }
 
     IEnumerator FillAnimalInfo(){

@@ -25,6 +25,8 @@ public class Login : MonoBehaviour
     form.AddField("password", passwordField.text);
     form.AddField("flag", "1");
 
+    
+
     WWW www = new WWW("http://localhost/HoloZoo/middle_man.php", form);
     yield return www;
 
@@ -43,11 +45,9 @@ public class Login : MonoBehaviour
          Debug.Log("Login successfull!");
          int id = Convert.ToInt16(www.text);
          Setint(id);
-         if(PlayerPrefs.GetString("device")=="mobile"){
-            SceneManager.LoadScene("Home");
-         }else{
-            SceneManager.LoadScene("HologramTablet");
-         }  
+         CreateRoom createRoom = submitButton.GetComponent<CreateRoom>();
+         createRoom.createOrJoinRoom();
+         
     }else{
        Debug.Log("User login failed. Error#" + www.text);
        toast.text = "Username invalid.";

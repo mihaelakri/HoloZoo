@@ -15,6 +15,14 @@ TagManager:
   - 0
   - 3d
   - AnimalPrefab(Clone)
+  - oblacic
+  - dropdownItem
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
   layers:
   - Default
   - TransparentFX

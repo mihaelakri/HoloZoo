@@ -16,7 +16,10 @@ public class FillProfile : MonoBehaviour
     public Text expTxt;
     public Slider expSlider;
 
+    public Font liberationFont;
+    public Font jostFont;
     Text[] yourTexts;
+    Text[] textComponents;
 
     [Serializable]
     public class Profile_info{
@@ -29,14 +32,39 @@ public class FillProfile : MonoBehaviour
     void Start()
     {
         if(PlayerPrefs.HasKey("ID")){
-           id = Getint("ID");
+           id = PlayerPrefs.GetInt("ID");
            StartCoroutine(Profileinfo());
         }
-         yourTexts = FindObjectsOfType<Text>();
+        //font size
+        yourTexts = FindObjectsOfType<Text>();
         foreach (Text text in yourTexts)
         {
             text.fontSize = PlayerPrefs.GetInt("font_size");
-            Debug.Log(text.text);
+        }
+        //contrast
+        if(PlayerPrefs.GetInt("contrast")==1){
+            GameObject.Find("confirmbutton").GetComponent<Image>().color = Color.black;
+            textComponents = FindObjectsOfType<Text>();
+            
+            foreach (Text textComponent in textComponents)
+            {
+                if(textComponent.text != "CONFIRM"){
+                    textComponent.color =  Color.black;
+                }
+            }
+        }
+        //dyslexia
+        textComponents = FindObjectsOfType<Text>();
+        if(PlayerPrefs.GetInt("dyslexia")==1){
+            foreach (Text textComponent in textComponents)
+            {
+                textComponent.font = liberationFont;
+            }
+        }else{
+            foreach (Text textComponent in textComponents)
+            {
+                textComponent.font = jostFont;
+            }
         }
     }
 
@@ -65,11 +93,4 @@ public class FillProfile : MonoBehaviour
                 }
         }
     }
-    
-
-
-    public int Getint(string KeyName)
-        {
-            return PlayerPrefs.GetInt(KeyName);
-        }
 }

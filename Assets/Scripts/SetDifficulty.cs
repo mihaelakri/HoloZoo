@@ -18,7 +18,13 @@ public class SetDifficulty : MonoBehaviour
         yourTexts = FindObjectsOfType<Text>();
         foreach (Text text in yourTexts)
         {
-            text.fontSize = PlayerPrefs.GetInt("font_size");
+            if(text.fontSize < 18){
+                text.fontSize = PlayerPrefs.GetInt("font_size");
+            }
+        }
+        if(PlayerPrefs.GetInt("contrast")==1){
+            GameObject.Find("btn").GetComponent<Image>().color = Color.black;
+            GameObject.Find("Scrollbar").GetComponent<Image>().color = Color.black;
         }
     }
 

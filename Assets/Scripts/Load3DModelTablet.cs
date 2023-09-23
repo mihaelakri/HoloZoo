@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class Load3DmodelTablet : MonoBehaviour
+public class Load3DModelTablet : MonoBehaviour
 {
     public GameObject variableForPrefab;
     public String model_url;
@@ -20,7 +20,10 @@ public class Load3DmodelTablet : MonoBehaviour
 
     IEnumerator GetModel(){
 
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/HoloZoo/animal_view.php")){
+        WWWForm form = new WWWForm();
+        form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -33,7 +36,8 @@ public class Load3DmodelTablet : MonoBehaviour
                     model_url = (www.downloadHandler.text);
                     Debug.Log(www.downloadHandler.text);
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                    GameObject instantiatedPrefab = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                    instantiatedPrefab.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 }
         }
     }

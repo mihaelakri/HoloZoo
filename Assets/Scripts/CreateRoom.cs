@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class CreateRoom : MonoBehaviour
+public class CreateRoom : MonoBehaviourPunCallbacks
 {
-      public String[] jsonData; 
     public int id; 
     [SerializeField] public Profile_info profile_info; 
 
@@ -20,13 +21,21 @@ public class CreateRoom : MonoBehaviour
     }
     
     // Start is called before the first frame update
-    void Start()
+    public void createOrJoinRoom()
     {
         if(PlayerPrefs.HasKey("ID")){
            id = PlayerPrefs.GetInt("ID");
            StartCoroutine(GetUsername());
         }
-        PhotonNetwork.CreateRoom(PlayerPrefs.GetString("username"));
+        
+        if(PlayerPrefs.GetString("device")=="mobile"){
+            PhotonNetwork.CreateRoom(PlayerPrefs.GetString("username"));
+            PhotonNetwork.LoadLevel("Home");
+        }else{
+            PhotonNetwork.JoinRoom(PlayerPrefs.GetString("username"));
+            PhotonNetwork.LoadLevel("HologramTablet");
+        }
+        
     }
 
     IEnumerator GetUsername(){
@@ -42,6 +51,7 @@ public class CreateRoom : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
                 {
                     Debug.Log(www.error);
+                    Debug.Log("eroric");
                 }
             else
                 {
@@ -49,5 +59,11 @@ public class CreateRoom : MonoBehaviour
                     PlayerPrefs.SetString("username", profile_info.username);
                 }
         }
+    }
+
+    public override void OnCreatedRoom()
+    {
+        // Room created successfully
+        Debug.Log("Room created.");
     }
 }

@@ -48,11 +48,8 @@ public class Registration : MonoBehaviour
       else if(www.text != "0"){
          Debug.Log("User created successfully!");
          Setint(Convert.ToInt16(www.text));
-         if(PlayerPrefs.GetString("device")=="mobile"){
-            SceneManager.LoadScene("Home");
-         }else{
-            SceneManager.LoadScene("HologramTablet");
-         }  
+         CreateRoom createRoom = submitButton.GetComponent<CreateRoom>();
+         createRoom.createOrJoinRoom();
       }else{
          Debug.Log("User creation failed. Error#" + www.text);
       }

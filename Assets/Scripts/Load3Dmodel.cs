@@ -20,7 +20,6 @@ public class Load3Dmodel : MonoBehaviour
 
     IEnumerator GetModel(){
 
-        
         Debug.Log(PlayerPrefs.GetString("id_animal"));
         WWWForm form = new WWWForm();
         form.AddField("id_model", PlayerPrefs.GetString("id_animal"));

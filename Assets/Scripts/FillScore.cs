@@ -11,8 +11,11 @@ public class FillScore : MonoBehaviour
     public Sprite happyFace;
     public Sprite sadFace;
     public Image face;
+    public Font liberationFont;
+    public Font jostFont;
+
+    Text[] textComponents;
     
-    // Start is called before the first frame update
     void Start()
     {
         scoreText.text = PlayerPrefs.GetInt("Score") + "/" + PlayerPrefs.GetInt("QuestionCount");  
@@ -23,7 +26,26 @@ public class FillScore : MonoBehaviour
             message.text = "Bravo!";
             face.GetComponent<Image>().sprite = happyFace;
         }
-        StartCoroutine(SetExperience());  
+        StartCoroutine(SetExperience()); 
+
+        if(PlayerPrefs.GetInt("contrast")==1){
+            GameObject.Find("Bar").GetComponent<Image>().color = Color.black;
+            GameObject.Find("btn").GetComponent<Image>().color = Color.black;
+            GameObject.Find("btn2").GetComponent<Image>().color = Color.black;
+        }
+        //dyslexia
+        textComponents = FindObjectsOfType<Text>();
+        if(PlayerPrefs.GetInt("dyslexia")==1){
+            foreach (Text textComponent in textComponents)
+            {
+                textComponent.font = liberationFont;
+            }
+        }else{
+            foreach (Text textComponent in textComponents)
+            {
+                textComponent.font = jostFont;
+            }
+        }
     }
 
     IEnumerator SetExperience(){
