@@ -111,8 +111,14 @@ public class RotateModel : MonoBehaviour
             }
 
             try {
-                Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
-                model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+                if (CommConstants.new_animal_id == "0") {
+                    Vector3 localRotation = new Vector3(CommConstants.x, CommConstants.y, CommConstants.z);
+                    // Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                    model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
+                } else {
+                    Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                    model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+                }
             } catch (Exception e) {
                 Debug.Log(e);
             }

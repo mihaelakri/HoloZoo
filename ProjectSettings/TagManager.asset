@@ -34,6 +34,7 @@ TagManager:
   - 21
   - 22
   - 23
+  - 3d-obj
   layers:
   - Default
   - TransparentFX

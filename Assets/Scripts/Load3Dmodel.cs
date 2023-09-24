@@ -31,14 +31,14 @@ public class Load3Dmodel : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.Log(www.error);
+                    Debug.Log("Animal model error: "+www.error);
                 }
             else
                 {
                     model_url = (www.downloadHandler.text);
-                    Debug.Log(www.downloadHandler.text);
+                    Debug.Log("Animal model found: "+www.downloadHandler.text);
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    Instantiate(variableForPrefab, new Vector3(0, 2f, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                    Instantiate(variableForPrefab, new Vector3(0, 2f, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
 
                     // foreach (var s in www.GetResponseHeaders()) {
                     //     Debug.Log("s=" + s);

@@ -20,7 +20,7 @@ namespace WPM {
                 // print("The transform has changed!");
                 transform.hasChanged = false;
                 
-                rotateModel.rotateGlobeModel(transform.localEulerAngles);
+                rotateModel.rotateGlobeModel(transform.eulerAngles);
             }
         }
     }
