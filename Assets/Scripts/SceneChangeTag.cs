@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 public class SceneChangeTag : MonoBehaviour
 {
 public void ChangeScene(string sceneNameToLoad) {  
-        PlayerPrefs.SetString("id_animal", EventSystem.current.currentSelectedGameObject.tag);
+        PlayerPrefs.SetString("id_animal", EventSystem.current.currentSelectedGameObject.name);
         SceneManager.LoadScene(sceneNameToLoad);  
     } 
 }

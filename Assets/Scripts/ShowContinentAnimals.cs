@@ -77,7 +77,7 @@ namespace WPM {
         // form.AddField("id_area", id_continent);
         // Debug.Log(id_continent);
 
-        int id_area = 1;
+        int id_area = id_continent;
 
         // using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
         using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/area/"+id_area)){
@@ -92,8 +92,8 @@ namespace WPM {
                 {
                     Debug.Log(www.downloadHandler.text);
                     animals = JsonUtility.FromJson<Animals>(www.downloadHandler.text);
-                    var x = -115; 
-                    var y = 210;
+                    var x = -255; 
+                    var y = 530;
                     counter=1;
                     
                         foreach (var a in animals.animal){
@@ -105,11 +105,11 @@ namespace WPM {
                             
                             currentAnimal.transform.localPosition = new Vector3(x, y, 0);
 
-                            x += 115;
+                            x += 250;
                             
                             if(counter % 3== 0){
-                                y-=140;
-                                x=-115;
+                                y-=250;
+                                x=-235;
                             }
                             counter += 1;
 

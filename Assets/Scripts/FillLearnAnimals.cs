@@ -62,12 +62,12 @@ public class FillLearnAnimals : MonoBehaviour
                     foreach (var a in animals.animal)
                     {
                        GameObject newobj = Instantiate<GameObject>(list_element);
-                       newobj.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform);
-                       newobj.transform.localPosition = new Vector3(0, y, 0);
-                       y -= 85;
+                       newobj.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform, false);
+                       //newobj.transform.localPosition = new Vector3(0, y, 0);
+                       //y -= 85;
                        Text newText = newobj.GetComponentInChildren<Text>(); 
                        newText.text = a.name;
-                       newobj.tag = a.id_animal.ToString();
+                       newobj.name = a.id_animal.ToString();
                     }
                     // font size
                     yourTexts = FindObjectsOfType<Text>();
