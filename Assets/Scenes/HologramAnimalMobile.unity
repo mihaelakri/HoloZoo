@@ -1533,10 +1533,9 @@ MonoBehaviour:
   sideSlider: {fileID: 969470699}
   model: {fileID: 1302347127}
   target: {fileID: 0}
-  x: 0
-  y: 0
   sliderLastX: 0
   sliderLastY: 0
+  instance: {fileID: 0}
 --- !u!1 &1659891982
 GameObject:
   m_ObjectHideFlags: 0
