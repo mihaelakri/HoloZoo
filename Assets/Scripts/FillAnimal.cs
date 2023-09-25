@@ -49,7 +49,7 @@ public class FillAnimal : MonoBehaviour
             foreach (Button button in buttons)
             {
                 Debug.Log(buttons.Length);
-                if (button.name != "Back"){
+                if (button.name != "Back" && button.name != "AnimalIcon"){
                     Image imageComponent = button.gameObject.GetComponentInChildren<Image>();
                     imageComponent.color = Color.black;
                     Text textComponent = button.GetComponentInChildren<Text>();
@@ -58,6 +58,7 @@ public class FillAnimal : MonoBehaviour
                     }
                 }
             }
+
             objectsWithTag = GameObject.FindGameObjectsWithTag("dropdownItem");
             foreach (GameObject obj in objectsWithTag)
             {
