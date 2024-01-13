@@ -22,17 +22,17 @@ public class LoadingScreen : MonoBehaviour
 
         if (timeElapsed >= delayBeforeLoading){
             SceneManager.LoadScene(sceneNameToLoad);
-            // if(PlayerPrefs.HasKey("ID")){
-            //     id = Getint("ID");
-            //     // StartCoroutine(setSession());
-            //     if(PlayerPrefs.GetString("device")=="mobile"){
-            //     SceneManager.LoadScene("Home");
-            //     }else{
-            //         SceneManager.LoadScene("HologramTablet");
-            //     }
-            // }else{
-            //     SceneManager.LoadScene(sceneNameToLoad);
-            // }  
+            if(PlayerPrefs.HasKey("ID")){
+                id = PlayerPrefs.GetInt("ID");
+                StartCoroutine(setSession());
+                if(PlayerPrefs.GetString("device")=="mobile"){
+                SceneManager.LoadScene("Home");
+                }else{
+                    SceneManager.LoadScene("HologramTablet");
+                }
+            }else{
+                SceneManager.LoadScene(sceneNameToLoad);
+            }  
         }
     }
 
@@ -42,7 +42,7 @@ public class LoadingScreen : MonoBehaviour
         form.AddField("id", id);
         form.AddField("flag", "5");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -57,8 +57,4 @@ public class LoadingScreen : MonoBehaviour
         }
     }
 
-    public int Getint(string KeyName)
-        {
-            return PlayerPrefs.GetInt(KeyName);
-        }
 }

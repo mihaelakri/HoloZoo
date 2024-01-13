@@ -7,7 +7,7 @@ using SVSBluetooth;
 public static class CommConstants
 {
     // public const string ServerURL = "http://localhost:8000/";
-    public const string ServerURL = "http://izelentrovic.com/";
+    public const string ServerURL = "http://localhost/HoloZoo/";
     public static string Auth = "";
     public static string XSRF = "";
 
@@ -23,4 +23,6 @@ public static class CommConstants
     public static float x=0f,y=0f, z=0f;
     public static string new_animal_id;
     public static int player_id;
+
+    public static int control_type = 1; 
 }

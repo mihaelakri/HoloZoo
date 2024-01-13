@@ -46,6 +46,9 @@ public class FillScore : MonoBehaviour
                 textComponent.font = jostFont;
             }
         }
+        if(PlayerPrefs.GetInt("textToSpeech")==1){
+            GameObject.Find("TTSHelper").GetComponent<TtsGlobal>().readScore(PlayerPrefs.GetInt("Score") + "/" + PlayerPrefs.GetInt("QuestionCount"));
+        }
     }
 
     IEnumerator SetExperience(){

@@ -17,21 +17,25 @@ public class ApplyAccessibility : MonoBehaviour
     {
         //font size
         yourTexts = FindObjectsOfType<Text>();
+        
         foreach (Text text in yourTexts)
         {
+            Debug.Log(text);
             text.fontSize = PlayerPrefs.GetInt("font_size");
         }
         //contrast
         if(PlayerPrefs.GetInt("contrast")==1){
-            GameObject.Find("confirmbutton").GetComponent<Image>().color = Color.black;
+            GameObject.Find("saveBtn").GetComponent<Image>().color = Color.black;
+            GameObject.Find("Scrollbar").GetComponent<Image>().color = Color.black;
             textComponents = FindObjectsOfType<Text>();
             
             foreach (Text textComponent in textComponents)
             {
-                if(textComponent.text != "CONFIRM"){
+                if(textComponent.text != "LEARN" && textComponent.text != "QUIZ" && textComponent.text != "SAVE"){
                     textComponent.color =  Color.black;
                 }
             }
+
         }
         //dyslexia
         textComponents = FindObjectsOfType<Text>();
@@ -46,5 +50,9 @@ public class ApplyAccessibility : MonoBehaviour
                 textComponent.font = jostFont;
             }
         }
+    }
+
+    public void applyAcc(){
+        Start();
     }
 }

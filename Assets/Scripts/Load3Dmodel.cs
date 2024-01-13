@@ -21,11 +21,11 @@ public class Load3Dmodel : MonoBehaviour
     IEnumerator GetModel(){
 
         Debug.Log(PlayerPrefs.GetString("id_animal"));
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
+        WWWForm form = new WWWForm();
+        form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
         string id_animal = PlayerPrefs.GetString("id_animal");
 
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -36,13 +36,24 @@ public class Load3Dmodel : MonoBehaviour
             else
                 {
                     model_url = (www.downloadHandler.text);
-                    Debug.Log("Animal model found: "+www.downloadHandler.text);
+                    Debug.Log("Animal model found: " + www.downloadHandler.text);
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    Instantiate(variableForPrefab, new Vector3(0, 2f, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+                    GameObject instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, 2f, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+                    
+                    // Calculate half of the model's height
+                    RectTransform rt = (RectTransform)instantiatedObject.transform;
+                    float width = rt.rect.width;
+                    float height = rt.rect.height;
+                    Debug.Log("height: " +height);
+                    
+                    // Adding a BoxCollider to the instantiated object for mouse drag
+                    BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
+                    // Set the collider size (if not already set)
+                    boxCollider.size = new Vector3(2f, 2f, 2f); // Adjust this to your desired default size
+                    // Adjust collider position to match the GameObject position
+                    instantiatedObject.AddComponent<MouseRotate>();
 
-                    // foreach (var s in www.GetResponseHeaders()) {
-                    //     Debug.Log("s=" + s);
-                    // }
+                    /*
                     foreach (var s in www.GetResponseHeader("Set-Cookie").Split(';')) {
                         if(s.Contains("holozoo_session")){
                             CommConstants.Auth = s.Substring(s.IndexOf("holozoo_session")).Split('=')[1].Split(';')[0];
@@ -54,8 +65,7 @@ public class Load3Dmodel : MonoBehaviour
 
                         }
                     }
-                    // Debug.Log(www.GetResponseHeader("Set-Cookie"));
-                    // CommConstant.Auth = www.GetRequestHeader("Cookie");
+                    */
                 }
         }
     }

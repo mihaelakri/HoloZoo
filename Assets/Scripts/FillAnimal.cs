@@ -21,7 +21,6 @@ public class FillAnimal : MonoBehaviour
 
     public Font liberationFont;
     public Font jostFont;
-
     Button[] buttons;
     GameObject[] objectsWithTag;
     Text[] textComponents;
@@ -58,14 +57,13 @@ public class FillAnimal : MonoBehaviour
                     }
                 }
             }
+            GameObject.Find("ES-dropdown").GetComponent<Image>().color = Color.gray;
+            GameObject.Find("Region-dropdown").GetComponent<Image>().color = Color.gray;
+            GameObject.Find("Habitats-dropdown").GetComponent<Image>().color = Color.gray;
+            GameObject.Find("Weight-dropdown").GetComponent<Image>().color = Color.gray;
+            GameObject.Find("Diet-dropdown").GetComponent<Image>().color = Color.gray;
+            GameObject.Find("Population-dropdown").GetComponent<Image>().color = Color.gray;
 
-            objectsWithTag = GameObject.FindGameObjectsWithTag("dropdownItem");
-            foreach (GameObject obj in objectsWithTag)
-            {
-                Image imageComponent2 = obj.GetComponent<Image>();
-                Color newColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-                imageComponent2.color = newColor;
-            } 
         }
     	//dyslexia
         textComponents = FindObjectsOfType<Text>();
@@ -84,11 +82,11 @@ public class FillAnimal : MonoBehaviour
 
     IEnumerator FillAnimalInfo(){
 
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_animal", PlayerPrefs.GetString("id_animal"));
+        WWWForm form = new WWWForm();
+        form.AddField("id_animal", PlayerPrefs.GetString("id_animal"));
         string animal_id =  PlayerPrefs.GetString("id_animal");
 
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/get/"+animal_id)){
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -99,7 +97,8 @@ public class FillAnimal : MonoBehaviour
             else
                 {
                     animal = JsonUtility.FromJson<Animal>(www.downloadHandler.text);
-                    UnityWebRequest request = UnityWebRequestTexture.GetTexture(CommConstants.ServerURL + animal.url_slika);
+                    UnityWebRequest request = UnityWebRequestTexture.GetTexture("http://localhost/HoloZoo/" + animal.url_slika);
+                    Debug.Log("http://localhost/HoloZoo/" + animal.url_slika);
                     yield return request.SendWebRequest();
 
                     nameText.text = animal.name;

@@ -13,6 +13,7 @@ public class HomeScreen : MonoBehaviourPunCallbacks
     public int id; 
     [SerializeField] public Profile_info profile_info; 
 
+
     [Serializable]
     public class Profile_info{
         public String username;
@@ -32,15 +33,19 @@ public class HomeScreen : MonoBehaviourPunCallbacks
             GameObject.Find("btn1").GetComponent<Image>().color = Color.white; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.white; 
         }
+
+        if(PlayerPrefs.GetInt("textToSpeech")==1){
+            GameObject.Find("TTSHelper").GetComponent<TtsGlobal>().readHome();
+        }
+        /* FOTON
        if(PlayerPrefs.HasKey("ID")){
            id = PlayerPrefs.GetInt("ID");
            StartCoroutine(GetUsername());
         }
         PhotonNetwork.CreateRoom(PlayerPrefs.GetString("username"));
-        if(PlayerPrefs.GetInt("dyslexia")==1){
-             
-        }
+        */
     }
+    /* ZA FOTON - kreiranje sobe korisnika 
     IEnumerator GetUsername(){
 
         WWWForm form = new WWWForm();
@@ -62,6 +67,6 @@ public class HomeScreen : MonoBehaviourPunCallbacks
                     PlayerPrefs.SetString("username", profile_info.username);
                 }
         }
-    }
+    }*/
 
 }

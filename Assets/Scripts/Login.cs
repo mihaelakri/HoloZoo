@@ -17,7 +17,7 @@ public class Login : MonoBehaviour
 
  public void CallLogin(){
    if (!Permission.HasUserAuthorizedPermission("android.permission.INTERNET"))
-                            Permission.RequestUserPermission("android.permission.INTERNET");
+      Permission.RequestUserPermission("android.permission.INTERNET");
     StartCoroutine(Log_in());
  }
 
@@ -29,8 +29,8 @@ public class Login : MonoBehaviour
     form.AddField("flag", "1");
 
     
-    //WWW www = new WWW("http://localhost/HoloZoo/middle_man.php", form);
-    WWW www = new WWW(CommConstants.ServerURL+"login", form);
+    WWW www = new WWW(CommConstants.ServerURL+"middle_man.php", form);
+    
     yield return www;
 
     Debug.Log(www.text);
@@ -44,12 +44,24 @@ public class Login : MonoBehaviour
         Debug.Log("User login failed. Error#" + www.text);
         toast.text = "Wrong password.";  
     }
+    else if(www.text == ""){
+      Debug.Log("Connection error");
+      toast.text = "Check your internet connection."; 
+    }
     else if(www.text != "0"){ //POPRAVITE DEBUG  
          Debug.Log("Login successfull!");
          int id = Convert.ToInt16(www.text);
+         
          Setint(id);
-         CreateRoom createRoom = submitButton.GetComponent<CreateRoom>();
-         createRoom.createOrJoinRoom();
+         if(PlayerPrefs.GetString("device")=="mobile") {
+            SceneManager.LoadScene("Home"); 
+         } else {
+            SceneManager.LoadScene("HologramTablet"); 
+         }
+         
+         /* FOTON (ako se implementiras foton maknuti scene chnage) */
+         //CreateRoom createRoom = submitButton.GetComponent<CreateRoom>();
+         //createRoom.createOrJoinRoom();
          
     }else{
        Debug.Log("User login failed. Error#" + www.text);

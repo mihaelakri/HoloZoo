@@ -56,6 +56,7 @@ public class Quiz : MonoBehaviour
             text.fontSize = PlayerPrefs.GetInt("font_size");
             Debug.Log(text.text);
         }
+        
         StartCoroutine(FillQuestion());
     }
 
@@ -87,6 +88,11 @@ public class Quiz : MonoBehaviour
                     answerAText.text = questions.question[questionsCounter].answer_one;
                     answerBText.text = questions.question[questionsCounter].answer_two;
                     answerCText.text = questions.question[questionsCounter].answer_three;
+
+                
+                    if(PlayerPrefs.GetInt("textToSpeech")==1){
+                        GameObject.Find("TTSHelper").GetComponent<TtsGlobal>().readQuiz(questions.question[questionsCounter].question_text, questions.question[questionsCounter].answer_one, questions.question[questionsCounter].answer_two, questions.question[questionsCounter].answer_three);
+                    }
                    
                 }
         }
@@ -95,6 +101,9 @@ public class Quiz : MonoBehaviour
     public void CheckAnswer(){
         Debug.Log(EventSystem.current.currentSelectedGameObject.tag);
         String id = EventSystem.current.currentSelectedGameObject.tag; 
+        if(PlayerPrefs.GetInt("textToSpeech")==1){
+            GameObject.Find("TTSHelper").GetComponent<TtsGlobal>().doSpeak(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
+        }
         //if correct make it green
         if(id == questions.question[questionsCounter].correct_answer){
             EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite = correct;
@@ -180,6 +189,11 @@ public class Quiz : MonoBehaviour
         btnAnswerA.enabled = true;
         btnAnswerB.enabled = true;
         btnAnswerC.enabled = true;
+
+        if(PlayerPrefs.GetInt("textToSpeech")==1){
+            GameObject.Find("TTSHelper").GetComponent<TtsGlobal>().readQuiz(questions.question[questionsCounter].question_text, questions.question[questionsCounter].answer_one, questions.question[questionsCounter].answer_two, questions.question[questionsCounter].answer_three);
+        }
+
     }
     
     public int Getint(string KeyName)

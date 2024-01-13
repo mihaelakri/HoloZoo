@@ -20,21 +20,15 @@ public class RotateModel : MonoBehaviour
     public Slider sideSlider;
     public GameObject model;
     public GameObject target;
-    // public float x=0f,y=0f, z=0f;
     public float sliderLastX=0, sliderLastY=0;
 
     private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
     private float lastUpdateTime = 0f;
     public RotateModel instance = null;
-    // private Pusher pusher;
-    // private Channel channel;
-    // private bool is_websocket_open = false;
-    // private int player_id;
-    // private string conn_method;
-    // bool is_BTConnected = false;
-    // private string new_animal_id;
+
+    public float rotationSpeed = 0.1f;
+
     private string old_animal_id;
-    // private string paired_BT_server;
     Scene m_Scene;
     string sceneName;
 
@@ -62,6 +56,7 @@ public class RotateModel : MonoBehaviour
 
     async Task Start()
     {
+
         m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
         CommConstants.player_id = PlayerPrefs.GetInt("ID");
@@ -80,7 +75,7 @@ public class RotateModel : MonoBehaviour
         string id_animal = CommConstants.new_animal_id;
         // id_animal = "2";
         string model_url;
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", id_animal)){
 
             yield return www.SendWebRequest();
 
@@ -113,11 +108,11 @@ public class RotateModel : MonoBehaviour
             try {
                 if (CommConstants.new_animal_id == "0") {
                     Vector3 localRotation = new Vector3(CommConstants.x, CommConstants.y, CommConstants.z);
-                    // Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
-                } else {
-                    Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
-                    model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+                } else if(CommConstants.control_type == 1){
+                   Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                   model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+
                 }
             } catch (Exception e) {
                 Debug.Log(e);
@@ -132,10 +127,6 @@ public class RotateModel : MonoBehaviour
             CommConstants.y = bottomSlider.value;
             CommConstants.z = 0f;
         }
-        // Quaternion localRotation = Quaternion.Euler(sideSlider.value,bottomSlider.value, 0f);
-        // model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
-
-        // Debug.Log("rotate model");
 
         if (CommConstants.conn_method == "websocket") {
             if (!CommConstants.is_websocket_open){

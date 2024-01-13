@@ -67,7 +67,7 @@ public class Accessibility : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("dyslexia")==1) dyslexiaToggle.isOn = true;
         if (PlayerPrefs.GetInt("contrast")==1) contrastToggle.isOn = true;
-        if (PlayerPrefs.GetInt("tts")==1) textToSpeechToggle.isOn = true;
+        if (PlayerPrefs.GetInt("textToSpeech")==1) textToSpeechToggle.isOn = true;
         panel.transform.LeanMoveLocal(new Vector2(0,0),1).setEaseOutQuart();
     }
     public void hideAccesibility(){
@@ -80,13 +80,18 @@ public class Accessibility : MonoBehaviour
              
             GameObject.Find("btn1").GetComponent<Image>().color = Color.black; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.black; 
+            GameObject.Find("saveBtn").GetComponent<Image>().color = Color.black;
+
         }else{
             if(GameObject.Find("Bar") != null){
                 GameObject.Find("Bar").GetComponent<Image>().color = Color.white;
             }
             
             GameObject.Find("btn1").GetComponent<Image>().color = Color.white; 
-            GameObject.Find("btn2").GetComponent<Image>().color = Color.white; 
+            GameObject.Find("btn2").GetComponent<Image>().color = Color.white;
+            GameObject.Find("saveBtn").GetComponent<Image>().color = Color.white;
+            GameObject.Find("Scrollbar").GetComponent<Image>().color = Color.white;
+
         }
     }
 

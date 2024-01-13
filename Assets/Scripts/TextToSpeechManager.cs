@@ -19,7 +19,7 @@ public class TextToSpeechManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Text-to-Speech is only supported on Android.");
+            Debug.Log("Text-to-Speech is only supported on Android.");
         }
     }
 
@@ -31,7 +31,7 @@ public class TextToSpeechManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Text-to-Speech not initialized.");
+            Debug.Log("Text-to-Speech not initialized.");
         }
     }
 
@@ -47,7 +47,7 @@ public class TextToSpeechManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Text-to-Speech initialization failed with status code: " + status);
+                Debug.Log("Text-to-Speech initialization failed with status code: " + status);
             }
         }
     }

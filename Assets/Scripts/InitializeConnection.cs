@@ -218,7 +218,7 @@ public class InitializeConnection : MonoBehaviour
                     // foreach (var s in www.GetResponseHeaders()) {
                     //     Debug.Log("s=" + s);
                     // }
-                    foreach (var s in www.GetResponseHeader("Set-Cookie").Split(';')) {
+                    /*foreach (var s in www.GetResponseHeader("Set-Cookie").Split(';')) {
                         if(s.Contains("holozoo_session")){
                             CommConstants.Auth = s.Substring(s.IndexOf("holozoo_session")).Split('=')[1].Split(';')[0];
                             Debug.Log(CommConstants.Auth);
@@ -228,7 +228,7 @@ public class InitializeConnection : MonoBehaviour
                             Debug.Log(CommConstants.XSRF);
 
                         }
-                    }
+                    }*/
                     // Debug.Log(www.GetResponseHeader("Set-Cookie"));
                     // CommConstant.Auth = www.GetRequestHeader("Cookie");
                 }

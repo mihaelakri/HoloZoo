@@ -1,24 +1,18 @@
 {
     "m_SelectedDeviceId": "R5CRB226BKF",
     "m_SelectedPackage": {
-        "deviceId": "R5CRB226BKF",
-        "name": "com.DefaultCompany.HoloZoo",
-        "processId": 10454,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
-    "m_SelectedPriority": 0,
+    "m_SelectedPriority": 1,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R58N665VFBB",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 1271,
             "exited": false
-        },
-        {
-            "deviceId": "R9YT50X8B8B",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 15971,
-            "exited": true
         },
         {
             "deviceId": "R9YT50X8B8B",
@@ -39,6 +33,18 @@
             "exited": true
         },
         {
+            "deviceId": "R9YT50X8B8B",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 20129,
+            "exited": true
+        },
+        {
+            "deviceId": "R9YT50X8B8B",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 21109,
+            "exited": false
+        },
+        {
             "deviceId": "40bc16be",
             "name": "com.DefaultCompany.HoloZoo",
             "processId": 22725,
@@ -47,55 +53,31 @@
         {
             "deviceId": "R5CRB226BKF",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 10855,
-            "exited": false
+            "processId": 18252,
+            "exited": true
         },
         {
             "deviceId": "R5CRB226BKF",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 20372,
-            "exited": false
+            "processId": 19796,
+            "exited": true
         },
         {
             "deviceId": "R5CRB226BKF",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 24214,
-            "exited": false
+            "processId": 22150,
+            "exited": true
         },
         {
             "deviceId": "R5CRB226BKF",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 738,
-            "exited": false
+            "processId": 28342,
+            "exited": true
         },
         {
             "deviceId": "R5CRB226BKF",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 14664,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CRB226BKF",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 17628,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CRB226BKF",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 21766,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CRB226BKF",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 2199,
-            "exited": false
-        },
-        {
-            "deviceId": "R5CRB226BKF",
-            "name": "com.DefaultCompany.HoloZoo",
-            "processId": 10454,
+            "name": "com.sec.android.app.launcher",
+            "processId": 2834,
             "exited": false
         }
     ],
