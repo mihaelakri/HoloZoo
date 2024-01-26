@@ -15,9 +15,15 @@ public class LoadingScreen : MonoBehaviour
 
     private float timeElapsed;
 
+    private void Start()
+    {
+        LeanTween.init(800);
+    }
+
     // Update is called once per frame
     void Update()
     {
+
         timeElapsed += Time.deltaTime;
 
         if (timeElapsed >= delayBeforeLoading){

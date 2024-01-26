@@ -12,12 +12,17 @@ public class LoadRandomModel : MonoBehaviour
 {
     public GameObject variableForPrefab;
     public String model_url;
-    public GameObject instantiatedObject; 
-
+    public GameObject instantiatedObject;
+    public static event System.Action OnModelLoaded;
     // Start is called before the first frame update
+    public void Start()
+    {
+       
+    }
     public void LoadAnimal()
     {
         StartCoroutine(GetModel());
+        //OnModelLoaded?.Invoke();
     }
 
     IEnumerator GetModel(){
@@ -36,15 +41,39 @@ public class LoadRandomModel : MonoBehaviour
             else
                 {
                     model_url = (www.downloadHandler.text);
-                    Debug.Log("Animal model found: " + www.downloadHandler.text);
+                //Debug.Log("Animal model found: " + www.downloadHandler.text);
+                //Debug.Log("Model URL: " + model_url);
+               //model_url = "ANIMALS FULL PACK/Forest Animals Pack/Rabbit/Prefabs/Rabbit_Legacy";
+
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, 2f, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-                    
-                    BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
-                    boxCollider.size = new Vector3(2f, 2f, 2f);
-                    
-                    // Add script for mouse rotate if control is set to mouse
-                    if(CommConstants.control_type == 2){
+
+                    if (variableForPrefab == null)
+                    {
+                        Debug.LogError("Prefab not found with name: " + model_url);
+                        //yield break; // Exit the coroutine to avoid further issues
+                    }
+
+                GameObject obj = GameObject.Find("Model");
+                if (obj != null)
+                {
+                    instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, obj.transform);
+                }
+                else
+                {
+                    Debug.LogWarning("GameObject with tag '3d-obj' not found in the scene.");
+                }
+
+                BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
+                boxCollider.size = new Vector3(1f, 1f, 1f);
+                instantiatedObject.layer = LayerMask.NameToLayer("Animal");
+                Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
+                instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
+                Debug.Log("Object to be resized.");
+                ResizeUtility.ResizeObject(instantiatedObject, 2.0f);
+                Debug.Log("Object resized.");
+
+                // Add script for mouse rotate if control is set to mouse
+                if (CommConstants.control_type == 2){
                         instantiatedObject.AddComponent<MouseRotate>();
                     }
 
@@ -63,6 +92,8 @@ public class LoadRandomModel : MonoBehaviour
                     */
                 }
         }
+
+       
     }
 
     public void DestroyInstantiatedObject(){
@@ -78,5 +109,11 @@ public class LoadRandomModel : MonoBehaviour
             instantiatedObject = null;
         }
     }
+
+    public GameObject getFirstChild(GameObject ParentObject) {
+        return ParentObject.transform.GetChild(0).gameObject;
+    }
+
+
 
 }

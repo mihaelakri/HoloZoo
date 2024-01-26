@@ -17,7 +17,8 @@ public class QuizModels : MonoBehaviour
     public int questionsCount;
     public int questionsCounter;
     public LoadRandomModel loadRandomModelInstance;
-    public GameObject model; 
+    public GameObject model;
+    public GameObject accessibility;
 
     public int x_exp; 
     public int y_exp; 
@@ -42,6 +43,7 @@ public class QuizModels : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        accessibility.SetActive(false);
         StartCoroutine(GetQuestionModels());
         ChangeAnimalModel();
     }
@@ -107,41 +109,55 @@ public class QuizModels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CommConstants.x + " " + CommConstants.y);
-        if(CommConstants.x == x_exp && CommConstants.y == y_exp){
-    
-            Debug.Log("x: " + CommConstants.x + "y: " + CommConstants.y); 
-            Debug.Log("x-exp: " + x_exp + "y-exp: " + y_exp);
-            timer.StopTimer();
-            float rotate_time = timer.GetElapsedTime();
-            Debug.Log(rotate_time);  
-            
-            // Add to database 
-            StartCoroutine(AddToDB(rotate_time, CommConstants.control_type)); 
+        //Debug.Log(CommConstants.x + " " + CommConstants.y);
 
-            //Change traget postition
-            questionsCounter ++;
-            x_exp = questions.question[questionsCounter].x_goal;
-            y_exp = questions.question[questionsCounter].y_goal;
+        // Check if questions array is not null and questionsCounter is within bounds
+        if (questions != null && questionsCounter >= 0 && questionsCounter < questionsCount)
+        {
+            if (CommConstants.x == x_exp && CommConstants.y == y_exp)
+            {
+                
+                //Debug.Log("x: " + CommConstants.x + " y: " + CommConstants.y);
+                //Debug.Log("x-exp: " + x_exp + " y-exp: " + y_exp);
 
-            // Control type settings
-            CommConstants.control_type = questions.question[questionsCounter].control_type;
-            CheckControlType();
+                timer.StopTimer();
+                float rotate_time = timer.GetElapsedTime();
+                //Debug.Log(rotate_time);
 
-            //Fill the Task Panel 
-            Text quest = questPanel.GetComponentInChildren<Text>();
-            quest.text = questions.question[questionsCounter].question_text;
+                StartCoroutine(AddToDB(rotate_time, CommConstants.control_type));
 
-            //Fill the help panel 
-            Text help = helpPanel.GetComponentInChildren<Text>();
-            help.text = questions.question[questionsCounter].question_text;
+                questionsCounter++;
 
-            //Load new 
-            DestroyModel(); 
-            ChangeAnimalModel(); 
-            
-            questPanel.SetActive(true); 
-            
+                // Check if questionsCounter is still within bounds after incrementing
+                if (questionsCounter < questionsCount)
+                {
+                    x_exp = questions.question[questionsCounter].x_goal;
+                    y_exp = questions.question[questionsCounter].y_goal;
+
+                    CommConstants.control_type = questions.question[questionsCounter].control_type;
+                    CheckControlType();
+
+                    Text quest = questPanel.GetComponentInChildren<Text>();
+                    quest.text = questions.question[questionsCounter].question_text;
+
+                    Text help = helpPanel.GetComponentInChildren<Text>();
+                    help.text = questions.question[questionsCounter].question_text;
+
+                    DestroyModel();
+                    ChangeAnimalModel();
+
+                    questPanel.SetActive(true);
+                }
+                else
+                {
+                    Debug.Log("No more questions. Quiz completed.");
+                    // Optionally, you can handle the completion of the quiz here.
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Invalid questions or questionsCounter value.");
         }
     }
 
@@ -153,7 +169,7 @@ public class QuizModels : MonoBehaviour
         loadRandomModelInstance.DestroyInstantiatedObject(); 
     }
 
-    public void SowPrefab()
+    public void ShowPrefab()
     {
         helpPanel.SetActive(true); // Set the prefab's active state to false
     }
@@ -162,36 +178,45 @@ public class QuizModels : MonoBehaviour
         timer.StartTimer(); 
     }
 
-    void CheckControlType(){
-        if(CommConstants.control_type == 1){
-
-            Transform childTransform = model.transform.GetChild(0);
-
-            // Get the MouseRotate component attached to the first child
-            MouseRotate mouseRotateComponent = childTransform.GetComponent<MouseRotate>();
-
-            // Check if the component exists before attempting to remove it
-            if (mouseRotateComponent != null)
+    void CheckControlType()
+    {
+        if (CommConstants.control_type == 1)
+        {
+            if (model.transform.childCount > 0)
             {
-                // Remove the MouseRotate component from the first child
-                Destroy(mouseRotateComponent);
-                // Or use DestroyImmediate(mouseRotateComponent) if you want to remove it immediately
+                Transform childTransform = model.transform.GetChild(0);
+
+                // Get the MouseRotate component attached to the first child
+                MouseRotate mouseRotateComponent = childTransform.GetComponent<MouseRotate>();
+
+                // Check if the component exists before attempting to remove it
+                if (mouseRotateComponent != null)
+                {
+                    // Remove the MouseRotate component from the first child
+                    Destroy(mouseRotateComponent);
+                    // Or use DestroyImmediate(mouseRotateComponent) if you want to remove it immediately
+                }
             }
-
-        }else if(CommConstants.control_type == 2){
-
+            else
+            {
+                Debug.Log("No child found at index 0 in model.transform");
+            }
+        }
+        else if (CommConstants.control_type == 2)
+        {
             GameObject.Find("SideSlider").SetActive(false);
             GameObject.Find("BottomSlider").SetActive(false);
-
-        }else if(CommConstants.control_type == 3){
-
+        }
+        else if (CommConstants.control_type == 3)
+        {
             // TO DO 
-
-        }else{
+        }
+        else
+        {
             Debug.Log("Invalid type");
         }
-
     }
+
 
     IEnumerator AddToDB(float time, int ctrl_type){
 

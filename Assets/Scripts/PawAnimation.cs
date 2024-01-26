@@ -22,6 +22,7 @@ public class PawAnimation : MonoBehaviour
     } 
 
     public void FallingDown(float x, float y){
+        LeanTween.init(800);
         transform.LeanMoveLocal(new Vector2(x,y),1).setEaseOutQuart();
     }
 }
