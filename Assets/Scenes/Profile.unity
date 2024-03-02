@@ -905,7 +905,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New password
+  m_Text: Nova lozinka
 --- !u!222 &472483088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1084,7 +1084,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONFIRM
+  m_Text: POTVRDI
 --- !u!222 &654184744
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1965,7 +1965,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Experience
+  m_Text: Bodovi
 --- !u!222 &1516259413
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2190,7 +2190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retype password
+  m_Text: Ponovno unesite lozinku
 --- !u!222 &1678717235
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2801,6 +2801,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1

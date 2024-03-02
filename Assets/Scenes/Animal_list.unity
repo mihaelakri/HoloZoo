@@ -195,7 +195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Region
+  m_Text: Regija
 --- !u!222 &6342958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -399,7 +399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click on the picture to see 3D model
+  m_Text: Kliknite na sliku da vidite 3D model
 --- !u!222 &76796802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Population
+  m_Text: Populacija
 --- !u!222 &84057026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Habitats
+  m_Text: "Stani\u0161te"
 --- !u!222 &145363150
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -976,7 +976,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Weight
+  m_Text: "Te\u017Eina"
 --- !u!222 &235252148
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1740,7 +1740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Endangerment status
+  m_Text: "Status ugro\u017Eenosti"
 --- !u!222 &641370083
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2053,7 +2053,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 16, y: -47.5}
-  m_SizeDelta: {x: 44, y: 31}
+  m_SizeDelta: {x: 117.0467, y: 31}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &791653190
 MonoBehaviour:
@@ -2088,7 +2088,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Diet
+  m_Text: Prehrana
 --- !u!222 &791653191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2556,6 +2556,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1

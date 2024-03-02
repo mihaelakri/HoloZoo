@@ -195,7 +195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIZ
+  m_Text: KVIZ
 --- !u!222 &17829409
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1632,7 +1632,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LEARN
+  m_Text: "U\u010CENJE"
 --- !u!222 &882238602
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3211,7 +3211,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SAVE
+  m_Text: SPREMI
 --- !u!222 &1638467293
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3237,7 +3237,6 @@ GameObject:
   - component: {fileID: 1681750883}
   - component: {fileID: 1681750884}
   - component: {fileID: 1681750885}
-  - component: {fileID: 1681750889}
   - component: {fileID: 1681750890}
   m_Layer: 0
   m_Name: Canvas 60822
@@ -3303,6 +3302,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -3706,23 +3706,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be897a11ba87cd04eb0a1d07cfcd80a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  profile_info:
-    username: 
-    experience: 0
-    level: 0
---- !u!114 &1681750889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681750877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f906bb0fb6b597e479a8e707f82dc9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0

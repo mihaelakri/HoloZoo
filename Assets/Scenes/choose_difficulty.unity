@@ -688,6 +688,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -1139,7 +1140,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Medium
+  m_Text: SREDNJE
 --- !u!222 &885920631
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1347,8 +1348,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -158}
-  m_SizeDelta: {x: 240.2312, y: 52.7258}
+  m_AnchoredPosition: {x: 180, y: -152.27548}
+  m_SizeDelta: {x: 240.2312, y: 101.3845}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070271669
 MonoBehaviour:
@@ -1383,7 +1384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Choose difficulty
+  m_Text: "ODABERITE TE\u017DINU KVIZA"
 --- !u!222 &1070271670
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1677,7 +1678,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONTINUE
+  m_Text: KRENI
 --- !u!222 &1357812977
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1743,8 +1744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -16.700005}
-  m_SizeDelta: {x: 66.787, y: 32.9039}
+  m_AnchoredPosition: {x: 2.8623, y: -16.700005}
+  m_SizeDelta: {x: 72.5116, y: 32.9039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392979916
 MonoBehaviour:
@@ -1779,7 +1780,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Easy
+  m_Text: LAKO
 --- !u!222 &1392979917
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1958,8 +1959,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 262.03427, y: -16.7}
-  m_SizeDelta: {x: 52.8901, y: 29.552}
+  m_AnchoredPosition: {x: 254.163, y: -16.7}
+  m_SizeDelta: {x: 68.6327, y: 29.552}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903471673
 MonoBehaviour:
@@ -1994,7 +1995,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hard
+  m_Text: "TE\u0160KO"
 --- !u!222 &1903471674
 CanvasRenderer:
   m_ObjectHideFlags: 0

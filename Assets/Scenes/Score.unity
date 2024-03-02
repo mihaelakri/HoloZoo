@@ -725,6 +725,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -1582,7 +1583,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOME
+  m_Text: "PO\u010CETNA"
 --- !u!222 &1476529651
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1684,7 +1685,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEW QUIZ
+  m_Text: NOVI KVIZ
 --- !u!222 &1608597059
 CanvasRenderer:
   m_ObjectHideFlags: 0

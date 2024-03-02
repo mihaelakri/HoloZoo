@@ -452,15 +452,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '4 x A4 acetate paper
-
-    1 x A4 paper
-
-    1 x scissors
-
-    1 x ruler
-
-    tape'
+  m_Text: "4 x A4 acetatni papir\r\n1 x A4 papir\r\n1 x \u0161kare\r\n1 x ravnalo\r\ntraka"
 --- !u!222 &200783086
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -807,6 +799,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -1334,7 +1327,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Instructions for creating a projection hologram
+  m_Text: 'Upute za izradu projekcijskog holograma
 
 '
 --- !u!222 &726625514
@@ -1440,9 +1433,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: "1. Measure screen diagonal\n\n2. Draw an equilateral triangle with the
-    side length exactly half of the screen diagonal \n\n3. Divide two triangle sides
-    into 3/10 of the length\n\n4. Cut drawn trapeze  \n\n5. Tape the edges"
+  m_Text: "1. Izmjerite dijagonalu zaslona\r\n\r\n2. Nacrtajte jednakostrani\u010Dni
+    trokut \u010Dija je stranica duljine to\u010Dno polovice dijagonale zaslona\r\n\r\n3.
+    Dvije stranice trokuta podijelite na 3/10 duljine\r\n\r\n4. Izre\u017Eite nacrtani
+    trapez\r\n\r\n5. Zalijepite rubove"
 --- !u!222 &860488725
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1971,10 +1965,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Place the screen on the flat surface and put the pyramid on the centre
-    of the screen
-
-'
+  m_Text: "Postavite ekran na ravnu povr\u0161inu i postavite piramidu na sredinu
+    ekrana\n"
 --- !u!222 &1953548867
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2139,7 +2131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: "ZAPO\u010CNI"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
