@@ -24,5 +24,9 @@ public static class CommConstants
     public static string new_animal_id;
     public static int player_id;
 
-    public static int control_type = 1; 
+    public static int control_type = 0; 
+    public static float initial_size = 1f;
+    public static float finish_size = 0f;
+    public static float initial_rotation_speed = 1f; 
+    public static int start_quiz_flag = 0;
 }

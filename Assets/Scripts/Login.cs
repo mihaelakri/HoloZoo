@@ -59,10 +59,6 @@ public class Login : MonoBehaviour
             SceneManager.LoadScene("HologramTablet"); 
          }
          
-         /* FOTON (ako se implementiras foton maknuti scene chnage) */
-         //CreateRoom createRoom = submitButton.GetComponent<CreateRoom>();
-         //createRoom.createOrJoinRoom();
-         
     }else{
        Debug.Log("User login failed. Error#" + www.text);
        toast.text = "Username invalid.";

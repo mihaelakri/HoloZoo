@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class BtnRotate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void RotateRight() {
         CommConstants.y += 25;
@@ -27,6 +16,7 @@ public class BtnRotate : MonoBehaviour
     public void RotateUp()
     {
         CommConstants.x += 25;
+      
     }
 
     public void RotateDown()

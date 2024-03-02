@@ -8,27 +8,24 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+
 public class LoadRandomModel : MonoBehaviour
 {
     public GameObject variableForPrefab;
     public String model_url;
     public GameObject instantiatedObject;
     public static event System.Action OnModelLoaded;
-    // Start is called before the first frame update
-    public void Start()
+
+    public void LoadAnimal(int id)
     {
-       
-    }
-    public void LoadAnimal()
-    {
-        StartCoroutine(GetModel());
+        StartCoroutine(GetModel(id));
         //OnModelLoaded?.Invoke();
     }
 
-    IEnumerator GetModel(){
+    IEnumerator GetModel(int id){
 
         WWWForm form = new WWWForm();
-        form.AddField("random_model", 1);
+        form.AddField("id_model", id);
 
         using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
 
@@ -41,9 +38,8 @@ public class LoadRandomModel : MonoBehaviour
             else
                 {
                     model_url = (www.downloadHandler.text);
-                //Debug.Log("Animal model found: " + www.downloadHandler.text);
-                //Debug.Log("Model URL: " + model_url);
-               //model_url = "ANIMALS FULL PACK/Forest Animals Pack/Rabbit/Prefabs/Rabbit_Legacy";
+                    Debug.Log("Animal model found: " + www.downloadHandler.text);
+                    //Debug.Log("Model URL: " + model_url);
 
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
 
@@ -69,7 +65,7 @@ public class LoadRandomModel : MonoBehaviour
                 Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
                 instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
                 Debug.Log("Object to be resized.");
-                ResizeUtility.ResizeObject(instantiatedObject, 2.0f);
+                ResizeUtility.ResizeObject(instantiatedObject, CommConstants.initial_size, 2.0f);
                 Debug.Log("Object resized.");
 
                 // Add script for mouse rotate if control is set to mouse

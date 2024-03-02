@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
-using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 
-public class HomeScreen : MonoBehaviourPunCallbacks
+public class HomeScreen : MonoBehaviour
 {
     public int id; 
     [SerializeField] public Profile_info profile_info; 
@@ -37,36 +34,7 @@ public class HomeScreen : MonoBehaviourPunCallbacks
         if(PlayerPrefs.GetInt("textToSpeech")==1){
             GameObject.Find("TTSHelper").GetComponent<TtsGlobal>().readHome();
         }
-        /* FOTON
-       if(PlayerPrefs.HasKey("ID")){
-           id = PlayerPrefs.GetInt("ID");
-           StartCoroutine(GetUsername());
-        }
-        PhotonNetwork.CreateRoom(PlayerPrefs.GetString("username"));
-        */
+        
     }
-    /* ZA FOTON - kreiranje sobe korisnika 
-    IEnumerator GetUsername(){
-
-        WWWForm form = new WWWForm();
-        form.AddField("id", id);
-        form.AddField("flag", "3");
-
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
-
-            yield return www.SendWebRequest();
-
-            if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.error);
-                    Debug.Log("eroric");
-                }
-            else
-                {
-                    profile_info = JsonUtility.FromJson<Profile_info>(www.downloadHandler.text);
-                    PlayerPrefs.SetString("username", profile_info.username);
-                }
-        }
-    }*/
 
 }

@@ -20,19 +20,24 @@ public class QuizModels : MonoBehaviour
     public GameObject model;
     public GameObject accessibility;
 
-    public int x_exp; 
-    public int y_exp; 
+    public int x_exp_min; 
+    public int x_exp_max; 
+    public int y_exp_min; 
+    public int y_exp_max; 
 
     // Questions for quiz -->for json
     public Questions questions; 
 
     [Serializable]
     public class Question{
-        public int id_quiz_model;
+        public int id_quiz_model_question;
+        public int id_animal;
         public String question_text;
         public int control_type;
-        public int x_goal; 
-        public int y_goal;
+        public int x_goal_min; 
+        public int x_goal_max; 
+        public int y_goal_min;
+        public int y_goal_max;
     }
       
     [Serializable]
@@ -43,9 +48,9 @@ public class QuizModels : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        prefabPanel.SetActive(false);
         accessibility.SetActive(false);
         StartCoroutine(GetQuestionModels());
-        ChangeAnimalModel();
     }
 
     IEnumerator GetQuestionModels(){
@@ -53,7 +58,7 @@ public class QuizModels : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("models", 1);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"/quiz_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"/quiz_model_view.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -71,6 +76,8 @@ public class QuizModels : MonoBehaviour
                     
                     questionsCount = questions.question.Length; 
                     questionsCounter = 0;
+
+                    ChangeAnimalModel(questions.question[questionsCounter].id_animal);
 
                     // Instantiate a prefab (HELP box) 
                     helpPanel = Instantiate<GameObject>(prefabPanel);
@@ -95,13 +102,11 @@ public class QuizModels : MonoBehaviour
                     Text help = helpPanel.GetComponentInChildren<Text>();
                     help.text = questions.question[questionsCounter].question_text;
 
-                    // Expected values for x and y 
-                    x_exp = questions.question[questionsCounter].x_goal;
-                    y_exp = questions.question[questionsCounter].y_goal;
-                    
-                    CommConstants.control_type =  questions.question[questionsCounter].control_type; 
-                    CheckControlType(); 
-                    Debug.Log("Control type: " +CommConstants.control_type);
+                     // Expected values for x and y 
+                    x_exp_min = questions.question[questionsCounter].x_goal_min;
+                    x_exp_max = questions.question[questionsCounter].x_goal_max;
+                    y_exp_min = questions.question[questionsCounter].y_goal_min;
+                    y_exp_max = questions.question[questionsCounter].y_goal_max;
                 }
         }
     }
@@ -114,7 +119,8 @@ public class QuizModels : MonoBehaviour
         // Check if questions array is not null and questionsCounter is within bounds
         if (questions != null && questionsCounter >= 0 && questionsCounter < questionsCount)
         {
-            if (CommConstants.x == x_exp && CommConstants.y == y_exp)
+            if (CommConstants.x >= x_exp_min  && CommConstants.x <= x_exp_max 
+                && CommConstants.y >= y_exp_min && CommConstants.y <= y_exp_max)
             {
                 
                 //Debug.Log("x: " + CommConstants.x + " y: " + CommConstants.y);
@@ -131,11 +137,11 @@ public class QuizModels : MonoBehaviour
                 // Check if questionsCounter is still within bounds after incrementing
                 if (questionsCounter < questionsCount)
                 {
-                    x_exp = questions.question[questionsCounter].x_goal;
-                    y_exp = questions.question[questionsCounter].y_goal;
-
-                    CommConstants.control_type = questions.question[questionsCounter].control_type;
-                    CheckControlType();
+                     // Expected values for x and y 
+                    x_exp_min = questions.question[questionsCounter].x_goal_min;
+                    x_exp_max = questions.question[questionsCounter].x_goal_max;
+                    y_exp_min = questions.question[questionsCounter].y_goal_min;
+                    y_exp_max = questions.question[questionsCounter].y_goal_max;
 
                     Text quest = questPanel.GetComponentInChildren<Text>();
                     quest.text = questions.question[questionsCounter].question_text;
@@ -144,7 +150,7 @@ public class QuizModels : MonoBehaviour
                     help.text = questions.question[questionsCounter].question_text;
 
                     DestroyModel();
-                    ChangeAnimalModel();
+                    ChangeAnimalModel(questions.question[questionsCounter].id_animal);
 
                     questPanel.SetActive(true);
                 }
@@ -161,8 +167,8 @@ public class QuizModels : MonoBehaviour
         }
     }
 
-    void ChangeAnimalModel() {
-        loadRandomModelInstance.LoadAnimal(); 
+    void ChangeAnimalModel(int id) {
+        loadRandomModelInstance.LoadAnimal(id); 
     }
 
     void DestroyModel(){
@@ -178,7 +184,7 @@ public class QuizModels : MonoBehaviour
         timer.StartTimer(); 
     }
 
-    void CheckControlType()
+    /*void CheckControlType()
     {
         if (CommConstants.control_type == 1)
         {
@@ -215,7 +221,7 @@ public class QuizModels : MonoBehaviour
         {
             Debug.Log("Invalid type");
         }
-    }
+    }*/
 
 
     IEnumerator AddToDB(float time, int ctrl_type){

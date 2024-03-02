@@ -2,13 +2,13 @@ using UnityEngine;
 
 public static class ResizeUtility
 {
-    public static void ResizeObject(GameObject obj, float targetSize = 2.0f)
+
+    public static void ResizeObject(GameObject obj, float initial_size, float targetSize = 2.0f)
     {
         SkinnedMeshRenderer skinnedMeshRenderer = obj.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>();
       
         if (skinnedMeshRenderer != null)
         {
-
             // Get the bounding box of the temporary object
             Bounds bounds = skinnedMeshRenderer.bounds;
 
@@ -30,7 +30,7 @@ public static class ResizeUtility
                 if (largestDimension > 10)
                 {
                     // Calculate the scaling factor to match the target size
-                    float scaleFactor = (largestDimension/2) / largestDimension;
+                    float scaleFactor = ((largestDimension/2) / largestDimension) * initial_size;
 
                     // Check for infinity or NaN
                     if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
@@ -45,7 +45,7 @@ public static class ResizeUtility
                 }
                 else if (largestDimension < 4) {
                     // Calculate the scaling factor to match the target size
-                    float scaleFactor = 1.5f * largestDimension;
+                    float scaleFactor = (1.5f * largestDimension) * initial_size;
 
                     // Check for infinity or NaN
                     if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
@@ -62,7 +62,7 @@ public static class ResizeUtility
                 else if (largestDimension > 4 && largestDimension < 10)
                 {
                     // Calculate the scaling factor to match the target size
-                    float scaleFactor =(largestDimension-1) / largestDimension;
+                    float scaleFactor = ((largestDimension-1) / largestDimension) * initial_size;
 
                     // Check for infinity or NaN
                     if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))

@@ -27,7 +27,7 @@ public class RotateModel : MonoBehaviour
     private float lastUpdateTime = 0f;
     public RotateModel instance = null;
     public Quaternion initialRotation;
-    public float rotationSpeed = 0.5f;
+    public float rotationSpeed = 1f;
     private string old_animal_id;
     Scene m_Scene;
     string sceneName;
@@ -140,8 +140,9 @@ public class RotateModel : MonoBehaviour
                     Vector3 localRotation = new Vector3(CommConstants.x, CommConstants.y, CommConstants.z);
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
-                else if (CommConstants.control_type == 1)
+                else if(CommConstants.start_quiz_flag == 1)
                 {
+                    Debug.Log(CommConstants.start_quiz_flag);
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
 
@@ -234,9 +235,9 @@ public class RotateModel : MonoBehaviour
 
     void RotateModelLeap(GameObject objectToRotate)
     {
-
-
         Frame frame = leapProvider.CurrentFrame;
+        rotationSpeed = CommConstants.initial_rotation_speed;
+
 
         if (frame != null && frame.Hands.Count > 0)
         {
@@ -244,6 +245,10 @@ public class RotateModel : MonoBehaviour
 
             // Get the hand's velocity along the Y-axis
             float yVelocity = hand.PalmVelocity.y;
+
+            CommConstants.control_type = 1; // 1 leap
+
+            Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion on"); 
 
             // Check if the hand is moving up or down based on the velocity
             float rotationAngleY = yVelocity * rotationSpeed * Time.deltaTime;
@@ -282,7 +287,13 @@ public class RotateModel : MonoBehaviour
 
         }
         else {
+            if(CommConstants.control_type != 3){
+                CommConstants.control_type = 2; 
+            }
+            Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion off"); 
+
             Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+            Debug.Log("uslo x: " + CommConstants.x);
             model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
         }
 

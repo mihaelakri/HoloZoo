@@ -15,13 +15,6 @@ public class Timer : MonoBehaviour
         {
             elapsedTime = Time.time - startTime;
 
-            int minutes = (int)(elapsedTime / 60);
-            int seconds = (int)(elapsedTime % 60);
-            int milliseconds = (int)((elapsedTime * 1000) % 1000);
-
-            string timerString = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
-            //Debug.Log(timerString);
-
         }
     }
 
@@ -36,6 +29,7 @@ public class Timer : MonoBehaviour
     {
         isTimerRunning = false;
         elapsedTime = Time.time - startTime; // Save the elapsed time when stopping
+        elapsedTime = elapsedTime * 1000;
     }
 
     public float GetElapsedTime()
