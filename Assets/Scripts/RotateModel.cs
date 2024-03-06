@@ -23,9 +23,6 @@ public class RotateModel : MonoBehaviour
     public GameObject target;
     public float sliderLastX = 0, sliderLastY = 0;
     private LeapServiceProvider leapProvider;
-    private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
-    private float lastUpdateTime = 0f;
-    public RotateModel instance = null;
     public Quaternion initialRotation;
     public float rotationSpeed = 1f;
     private string old_animal_id;
@@ -36,30 +33,6 @@ public class RotateModel : MonoBehaviour
    // public float positionScale = 0.1f; // Adjust based on the expected range of hand positions
 
     private Vector3 previousHandPosition;
-    private class RotationMsg
-    {
-        public string x;
-        public string y;
-        public string z;
-        public int player_id;
-        public string animal_id;
-
-        public RotationMsg(string x, string y, string z, int player_id, string animal_id)
-        {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.player_id = player_id;
-            this.animal_id = animal_id;
-        }
-    }
-
-    private class PusherRotationMsg
-    {
-        public string @event;
-        public string data;
-        public string channel;
-    }
 
     void Start()
     {
@@ -159,7 +132,6 @@ public class RotateModel : MonoBehaviour
 
     }
 
-
     public void rotateModel()
     {
         if (sceneName != "HologramGlobe")
@@ -168,28 +140,8 @@ public class RotateModel : MonoBehaviour
             CommConstants.y = sideSlider.value;
             CommConstants.z = 0f;
         }
-
-        if (CommConstants.conn_method == "websocket")
-        {
-            if (!CommConstants.is_websocket_open)
-            {
-                Debug.Log("Websocket not open");
-                return;
-            }
-
-            float timeSinceLastUpdate = Time.time - lastUpdateTime;
-
-            if (timeSinceLastUpdate >= updateFrequency)
-            {
-                StartCoroutine(SendRotate3DModel());
-                lastUpdateTime = Time.time;
-            }
-        }
-        else
-        {    // Bluetooth
-            BTSendRotate3DModel();
-        }
-
+        
+        CommConstants.connection.SendData();
     }
 
     public void rotateGlobeModel(Vector3 spherePosition)
@@ -199,38 +151,6 @@ public class RotateModel : MonoBehaviour
         CommConstants.z = spherePosition.z;
         // Debug.Log("Sphere x: "+spherePosition.x+" y: "+spherePosition.y+" z: "+spherePosition.z);
         this.rotateModel();
-    }
-
-    IEnumerator SendRotate3DModel()
-    {
-        // Debug.Log(PlayerPrefs.GetString("id_animal"));
-
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-
-        CommConstants.channel.Trigger(
-            "client-rotation" + CommConstants.player_id,
-            JsonUtility.ToJson(rotationMsg)
-        );
-        yield return 0;
-    }
-
-    private void BTSendRotate3DModel()
-    {
-       // Debug.Log("Bluetooth - BTSendRotate3DModel");
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(rotationMsg));
     }
 
     void RotateModelLeap(GameObject objectToRotate)
