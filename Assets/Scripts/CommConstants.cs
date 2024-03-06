@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PusherClient;
 using SVSBluetooth;
+using CommunicationMsgs;
 
 public static class CommConstants
 {

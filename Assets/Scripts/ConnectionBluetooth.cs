@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SVSBluetooth;
 using System.Threading.Tasks;
+using CommunicationMsgs;
 
 public class ConnectionBluetooth : ConnectionBase
 {

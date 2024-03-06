@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PusherClient;
 using System.Threading.Tasks;
+using CommunicationMsgs;
 
 public class ConnectionPusher : ConnectionBase
 {

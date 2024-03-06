@@ -4,28 +4,13 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine.Networking;
+using CommunicationMsgs;
 
 public class ConnectionBase : MonoBehaviour
 {
     protected int player_id;
+    protected float lastUpdateTime = 0f;
     
-    protected class RotationMsg {
-        public string x;
-        public string y;
-        public string z;
-        public int player_id;
-        public string animal_id;
-        protected float lastUpdateTime = 0f;
-
-        public RotationMsg(string x, string y, string z, int player_id, string animal_id){
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.player_id = player_id;
-            this.animal_id = animal_id;
-        }
-    }
-
     public ConnectionBase() 
     {
         StartCoroutine(mockAuth());
