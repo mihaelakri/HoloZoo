@@ -39,7 +39,7 @@ public class RotateModel : MonoBehaviour
 
         m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
-        CommConstants.rotationMsg.player_id = PlayerPrefs.GetInt("ID");
+        CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
 
         if (sceneName == "HologramGlobe")
         {
@@ -66,7 +66,7 @@ public class RotateModel : MonoBehaviour
         GameObject parent = GameObject.FindGameObjectWithTag("3d");
         Destroy(parent.transform.GetChild(0).gameObject);
 
-        string id_animal = CommConstants.rotationMsg.animal_id;
+        string id_animal = CommConstants.state.animal_id;
         // id_animal = "2";
         string model_url;
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", id_animal))
@@ -99,23 +99,23 @@ public class RotateModel : MonoBehaviour
     {
         if (sceneName != "HologramGlobe")
         {
-            if (this.old_animal_id != CommConstants.rotationMsg.animal_id)
+            if (this.old_animal_id != CommConstants.state.animal_id)
             {
                 StartCoroutine(SwapModel());
-                this.old_animal_id = CommConstants.rotationMsg.animal_id;
+                this.old_animal_id = CommConstants.state.animal_id;
             }
 
             try
             {
              
-                if (CommConstants.rotationMsg.animal_id == "0")
+                if (CommConstants.state.animal_id == "0")
                 {
-                    Vector3 localRotation = new Vector3(CommConstants.rotationMsg.x, CommConstants.rotationMsg.y, CommConstants.rotationMsg.z);
+                    Vector3 localRotation = new Vector3(CommConstants.state.x, CommConstants.state.y, CommConstants.state.z);
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
-                else if(CommConstants.rotationMsg.start_quiz_flag == 1)
+                else if(CommConstants.state.start_quiz_flag == 1)
                 {
-                    Debug.Log(CommConstants.rotationMsg.start_quiz_flag);
+                    Debug.Log(CommConstants.state.start_quiz_flag);
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
 
@@ -136,9 +136,9 @@ public class RotateModel : MonoBehaviour
     {
         if (sceneName != "HologramGlobe")
         {
-            CommConstants.rotationMsg.x = bottomSlider.value;
-            CommConstants.rotationMsg.y = sideSlider.value;
-            CommConstants.rotationMsg.z = 0f;
+            CommConstants.state.x = bottomSlider.value;
+            CommConstants.state.y = sideSlider.value;
+            CommConstants.state.z = 0f;
         }
         
         CommConstants.connection.SendData();
@@ -146,9 +146,9 @@ public class RotateModel : MonoBehaviour
 
     public void rotateGlobeModel(Vector3 spherePosition)
     {
-        CommConstants.rotationMsg.x = spherePosition.x;
-        CommConstants.rotationMsg.y = spherePosition.y;
-        CommConstants.rotationMsg.z = spherePosition.z;
+        CommConstants.state.x = spherePosition.x;
+        CommConstants.state.y = spherePosition.y;
+        CommConstants.state.z = spherePosition.z;
         // Debug.Log("Sphere x: "+spherePosition.x+" y: "+spherePosition.y+" z: "+spherePosition.z);
         this.rotateModel();
     }
@@ -156,7 +156,7 @@ public class RotateModel : MonoBehaviour
     void RotateModelLeap(GameObject objectToRotate)
     {
         Frame frame = leapProvider.CurrentFrame;
-        rotationSpeed = CommConstants.rotationMsg.initial_rotation_speed;
+        rotationSpeed = CommConstants.state.initial_rotation_speed;
 
 
         if (frame != null && frame.Hands.Count > 0)
@@ -166,9 +166,9 @@ public class RotateModel : MonoBehaviour
             // Get the hand's velocity along the Y-axis
             float yVelocity = hand.PalmVelocity.y;
 
-            CommConstants.rotationMsg.control_type = 1; // 1 leap
+            CommConstants.state.control_type = 1; // 1 leap
 
-            Debug.Log("Control type: " + CommConstants.rotationMsg.control_type + " Leap Motion on"); 
+            Debug.Log("Control type: " + CommConstants.state.control_type + " Leap Motion on"); 
 
             // Check if the hand is moving up or down based on the velocity
             float rotationAngleY = yVelocity * rotationSpeed * Time.deltaTime;
@@ -207,13 +207,13 @@ public class RotateModel : MonoBehaviour
 
         }
         else {
-            if(CommConstants.rotationMsg.control_type != 3){
-                CommConstants.rotationMsg.control_type = 2; 
+            if(CommConstants.state.control_type != 3){
+                CommConstants.state.control_type = 2; 
             }
-            Debug.Log("Control type: " + CommConstants.rotationMsg.control_type + " Leap Motion off"); 
+            Debug.Log("Control type: " + CommConstants.state.control_type + " Leap Motion off"); 
 
-            Quaternion localRotation = Quaternion.Euler(CommConstants.rotationMsg.x, CommConstants.rotationMsg.y, CommConstants.rotationMsg.z);
-            Debug.Log("uslo x: " + CommConstants.rotationMsg.x);
+            Quaternion localRotation = Quaternion.Euler(CommConstants.state.x, CommConstants.state.y, CommConstants.state.z);
+            Debug.Log("uslo x: " + CommConstants.state.x);
             model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
         }
 

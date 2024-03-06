@@ -114,23 +114,23 @@ public class QuizModels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(CommConstants.rotationMsg.x + " " + CommConstants.rotationMsg.y);
+        //Debug.Log(CommConstants.state.x + " " + CommConstants.state.y);
 
         // Check if questions array is not null and questionsCounter is within bounds
         if (questions != null && questionsCounter >= 0 && questionsCounter < questionsCount)
         {
-            if (CommConstants.rotationMsg.x >= x_exp_min  && CommConstants.rotationMsg.x <= x_exp_max 
-                && CommConstants.rotationMsg.y >= y_exp_min && CommConstants.rotationMsg.y <= y_exp_max)
+            if (CommConstants.state.x >= x_exp_min  && CommConstants.state.x <= x_exp_max 
+                && CommConstants.state.y >= y_exp_min && CommConstants.state.y <= y_exp_max)
             {
                 
-                //Debug.Log("x: " + CommConstants.rotationMsg.x + " y: " + CommConstants.rotationMsg.y);
+                //Debug.Log("x: " + CommConstants.state.x + " y: " + CommConstants.state.y);
                 //Debug.Log("x-exp: " + x_exp + " y-exp: " + y_exp);
 
                 timer.StopTimer();
                 float rotate_time = timer.GetElapsedTime();
                 //Debug.Log(rotate_time);
 
-                StartCoroutine(AddToDB(rotate_time, CommConstants.rotationMsg.control_type));
+                StartCoroutine(AddToDB(rotate_time, CommConstants.state.control_type));
 
                 questionsCounter++;
 
@@ -186,7 +186,7 @@ public class QuizModels : MonoBehaviour
 
     /*void CheckControlType()
     {
-        if (CommConstants.rotationMsg.control_type == 1)
+        if (CommConstants.state.control_type == 1)
         {
             if (model.transform.childCount > 0)
             {
@@ -208,12 +208,12 @@ public class QuizModels : MonoBehaviour
                 Debug.Log("No child found at index 0 in model.transform");
             }
         }
-        else if (CommConstants.rotationMsg.control_type == 2)
+        else if (CommConstants.state.control_type == 2)
         {
             GameObject.Find("SideSlider").SetActive(false);
             GameObject.Find("BottomSlider").SetActive(false);
         }
-        else if (CommConstants.rotationMsg.control_type == 3)
+        else if (CommConstants.state.control_type == 3)
         {
             // TO DO 
         }

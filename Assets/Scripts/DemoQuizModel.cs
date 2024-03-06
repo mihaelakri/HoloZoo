@@ -97,8 +97,8 @@ public class DemoQuizModel : MonoBehaviour
                     questionsCounter = 0;
 
                      // set initial size and speed first
-                    CommConstants.rotationMsg.initial_size = questions.question[questionsCounter].initial_size; 
-                    CommConstants.rotationMsg.initial_rotation_speed = questions.question[questionsCounter].initial_rotation_speed;
+                    CommConstants.state.initial_size = questions.question[questionsCounter].initial_size; 
+                    CommConstants.state.initial_rotation_speed = questions.question[questionsCounter].initial_rotation_speed;
 
                     // set inital settings on acc pop-up
                     showAccessibility.setStartingAcc(); 
@@ -142,16 +142,16 @@ public class DemoQuizModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(x_exp_max + "\n " + y_exp_max + " " + CommConstants.rotationMsg.control_type + "\n " + Math.Abs(CommConstants.rotationMsg.x) + " " + Math.Abs(CommConstants.rotationMsg.y) + " " + questionsCounter);
+        Debug.Log(x_exp_max + "\n " + y_exp_max + " " + CommConstants.state.control_type + "\n " + Math.Abs(CommConstants.state.x) + " " + Math.Abs(CommConstants.state.y) + " " + questionsCounter);
         if (nextQuestionFlag && questionsCounter < questionsCount)
             {
                 nextQuestion(); 
                 nextQuestionFlag = false; 
             }
-        if (questionsCounter == 0 && (Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_min)
-                && (Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_max)
-                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
-                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max)
+        if (questionsCounter == 0 && (Math.Abs(CommConstants.state.x) >= x_exp_min || Math.Abs(CommConstants.state.x) >= 180-x_exp_min)
+                && (Math.Abs(CommConstants.state.x) <= x_exp_max || Math.Abs(CommConstants.state.x) >= 180-x_exp_max)
+                && Math.Abs(CommConstants.state.y) >= y_exp_min
+                && Math.Abs(CommConstants.state.y) <= y_exp_max)
             {
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -176,10 +176,10 @@ public class DemoQuizModel : MonoBehaviour
                 questionsCounter++;
                 nextQuestionFlag = true;
             }
-        else if (questionsCounter == 2 && CommConstants.rotationMsg.initial_rotation_speed >= 1f && Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min
-                && Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max
-                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
-                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max){
+        else if (questionsCounter == 2 && CommConstants.state.initial_rotation_speed >= 1f && Math.Abs(CommConstants.state.x) >= x_exp_min
+                && Math.Abs(CommConstants.state.x) <= x_exp_max
+                && Math.Abs(CommConstants.state.y) >= y_exp_min
+                && Math.Abs(CommConstants.state.y) <= y_exp_max){
                 
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -191,10 +191,10 @@ public class DemoQuizModel : MonoBehaviour
                 questionsCounter++;
                 nextQuestionFlag = true;
         }
-        else if(questionsCounter == 3 && CommConstants.rotationMsg.control_type == 3 && (Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_min)
-                && (Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_max)
-                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
-                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max){
+        else if(questionsCounter == 3 && CommConstants.state.control_type == 3 && (Math.Abs(CommConstants.state.x) >= x_exp_min || Math.Abs(CommConstants.state.x) >= 180-x_exp_min)
+                && (Math.Abs(CommConstants.state.x) <= x_exp_max || Math.Abs(CommConstants.state.x) >= 180-x_exp_max)
+                && Math.Abs(CommConstants.state.y) >= y_exp_min
+                && Math.Abs(CommConstants.state.y) <= y_exp_max){
 
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -206,10 +206,10 @@ public class DemoQuizModel : MonoBehaviour
                 questionsCounter++;
                 nextQuestionFlag = true;    
 
-        }else if(questionsCounter == 3 && CommConstants.rotationMsg.control_type == 3 && (Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_min)
-                && (Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_max)
-                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
-                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max)
+        }else if(questionsCounter == 3 && CommConstants.state.control_type == 3 && (Math.Abs(CommConstants.state.x) >= x_exp_min || Math.Abs(CommConstants.state.x) >= 180-x_exp_min)
+                && (Math.Abs(CommConstants.state.x) <= x_exp_max || Math.Abs(CommConstants.state.x) >= 180-x_exp_max)
+                && Math.Abs(CommConstants.state.y) >= y_exp_min
+                && Math.Abs(CommConstants.state.y) <= y_exp_max)
         {
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -249,7 +249,7 @@ public class DemoQuizModel : MonoBehaviour
 
     public void start_rotation(){
         // flag za rotaciju za leap motion
-         CommConstants.rotationMsg.start_quiz_flag = 1;
+         CommConstants.state.start_quiz_flag = 1;
     }
 
     public void RestartQuizDemo(){
@@ -276,8 +276,8 @@ public class DemoQuizModel : MonoBehaviour
          y_exp_max = questions.question[questionsCounter].y_goal_max;
 
          // set inital size and speed 
-         CommConstants.rotationMsg.initial_size = questions.question[questionsCounter].initial_size; 
-         CommConstants.rotationMsg.initial_rotation_speed = questions.question[questionsCounter].initial_rotation_speed;
+         CommConstants.state.initial_size = questions.question[questionsCounter].initial_size; 
+         CommConstants.state.initial_rotation_speed = questions.question[questionsCounter].initial_rotation_speed;
         
         // set inital settings on acc pop-up
          showAccessibility.setStartingAcc(); 
@@ -295,7 +295,7 @@ public class DemoQuizModel : MonoBehaviour
          questPanel.SetActive(true);
 
          // flag za rotaciju za leap motion
-         CommConstants.rotationMsg.start_quiz_flag = 0;
+         CommConstants.state.start_quiz_flag = 0;
     }
 
 

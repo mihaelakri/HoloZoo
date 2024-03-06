@@ -11,7 +11,7 @@ public class ZoomController : MonoBehaviour
 
     private void Start()
     {
-        currentSize = CommConstants.rotationMsg.initial_size;
+        currentSize = CommConstants.state.initial_size;
     }
 
     public void ZoomIn()

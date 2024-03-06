@@ -65,16 +65,16 @@ public class ConnectionBluetooth : ConnectionBase
 
     private void BTReceiveRotate3DModel (string data) {
         Debug.Log("Bluetooth - BTReceiveRotate3DModel");
-        RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(data);
+        StateMsg stateMsg = JsonUtility.FromJson<StateMsg>(data);
 
-        CommConstants.rotationMsg = rotationMsg;
+        CommConstants.state = stateMsg;
     }
     
     public override void SendData()
     {
         base.SendData();
 
-        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(CommConstants.rotationMsg));
+        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(CommConstants.state));
     }
 
 }

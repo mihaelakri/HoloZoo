@@ -3,7 +3,7 @@ using UnityEngine;
 namespace CommunicationMsgs
 {
     [System.Serializable]
-    public struct RotationMsg
+    public struct StateMsg
     {
         public float x;
         public float y;
@@ -16,7 +16,7 @@ namespace CommunicationMsgs
         public float initial_rotation_speed;
         public int start_quiz_flag;
 
-        public RotationMsg(float x, float y, float z, int player_id, string animal_id, 
+        public StateMsg(float x, float y, float z, int player_id, string animal_id, 
             int control_type, float initial_size, float finish_size, float initial_rotation_speed, int start_quiz_flag)
         {
             this.x = x;

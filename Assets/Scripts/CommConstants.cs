@@ -15,5 +15,5 @@ public static class CommConstants
 
     public static string IdUser = "";
 
-    public static RotationMsg rotationMsg = new RotationMsg(0f, 0f, 0f, 0, "", 0, 1f, 0f, 1f, 0);
+    public static StateMsg state = new StateMsg(0f, 0f, 0f, 0, "", 0, 1f, 0f, 1f, 0);
 }

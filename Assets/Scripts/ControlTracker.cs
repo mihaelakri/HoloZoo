@@ -51,11 +51,11 @@ public class ControlTracker : MonoBehaviour
 
     void Update()
     {
-        if(CommConstants.rotationMsg.control_type == 3){
+        if(CommConstants.state.control_type == 3){
             buttons = true;
             buttons_time += Time.deltaTime; 
         }
-        if(CommConstants.rotationMsg.control_type == 1){
+        if(CommConstants.state.control_type == 1){
             leap_motion = true;
             leap_motion_time += Time.deltaTime;
         }else{
@@ -85,7 +85,7 @@ public class ControlTracker : MonoBehaviour
      void OnButtonClicked(Button button)
     {
         buttons = true;
-        CommConstants.rotationMsg.control_type = 3;
+        CommConstants.state.control_type = 3;
     }
 
     // Method to save control usage data to server
