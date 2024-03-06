@@ -130,7 +130,7 @@ public class QuizModels : MonoBehaviour
                 float rotate_time = timer.GetElapsedTime();
                 //Debug.Log(rotate_time);
 
-                StartCoroutine(AddToDB(rotate_time, CommConstants.control_type));
+                StartCoroutine(AddToDB(rotate_time, CommConstants.rotationMsg.control_type));
 
                 questionsCounter++;
 
@@ -186,7 +186,7 @@ public class QuizModels : MonoBehaviour
 
     /*void CheckControlType()
     {
-        if (CommConstants.control_type == 1)
+        if (CommConstants.rotationMsg.control_type == 1)
         {
             if (model.transform.childCount > 0)
             {
@@ -208,12 +208,12 @@ public class QuizModels : MonoBehaviour
                 Debug.Log("No child found at index 0 in model.transform");
             }
         }
-        else if (CommConstants.control_type == 2)
+        else if (CommConstants.rotationMsg.control_type == 2)
         {
             GameObject.Find("SideSlider").SetActive(false);
             GameObject.Find("BottomSlider").SetActive(false);
         }
-        else if (CommConstants.control_type == 3)
+        else if (CommConstants.rotationMsg.control_type == 3)
         {
             // TO DO 
         }

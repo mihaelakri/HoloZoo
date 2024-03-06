@@ -113,9 +113,9 @@ public class RotateModel : MonoBehaviour
                     Vector3 localRotation = new Vector3(CommConstants.rotationMsg.x, CommConstants.rotationMsg.y, CommConstants.rotationMsg.z);
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
-                else if(CommConstants.start_quiz_flag == 1)
+                else if(CommConstants.rotationMsg.start_quiz_flag == 1)
                 {
-                    Debug.Log(CommConstants.start_quiz_flag);
+                    Debug.Log(CommConstants.rotationMsg.start_quiz_flag);
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
 
@@ -156,7 +156,7 @@ public class RotateModel : MonoBehaviour
     void RotateModelLeap(GameObject objectToRotate)
     {
         Frame frame = leapProvider.CurrentFrame;
-        rotationSpeed = CommConstants.initial_rotation_speed;
+        rotationSpeed = CommConstants.rotationMsg.initial_rotation_speed;
 
 
         if (frame != null && frame.Hands.Count > 0)
@@ -166,9 +166,9 @@ public class RotateModel : MonoBehaviour
             // Get the hand's velocity along the Y-axis
             float yVelocity = hand.PalmVelocity.y;
 
-            CommConstants.control_type = 1; // 1 leap
+            CommConstants.rotationMsg.control_type = 1; // 1 leap
 
-            Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion on"); 
+            Debug.Log("Control type: " + CommConstants.rotationMsg.control_type + " Leap Motion on"); 
 
             // Check if the hand is moving up or down based on the velocity
             float rotationAngleY = yVelocity * rotationSpeed * Time.deltaTime;
@@ -207,10 +207,10 @@ public class RotateModel : MonoBehaviour
 
         }
         else {
-            if(CommConstants.control_type != 3){
-                CommConstants.control_type = 2; 
+            if(CommConstants.rotationMsg.control_type != 3){
+                CommConstants.rotationMsg.control_type = 2; 
             }
-            Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion off"); 
+            Debug.Log("Control type: " + CommConstants.rotationMsg.control_type + " Leap Motion off"); 
 
             Quaternion localRotation = Quaternion.Euler(CommConstants.rotationMsg.x, CommConstants.rotationMsg.y, CommConstants.rotationMsg.z);
             Debug.Log("uslo x: " + CommConstants.rotationMsg.x);

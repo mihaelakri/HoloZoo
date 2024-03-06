@@ -65,11 +65,11 @@ public class LoadRandomModel : MonoBehaviour
                 Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
                 instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
                 Debug.Log("Object to be resized.");
-                ResizeUtility.ResizeObject(instantiatedObject, CommConstants.initial_size, 2.0f);
+                ResizeUtility.ResizeObject(instantiatedObject, CommConstants.rotationMsg.initial_size, 2.0f);
                 Debug.Log("Object resized.");
 
                 // Add script for mouse rotate if control is set to mouse
-                if (CommConstants.control_type == 2){
+                if (CommConstants.rotationMsg.control_type == 2){
                         instantiatedObject.AddComponent<MouseRotate>();
                     }
 

@@ -29,7 +29,7 @@ public class ShowAccessibility : MonoBehaviour
 
     public void setStartingAcc(){
 
-        rotationSpeedScrollBar.value = CommConstants.initial_rotation_speed-0.5f; 
+        rotationSpeedScrollBar.value = CommConstants.rotationMsg.initial_rotation_speed-0.5f; 
         
         sideButtons.gameObject.SetActive(false);
         bottomButtons.gameObject.SetActive(false);  
@@ -53,11 +53,11 @@ public class ShowAccessibility : MonoBehaviour
 
         float rotation_speed = rotationSpeedScrollBar.value;
         if(rotation_speed < 0.5f){
-            CommConstants.initial_rotation_speed = 0.5f;
+            CommConstants.rotationMsg.initial_rotation_speed = 0.5f;
         }else if(rotation_speed >= 0.5f && rotation_speed < 0.8f){
-            CommConstants.initial_rotation_speed = 1f;
+            CommConstants.rotationMsg.initial_rotation_speed = 1f;
         }else{
-             CommConstants.initial_rotation_speed = 1.5f;
+             CommConstants.rotationMsg.initial_rotation_speed = 1.5f;
         }
 
     }
@@ -117,7 +117,7 @@ public class ShowAccessibility : MonoBehaviour
                 bottomSlider.gameObject.SetActive(false);
                 sideButtons.gameObject.SetActive(true);
                 bottomButtons.gameObject.SetActive(true);
-                CommConstants.control_type = 3;
+                CommConstants.rotationMsg.control_type = 3;
             }
         else
             {
@@ -126,7 +126,7 @@ public class ShowAccessibility : MonoBehaviour
                 bottomSlider.gameObject.SetActive(true);
                 sideButtons.gameObject.SetActive(false);
                 bottomButtons.gameObject.SetActive(false);
-                CommConstants.control_type = 2;
+                CommConstants.rotationMsg.control_type = 2;
             }
     }
 
@@ -203,8 +203,8 @@ public class ShowAccessibility : MonoBehaviour
 
         WWWForm form = new WWWForm();
         form.AddField("backgorund_color", PlayerPrefs.GetInt("backgorund_white") == 1 ? "white" : "black");
-        form.AddField("rotation_speed", CommConstants.initial_rotation_speed.ToString());
-        form.AddField("object_size", CommConstants.finish_size.ToString());
+        form.AddField("rotation_speed", CommConstants.rotationMsg.initial_rotation_speed.ToString());
+        form.AddField("object_size", CommConstants.rotationMsg.finish_size.ToString());
         form.AddField("animation", isAnimationPlaying ? 1 : 0);
         
 
