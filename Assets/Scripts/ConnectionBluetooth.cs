@@ -7,6 +7,8 @@ using CommunicationMsgs;
 
 public class ConnectionBluetooth : ConnectionBase
 {
+    protected bool is_BTConnected = false;
+    protected string paired_BT_server;
     public override async Task Initialize()
     {
         base.Initialize();
@@ -44,21 +46,21 @@ public class ConnectionBluetooth : ConnectionBase
     private void BTDeviceSelected(string data) {
         Debug.Log("Bluetooth - BTDeviceSelected");
         Debug.Log("Bluetooth - Data: " + data);
-        CommConstants.paired_BT_server = data.Split(',')[1];
+        paired_BT_server = data.Split(',')[1];
     }
     private void BTConnected(){
         Debug.Log("Bluetooth - BTConnected");
-        CommConstants.is_BTConnected = true;
+        is_BTConnected = true;
     }
     private void BTDisconnected(){
         Debug.Log("Bluetooth - BTDisconnected");
-        CommConstants.is_BTConnected = false;
+        is_BTConnected = false;
 
         BTReconnect();
     }
     private void BTReconnect(){
         Debug.Log("Bluetooth - BTReconnect");
-        BluetoothForAndroid.ConnectToServerByAddress("d81a5833-37f4-460d-8a9f-347ff95474ad", CommConstants.paired_BT_server);
+        BluetoothForAndroid.ConnectToServerByAddress("d81a5833-37f4-460d-8a9f-347ff95474ad", paired_BT_server);
     }
 
     private void BTReceiveRotate3DModel (string data) {

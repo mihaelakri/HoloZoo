@@ -10,7 +10,10 @@ public class ConnectionPusher : ConnectionBase
 {
     private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
     private float lastUpdateTime = 0f;
-    protected ConnectionPusher instance = null;
+    protected ConnectionPusher instance;
+    protected Pusher pusher;
+    public static Channel channel;
+    protected bool is_websocket_open;
 
     private class PusherRotationMsg {
         public string @event;
@@ -37,11 +40,11 @@ public class ConnectionPusher : ConnectionBase
     
     private async Task InitializePusher()
     {
-        if (CommConstants.pusher == null)
+        if (pusher == null)
         {
             MyHttpChannelAuthorizer authorizer = new MyHttpChannelAuthorizer(CommConstants.ServerURL+"broadcasting/auth");
 
-            CommConstants.pusher = new Pusher("8264e84d03d49bc6ff4f", new PusherOptions()
+            pusher = new Pusher("8264e84d03d49bc6ff4f", new PusherOptions()
             {
                 Cluster = "eu",
                 Encrypted = true,
@@ -49,19 +52,19 @@ public class ConnectionPusher : ConnectionBase
                 ClientTimeout = TimeSpan.FromSeconds(20),
             });
 
-            CommConstants.pusher.Error += OnPusherOnError;
-            CommConstants.pusher.ConnectionStateChanged += PusherOnConnectionStateChanged;
-            CommConstants.pusher.Connected += PusherOnConnected;
-            CommConstants.channel = await CommConstants.pusher.SubscribeAsync("private-rotation."+player_id);
-            CommConstants.pusher.Subscribed += OnChannelOnSubscribed;
-            await CommConstants.pusher.ConnectAsync();
+            pusher.Error += OnPusherOnError;
+            pusher.ConnectionStateChanged += PusherOnConnectionStateChanged;
+            pusher.Connected += PusherOnConnected;
+            channel = await pusher.SubscribeAsync("private-rotation."+player_id);
+            pusher.Subscribed += OnChannelOnSubscribed;
+            await pusher.ConnectAsync();
         }
     }
 
     private void PusherOnConnected(object sender)
     {
         Debug.Log("Pusher - Connected");
-        CommConstants.channel.Bind("client-rotation"+player_id, (string data) =>
+        channel.Bind("client-rotation"+player_id, (string data) =>
         {
             Debug.Log("client-rotation"+player_id);
             Debug.Log(data);
@@ -73,7 +76,7 @@ public class ConnectionPusher : ConnectionBase
             CommConstants.z = float.Parse(rotationMsg.z);
             CommConstants.new_animal_id = rotationMsg.animal_id;
         });
-        CommConstants.is_websocket_open = true;
+        is_websocket_open = true;
     }
 
     private void PusherOnConnectionStateChanged(object sender, ConnectionState state)
@@ -94,9 +97,9 @@ public class ConnectionPusher : ConnectionBase
 
     async Task OnApplicationQuit()
     {
-        if (CommConstants.pusher != null)
+        if (pusher != null)
         {
-            await CommConstants.pusher.DisconnectAsync();
+            await pusher.DisconnectAsync();
         }
     }
 
@@ -105,7 +108,7 @@ public class ConnectionPusher : ConnectionBase
     {
         base.SendData();
         
-        if (!CommConstants.is_websocket_open)
+        if (!is_websocket_open)
         {
             Debug.Log("Websocket not open");
             return;
@@ -132,7 +135,7 @@ public class ConnectionPusher : ConnectionBase
             PlayerPrefs.GetString("id_animal", "1")
         );
 
-        CommConstants.channel.Trigger(
+        channel.Trigger(
             "client-rotation" + CommConstants.player_id,
             JsonUtility.ToJson(rotationMsg)
         );

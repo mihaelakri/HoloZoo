@@ -8,15 +8,16 @@ using UnityEngine;
 /// </summary>
 public class InitializeConnection : MonoBehaviour
 {
-    ConnectionBase connection;
+    public ConnectionBase connection;
+    public string conn_method;
 
     // Start is called before the first frame update
     async void Start()
     {
-        CommConstants.conn_method = PlayerPrefs.GetString("conn_method");
-        Debug.Log("conn_method: "+CommConstants.conn_method);
+        conn_method = PlayerPrefs.GetString("conn_method");
+        Debug.Log("conn_method: "+conn_method);
         
-        if (CommConstants.conn_method == "websocket") {
+        if (conn_method == "websocket") {
             connection = new ConnectionPusher();
         } else {
             connection = new ConnectionBluetooth();
