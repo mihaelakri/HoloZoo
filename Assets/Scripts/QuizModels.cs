@@ -114,16 +114,16 @@ public class QuizModels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(CommConstants.x + " " + CommConstants.y);
+        //Debug.Log(CommConstants.rotationMsg.x + " " + CommConstants.rotationMsg.y);
 
         // Check if questions array is not null and questionsCounter is within bounds
         if (questions != null && questionsCounter >= 0 && questionsCounter < questionsCount)
         {
-            if (CommConstants.x >= x_exp_min  && CommConstants.x <= x_exp_max 
-                && CommConstants.y >= y_exp_min && CommConstants.y <= y_exp_max)
+            if (CommConstants.rotationMsg.x >= x_exp_min  && CommConstants.rotationMsg.x <= x_exp_max 
+                && CommConstants.rotationMsg.y >= y_exp_min && CommConstants.rotationMsg.y <= y_exp_max)
             {
                 
-                //Debug.Log("x: " + CommConstants.x + " y: " + CommConstants.y);
+                //Debug.Log("x: " + CommConstants.rotationMsg.x + " y: " + CommConstants.rotationMsg.y);
                 //Debug.Log("x-exp: " + x_exp + " y-exp: " + y_exp);
 
                 timer.StopTimer();

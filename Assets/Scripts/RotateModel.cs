@@ -39,7 +39,7 @@ public class RotateModel : MonoBehaviour
 
         m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
-        CommConstants.player_id = PlayerPrefs.GetInt("ID");
+        CommConstants.rotationMsg.player_id = PlayerPrefs.GetInt("ID");
 
         if (sceneName == "HologramGlobe")
         {
@@ -66,7 +66,7 @@ public class RotateModel : MonoBehaviour
         GameObject parent = GameObject.FindGameObjectWithTag("3d");
         Destroy(parent.transform.GetChild(0).gameObject);
 
-        string id_animal = CommConstants.new_animal_id;
+        string id_animal = CommConstants.rotationMsg.animal_id;
         // id_animal = "2";
         string model_url;
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", id_animal))
@@ -99,18 +99,18 @@ public class RotateModel : MonoBehaviour
     {
         if (sceneName != "HologramGlobe")
         {
-            if (this.old_animal_id != CommConstants.new_animal_id)
+            if (this.old_animal_id != CommConstants.rotationMsg.animal_id)
             {
                 StartCoroutine(SwapModel());
-                this.old_animal_id = CommConstants.new_animal_id;
+                this.old_animal_id = CommConstants.rotationMsg.animal_id;
             }
 
             try
             {
              
-                if (CommConstants.new_animal_id == "0")
+                if (CommConstants.rotationMsg.animal_id == "0")
                 {
-                    Vector3 localRotation = new Vector3(CommConstants.x, CommConstants.y, CommConstants.z);
+                    Vector3 localRotation = new Vector3(CommConstants.rotationMsg.x, CommConstants.rotationMsg.y, CommConstants.rotationMsg.z);
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
                 else if(CommConstants.start_quiz_flag == 1)
@@ -136,9 +136,9 @@ public class RotateModel : MonoBehaviour
     {
         if (sceneName != "HologramGlobe")
         {
-            CommConstants.x = bottomSlider.value;
-            CommConstants.y = sideSlider.value;
-            CommConstants.z = 0f;
+            CommConstants.rotationMsg.x = bottomSlider.value;
+            CommConstants.rotationMsg.y = sideSlider.value;
+            CommConstants.rotationMsg.z = 0f;
         }
         
         CommConstants.connection.SendData();
@@ -146,9 +146,9 @@ public class RotateModel : MonoBehaviour
 
     public void rotateGlobeModel(Vector3 spherePosition)
     {
-        CommConstants.x = spherePosition.x;
-        CommConstants.y = spherePosition.y;
-        CommConstants.z = spherePosition.z;
+        CommConstants.rotationMsg.x = spherePosition.x;
+        CommConstants.rotationMsg.y = spherePosition.y;
+        CommConstants.rotationMsg.z = spherePosition.z;
         // Debug.Log("Sphere x: "+spherePosition.x+" y: "+spherePosition.y+" z: "+spherePosition.z);
         this.rotateModel();
     }
@@ -212,8 +212,8 @@ public class RotateModel : MonoBehaviour
             }
             Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion off"); 
 
-            Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
-            Debug.Log("uslo x: " + CommConstants.x);
+            Quaternion localRotation = Quaternion.Euler(CommConstants.rotationMsg.x, CommConstants.rotationMsg.y, CommConstants.rotationMsg.z);
+            Debug.Log("uslo x: " + CommConstants.rotationMsg.x);
             model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
         }
 

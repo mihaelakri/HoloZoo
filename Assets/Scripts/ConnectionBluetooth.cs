@@ -67,25 +67,14 @@ public class ConnectionBluetooth : ConnectionBase
         Debug.Log("Bluetooth - BTReceiveRotate3DModel");
         RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(data);
 
-        CommConstants.x = float.Parse(rotationMsg.x);
-        CommConstants.y = float.Parse(rotationMsg.y);
-        CommConstants.z = float.Parse(rotationMsg.z);
-        CommConstants.new_animal_id = rotationMsg.animal_id;
+        CommConstants.rotationMsg = rotationMsg;
     }
     
     public override void SendData()
     {
         base.SendData();
-        
-        // Debug.Log("Bluetooth - BTSendRotate3DModel");
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(rotationMsg));
+
+        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(CommConstants.rotationMsg));
     }
 
 }

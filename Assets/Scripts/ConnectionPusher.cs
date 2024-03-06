@@ -71,10 +71,7 @@ public class ConnectionPusher : ConnectionBase
             PusherRotationMsg pusherRotationMsg = JsonUtility.FromJson<PusherRotationMsg>(data);
             RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(pusherRotationMsg.data);
             Debug.Log("Rotation Msg; X: "+rotationMsg.x+" Y: "+rotationMsg.y);
-            CommConstants.x = float.Parse(rotationMsg.x);
-            CommConstants.y = float.Parse(rotationMsg.y);
-            CommConstants.z = float.Parse(rotationMsg.z);
-            CommConstants.new_animal_id = rotationMsg.animal_id;
+            CommConstants.rotationMsg = rotationMsg;
         });
         is_websocket_open = true;
     }
@@ -127,17 +124,9 @@ public class ConnectionPusher : ConnectionBase
     {
         // Debug.Log(PlayerPrefs.GetString("id_animal"));
 
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-
         channel.Trigger(
-            "client-rotation" + CommConstants.player_id,
-            JsonUtility.ToJson(rotationMsg)
+            "client-rotation" + CommConstants.rotationMsg.player_id,
+            JsonUtility.ToJson(CommConstants.rotationMsg)
         );
         yield return 0;
     }

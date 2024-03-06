@@ -142,16 +142,16 @@ public class DemoQuizModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(x_exp_max + "\n " + y_exp_max + " " + CommConstants.control_type + "\n " + Math.Abs(CommConstants.x) + " " + Math.Abs(CommConstants.y) + " " + questionsCounter);
+        Debug.Log(x_exp_max + "\n " + y_exp_max + " " + CommConstants.control_type + "\n " + Math.Abs(CommConstants.rotationMsg.x) + " " + Math.Abs(CommConstants.rotationMsg.y) + " " + questionsCounter);
         if (nextQuestionFlag && questionsCounter < questionsCount)
             {
                 nextQuestion(); 
                 nextQuestionFlag = false; 
             }
-        if (questionsCounter == 0 && (Math.Abs(CommConstants.x) >= x_exp_min || Math.Abs(CommConstants.x) >= 180-x_exp_min)
-                && (Math.Abs(CommConstants.x) <= x_exp_max || Math.Abs(CommConstants.x) >= 180-x_exp_max)
-                && Math.Abs(CommConstants.y) >= y_exp_min
-                && Math.Abs(CommConstants.y) <= y_exp_max)
+        if (questionsCounter == 0 && (Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_min)
+                && (Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_max)
+                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
+                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max)
             {
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -176,10 +176,10 @@ public class DemoQuizModel : MonoBehaviour
                 questionsCounter++;
                 nextQuestionFlag = true;
             }
-        else if (questionsCounter == 2 && CommConstants.initial_rotation_speed >= 1f && Math.Abs(CommConstants.x) >= x_exp_min
-                && Math.Abs(CommConstants.x) <= x_exp_max
-                && Math.Abs(CommConstants.y) >= y_exp_min
-                && Math.Abs(CommConstants.y) <= y_exp_max){
+        else if (questionsCounter == 2 && CommConstants.initial_rotation_speed >= 1f && Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min
+                && Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max
+                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
+                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max){
                 
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -191,10 +191,10 @@ public class DemoQuizModel : MonoBehaviour
                 questionsCounter++;
                 nextQuestionFlag = true;
         }
-        else if(questionsCounter == 3 && CommConstants.control_type == 3 && (Math.Abs(CommConstants.x) >= x_exp_min || Math.Abs(CommConstants.x) >= 180-x_exp_min)
-                && (Math.Abs(CommConstants.x) <= x_exp_max || Math.Abs(CommConstants.x) >= 180-x_exp_max)
-                && Math.Abs(CommConstants.y) >= y_exp_min
-                && Math.Abs(CommConstants.y) <= y_exp_max){
+        else if(questionsCounter == 3 && CommConstants.control_type == 3 && (Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_min)
+                && (Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_max)
+                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
+                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max){
 
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();
@@ -206,10 +206,10 @@ public class DemoQuizModel : MonoBehaviour
                 questionsCounter++;
                 nextQuestionFlag = true;    
 
-        }else if(questionsCounter == 3 && CommConstants.control_type == 3 && (Math.Abs(CommConstants.x) >= x_exp_min || Math.Abs(CommConstants.x) >= 180-x_exp_min)
-                && (Math.Abs(CommConstants.x) <= x_exp_max || Math.Abs(CommConstants.x) >= 180-x_exp_max)
-                && Math.Abs(CommConstants.y) >= y_exp_min
-                && Math.Abs(CommConstants.y) <= y_exp_max)
+        }else if(questionsCounter == 3 && CommConstants.control_type == 3 && (Math.Abs(CommConstants.rotationMsg.x) >= x_exp_min || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_min)
+                && (Math.Abs(CommConstants.rotationMsg.x) <= x_exp_max || Math.Abs(CommConstants.rotationMsg.x) >= 180-x_exp_max)
+                && Math.Abs(CommConstants.rotationMsg.y) >= y_exp_min
+                && Math.Abs(CommConstants.rotationMsg.y) <= y_exp_max)
         {
                 timer.StopTimer();
                 elapsedTimeDemo += timer.GetElapsedTime();

@@ -1,14 +1,17 @@
+using UnityEngine;
+
 namespace CommunicationMsgs
 {
+    [System.Serializable]
     public struct RotationMsg
     {
-        public string x;
-        public string y;
-        public string z;
+        public float x;
+        public float y;
+        public float z;
         public int player_id;
         public string animal_id;
 
-        public RotationMsg(string x, string y, string z, int player_id, string animal_id)
+        public RotationMsg(float x, float y, float z, int player_id, string animal_id)
         {
             this.x = x;
             this.y = y;
