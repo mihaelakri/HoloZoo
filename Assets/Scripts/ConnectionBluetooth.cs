@@ -71,18 +71,18 @@ public class ConnectionBluetooth : ConnectionBase
     
     public override void SendData(CommunicationMsgs.CommunicationMsg msgType)
     {
-        base.SendData(msgType);
         float timeSinceLastUpdate = Time.time - lastUpdateTime;
 
         if (timeSinceLastUpdate >= updateFrequency)
         {
+            base.SendData(msgType);
             lastUpdateTime = Time.time;
 
             //string msg=JsonUtility.ToJson(CommConstants.state);
             // string msg = JsonConvert.SerializeObject(base.msg, Formatting.None);
             //BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(CommConstants.state));
             BluetoothForAndroid.WriteMessage(base.msg);
-        Debug.Log("Bluetooth - Data Sent: " + base.msg);
+            Debug.Log("Bluetooth - Data Sent: " + base.msg);
         }  
     }
 
