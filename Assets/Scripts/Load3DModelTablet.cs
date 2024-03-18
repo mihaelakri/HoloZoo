@@ -14,14 +14,21 @@ public class Load3DModelTablet : MonoBehaviour
     public String model_url;
     string id_animal;
     // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(GetModel());
 
+        CommConstants.animalid.OnAnimalIdUpdated += LoadModel_OnAnimalIdUpdated;
+    }
+
+    private void LoadModel_OnAnimalIdUpdated()
+    {
+        StartCoroutine(GetModel());
     }
 
     IEnumerator GetModel(){
-        Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
+        /*Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
         if(PlayerPrefs.GetString("id_animal")!= "")
         {
             id_animal = PlayerPrefs.GetString("id_animal", "1");
@@ -29,12 +36,12 @@ public class Load3DModelTablet : MonoBehaviour
         else
         {
             id_animal = CommConstants.animalid.animal_id;
-        }
-        
+        }*/
+        id_animal = CommConstants.animalid.animal_id;
 
         WWWForm form = new WWWForm();
         form.AddField("id_model", id_animal);
-
+        System.Diagnostics.Debug.WriteLine("Životinja: " + id_animal);
         using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form)){
         //using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
 

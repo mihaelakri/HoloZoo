@@ -36,7 +36,7 @@ public static class CommConstants
     public static ConnectionBase connection;
     public static StateMsg state = new StateMsg(0, 0, 1f, 0f, 1f, 0, 0,  false);
     public static RotationMsg rotation = new RotationMsg(0f, 0f, 0f, false);
-    public static AnimalIdMsg animalid = new AnimalIdMsg("", false);
+    public static AnimalIdMsg animalid = new AnimalIdMsg("7", false);
 
 
 }

@@ -7,14 +7,10 @@ using CommunicationMsgs;
 public class EventManager : MonoBehaviour
 {
     private static EventManager instance = null;
-    private readonly List<CommunicationMsg> CommMsgs;
+    private List<CommunicationMsg> CommMsgs;
 
     void Start(){
-       List<CommunicationMsg> CommMsgs = new List<CommunicationMsg> {
-        CommConstants.state,
-        CommConstants.rotation,
-        CommConstants.animalid
-       };
+
 
     }
     public static void initUnityThread(bool visible = false)
@@ -36,14 +32,21 @@ public class EventManager : MonoBehaviour
             DontDestroyOnLoad(obj);
             instance = obj.AddComponent<EventManager>();
         }
+        System.Diagnostics.Debug.WriteLine("EventManager init");
     }
 
-    public void Awake()
+    void Awake()
     {
+        CommMsgs = new List<CommunicationMsg> {
+        CommConstants.state,
+        CommConstants.rotation,
+        CommConstants.animalid
+        };
         DontDestroyOnLoad(gameObject);
+        System.Diagnostics.Debug.WriteLine("EventManager awake");
     }
 
-    public void Update()
+    void Update()
     {
         foreach (CommunicationMsg msg in CommMsgs)
         {
@@ -53,6 +56,7 @@ public class EventManager : MonoBehaviour
 
     public void OnDisable()
     {
+        System.Diagnostics.Debug.WriteLine("EventManager ondisable");
         if (instance == this)
         {
             instance = null;

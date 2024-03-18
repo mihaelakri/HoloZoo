@@ -12,6 +12,7 @@ public class InitializeConnection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventManager.initUnityThread();
         Initalize();
         DontDestroyOnLoad(gameObject);
     }

@@ -165,7 +165,7 @@ public class ShowAccessibility : MonoBehaviour
             
         }
 
-        CommConstants.connection.SendData(CommunicationMsgs.StateMsg);
+        CommConstants.connection.SendData(CommConstants.state);
     }
 
     public void displayButton()

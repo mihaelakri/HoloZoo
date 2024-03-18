@@ -44,7 +44,6 @@ public class RotateModel : MonoBehaviour
     {
 
         m_Scene = SceneManager.GetActiveScene();
-        m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
         CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
 
@@ -52,10 +51,8 @@ public class RotateModel : MonoBehaviour
         {
             rotateGlobeModel(new Vector3(339.671448f, 121.115952f, 348.156769f));
         }
-        else if (sceneName == "HologramAnimalMobile")
+        else if (sceneName == "HologramTablet")
         {
-            rotateModel();
-        }
 
         #if UNITY_STANDALONE_WIN
          leapProvider = FindObjectOfType<LeapServiceProvider>();
@@ -65,6 +62,10 @@ public class RotateModel : MonoBehaviour
              Debug.LogError("LeapServiceProvider not found in the scene.");
          }
         #endif
+            RotateModelLeap(model);
+        }
+
+      
 
 
         if (sceneName == "HologramQuizIntro" || sceneName == "HologramQuiz")
@@ -78,13 +79,9 @@ public class RotateModel : MonoBehaviour
 
         }
 
-
-
-        CommConstants.connection.SendData(CommunicationMsgs.RotationMsg);
+        CommConstants.connection.SendData(CommConstants.rotation);
         
     }
-
-
 
 
 
@@ -141,11 +138,16 @@ public class RotateModel : MonoBehaviour
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
                 else if (CommConstants.state.start_quiz_flag == 1)
-                {
-                    //Debug.Log(CommConstants.state.start_quiz_flag);
+                {             
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
 
+                } else if (sceneName == "HologramTablet")
+                {
+                    Debug.Log("ff");
+                    System.Diagnostics.Debug.WriteLine("Rotatemodel elif 3");
+                    initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
+                    RotateModelLeap(model.transform.GetChild(0).gameObject);
                 }
 
 
@@ -171,7 +173,7 @@ public class RotateModel : MonoBehaviour
 
 
 
-        CommConstants.connection.SendData(CommunicationMsgs.RotationMsg);
+        CommConstants.connection.SendData(CommConstants.rotation);
 
     }
 
@@ -191,10 +193,10 @@ public class RotateModel : MonoBehaviour
 
 
 #if UNITY_STANDALONE_WIN
-       Frame frame = leapProvider.CurrentFrame;
+        Frame frame = leapProvider.CurrentFrame;
         rotationSpeed = CommConstants.state.initial_rotation_speed;
 
-
+        Debug.Log("radi leap");
         if (frame != null && frame.Hands.Count > 0)
         {
             Hand hand = frame.Hands[0];
@@ -222,12 +224,7 @@ public class RotateModel : MonoBehaviour
                 objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.left, 25 * Time.deltaTime * rotationSpeed);
             }
 
-            Vector3 eulerRotation = objectToRotate.transform.rotation.eulerAngles;
-
-            bottomSlider.value = eulerRotation.y;
-            sideSlider.value = eulerRotation.x;
-
-            //StartCoroutine(dataSender.SendDataToServer(dominantDirection));
+  
         }
         else
         {
@@ -246,8 +243,8 @@ public class RotateModel : MonoBehaviour
 #if UNITY_STANDALONE_WIN
   }
 #endif
-
-}
+        CommConstants.connection.SendData(CommConstants.rotation);
+    }
 
 
 #if UNITY_STANDALONE_WIN

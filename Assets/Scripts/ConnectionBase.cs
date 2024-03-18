@@ -26,17 +26,17 @@ public class ConnectionBase : MonoBehaviour
     {
         switch(msgType)
         {
-            case CommunicationMsgs.StateMsg:
+            case CommunicationMsgs.StateMsg a:
             msg = "s";
             msg += JsonConvert.SerializeObject(CommConstants.state, Formatting.None);
             break;
 
-            case CommunicationMsgs.RotationMsg:
+            case CommunicationMsgs.RotationMsg b:
             msg = "r";
             msg += JsonConvert.SerializeObject(CommConstants.rotation, Formatting.None);
             break;
 
-            case CommunicationMsgs.AnimalIdMsg:
+            case CommunicationMsgs.AnimalIdMsg c:
             msg = "a";
             msg += JsonConvert.SerializeObject(CommConstants.animalid, Formatting.None);
             break;
@@ -54,18 +54,18 @@ public class ConnectionBase : MonoBehaviour
         {
             case "s":
                 StateMsg stateMsg = JsonConvert.DeserializeObject<StateMsg>(msg[1..]);
-                CommConstants.state.UpdateData(stateMsg);
+                CommConstants.state.UpdateMsgFromOtherThread(stateMsg);
                 System.Diagnostics.Debug.WriteLine("New State: "+JsonConvert.SerializeObject(CommConstants.state));
                 break;
 
             case "r":
                 RotationMsg rotationMsg = JsonConvert.DeserializeObject<RotationMsg>(msg[1..]);
-                CommConstants.rotation.UpdateData(rotationMsg);
+                CommConstants.rotation.UpdateMsgFromOtherThread(rotationMsg);
                 System.Diagnostics.Debug.WriteLine("New Rotation: "+JsonConvert.SerializeObject(CommConstants.rotation));
                 break;
             case "a":
                 AnimalIdMsg animalIdMsg = JsonConvert.DeserializeObject<AnimalIdMsg>(msg[1..]);
-                CommConstants.animalid.UpdateData(animalIdMsg);
+                CommConstants.animalid.UpdateMsgFromOtherThread(animalIdMsg);
                 System.Diagnostics.Debug.WriteLine("New animal: "+JsonConvert.SerializeObject(CommConstants.animalid));
             break;
 

@@ -105,6 +105,8 @@ public class DemoQuizModel : MonoBehaviour
 
                     ChangeAnimalModel(questions.question[questionsCounter].id_animal);
 
+                    //CommConstants.animalid.animal_id = questions.question[questionsCounter].id_animal.ToString();
+
                     // Instantiate a prefab (HELP box) 
                     helpPanel = Instantiate<GameObject>(prefabPanel);
                     helpPanel.transform.SetParent(GameObject.FindGameObjectWithTag("canvas").transform, false);
@@ -226,8 +228,6 @@ public class DemoQuizModel : MonoBehaviour
     
     void ChangeAnimalModel(int id) {
         loadRandomModelInstance.LoadAnimal(id);
-
-        CommConstants.animalid.animal_id = id.ToString();
 
     }
 

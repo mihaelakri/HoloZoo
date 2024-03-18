@@ -18,8 +18,12 @@ public class LoadRandomModel : MonoBehaviour
 
     public void LoadAnimal(int id)
     {
+        CommConstants.animalid.animal_id = id.ToString();
+        CommConstants.connection.SendData(CommConstants.animalid);
+
         StartCoroutine(GetModel(id));
         //OnModelLoaded?.Invoke();
+
     }
 
     IEnumerator GetModel(int id){
