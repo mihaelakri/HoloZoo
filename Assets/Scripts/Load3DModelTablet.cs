@@ -12,21 +12,31 @@ public class Load3DModelTablet : MonoBehaviour
 {
     public GameObject variableForPrefab;
     public String model_url;
+    string id_animal;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(GetModel());
+
     }
 
     IEnumerator GetModel(){
         Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
-        string id_animal = PlayerPrefs.GetString("id_animal", "1");
+        if(PlayerPrefs.GetString("id_animal")!= "")
+        {
+            id_animal = PlayerPrefs.GetString("id_animal", "1");
+        }
+        else
+        {
+            id_animal = CommConstants.animalid.animal_id;
+        }
+        
 
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
+        WWWForm form = new WWWForm();
+        form.AddField("id_model", id_animal);
 
-        //using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form)){
+        //using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
 
             yield return www.SendWebRequest();
 

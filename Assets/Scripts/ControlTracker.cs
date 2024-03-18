@@ -51,11 +51,11 @@ public class ControlTracker : MonoBehaviour
 
     void Update()
     {
-        if(CommConstants.control_type == 3){
+        if(CommConstants.state.control_type == 3){
             buttons = true;
             buttons_time += Time.deltaTime; 
         }
-        if(CommConstants.control_type == 1){
+        if(CommConstants.state.control_type == 1){
             leap_motion = true;
             leap_motion_time += Time.deltaTime;
         }else{
@@ -85,7 +85,7 @@ public class ControlTracker : MonoBehaviour
      void OnButtonClicked(Button button)
     {
         buttons = true;
-        CommConstants.control_type = 3;
+        CommConstants.state.control_type = 3;
     }
 
     // Method to save control usage data to server
@@ -104,7 +104,7 @@ public class ControlTracker : MonoBehaviour
         form.AddField("buttons", buttons ? 1 : 0);
         form.AddField("buttons_time", (buttons_time*1000).ToString()); // convert to miliseconds
         
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "/controls_view.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "controls_view.php", form))
         {
             yield return www.SendWebRequest();
 

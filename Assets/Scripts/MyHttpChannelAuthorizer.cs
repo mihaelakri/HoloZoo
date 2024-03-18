@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 using System.Net.Http.Headers;
-using System.Net.Http;
+using System.Net.Http;/*
 using PusherClient;
 using System.Collections;
 using System.Collections.Generic;
@@ -151,4 +151,4 @@ public class MyHttpChannelAuthorizer: IAuthorizer, IAuthorizerAsync
             httpClient.DefaultRequestHeaders.Authorization = AuthenticationHeader;
         }
     }
-}
+}*/

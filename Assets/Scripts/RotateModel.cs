@@ -9,64 +9,44 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Threading.Tasks;
-using PusherClient;
 using SVSBluetooth;
 using System.Threading;
+using CommunicationMsgs;
+
+#if UNITY_STANDALONE_WIN
 using Leap;
 using Leap.Unity;
+#endif
+
 public class RotateModel : MonoBehaviour
 {
-
     public Slider bottomSlider;
     public Slider sideSlider;
     public GameObject model;
     public GameObject target;
     public float sliderLastX = 0, sliderLastY = 0;
-    private LeapServiceProvider leapProvider;
-    private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
-    private float lastUpdateTime = 0f;
     public RotateModel instance = null;
     public Quaternion initialRotation;
     public float rotationSpeed = 1f;
     private string old_animal_id;
     Scene m_Scene;
     string sceneName;
-   // public float sliderSpeed = 1.0f;
-   // public float velocityThreshold = 0.1f;
-   // public float positionScale = 0.1f; // Adjust based on the expected range of hand positions
+  
 
-    private Vector3 previousHandPosition;
-    private class RotationMsg
-    {
-        public string x;
-        public string y;
-        public string z;
-        public int player_id;
-        public string animal_id;
 
-        public RotationMsg(string x, string y, string z, int player_id, string animal_id)
-        {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.player_id = player_id;
-            this.animal_id = animal_id;
-        }
-    }
+    #if UNITY_STANDALONE_WIN
+    private LeapServiceProvider leapProvider;
+    #endif
 
-    private class PusherRotationMsg
-    {
-        public string @event;
-        public string data;
-        public string channel;
-    }
+
 
     void Start()
     {
 
         m_Scene = SceneManager.GetActiveScene();
+        m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
-        CommConstants.player_id = PlayerPrefs.GetInt("ID");
+        CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
 
         if (sceneName == "HologramGlobe")
         {
@@ -77,77 +57,97 @@ public class RotateModel : MonoBehaviour
             rotateModel();
         }
 
+        #if UNITY_STANDALONE_WIN
+         leapProvider = FindObjectOfType<LeapServiceProvider>();
 
-        leapProvider = FindObjectOfType<LeapServiceProvider>();
+         if (leapProvider == null)
+         {
+             Debug.LogError("LeapServiceProvider not found in the scene.");
+         }
+        #endif
 
-        if (leapProvider == null)
+
+        if (sceneName == "HologramQuizIntro" || sceneName == "HologramQuiz")
         {
-            Debug.LogError("LeapServiceProvider not found in the scene.");
+
+            CommConstants.rotation.x = 0f;
+            CommConstants.rotation.y = 0f;
+            CommConstants.rotation.z = 0f;
+            bottomSlider.value = 0;
+            sideSlider.value = 0;
+
         }
 
+
+
+        CommConstants.connection.SendData(CommunicationMsgs.RotationMsg);
+        
     }
 
-  
+
+
+
+
     IEnumerator SwapModel()
     {
-        GameObject parent = GameObject.FindGameObjectWithTag("3d");
-        Destroy(parent.transform.GetChild(0).gameObject);
+          GameObject parent = GameObject.FindGameObjectWithTag("3d");
+           Destroy(parent.transform.GetChild(0).gameObject);
 
-        string id_animal = CommConstants.new_animal_id;
-        // id_animal = "2";
-        string model_url;
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", id_animal))
-        {
+           string id_animal = CommConstants.animalid.animal_id;
+           // id_animal = "2";
+           string model_url;
 
-            yield return www.SendWebRequest();
+           using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", id_animal))
+           {
 
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                if (id_animal == "0")
-                {
-                    model_url = "WorldMapGlobe";
-                }
-                else
-                {
-                    model_url = (www.downloadHandler.text);
-                }
-                Debug.Log(www.downloadHandler.text);
-                GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
-            }
-        }
+               yield return www.SendWebRequest();
 
+               if (www.result != UnityWebRequest.Result.Success)
+               {
+                   Debug.Log(www.error);
+               }
+               else
+               {
+                   if (id_animal == "0")
+                   {
+                       model_url = "WorldMapGlobe";
+                   }
+                   else
+                   {
+                       model_url = (www.downloadHandler.text);
+                   }
+                   Debug.Log(www.downloadHandler.text);
+                   GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
+                   Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+               }
+           }
     }
     void Update()
     {
         if (sceneName != "HologramGlobe")
         {
-            if (this.old_animal_id != CommConstants.new_animal_id)
-            {
-                StartCoroutine(SwapModel());
-                this.old_animal_id = CommConstants.new_animal_id;
-            }
+            // if (this.old_animal_id != CommConstants.state.animal_id)
+            // {
+            //     StartCoroutine(SwapModel());
+            //     this.old_animal_id = CommConstants.state.animal_id;
+            // }
 
             try
             {
-             
-                if (CommConstants.new_animal_id == "0")
+
+                if (CommConstants.animalid.animal_id == "0")
                 {
-                    Vector3 localRotation = new Vector3(CommConstants.x, CommConstants.y, CommConstants.z);
+                    Vector3 localRotation = new Vector3(CommConstants.rotation.x, CommConstants.rotation.y, CommConstants.rotation.z);
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
-                else if(CommConstants.start_quiz_flag == 1)
+                else if (CommConstants.state.start_quiz_flag == 1)
                 {
-                    Debug.Log(CommConstants.start_quiz_flag);
+                    //Debug.Log(CommConstants.state.start_quiz_flag);
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
 
                 }
-             
+
 
             }
             catch (Exception e)
@@ -164,141 +164,110 @@ public class RotateModel : MonoBehaviour
     {
         if (sceneName != "HologramGlobe")
         {
-            CommConstants.x = bottomSlider.value;
-            CommConstants.y = sideSlider.value;
-            CommConstants.z = 0f;
+            CommConstants.rotation.x = bottomSlider.value;
+            CommConstants.rotation.y = sideSlider.value;
+            CommConstants.rotation.z = 0f;
         }
 
-        if (CommConstants.conn_method == "websocket")
-        {
-            if (!CommConstants.is_websocket_open)
-            {
-                Debug.Log("Websocket not open");
-                return;
-            }
 
-            float timeSinceLastUpdate = Time.time - lastUpdateTime;
 
-            if (timeSinceLastUpdate >= updateFrequency)
-            {
-                StartCoroutine(SendRotate3DModel());
-                lastUpdateTime = Time.time;
-            }
-        }
-        else
-        {    // Bluetooth
-            BTSendRotate3DModel();
-        }
+        CommConstants.connection.SendData(CommunicationMsgs.RotationMsg);
 
     }
 
     public void rotateGlobeModel(Vector3 spherePosition)
     {
-        CommConstants.x = spherePosition.x;
-        CommConstants.y = spherePosition.y;
-        CommConstants.z = spherePosition.z;
+        CommConstants.rotation.x = spherePosition.x;
+        CommConstants.rotation.y = spherePosition.y;
+        CommConstants.rotation.z = spherePosition.z;
         // Debug.Log("Sphere x: "+spherePosition.x+" y: "+spherePosition.y+" z: "+spherePosition.z);
         this.rotateModel();
     }
 
-    IEnumerator SendRotate3DModel()
-    {
-        // Debug.Log(PlayerPrefs.GetString("id_animal"));
 
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-
-        CommConstants.channel.Trigger(
-            "client-rotation" + CommConstants.player_id,
-            JsonUtility.ToJson(rotationMsg)
-        );
-        yield return 0;
-    }
-
-    private void BTSendRotate3DModel()
-    {
-       // Debug.Log("Bluetooth - BTSendRotate3DModel");
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-        BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(rotationMsg));
-    }
 
     void RotateModelLeap(GameObject objectToRotate)
     {
-        Frame frame = leapProvider.CurrentFrame;
-        rotationSpeed = CommConstants.initial_rotation_speed;
+
+
+#if UNITY_STANDALONE_WIN
+       Frame frame = leapProvider.CurrentFrame;
+        rotationSpeed = CommConstants.state.initial_rotation_speed;
 
 
         if (frame != null && frame.Hands.Count > 0)
         {
-            Hand hand = frame.Hands[0]; // Assuming you're interested in the first detected hand
+            Hand hand = frame.Hands[0];
 
-            // Get the hand's velocity along the Y-axis
-            float yVelocity = hand.PalmVelocity.y;
+            CommConstants.state.control_type = 1; // 1 leap
+            rotationSpeed = CommConstants.state.initial_rotation_speed;
 
-            CommConstants.control_type = 1; // 1 leap
 
-            Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion on"); 
-
-            // Check if the hand is moving up or down based on the velocity
-            float rotationAngleY = yVelocity * rotationSpeed * Time.deltaTime;
-            if (yVelocity > 0)
+            string dominantDirection = GetDominantHandDirection(hand);
+            Debug.Log(dominantDirection);
+            if (dominantDirection.Equals("up"))
             {
-                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.up, 25 * Time.deltaTime);
+                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.up, 25 * Time.deltaTime * rotationSpeed);
+            }
+            else if (dominantDirection.Equals("down"))
+            {
+                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.down, 25 * Time.deltaTime * rotationSpeed);
+            }
+            else if (dominantDirection.Equals("right"))
+            {
+                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.right, 25 * Time.deltaTime * rotationSpeed);
             }
             else
             {
-                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.up, -25 * Time.deltaTime);
+                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.left, 25 * Time.deltaTime * rotationSpeed);
             }
 
-            // Similarly for X-axis rotation
-            float xVelocity = hand.PalmVelocity.x;
-
-            float rotationAngleX = xVelocity * rotationSpeed * Time.deltaTime;
-
-            if (xVelocity > 0)
-            {
-                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.right, 25 * Time.deltaTime);
-            }
-            else
-            {
-                objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.right, -25 * Time.deltaTime);
-            }
-
-
-
-            // Update slider value based on mapped y and y position
-     
             Vector3 eulerRotation = objectToRotate.transform.rotation.eulerAngles;
 
-            bottomSlider.value = eulerRotation.x;
-            sideSlider.value = eulerRotation.y;
+            bottomSlider.value = eulerRotation.y;
+            sideSlider.value = eulerRotation.x;
 
-
+            //StartCoroutine(dataSender.SendDataToServer(dominantDirection));
         }
-        else {
-            if(CommConstants.control_type != 3){
-                CommConstants.control_type = 2; 
-            }
-            Debug.Log("Control type: " + CommConstants.control_type + " Leap Motion off"); 
+        else
+        {
+#endif
 
-            Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
-            Debug.Log("uslo x: " + CommConstants.x);
+        if (CommConstants.state.control_type != 3)
+            {
+                CommConstants.state.control_type = 2;
+            }
+            // Debug.Log("Control type: " + CommConstants.state.control_type + " Leap Motion off");
+
+            Quaternion localRotation = Quaternion.Euler(CommConstants.rotation.x, CommConstants.rotation.y, CommConstants.rotation.z);
+            //Debug.Log("uslo x: " + CommConstants.rotation.x);
             model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
+
+#if UNITY_STANDALONE_WIN
+  }
+#endif
+
+}
+
+
+#if UNITY_STANDALONE_WIN
+         public string GetDominantHandDirection(Hand hand)
+    {
+        Vector3 handVelocity = hand.PalmVelocity;
+
+        float absVelocityX = Mathf.Abs(handVelocity.x);
+        float absVelocityY = Mathf.Abs(handVelocity.y);
+
+        if (absVelocityX > absVelocityY && (hand.IsLeft || hand.IsRight)) //horizontal
+        {
+            return handVelocity.x > 0 ? "right" : "left";
+        }
+        else //vertical
+        {
+            return handVelocity.y > 0 ? "up" : "down";
         }
 
     }
-
-
+#endif
 
 }
