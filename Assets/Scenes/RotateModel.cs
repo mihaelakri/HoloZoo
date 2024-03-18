@@ -44,7 +44,6 @@ public class RotateModel : MonoBehaviour
     {
 
         m_Scene = SceneManager.GetActiveScene();
-        m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
         CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
 
@@ -54,8 +53,6 @@ public class RotateModel : MonoBehaviour
         }
         else if (sceneName == "HologramTablet")
         {
-            RotateModelLeap(model);
-        }
 
         #if UNITY_STANDALONE_WIN
          leapProvider = FindObjectOfType<LeapServiceProvider>();
@@ -65,6 +62,10 @@ public class RotateModel : MonoBehaviour
              Debug.LogError("LeapServiceProvider not found in the scene.");
          }
         #endif
+            RotateModelLeap(model);
+        }
+
+      
 
 
         if (sceneName == "HologramQuizIntro" || sceneName == "HologramQuiz")
@@ -195,7 +196,7 @@ public class RotateModel : MonoBehaviour
         Frame frame = leapProvider.CurrentFrame;
         rotationSpeed = CommConstants.state.initial_rotation_speed;
 
-
+        Debug.Log("radi leap");
         if (frame != null && frame.Hands.Count > 0)
         {
             Hand hand = frame.Hands[0];
