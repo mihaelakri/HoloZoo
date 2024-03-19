@@ -8,7 +8,7 @@ namespace CommunicationMsgs
         public bool isUpdated = false;
         [JsonIgnore]
         public CommunicationMsg newMsg;
-        public virtual void UpdateData(CommunicationMsg msg){}
+        protected virtual void UpdateData(CommunicationMsg msg){}
         public virtual void UpdateMsgFromOtherThread(CommunicationMsg msg){}
         public virtual void ObserveUpdate() {}
     }
@@ -60,10 +60,10 @@ namespace CommunicationMsgs
             this._initial_rotation_speed = initialRotationSpeed;
             this._start_quiz_flag = startQuizFlag;
             this._background_color=backgroundColor;
-            this.isUpdated = isUpdated;
+            base.isUpdated = isUpdated;
         }
 
-        public override void UpdateData(CommunicationMsg msg)
+        protected override void UpdateData(CommunicationMsg msg)
         {
             if (msg is StateMsg)
             {
@@ -80,17 +80,18 @@ namespace CommunicationMsgs
 
         public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
         {
-            newMsg = msg;
-            isUpdated = true;
+            base.newMsg = msg;
+            base.isUpdated = true;
         }
 
         public override void ObserveUpdate()
         {
-            if (isUpdated)
+            if (base.isUpdated)
             {
-                this.UpdateData(newMsg);
+                this.UpdateData(base.newMsg);
                 OnStateUpdated?.Invoke();
-                isUpdated = false;
+                base.isUpdated = false;
+                System.Diagnostics.Debug.WriteLine("StateMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.state));
             }
         }
 
@@ -113,7 +114,7 @@ namespace CommunicationMsgs
         public float _z = 0f;
         public float z { get { return _z; } set { _z = value; } }
 
-        private void UpdateData(CommunicationMsg msg)
+        protected override void UpdateData(CommunicationMsg msg)
         {
             if (msg is RotationMsg)
             {
@@ -148,7 +149,7 @@ namespace CommunicationMsgs
                 this.UpdateData(base.newMsg);
                 OnRotationUpdated?.Invoke();
                 base.isUpdated = false;
-                //System.Diagnostics.Debug.WriteLine("RotationMsg ObservedUpdate");
+                System.Diagnostics.Debug.WriteLine("RotationMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.rotation));
             }
         }
 
@@ -163,7 +164,7 @@ namespace CommunicationMsgs
         public string _animal_id = "";
         public string animal_id { get { return _animal_id; } set { _animal_id = value; }}
 
-        public void UpdateData(CommunicationMsg msg)
+        protected override void UpdateData(CommunicationMsg msg)
         {
             if (msg is AnimalIdMsg)
             {
@@ -175,21 +176,22 @@ namespace CommunicationMsgs
         public AnimalIdMsg(string animalId, bool isUpdated)
         {
             this._animal_id = animalId;
-            this.isUpdated = isUpdated;
+            base.isUpdated = isUpdated;
         }
         public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
         {
-            newMsg = msg;
-            isUpdated = true;
+            base.newMsg = msg;
+            base.isUpdated = true;
         }
 
         public override void ObserveUpdate()
         {
-            if (isUpdated)
+            if (base.isUpdated)
             {
-                this.UpdateData(newMsg);
+                this.UpdateData(base.newMsg);
                 OnAnimalIdUpdated?.Invoke();
-                isUpdated = false;
+                base.isUpdated = false;
+                System.Diagnostics.Debug.WriteLine("AnimalIdMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.animalid));
             }
         }
         public delegate void OnAnimalIdUpdatedDelegate();

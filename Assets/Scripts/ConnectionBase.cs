@@ -9,8 +9,11 @@ using Newtonsoft.Json;
 
 public class ConnectionBase : MonoBehaviour
 {
-    protected int player_id;
+    protected float updateFrequency = 1f / 20f;
+    protected float timeSinceLastUpdate;
     protected float lastUpdateTime = 0f;
+    protected bool skipSending = false;
+    protected int player_id;
     protected string msg = "";
 
     public void Start()
@@ -24,25 +27,28 @@ public class ConnectionBase : MonoBehaviour
 
     public virtual void SendData(CommunicationMsgs.CommunicationMsg msgType)
     {
-        switch(msgType)
+        switch (msgType)
         {
             case CommunicationMsgs.StateMsg a:
-            msg = "s";
-            msg += JsonConvert.SerializeObject(CommConstants.state, Formatting.None);
-            break;
+                skipSending = false;
+                msg = "s";
+                msg += JsonConvert.SerializeObject(CommConstants.state, Formatting.None);
+                break;
 
             case CommunicationMsgs.RotationMsg b:
-            msg = "r";
-            msg += JsonConvert.SerializeObject(CommConstants.rotation, Formatting.None);
-            break;
+                checkThrottling();
+                msg = "r";
+                msg += JsonConvert.SerializeObject(CommConstants.rotation, Formatting.None);
+                break;
 
             case CommunicationMsgs.AnimalIdMsg c:
-            msg = "a";
-            msg += JsonConvert.SerializeObject(CommConstants.animalid, Formatting.None);
-            break;
+                skipSending = false;
+                msg = "a";
+                msg += JsonConvert.SerializeObject(CommConstants.animalid, Formatting.None);
+                break;
 
             default:
-            break;
+                break;
         }
     }
 
@@ -55,24 +61,37 @@ public class ConnectionBase : MonoBehaviour
             case "s":
                 StateMsg stateMsg = JsonConvert.DeserializeObject<StateMsg>(msg[1..]);
                 CommConstants.state.UpdateMsgFromOtherThread(stateMsg);
-                System.Diagnostics.Debug.WriteLine("New State: "+JsonConvert.SerializeObject(CommConstants.state));
+                // System.Diagnostics.Debug.WriteLine("New State: " + JsonConvert.SerializeObject(CommConstants.state));
                 break;
-
             case "r":
                 RotationMsg rotationMsg = JsonConvert.DeserializeObject<RotationMsg>(msg[1..]);
                 CommConstants.rotation.UpdateMsgFromOtherThread(rotationMsg);
-                System.Diagnostics.Debug.WriteLine("New Rotation: "+JsonConvert.SerializeObject(CommConstants.rotation));
+                // System.Diagnostics.Debug.WriteLine("New Rotation: " + JsonConvert.SerializeObject(CommConstants.rotation));
                 break;
             case "a":
                 AnimalIdMsg animalIdMsg = JsonConvert.DeserializeObject<AnimalIdMsg>(msg[1..]);
                 CommConstants.animalid.UpdateMsgFromOtherThread(animalIdMsg);
-                System.Diagnostics.Debug.WriteLine("New animal: "+JsonConvert.SerializeObject(CommConstants.animalid));
-            break;
-
+                // System.Diagnostics.Debug.WriteLine("New animal: " + JsonConvert.SerializeObject(CommConstants.animalid));
+                break;
             default:
                 break;
         }
     }
 
+    // Essentially creates a separate throttled stream
+    protected void checkThrottling()
+    {
+        timeSinceLastUpdate = Time.time - lastUpdateTime;
+
+        if (timeSinceLastUpdate >= updateFrequency)
+        {
+            skipSending = false;
+            lastUpdateTime = Time.time;
+        }
+        else
+        {
+            skipSending = true;
+        }
+    }
 
 }

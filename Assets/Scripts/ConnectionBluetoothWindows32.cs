@@ -14,7 +14,6 @@ public class ConnectionBluetoothWindows32 : ConnectionBase
 {
     private NetworkStream stream;
     private Thread clientThread;
-    private float updateFrequency = 1f/20f; 
     public override void Initialize()
     {
         base.Initialize();
@@ -23,19 +22,17 @@ public class ConnectionBluetoothWindows32 : ConnectionBase
 
     public override void SendData(CommunicationMsgs.CommunicationMsg msgType)
     {
-        float timeSinceLastUpdate = Time.time - lastUpdateTime;
-        
-        if (timeSinceLastUpdate >= updateFrequency)
-        {
-            base.SendData(msgType);
+        base.SendData(msgType);
 
-            byte[] array = Encoding.UTF8.GetBytes(base.msg);
-            array = ModAddArray(array, 2);
-            sbyte[] sBytes = ByteToSByteArray(array);
+        if(base.skipSending)
+            return;
 
-            stream.Write(array, 0, array.Length);
-            System.Diagnostics.Debug.WriteLine("BluetoothWindows - Send Data");
-        }
+        byte[] array = Encoding.UTF8.GetBytes(base.msg);
+        array = ModAddArray(array, 2);
+        sbyte[] sBytes = ByteToSByteArray(array);
+
+        stream.Write(array, 0, array.Length);
+        System.Diagnostics.Debug.WriteLine("BluetoothWindows - Send Data: " + base.msg);
     }
 
     public async Task Initialize_BT()
