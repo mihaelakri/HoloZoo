@@ -14,7 +14,7 @@ public class HoloAccessibility : MonoBehaviour
 
     }
 
-    private void HoloAccess_OnStateUpdated()
+    public void HoloAccess_OnStateUpdated()
     {
         changeBg(CommConstants.state.background_color);
         System.Diagnostics.Debug.WriteLine("HoloAccess. StateUpdated: " + CommConstants.state.background_color);
