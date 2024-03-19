@@ -23,7 +23,7 @@ public class RotateModel : MonoBehaviour
     public Slider bottomSlider;
     public Slider sideSlider;
     public GameObject model;
-    public GameObject target;
+    // public GameObject target;
     public float sliderLastX = 0, sliderLastY = 0;
     public RotateModel instance = null;
     public Quaternion initialRotation;
@@ -31,12 +31,12 @@ public class RotateModel : MonoBehaviour
     private string old_animal_id;
     Scene m_Scene;
     string sceneName;
-  
 
 
-    #if UNITY_STANDALONE_WIN
+
+#if UNITY_STANDALONE_WIN
     private LeapServiceProvider leapProvider;
-    #endif
+#endif
 
 
 
@@ -46,6 +46,7 @@ public class RotateModel : MonoBehaviour
         m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
         CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
+        CommConstants.rotation.OnRotationUpdated += RotateModel_OnRotationUpdated;
 
         if (sceneName == "HologramGlobe")
         {
@@ -54,18 +55,18 @@ public class RotateModel : MonoBehaviour
         else if (sceneName == "HologramTablet")
         {
 
-        #if UNITY_STANDALONE_WIN
+#if UNITY_STANDALONE_WIN
          leapProvider = FindObjectOfType<LeapServiceProvider>();
 
          if (leapProvider == null)
          {
              Debug.LogError("LeapServiceProvider not found in the scene.");
          }
-        #endif
+#endif
             RotateModelLeap(model);
         }
 
-      
+
 
 
         if (sceneName == "HologramQuizIntro" || sceneName == "HologramQuiz")
@@ -80,44 +81,48 @@ public class RotateModel : MonoBehaviour
         }
 
         CommConstants.connection.SendData(CommConstants.rotation);
-        
     }
 
-
+    public void RotateModel_OnRotationUpdated()
+    {
+        System.Diagnostics.Debug.WriteLine("RotateModel_OnRotationUpdated called");
+        Vector3 localRotation = new Vector3(CommConstants.rotation.x, CommConstants.rotation.y, CommConstants.rotation.z);
+        model.transform.GetChild(0).gameObject.transform.eulerAngles = transform.eulerAngles + localRotation;
+    }
 
     IEnumerator SwapModel()
     {
-          GameObject parent = GameObject.FindGameObjectWithTag("3d");
-           Destroy(parent.transform.GetChild(0).gameObject);
+        GameObject parent = GameObject.FindGameObjectWithTag("3d");
+        Destroy(parent.transform.GetChild(0).gameObject);
 
-           string id_animal = CommConstants.animalid.animal_id;
-           // id_animal = "2";
-           string model_url;
+        string id_animal = CommConstants.animalid.animal_id;
+        // id_animal = "2";
+        string model_url;
 
-           using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", id_animal))
-           {
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", id_animal))
+        {
 
-               yield return www.SendWebRequest();
+            yield return www.SendWebRequest();
 
-               if (www.result != UnityWebRequest.Result.Success)
-               {
-                   Debug.Log(www.error);
-               }
-               else
-               {
-                   if (id_animal == "0")
-                   {
-                       model_url = "WorldMapGlobe";
-                   }
-                   else
-                   {
-                       model_url = (www.downloadHandler.text);
-                   }
-                   Debug.Log(www.downloadHandler.text);
-                   GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                   Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
-               }
-           }
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                if (id_animal == "0")
+                {
+                    model_url = "WorldMapGlobe";
+                }
+                else
+                {
+                    model_url = (www.downloadHandler.text);
+                }
+                Debug.Log(www.downloadHandler.text);
+                GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
+                Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+            }
+        }
     }
     void Update()
     {
@@ -138,14 +143,15 @@ public class RotateModel : MonoBehaviour
                     model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
                 }
                 else if (CommConstants.state.start_quiz_flag == 1)
-                {             
+                {
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
 
-                } else if (sceneName == "HologramTablet")
+                }
+                else if (sceneName == "HologramTablet")
                 {
                     Debug.Log("ff");
-                    System.Diagnostics.Debug.WriteLine("Rotatemodel elif 3");
+                    // System.Diagnostics.Debug.WriteLine("Rotatemodel elif 3");
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
                 }
@@ -224,13 +230,19 @@ public class RotateModel : MonoBehaviour
                 objectToRotate.transform.RotateAround(objectToRotate.transform.position, Vector3.left, 25 * Time.deltaTime * rotationSpeed);
             }
 
-  
+            Vector3 eulerRotation = objectToRotate.transform.rotation.eulerAngles;
+
+            CommConstants.rotation.x = eulerRotation.x;
+            CommConstants.rotation.y = eulerRotation.y;
+            CommConstants.rotation.z = eulerRotation.y;
+
+            CommConstants.connection.SendData(CommConstants.rotation);
         }
         else
         {
 #endif
 
-        if (CommConstants.state.control_type != 3)
+            if (CommConstants.state.control_type != 3)
             {
                 CommConstants.state.control_type = 2;
             }
@@ -241,9 +253,8 @@ public class RotateModel : MonoBehaviour
             model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
 
 #if UNITY_STANDALONE_WIN
-  }
+        }
 #endif
-        CommConstants.connection.SendData(CommConstants.rotation);
     }
 
 
