@@ -49,8 +49,8 @@ public class RotateModel : MonoBehaviour
         m_Scene = SceneManager.GetActiveScene();
         sceneName = m_Scene.name;
         CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
-        CommConstants.rotation.OnRotationUpdated += RotateModel_OnRotationUpdated;
-        CommConstants.requestLeapTimeMsg.OnRequestLeapTimeUpdated += SendLeapTime;
+        CommConstants.rotation.OnUpdated += RotateModel_OnRotationUpdated;
+        CommConstants.requestLeapTimeMsg.OnUpdated += SendLeapTime;
 
         if (sceneName == "HologramGlobe")
         {

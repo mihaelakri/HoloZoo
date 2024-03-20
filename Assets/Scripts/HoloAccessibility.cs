@@ -10,7 +10,7 @@ public class HoloAccessibility : MonoBehaviour
     void Start()
     {
         HoloCamera = GameObject.Find("HologramCamera");
-        CommConstants.state.OnStateUpdated += HoloAccess_OnStateUpdated;
+        CommConstants.state.OnUpdated += HoloAccess_OnStateUpdated;
 
     }
 

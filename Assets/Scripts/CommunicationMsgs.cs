@@ -8,58 +8,59 @@ namespace CommunicationMsgs
         public bool isUpdated = false;
         [JsonIgnore]
         public CommunicationMsg newMsg;
-        protected virtual void UpdateData(CommunicationMsg msg){}
-        public virtual void UpdateMsgFromOtherThread(CommunicationMsg msg){}
-        public virtual void ObserveUpdate() {}
+        protected virtual void UpdateData(CommunicationMsg msg) { }
+        public void UpdateMsgFromOtherThread(CommunicationMsg msg)
+        {
+            newMsg = msg;
+            isUpdated = true;
+        }
+        public void ObserveUpdate()
+        {
+            if (isUpdated)
+            {
+                UpdateData(newMsg);
+                TriggerOnUpdatedEvent();
+                isUpdated = false;
+                System.Diagnostics.Debug.WriteLine(GetType().Name + " ObservedUpdate: " + JsonConvert.SerializeObject(this));
+            }
+        }
+        protected void TriggerOnUpdatedEvent()
+        {
+            OnUpdated?.Invoke();
+        }
+
+        public delegate void OnUpdatedDelegate();
+        public event OnUpdatedDelegate OnUpdated;
     }
 
     [System.Serializable]
     public class StateMsg : CommunicationMsg
     {
-        [JsonIgnore]
-        public int _player_id = 0;
         [JsonProperty("a")]
-        public int player_id { get { return _player_id; } set { _player_id = value; } }
-
-        [JsonIgnore]
-        public int _control_type = 0;
+        public int player_id = 0;
         [JsonProperty("b")]
-        public int control_type { get { return _control_type; } set { _control_type = value; } }
-
-        [JsonIgnore]
-        public float _initial_size = 1f;
+        public int control_type = 0;
         [JsonProperty("c")]
-        public float initial_size { get { return _initial_size; } set { _initial_size = value; } }
-
-        [JsonIgnore]
-        public float _finish_size = 0f;
+        public float initial_size = 1f;
         [JsonProperty("d")]
-        public float finish_size { get { return _finish_size; } set { _finish_size = value; } }
-
-        [JsonIgnore]
-        public float _initial_rotation_speed = 1f;
+        public float finish_size = 0f;
         [JsonProperty("e")]
-        public float initial_rotation_speed { get { return _initial_rotation_speed; } set { _initial_rotation_speed = value;} }
-
-        [JsonIgnore]
-        public int _start_quiz_flag = 0;
+        public float initial_rotation_speed = 1f;
         [JsonProperty("f")]
-        public int start_quiz_flag { get { return _start_quiz_flag; } set { _start_quiz_flag = value;} }
-
-        [JsonIgnore]
-        public int _background_color =0;
+        public int start_quiz_flag = 0;
         [JsonProperty("g")]
-        public int background_color { get { return _background_color; } set { _background_color = value;} }
+        public int background_color = 0;
 
-        public StateMsg(int playerId, int controlType, float initialSize, float finishSize, float initialRotationSpeed, int startQuizFlag, int backgroundColor, bool isUpdated)
+        public StateMsg(int player_id, int control_type, float initial_size, float finish_size, float initial_rotation_speed, 
+                int start_quiz_flag, int background_color, bool isUpdated)
         {
-            this._player_id = playerId;
-            this._control_type = controlType;
-            this._initial_size = initialSize;
-            this._finish_size = finishSize;
-            this._initial_rotation_speed = initialRotationSpeed;
-            this._start_quiz_flag = startQuizFlag;
-            this._background_color=backgroundColor;
+            this.player_id = player_id;
+            this.control_type = control_type;
+            this.initial_size = initial_size;
+            this.finish_size = finish_size;
+            this.initial_rotation_speed = initial_rotation_speed;
+            this.start_quiz_flag = start_quiz_flag;
+            this.background_color = background_color;
             base.isUpdated = isUpdated;
         }
 
@@ -68,51 +69,31 @@ namespace CommunicationMsgs
             if (msg is StateMsg)
             {
                 StateMsg stmsg = msg as StateMsg;
-                this._player_id = stmsg.player_id;
-                this._control_type = stmsg.control_type;
-                this._initial_size = stmsg.initial_size;
-                this._finish_size = stmsg.finish_size;
-                this._initial_rotation_speed = stmsg.initial_rotation_speed;
-                this._start_quiz_flag = stmsg.start_quiz_flag;
-                this._background_color= stmsg.background_color;
+                player_id = stmsg.player_id;
+                control_type = stmsg.control_type;
+                initial_size = stmsg.initial_size;
+                finish_size = stmsg.finish_size;
+                initial_rotation_speed = stmsg.initial_rotation_speed;
+                start_quiz_flag = stmsg.start_quiz_flag;
+                background_color = stmsg.background_color;
             }
         }
-
-        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
-        {
-            base.newMsg = msg;
-            base.isUpdated = true;
-        }
-
-        public override void ObserveUpdate()
-        {
-            if (base.isUpdated)
-            {
-                this.UpdateData(base.newMsg);
-                OnStateUpdated?.Invoke();
-                base.isUpdated = false;
-                System.Diagnostics.Debug.WriteLine("StateMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.state));
-            }
-        }
-
-        public delegate void OnStateUpdatedDelegate();
-        public event OnStateUpdatedDelegate OnStateUpdated;
     }
 
     [System.Serializable]
     public class RotationMsg : CommunicationMsg
     {
-        [JsonIgnore]
-        public float _x = 0f;
-        public float x { get { return _x; } set { _x = value; } }
+        public float x = 0f;
+        public float y = 0f;
+        public float z = 0f;
 
-        [JsonIgnore]
-        public float _y = 0f;
-        public float y { get { return _y; } set { _y = value; } }
-
-        [JsonIgnore]
-        public float _z = 0f;
-        public float z { get { return _z; } set { _z = value; } }
+        public RotationMsg(float x, float y, float z, bool isUpdated)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            base.isUpdated = isUpdated;
+        }
 
         protected override void UpdateData(CommunicationMsg msg)
         {
@@ -120,153 +101,66 @@ namespace CommunicationMsgs
             {
                 RotationMsg rotationMsg = msg as RotationMsg;
 
-                this._x = rotationMsg.x;
-                this._y = rotationMsg.y;
-                this._z = rotationMsg.z;
+                x = rotationMsg.x;
+                y = rotationMsg.y;
+                z = rotationMsg.z;
             }
         }
-
-        public RotationMsg(float x, float y, float z, bool isUpdated)
-        {
-            this._x = x;
-            this._y = y;
-            this._z = z;
-            base.isUpdated = isUpdated;
-        }
-
-        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
-        {
-                base.newMsg = msg;
-                base.isUpdated = true;
-                //System.Diagnostics.Debug.WriteLine("RotationMsg UpdateMsgFromOtherThread, isupdated: " + base.isUpdated.ToString());
-        }
-
-        public override void ObserveUpdate()
-        {
-            //System.Diagnostics.Debug.WriteLine("RotationMsg ObserveUpdate, isupdated: " + base.isUpdated.ToString());
-            if (base.isUpdated)
-            {
-                this.UpdateData(base.newMsg);
-                OnRotationUpdated?.Invoke();
-                base.isUpdated = false;
-                System.Diagnostics.Debug.WriteLine("RotationMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.rotation));
-            }
-        }
-
-        public delegate void OnRotationUpdatedDelegate();
-        public event OnRotationUpdatedDelegate OnRotationUpdated;
     }
 
     [System.Serializable]
     public class AnimalIdMsg : CommunicationMsg
     {
-        [JsonIgnore]
-        public string _animal_id = "";
-        public string animal_id { get { return _animal_id; } set { _animal_id = value; }}
+        public string animal_id = "";
+
+        public AnimalIdMsg(string animal_id, bool isUpdated)
+        {
+            this.animal_id = animal_id;
+            base.isUpdated = isUpdated;
+        }
 
         protected override void UpdateData(CommunicationMsg msg)
         {
             if (msg is AnimalIdMsg)
             {
                 AnimalIdMsg animMsg = msg as AnimalIdMsg;
-                this._animal_id = animMsg.animal_id;
+                animal_id = animMsg.animal_id;
             }
-        }
-    
-        public AnimalIdMsg(string animalId, bool isUpdated)
-        {
-            this._animal_id = animalId;
-            base.isUpdated = isUpdated;
-        }
-        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
-        {
-            base.newMsg = msg;
-            base.isUpdated = true;
         }
 
-        public override void ObserveUpdate()
-        {
-            if (base.isUpdated)
-            {
-                this.UpdateData(base.newMsg);
-                OnAnimalIdUpdated?.Invoke();
-                base.isUpdated = false;
-                System.Diagnostics.Debug.WriteLine("AnimalIdMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.animalid));
-            }
-        }
-        public delegate void OnAnimalIdUpdatedDelegate();
-        public event OnAnimalIdUpdatedDelegate OnAnimalIdUpdated;
     }
 
     [System.Serializable]
     public class LeapTimeMsg : CommunicationMsg
     {
-        [JsonIgnore]
-        public float _leap_time = -1f;
-        public float leap_time { get { return _leap_time; } set { _leap_time = value; }}
+        public float leap_time = -1f;
+
+        public LeapTimeMsg(float leap_time, bool isUpdated)
+        {
+            this.leap_time = leap_time;
+            base.isUpdated = isUpdated;
+        }
 
         protected override void UpdateData(CommunicationMsg msg)
         {
             if (msg is LeapTimeMsg)
             {
                 LeapTimeMsg leapMsg = msg as LeapTimeMsg;
-                this._leap_time = leapMsg.leap_time;
+                leap_time = leapMsg.leap_time;
             }
         }
-    
-        public LeapTimeMsg(float leap_time, bool isUpdated)
-        {
-            this._leap_time = leap_time;
-            base.isUpdated = isUpdated;
-        }
-        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
-        {
-            base.newMsg = msg;
-            base.isUpdated = true;
-        }
-
-        public override void ObserveUpdate()
-        {
-            if (base.isUpdated)
-            {
-                this.UpdateData(base.newMsg);
-                OnLeapTimeUpdated?.Invoke();
-                base.isUpdated = false;
-                System.Diagnostics.Debug.WriteLine("LeapTimeMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.leapTimeMsg));
-            }
-        }
-        public delegate void OnLeapTimeUpdatedDelegate();
-        public event OnLeapTimeUpdatedDelegate OnLeapTimeUpdated;
     }
 
     [System.Serializable]
     public class RequestLeapTimeMsg : CommunicationMsg
     {
-        protected override void UpdateData(CommunicationMsg msg)
-        {
-        }
-    
         public RequestLeapTimeMsg(bool isUpdated)
         {
             base.isUpdated = isUpdated;
         }
-        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
-        {
-            base.newMsg = msg;
-            base.isUpdated = true;
-        }
 
-        public override void ObserveUpdate()
+        protected override void UpdateData(CommunicationMsg msg)
         {
-            if (base.isUpdated)
-            {
-                this.UpdateData(base.newMsg);
-                OnRequestLeapTimeUpdated?.Invoke();
-                base.isUpdated = false;
-                System.Diagnostics.Debug.WriteLine("RequestLeapTimeMsg ObservedUpdate");
-            }
         }
-        public delegate void OnRequestLeapTimeUpdatedDelegate();
-        public event OnRequestLeapTimeUpdatedDelegate OnRequestLeapTimeUpdated;
     }
 }

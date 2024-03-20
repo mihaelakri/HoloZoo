@@ -19,7 +19,7 @@ public class Load3DModelTablet : MonoBehaviour
     {
         StartCoroutine(GetModel());
 
-        CommConstants.animalid.OnAnimalIdUpdated += LoadModel_OnAnimalIdUpdated;
+        CommConstants.animalid.OnUpdated += LoadModel_OnAnimalIdUpdated;
     }
 
     private void LoadModel_OnAnimalIdUpdated()
