@@ -35,9 +35,9 @@ public class MouseRotate : MonoBehaviour
         transform.Rotate(_rotation);
 
         // Update CommConstants after each rotation change, rounding to the nearest integer within 360 range
-        CommConstants.x = Mathf.RoundToInt((transform.eulerAngles.x + 360.0f) % 360.0f);
-        CommConstants.y = Mathf.RoundToInt((transform.eulerAngles.y + 360.0f) % 360.0f);
-        CommConstants.z = Mathf.RoundToInt((transform.eulerAngles.z + 360.0f) % 360.0f);
+        CommConstants.rotation.x = Mathf.RoundToInt((transform.eulerAngles.x + 360.0f) % 360.0f);
+        CommConstants.rotation.y = Mathf.RoundToInt((transform.eulerAngles.y + 360.0f) % 360.0f);
+        CommConstants.rotation.z = Mathf.RoundToInt((transform.eulerAngles.z + 360.0f) % 360.0f);
 
         // store mouse
         _mouseReference = Input.mousePosition;

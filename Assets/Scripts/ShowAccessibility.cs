@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-
+using CommunicationMsgs;
 public class ShowAccessibility : MonoBehaviour
 {
     public GameObject accessibilityScreen;
@@ -18,46 +18,102 @@ public class ShowAccessibility : MonoBehaviour
     public Slider sideSlider;
     public GameObject bottomButtons;
     public GameObject sideButtons;
-    public Button[] zoominoutButtons; 
-
+    public Button[] zoominoutButtons;
+    private Transform accessibilityPopUpTransform;
 
     void Start()
     {
         sideButtons.gameObject.SetActive(false);
-        bottomButtons.gameObject.SetActive(false);  
+        bottomButtons.gameObject.SetActive(false);
+
+    }
+
+    private void Update()
+    {
+        GameObject activeParent = GameObject.Find("Learn screen animal- rotate screen");
+     
+        if (activeParent != null)
+        {
+   
+            accessibilityPopUpTransform = FindInactiveGameObjectByName(activeParent.transform, "AccessibilityPopUp");
+
+            if (accessibilityPopUpTransform != null)
+            {
+            
+                foreach (Transform child in accessibilityPopUpTransform)
+                {                  
+                    //Debug.Log(child.name);
+                }
+            }
+            else
+            {
+                Debug.LogError("AccessibilityPopUp not found among the children of the active parent.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Active parent GameObject not found.");
+        }
+    }
+    Transform FindInactiveGameObjectByName(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+
+            Transform found = FindInactiveGameObjectByName(child, name);
+            if (found != null)
+            {
+                return found;
+            }
+        }
+        return null; // Return null if the GameObject is not found
     }
 
     public void setStartingAcc(){
 
-        rotationSpeedScrollBar.value = CommConstants.initial_rotation_speed-0.5f; 
+        rotationSpeedScrollBar.value = CommConstants.state.initial_rotation_speed-0.5f; 
         
         sideButtons.gameObject.SetActive(false);
         bottomButtons.gameObject.SetActive(false);  
         sideSlider.gameObject.SetActive(true);
         bottomSlider.gameObject.SetActive(true);
+       
 
-        Toggle toggleButtonBackground = GameObject.Find("Background").transform.GetChild(1).GetComponent<Toggle>();
-        toggleButtonBackground.isOn = false; 
-        Camera.main.backgroundColor = Color.black;
+        Toggle toggleButtonBackground = accessibilityPopUpTransform.Find("Background").transform.Find("Toggle").GetComponent<Toggle>();
+       
+
+        toggleButtonBackground.isOn = false;
+        // Camera.main.backgroundColor = Color.black;
+       
          PlayerPrefs.SetInt("backgorund_white", 0);
+      
+        Toggle toggleButtonAnimation = accessibilityPopUpTransform.Find("Animation").transform.Find("Toggle").GetComponent<Toggle>();
+         toggleButtonAnimation.isOn = false; 
 
-        Toggle toggleButtonAnimation = GameObject.Find("Animation").transform.GetChild(1).GetComponent<Toggle>();
-        toggleButtonAnimation.isOn = false; 
+         Toggle toggleButtonBtnSlider = accessibilityPopUpTransform.Find("BtnSlider").transform.GetChild(1).GetComponent<Toggle>();
+         toggleButtonBtnSlider.isOn = false;
 
-        Toggle toggleButtonBtnSlider = GameObject.Find("BtnSlider").transform.GetChild(1).GetComponent<Toggle>();
-        toggleButtonBtnSlider.isOn = false; 
-    
+        CommConstants.rotation.x = 0;
+        CommConstants.rotation.y = 0;
+        sideSlider.value = 0;
+        bottomSlider.value = 0;
+
+
     }
 
     public void SetRotationSpeed(){
 
         float rotation_speed = rotationSpeedScrollBar.value;
-        if(rotation_speed < 0.5f){
-            CommConstants.initial_rotation_speed = 0.5f;
-        }else if(rotation_speed >= 0.5f && rotation_speed < 0.8f){
-            CommConstants.initial_rotation_speed = 1f;
+        if(rotation_speed < 0.4f){
+            CommConstants.state.initial_rotation_speed = 0.5f;
+        }else if(rotation_speed >= 0.4f && rotation_speed < 0.7f){
+            CommConstants.state.initial_rotation_speed = 1f;
         }else{
-             CommConstants.initial_rotation_speed = 1.5f;
+             CommConstants.state.initial_rotation_speed = 1.5f;
         }
 
     }
@@ -74,16 +130,19 @@ public class ShowAccessibility : MonoBehaviour
     public void changeColor()
     {
         GameObject AccessibilityWindow = GameObject.Find("AccessibilityPopUp");
-        //Transform AccessibilityTransform = AccessibilityWindow.GetComponent<Transform>();
-        //Image AccessibilityBackground = AccessibilityWindow.GetComponent<Image>();
+      
+        Transform AccessibilityTransform = accessibilityPopUpTransform.Find("Background").GetComponent<Transform>();
+        Debug.Log(AccessibilityTransform);
+        Image AccessibilityBackground = accessibilityPopUpTransform.GetComponent<Image>();
         
 
         if (Camera.main.backgroundColor == Color.white)
         {
             Camera.main.backgroundColor = Color.black;
-           //AccessibilityBackground.color = Color.black;
+            AccessibilityBackground.color = Color.white;
             PlayerPrefs.SetInt("backgorund_white", 0);
-            //ChangeTextColorRecursiveInChildren(AccessibilityTransform, Color.white);
+            ChangeTextColorRecursiveInChildren(accessibilityPopUpTransform, Color.black);
+            CommConstants.state.background_color = 0;
              foreach (Button button in zoominoutButtons)
             {
                 SetButtonColor(button, Color.white);
@@ -93,9 +152,11 @@ public class ShowAccessibility : MonoBehaviour
         }
         else {
             Camera.main.backgroundColor = Color.white;
-            //AccessibilityBackground.color = Color.white;
+            AccessibilityBackground.color = Color.black;
             PlayerPrefs.SetInt("backgorund_white", 1);
-            //ChangeTextColorRecursiveInChildren(AccessibilityTransform, Color.black);
+            CommConstants.state.background_color = 1;
+           
+            ChangeTextColorRecursiveInChildren(accessibilityPopUpTransform, Color.white);
              foreach (Button button in zoominoutButtons)
             {
                 SetButtonColor(button, Color.black);
@@ -103,12 +164,14 @@ public class ShowAccessibility : MonoBehaviour
             }
             
         }
+
+        CommConstants.connection.SendData(CommConstants.state);
     }
 
     public void displayButton()
     {
 
-       Toggle toggleButton = GameObject.Find("BtnSlider").transform.GetChild(1).GetComponent<Toggle>();
+       Toggle toggleButton = accessibilityPopUpTransform.Find("BtnSlider").transform.GetChild(1).GetComponent<Toggle>();
         
        if (toggleButton.isOn)
             {
@@ -117,7 +180,7 @@ public class ShowAccessibility : MonoBehaviour
                 bottomSlider.gameObject.SetActive(false);
                 sideButtons.gameObject.SetActive(true);
                 bottomButtons.gameObject.SetActive(true);
-                CommConstants.control_type = 3;
+                CommConstants.state.control_type = 3;
             }
         else
             {
@@ -126,7 +189,7 @@ public class ShowAccessibility : MonoBehaviour
                 bottomSlider.gameObject.SetActive(true);
                 sideButtons.gameObject.SetActive(false);
                 bottomButtons.gameObject.SetActive(false);
-                CommConstants.control_type = 2;
+                CommConstants.state.control_type = 2;
             }
     }
 
@@ -203,12 +266,12 @@ public class ShowAccessibility : MonoBehaviour
 
         WWWForm form = new WWWForm();
         form.AddField("backgorund_color", PlayerPrefs.GetInt("backgorund_white") == 1 ? "white" : "black");
-        form.AddField("rotation_speed", CommConstants.initial_rotation_speed.ToString());
-        form.AddField("object_size", CommConstants.finish_size.ToString());
+        form.AddField("rotation_speed", CommConstants.state.initial_rotation_speed.ToString());
+        form.AddField("object_size", CommConstants.state.finish_size.ToString());
         form.AddField("animation", isAnimationPlaying ? 1 : 0);
         
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"/accessibility_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"accessibility_view.php", form)){
 
             yield return www.SendWebRequest();
 

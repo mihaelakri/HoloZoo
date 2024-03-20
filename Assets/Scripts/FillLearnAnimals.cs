@@ -45,7 +45,7 @@ public class FillLearnAnimals : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("learn_list", "learn");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
 
             yield return www.SendWebRequest();
 

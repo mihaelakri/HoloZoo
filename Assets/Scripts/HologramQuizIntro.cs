@@ -36,7 +36,7 @@ public class HologramQuizIntro : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("time_intro", elapsedTimeIntro.ToString());
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"/quiz_model_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"quiz_model_view.php", form)){
 
             yield return www.SendWebRequest();
 

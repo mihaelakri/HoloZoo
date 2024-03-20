@@ -86,7 +86,7 @@ public class FillAnimal : MonoBehaviour
         form.AddField("id_animal", PlayerPrefs.GetString("id_animal"));
         string animal_id =  PlayerPrefs.GetString("id_animal");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -97,8 +97,8 @@ public class FillAnimal : MonoBehaviour
             else
                 {
                     animal = JsonUtility.FromJson<Animal>(www.downloadHandler.text);
-                    UnityWebRequest request = UnityWebRequestTexture.GetTexture("http://localhost/HoloZoo/" + animal.url_slika);
-                    Debug.Log("http://localhost/HoloZoo/" + animal.url_slika);
+                    UnityWebRequest request = UnityWebRequestTexture.GetTexture(CommConstants.ServerURL + animal.url_slika);
+                    Debug.Log(CommConstants.ServerURL + animal.url_slika);
                     yield return request.SendWebRequest();
 
                     nameText.text = animal.name;
