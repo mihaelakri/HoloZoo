@@ -30,31 +30,31 @@ public class ConnectionBase : MonoBehaviour
         switch (msgType)
         {
             case CommunicationMsgs.StateMsg a:
-                skipSending = false;
+                reliableDelay(1);
                 msg = "s";
                 msg += JsonConvert.SerializeObject(CommConstants.state, Formatting.None);
                 break;
 
             case CommunicationMsgs.RotationMsg b:
-                checkThrottling();
+                unreliableThrottle();
                 msg = "r";
                 msg += JsonConvert.SerializeObject(CommConstants.rotation, Formatting.None);
                 break;
 
             case CommunicationMsgs.AnimalIdMsg c:
-                skipSending = false;
+                reliableDelay(50);
                 msg = "a";
                 msg += JsonConvert.SerializeObject(CommConstants.animalid, Formatting.None);
                 break;
 
             case CommunicationMsgs.LeapTimeMsg l:
-                skipSending = false;
+                reliableDelay(1);
                 msg = "l";
                 msg += JsonConvert.SerializeObject(CommConstants.leapTimeMsg, Formatting.None);
                 break;
 
             case CommunicationMsgs.RequestLeapTimeMsg q:
-                skipSending = false;
+                reliableDelay(100);
                 msg = "q";
                 msg += JsonConvert.SerializeObject(CommConstants.requestLeapTimeMsg, Formatting.None);
                 break;
@@ -100,7 +100,7 @@ public class ConnectionBase : MonoBehaviour
     }
 
     // Essentially creates a separate throttled stream
-    protected void checkThrottling()
+    private void unreliableThrottle()
     {
         timeSinceLastUpdate = Time.time - lastUpdateTime;
 
@@ -113,6 +113,12 @@ public class ConnectionBase : MonoBehaviour
         {
             skipSending = true;
         }
+    }
+
+    private void reliableDelay(int delay)
+    {
+        Thread.Sleep(delay);
+        skipSending = false;
     }
 
 }

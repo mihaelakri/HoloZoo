@@ -89,9 +89,6 @@ public class ConnectionBluetooth : ConnectionBase
         // string msg = JsonConvert.SerializeObject(base.msg, Formatting.None);
         //BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(CommConstants.state));
         
-        // Add slight delay for 'reliable' messages
-        if (!base.skipSending)
-            Thread.Sleep(10);
     }
 
 }

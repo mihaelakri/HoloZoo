@@ -73,7 +73,7 @@ public class ConnectionBluetoothWindows32 : ConnectionBase
                 if (BitConverter.IsLittleEndian)
                 {
                     Array.Reverse(msgHeaderLength, 0, sizeof(int));
-                    System.Diagnostics.Debug.WriteLine("Reversed msgHeaderLength");
+                    // System.Diagnostics.Debug.WriteLine("Reversed msgHeaderLength");
                 }
                 int msgLength = BitConverter.ToInt32(msgHeaderLength, 0);
                 System.Diagnostics.Debug.WriteLine("Msg Length: " + msgLength + " Msg Type: " + msgType);
