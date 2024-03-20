@@ -32,6 +32,9 @@ public class RotateModel : MonoBehaviour
     Scene m_Scene;
     string sceneName;
 
+    // Usage time tracking
+    float currentLeapUsage = 0f;
+    bool leapUsed = false;
 
 
 #if UNITY_STANDALONE_WIN
@@ -47,6 +50,7 @@ public class RotateModel : MonoBehaviour
         sceneName = m_Scene.name;
         CommConstants.state.player_id = PlayerPrefs.GetInt("ID");
         CommConstants.rotation.OnRotationUpdated += RotateModel_OnRotationUpdated;
+        CommConstants.requestLeapTimeMsg.OnRequestLeapTimeUpdated += SendLeapTime;
 
         if (sceneName == "HologramGlobe")
         {
@@ -153,7 +157,15 @@ public class RotateModel : MonoBehaviour
                     Debug.Log("ff");
                     // System.Diagnostics.Debug.WriteLine("Rotatemodel elif 3");
                     initialRotation = model.transform.GetChild(0).gameObject.transform.rotation;
+
+                    float leapUsageStart = Time.time;
                     RotateModelLeap(model.transform.GetChild(0).gameObject);
+
+                    if (leapUsed)
+                    {
+                        currentLeapUsage += Time.time - leapUsageStart;
+                        leapUsed = false;
+                    }
                 }
 
 
@@ -167,6 +179,19 @@ public class RotateModel : MonoBehaviour
 
     }
 
+    private float GetAndResetLeapUsage()
+    {
+        float usageCopy = currentLeapUsage;
+        currentLeapUsage = 0f;
+        return usageCopy;
+    }
+
+    public void SendLeapTime()
+    {
+        CommConstants.leapTimeMsg.leap_time = GetAndResetLeapUsage();
+        CommConstants.connection.SendData(CommConstants.leapTimeMsg);
+        System.Diagnostics.Debug.WriteLine("LeapTime sent");
+    }
 
     public void rotateModel()
     {
@@ -237,6 +262,8 @@ public class RotateModel : MonoBehaviour
             CommConstants.rotation.z = eulerRotation.y;
 
             CommConstants.connection.SendData(CommConstants.rotation);
+            
+            leapUsed = true;
         }
         else
         {

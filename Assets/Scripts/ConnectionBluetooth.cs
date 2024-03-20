@@ -6,6 +6,7 @@ using UnityEngine;
 using SVSBluetooth;
 using CommunicationMsgs;
 using Newtonsoft.Json;
+using System.Threading;
 
 public class ConnectionBluetooth : ConnectionBase
 {
@@ -65,8 +66,8 @@ public class ConnectionBluetooth : ConnectionBase
 
     private void BTReceiveRotate3DModel(string data)
     {
-        Debug.Log("Bluetooth - BTReceiveRotate3DModel");
-        Debug.Log("Data: " + data);
+        Debug.Log("Bluetooth - BTReceiveRotate3DModel, data: " + data);
+        
         //StateMsg stateMsg = JsonUtility.FromJson<StateMsg>(data);
         // StateMsg stateMsg = JsonConvert.DeserializeObject<StateMsg>(data);
 
@@ -87,6 +88,10 @@ public class ConnectionBluetooth : ConnectionBase
         //string msg=JsonUtility.ToJson(CommConstants.state);
         // string msg = JsonConvert.SerializeObject(base.msg, Formatting.None);
         //BluetoothForAndroid.WriteMessage(JsonUtility.ToJson(CommConstants.state));
+        
+        // Add slight delay for 'reliable' messages
+        if (!base.skipSending)
+            Thread.Sleep(10);
     }
 
 }

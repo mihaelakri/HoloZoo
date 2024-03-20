@@ -47,6 +47,17 @@ public class ConnectionBase : MonoBehaviour
                 msg += JsonConvert.SerializeObject(CommConstants.animalid, Formatting.None);
                 break;
 
+            case CommunicationMsgs.LeapTimeMsg l:
+                skipSending = false;
+                msg = "l";
+                msg += JsonConvert.SerializeObject(CommConstants.leapTimeMsg, Formatting.None);
+                break;
+
+            case CommunicationMsgs.RequestLeapTimeMsg q:
+                skipSending = false;
+                msg = "q";
+                msg += JsonConvert.SerializeObject(CommConstants.requestLeapTimeMsg, Formatting.None);
+                break;
             default:
                 break;
         }
@@ -72,6 +83,16 @@ public class ConnectionBase : MonoBehaviour
                 AnimalIdMsg animalIdMsg = JsonConvert.DeserializeObject<AnimalIdMsg>(msg[1..]);
                 CommConstants.animalid.UpdateMsgFromOtherThread(animalIdMsg);
                 // System.Diagnostics.Debug.WriteLine("New animal: " + JsonConvert.SerializeObject(CommConstants.animalid));
+                break;
+            case "l":
+                LeapTimeMsg leapTimeMsg = JsonConvert.DeserializeObject<LeapTimeMsg>(msg[1..]);
+                CommConstants.leapTimeMsg.UpdateMsgFromOtherThread(leapTimeMsg);
+                // System.Diagnostics.Debug.WriteLine("New leap time: " + JsonConvert.SerializeObject(CommConstants.leapTimeMsg));
+                break;
+            case "q":
+                RequestLeapTimeMsg requestLeapTimeMsg = JsonConvert.DeserializeObject<RequestLeapTimeMsg>(msg[1..]);
+                CommConstants.requestLeapTimeMsg.UpdateMsgFromOtherThread(requestLeapTimeMsg);
+                // System.Diagnostics.Debug.WriteLine("New RequestLeapTimeMsg: " + JsonConvert.SerializeObject(CommConstants.requestLeapTimeMsg));
                 break;
             default:
                 break;

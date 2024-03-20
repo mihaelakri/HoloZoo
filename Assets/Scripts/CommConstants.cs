@@ -37,6 +37,7 @@ public static class CommConstants
     public static StateMsg state = new StateMsg(0, 0, 1f, 0f, 1f, 0, 0,  false);
     public static RotationMsg rotation = new RotationMsg(0f, 0f, 0f, false);
     public static AnimalIdMsg animalid = new AnimalIdMsg("7", false);
-
+    public static LeapTimeMsg leapTimeMsg = new LeapTimeMsg(-1f, false);
+    public static RequestLeapTimeMsg requestLeapTimeMsg = new RequestLeapTimeMsg(false);
 
 }

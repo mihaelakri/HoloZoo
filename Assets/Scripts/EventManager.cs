@@ -40,7 +40,9 @@ public class EventManager : MonoBehaviour
         CommMsgs = new List<CommunicationMsg> {
         CommConstants.state,
         CommConstants.rotation,
-        CommConstants.animalid
+        CommConstants.animalid,
+        CommConstants.leapTimeMsg,
+        CommConstants.requestLeapTimeMsg
         };
         DontDestroyOnLoad(gameObject);
         System.Diagnostics.Debug.WriteLine("EventManager awake");

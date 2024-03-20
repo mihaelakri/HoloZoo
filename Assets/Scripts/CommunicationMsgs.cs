@@ -197,4 +197,76 @@ namespace CommunicationMsgs
         public delegate void OnAnimalIdUpdatedDelegate();
         public event OnAnimalIdUpdatedDelegate OnAnimalIdUpdated;
     }
+
+    [System.Serializable]
+    public class LeapTimeMsg : CommunicationMsg
+    {
+        [JsonIgnore]
+        public float _leap_time = -1f;
+        public float leap_time { get { return _leap_time; } set { _leap_time = value; }}
+
+        protected override void UpdateData(CommunicationMsg msg)
+        {
+            if (msg is LeapTimeMsg)
+            {
+                LeapTimeMsg leapMsg = msg as LeapTimeMsg;
+                this._leap_time = leapMsg.leap_time;
+            }
+        }
+    
+        public LeapTimeMsg(float leap_time, bool isUpdated)
+        {
+            this._leap_time = leap_time;
+            base.isUpdated = isUpdated;
+        }
+        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
+        {
+            base.newMsg = msg;
+            base.isUpdated = true;
+        }
+
+        public override void ObserveUpdate()
+        {
+            if (base.isUpdated)
+            {
+                this.UpdateData(base.newMsg);
+                OnLeapTimeUpdated?.Invoke();
+                base.isUpdated = false;
+                System.Diagnostics.Debug.WriteLine("LeapTimeMsg ObservedUpdate: " + JsonConvert.SerializeObject(CommConstants.leapTimeMsg));
+            }
+        }
+        public delegate void OnLeapTimeUpdatedDelegate();
+        public event OnLeapTimeUpdatedDelegate OnLeapTimeUpdated;
+    }
+
+    [System.Serializable]
+    public class RequestLeapTimeMsg : CommunicationMsg
+    {
+        protected override void UpdateData(CommunicationMsg msg)
+        {
+        }
+    
+        public RequestLeapTimeMsg(bool isUpdated)
+        {
+            base.isUpdated = isUpdated;
+        }
+        public override void UpdateMsgFromOtherThread(CommunicationMsg msg)
+        {
+            base.newMsg = msg;
+            base.isUpdated = true;
+        }
+
+        public override void ObserveUpdate()
+        {
+            if (base.isUpdated)
+            {
+                this.UpdateData(base.newMsg);
+                OnRequestLeapTimeUpdated?.Invoke();
+                base.isUpdated = false;
+                System.Diagnostics.Debug.WriteLine("RequestLeapTimeMsg ObservedUpdate");
+            }
+        }
+        public delegate void OnRequestLeapTimeUpdatedDelegate();
+        public event OnRequestLeapTimeUpdatedDelegate OnRequestLeapTimeUpdated;
+    }
 }

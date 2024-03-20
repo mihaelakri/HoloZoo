@@ -57,7 +57,7 @@ public class ControlTracker : MonoBehaviour
         }
         if(CommConstants.state.control_type == 1){
             leap_motion = true;
-            leap_motion_time += Time.deltaTime;
+            // leap_motion_time += Time.deltaTime;
         }else{
             if (bottomSlider != null && bottomSlider.value != bottomSlider.minValue)
                 {
@@ -96,6 +96,22 @@ public class ControlTracker : MonoBehaviour
 
     IEnumerator SaveControlsPrefs(System.Action<int> callback)
     {
+        CommConstants.connection.SendData(CommConstants.requestLeapTimeMsg);
+
+        // Wait for leapTime over Bluetooth
+        float timeout = 5f; // 5 seconds timeout
+        while (CommConstants.leapTimeMsg.leap_time == -1f)
+        {
+            yield return null;
+            timeout -= Time.deltaTime;
+            if (timeout <= 0f)
+                break;
+        }
+
+        // is -1 if not received over BT
+        leap_motion_time = CommConstants.leapTimeMsg.leap_time;
+        Debug.Log("ControlTracker - leap_motion_time: " + leap_motion_time + ", timeout: " + timeout.ToString());
+
         WWWForm form = new WWWForm();
         form.AddField("leap_motion", leap_motion ? 1 : 0);
         form.AddField("leap_motion_time", (leap_motion_time*1000).ToString()); // convert to miliseconds
@@ -118,6 +134,7 @@ public class ControlTracker : MonoBehaviour
                 leap_motion_time = 0f;
                 scroll_bar_time = 0f;
                 buttons_time = 0f;
+                CommConstants.leapTimeMsg.leap_time = -1f;
 
                 // provjera je li uneseno 
                 int controlsId = Convert.ToInt16(www.downloadHandler.text);
