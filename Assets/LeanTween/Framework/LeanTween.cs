@@ -254,7 +254,7 @@ public class LeanTween : MonoBehaviour {
     private static int[] tweensFinishedIds;
     private static LTDescr tween;
     private static int tweenMaxSearch = -1;
-    private static int maxTweens = 5000;
+    private static int maxTweens = 400;
     private static int maxSequences = 400;
     private static int frameRendered= -1;
     private static GameObject _tweenEmpty;
@@ -317,7 +317,6 @@ public class LeanTween : MonoBehaviour {
     public static void init(int maxSimultaneousTweens ){
         init(maxSimultaneousTweens, maxSequences);
     }
-    
         
     public static void init(int maxSimultaneousTweens, int maxSimultaneousSequences){
         if(tweens==null){
@@ -381,7 +380,6 @@ public class LeanTween : MonoBehaviour {
     }
 
     private static int maxTweenReached;
-    
 
     public static void update() {
         if(frameRendered != Time.frameCount){ // make sure update is only called once per frame
@@ -956,7 +954,7 @@ public class LeanTween : MonoBehaviour {
         if(throwErrors) Debug.LogError(error); else Debug.Log(error);
         return null;
     }
-    
+
     public static LTDescr options(LTDescr seed){ Debug.LogError("error this function is no longer used"); return null; }
     public static LTDescr options(){
         init();
