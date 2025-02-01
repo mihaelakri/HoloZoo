@@ -1,5 +1,14 @@
 # HoloZoo
 
+## TO DO LIST
+
+- [ ] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
+- [ ] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
+- [ ] staviti jezike na oba uređaja odvojeno
+- [ ] popraviti server URL u skriptama
+
+
+
 ## Cloning and running the project
 
 - Clone the project
