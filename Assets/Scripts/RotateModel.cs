@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Threading.Tasks;
-using PusherClient;
 using SVSBluetooth;
 using System.Threading;
 
@@ -23,12 +22,8 @@ public class RotateModel : MonoBehaviour
     // public float x=0f,y=0f, z=0f;
     public float sliderLastX=0, sliderLastY=0;
 
-    private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
     private float lastUpdateTime = 0f;
     public RotateModel instance = null;
-    // private Pusher pusher;
-    // private Channel channel;
-    // private bool is_websocket_open = false;
     // private int player_id;
     // private string conn_method;
     // bool is_BTConnected = false;
@@ -52,12 +47,6 @@ public class RotateModel : MonoBehaviour
             this.player_id = player_id;
             this.animal_id = animal_id;
         }
-    }
-
-    private class PusherRotationMsg {
-        public string @event;
-        public string data;
-        public string channel;
     }
 
     async Task Start()
@@ -137,21 +126,10 @@ public class RotateModel : MonoBehaviour
 
         // Debug.Log("rotate model");
 
-        if (CommConstants.conn_method == "websocket") {
-            if (!CommConstants.is_websocket_open){
-                Debug.Log("Websocket not open");
-                return;
-            }
-
-            float timeSinceLastUpdate = Time.time - lastUpdateTime;
-
-            if (timeSinceLastUpdate >= updateFrequency)
-            {
-                StartCoroutine(SendRotate3DModel());
-                lastUpdateTime = Time.time;
-            }
-        } else {    // Bluetooth
+        if (CommConstants.conn_method == "bluetooth") {
             BTSendRotate3DModel();
+        } else {
+            Debug.LogError("Unknown connection method");
         }
 
     }
@@ -162,24 +140,6 @@ public class RotateModel : MonoBehaviour
         CommConstants.z = spherePosition.z;
         // Debug.Log("Sphere x: "+spherePosition.x+" y: "+spherePosition.y+" z: "+spherePosition.z);
         this.rotateModel();
-    }
-
-    IEnumerator SendRotate3DModel(){
-        // Debug.Log(PlayerPrefs.GetString("id_animal"));
-
-        RotationMsg rotationMsg = new RotationMsg(
-            CommConstants.x.ToString(),
-            CommConstants.y.ToString(),
-            CommConstants.z.ToString(),
-            CommConstants.player_id,
-            PlayerPrefs.GetString("id_animal", "1")
-        );
-
-        CommConstants.channel.Trigger(
-            "client-rotation"+CommConstants.player_id,
-            JsonUtility.ToJson(rotationMsg)
-        );
-        yield return 0;
     }
 
     private void BTSendRotate3DModel () {

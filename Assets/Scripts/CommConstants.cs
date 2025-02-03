@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PusherClient;
 using SVSBluetooth;
 
 public static class CommConstants
@@ -13,9 +12,6 @@ public static class CommConstants
 
     public static string IdUser = "";
 
-    public static Pusher pusher;
-    public static Channel channel;
-    public static  bool is_websocket_open = false;
     public static string conn_method;
     public static bool is_BTConnected = false;
     public static string paired_BT_server;

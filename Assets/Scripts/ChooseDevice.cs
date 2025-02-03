@@ -20,10 +20,6 @@ public class ChooseDevice : MonoBehaviour
     }
 
     private void storeCommMethod() {
-        if (m_Toggle.isOn) {
-            PlayerPrefs.SetString("conn_method","bluetooth");
-        } else {
-            PlayerPrefs.SetString("conn_method","websocket");
-        }
+        PlayerPrefs.SetString("conn_method","bluetooth");
     }
 }

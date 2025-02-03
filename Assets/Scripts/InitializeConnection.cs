@@ -9,16 +9,12 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Threading.Tasks;
-using PusherClient;
 using SVSBluetooth;
 using System.Threading;
 
 public class InitializeConnection : MonoBehaviour
 {
-    private float updateFrequency = 1f / 9f; // 10Hz is max. allowed by Pusher
     private float lastUpdateTime = 0f;
-    // private Pusher pusher;
-    // private Channel channel;
     private int player_id;
     Scene m_Scene;
     string sceneName;
@@ -39,12 +35,6 @@ public class InitializeConnection : MonoBehaviour
         }
     }
 
-    private class PusherRotationMsg {
-        public string @event;
-        public string data;
-        public string channel;
-    }
-
     // Start is called before the first frame update
     async Task Start()
     {
@@ -55,20 +45,7 @@ public class InitializeConnection : MonoBehaviour
         CommConstants.conn_method = PlayerPrefs.GetString("conn_method");
         Debug.Log("conn_method: "+CommConstants.conn_method);
 
-        if (CommConstants.conn_method == "websocket") {
-            lastUpdateTime = Time.time;
-            // Debug.Log("Player id: "+player_id);
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-            DontDestroyOnLoad(gameObject);
-            await InitialisePusher();
-        } else {
+        if (CommConstants.conn_method == "bluetooth") {
             BluetoothForAndroid.Initialize();
             if (PlayerPrefs.GetString("device")=="mobile") {
                 Debug.Log("Bluetooth - CreateServer");
@@ -77,73 +54,8 @@ public class InitializeConnection : MonoBehaviour
                 Debug.Log("Bluetooth - ConnectToServer");
                 BluetoothForAndroid.ConnectToServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
             }
-        }
-    }
-
-    // Websockets
-
-    private async Task InitialisePusher()
-    {
-        if (CommConstants.pusher == null)
-        {
-            MyHttpChannelAuthorizer authorizer = new MyHttpChannelAuthorizer(CommConstants.ServerURL+"broadcasting/auth");
-
-            CommConstants.pusher = new Pusher("8264e84d03d49bc6ff4f", new PusherOptions()
-            {
-                Cluster = "eu",
-                Encrypted = true,
-                Authorizer = authorizer,
-                ClientTimeout = TimeSpan.FromSeconds(20),
-            });
-
-            CommConstants.pusher.Error += OnPusherOnError;
-            CommConstants.pusher.ConnectionStateChanged += PusherOnConnectionStateChanged;
-            CommConstants.pusher.Connected += PusherOnConnected;
-            CommConstants.channel = await CommConstants.pusher.SubscribeAsync("private-rotation."+player_id);
-            CommConstants.pusher.Subscribed += OnChannelOnSubscribed;
-            await CommConstants.pusher.ConnectAsync();
-        }
-    }
-
-    private void PusherOnConnected(object sender)
-    {
-        Debug.Log("Pusher - Connected");
-        CommConstants.channel.Bind("client-rotation"+player_id, (string data) =>
-        {
-            Debug.Log("client-rotation"+player_id);
-            Debug.Log(data);
-            PusherRotationMsg pusherRotationMsg = JsonUtility.FromJson<PusherRotationMsg>(data);
-            RotationMsg rotationMsg = JsonUtility.FromJson<RotationMsg>(pusherRotationMsg.data);
-            Debug.Log("Rotation Msg; X: "+rotationMsg.x+" Y: "+rotationMsg.y);
-            CommConstants.x = float.Parse(rotationMsg.x);
-            CommConstants.y = float.Parse(rotationMsg.y);
-            CommConstants.z = float.Parse(rotationMsg.z);
-            CommConstants.new_animal_id = rotationMsg.animal_id;
-        });
-        CommConstants.is_websocket_open = true;
-    }
-
-    private void PusherOnConnectionStateChanged(object sender, ConnectionState state)
-    {
-        Debug.Log("Pusher - Connection state changed");
-    }
-
-    private void OnPusherOnError(object s, PusherException e)
-    {
-        Debug.Log("Pusher - Errored");
-        Debug.Log(e);
-    }
-
-    private void OnChannelOnSubscribed(object s, Channel c)
-    {
-        Debug.Log("Pusher - Subscribed");
-    }
-
-    async Task OnApplicationQuit()
-    {
-        if (CommConstants.pusher != null)
-        {
-            await CommConstants.pusher.DisconnectAsync();
+        } else {
+            Debug.LogError("Unknown connection method");
         }
     }
 
