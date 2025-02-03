@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using System;
-using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 
-public class CreateRoom : MonoBehaviourPunCallbacks
+public class CreateRoom : MonoBehaviour
 {
     public int id; 
     [SerializeField] public Profile_info profile_info; 
@@ -29,11 +27,9 @@ public class CreateRoom : MonoBehaviourPunCallbacks
         }
         
         if(PlayerPrefs.GetString("device")=="mobile"){
-            PhotonNetwork.CreateRoom(PlayerPrefs.GetString("username"));
-            PhotonNetwork.LoadLevel("Home");
+            SceneManager.LoadScene("Home");
         }else{
-            PhotonNetwork.JoinRoom(PlayerPrefs.GetString("username"));
-            PhotonNetwork.LoadLevel("HologramTablet");
+            SceneManager.LoadScene("HologramTablet");
         }
         
     }
@@ -61,11 +57,5 @@ public class CreateRoom : MonoBehaviourPunCallbacks
                     PlayerPrefs.SetString("username", profile_info.username);
                 }
         }
-    }
-
-    public override void OnCreatedRoom()
-    {
-        // Room created successfully
-        Debug.Log("Room created.");
     }
 }

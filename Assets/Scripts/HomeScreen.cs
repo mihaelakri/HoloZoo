@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
-using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
 
-public class HomeScreen : MonoBehaviourPunCallbacks
+public class HomeScreen : MonoBehaviour
 {
     public int id; 
     [SerializeField] public Profile_info profile_info; 
@@ -36,7 +33,6 @@ public class HomeScreen : MonoBehaviourPunCallbacks
            id = PlayerPrefs.GetInt("ID");
            StartCoroutine(GetUsername());
         }
-        PhotonNetwork.CreateRoom(PlayerPrefs.GetString("username"));
         if(PlayerPrefs.GetInt("dyslexia")==1){
              
         }
