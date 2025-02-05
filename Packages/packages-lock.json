@@ -1,17 +1,24 @@
 {
   "dependencies": {
+    "com.cysharp.memorypack": {
+      "version": "1.10.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "com.github-glitchenzo.nugetforunity": {
+      "version": "4.2.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.lmnt.unity": {
       "version": "file:com.lmnt.unity",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
-    },
-    "com.pusher.pusherwebsocketunity": {
-      "version": "https://github.com/pusher/pusher-websocket-unity.git#2.3.0-beta+230104",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "2c328494766724442d59d8c8455b0d35f1b7ff66"
     },
     "com.unity.2d.animation": {
       "version": "7.0.9",
@@ -44,20 +51,21 @@
       "dependencies": {}
     },
     "com.unity.adaptiveperformance": {
-      "version": "5.0.0",
+      "version": "4.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.profiling.core": "1.0.2"
+        "com.unity.profiling.core": "1.0.2",
+        "com.unity.subsystemregistration": "1.1.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.adaptiveperformance.samsung.android": {
-      "version": "5.0.0",
+      "version": "4.0.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.adaptiveperformance": "5.0.0"
+        "com.unity.adaptiveperformance": "4.0.1"
       },
       "url": "https://packages.unity.com"
     },
@@ -136,8 +144,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.mobile.notifications": {
-      "version": "2.1.0",
-      "depth": 1,
+      "version": "2.1.1",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.androidjni": "1.0.0"
@@ -166,6 +174,15 @@
         "com.unity.modules.androidjni": "1.0.0",
         "com.unity.nuget.newtonsoft-json": "3.0.2",
         "com.unity.modules.unitywebrequest": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.subsystemregistration": {
+      "version": "1.1.0",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.subsystems": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
