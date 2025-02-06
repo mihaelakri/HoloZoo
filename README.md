@@ -2,7 +2,7 @@
 
 ## TO DO LIST
 
-- [ ] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
+- [x] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
 - [ ] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
 - [ ] staviti jezike na oba uređaja odvojeno
 - [ ] popraviti server URL u skriptama
@@ -18,3 +18,4 @@ git clone https://github.com/mihaelakri/HoloZoo.git
 - Modify the Unity installation by adding Android tools.
 - Add the project to Unity Hub by **Add project from disk** and open it
 - Open the *Package manager*, view **My Assets** and import **ANIMALS FULL PACK**
+- Move the `ANIMALS FULL PACK` directory from `Assets` to `Assets/Resources`
