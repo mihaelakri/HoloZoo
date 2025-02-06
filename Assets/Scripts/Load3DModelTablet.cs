@@ -12,21 +12,38 @@ public class Load3DModelTablet : MonoBehaviour
 {
     public GameObject variableForPrefab;
     public String model_url;
+    string id_animal;
     // Start is called before the first frame update
+
     void Start()
+    {
+        StartCoroutine(GetModel());
+
+        CommConstants.animalid.OnUpdated += LoadModel_OnAnimalIdUpdated;
+    }
+
+    private void LoadModel_OnAnimalIdUpdated()
     {
         StartCoroutine(GetModel());
     }
 
     IEnumerator GetModel(){
-        Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
-        string id_animal = PlayerPrefs.GetString("id_animal", "1");
+        /*Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
+        if(PlayerPrefs.GetString("id_animal")!= "")
+        {
+            id_animal = PlayerPrefs.GetString("id_animal", "1");
+        }
+        else
+        {
+            id_animal = CommConstants.animalid.animal_id;
+        }*/
+        id_animal = CommConstants.animalid.animal_id;
 
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
-
-        //using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+        WWWForm form = new WWWForm();
+        form.AddField("id_model", id_animal);
+        System.Diagnostics.Debug.WriteLine("�ivotinja: " + id_animal);
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form)){
+        //using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
 
             yield return www.SendWebRequest();
 
@@ -42,8 +59,13 @@ public class Load3DModelTablet : MonoBehaviour
                         model_url = (www.downloadHandler.text);
                     }
                     Debug.Log(www.downloadHandler.text);
+                    GameObject parent = GameObject.FindGameObjectWithTag("3d");
+                    if (parent.transform.childCount > 0)
+                    {
+                        Destroy(parent.transform.GetChild(0).gameObject);
+                    }
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    GameObject instantiatedPrefab = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                    GameObject instantiatedPrefab = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, parent.transform);
                     instantiatedPrefab.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
 

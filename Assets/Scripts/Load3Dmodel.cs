@@ -25,7 +25,7 @@ public class Load3Dmodel : MonoBehaviour
         form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
         string id_animal = PlayerPrefs.GetString("id_animal");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
 
             yield return www.SendWebRequest();
 

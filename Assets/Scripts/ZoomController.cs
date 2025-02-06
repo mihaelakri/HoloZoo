@@ -11,7 +11,7 @@ public class ZoomController : MonoBehaviour
 
     private void Start()
     {
-        currentSize = CommConstants.initial_size;
+        currentSize = CommConstants.state.initial_size;
     }
 
     public void ZoomIn()
@@ -45,6 +45,7 @@ public class ZoomController : MonoBehaviour
 
                 // Call the ResizeObject function with the GameObject
                 child.transform.localScale = new Vector3(size, size, size);
+                CommConstants.state.finish_size = size;
             }
             else
             {
