@@ -9,6 +9,7 @@ public class ChangeSceneGlobe : MonoBehaviour
 
     public void ChangeScene(string sceneNameToLoad) {  
         PlayerPrefs.SetString("id_animal", id);
+        CommConstants.animal_id = int.Parse(PlayerPrefs.GetString("id_animal"));
         SceneManager.LoadScene(sceneNameToLoad);  
     } 
 }
