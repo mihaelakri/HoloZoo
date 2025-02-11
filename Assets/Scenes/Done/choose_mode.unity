@@ -1368,6 +1368,7 @@ GameObject:
   - component: {fileID: 395484489}
   - component: {fileID: 395484488}
   - component: {fileID: 395484490}
+  - component: {fileID: 395484491}
   m_Layer: 0
   m_Name: Canvas 62978
   m_TagString: Untagged
@@ -1827,6 +1828,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
+--- !u!114 &395484491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395484482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525161fea0141c940acef4d7cf1ce58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  font_size: {fileID: 381266821}
+  dyslexia: {fileID: 419239770}
+  contrast_text: {fileID: 505176973}
+  tts_text: {fileID: 1422915184}
+  save_btn: {fileID: 1761636934}
+  globus_mode: {fileID: 1728558736}
+  list_mode: {fileID: 1884384111}
 --- !u!1 &419239768
 GameObject:
   m_ObjectHideFlags: 0

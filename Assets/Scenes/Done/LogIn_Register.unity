@@ -1018,6 +1018,7 @@ GameObject:
   - component: {fileID: 1254712098}
   - component: {fileID: 1254712103}
   - component: {fileID: 1254712104}
+  - component: {fileID: 1254712105}
   m_Layer: 0
   m_Name: Canvas 29906
   m_TagString: Untagged
@@ -1335,8 +1336,8 @@ MonoBehaviour:
       GUIContent:
         m_Text: ADDITIONAL ASSETS CONFIG
         m_Image: {fileID: 0}
-        m_Tooltip: Once you have imported one of the third party assets that the
-          FCU supports,\nyou need to activate them in this section.
+        m_Tooltip: Once you have imported one of the third party assets that the FCU
+          supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
       CheckBoxValue: 0
@@ -1459,6 +1460,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
+--- !u!114 &1254712105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254712097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ab9881af077c04f973439a30d20397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choose_device: {fileID: 1257938416}
+  mobile: {fileID: 1257341976}
+  tablet: {fileID: 140553019}
+  using_bluetooth: {fileID: 635530696}
+  login: {fileID: 319980396}
+  register: {fileID: 1480921927}
 --- !u!1 &1257341974
 GameObject:
   m_ObjectHideFlags: 0

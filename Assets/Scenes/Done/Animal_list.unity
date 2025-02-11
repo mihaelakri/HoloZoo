@@ -363,8 +363,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.7934, y: 179.9}
-  m_SizeDelta: {x: 266.403, y: 32.914}
+  m_AnchoredPosition: {x: -3.8373, y: 178}
+  m_SizeDelta: {x: 367.33, y: 32.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76796801
 MonoBehaviour:
@@ -2492,6 +2492,7 @@ GameObject:
   - component: {fileID: 844002131}
   - component: {fileID: 844002130}
   - component: {fileID: 844002135}
+  - component: {fileID: 844002136}
   m_Layer: 0
   m_Name: Canvas 23420
   m_TagString: Untagged
@@ -3427,6 +3428,25 @@ MonoBehaviour:
     weight: 
     diet: 
     population: 
+--- !u!114 &844002136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844002129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea28eabe7de057468f28d264ae30d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threed_text: {fileID: 76796801}
+  endangerment_status: {fileID: 641370082}
+  region: {fileID: 6342957}
+  habitat: {fileID: 145363149}
+  weight: {fileID: 235252147}
+  diet: {fileID: 791653190}
+  population: {fileID: 84057025}
 --- !u!1 &871440715
 GameObject:
   m_ObjectHideFlags: 0

@@ -624,6 +624,7 @@ GameObject:
   - component: {fileID: 785078408}
   - component: {fileID: 785078413}
   - component: {fileID: 785078414}
+  - component: {fileID: 785078415}
   m_Layer: 0
   m_Name: Canvas 65696
   m_TagString: Untagged
@@ -1067,6 +1068,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
+--- !u!114 &785078415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785078407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8040d910a016faa4d8400207749507cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choose_difficulty: {fileID: 1070271669}
+  easy: {fileID: 1392979916}
+  medium: {fileID: 885920630}
+  hard: {fileID: 1903471673}
+  start_quiz_btn: {fileID: 1357812976}
 --- !u!1 &885920628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,8 +1121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 127.74, y: -16.7}
-  m_SizeDelta: {x: 79.8695, y: 26.2}
+  m_AnchoredPosition: {x: 123.89283, y: -16.7}
+  m_SizeDelta: {x: 109.5476, y: 26.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885920630
 MonoBehaviour:
@@ -1743,8 +1761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -16.700005}
-  m_SizeDelta: {x: 66.787, y: 32.9039}
+  m_AnchoredPosition: {x: 1.3153, y: -16.700005}
+  m_SizeDelta: {x: 108.8747, y: 32.9039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1392979916
 MonoBehaviour:
@@ -1958,8 +1976,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 262.03427, y: -16.7}
-  m_SizeDelta: {x: 52.8901, y: 29.552}
+  m_AnchoredPosition: {x: 248.29443, y: -16.7}
+  m_SizeDelta: {x: 80.3697, y: 29.552}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903471673
 MonoBehaviour:

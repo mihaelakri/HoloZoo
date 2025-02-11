@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   delayBeforeLoading: 4
-  sceneNameToLoad: Instructions_one
+  sceneNameToLoad: Language
 --- !u!1 &2055912371
 GameObject:
   m_ObjectHideFlags: 0

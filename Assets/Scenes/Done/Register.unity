@@ -1859,6 +1859,7 @@ GameObject:
   - component: {fileID: 1819035243}
   - component: {fileID: 1819035248}
   - component: {fileID: 1819035249}
+  - component: {fileID: 1819035250}
   m_Layer: 0
   m_Name: Canvas 43046
   m_TagString: Untagged
@@ -2308,6 +2309,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
+--- !u!114 &1819035250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819035242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c854ab9a373850d46986506fcb4902ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  register_heading: {fileID: 616960209}
+  username_placeholder: {fileID: 1317052895}
+  password_placeholder: {fileID: 764457071}
+  password_repeat_placeholder: {fileID: 2145840328}
+  register_btn: {fileID: 36683612}
 --- !u!1 &2145840326
 GameObject:
   m_ObjectHideFlags: 0

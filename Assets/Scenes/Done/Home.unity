@@ -3113,8 +3113,8 @@ GameObject:
   - component: {fileID: 1681750883}
   - component: {fileID: 1681750884}
   - component: {fileID: 1681750885}
-  - component: {fileID: 1681750889}
   - component: {fileID: 1681750890}
+  - component: {fileID: 1681750891}
   m_Layer: 0
   m_Name: Canvas 60822
   m_TagString: Untagged
@@ -3540,6 +3540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1193f8e2bcfec964ca295547152b3b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
 --- !u!114 &1681750884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3589,23 +3590,6 @@ MonoBehaviour:
     username: 
     experience: 0
     level: 0
---- !u!114 &1681750889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681750877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f906bb0fb6b597e479a8e707f82dc9ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  profile_info:
-    username: 
-    experience: 0
-    level: 0
 --- !u!114 &1681750890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3620,6 +3604,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
+--- !u!114 &1681750891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681750877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c437cd2df23fb47ad8153fcf05394e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  learn: {fileID: 882238601}
+  quiz: {fileID: 17829408}
+  font_size: {fileID: 504003442}
+  dyslexia: {fileID: 975206060}
+  contrast_text: {fileID: 1057946756}
+  tts_text: {fileID: 1138621530}
+  save_btn: {fileID: 1638467292}
 --- !u!1 &1797354979
 GameObject:
   m_ObjectHideFlags: 0
