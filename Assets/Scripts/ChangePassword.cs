@@ -24,8 +24,8 @@ public class ChangePassword : MonoBehaviour
         } else{
             WWWForm form = new WWWForm();
             form.AddField("password", newPasswordField.text);
-            // form.AddField("flag", "4");
-            using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"password", form)){
+            form.AddField("flag", "4");
+            using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
 
             yield return www.SendWebRequest();
 
@@ -37,9 +37,11 @@ public class ChangePassword : MonoBehaviour
                 {
                     if(www.downloadHandler.text == "400"){
                         Debug.Log("Bad Request");
+                        toast.text = "Error updating password";
                     }
                     else if(www.downloadHandler.text == "404"){
                         Debug.Log("Flag not found");
+                        toast.text = "Error updating password";
                     }
                     else if(www.downloadHandler.text != "0"){
                         Debug.Log(www.downloadHandler.text);

@@ -43,7 +43,7 @@ public class HomeScreen : MonoBehaviour
         form.AddField("id", id);
         form.AddField("flag", "3");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
 
             yield return www.SendWebRequest();
 

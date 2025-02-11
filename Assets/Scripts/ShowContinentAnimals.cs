@@ -73,14 +73,14 @@ namespace WPM {
 
         IEnumerator FillAnimalInfoo(int id_continent){
 
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_area", id_continent);
-        // Debug.Log(id_continent);
+        WWWForm form = new WWWForm();
+        form.AddField("id_area", id_continent);
+        Debug.Log(id_continent);
 
-        int id_area = id_continent;
+        //int id_area = id_continent;
 
-        // using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/area/"+id_area)){
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
+        //using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/area/"+id_area)){
 
             yield return www.SendWebRequest();
 

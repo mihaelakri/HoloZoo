@@ -84,11 +84,11 @@ public class FillAnimal : MonoBehaviour
 
     IEnumerator FillAnimalInfo(){
 
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_animal", PlayerPrefs.GetString("id_animal"));
+        WWWForm form = new WWWForm();
+        form.AddField("id_animal", PlayerPrefs.GetString("id_animal"));
         string animal_id =  PlayerPrefs.GetString("id_animal");
 
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/get/"+animal_id)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
 
             yield return www.SendWebRequest();
 

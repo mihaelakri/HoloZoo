@@ -11,7 +11,7 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField]
     private float delayBeforeLoading = 5f;
     [SerializeField]
-    private string sceneNameToLoad = "Instructions_one";
+    private string sceneNameToLoad = "Language";
 
     private float timeElapsed;
 
@@ -21,18 +21,18 @@ public class LoadingScreen : MonoBehaviour
         timeElapsed += Time.deltaTime;
 
         if (timeElapsed >= delayBeforeLoading){
-            SceneManager.LoadScene(sceneNameToLoad);
-            // if(PlayerPrefs.HasKey("ID")){
-            //     id = Getint("ID");
-            //     // StartCoroutine(setSession());
-            //     if(PlayerPrefs.GetString("device")=="mobile"){
-            //     SceneManager.LoadScene("Home");
-            //     }else{
-            //         SceneManager.LoadScene("HologramTablet");
-            //     }
-            // }else{
-            //     SceneManager.LoadScene(sceneNameToLoad);
-            // }  
+            //SceneManager.LoadScene(sceneNameToLoad);
+             if(PlayerPrefs.HasKey("ID")){
+                 id = Getint("ID");
+                 StartCoroutine(setSession());
+                 if(PlayerPrefs.GetString("device")=="mobile"){
+                     SceneManager.LoadScene("Home");
+                 }else{
+                     SceneManager.LoadScene("HologramTablet");
+                 }
+             }else{
+                 SceneManager.LoadScene(sceneNameToLoad);
+             }  
         }
     }
 
@@ -40,6 +40,7 @@ public class LoadingScreen : MonoBehaviour
 
         WWWForm form = new WWWForm();
         form.AddField("id", id);
+        form.AddField("lang", PlayerPrefs.GetString("lang", "en"));
         form.AddField("flag", "5");
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){

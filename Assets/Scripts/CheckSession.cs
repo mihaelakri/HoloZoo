@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class CheckSession : MonoBehaviour
 {
+    public int id; 
     // Start is called before the first frame update
     void Start()
     {
@@ -12,15 +16,25 @@ public class CheckSession : MonoBehaviour
 
    IEnumerator Session(){
 
-      WWW www = new WWW(CommConstants.ServerURL+"session/id");
-      yield return www;
+        if(PlayerPrefs.HasKey("ID")){
 
-      Debug.Log(www.text);
-      www.Dispose();
+            id = Getint("ID"); 
 
-      if(PlayerPrefs.HasKey("ID")){
-            Debug.Log(Getint("ID"));
+            WWWForm form = new WWWForm();
+            form.AddField("id", id);
+            form.AddField("flag", "5");
+
+            using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
+
+                yield return www.SendWebRequest();
+
+                if (www.result != UnityWebRequest.Result.Success)
+                    {
+                        Debug.Log(www.downloadHandler.text);
+                    }
+            }
         }
+      
     }
 
     public int Getint(string KeyName)

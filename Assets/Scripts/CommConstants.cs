@@ -2,8 +2,7 @@ using CommMsgs;
 
 public static class CommConstants
 {
-    public const string ServerURL = "http://localhost:8000/";
-    // public const string ServerURL = "http://izelentrovic.com/";
+    public const string ServerURL = "http://localhost/HoloZoo/";
     public static string Auth = "";
     public static string XSRF = "";
 
