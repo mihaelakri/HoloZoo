@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Done/Language.unity
+    guid: 253951b8744ba8844bbdb29c198fa7fd
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
