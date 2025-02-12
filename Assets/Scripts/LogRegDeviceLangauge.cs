@@ -9,7 +9,6 @@ public class LogRegDeviceLangauge : MonoBehaviour
     public Text choose_device; 
     public Text mobile; 
     public Text tablet; 
-    public Text using_bluetooth; 
 
     // Buttons (log in/ register)
 
@@ -94,7 +93,6 @@ public class LogRegDeviceLangauge : MonoBehaviour
             choose_device.text = languageTexts["choose_device"];
             mobile.text = languageTexts["mobile"];
             tablet.text = languageTexts["tablet"];
-            using_bluetooth.text = languageTexts["using_bluetooth"];
             login.text = languageTexts["login"];
             register.text = languageTexts["register"];
         }

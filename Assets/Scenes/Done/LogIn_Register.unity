@@ -564,8 +564,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -45.9136}
-  m_SizeDelta: {x: 160, y: 54}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642351318
 MonoBehaviour:
@@ -1336,8 +1336,8 @@ MonoBehaviour:
       GUIContent:
         m_Text: ADDITIONAL ASSETS CONFIG
         m_Image: {fileID: 0}
-        m_Tooltip: Once you have imported one of the third party assets that the FCU
-          supports,\nyou need to activate them in this section.
+        m_Tooltip: Once you have imported one of the third party assets that the
+          FCU supports,\nyou need to activate them in this section.
     - Id: FRAMES_KEY
       State: 1
       CheckBoxValue: 0
@@ -1475,7 +1475,7 @@ MonoBehaviour:
   choose_device: {fileID: 1257938416}
   mobile: {fileID: 1257341976}
   tablet: {fileID: 140553019}
-  using_bluetooth: {fileID: 635530696}
+  using_bluetooth: {fileID: 0}
   login: {fileID: 319980396}
   register: {fileID: 1480921927}
 --- !u!1 &1257341974
@@ -1593,8 +1593,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 96}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 96}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1257938416
 MonoBehaviour:
@@ -1618,12 +1618,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
-    m_FontSize: 16
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1805,8 +1805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.002399, y: 35.964}
-  m_SizeDelta: {x: 160, y: 54}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417311565
 MonoBehaviour:

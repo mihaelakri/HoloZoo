@@ -48,7 +48,7 @@ public class InstuctionsLanguage : MonoBehaviour
             "hr", new Dictionary<string, string>
             {
                 { "instructionOneHeading", "Upute za izradu projekcijskog holograma" },
-                { "instructionOneMaterials", "Matériaux requis" },
+                { "instructionOneMaterials", "Materijali:" },
                 { "instructionOneSupply", "4 x A4 acetatni papir\n1 x A4 papir\n1 x škare\n1 x ravnalo\n1 x ljepljiva traka" },
                 { "instructionTwo", "1. Izmjerite dijagonalu zaslona\n\n2. Nacrtajte jednakostranični trokut čija je stranica duljine točno polovice dijagonale zaslona\n\n3. Dvije stranice trokuta podijelite na 3/10 duljine" },
                 { "instructionThree", "Postavite ekran na ravnu površinu i postavite piramidu na sredinu ekrana." },

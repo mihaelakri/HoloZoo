@@ -4,8 +4,14 @@
 
 - [x] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
 - [ ] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
-- [ ] staviti jezike na oba uređaja odvojeno
-- [ ] popraviti server URL u skriptama
+- [x] staviti jezike na oba uređaja odvojeno
+- [x] popraviti server URL u skriptama
+- [ ] popraviti kordinate učitavanja modela (x,y)
+- [ ] IndexOutOfRangeException: Index was outside the bounds of the array. Quiz.nextQuestion () (at Assets/Scripts/Quiz.cs:176)
+- [ ] životinja profil - slova ispravi
+- [ ] kviz šapa je na engleskom
+- [ ] prilagoditi veličinu ekrana
+- [ ] area dodati jezike u bazu
 
 ## Cloning and running the project
 

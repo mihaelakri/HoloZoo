@@ -137,6 +137,8 @@ PlayerSettings:
   bundleVersion: 1.0.2
   preloadedAssets:
   - {fileID: 0}
+  - {fileID: -5741386092067068649, guid: 9e979bb7d4709704f88632c24ce9f442, type: 2}
+  - {fileID: 11400000, guid: 4fc890db925dad54d8293ed5533ce92a, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -251,7 +253,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: user.keystore'
+  AndroidKeystoreName: D:/HoloZoo/user.keystore
   AndroidKeyaliasName: holozoo
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

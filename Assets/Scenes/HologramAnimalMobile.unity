@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 1302347128}
   m_Layer: 0
   m_Name: Model
-  m_TagString: 3d-obj
+  m_TagString: 3d
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1533,9 +1533,6 @@ MonoBehaviour:
   sideSlider: {fileID: 969470699}
   model: {fileID: 1302347127}
   target: {fileID: 0}
-  sliderLastX: 0
-  sliderLastY: 0
-  instance: {fileID: 0}
 --- !u!1 &1659891982
 GameObject:
   m_ObjectHideFlags: 0
