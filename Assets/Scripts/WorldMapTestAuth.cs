@@ -21,8 +21,12 @@ public class WorldMapTestAuth : MonoBehaviour
     IEnumerator GetModel(){
 
         string id_animal = "0";
+        WWWForm form = new WWWForm();
+        form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
+        
 
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form))
+        {
 
             yield return www.SendWebRequest();
 

@@ -22,11 +22,10 @@ public class Load3DModelTablet : MonoBehaviour
         Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
         string id_animal = PlayerPrefs.GetString("id_animal", "1");
 
-        // WWWForm form = new WWWForm();
-        // form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
+        WWWForm form = new WWWForm();
+        form.AddField("id_model", PlayerPrefs.GetString("id_animal", "1"));
 
-        //using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/animal_view.php", form)){
-        using (UnityWebRequest www = UnityWebRequest.Get(CommConstants.ServerURL+"animal/model/"+id_animal)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
 
             yield return www.SendWebRequest();
 

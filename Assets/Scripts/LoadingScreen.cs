@@ -43,7 +43,7 @@ public class LoadingScreen : MonoBehaviour
         form.AddField("lang", PlayerPrefs.GetString("lang", "en"));
         form.AddField("flag", "5");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/HoloZoo/middle_man.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
 
             yield return www.SendWebRequest();
 
