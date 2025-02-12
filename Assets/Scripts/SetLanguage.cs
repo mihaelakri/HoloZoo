@@ -49,6 +49,6 @@ public class SetLanguage : MonoBehaviour
         }
 
         // Nakon slanja, učitavanje sljedeće scene
-        SceneManager.LoadScene("Instructions_one");
+        SceneManager.LoadScene("Welcome");
     }
 }
