@@ -2,7 +2,7 @@ using CommMsgs;
 
 public static class CommConstants
 {
-    public const string ServerURL = "https://holozoo.teserakt.biz/HoloZoo/";
+    public const string ServerURL = "https://holozoo.eu/";
     public static string Auth = "";
     public static string XSRF = "";
 
