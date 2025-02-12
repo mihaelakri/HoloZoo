@@ -28,6 +28,10 @@ public class Quiz : MonoBehaviour
     public Button btnAnswerC;
     public Button nextButton;
 
+    public Text nextButtontext;
+
+    private string selectedLanguage;
+
     Text[] yourTexts;
 
     public int correctAnswerCount; 
@@ -47,9 +51,51 @@ public class Quiz : MonoBehaviour
     public class Questions{
         public Question[] question;
     }
+
+    private Dictionary<string, Dictionary<string, string>> translations = new Dictionary<string, Dictionary<string, string>>
+    {
+        {
+            "en", new Dictionary<string, string>
+            {
+                { "next_question", "Next question" },
+                { "see_results", "See results" }
+            }
+        },
+        {
+            "fr", new Dictionary<string, string>
+            {
+                { "next_question", "Prochaine question" },
+                { "see_results", "Voir les résultats" }
+            }
+        },
+        {
+            "hr", new Dictionary<string, string>
+            {
+                { "next_question", "Sljedeće pitanje" },
+                { "see_results", "Vidi rezultat" }
+            }
+        },
+        {
+            "es", new Dictionary<string, string>
+            {
+                { "next_question", "Próxima pregunta" },
+                { "see_results", "Ver resultados" }
+            }
+        },
+        {
+            "hu", new Dictionary<string, string>
+            {
+                { "next_question", "Következő kérdés" },
+                { "see_results", "Lásd az eredményeket" }
+            }
+        }
+    }; 
+
+
     // Start is called before the first frame update
     void Start()
     {   
+        selectedLanguage = PlayerPrefs.GetString("lang", "en");
         yourTexts = FindObjectsOfType<Text>();
         foreach (Text text in yourTexts)
         {
@@ -156,16 +202,16 @@ public class Quiz : MonoBehaviour
         nextButton.gameObject.SetActive(true);
         nextButton.transform.LeanMoveLocal(new Vector2(123,-225),1).setEaseOutQuart();
         if(questionsCounter<questionsCount){
-            nextButton.transform.GetChild(0).GetComponent<Text>().text = "Next question";
+            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["next_question"];
         }else{
-            nextButton.transform.GetChild(0).GetComponent<Text>().text = "See results";
+            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["see_results"];
         }
     }
 
     public void nextQuestion(){
         nextButton.gameObject.SetActive(false);
         nextButton.transform.LeanMoveLocal(new Vector2(-27,-446),1).setEaseOutQuart();
-        if(nextButton.transform.GetChild(0).GetComponent<Text>().text == "See results"){
+        if(nextButton.transform.GetChild(0).GetComponent<Text>().text == translations[selectedLanguage]["see_results"]){
             PlayerPrefs.SetInt("Score",correctAnswerCount);
             PlayerPrefs.SetInt("QuestionCount",questionsCount);
             SceneManager.LoadScene("Score");  

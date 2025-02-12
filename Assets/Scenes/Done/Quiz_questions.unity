@@ -1620,6 +1620,7 @@ MonoBehaviour:
   btnAnswerB: {fileID: 305112830}
   btnAnswerC: {fileID: 2040212302}
   nextButton: {fileID: 645527932}
+  nextButtontext: {fileID: 422670224}
   correctAnswerCount: 0
 --- !u!114 &1438184645
 MonoBehaviour:
