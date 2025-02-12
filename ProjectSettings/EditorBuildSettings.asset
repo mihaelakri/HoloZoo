@@ -68,6 +68,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HologramGlobe.unity
     guid: d3865d9a99b867d49b35ade29fa53f5f
+  - enabled: 1
+    path: Assets/Scenes/Done/Info.unity
+    guid: 00854d3c036af2342998b62aad294ec7
+  - enabled: 1
+    path: Assets/Scenes/Done/Welcome.unity
+    guid: 573fa903a95342348938d9a5a262663f
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9e979bb7d4709704f88632c24ce9f442,
       type: 2}

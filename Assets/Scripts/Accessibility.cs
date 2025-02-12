@@ -72,19 +72,13 @@ public class Accessibility : MonoBehaviour
     }
     public void hideAccesibility(){
         panel.transform.LeanMoveLocal(new Vector2(0,-645),1).setEaseOutQuart();
-        if(PlayerPrefs.GetInt("contrast")==1){
-            
-            if(GameObject.Find("Bar") != null){
-                GameObject.Find("Bar").GetComponent<Image>().color = Color.black;
-            }
-             
+        if(PlayerPrefs.GetInt("contrast")==1)
+        {           
             GameObject.Find("btn1").GetComponent<Image>().color = Color.black; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.black; 
-        }else{
-            if(GameObject.Find("Bar") != null){
-                GameObject.Find("Bar").GetComponent<Image>().color = Color.white;
-            }
-            
+        }
+        else
+        {
             GameObject.Find("btn1").GetComponent<Image>().color = Color.white; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.white; 
         }

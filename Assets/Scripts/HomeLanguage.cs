@@ -15,6 +15,10 @@ public class HomeLanguage : MonoBehaviour
     public Text tts_text; 
     public Text save_btn; 
 
+    public Text small; 
+    public Text medium; 
+    public Text large; 
+
     // Language
     private string selectedLanguage;
 
@@ -30,6 +34,9 @@ public class HomeLanguage : MonoBehaviour
                 { "dyslexia", "Dyslexia font" },
                 { "contrast_text", "Contrast" },
                 { "tts_text", "Text to speech" },
+                { "small", "small" },
+                { "medium", "medium" },
+                { "large", "large" },
                 { "save_btn", "SAVE" }
             }
         },
@@ -42,6 +49,9 @@ public class HomeLanguage : MonoBehaviour
                 { "dyslexia", "police Dyslexie" },
                 { "contrast_text", "Contraste" },
                 { "tts_text", "Synthèse vocale" },
+                { "small", "petit" },
+                { "medium", "moyen" },
+                { "large", "grand" },
                 { "save_btn", "ENREGISTRER" }
             }
         },
@@ -54,6 +64,9 @@ public class HomeLanguage : MonoBehaviour
                 { "dyslexia", "Font za disleksiju" },
                 { "contrast_text", "Kontrast" },
                 { "tts_text", "Tekst u govor" },
+                { "small", "mali" },
+                { "medium", "srednji" },
+                { "large", "veliki" },
                 { "save_btn", "SPREMI" }
             }
         },
@@ -66,6 +79,9 @@ public class HomeLanguage : MonoBehaviour
                 { "dyslexia", "Fuente para dislexia" },
                 { "contrast_text", "Contraste" },
                 { "tts_text", "Iniciar" },
+                { "small", "pequeño" },
+                { "medium", "mediano" },
+                { "large", "grande" },
                 { "save_btn", "GUARDAR" }
             }
         },
@@ -78,6 +94,9 @@ public class HomeLanguage : MonoBehaviour
                 { "dyslexia", "Dyslexia font" },
                 { "contrast_text", "Diszlexia betűtípus" },
                 { "tts_text", "Szöveg beszédté" },
+                { "small", "kicsi" },
+                { "medium", "közepes" },
+                { "large", "nagy" },
                 { "save_btn", "MEGTAKARÍTÁS" }
             }
         }
@@ -102,6 +121,9 @@ public class HomeLanguage : MonoBehaviour
             tts_text.text = languageTexts["tts_text"];
             dyslexia.text = languageTexts["dyslexia"];
             save_btn.text = languageTexts["save_btn"];
+            small.text = languageTexts["small"];
+            medium.text = languageTexts["medium"];
+            large.text = languageTexts["large"];
         }
         else
         {

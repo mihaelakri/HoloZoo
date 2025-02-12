@@ -24,10 +24,9 @@ public class LogRegDeviceLangauge : MonoBehaviour
         {
             "en", new Dictionary<string, string>
             {
-                { "choose_device", "Choose a device" },
-                { "mobile", "Mobile" },
-                { "tablet", "Tablet" },
-                { "using_bluetooth", "Using Bluetooth?" },
+                { "choose_device", "Choose device purpose" }, // Context change for choosing device purpose
+                { "game", "Game" }, // "Mobile" changed to "Game"
+                { "hologram", "Hologram" }, // "Tablet" changed to "Hologram"
                 { "login", "LOG IN" },
                 { "register", "REGISTER" }
             }
@@ -35,10 +34,9 @@ public class LogRegDeviceLangauge : MonoBehaviour
         {
             "fr", new Dictionary<string, string>
             {
-                { "choose_device", "Sélectionner le support" },
-                { "mobile", "Smartphone" },
-                { "tablet", "Tablette" },
-                { "using_bluetooth", "Utiliser le mode bluetooth" },
+                 { "choose_device", "Choisir le but de l'appareil" }, // Context change for choosing device purpose
+                { "game", "Jeu" }, // "Smartphone" changed to "Game"
+                { "hologram", "Hologramme" }, // "Tablet" changed to "Hologram"
                 { "login", "SE CONNECTER" },
                 { "register", "CRÉER UN COMPTE" }
             }
@@ -46,10 +44,9 @@ public class LogRegDeviceLangauge : MonoBehaviour
         {
             "hr", new Dictionary<string, string>
             {
-                { "choose_device", "Odaberi uređaj" },
-                { "mobile", "Mobilni" },
-                { "tablet", "Tablet" },
-                { "using_bluetooth", "Koristite Bluetooth?" },
+                { "choose_device", "Odaberi svrhu uređaja" }, // Context change for choosing device purpose
+                { "game", "Igra" }, // "Mobilni" changed to "Igra"
+                { "hologram", "Hologram" }, // "Tablet" changed to "Hologram"
                 { "login", "PRIJAVA" },
                 { "register", "REGISTRACIJA" }
             }
@@ -57,10 +54,9 @@ public class LogRegDeviceLangauge : MonoBehaviour
         {
             "es", new Dictionary<string, string>
             {
-                { "choose_device", "Elije el dispositivo" },
-                { "mobile", "Teléfono móvil" },
-                { "tablet", "Tableta" },
-                { "using_bluetooth", "Usa bluetooth" },
+                { "choose_device", "Elige el propósito del dispositivo" }, // Context change for choosing device purpose
+                { "game", "Juego" }, // "Teléfono móvil" changed to "Juego"
+                { "hologram", "Holograma" }, // "Tableta" changed to "Holograma"
                 { "login", "INICIAR SESIÓN" },
                 { "register", "REGISTRO" }
             }
@@ -68,10 +64,9 @@ public class LogRegDeviceLangauge : MonoBehaviour
         {
             "hu", new Dictionary<string, string>
             {
-                { "choose_device", "Válaszd ki az eszközt" },
-                { "mobile", "Okostelefon" },
-                { "tablet", "Tablet" },
-                { "using_bluetooth", "Bluetooth használat" },
+                { "choose_device", "Válaszd ki az eszköz célját" }, // Context change for choosing device purpose
+                { "game", "Játék" }, // "Okostelefon" changed to "Játék"
+                { "hologram", "Hologram" }, // "Tablet" changed to "Hologram"
                 { "login", "BEJELENTKEZÉS" },
                 { "register", "REGISZTRÁCIÓ" }
             }
