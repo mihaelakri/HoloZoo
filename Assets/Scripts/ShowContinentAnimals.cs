@@ -35,9 +35,22 @@ namespace WPM {
 
         public Text contName;
 
-
+        private Dictionary<string, string[]> continentTranslations;
         void Start() {
-                // Get a reference to the World Map API:
+                // Get a reference to the World Map API:đ
+
+                continentTranslations = new Dictionary<string, string[]>(){
+                    { "Africa", new string[] { "Africa", "Afrique", "Afrika", "África", "Afrika" } },
+                    { "Europe", new string[] { "Europe", "Europe", "Europa", "Europa", "Európa" } },
+                    { "Asia", new string[] { "Asia", "Asie", "Azija", "Asia", "Ázsia" } },
+                    { "Australia", new string[] { "Australia", "Australie", "Australija", "Australia", "Ausztrália" } },
+                    { "Eurasia", new string[] { "Eurasia", "Eurasie", "Eurazija", "Eurasia", "Eurázsia" } },
+                    { "Antarctica", new string[] { "Antarctica", "Antarctique", "Antarktika", "Antártida", "Antarktisz" } },
+                    { "South America", new string[] { "South America", "Amérique du Sud", "Južna Amerika", "Sudamérica", "Dél-Amerika" } },
+                    { "North America", new string[] { "North America", "Amérique du Nord", "Sjeverna Amerika", "América del Norte", "Észak-Amerika" } },
+                    { "Oceania", new string[] { "Oceania", "Océanie", "Okeanija", "Oceanía", "Óceánia" } }
+                };
+
                 map = WorldMapGlobe.instance;
                 map.OnContinentClick += (string continent, int buttonIndex) => AddPanel(map.countryHighlighted.continent);
                 
@@ -63,7 +76,25 @@ namespace WPM {
                 currentPanel = Instantiate<GameObject>(prefabPanel);
                 currentPanel.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform);
                 contName = currentPanel.GetComponentInChildren<Text>();
-                contName.text = continent;
+                
+                string selectedLang = PlayerPrefs.GetString("lang", "en"); // Default to "en"
+                int langIndex = 0; // Default is English
+
+                // Mapiranje jezika
+                switch(selectedLang) {
+                    case "fr":
+                        langIndex = 1; break;
+                    case "hr":
+                        langIndex = 2; break;
+                    case "es":
+                        langIndex = 3; break;
+                    case "hu":
+                        langIndex = 4; break;
+                }
+
+                string continentName = continentTranslations.ContainsKey(continent) ? continentTranslations[continent][langIndex] : continent;
+                contName.text = continentName;
+                
                 id_continent = getContinentId(continent);
 
                 contNameGlobe = map.countryHighlighted.continent;
@@ -75,7 +106,7 @@ namespace WPM {
 
         WWWForm form = new WWWForm();
         form.AddField("id_area", id_continent);
-        Debug.Log(id_continent);
+        Debug.Log("Continent: " + id_continent);
 
         //int id_area = id_continent;
 
@@ -161,6 +192,9 @@ namespace WPM {
         }
         else if(contName=="North America"){
             return 8;
+        }
+        else if(contName=="Oceania"){
+            return 9;
         }
         else{
             return 0;
