@@ -157,10 +157,10 @@ RectTransform:
   m_Father: {fileID: 208469548}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50.5, y: -32.49994}
-  m_SizeDelta: {x: 77, y: 31}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 138, y: 0}
+  m_SizeDelta: {x: 250, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6342957
 MonoBehaviour:
@@ -189,7 +189,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 24
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -216,15 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 63:176
-  fixedName: Region
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &41006571
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,15 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:15
-  fixedName: Not endangered
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &76796799
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,15 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:680
-  fixedName: Click on the picture to see 3D model
-  tags: 0a000000
-  rootFrame: {fileID: 0}
-  fcuInstance: {fileID: 0}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &84057023
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,10 +436,10 @@ RectTransform:
   m_Father: {fileID: 1271087346}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 72.50003, y: -32.499756}
-  m_SizeDelta: {x: 121, y: 31}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 138, y: 0}
+  m_SizeDelta: {x: 250, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84057025
 MonoBehaviour:
@@ -495,7 +468,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 24
-    m_Alignment: 1
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -522,15 +495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 63:181
-  fixedName: Population
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &145363147
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,10 +529,10 @@ RectTransform:
   m_Father: {fileID: 811354512}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59.5, y: -32.5}
-  m_SizeDelta: {x: 95, y: 31}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 138, y: 0}
+  m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &145363149
 MonoBehaviour:
@@ -597,7 +561,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 24
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -624,15 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 63:178
-  fixedName: Habitats
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &181952667
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,15 +775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:663
-  fixedName: Rectangle 23
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &208469552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,10 +884,10 @@ RectTransform:
   m_Father: {fileID: 434420995}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50.5, y: -32.5}
-  m_SizeDelta: {x: 77, y: 31}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 138, y: 0}
+  m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235252147
 MonoBehaviour:
@@ -970,7 +916,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 24
-    m_Alignment: 1
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -997,15 +943,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 63:179
-  fixedName: Weight
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &274929649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,15 +1036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:15
-  fixedName: Not endangered
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &371823657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,15 +1172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:15
-  fixedName: Not endangered
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &424474405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,15 +1261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:676
-  fixedName: material-symbols-arrow-drop-down
-  tags: 020000000c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &434420994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,15 +1354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:666
-  fixedName: Rectangle 21
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &434420999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,15 +1519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:659
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &555458897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,9 +1594,9 @@ RectTransform:
   m_Father: {fileID: 1606115208}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 138.50009, y: -34.49991}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 138.50009, y: 0}
   m_SizeDelta: {x: 241, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &641370082
@@ -1734,7 +1626,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 24
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1761,15 +1653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 63:177
-  fixedName: Endangerment status
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &664602623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,15 +1743,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:659
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &671773094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,8 +1777,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.516, y: 0.2809}
-  m_SizeDelta: {x: 86.7335, y: 68.5396}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &671773096
 CanvasRenderer:
@@ -2007,15 +1881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:15
-  fixedName: Not endangered
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &791653188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,10 +1915,10 @@ RectTransform:
   m_Father: {fileID: 1755848730}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33.99994, y: -32.499878}
-  m_SizeDelta: {x: 44, y: 31}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 138, y: 0}
+  m_SizeDelta: {x: 250, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791653190
 MonoBehaviour:
@@ -2082,7 +1947,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 1
     m_MaxSize: 24
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2109,15 +1974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 63:180
-  fixedName: Diet
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &811354511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,15 +2067,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:664
-  fixedName: Rectangle 24
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &811354516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,15 +2316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:659
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &844002129
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,809 +2411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb50b5b4038022744b7d09fe41d03007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model:
-    controller: {fileID: 844002133}
-    aligmentRaw: []
-    aligments: []
-    mainSettings:
-      controller: {fileID: 844002133}
-      currentFigmaUser:
-        Id: 1103285297338056310
-        Email: mihaela@klikit.com.hr
-        Handle: Mihaela
-        ImgUrl: https://www.gravatar.com/avatar/3c66bb143a24960bb7246640ba4aade6?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_m_v2.png
-      token: figu__hDezdXlOZO8JBPr8InhDySISsy7FeY1chK7ImXC
-      projectUrl: 5oBSTBgECqBLB0RJ4y11aM
-      redownloadSprites: 0
-      imageFormat: 0
-      imageScale: 6
-      imageComponent: 0
-      shadowType: 0
-      textComponent: 0
-      componentDetectionType: 0
-      useI2Localization: 0
-      debugMode: 0
-    puiSettings:
-      controller: {fileID: 0}
-      type: 0
-      raycastTarget: 1
-      falloffDistance: 1
-    mpuikitSettings:
-      controller: {fileID: 0}
-      type: 0
-      raycastTarget: 1
-      falloffDistance: 0.5
-    unityImageSettings:
-      controller: {fileID: 844002133}
-      type: 0
-      raycastTarget: 1
-    shapes2D_Settings:
-      controller: {fileID: 0}
-      type: 0
-      raycastTarget: 1
-    debugModeSettings:
-      controller: {fileID: 0}
-    guid: a2e234a2
-    selectableFrames:
-    - Id: 6:250
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz choose difficulty
-      Selected: 0
-    - Id: 6:201
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Home
-      Selected: 0
-    - Id: 58:105
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Home
-      Selected: 0
-    - Id: 1:2
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Loading Screen
-      Selected: 0
-    - Id: 19:42
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - instuction dialogue
-      Selected: 0
-    - Id: 58:60
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - instuction dialogue
-      Selected: 0
-    - Id: 21:17
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz - wrong answer
-      Selected: 0
-    - Id: 21:33
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz - question and answers
-      Selected: 0
-    - Id: 21:75
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - rotate screen
-      Selected: 0
-    - Id: 100:260
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen animal- rotate screen
-      Selected: 0
-    - Id: 75:45
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Instruction 3
-      Selected: 0
-    - Id: 79:189
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Log in/register
-      Selected: 0
-    - Id: 21:85
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - map
-      Selected: 0
-    - Id: 21:172
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - pin selected
-      Selected: 0
-    - Id: 21:222
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz - Correct answer
-      Selected: 0
-    - Id: 38:187
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Profile Screen
-      Selected: 0
-    - Id: 38:203
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Accessibility Screen
-      Selected: 0
-    - Id: 56:15
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn - list of animals
-      Selected: 0
-    - Id: 58:130
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn - list of animals
-      Selected: 0
-    - Id: 75:43
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Instruction 1
-      Selected: 0
-    - Id: 75:44
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Instruction 2
-      Selected: 0
-    - Id: 75:71
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Frame 7
-      Selected: 0
-    - Id: 75:112
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Good score
-      Selected: 0
-    - Id: 76:284
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Bad score
-      Selected: 0
-    - Id: 79:220
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Login
-      Selected: 0
-    - Id: 79:256
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Register
-      Selected: 0
-    textMeshSettings:
-      controller: {fileID: 0}
-      autoSize: 0
-      overrideTags: 0
-      wrapping: 1
-      richText: 1
-      raycastTarget: 1
-      parseEscapeCharacters: 1
-      visibleDescender: 1
-      kerning: 1
-      extraPadding: 0
-      overflow: 0
-      horizontalMapping: 0
-      verticalMapping: 0
-      geometrySorting: 0
-      Fonts: []
-    unityTextSettings:
-      controller: {fileID: 844002133}
-      fontLineSpacing: 1
-      horizontalWrapMode: 0
-      verticalWrapMode: 0
-      bestFit: 1
-      Fonts: []
-    SelectableHamburgerItems:
-    - Id: MAIN_SETTINGS_KEY
-      State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: MAIN SETTINGS
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: UNITY_IMAGE_SETTINGS_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: UNITY IMAGE SETTINGS
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: UNITY_TEXT_SETTINGS_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: UNITY TEXT SETTINGS
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: ASSET_TOOLS_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: ASSET TOOLS
-        m_Image: {fileID: 0}
-        m_Tooltip: Auxiliary tools for using the asset.
-    - Id: ASSETS_CONFIG_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: ADDITIONAL ASSETS CONFIG
-        m_Image: {fileID: 0}
-        m_Tooltip: Once you have imported one of the third party assets that the
-          FCU supports,\nyou need to activate them in this section.
-    - Id: FRAMES_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: FRAMES TO DOWNLOAD (26/26)
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-  webClient:
-    controller: {fileID: 844002133}
-    pbarProgress: 0
-    pbarBytes: 0
-  projectParser:
-    controller: {fileID: 844002133}
-    lastImportedFrames:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 1795270304}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    fcuMetas:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 1490666392}
-    - {fileID: 424474409}
-    - {fileID: 1393216961}
-    - {fileID: 1756907520}
-    - {fileID: 2121002016}
-    - {fileID: 6342959}
-    - {fileID: 84057027}
-    - {fileID: 791653192}
-    - {fileID: 235252149}
-    - {fileID: 145363151}
-    - {fileID: 434420998}
-    - {fileID: 1271087349}
-    - {fileID: 1755848733}
-    - {fileID: 811354515}
-    - {fileID: 208469551}
-    - {fileID: 1576657827}
-    - {fileID: 1954068693}
-    - {fileID: 641370084}
-    - {fileID: 1296869550}
-    - {fileID: 1606115211}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 1795270305}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  canvasDrawer:
-    controller: {fileID: 844002133}
-    imageDrawer:
-      controller: {fileID: 844002133}
-    textDrawer:
-      controller: {fileID: 844002133}
-    layoutGroupDrawer:
-      controller: {fileID: 0}
-      aligments: []
-    maskDrawer:
-      controller: {fileID: 844002133}
-    buttonDrawer:
-      controller: {fileID: 844002133}
-      buttons: []
-    inputFieldDrawer:
-      controller: {fileID: 844002133}
-    i2LocalizationDrawer:
-      controller: {fileID: 0}
-    shadowDrawer:
-      controller: {fileID: 844002133}
-    canvasGroupDrawer:
-      controller: {fileID: 0}
-    drawnObjectsCount: 306
-    objectsToDrawCount: 437
-  tools:
-    controller: {fileID: 844002133}
-    spritesPath: Assets\Sprites
-    fontsPath: Assets\Fonts
-  cacher:
-    controller: {fileID: 844002133}
 --- !u!224 &844002134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3662,15 +2697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:667
-  fixedName: Rectangle 26
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &1271087350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3904,15 +2930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:659
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1317008696
 GameObject:
   m_ObjectHideFlags: 0
@@ -4003,15 +3020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:659
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1393216957
 GameObject:
   m_ObjectHideFlags: 0
@@ -4101,15 +3109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:674
-  fixedName: material-symbols-arrow-drop-down
-  tags: 020000000c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1490666388
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,15 +3198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:678
-  fixedName: material-symbols-arrow-drop-down
-  tags: 020000000c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1576657823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,15 +3291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:15
-  fixedName: Not endangered
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1582125718
 GameObject:
   m_ObjectHideFlags: 0
@@ -4487,15 +3468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:648
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &1606115212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4664,15 +3636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:15
-  fixedName: Not endangered
-  tags: 0a000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1734818215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,7 +3675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 246}
+  m_AnchoredPosition: {x: 0, y: 246}
   m_SizeDelta: {x: 105.6618, y: 99.2936}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1734818217
@@ -4765,15 +3728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:637
-  fixedName: Group 9
-  tags: 0c000000
-  rootFrame: {fileID: 0}
-  fcuInstance: {fileID: 0}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &1734818220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4935,15 +3889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:665
-  fixedName: Rectangle 25
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &1755848734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5112,15 +4057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 58:174
-  fixedName: Tiger
-  tags: 0a000000
-  rootFrame: {fileID: 0}
-  fcuInstance: {fileID: 0}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1756907516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5210,15 +4146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:672
-  fixedName: material-symbols-arrow-drop-down
-  tags: 020000000c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1761655093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,15 +4236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:659
-  fixedName: First group
-  tags: 0c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1795270304
 GameObject:
   m_ObjectHideFlags: 0
@@ -5349,15 +4267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 58:130
-  fixedName: Learn - list of animals
-  tags: 03000000020000000c00000001000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!224 &1795270306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5653,15 +4562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 72:16
-  fixedName: material-symbols-arrow-drop-down
-  tags: 020000000c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &2121002012
 GameObject:
   m_ObjectHideFlags: 0
@@ -5751,15 +4651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 100:670
-  fixedName: material-symbols-arrow-drop-down
-  tags: 020000000c000000
-  rootFrame: {fileID: 1795270305}
-  fcuInstance: {fileID: 844002133}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &2146370826
 GameObject:
   m_ObjectHideFlags: 0

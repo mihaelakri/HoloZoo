@@ -21,11 +21,9 @@ public class HomeScreen : MonoBehaviour
     void Start()
     {
         if(PlayerPrefs.GetInt("contrast")==1){
-            GameObject.Find("Bar").GetComponent<Image>().color = Color.black; 
             GameObject.Find("btn1").GetComponent<Image>().color = Color.black; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.black; 
         }else{
-            GameObject.Find("Bar").GetComponent<Image>().color = Color.white; 
             GameObject.Find("btn1").GetComponent<Image>().color = Color.white; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.white; 
         }

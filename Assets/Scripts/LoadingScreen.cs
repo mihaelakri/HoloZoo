@@ -49,11 +49,11 @@ public class LoadingScreen : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.Log(www.error);
+                    Debug.Log("Greška kod spajanja na server: " + www.error);
                 }
             else
                 {
-                    Debug.Log(www.downloadHandler.text);
+                    Debug.Log("Server: " + www.downloadHandler.text);
                 }
         }
     }

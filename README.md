@@ -8,10 +8,10 @@
 - [x] popraviti server URL u skriptama
 - [ ] popraviti kordinate učitavanja modela (x,y)
 - [ ] IndexOutOfRangeException: Index was outside the bounds of the array. Quiz.nextQuestion () (at Assets/Scripts/Quiz.cs:176)
-- [ ] životinja profil - slova ispravi
-- [ ] kviz šapa je na engleskom
+- [x] životinja profil - slova ispravi
+- [x] kviz šapa je na engleskom
 - [ ] prilagoditi veličinu ekrana
-- [ ] area dodati jezike u bazu
+- [x] area dodati jezike u bazu
 
 ## Cloning and running the project
 
