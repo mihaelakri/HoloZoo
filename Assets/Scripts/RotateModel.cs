@@ -84,16 +84,17 @@ public class RotateModel : MonoBehaviour
 
             try
             {
-                if (CommConstants.animal_id == 0)
+                float interpolationFactor = 10f;
+
+                if (CommConstants.animal_id == 0)   // Globe
                 {
-                    Vector3 localRotation = new Vector3(CommConstants.x, CommConstants.y, CommConstants.z);
-                    model.transform.GetChild(0).transform.eulerAngles = transform.eulerAngles + localRotation;
+                    interpolationFactor = 10f;
                 }
-                else
-                {
-                    Quaternion localRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
-                    model.transform.GetChild(0).transform.rotation = transform.rotation * localRotation;
-                }
+
+                Quaternion targetRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                Quaternion currentRotation = model.transform.GetChild(0).transform.rotation;
+                Quaternion smoothedRotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * interpolationFactor);
+                model.transform.GetChild(0).transform.rotation = smoothedRotation;
             }
             catch (Exception e)
             {
@@ -121,7 +122,7 @@ public class RotateModel : MonoBehaviour
             CommConstants.rotationMsg = new RotationMsg(CommConstants.x, CommConstants.y, CommConstants.z, CommConstants.animal_id);
         }
 
-        if (Time.time - lastUpdateTime >= 0.025)  // 40Hz send rate limit
+        if (Time.time - lastUpdateTime >= 0.04)  // 25Hz send rate limit
         {
             BTSendRotate3DModel();
         }
