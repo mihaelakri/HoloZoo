@@ -13,10 +13,12 @@
 - [ ] prilagoditi veličinu ekrana
 - [x] area dodati jezike u bazu
 
-- [ ] fix: session not syncing with host on app relaunch
+- [x] fix: session not syncing with host on app relaunch
 - [x] feat: smooth model movement on tablet with interpolation
 - [x] fix: initial model should now be id 1, not 0
 - [ ] fix: animal rotation sliders ranges to play nice with smoothing
+- [ ] feat: notify user if not connected to internet
+- [ ] feat: notify user on remote host errors
 
 ## Cloning and running the project
 

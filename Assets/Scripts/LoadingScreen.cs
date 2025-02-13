@@ -14,17 +14,24 @@ public class LoadingScreen : MonoBehaviour
     private string sceneNameToLoad = "Language";
 
     private float timeElapsed;
+    private bool sessionSet = false;
+    private bool sessionCoroutineStarted = false;
 
     // Update is called once per frame
     void Update()
     {
         timeElapsed += Time.deltaTime;
 
+        // Make web request immediately to avoid delay
+        if(PlayerPrefs.HasKey("ID") && !sessionCoroutineStarted){
+            sessionCoroutineStarted = true;
+            StartCoroutine(setSession());
+        }
+
         if (timeElapsed >= delayBeforeLoading){
-            //SceneManager.LoadScene(sceneNameToLoad);
-             if(PlayerPrefs.HasKey("ID")){
+            // Make sure session is set before loading scene
+             if(PlayerPrefs.HasKey("ID") && sessionSet){
                  id = Getint("ID");
-                 StartCoroutine(setSession());
                  if(PlayerPrefs.GetString("device")=="mobile"){
                      SceneManager.LoadScene("Home");
                  }else{
@@ -49,11 +56,12 @@ public class LoadingScreen : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.Log("Greška kod spajanja na server: " + www.error);
+                    Debug.Log("set session error: " + www.error);
                 }
             else
                 {
-                    Debug.Log("Server: " + www.downloadHandler.text);
+                    Debug.Log("set session: " + www.downloadHandler.text);
+                    sessionSet = true;
                 }
         }
     }
