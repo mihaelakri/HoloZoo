@@ -11,6 +11,6 @@ public static class CommConstants
     public static string paired_BT_server;
 
     public static float x=0f,y=0f, z=0f;
-    public static int animal_id = 0;
+    public static int animal_id = 1;
     public static RotationMsg rotationMsg = new RotationMsg(0f, 0f, 0f, 0);
 }

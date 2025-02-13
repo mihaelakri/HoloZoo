@@ -15,7 +15,7 @@
 
 - [ ] fix: session not syncing with host on app relaunch
 - [x] feat: smooth model movement on tablet with interpolation
-- [ ] fix: initial model should now be id 1, not 0
+- [x] fix: initial model should now be id 1, not 0
 - [ ] fix: animal rotation sliders ranges to play nice with smoothing
 
 ## Cloning and running the project
