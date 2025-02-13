@@ -40,7 +40,7 @@ public class RotateModel : MonoBehaviour
         int id_animal = CommConstants.animal_id;
 
         WWWForm form = new WWWForm();
-        form.AddField("id_model", PlayerPrefs.GetString("id_animal"));
+        form.AddField("id_model", id_animal);
         
 
         using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form))
