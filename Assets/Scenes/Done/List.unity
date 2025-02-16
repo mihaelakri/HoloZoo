@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 1304121539}
   - component: {fileID: 1304121538}
   - component: {fileID: 1304121543}
+  - component: {fileID: 1304121544}
   m_Layer: 0
   m_Name: Canvas 16592
   m_TagString: Untagged
@@ -898,6 +899,20 @@ MonoBehaviour:
     animal: []
   liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
+--- !u!114 &1304121544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304121537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e4181d33ce47f449315cadc8d8a9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openDyslexic: {fileID: 12800000, guid: beb946c408f7af0489bd78a41478b106, type: 3}
+  jostFont: {fileID: 12800000, guid: 07945bfd2e86a7c4482b44b1847961e8, type: 3}
 --- !u!1 &1366383155
 GameObject:
   m_ObjectHideFlags: 0

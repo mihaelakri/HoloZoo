@@ -42,6 +42,7 @@ public class FillAnimal : MonoBehaviour
 
     void Start()
     {
+        ApplyAccessibility.Instance.ApplyAccessibilitySettings();
         StartCoroutine(FillAnimalInfo());
         //contrast
         if(PlayerPrefs.GetInt("contrast")==1){

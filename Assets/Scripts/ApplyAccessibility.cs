@@ -7,43 +7,59 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ApplyAccessibility : MonoBehaviour
-{
-    public Font liberationFont;
+{ public static ApplyAccessibility Instance; // Singleton pristup
+
+    public Font openDyslexic;
     public Font jostFont;
-    Text[] yourTexts;
-    Text[] textComponents;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Održava postavke između scena
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
-        //font size
-        yourTexts = FindObjectsOfType<Text>();
-        foreach (Text text in yourTexts)
+        ApplyAccessibilitySettings(); // Primijeni postavke na početku
+    }
+
+    public void ApplyAccessibilitySettings()
+    {
+        Text[] allTexts = FindObjectsOfType<Text>();
+        Button[] allButtons = FindObjectsOfType<Button>();
+
+        int fontSize = PlayerPrefs.GetInt("font_size", 14); // Default 14 ako nije postavljeno
+        int dyslexiaEnabled = PlayerPrefs.GetInt("dyslexia", 0);
+        int contrastEnabled = PlayerPrefs.GetInt("contrast", 0);
+
+        Font selectedFont = (dyslexiaEnabled == 1) ? openDyslexic : jostFont;
+
+        // Postavi veličinu fonta i zamijeni font
+        foreach (Text text in allTexts)
         {
-            text.fontSize = PlayerPrefs.GetInt("font_size");
+            text.fontSize = fontSize;
+            text.font = selectedFont;
         }
-        //contrast
-        if(PlayerPrefs.GetInt("contrast")==1){
-            GameObject.Find("confirmbutton").GetComponent<Image>().color = Color.black;
-            textComponents = FindObjectsOfType<Text>();
-            
-            foreach (Text textComponent in textComponents)
+
+        // Postavi kontrast (crna boja na gumbovima i tekstovima osim "CONFIRM")
+        if (contrastEnabled == 1)
+        {
+            foreach (Button btn in allButtons)
             {
-                if(textComponent.text != "CONFIRM"){
-                    textComponent.color =  Color.black;
-                }
+                btn.GetComponent<Image>().color = Color.black;
             }
-        }
-        //dyslexia
-        textComponents = FindObjectsOfType<Text>();
-        if(PlayerPrefs.GetInt("dyslexia")==1){
-            foreach (Text textComponent in textComponents)
+
+            foreach (Text text in allTexts)
             {
-                textComponent.font = liberationFont;
-            }
-        }else{
-            foreach (Text textComponent in textComponents)
-            {
-                textComponent.font = jostFont;
+                text.color = Color.black;
+
             }
         }
     }
