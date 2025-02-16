@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class SetLanguage : MonoBehaviour
 {
@@ -13,6 +11,8 @@ public class SetLanguage : MonoBehaviour
     public Button buttonCroatian;
     public Button buttonSpanish;
     public Button buttonHungarian;
+
+    private bool isLanguageSet = false;
 
     void Start()
     {
@@ -26,29 +26,38 @@ public class SetLanguage : MonoBehaviour
 
     IEnumerator SetLanguageAndProceed(string languageCode)
     {
-        // Spremanje jezika lokalno u PlayerPrefs
-        PlayerPrefs.SetString("lang", languageCode);
-        PlayerPrefs.Save();
-
-        // Priprema podataka za slanje
-        WWWForm form = new WWWForm();
-        form.AddField("lang", languageCode);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form))
+        if (!isLanguageSet)
         {
-            yield return www.SendWebRequest();
+            // Avoids multiple button presses
+            isLanguageSet = true;
 
-            if (www.result != UnityWebRequest.Result.Success)
+            // Spremanje jezika lokalno u PlayerPrefs
+            PlayerPrefs.SetString("lang", languageCode);
+            PlayerPrefs.Save();
+
+            // Block while there's no internet
+            yield return StartCoroutine(CheckInternetConnection.PromptConnectionBlocking(this));
+
+            // Priprema podataka za slanje
+            WWWForm form = new WWWForm();
+            form.AddField("lang", languageCode);
+
+            using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "middle_man.php", form))
             {
-                Debug.LogError("Error sending language: " + www.error);
+                yield return www.SendWebRequest();
+
+                if (www.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogError("Error sending language: " + www.error);
+                }
+                else
+                {
+                    Debug.Log("Language sent successfully: " + languageCode);
+                }
             }
-            else
-            {
-                Debug.Log("Language sent successfully: " + languageCode);
-            }
+
+            // Nakon slanja, učitavanje sljedeće scene
+            SceneManager.LoadScene("Welcome");
         }
-
-        // Nakon slanja, učitavanje sljedeće scene
-        SceneManager.LoadScene("Welcome");
     }
 }

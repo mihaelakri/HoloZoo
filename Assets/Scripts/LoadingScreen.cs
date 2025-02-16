@@ -1,73 +1,80 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using System;
 
 public class LoadingScreen : MonoBehaviour
 {
-    public int id; 
+    public int id;
     [SerializeField]
     private float delayBeforeLoading = 5f;
     [SerializeField]
     private string sceneNameToLoad = "Language";
+    private bool isSessionSet;
 
-    private float timeElapsed;
-    private bool sessionSet = false;
-    private bool sessionCoroutineStarted = false;
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        timeElapsed += Time.deltaTime;
+        StartCoroutine(SceneSwitch());
+    }
 
-        // Make web request immediately to avoid delay
-        if(PlayerPrefs.HasKey("ID") && !sessionCoroutineStarted){
-            sessionCoroutineStarted = true;
-            StartCoroutine(setSession());
+    IEnumerator SceneSwitch()
+    {
+        yield return new WaitForSeconds(delayBeforeLoading);
+
+        if (!PlayerPrefs.HasKey("ID"))
+        {
+            SceneManager.LoadScene(sceneNameToLoad);
+            yield break;
         }
 
-        if (timeElapsed >= delayBeforeLoading){
-            // Make sure session is set before loading scene
-             if(PlayerPrefs.HasKey("ID") && sessionSet){
-                 id = Getint("ID");
-                 if(PlayerPrefs.GetString("device")=="mobile"){
-                     SceneManager.LoadScene("Home");
-                 }else{
-                     SceneManager.LoadScene("HologramTablet");
-                 }
-             }else{
-                 SceneManager.LoadScene(sceneNameToLoad);
-             }  
+        yield return StartCoroutine(CheckInternetConnection.PromptConnectionBlocking(this));
+        yield return StartCoroutine(SetSession());
+
+        if (isSessionSet == true)
+        {
+            id = Getint("ID");
+            if (PlayerPrefs.GetString("device") == "mobile")
+            {
+                SceneManager.LoadScene("Home");
+            }
+            else
+            {
+                SceneManager.LoadScene("HologramTablet");
+            }
+        }
+        else
+        {
+            // fallback in case of remote server error
+            SceneManager.LoadScene(sceneNameToLoad);
         }
     }
 
-    IEnumerator setSession(){
-
+    IEnumerator SetSession()
+    {
         WWWForm form = new WWWForm();
         form.AddField("id", id);
         form.AddField("lang", PlayerPrefs.GetString("lang", "en"));
         form.AddField("flag", "5");
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
-
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "middle_man.php", form))
+        {
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log("set session error: " + www.error);
-                }
+            {
+                Debug.LogError("set session error: " + www.error);
+                isSessionSet = false;
+            }
             else
-                {
-                    Debug.Log("set session: " + www.downloadHandler.text);
-                    sessionSet = true;
-                }
+            {
+                Debug.Log("set session: " + www.downloadHandler.text);
+                isSessionSet = true;
+            }
         }
     }
 
     public int Getint(string KeyName)
-        {
-            return PlayerPrefs.GetInt(KeyName);
-        }
+    {
+        return PlayerPrefs.GetInt(KeyName);
+    }
 }
