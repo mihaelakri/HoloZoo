@@ -260,9 +260,6 @@ MonoBehaviour:
   sideSlider: {fileID: 0}
   model: {fileID: 465689343}
   target: {fileID: 0}
-  sliderLastX: 0
-  sliderLastY: 0
-  instance: {fileID: 0}
 --- !u!114 &462323725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a774110304ee40f49818ff320412e593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
 --- !u!1 &465689343
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +283,7 @@ GameObject:
   - component: {fileID: 465689344}
   m_Layer: 5
   m_Name: GameObject
-  m_TagString: 3d
+  m_TagString: 3d-obj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -42,9 +42,9 @@ public class Load3DModelTablet : MonoBehaviour
                     }
                     Debug.Log(www.downloadHandler.text);
                     variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    GameObject instantiatedPrefab = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                    GameObject instantiatedPrefab = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
                     instantiatedPrefab.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                    //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                    //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
 
                     foreach (var s in www.GetResponseHeader("Set-Cookie").Split(';')) {
                         if(s.Contains("holozoo_session")){

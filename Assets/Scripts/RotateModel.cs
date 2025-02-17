@@ -63,11 +63,11 @@ public class RotateModel : MonoBehaviour
                     model_url = www.downloadHandler.text;
                 }
                 Debug.Log("SwapModel - resp: " + www.downloadHandler.text);
-                GameObject parent = GameObject.FindGameObjectWithTag("3d");
+                GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
                 Destroy(parent.transform.GetChild(0).gameObject);
 
                 GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d").transform);
+                Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
             }
         }
 
