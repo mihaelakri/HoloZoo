@@ -65,7 +65,7 @@ public class Login : MonoBehaviour
 
    void Start()
     {
-        selectedLanguage = PlayerPrefs.GetString("lang","eng"); 
+        selectedLanguage = PlayerPrefs.GetString("lang","en"); 
     }
 
    public void CallLogin(){

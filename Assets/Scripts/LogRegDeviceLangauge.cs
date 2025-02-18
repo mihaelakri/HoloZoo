@@ -86,8 +86,8 @@ public class LogRegDeviceLangauge : MonoBehaviour
             var languageTexts = translations[selectedLanguage];
 
             choose_device.text = languageTexts["choose_device"];
-            mobile.text = languageTexts["mobile"];
-            tablet.text = languageTexts["tablet"];
+            mobile.text = languageTexts["game"];
+            tablet.text = languageTexts["hologram"];
             login.text = languageTexts["login"];
             register.text = languageTexts["register"];
         }
