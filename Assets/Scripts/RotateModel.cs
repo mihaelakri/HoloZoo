@@ -41,9 +41,8 @@ public class RotateModel : MonoBehaviour
 
         WWWForm form = new WWWForm();
         form.AddField("id_model", id_animal);
-        
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -91,10 +90,30 @@ public class RotateModel : MonoBehaviour
                     interpolationFactor = 10f;
                 }
 
-                Quaternion targetRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
                 Quaternion currentRotation = model.transform.GetChild(0).transform.rotation;
-                Quaternion smoothedRotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * interpolationFactor);
+                Quaternion targetRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                Quaternion smoothedRotation;
+
+                if (Quaternion.Dot(currentRotation, targetRotation) < 0f)
+                {
+                    smoothedRotation = Quaternion.RotateTowards(currentRotation, targetRotation, -30f);
+                }
+                else
+                {
+                    smoothedRotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * interpolationFactor);
+                }
+
                 model.transform.GetChild(0).transform.rotation = smoothedRotation;
+
+                // if (CommConstants.x != lastX)
+                // {
+                //     Debug.Log("update rotation current: " + currentRotation.eulerAngles
+                //     + "\t   target: " + targetRotation.eulerAngles
+                //     + "\t\tdot: " + Quaternion.Dot(currentRotation, targetRotation)
+                //     + "\t\t\tangle: " + Quaternion.Angle(currentRotation, targetRotation)
+                //     // + "\t\tslerp angle: " + Quaternion.Angle(currentRotation, smoothedRotation) 
+                //     );
+                // }
             }
             catch (Exception e)
             {

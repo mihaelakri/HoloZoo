@@ -16,7 +16,7 @@
 - [x] fix: session not syncing with host on app relaunch
 - [x] feat: smooth model movement on tablet with interpolation
 - [x] fix: initial model should now be id 1, not 0
-- [ ] fix: animal rotation sliders ranges to play nice with smoothing
+- [x] fix: animal rotation sliders ranges to play nice with smoothing
 - [x] feat: notify user if not connected to internet
 - [ ] feat: notify user on remote host errors
 - [ ] check: translations for error messages when checking connection
