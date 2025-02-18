@@ -65,13 +65,27 @@ public class ApplyAccessibility : MonoBehaviour
         {
             foreach (Button btn in allButtons)
             {
-                btn.GetComponent<Image>().color = Color.black;
+                try
+                {
+                    if (!btn.TryGetComponent<Image>(out var img))
+                    {
+                        // Some buttons have Image component as a child
+                        img = btn.GetComponentInChildren<Image>();
+                    }
+
+                    img.color = Color.black;
+                }
+                catch (System.Exception e)
+                {
+                    // Ako gumb nema sliku
+                    Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Button: [" + btn.name + "] doesn't have an image");
+                    Debug.LogException(e);
+                }
             }
 
             foreach (Text text in allTexts)
             {
-                text.color = Color.black;
-
+                text.color = Color.white;
             }
         }
     }

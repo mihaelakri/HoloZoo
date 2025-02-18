@@ -20,6 +20,7 @@
 - [x] feat: notify user if not connected to internet
 - [ ] feat: notify user on remote host errors
 - [ ] check: translations for error messages when checking connection
+- [ ] fix: ApplyAccessibility more granularly, not all text/buttons
 
 ## Cloning and running the project
 
