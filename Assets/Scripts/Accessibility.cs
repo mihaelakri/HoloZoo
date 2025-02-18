@@ -82,6 +82,7 @@ public class Accessibility : MonoBehaviour
             GameObject.Find("btn1").GetComponent<Image>().color = Color.white; 
             GameObject.Find("btn2").GetComponent<Image>().color = Color.white; 
         }
+        GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
     }
 
 }

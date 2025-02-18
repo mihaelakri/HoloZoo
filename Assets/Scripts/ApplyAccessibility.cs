@@ -1,18 +1,15 @@
-using System;
-using System.Globalization;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ApplyAccessibility : MonoBehaviour
-{ public static ApplyAccessibility Instance; // Singleton pristup
+{
+    public static ApplyAccessibility Instance; // Singleton pristup
 
     public Font openDyslexic;
     public Font jostFont;
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -23,6 +20,21 @@ public class ApplyAccessibility : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ApplyAccessibilitySettings(); // Primijeni postavke kad se scena učita
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Start()
