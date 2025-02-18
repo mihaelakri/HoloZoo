@@ -7,10 +7,24 @@ using UnityEngine.Networking;
 
 public class InitializeConnection : MonoBehaviour
 {
+    private static InitializeConnection Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         StartCoroutine(mockAuth());
         CommConstants.conn_method = PlayerPrefs.GetString("conn_method");
         Debug.Log("conn_method: " + CommConstants.conn_method);
