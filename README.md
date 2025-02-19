@@ -26,7 +26,7 @@
 - [x] refactor: Accessibility panel into a prefab that can be instantiated anywhere
 - [ ] fix: accessibility panel on/off text has no translation
 - [x] fix: Quiz answers contrast colors
-- [ ] fix: Quiz score not tracking 
+- [x] fix: Quiz score not tracking 
 - [ ] feat: loading indicator when fetching from host
 
 ## Cloning and running the project

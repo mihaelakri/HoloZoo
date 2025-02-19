@@ -180,8 +180,10 @@ public class Quiz : MonoBehaviour
             if (btnIndex == correct)
             {
                 button.GetComponent<Image>().sprite = imgCorrect;
+                if (btnIndex == chosen)
+                    correctAnswerCount++;
             }
-            else if (btnIndex != correct && btnIndex == chosen)
+            else if (btnIndex == chosen && btnIndex != correct)
             {
                 button.GetComponent<Image>().color = Color.white;
                 button.GetComponent<Image>().sprite = imgWrong;
@@ -190,7 +192,6 @@ public class Quiz : MonoBehaviour
             {
                 button.GetComponent<Image>().color = Color.white;
                 button.GetComponent<Image>().sprite = imgWrongOther;
-
             }
         }
     }
