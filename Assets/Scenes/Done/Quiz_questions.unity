@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 422670224}
   m_Layer: 0
   m_Name: Text (Legacy)
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 645527932}
   m_Layer: 0
   m_Name: NextQuestion
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 1210461345}
   m_Layer: 0
   m_Name: Question
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 1221463266}
   m_Layer: 0
   m_Name: Lorem ipsum
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 1373727569}
   m_Layer: 0
   m_Name: Libero tempore
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 1804873154}
   m_Layer: 0
   m_Name: Et harum quidem
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

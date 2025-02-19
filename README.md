@@ -20,7 +20,9 @@
 - [x] feat: notify user if not connected to internet
 - [ ] feat: notify user on remote host errors
 - [ ] check: translations for error messages when checking connection
-- [ ] fix: ApplyAccessibility more granularly, not all text/buttons
+- [ ] refactor: ApplyAccessibility more granularly, not all text/buttons
+- [x] chore: tag all images and text for contrast
+- [ ] refactor: Quiz and Animal_list scene to use indices instead of tags 
 
 ## Cloning and running the project
 

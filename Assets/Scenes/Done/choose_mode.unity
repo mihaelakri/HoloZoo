@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 132146599}
   m_Layer: 0
   m_Name: btn1
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 197102566}
   m_Layer: 0
   m_Name: Accessibility sign
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 300703384}
   m_Layer: 0
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: img-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 457998886}
   m_Layer: 0
   m_Name: btn2
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2610,7 +2610,7 @@ GameObject:
   - component: {fileID: 1113137706}
   m_Layer: 0
   m_Name: uvodni
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3263,7 +3263,7 @@ GameObject:
   - component: {fileID: 1728558736}
   m_Layer: 0
   m_Name: Globus mode
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3617,7 +3617,7 @@ GameObject:
   - component: {fileID: 1884384111}
   m_Layer: 0
   m_Name: Text (Legacy)
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
