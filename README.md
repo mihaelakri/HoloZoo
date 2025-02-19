@@ -28,6 +28,7 @@
 - [x] fix: Quiz answers contrast colors
 - [x] fix: Quiz score not tracking 
 - [ ] feat: loading indicator when fetching from host
+- [x] fix: Animal_list contrast colors
 
 ## Cloning and running the project
 

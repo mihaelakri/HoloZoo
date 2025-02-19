@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 208469552}
   m_Layer: 0
   m_Name: Region
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 434420999}
   m_Layer: 0
   m_Name: Weight
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1435,7 +1435,7 @@ GameObject:
   - component: {fileID: 514766488}
   m_Layer: 0
   m_Name: Weight-dropdown
-  m_TagString: Untagged
+  m_TagString: img-mid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1659,7 +1659,7 @@ GameObject:
   - component: {fileID: 664602625}
   m_Layer: 0
   m_Name: Habitats-dropdown
-  m_TagString: Untagged
+  m_TagString: img-mid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1982,7 +1982,7 @@ GameObject:
   - component: {fileID: 811354516}
   m_Layer: 0
   m_Name: Habitats
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2228,7 +2228,7 @@ GameObject:
   - component: {fileID: 828402107}
   m_Layer: 0
   m_Name: Population-dropdown
-  m_TagString: Untagged
+  m_TagString: img-mid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2597,7 +2597,7 @@ GameObject:
   - component: {fileID: 1271087350}
   m_Layer: 0
   m_Name: Population
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2827,7 +2827,7 @@ GameObject:
   - component: {fileID: 1296869548}
   m_Layer: 0
   m_Name: ES-dropdown
-  m_TagString: Untagged
+  m_TagString: img-mid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2917,7 +2917,7 @@ GameObject:
   - component: {fileID: 1317008698}
   m_Layer: 0
   m_Name: Diet-dropdown
-  m_TagString: Untagged
+  m_TagString: img-mid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3364,7 +3364,7 @@ GameObject:
   - component: {fileID: 1606115212}
   m_Layer: 0
   m_Name: EndangermentStatus
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3781,7 +3781,7 @@ GameObject:
   - component: {fileID: 1755848734}
   m_Layer: 0
   m_Name: Diet
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4125,7 +4125,7 @@ GameObject:
   - component: {fileID: 1761655095}
   m_Layer: 0
   m_Name: Region-dropdown
-  m_TagString: Untagged
+  m_TagString: img-mid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

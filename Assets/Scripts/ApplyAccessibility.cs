@@ -30,7 +30,7 @@ public class ApplyAccessibility : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        ApplyAccessibilitySettings(); // Primijeni postavke kad se scena učita
+        ApplyAccessibilitySettings();
     }
 
     void OnDisable()
@@ -40,17 +40,15 @@ public class ApplyAccessibility : MonoBehaviour
 
     void Start()
     {
-        ApplyAccessibilitySettings(); // Primijeni postavke na početku
+        ApplyAccessibilitySettings();
     }
 
     public void ApplyAccessibilitySettings()
     {
-        // Text[] allTexts = FindObjectsOfType<Text>();
-        // Button[] allButtons = FindObjectsOfType<Button>();
         Text[] textsDark = GameObject.FindGameObjectsWithTag("text-dark").Select(o => o.GetComponent<Text>()).ToArray();
         Text[] textsLight = GameObject.FindGameObjectsWithTag("text-light").Select(o => o.GetComponent<Text>()).ToArray();
 
-        Image[] buttonsDark = GameObject.FindGameObjectsWithTag("img-dark").Select(o =>
+        Image[] imagesDark = GameObject.FindGameObjectsWithTag("img-dark").Select(o =>
         {
             if (!o.TryGetComponent<Image>(out var img))
             {
@@ -59,14 +57,12 @@ public class ApplyAccessibility : MonoBehaviour
             }
 
             if (img == null)
-            {
                 Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
-            }
 
             return img;
         }).ToArray();
 
-        Image[] buttonsLight = GameObject.FindGameObjectsWithTag("img-light").Select(o =>
+        Image[] imagesLight = GameObject.FindGameObjectsWithTag("img-light").Select(o =>
         {
             if (!o.TryGetComponent<Image>(out var img))
             {
@@ -75,15 +71,26 @@ public class ApplyAccessibility : MonoBehaviour
             }
 
             if (img == null)
-            {
                 Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
-            }
 
             return img;
-        }
-        ).ToArray();
+        }).ToArray();
 
-        int fontSize = PlayerPrefs.GetInt("font_size", 14); // Default 14 ako nije postavljeno
+        Image[] imagesMid = GameObject.FindGameObjectsWithTag("img-mid").Select(o =>
+        {
+            if (!o.TryGetComponent<Image>(out var img))
+            {
+                // Some buttons have Image component as a child
+                img = o.GetComponentInChildren<Image>();
+            }
+
+            if (img == null)
+                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
+
+            return img;
+        }).ToArray();
+
+        int fontSize = PlayerPrefs.GetInt("font_size", 14);
         int dyslexiaEnabled = PlayerPrefs.GetInt("dyslexia", 0);
         int contrastEnabled = PlayerPrefs.GetInt("contrast", 0);
 
@@ -96,7 +103,6 @@ public class ApplyAccessibility : MonoBehaviour
             text.font = selectedFont;
         }
 
-        // Postavi kontrast (crna boja na gumbovima i tekstovima osim "CONFIRM")
         if (contrastEnabled == 1)
         {
             foreach (Text text in textsDark)
@@ -109,14 +115,19 @@ public class ApplyAccessibility : MonoBehaviour
                 text.color = Color.white;
             }
 
-            foreach (Image img in buttonsDark)
+            foreach (Image img in imagesDark)
             {
                 img.color = Color.black;
             }
 
-            foreach (Image img in buttonsLight)
+            foreach (Image img in imagesLight)
             {
                 img.color = Color.white;
+            }
+
+            foreach (Image img in imagesMid)
+            {
+                img.color = Color.grey;
             }
         }
     }
