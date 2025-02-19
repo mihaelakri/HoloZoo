@@ -20,9 +20,11 @@
 - [x] feat: notify user if not connected to internet
 - [ ] feat: notify user on remote host errors
 - [ ] check: translations for error messages when checking connection
-- [ ] refactor: ApplyAccessibility more granularly, not all text/buttons
+- [x] refactor: ApplyAccessibility more granularly, not all text/buttons
 - [x] chore: tag all images and text for contrast
-- [ ] refactor: Quiz and Animal_list scene to use indices instead of tags 
+- [ ] refactor: Quiz and Animal_list scene to use indices instead of tags
+- [ ] refactor: Accessibility panel into a prefab that can be instantiated anywhere
+- [ ] feat: loading indicator when fetching from host
 
 ## Cloning and running the project
 

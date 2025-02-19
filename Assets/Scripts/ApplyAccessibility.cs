@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ApplyAccessibility : MonoBehaviour
 {
@@ -44,8 +45,43 @@ public class ApplyAccessibility : MonoBehaviour
 
     public void ApplyAccessibilitySettings()
     {
-        Text[] allTexts = FindObjectsOfType<Text>();
-        Button[] allButtons = FindObjectsOfType<Button>();
+        // Text[] allTexts = FindObjectsOfType<Text>();
+        // Button[] allButtons = FindObjectsOfType<Button>();
+        Text[] textsDark = GameObject.FindGameObjectsWithTag("text-dark").Select(o => o.GetComponent<Text>()).ToArray();
+        Text[] textsLight = GameObject.FindGameObjectsWithTag("text-light").Select(o => o.GetComponent<Text>()).ToArray();
+
+        Image[] buttonsDark = GameObject.FindGameObjectsWithTag("img-dark").Select(o =>
+        {
+            if (!o.TryGetComponent<Image>(out var img))
+            {
+                // Some buttons have Image component as a child
+                img = o.GetComponentInChildren<Image>();
+            }
+
+            if (img == null)
+            {
+                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
+            }
+
+            return img;
+        }).ToArray();
+
+        Image[] buttonsLight = GameObject.FindGameObjectsWithTag("img-light").Select(o =>
+        {
+            if (!o.TryGetComponent<Image>(out var img))
+            {
+                // Some buttons have Image component as a child
+                img = o.GetComponentInChildren<Image>();
+            }
+
+            if (img == null)
+            {
+                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
+            }
+
+            return img;
+        }
+        ).ToArray();
 
         int fontSize = PlayerPrefs.GetInt("font_size", 14); // Default 14 ako nije postavljeno
         int dyslexiaEnabled = PlayerPrefs.GetInt("dyslexia", 0);
@@ -54,7 +90,7 @@ public class ApplyAccessibility : MonoBehaviour
         Font selectedFont = (dyslexiaEnabled == 1) ? openDyslexic : jostFont;
 
         // Postavi veličinu fonta i zamijeni font
-        foreach (Text text in allTexts)
+        foreach (Text text in textsDark.Concat(textsLight))
         {
             text.fontSize = fontSize;
             text.font = selectedFont;
@@ -63,29 +99,24 @@ public class ApplyAccessibility : MonoBehaviour
         // Postavi kontrast (crna boja na gumbovima i tekstovima osim "CONFIRM")
         if (contrastEnabled == 1)
         {
-            foreach (Button btn in allButtons)
+            foreach (Text text in textsDark)
             {
-                try
-                {
-                    if (!btn.TryGetComponent<Image>(out var img))
-                    {
-                        // Some buttons have Image component as a child
-                        img = btn.GetComponentInChildren<Image>();
-                    }
-
-                    img.color = Color.black;
-                }
-                catch (System.Exception e)
-                {
-                    // Ako gumb nema sliku
-                    Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Button: [" + btn.name + "] doesn't have an image");
-                    Debug.LogException(e);
-                }
+                text.color = Color.black;
             }
 
-            foreach (Text text in allTexts)
+            foreach (Text text in textsLight)
             {
                 text.color = Color.white;
+            }
+
+            foreach (Image img in buttonsDark)
+            {
+                img.color = Color.black;
+            }
+
+            foreach (Image img in buttonsLight)
+            {
+                img.color = Color.white;
             }
         }
     }

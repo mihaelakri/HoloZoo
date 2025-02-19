@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 17829408}
   m_Layer: 0
   m_Name: QUIZ
-  m_TagString: img-light
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 321773867}
   m_Layer: 0
   m_Name: Small
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 336171546}
   m_Layer: 0
   m_Name: Label
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 504003442}
   m_Layer: 0
   m_Name: Font size text
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1031,7 +1031,7 @@ GameObject:
   - component: {fileID: 713115639}
   m_Layer: 0
   m_Name: Medium
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 715996020}
   m_Layer: 0
   m_Name: Learn Button
-  m_TagString: btn-bg-dark
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 766221722}
   m_Layer: 0
   m_Name: Large
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 882238601}
   m_Layer: 0
   m_Name: LEARN
-  m_TagString: img-light
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1795,7 +1795,7 @@ GameObject:
   - component: {fileID: 975206060}
   m_Layer: 0
   m_Name: Dyslexia font text
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 1057946756}
   m_Layer: 0
   m_Name: Contrast text
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1995,7 +1995,7 @@ GameObject:
   - component: {fileID: 1138621530}
   m_Layer: 0
   m_Name: Text to speech text
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2291,7 +2291,7 @@ GameObject:
   - component: {fileID: 1296936706}
   m_Layer: 0
   m_Name: Quiz Button
-  m_TagString: btn-bg-dark
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3106,7 +3106,7 @@ GameObject:
   - component: {fileID: 1638467292}
   m_Layer: 0
   m_Name: Text (Legacy)
-  m_TagString: Untagged
+  m_TagString: text-light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3335,7 +3335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be897a11ba87cd04eb0a1d07cfcd80a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   profile_info:
     username: 
     experience: 0
@@ -3665,7 +3664,7 @@ GameObject:
   - component: {fileID: 1974238447}
   m_Layer: 0
   m_Name: Profile
-  m_TagString: img-light
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3983,7 +3982,7 @@ GameObject:
   - component: {fileID: 2032945609}
   m_Layer: 0
   m_Name: Label
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4140,7 +4139,7 @@ GameObject:
   - component: {fileID: 2044432613}
   m_Layer: 0
   m_Name: Save button
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

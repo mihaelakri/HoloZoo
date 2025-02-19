@@ -72,7 +72,7 @@ public class Registration : MonoBehaviour
 
    void Start()
     {
-        selectedLanguage = PlayerPrefs.GetString("lang","eng"); 
+        selectedLanguage = PlayerPrefs.GetString("lang","en"); 
     }
 
  public void CallRegister(){

@@ -14,10 +14,6 @@ public class FillScore : MonoBehaviour
     public Font liberationFont;
     public Font jostFont;
 
-    private string selectedLanguage;
-
-    Text[] textComponents;
-
     private Dictionary<string, Dictionary<string, string>> messages = new Dictionary<string, Dictionary<string, string>>
     {
         { "en", new Dictionary<string, string> { { "try_again", "Try again!" }, { "bravo", "Bravo!" } } },
@@ -26,12 +22,12 @@ public class FillScore : MonoBehaviour
         { "es", new Dictionary<string, string> { { "try_again", "¡Inténtalo de nuevo!" }, { "bravo", "¡Bravo!" } } },
         { "hu", new Dictionary<string, string> { { "try_again", "Próbáld újra!" }, { "bravo", "Bravó!" } } }
     };
-    
+
     void Start()
     {
-        selectedLanguage = PlayerPrefs.GetString("lang","eng"); 
-        scoreText.text = PlayerPrefs.GetInt("Score") + "/" + PlayerPrefs.GetInt("QuestionCount");  
-        if ((float)PlayerPrefs.GetInt("Score") / (float)PlayerPrefs.GetInt("QuestionCount") < 0.5f)
+        string selectedLanguage = PlayerPrefs.GetString("lang", "en");
+        scoreText.text = PlayerPrefs.GetInt("Score") + "/" + PlayerPrefs.GetInt("QuestionCount");
+        if (PlayerPrefs.GetInt("Score") / (float)PlayerPrefs.GetInt("QuestionCount") < 0.5f)
         {
             message.text = messages[selectedLanguage]["try_again"];
             face.GetComponent<Image>().sprite = sadFace;
@@ -41,56 +37,39 @@ public class FillScore : MonoBehaviour
             message.text = messages[selectedLanguage]["bravo"];
             face.GetComponent<Image>().sprite = happyFace;
         }
-        StartCoroutine(SetExperience()); 
-
-        if(PlayerPrefs.GetInt("contrast")==1){
-            GameObject.Find("Bar").GetComponent<Image>().color = Color.black;
-            GameObject.Find("btn").GetComponent<Image>().color = Color.black;
-            GameObject.Find("btn2").GetComponent<Image>().color = Color.black;
-        }
-        //dyslexia
-        textComponents = FindObjectsOfType<Text>();
-        if(PlayerPrefs.GetInt("dyslexia")==1){
-            foreach (Text textComponent in textComponents)
-            {
-                textComponent.font = liberationFont;
-            }
-        }else{
-            foreach (Text textComponent in textComponents)
-            {
-                textComponent.font = jostFont;
-            }
-        }
+        StartCoroutine(SetExperience());
     }
 
-    IEnumerator SetExperience(){
-
+    IEnumerator SetExperience()
+    {
         WWWForm form = new WWWForm();
         form.AddField("points", PlayerPrefs.GetInt("Score"));
 
-
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"quiz_view.php", form)){
-
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "quiz_view.php", form))
+        {
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.error);
-                }
+            {
+                Debug.Log(www.error);
+            }
             else
+            {
+                Debug.Log(www.downloadHandler.text);
+                if (www.downloadHandler.text == "400")
                 {
-                    Debug.Log(www.downloadHandler.text);
-                    if(www.downloadHandler.text == "400"){
-                        Debug.Log("Bad Request");
-                    }
-                    else if(www.downloadHandler.text == "0"){
-                        Debug.Log("Failed update of experience");
-                    }
-                    else if(www.downloadHandler.text == "1"){   
-                        Debug.Log("Experience updated");  
-                    }
+                    Debug.Log("Bad Request");
                 }
+                else if (www.downloadHandler.text == "0")
+                {
+                    Debug.Log("Failed update of experience");
+                }
+                else if (www.downloadHandler.text == "1")
+                {
+                    Debug.Log("Experience updated");
+                }
+            }
         }
     }
-    
+
 }
