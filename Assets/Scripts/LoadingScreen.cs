@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class LoadingScreen : MonoBehaviour
 {
-    public int id;
     [SerializeField]
     private float delayBeforeLoading = 5f;
     [SerializeField]
@@ -32,15 +31,10 @@ public class LoadingScreen : MonoBehaviour
 
         if (isSessionSet == true)
         {
-            id = Getint("ID");
             if (PlayerPrefs.GetString("device") == "mobile")
-            {
                 SceneManager.LoadScene("Home");
-            }
             else
-            {
                 SceneManager.LoadScene("HologramTablet");
-            }
         }
         else
         {
@@ -51,8 +45,8 @@ public class LoadingScreen : MonoBehaviour
 
     IEnumerator SetSession()
     {
-        WWWForm form = new WWWForm();
-        form.AddField("id", id);
+        WWWForm form = new();
+        form.AddField("id", PlayerPrefs.GetInt("ID"));
         form.AddField("lang", PlayerPrefs.GetString("lang", "en"));
         form.AddField("flag", "5");
 
@@ -71,10 +65,5 @@ public class LoadingScreen : MonoBehaviour
                 isSessionSet = true;
             }
         }
-    }
-
-    public int Getint(string KeyName)
-    {
-        return PlayerPrefs.GetInt(KeyName);
     }
 }
