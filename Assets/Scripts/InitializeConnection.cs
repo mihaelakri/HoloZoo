@@ -22,10 +22,10 @@ public class InitializeConnection : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(mockAuth());
+        // StartCoroutine(mockAuth());  // for Laravel backend
+
         CommConstants.conn_method = PlayerPrefs.GetString("conn_method");
         Debug.Log("conn_method: " + CommConstants.conn_method);
 
@@ -36,7 +36,6 @@ public class InitializeConnection : MonoBehaviour
             {
                 Debug.Log("Bluetooth - CreateServer");
                 BluetoothForAndroid.CreateServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
-                // StartSender();
             }
             else
             {
@@ -111,7 +110,7 @@ public class InitializeConnection : MonoBehaviour
         CommConstants.y = rotationMsg.y;
         CommConstants.z = rotationMsg.z;
         CommConstants.animal_id = rotationMsg.animal_id;
-        Debug.Log("Bluetooth - BTReceiveRotate3DModel: " + CommConstants.x + ", " + CommConstants.y + ", " + CommConstants.z + ", " + CommConstants.animal_id);
+        // Debug.Log("Bluetooth - BTReceiveRotate3DModel: " + CommConstants.x + ", " + CommConstants.y + ", " + CommConstants.z + ", " + CommConstants.animal_id);
     }
 
     IEnumerator mockAuth()
@@ -122,7 +121,7 @@ public class InitializeConnection : MonoBehaviour
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.error);
+                Debug.LogError("mockAuth error: " + www.error);
             }
             else
             {
@@ -132,14 +131,12 @@ public class InitializeConnection : MonoBehaviour
                     if (s.Contains("holozoo_session"))
                     {
                         CommConstants.Auth = s.Substring(s.IndexOf("holozoo_session")).Split('=')[1].Split(';')[0];
-                        Debug.Log(CommConstants.Auth);
-
+                        Debug.Log("mockAuth Auth: " + CommConstants.Auth);
                     }
                     else if (s.Contains("XSRF-TOKEN"))
                     {
                         CommConstants.XSRF = s.Substring(s.IndexOf("XSRF-TOKEN")).Split('=')[1].Split(';')[0];
-                        Debug.Log(CommConstants.XSRF);
-
+                        Debug.Log("mockAuth XSRF: " + CommConstants.XSRF);
                     }
                 }
             }

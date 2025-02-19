@@ -33,21 +33,20 @@ public class FillLearnAnimals : MonoBehaviour
 
     IEnumerator FillAnimals()
     {
-        WWWForm form = new WWWForm();
+        WWWForm form = new();
         form.AddField("learn_list", "learn");
 
         using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form))
         {
-
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.error);
+                Debug.LogError("FillLearnAnimals error: " + www.error);
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
+                Debug.Log("FillLearnAnimals: " + www.downloadHandler.text);
                 animals = JsonUtility.FromJson<Animals>(www.downloadHandler.text);
                 foreach (var a in animals.animal)
                 {

@@ -125,7 +125,7 @@ public class RotateModel : MonoBehaviour
     public void BTSendRotate3DModel()
     {
         byte[] serializedMsg = MemoryPackSerializer.Serialize(CommConstants.rotationMsg);
-        Debug.Log("Bluetooth - BTSendRotate3DModel: " + serializedMsg);
+        // Debug.Log("Bluetooth - BTSendRotate3DModel: " + serializedMsg);
         lastUpdateTime = Time.time;
         BluetoothForAndroid.WriteMessage(serializedMsg);
     }

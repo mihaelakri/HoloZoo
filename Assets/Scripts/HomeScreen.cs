@@ -15,7 +15,6 @@ public class HomeScreen : MonoBehaviour
         public int level;
     }
 
-    // Start is called before the first fram
     void Start()
     {
         if (PlayerPrefs.HasKey("ID"))
@@ -25,7 +24,7 @@ public class HomeScreen : MonoBehaviour
     }
     IEnumerator GetUsername()
     {
-        WWWForm form = new WWWForm();
+        WWWForm form = new();
         form.AddField("id", PlayerPrefs.GetInt("ID"));
         form.AddField("flag", "3");
 
@@ -35,8 +34,7 @@ public class HomeScreen : MonoBehaviour
 
             if (www.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.error);
-                Debug.Log("eroric");
+                Debug.LogError("HomeScreen GetUsername error: " + www.error);
             }
             else
             {
