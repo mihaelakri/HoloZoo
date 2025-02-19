@@ -163,6 +163,7 @@ public class Quiz : MonoBehaviour
         answerButtons[0].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_one;
         answerButtons[1].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_two;
         answerButtons[2].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_three;
+        GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
     }
 
     private void ColorButtons()
@@ -177,11 +178,20 @@ public class Quiz : MonoBehaviour
             int btnIndex = button.transform.GetSiblingIndex() + 1;
 
             if (btnIndex == correct)
+            {
                 button.GetComponent<Image>().sprite = imgCorrect;
+            }
             else if (btnIndex != correct && btnIndex == chosen)
+            {
+                button.GetComponent<Image>().color = Color.white;
                 button.GetComponent<Image>().sprite = imgWrong;
+            }
             else
+            {
+                button.GetComponent<Image>().color = Color.white;
                 button.GetComponent<Image>().sprite = imgWrongOther;
+
+            }
         }
     }
 }

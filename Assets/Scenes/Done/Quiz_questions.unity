@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 305112830}
   m_Layer: 0
   m_Name: AnswerB
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1644,7 +1644,6 @@ MonoBehaviour:
   imgNeutral: {fileID: 21300000, guid: 8583ba27cbf1c5f4ab886194ed29a618, type: 3}
   answerParent: {fileID: 1240220937}
   nextButton: {fileID: 645527932}
-  nextButtontext: {fileID: 422670224}
 --- !u!1 &1747953619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1659,7 @@ GameObject:
   - component: {fileID: 1747953624}
   m_Layer: 0
   m_Name: AnswerA
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1920,7 +1919,7 @@ GameObject:
   - component: {fileID: 2040212302}
   m_Layer: 0
   m_Name: AnswerC
-  m_TagString: Untagged
+  m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
