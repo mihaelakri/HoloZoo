@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,46 +8,39 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class Quiz : MonoBehaviour
-{ 
+{
     public Text questionText;
-    public Text answerAText;
-    public Text answerBText;
-    public Text answerCText;
-    public Questions questions; 
+    private Questions questions;
     public int questionsCount;
     public int questionsCounter;
 
-    public Sprite correct;
-    public Sprite wrong;
-    public Sprite wrongy;
-    public Sprite neutral;
+    public Sprite imgCorrect;
+    public Sprite imgWrong;
+    public Sprite imgWrongOther;
+    public Sprite imgNeutral;
 
-    public Button btnAnswerA; 
-    public Button btnAnswerB; 
-    public Button btnAnswerC;
+    public GameObject answerParent;
+    private Button[] answerButtons;
     public Button nextButton;
 
-    public Text nextButtontext;
-
     private string selectedLanguage;
-
-    Text[] yourTexts;
-
-    public int correctAnswerCount; 
+    private int correctAnswerCount;
 
     [Serializable]
-    public class Question{
+    private class Question
+    {
         public int id_question;
         public int id_animal;
-        public String question_text;
-        public String correct_answer;
-        public String answer_one;
-        public String answer_two;
-        public String answer_three;
+        public string question_text;
+        public string correct_answer;
+        public string answer_one;
+        public string answer_two;
+        public string answer_three;
     }
-      
+
     [Serializable]
-    public class Questions{
+    private class Questions
+    {
         public Question[] question;
     }
 
@@ -89,148 +81,107 @@ public class Quiz : MonoBehaviour
                 { "see_results", "Lásd az eredményeket" }
             }
         }
-    }; 
-
+    };
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         selectedLanguage = PlayerPrefs.GetString("lang", "en");
-        yourTexts = FindObjectsOfType<Text>();
-        foreach (Text text in yourTexts)
-        {
-            text.fontSize = PlayerPrefs.GetInt("font_size");
-            Debug.Log(text.text);
-        }
+        answerButtons = answerParent.GetComponentsInChildren<Button>();
+
         StartCoroutine(FillQuestion());
     }
 
-    IEnumerator FillQuestion(){
-
-        WWWForm form = new WWWForm();
+    IEnumerator FillQuestion()
+    {
+        WWWForm form = new();
         form.AddField("difficulty", PlayerPrefs.GetInt("diff"));
-        int difficulty = PlayerPrefs.GetInt("diff");
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"quiz_view.php", form)){
-
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "quiz_view.php", form))
+        {
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.error);
-                }
+            {
+                Debug.Log(www.error);
+            }
             else
+            {
+                if (www.downloadHandler.text == "404")
                 {
-                    if(www.downloadHandler.text == "404"){
-                        Debug.Log("Invalid input.");
-                    }
-                    questions = JsonUtility.FromJson<Questions>(www.downloadHandler.text);
+                    Debug.Log("Invalid input.");
+                }
+                questions = JsonUtility.FromJson<Questions>(www.downloadHandler.text);
 
-                    questionsCount = questions.question.Length; 
-                    questionsCounter = 0;
-                    // Fill data
-                    questionText.text = questions.question[questionsCounter].question_text;
-                    answerAText.text = questions.question[questionsCounter].answer_one;
-                    answerBText.text = questions.question[questionsCounter].answer_two;
-                    answerCText.text = questions.question[questionsCounter].answer_three;
-                   
-                }
-        }
-    }
+                questionsCount = questions.question.Length;
+                questionsCounter = 0;
 
-    public void CheckAnswer(){
-        Debug.Log(EventSystem.current.currentSelectedGameObject.tag);
-        String id = EventSystem.current.currentSelectedGameObject.tag; 
-        //if correct make it green
-        if(id == questions.question[questionsCounter].correct_answer){
-            EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite = correct;
-            String chosenTag = EventSystem.current.currentSelectedGameObject.tag;
-            //color other two
-            if(chosenTag == btnAnswerA.tag){
-                btnAnswerB.GetComponent<Image>().sprite = wrongy;
-                btnAnswerC.GetComponent<Image>().sprite = wrongy;
-            }else if(chosenTag == btnAnswerB.tag){
-                btnAnswerA.GetComponent<Image>().sprite = wrongy;
-                btnAnswerC.GetComponent<Image>().sprite = wrongy;
-            }else{
-                btnAnswerB.GetComponent<Image>().sprite = wrongy;
-                btnAnswerA.GetComponent<Image>().sprite = wrongy;
-            }
-            correctAnswerCount++;
-        }else{
-            //if incorrect color red
-            EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite = wrong;
-            //if A correct but, not chosen
-            if(btnAnswerA.tag == questions.question[questionsCounter].correct_answer){
-                btnAnswerA.GetComponent<Image>().sprite = correct;
-                //check which one is chosen to color red
-                if(id==btnAnswerB.tag){
-                    btnAnswerB.GetComponent<Image>().sprite = wrong;
-                    btnAnswerC.GetComponent<Image>().sprite = wrongy;
-                }else{
-                    btnAnswerC.GetComponent<Image>().sprite = wrong;
-                    btnAnswerB.GetComponent<Image>().sprite = wrongy;
-                }
-            }else if(btnAnswerB.tag == questions.question[questionsCounter].correct_answer){
-                //if B correct but, not chosen, color wrong one red and other light green
-                btnAnswerB.GetComponent<Image>().sprite = correct;
-                //check which one is chosen to color red
-                if(id==btnAnswerC.tag){
-                    btnAnswerC.GetComponent<Image>().sprite = wrong;
-                    btnAnswerA.GetComponent<Image>().sprite = wrongy;
-                }else{
-                    btnAnswerA.GetComponent<Image>().sprite = wrong;
-                    btnAnswerC.GetComponent<Image>().sprite = wrongy;
-                }
-            }else{
-                //if C correct but, not chosen, color wrong one red and other light green
-                btnAnswerC.GetComponent<Image>().sprite = correct;
-                //check which one is chosen to color red
-                if(id==btnAnswerB.tag){
-                    btnAnswerB.GetComponent<Image>().sprite = wrong;
-                    btnAnswerA.GetComponent<Image>().sprite = wrongy;
-                }else{
-                    btnAnswerA.GetComponent<Image>().sprite = wrong;
-                    btnAnswerB.GetComponent<Image>().sprite = wrongy;
-                }
+                FillDataInUI();
             }
         }
-        btnAnswerA.enabled = false;
-        btnAnswerB.enabled = false;
-        btnAnswerC.enabled = false;
-        questionsCounter++;
-        nextButton.gameObject.SetActive(true);
-        nextButton.transform.LeanMoveLocal(new Vector2(123,-225),1).setEaseOutQuart();
-        if(questionsCounter<questionsCount){
-            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["next_question"];
-        }else{
-            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["see_results"];
-        }
     }
 
-    public void nextQuestion(){
-        nextButton.gameObject.SetActive(false);
-        nextButton.transform.LeanMoveLocal(new Vector2(-27,-446),1).setEaseOutQuart();
-        if(nextButton.transform.GetChild(0).GetComponent<Text>().text == translations[selectedLanguage]["see_results"]){
-            PlayerPrefs.SetInt("Score",correctAnswerCount);
-            PlayerPrefs.SetInt("QuestionCount",questionsCount);
-            SceneManager.LoadScene("Score");  
-        }
-        btnAnswerA.GetComponent<Image>().sprite = neutral;
-        btnAnswerB.GetComponent<Image>().sprite = neutral;
-        btnAnswerC.GetComponent<Image>().sprite = neutral;
-        questionText.text = questions.question[questionsCounter].question_text;
-        answerAText.text = questions.question[questionsCounter].answer_one;
-        answerBText.text = questions.question[questionsCounter].answer_two;
-        answerCText.text = questions.question[questionsCounter].answer_three;
-        btnAnswerA.enabled = true;
-        btnAnswerB.enabled = true;
-        btnAnswerC.enabled = true;
-    }
-    
-    public int Getint(string KeyName)
+    public void CheckAnswer()
     {
-        return PlayerPrefs.GetInt(KeyName);
+        ColorButtons();
+
+        questionsCounter++;
+
+        nextButton.gameObject.SetActive(true);
+        nextButton.transform.LeanMoveLocal(new Vector2(123, -225), 1).setEaseOutQuart();
+        if (questionsCounter < questionsCount)
+            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["next_question"];
+        else
+            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["see_results"];
     }
 
+    public void nextQuestion()
+    {
+        nextButton.gameObject.SetActive(false);
+        nextButton.transform.LeanMoveLocal(new Vector2(-27, -446), 1).setEaseOutQuart();
+
+        if (questionsCounter >= questionsCount)
+        {
+            PlayerPrefs.SetInt("Score", correctAnswerCount);
+            PlayerPrefs.SetInt("QuestionCount", questionsCount);
+            SceneManager.LoadScene("Score");
+            return;
+        }
+
+        foreach (Button button in answerButtons)
+        {
+            button.GetComponent<Image>().sprite = imgNeutral;
+            button.enabled = true;
+        }
+
+        FillDataInUI();
+    }
+
+    private void FillDataInUI()
+    {
+        questionText.text = questions.question[questionsCounter].question_text;
+        answerButtons[0].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_one;
+        answerButtons[1].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_two;
+        answerButtons[2].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_three;
+    }
+
+    private void ColorButtons()
+    {
+        int correct = int.Parse(questions.question[questionsCounter].correct_answer);
+        int chosen = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex() + 1;
+
+        foreach (Button button in answerButtons)
+        {
+            button.enabled = false;
+
+            int btnIndex = button.transform.GetSiblingIndex() + 1;
+
+            if (btnIndex == correct)
+                button.GetComponent<Image>().sprite = imgCorrect;
+            else if (btnIndex != correct && btnIndex == chosen)
+                button.GetComponent<Image>().sprite = imgWrong;
+            else
+                button.GetComponent<Image>().sprite = imgWrongOther;
+        }
+    }
 }

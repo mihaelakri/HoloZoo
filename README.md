@@ -22,7 +22,7 @@
 - [ ] check: translations for error messages when checking connection
 - [x] refactor: ApplyAccessibility more granularly, not all text/buttons
 - [x] chore: tag all images and text for contrast
-- [ ] refactor: Quiz and Animal_list scene to use indices instead of tags
+- [x] refactor: Quiz and Animal_list scene to use indices instead of tags
 - [ ] refactor: Accessibility panel into a prefab that can be instantiated anywhere
 - [ ] feat: loading indicator when fetching from host
 

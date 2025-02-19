@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 305112830}
   m_Layer: 0
   m_Name: AnswerB
-  m_TagString: 2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,18 +150,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305112825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.0989857}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1804873153}
-  m_Father: {fileID: 580877629}
-  m_RootOrder: 2
+  m_Father: {fileID: 1240220938}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75}
+  m_AnchoredPosition: {x: -53.505432, y: -242.30444}
   m_SizeDelta: {x: 288, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305112827
@@ -481,9 +481,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1210461347}
-  - {fileID: 1747953620}
-  - {fileID: 305112826}
-  - {fileID: 2040212298}
+  - {fileID: 1240220938}
   - {fileID: 645527931}
   m_Father: {fileID: 1438184643}
   m_RootOrder: 0
@@ -577,7 +575,7 @@ RectTransform:
   m_Children:
   - {fileID: 422670223}
   m_Father: {fileID: 580877629}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 7.856, y: -0.462, z: -33.994}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1060,6 +1058,40 @@ MonoBehaviour:
   text: {fileID: 0}
   buttonComponent: 0
   figmaAligment: 
+--- !u!1 &1240220937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1240220938}
+  m_Layer: 0
+  m_Name: Answers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1240220938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240220937}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.835144, y: 5.768148, z: 1.699662}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1747953620}
+  - {fileID: 305112826}
+  - {fileID: 2040212298}
+  m_Father: {fileID: 580877629}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1373727567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,23 +1636,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionText: {fileID: 1210461345}
-  answerAText: {fileID: 1221463266}
-  answerBText: {fileID: 1804873154}
-  answerCText: {fileID: 1373727569}
-  questions:
-    question: []
   questionsCount: 0
   questionsCounter: 0
-  correct: {fileID: 21300000, guid: 19484e5c1d4f06040a48b6072dfa8487, type: 3}
-  wrong: {fileID: 21300000, guid: 9bbcba819bbfdb54893feee7e576e549, type: 3}
-  wrongy: {fileID: 21300000, guid: 4088afcc60195ee49a62b5dc481ed334, type: 3}
-  neutral: {fileID: 21300000, guid: 8583ba27cbf1c5f4ab886194ed29a618, type: 3}
-  btnAnswerA: {fileID: 1747953624}
-  btnAnswerB: {fileID: 305112830}
-  btnAnswerC: {fileID: 2040212302}
+  imgCorrect: {fileID: 21300000, guid: 19484e5c1d4f06040a48b6072dfa8487, type: 3}
+  imgWrong: {fileID: 21300000, guid: 9bbcba819bbfdb54893feee7e576e549, type: 3}
+  imgWrongOther: {fileID: 21300000, guid: 4088afcc60195ee49a62b5dc481ed334, type: 3}
+  imgNeutral: {fileID: 21300000, guid: 8583ba27cbf1c5f4ab886194ed29a618, type: 3}
+  answerParent: {fileID: 1240220937}
   nextButton: {fileID: 645527932}
   nextButtontext: {fileID: 422670224}
-  correctAnswerCount: 0
 --- !u!1 &1747953619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1660,7 @@ GameObject:
   - component: {fileID: 1747953624}
   m_Layer: 0
   m_Name: AnswerA
-  m_TagString: 1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1648,18 +1672,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747953619}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.0989857}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1221463265}
-  m_Father: {fileID: 580877629}
-  m_RootOrder: 1
+  m_Father: {fileID: 1240220938}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35}
+  m_AnchoredPosition: {x: -53.505432, y: 87.69556}
   m_SizeDelta: {x: 288, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747953621
@@ -1896,7 +1920,7 @@ GameObject:
   - component: {fileID: 2040212302}
   m_Layer: 0
   m_Name: AnswerC
-  m_TagString: 3
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1908,18 +1932,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040212297}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.0989857}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1373727568}
-  m_Father: {fileID: 580877629}
-  m_RootOrder: 3
+  m_Father: {fileID: 1240220938}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -185}
+  m_AnchoredPosition: {x: -53.505432, y: -572.30444}
   m_SizeDelta: {x: 288, y: 87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040212299

@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 208469552}
   m_Layer: 0
   m_Name: Region
-  m_TagString: 3
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -843,13 +843,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de496039d11af1a4db392e4a74ee0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 208469547}
   dropdownItem: {fileID: 1761655093}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
-  text: {fileID: 6342957}
-  y: 0
-  clickedTag: 0
 --- !u!1 &235252145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1273,7 @@ GameObject:
   - component: {fileID: 434420999}
   m_Layer: 0
   m_Name: Weight
-  m_TagString: 7
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1366,13 +1362,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de496039d11af1a4db392e4a74ee0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 434420994}
   dropdownItem: {fileID: 514766486}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
-  text: {fileID: 235252147}
-  y: 0
-  clickedTag: 0
 --- !u!114 &434421000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,7 +1435,7 @@ GameObject:
   - component: {fileID: 514766488}
   m_Layer: 0
   m_Name: Weight-dropdown
-  m_TagString: 8
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,7 +1659,7 @@ GameObject:
   - component: {fileID: 664602625}
   m_Layer: 0
   m_Name: Habitats-dropdown
-  m_TagString: 6
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1990,7 +1982,7 @@ GameObject:
   - component: {fileID: 811354516}
   m_Layer: 0
   m_Name: Habitats
-  m_TagString: 5
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2079,13 +2071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de496039d11af1a4db392e4a74ee0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 811354511}
   dropdownItem: {fileID: 664602623}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
-  text: {fileID: 145363149}
-  y: 0
-  clickedTag: 0
 --- !u!114 &811354517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,7 +2228,7 @@ GameObject:
   - component: {fileID: 828402107}
   m_Layer: 0
   m_Name: Population-dropdown
-  m_TagString: 12
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2452,17 +2440,6 @@ MonoBehaviour:
   dietText: {fileID: 274929651}
   populationText: {fileID: 1641049986}
   animal_photo: {fileID: 671773094}
-  liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
-  animal:
-    area: 
-    name: 
-    url_slika: 
-    endangerment_status: 
-    habitat: 
-    weight: 
-    diet: 
-    population: 
 --- !u!114 &844002136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2620,7 +2597,7 @@ GameObject:
   - component: {fileID: 1271087350}
   m_Layer: 0
   m_Name: Population
-  m_TagString: 11
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2709,13 +2686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de496039d11af1a4db392e4a74ee0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 1271087345}
   dropdownItem: {fileID: 828402105}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
-  text: {fileID: 84057025}
-  y: 0
-  clickedTag: 0
 --- !u!114 &1271087351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2854,7 +2827,7 @@ GameObject:
   - component: {fileID: 1296869548}
   m_Layer: 0
   m_Name: ES-dropdown
-  m_TagString: 2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2944,7 +2917,7 @@ GameObject:
   - component: {fileID: 1317008698}
   m_Layer: 0
   m_Name: Diet-dropdown
-  m_TagString: 10
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3391,7 +3364,7 @@ GameObject:
   - component: {fileID: 1606115212}
   m_Layer: 0
   m_Name: EndangermentStatus
-  m_TagString: 1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3480,13 +3453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de496039d11af1a4db392e4a74ee0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 1606115207}
   dropdownItem: {fileID: 1296869546}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
-  text: {fileID: 641370082}
-  y: 0
-  clickedTag: 0
 --- !u!114 &1606115213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3812,7 +3781,7 @@ GameObject:
   - component: {fileID: 1755848734}
   m_Layer: 0
   m_Name: Diet
-  m_TagString: 9
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3901,13 +3870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de496039d11af1a4db392e4a74ee0b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 1755848729}
   dropdownItem: {fileID: 1317008696}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
-  text: {fileID: 791653190}
-  y: 0
-  clickedTag: 0
 --- !u!114 &1755848735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4160,7 +4125,7 @@ GameObject:
   - component: {fileID: 1761655095}
   m_Layer: 0
   m_Name: Region-dropdown
-  m_TagString: 4
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
