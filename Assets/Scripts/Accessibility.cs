@@ -11,11 +11,8 @@ public class Accessibility : MonoBehaviour
 
     public Text font_size;
     public Text dyslexiaText;
-    public Text dyslexiaStatusText;
     public Text contrastText;
-    public Text contrastStatusText;
     public Text ttsText;
-    public Text ttsStatusText;
     public Text save_btn;
     public Text small;
     public Text medium;
@@ -127,13 +124,11 @@ public class Accessibility : MonoBehaviour
     {
         if (dyslexiaToggle.isOn)
         {
-            dyslexiaStatusText.text = "On";
             PlayerPrefs.SetInt("dyslexia", 1);
         }
         else
         {
             PlayerPrefs.SetInt("dyslexia", 0);
-            dyslexiaStatusText.text = "Off";
         }
     }
 
@@ -142,12 +137,10 @@ public class Accessibility : MonoBehaviour
         if (contrastToggle.isOn)
         {
             PlayerPrefs.SetInt("contrast", 1);
-            contrastStatusText.text = "On";
         }
         else
         {
             PlayerPrefs.SetInt("contrast", 0);
-            contrastStatusText.text = "Off";
         }
     }
 
@@ -156,12 +149,10 @@ public class Accessibility : MonoBehaviour
         if (textToSpeechToggle.isOn)
         {
             PlayerPrefs.SetInt("textToSpeech", 1);
-            ttsStatusText.text = "On";
         }
         else
         {
             PlayerPrefs.SetInt("textToSpeech", 0);
-            ttsStatusText.text = "Off";
         }
     }
 
