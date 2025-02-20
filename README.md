@@ -3,11 +3,11 @@
 ## TO DO LIST
 
 - [x] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
-- [ ] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
+- [x] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
 - [x] staviti jezike na oba uređaja odvojeno
 - [x] popraviti server URL u skriptama
 - [ ] popraviti kordinate učitavanja modela (x,y)
-- [ ] IndexOutOfRangeException: Index was outside the bounds of the array. Quiz.nextQuestion () (at Assets/Scripts/Quiz.cs:176)
+- [x] IndexOutOfRangeException: Index was outside the bounds of the array. Quiz.nextQuestion () (at Assets/Scripts/Quiz.cs:176)
 - [x] životinja profil - slova ispravi
 - [x] kviz šapa je na engleskom
 - [ ] prilagoditi veličinu ekrana
@@ -19,7 +19,7 @@
 - [x] fix: animal rotation sliders ranges to play nice with smoothing
 - [x] feat: notify user if not connected to internet
 - [ ] feat: notify user on remote host errors
-- [ ] check: translations for error messages when checking connection
+- [x] check: translations for error messages when checking connection
 - [x] refactor: ApplyAccessibility more granularly, not all text/buttons
 - [x] chore: tag all images and text for contrast
 - [x] refactor: Quiz and Animal_list scene to use indices instead of tags
