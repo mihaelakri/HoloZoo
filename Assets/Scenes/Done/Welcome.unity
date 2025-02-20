@@ -303,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openDyslexic: {fileID: 12800000, guid: beb946c408f7af0489bd78a41478b106, type: 3}
   jostFont: {fileID: 12800000, guid: 07945bfd2e86a7c4482b44b1847961e8, type: 3}
+  accessibilityDummy: {fileID: 3585850079328217146, guid: 257ad685f2bbbaa408cafbfcc8fdd20a,
+    type: 3}
 --- !u!4 &128162534
 Transform:
   m_ObjectHideFlags: 0

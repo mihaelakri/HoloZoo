@@ -169,7 +169,7 @@ public class Accessibility : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("font_size") == 16)
             fontSizeScrollBar.value = 0;
-        else if (PlayerPrefs.GetInt("font_size") == 17)
+        else if (PlayerPrefs.GetInt("font_size") == 18)
             fontSizeScrollBar.value = 0.5f;
         else
             fontSizeScrollBar.value = 1;

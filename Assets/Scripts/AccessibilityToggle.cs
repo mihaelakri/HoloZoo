@@ -8,7 +8,6 @@ public class AccessibilityToggle : MonoBehaviour
     void Start()
     {
         panel = Instantiate(panelPrefab, transform.parent.transform);
-        GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
     }
 
     public void OpenPanel()

@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 public class ApplyAccessibility : MonoBehaviour
 {
@@ -9,6 +11,41 @@ public class ApplyAccessibility : MonoBehaviour
 
     public Font openDyslexic;
     public Font jostFont;
+    public GameObject accessibilityDummy;
+
+    List<object> taggedObjects;
+    Text[] textObjects;
+
+    private class TaggedObjects<T1>
+        where T1 : Graphic
+    {
+        public string tag;
+        public Func<string, Tuple<T1, Color>[]> fetchAction;
+        public Color contrastColor;
+        public Tuple<T1, Color>[] objects;
+
+        public TaggedObjects(string tag, Func<string, Tuple<T1, Color>[]> fetchAction, Color contrastColor)
+        {
+            this.tag = tag;
+            this.fetchAction = fetchAction;
+            this.contrastColor = contrastColor;
+        }
+
+        public void FetchObjects()
+        {
+            objects = fetchAction(tag);
+        }
+
+        public void ApplyContrast(bool isContrastEnabled)
+        {
+            foreach (var obj in objects)
+            {
+                // Ensure original color is retained when contrast is disabled
+                Color color = isContrastEnabled ? contrastColor : obj.Item2;
+                obj.Item1.color = color;
+            }
+        }
+    }
 
     void Awake()
     {
@@ -18,9 +55,36 @@ public class ApplyAccessibility : MonoBehaviour
             DontDestroyOnLoad(gameObject); // Održava postavke između scena
         }
         else
-        {
             Destroy(gameObject);
-        }
+
+        taggedObjects = new()
+        {
+            new TaggedObjects<Text>(
+                "text-dark",
+                (_) => GetTextsWithTag(_),
+                Color.black
+            ),
+            new TaggedObjects<Text>(
+                "text-light",
+                (_) => GetTextsWithTag(_),
+                Color.white
+            ),
+            new TaggedObjects<Image>(
+                "img-dark",
+                (_) => GetImagesWithTag(_),
+                Color.black
+            ),
+            new TaggedObjects<Image>(
+                "img-light",
+                (_) => GetImagesWithTag(_),
+                Color.white     // Currently does nothing, should be implemented possibly via a shader
+            ),
+            new TaggedObjects<Image>(
+                "img-mid",
+                (_) => GetImagesWithTag(_),
+                Color.grey
+            )
+        };
     }
 
     void OnEnable()
@@ -30,7 +94,8 @@ public class ApplyAccessibility : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        ApplyAccessibilitySettings();
+        // Hack to ensure the rest is called during Starts in new objects
+        Instantiate(accessibilityDummy);
     }
 
     void OnDisable()
@@ -38,97 +103,70 @@ public class ApplyAccessibility : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    void Start()
+    private Tuple<Text, Color>[] GetTextsWithTag(string tag)
     {
-        ApplyAccessibilitySettings();
+        return GameObject.FindGameObjectsWithTag(tag).Select(o =>
+        {
+            Text txt = o.GetComponent<Text>();
+            return new Tuple<Text, Color>(txt, txt.color);
+        }).ToArray();
+    }
+
+    private Tuple<Image, Color>[] GetImagesWithTag(string tag)
+    {
+        return GameObject.FindGameObjectsWithTag(tag).Select(o =>
+        {
+            if (!o.TryGetComponent<Image>(out var img))
+            {
+                // Some buttons have Image component as a child
+                img = o.GetComponentInChildren<Image>();
+            }
+
+            if (img == null)
+                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
+
+            return new Tuple<Image, Color>(img, img.color);
+        }).ToArray();
+    }
+
+    public void LoadObjects()
+    {
+        foreach (var taggedObject in taggedObjects)
+        {
+            if (taggedObject is TaggedObjects<Text> taggedTextObject)
+                taggedTextObject.FetchObjects();
+            else if (taggedObject is TaggedObjects<Image> taggedImageObject)
+                taggedImageObject.FetchObjects();
+        }
+        textObjects = taggedObjects.Where(e => e is TaggedObjects<Text>)
+            .SelectMany(e => ((TaggedObjects<Text>)e).objects.Select(o => o.Item1))
+            .ToArray();
     }
 
     public void ApplyAccessibilitySettings()
     {
-        Text[] textsDark = GameObject.FindGameObjectsWithTag("text-dark").Select(o => o.GetComponent<Text>()).ToArray();
-        Text[] textsLight = GameObject.FindGameObjectsWithTag("text-light").Select(o => o.GetComponent<Text>()).ToArray();
-
-        Image[] imagesDark = GameObject.FindGameObjectsWithTag("img-dark").Select(o =>
-        {
-            if (!o.TryGetComponent<Image>(out var img))
-            {
-                // Some buttons have Image component as a child
-                img = o.GetComponentInChildren<Image>();
-            }
-
-            if (img == null)
-                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
-
-            return img;
-        }).ToArray();
-
-        Image[] imagesLight = GameObject.FindGameObjectsWithTag("img-light").Select(o =>
-        {
-            if (!o.TryGetComponent<Image>(out var img))
-            {
-                // Some buttons have Image component as a child
-                img = o.GetComponentInChildren<Image>();
-            }
-
-            if (img == null)
-                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
-
-            return img;
-        }).ToArray();
-
-        Image[] imagesMid = GameObject.FindGameObjectsWithTag("img-mid").Select(o =>
-        {
-            if (!o.TryGetComponent<Image>(out var img))
-            {
-                // Some buttons have Image component as a child
-                img = o.GetComponentInChildren<Image>();
-            }
-
-            if (img == null)
-                Debug.Log("Scene: [" + SceneManager.GetActiveScene().name + "] Object: [" + o.name + "] doesn't have an image component");
-
-            return img;
-        }).ToArray();
-
         int fontSize = PlayerPrefs.GetInt("font_size", 14);
-        int dyslexiaEnabled = PlayerPrefs.GetInt("dyslexia", 0);
-        int contrastEnabled = PlayerPrefs.GetInt("contrast", 0);
+        bool isDyslexiaEnabled = PlayerPrefs.GetInt("dyslexia", 0) == 1;
+        bool isContrastEnabled = PlayerPrefs.GetInt("contrast", 0) == 1;
 
-        Font selectedFont = (dyslexiaEnabled == 1) ? openDyslexic : jostFont;
-
-        // Postavi veličinu fonta i zamijeni font
-        foreach (Text text in textsDark.Concat(textsLight))
+        foreach (Text text in textObjects)
         {
             text.fontSize = fontSize;
-            text.font = selectedFont;
+            text.font = isDyslexiaEnabled ? openDyslexic : jostFont;
         }
 
-        if (contrastEnabled == 1)
+        foreach (var taggedObject in taggedObjects)
         {
-            foreach (Text text in textsDark)
-            {
-                text.color = Color.black;
-            }
-
-            foreach (Text text in textsLight)
-            {
-                text.color = Color.white;
-            }
-
-            foreach (Image img in imagesDark)
-            {
-                img.color = Color.black;
-            }
-
-            foreach (Image img in imagesLight)
-            {
-                img.color = Color.white;
-            }
-
-            foreach (Image img in imagesMid)
-            {
-                img.color = Color.grey;
-            }
+            if (taggedObject is TaggedObjects<Text> taggedTextObject)
+                taggedTextObject.ApplyContrast(isContrastEnabled);
+            else if (taggedObject is TaggedObjects<Image> taggedImageObject)
+                taggedImageObject.ApplyContrast(isContrastEnabled);
         }
+    }
+
+    public void LoadAndStyle()
+    {
+        LoadObjects();
+        ApplyAccessibilitySettings();
     }
 }
