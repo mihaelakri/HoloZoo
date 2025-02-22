@@ -35,52 +35,60 @@ public class RotateModel : MonoBehaviour
         }
     }
 
-    IEnumerator SwapModel()
-    {
-        int id_animal = CommConstants.animal_id;
+    // IEnumerator SwapModel()
+    // {
+    //     int id_animal = CommConstants.animal_id;
 
-        WWWForm form = new WWWForm();
-        form.AddField("id_model", id_animal);
+    //     WWWForm form = new WWWForm();
+    //     form.AddField("id_model", id_animal);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form))
-        {
-            yield return www.SendWebRequest();
+    //     using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form))
+    //     {
+    //         yield return www.SendWebRequest();
 
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                string model_url;
-                if (id_animal == 0)
-                {
-                    model_url = "WorldMapGlobe";
-                }
-                else
-                {
-                    model_url = www.downloadHandler.text;
-                }
-                Debug.Log("SwapModel - resp: " + www.downloadHandler.text);
-                GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
-                Destroy(parent.transform.GetChild(0).gameObject);
+    //         if (www.result != UnityWebRequest.Result.Success)
+    //         {
+    //             Debug.Log(www.error);
+    //         }
+    //         else
+    //         {
+    //             string model_url;
+    //             if (id_animal == 0)
+    //             {
+    //                 model_url = "WorldMapGlobe";
+    //             }
+    //             else
+    //             {
+    //                 model_url = www.downloadHandler.text;
+    //             }
+    //             Debug.Log("SwapModel - resp: " + www.downloadHandler.text);
+    //             GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
+    //             Destroy(parent.transform.GetChild(0).gameObject);
 
-                GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-            }
-        }
+    //             GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
+    //             Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+    //         }
+    //     }
 
-    }
+    // }
     void Update()
     {
+        
         if (sceneName != "HologramGlobe")
         {
-            if (old_animal_id != CommConstants.animal_id)
+            if (sceneName == "HologramTablet" && old_animal_id != CommConstants.animal_id)
             {
-                StartCoroutine(SwapModel());
+                // StartCoroutine(SwapModel());
+                StartCoroutine(Load3DModelTablet.GetModel());
                 old_animal_id = CommConstants.animal_id;
             }
 
+            if (CommConstants.animal_id == 0)
+            {
+                model.transform.GetChild(0).transform.rotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                return;
+            }
+            
             try
             {
                 float interpolationFactor = 10f;

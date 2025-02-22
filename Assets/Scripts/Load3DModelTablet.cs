@@ -18,48 +18,69 @@ public class Load3DModelTablet : MonoBehaviour
         StartCoroutine(GetModel());
     }
 
-    IEnumerator GetModel(){
-        Debug.Log("id_animal"+PlayerPrefs.GetString("id_animal"));
-        string id_animal = PlayerPrefs.GetString("id_animal", "1");
+    public static IEnumerator GetModel()
+    {
+        string model_url;
+
+        Debug.Log("id_animal: " + CommConstants.animal_id);
 
         WWWForm form = new WWWForm();
-        form.AddField("id_model", PlayerPrefs.GetString("id_animal", "1"));
+        form.AddField("id_model", CommConstants.animal_id);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"animal_view.php", form)){
+        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form))
+        {
 
             yield return www.SendWebRequest();
 
             if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.error);
-                }
+            {
+                Debug.Log(www.error);
+            }
             else
+            {
+                if (CommConstants.animal_id == 0)
                 {
-                    if (id_animal == "0") {
-                        model_url = "WorldMapGlobe";
-                    } else {
-                        model_url = (www.downloadHandler.text);
-                    }
-                    Debug.Log(www.downloadHandler.text);
-                    variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                    GameObject instantiatedPrefab = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-                    instantiatedPrefab.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                    //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+                    model_url = "WorldMapGlobe";
+                }
+                else
+                {
+                    model_url = www.downloadHandler.text;
+                }
 
-                    foreach (var s in www.GetResponseHeader("Set-Cookie").Split(';')) {
-                        if(s.Contains("holozoo_session")){
-                            CommConstants.Auth = s.Substring(s.IndexOf("holozoo_session")).Split('=')[1].Split(';')[0];
-                            Debug.Log(CommConstants.Auth);
-
-                        } else if (s.Contains("XSRF-TOKEN")){
-                            CommConstants.XSRF = s.Substring(s.IndexOf("XSRF-TOKEN")).Split('=')[1].Split(';')[0];
-                            Debug.Log(CommConstants.XSRF);
-
-                        }
+                GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
+                if (parent.transform.childCount > 0)
+                {
+                    // Destroy(parent.transform.GetChild(0).gameObject);
+                    foreach (Transform child in parent.transform)
+                    {
+                        Destroy(child.gameObject);
                     }
                 }
+
+                Debug.Log(www.downloadHandler.text);
+
+                GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
+                GameObject instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+                //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+
+                if (model_url == "WorldMapGlobe")
+                {
+                    yield break;
+                }
+
+                BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
+                boxCollider.size = new Vector3(1f, 1f, 1f);
+                instantiatedObject.layer = LayerMask.NameToLayer("Animal");
+                Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
+                ResizeUtility.ResizeObjectTablet(instantiatedObject);
+                // instantiatedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+                instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
+                instantiatedObject.GetComponent<Rigidbody>().isKinematic = true;
+                instantiatedObject.GetComponent<Rigidbody>().detectCollisions = false;
+            }
         }
     }
 
-    
+
 }
