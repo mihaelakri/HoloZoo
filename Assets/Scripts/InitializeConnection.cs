@@ -82,6 +82,7 @@ public class InitializeConnection : MonoBehaviour
     {
         Debug.Log("Bluetooth - BTConnected");
         CommConstants.is_BTConnected = true;
+        CheckInternetConnection.ShowToast("Bluetooth connected");
     }
     private void BTDisconnected()
     {
@@ -89,7 +90,11 @@ public class InitializeConnection : MonoBehaviour
         CommConstants.is_BTConnected = false;
         if (PlayerPrefs.GetString("device") == "tablet")
         {
+            CheckInternetConnection.ShowToast("Bluetooth disconnected, reconnecting...");
             BTReconnect();
+        } else
+        {
+            CheckInternetConnection.ShowToast("Bluetooth disconnected");
         }
     }
     private void BTFailConnectToServer()
