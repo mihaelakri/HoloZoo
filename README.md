@@ -6,6 +6,9 @@
 - [ ] dodati logout na HologramTablet
 - [ ] zapamtiti predhodnu scenu kod profila životinje (je li se ušlo iz globusa ili iz liste)
 - [ ] dodati privacy policy kod registacije i negdje scenu sa privacy policy 
+- [ ] promijeniti bazu odnosno tablicu "area" tako da životinje mogu živjeti na više područja 
+- [ ] dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza) 
+- [ ] ako je moguće dodati ocean kao opciju gdje se može kliknuti i maknuti "euroazija"
 
 - [x] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
 - [x] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
