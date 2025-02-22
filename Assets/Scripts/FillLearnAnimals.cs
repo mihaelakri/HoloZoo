@@ -52,7 +52,6 @@ public class FillLearnAnimals : MonoBehaviour
                 {
                     GameObject newobj = Instantiate(list_element);
                     newobj.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform, false);
-                    newobj.transform.GetChild(0).tag = "img-dark";
                     Text newText = newobj.GetComponentInChildren<Text>();
                     newText.text = a.name;
                     newobj.name = a.id_animal.ToString();

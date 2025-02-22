@@ -48,7 +48,7 @@ namespace WPM {
                     { "Antarctica", new string[] { "Antarctica", "Antarctique", "Antarktika", "Antártida", "Antarktisz" } },
                     { "South America", new string[] { "South America", "Amérique du Sud", "Južna Amerika", "Sudamérica", "Dél-Amerika" } },
                     { "North America", new string[] { "North America", "Amérique du Nord", "Sjeverna Amerika", "América del Norte", "Észak-Amerika" } },
-                    { "Oceania", new string[] { "Oceania", "Océanie", "Okeanija", "Oceanía", "Óceánia" } }
+                    { "Oceania", new string[] { "Oceania", "Océanie", "Oceanija", "Oceanía", "Óceánia" } }
                 };
 
                 map = WorldMapGlobe.instance;
@@ -123,7 +123,7 @@ namespace WPM {
                     Debug.Log(www.downloadHandler.text);
                     animals = JsonUtility.FromJson<Animals>(www.downloadHandler.text);
                     var x = -255; 
-                    var y = 530;
+                    var y = 500;
                     counter=1;
                     
                         foreach (var a in animals.animal){
@@ -138,7 +138,7 @@ namespace WPM {
                             x += 250;
                             
                             if(counter % 3== 0){
-                                y-=250;
+                                y-=270;
                                 x=-235;
                             }
                             counter += 1;
