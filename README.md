@@ -2,23 +2,32 @@
 
 ## TO DO LIST
 
-- [ ] dodati lokalnu bazu podataka 
-- [ ] dodati logout na HologramTablet
-- [ ] zapamtiti predhodnu scenu kod profila životinje (je li se ušlo iz globusa ili iz liste)
-- [ ] dodati privacy policy kod registacije i negdje scenu sa privacy policy 
-- [ ] promijeniti bazu odnosno tablicu "area" tako da životinje mogu živjeti na više područja 
-- [ ] dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza) 
-- [ ] ako je moguće dodati ocean kao opciju gdje se može kliknuti i maknuti "euroazija"
+- [ ] \(**@mihaelakri**) feat: dodati logout na HologramTablet
+- [ ] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
+- [ ] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
+<br/>
+  
+- [ ] \(**@izelentrovic**) build: add SQLite natively as instructed by [this](https://old.reddit.com/r/Unity3D/comments/sayh3r/ill_simply_add_sqlite_to_my_unity_project_and/kg91fm0/) and [this comment](https://github.com/praeclarum/sqlite-net/issues/1023#issuecomment-821950695)
+- [ ] \(**@izelentrovic**) feat: replace remote database with local SQLite
+- [ ] \(**@izelentrovic**) feat: remember previous scene for animal profile scene (globe/list)
+- [ ] \(**@izelentrovic**) feat: change "area" DB table so that animals can have multiple areas
+- [ ] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  
+<br/>
+
+- [ ] fix: animal model spawn coordinates
+- [ ] fix: animal model scaling on Game device
+- [ ] fix: animal model scaling on Hologram device
+- [ ] fix: screen size
+
+## Done List
 
 - [x] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
 - [x] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
 - [x] staviti jezike na oba uređaja odvojeno
 - [x] popraviti server URL u skriptama
-- [ ] popraviti kordinate učitavanja modela (x,y)
 - [x] IndexOutOfRangeException: Index was outside the bounds of the array. Quiz.nextQuestion () (at Assets/Scripts/Quiz.cs:176)
 - [x] životinja profil - slova ispravi
 - [x] kviz šapa je na engleskom
-- [ ] prilagoditi veličinu ekrana
 - [x] area dodati jezike u bazu
 
 - [x] fix: session not syncing with host on app relaunch
@@ -26,7 +35,7 @@
 - [x] fix: initial model should now be id 1, not 0
 - [x] fix: animal rotation sliders ranges to play nice with smoothing
 - [x] feat: notify user if not connected to internet
-- [ ] feat: notify user on remote host errors
+- [ ] ~~feat: notify user on remote host errors~~
 - [x] check: translations for error messages when checking connection
 - [x] refactor: ApplyAccessibility more granularly, not all text/buttons
 - [x] chore: tag all images and text for contrast
