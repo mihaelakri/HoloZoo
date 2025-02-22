@@ -2,6 +2,11 @@
 
 ## TO DO LIST
 
+- [ ] dodati lokalnu bazu podataka 
+- [ ] dodati logout na HologramTablet
+- [ ] zapamtiti predhodnu scenu kod profila životinje (je li se ušlo iz globusa ili iz liste)
+- [ ] dodati privacy policy kod registacije i negdje scenu sa privacy policy 
+
 - [x] Popraviti komunikaciju da radi (samo bluetooth, maknut websockete)
 - [x] Obavijesti o greškama ili stanju konekcije (za krajnjeg korisnika)
 - [x] staviti jezike na oba uređaja odvojeno
@@ -27,7 +32,7 @@
 - [x] fix: accessibility panel on/off text has no translation
 - [x] fix: Quiz answers contrast colors
 - [x] fix: Quiz score not tracking 
-- [ ] feat: loading indicator when fetching from host
+- [x] feat: loading indicator when fetching from host
 - [x] fix: Animal_list contrast colors
 
 ## Cloning and running the project
