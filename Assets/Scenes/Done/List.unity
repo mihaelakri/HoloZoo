@@ -486,7 +486,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 360, y: 640}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -891,13 +891,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d278abc3f066194d8d3da9ba6a4777c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   list_element: {fileID: 3807964570434529346, guid: 882b42d69c2e76c42ba260b5eaa98ff4,
     type: 3}
   animals:
     animal: []
-  liberationFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  jostFont: {fileID: 12800000, guid: 6e521b8a195f1ed42abe6adc23bfeebe, type: 3}
 --- !u!1 &1366383155
 GameObject:
   m_ObjectHideFlags: 0

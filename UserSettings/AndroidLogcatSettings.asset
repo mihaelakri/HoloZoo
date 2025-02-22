@@ -1,12 +1,12 @@
 {
     "m_SelectedDeviceId": "R9YT6000Q6B",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "R9YT6000Q6B",
+        "name": "com.DefaultCompany.HoloZoo",
+        "processId": 31353,
         "exited": false
     },
-    "m_SelectedPriority": 0,
+    "m_SelectedPriority": 1,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R58N665VFBB",
@@ -101,43 +101,67 @@
         {
             "deviceId": "R9YT6000Q6B",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 20710,
+            "processId": 28139,
             "exited": true
         },
         {
             "deviceId": "R9YT6000Q6B",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 21920,
+            "processId": 28632,
             "exited": true
         },
         {
             "deviceId": "R9YT6000Q6B",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 22669,
+            "processId": 29136,
             "exited": true
         },
         {
             "deviceId": "R9YT6000Q6B",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 22816,
+            "processId": 30756,
             "exited": true
         },
         {
             "deviceId": "R9YT6000Q6B",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 31353,
+            "exited": false
+        },
+        {
+            "deviceId": "R9YT6000QHV",
             "name": "com.sec.android.app.launcher",
-            "processId": 2002,
+            "processId": 1921,
             "exited": false
         },
         {
             "deviceId": "R9YT6000QHV",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 21735,
+            "processId": 21403,
             "exited": true
         },
         {
             "deviceId": "R9YT6000QHV",
             "name": "com.DefaultCompany.HoloZoo",
-            "processId": 22448,
+            "processId": 22309,
+            "exited": true
+        },
+        {
+            "deviceId": "R9YT6000QHV",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 24641,
+            "exited": true
+        },
+        {
+            "deviceId": "R9YT6000QHV",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 26474,
+            "exited": true
+        },
+        {
+            "deviceId": "R9YT6000QHV",
+            "name": "com.DefaultCompany.HoloZoo",
+            "processId": 27541,
             "exited": false
         }
     ],
