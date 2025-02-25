@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Done/LoadingScreen.unity
+    path: Assets/Scenes/LoadingScreen.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
   - enabled: 1
-    path: Assets/Scenes/Done/Home.unity
+    path: Assets/Scenes/Home.unity
     guid: d607051e200fe7c40badf960dedc6471
   - enabled: 1
-    path: Assets/Scenes/Done/Instructions_one.unity
+    path: Assets/Scenes/Instructions_one.unity
     guid: 4e631b5182d481645b30c714d4ac39f8
   - enabled: 1
-    path: Assets/Scenes/Done/choose_difficulty.unity
+    path: Assets/Scenes/choose_difficulty.unity
     guid: cff87afb0095eb6468bf925e6090d23a
   - enabled: 1
-    path: Assets/Scenes/Done/choose_mode.unity
+    path: Assets/Scenes/choose_mode.unity
     guid: d9a474cad70876547bab5700c4a5ca2d
   - enabled: 1
     path: Assets/Scenes/HologramTablet.unity
@@ -33,46 +33,46 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Done/Language.unity
+    path: Assets/Scenes/Language.unity
     guid: 253951b8744ba8844bbdb29c198fa7fd
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Done/LogIn.unity
+    path: Assets/Scenes/LogIn.unity
     guid: 2b92b9f39b6811d49be06eb0c820098d
   - enabled: 1
-    path: Assets/Scenes/Done/LogIn_Register.unity
+    path: Assets/Scenes/LogIn_Register.unity
     guid: ba966e5d853b2b64aa60feef53119f4c
   - enabled: 1
-    path: Assets/Scenes/Done/Profile.unity
+    path: Assets/Scenes/Profile.unity
     guid: 1b897daaeb4d90b40913c9eabd88532e
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Done/Quiz_questions.unity
+    path: Assets/Scenes/Quiz_questions.unity
     guid: 72ed3b7f1f72cbc4085656b14f9f69f9
   - enabled: 1
-    path: Assets/Scenes/Done/Register.unity
+    path: Assets/Scenes/Register.unity
     guid: e29c25def3a828d439e530053000ea6a
   - enabled: 1
-    path: Assets/Scenes/Done/Score.unity
+    path: Assets/Scenes/Score.unity
     guid: 7a4014e1e6cbb444aba9ee82c1287f54
   - enabled: 1
-    path: Assets/Scenes/Done/List.unity
+    path: Assets/Scenes/List.unity
     guid: 0f6dd3010e086c04eb1af9bd383a8684
   - enabled: 1
-    path: Assets/Scenes/Done/Animal_list.unity
+    path: Assets/Scenes/Animal_list.unity
     guid: 53ed3226e7c285d4f9a99658b9fde001
   - enabled: 1
     path: Assets/Scenes/HologramGlobe.unity
     guid: d3865d9a99b867d49b35ade29fa53f5f
   - enabled: 1
-    path: Assets/Scenes/Done/Info.unity
+    path: Assets/Scenes/Info.unity
     guid: 00854d3c036af2342998b62aad294ec7
   - enabled: 1
-    path: Assets/Scenes/Done/Welcome.unity
+    path: Assets/Scenes/Welcome.unity
     guid: 573fa903a95342348938d9a5a262663f
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9e979bb7d4709704f88632c24ce9f442,
