@@ -7,8 +7,8 @@
 - [ ] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
 <br/>
   
-- [ ] \(**@izelentrovic**) build: add SQLite natively as instructed by [this](https://old.reddit.com/r/Unity3D/comments/sayh3r/ill_simply_add_sqlite_to_my_unity_project_and/kg91fm0/) and [this comment](https://github.com/praeclarum/sqlite-net/issues/1023#issuecomment-821950695)
-- [ ] \(**@izelentrovic**) feat: replace remote database with local SQLite
+- [ ] ~~\(**@izelentrovic**) build: add SQLite natively as instructed by [this](https://old.reddit.com/r/Unity3D/comments/sayh3r/ill_simply_add_sqlite_to_my_unity_project_and/kg91fm0/) and [this comment](https://github.com/praeclarum/sqlite-net/issues/1023#issuecomment-821950695)~~
+- [ ] \(**@izelentrovic**) feat: replace remote database with local JSON files
 - [ ] \(**@izelentrovic**) feat: remember previous scene for animal profile scene (globe/list)
 - [ ] \(**@izelentrovic**) feat: change "area" DB table so that animals can have multiple areas
 - [ ] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  

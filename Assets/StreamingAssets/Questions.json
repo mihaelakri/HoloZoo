@@ -1,0 +1,79 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "id_animal": 1,
+            "correct_answer": 1
+        },
+        {
+            "id": 2,
+            "id_animal": 2,
+            "correct_answer": 1
+        },
+        {
+            "id": 3,
+            "id_animal": 1,
+            "correct_answer": 1
+        },
+        {
+            "id": 4,
+            "id_animal": 2,
+            "correct_answer": 2
+        },
+        {
+            "id": 5,
+            "id_animal": 1,
+            "correct_answer": 2
+        },
+        {
+            "id": 6,
+            "id_animal": 3,
+            "correct_answer": 3
+        },
+        {
+            "id": 7,
+            "id_animal": 4,
+            "correct_answer": 3
+        },
+        {
+            "id": 8,
+            "id_animal": 3,
+            "correct_answer": 1
+        },
+        {
+            "id": 9,
+            "id_animal": 10,
+            "correct_answer": 2
+        },
+        {
+            "id": 10,
+            "id_animal": 8,
+            "correct_answer": 1
+        },
+        {
+            "id": 11,
+            "id_animal": 20,
+            "correct_answer": 3
+        },
+        {
+            "id": 12,
+            "id_animal": 12,
+            "correct_answer": 3
+        },
+        {
+            "id": 13,
+            "id_animal": 15,
+            "correct_answer": 1
+        },
+        {
+            "id": 14,
+            "id_animal": 9,
+            "correct_answer": 2
+        },
+        {
+            "id": 15,
+            "id_animal": 7,
+            "correct_answer": 3
+        }
+    ]
+}

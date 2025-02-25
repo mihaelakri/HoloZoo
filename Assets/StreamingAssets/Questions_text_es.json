@@ -1,0 +1,124 @@
+{
+    "question_text_es": [
+        {
+            "id": 1,
+            "id_question": 1,
+            "question_text": "¿Dónde vive una ballena?",
+            "answer_one": "Sabana africana",
+            "answer_two": "Océano",
+            "answer_three": "Selvas europeas"
+        },
+        {
+            "id": 2,
+            "id_question": 2,
+            "question_text": "¿Qué come un cocodrilo?",
+            "answer_one": "Peces",
+            "answer_two": "Flores",
+            "answer_three": "Coco"
+        },
+        {
+            "id": 3,
+            "id_question": 3,
+            "question_text": "¿Cuál es la situación de peligro del elefante africano?",
+            "answer_one": "En peligro crítico",
+            "answer_two": "Vulnerable",
+            "answer_three": "No en peligro"
+        },
+        {
+            "id": 4,
+            "id_question": 4,
+            "question_text": "¿Cuál es la dieta del león?",
+            "answer_one": "Herbívoro",
+            "answer_two": "Carnívoro",
+            "answer_three": "Preocupación menor"
+        },
+        {
+            "id": 5,
+            "id_question": 5,
+            "question_text": "¿Cuál es el hábitat del elefante africano?",
+            "answer_one": "Selva",
+            "answer_two": "Sabana",
+            "answer_three": "Estepa"
+        },
+        {
+            "id": 6,
+            "id_question": 6,
+            "question_text": "¿Cuál es el peso del hipopótamo? ",
+            "answer_one": "100",
+            "answer_two": "200",
+            "answer_three": "1.5"
+        },
+        {
+            "id": 7,
+            "id_question": 7,
+            "question_text": "¿Cuál es la principal diferencia entre un león y una leona?",
+            "answer_one": "Cola",
+            "answer_two": "Garras",
+            "answer_three": "Melena"
+        },
+        {
+            "id": 8,
+            "id_question": 8,
+            "question_text": "¿Dónde vive un hipopótamo?",
+            "answer_one": "Ríos y lagos",
+            "answer_two": "Tundra",
+            "answer_three": "Desierto"
+        },
+        {
+            "id": 9,
+            "id_question": 9,
+            "question_text": "¿Cuál es el peso del rinoceronte adulto?",
+            "answer_one": "1000 - 1.500 kg",
+            "answer_two": "2.500-3.200 kg",
+            "answer_three": "6.500 - 7.200 kg"
+        },
+        {
+            "id": 10,
+            "id_question": 10,
+            "question_text": "¿Cuál de estos animales puede pesar más de una tonelada? ",
+            "answer_one": "Gran tiburón blanco",
+            "answer_two": "Águila calva",
+            "answer_three": "León"
+        },
+        {
+            "id": 11,
+            "id_question": 11,
+            "question_text": "¿Dónde vive la tortuga laúd?",
+            "answer_one": "Lagos",
+            "answer_two": "Río",
+            "answer_three": "Aguas marinas"
+        },
+        {
+            "id": 12,
+            "id_question": 12,
+            "question_text": "¿Cuál es la dieta del oso?",
+            "answer_one": "Herbívoro",
+            "answer_two": "Carnívoro",
+            "answer_three": "Omnívoro"
+        },
+        {
+            "id": 13,
+            "id_question": 13,
+            "question_text": "¿De qué color es el pelaje del lobo ártico?",
+            "answer_one": "Blanco",
+            "answer_two": "Gris",
+            "answer_three": "Negro"
+        },
+        {
+            "id": 14,
+            "id_question": 14,
+            "question_text": "¿Dónde vive la cebra?",
+            "answer_one": "Tundra",
+            "answer_two": "Sabana",
+            "answer_three": "Entornos rocosos"
+        },
+        {
+            "id": 15,
+            "id_question": 15,
+            "question_text": "¿Qué animal se alimenta principalmente de pescado?",
+            "answer_one": "Leona",
+            "answer_two": "Guernsey dorado",
+            "answer_three": "Delfín"
+        }
+    ]
+}

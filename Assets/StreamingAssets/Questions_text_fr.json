@@ -1,0 +1,124 @@
+{
+    "question_text_fr": [
+        {
+            "id": 1,
+            "id_question": 1,
+            "question_text": "Où vivent les baleines ?",
+            "answer_one": "Dans la savane Africaine",
+            "answer_two": "Dans l'océan",
+            "answer_three": "Dans les jungles européennes"
+        },
+        {
+            "id": 2,
+            "id_question": 2,
+            "question_text": "Que mangent les crocodiles ?",
+            "answer_one": "Du poisson",
+            "answer_two": "Des fleurs",
+            "answer_three": "Des noix de coco"
+        },
+        {
+            "id": 3,
+            "id_question": 3,
+            "question_text": "Quel est le status de conservation de l'éléphant d'Afrique ?",
+            "answer_one": "Danger critique d'extinction",
+            "answer_two": "Vulnérable",
+            "answer_three": "Non menacé"
+        },
+        {
+            "id": 4,
+            "id_question": 4,
+            "question_text": "Quel est le régime alimentaire du lion ?",
+            "answer_one": "Herbivore",
+            "answer_two": "Carnivore",
+            "answer_three": "Préoccupation mineure"
+        },
+        {
+            "id": 5,
+            "id_question": 5,
+            "question_text": "Quel est l'habitat naturel de l'éléphant d'Afrique ?",
+            "answer_one": "La jungle",
+            "answer_two": "La savane",
+            "answer_three": "La steppe"
+        },
+        {
+            "id": 6,
+            "id_question": 6,
+            "question_text": "Quel poids fait un hippopotame ?",
+            "answer_one": "100 kg",
+            "answer_two": "200 kg",
+            "answer_three": "1,5 tonne"
+        },
+        {
+            "id": 7,
+            "id_question": 7,
+            "question_text": "Quelle est la principale différence entre un lion et une lionne ?",
+            "answer_one": "La queue",
+            "answer_two": "Les griffes",
+            "answer_three": "La crinière"
+        },
+        {
+            "id": 8,
+            "id_question": 8,
+            "question_text": "Où vivent les hippopotames ?",
+            "answer_one": "Dans les lacs et rivières",
+            "answer_two": "Dans la toundra",
+            "answer_three": "Dans le désert"
+        },
+        {
+            "id": 9,
+            "id_question": 9,
+            "question_text": "Quel poids fait un rhinocéros adulte ?",
+            "answer_one": "Entre 1000 kg et 1 500 kg",
+            "answer_two": "Entre 2 500 kg et 3200 kg",
+            "answer_three": "Entre 6500 kg et 7200 kg"
+        },
+        {
+            "id": 10,
+            "id_question": 10,
+            "question_text": "Lequel de ces animaux peut peser plus d'une tonne ?",
+            "answer_one": "Le grand requin blanc",
+            "answer_two": "Le pygargue à tête blanche",
+            "answer_three": "Le lion"
+        },
+        {
+            "id": 11,
+            "id_question": 11,
+            "question_text": "Où vivent les tortues luth ?",
+            "answer_one": "Dans les lacs",
+            "answer_two": "Dans les rivières",
+            "answer_three": "Dans les eaux marines"
+        },
+        {
+            "id": 12,
+            "id_question": 12,
+            "question_text": "Quel est le régime alimentaire de l'ours ?",
+            "answer_one": "Herbivore",
+            "answer_two": "Carnivore",
+            "answer_three": "Omnivire"
+        },
+        {
+            "id": 13,
+            "id_question": 13,
+            "question_text": "De quelle couleur est la fourrure du loup arctique ?",
+            "answer_one": "Blanche",
+            "answer_two": "Grise",
+            "answer_three": "Noire"
+        },
+        {
+            "id": 14,
+            "id_question": 14,
+            "question_text": "Où vivent les zèbres ?",
+            "answer_one": "Dans la toundra",
+            "answer_two": "Dans la savane",
+            "answer_three": "Dans des environnements rocheux"
+        },
+        {
+            "id": 15,
+            "id_question": 15,
+            "question_text": "Quel animal mange principalement du poisson ?",
+            "answer_one": "La lionne",
+            "answer_two": "La chèvre dorée de Guernesey",
+            "answer_three": "Le dauphin"
+        }
+    ]
+}

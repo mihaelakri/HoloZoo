@@ -1,0 +1,124 @@
+{
+    "question_text_hr": [
+        {
+            "id": 1,
+            "id_question": 1,
+            "question_text": "Gdje živi kit?",
+            "answer_one": "Ocean",
+            "answer_two": "Jezero",
+            "answer_three": "Rijeka"
+        },
+        {
+            "id": 2,
+            "id_question": 2,
+            "question_text": "Što jede krokodil?",
+            "answer_one": "Ribe",
+            "answer_two": "Cvijeće",
+            "answer_three": "Kokos"
+        },
+        {
+            "id": 3,
+            "id_question": 3,
+            "question_text": "Koji je status ugroženosti afričkog slona?",
+            "answer_one": "Kritično ugrožen",
+            "answer_two": "Ugrožen",
+            "answer_three": "Nije ugrožen"
+        },
+        {
+            "id": 4,
+            "id_question": 4,
+            "question_text": "Koja je prehrana lava?",
+            "answer_one": "Biljojed",
+            "answer_two": "Mesojed",
+            "answer_three": "Svejed"
+        },
+        {
+            "id": 5,
+            "id_question": 5,
+            "question_text": "Koje je stanište afričkog slona?",
+            "answer_one": "Džungla",
+            "answer_two": "Savana",
+            "answer_three": "Stepa"
+        },
+        {
+            "id": 6,
+            "id_question": 6,
+            "question_text": "Koliko teži hippopotam?",
+            "answer_one": "100 kg",
+            "answer_two": "200 kg",
+            "answer_three": "1.5 t"
+        },
+        {
+            "id": 7,
+            "id_question": 7,
+            "question_text": "Koja je glavna razlika između lava i lavice?",
+            "answer_one": "Rep",
+            "answer_two": "Kandže",
+            "answer_three": "Griva"
+        },
+        {
+            "id": 8,
+            "id_question": 8,
+            "question_text": "Gdje živi hippopotam?",
+            "answer_one": "Rijeke i jezera",
+            "answer_two": "Tundra",
+            "answer_three": "Pustinja"
+        },
+        {
+            "id": 9,
+            "id_question": 9,
+            "question_text": "Koliko teži odrasli nosorog?",
+            "answer_one": "1000 - 1.500 kg",
+            "answer_two": "2.500–3.200 kg",
+            "answer_three": "6.500 – 7.200 kg"
+        },
+        {
+            "id": 10,
+            "id_question": 10,
+            "question_text": "Koja od ovih životinja može težiti više od tone?",
+            "answer_one": "Velika bijela psina",
+            "answer_two": "Bjeloglavi orao",
+            "answer_three": "Lav"
+        },
+        {
+            "id": 11,
+            "id_question": 11,
+            "question_text": "Gdje živi sedmopruga usminjača?",
+            "answer_one": "Jezera",
+            "answer_two": "Rijeka",
+            "answer_three": "Morska voda"
+        },
+        {
+            "id": 12,
+            "id_question": 12,
+            "question_text": "Koja je prehrana medvjeda?",
+            "answer_one": "Biljojed",
+            "answer_two": "Mesojed",
+            "answer_three": "Svejed"
+        },
+        {
+            "id": 13,
+            "id_question": 13,
+            "question_text": "Arktički vuk je poznat po kojoj boji krzna?",
+            "answer_one": "Bijela",
+            "answer_two": "Siva",
+            "answer_three": "Crna"
+        },
+        {
+            "id": 14,
+            "id_question": 14,
+            "question_text": "Gdje živi zebra?",
+            "answer_one": "Tundra",
+            "answer_two": "Savana",
+            "answer_three": "Stjenovita okruženja"
+        },
+        {
+            "id": 15,
+            "id_question": 15,
+            "question_text": "Koja životinja uglavnom jede ribe?",
+            "answer_one": "Lavica",
+            "answer_two": "Zlatna Guernsey koza",
+            "answer_three": "Dupin"
+        }
+    ]
+}

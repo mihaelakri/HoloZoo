@@ -1,0 +1,164 @@
+{
+    "animal_text_es": [
+        {
+            "id": 1,
+            "id_animal": 1,
+            "name": "Elefante africano",
+            "endangerment_status": "En peligro crítico",
+            "habitat": "Sabana",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 2,
+            "id_animal": 2,
+            "name": "Cocodrilo del Nilo",
+            "endangerment_status": "Preocupación menor",
+            "habitat": "Río Nilo",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 3,
+            "id_animal": 5,
+            "name": "Leona",
+            "endangerment_status": "Vulnerable",
+            "habitat": "Praderas, sabana",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 4,
+            "id_animal": 4,
+            "name": "León",
+            "endangerment_status": "Vulnerable",
+            "habitat": "Praderas, sabana",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 5,
+            "id_animal": 3,
+            "name": "Hipopótamo",
+            "endangerment_status": "Vulnerable",
+            "habitat": "Ríos, lagos y otros cuerpos de agua",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 6,
+            "id_animal": 6,
+            "name": "Águila real",
+            "endangerment_status": "No amenazado",
+            "habitat": "Tundra",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 7,
+            "id_animal": 7,
+            "name": "Delfín",
+            "endangerment_status": "Vulnerable",
+            "habitat": "Océano, mar",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 8,
+            "id_animal": 8,
+            "name": "Gran tiburón blanco",
+            "endangerment_status": "En peligro",
+            "habitat": "Océano, mar",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 9,
+            "id_animal": 9,
+            "name": "Cebra",
+            "endangerment_status": "En peligro",
+            "habitat": "Praderas, sabana",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 10,
+            "id_animal": 10,
+            "name": "Rinoceronte",
+            "endangerment_status": "En peligro crítico",
+            "habitat": "Praderas, sabana",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 11,
+            "id_animal": 11,
+            "name": "Jabalí europeo central",
+            "endangerment_status": "Preocupación menor",
+            "habitat": "Bosques",
+            "diet": "Omnívoro"
+        },
+        {
+            "id": 12,
+            "id_animal": 12,
+            "name": "Oso pardo europeo",
+            "endangerment_status": "En peligro",
+            "habitat": "Montañas densamente boscosas",
+            "diet": "Omnívoro"
+        },
+        {
+            "id": 13,
+            "id_animal": 13,
+            "name": "Ciervo mula",
+            "endangerment_status": "En peligro",
+            "habitat": "Entorno rocoso",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 14,
+            "id_animal": 14,
+            "name": "Lobo gris europeo",
+            "endangerment_status": "En peligro",
+            "habitat": "Bosques, tundra, montañas",
+            "diet": "Principalmente carnívoro"
+        },
+        {
+            "id": 15,
+            "id_animal": 15,
+            "name": "Lobo ártico",
+            "endangerment_status": "Preocupación menor",
+            "habitat": "Tundra ártica",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 16,
+            "id_animal": 16,
+            "name": "Liebre europea",
+            "endangerment_status": "Preocupación menor",
+            "habitat": "Campos abiertos",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 17,
+            "id_animal": 17,
+            "name": "Cuervo carroñero",
+            "endangerment_status": "Preocupación menor",
+            "habitat": "En todas partes",
+            "diet": "Omnívoro"
+        },
+        {
+            "id": 18,
+            "id_animal": 18,
+            "name": "Cabra dorada de Guernsey",
+            "endangerment_status": "En peligro",
+            "habitat": "Islas del Canal",
+            "diet": "Herbívoro"
+        },
+        {
+            "id": 19,
+            "id_animal": 19,
+            "name": "Calamar de Humboldt",
+            "endangerment_status": "No clasificada (ND)",
+            "habitat": "Profundidades de 200 a 700 m",
+            "diet": "Carnívoro"
+        },
+        {
+            "id": 20,
+            "id_animal": 20,
+            "name": "Tortuga laúd",
+            "endangerment_status": "En peligro",
+            "habitat": "Aguas marinas de todos los océanos",
+            "diet": "Pelágico"
+        }
+    ]
+}

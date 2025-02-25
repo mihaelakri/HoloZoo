@@ -1,0 +1,164 @@
+{
+    "animal_text_fr": [
+        {
+            "id": 1,
+            "id_animal": 1,
+            "name": "Éléphant d'Afrique",
+            "endangerment_status": "En danger critique",
+            "habitat": "Savane",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 2,
+            "id_animal": 2,
+            "name": "Crocodile du Nil",
+            "endangerment_status": "Préoccupation mineure",
+            "habitat": "Fleuve Nil",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 3,
+            "id_animal": 5,
+            "name": "Lionne",
+            "endangerment_status": "Vulnérable",
+            "habitat": "Prairies, savane",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 4,
+            "id_animal": 4,
+            "name": "Lion",
+            "endangerment_status": "Vulnérable",
+            "habitat": "Prairies, savane",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 5,
+            "id_animal": 3,
+            "name": "Hippopotame",
+            "endangerment_status": "Vulnérable",
+            "habitat": "Rivières, lacs et autres plans d'eau",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 6,
+            "id_animal": 6,
+            "name": "Aigle royal",
+            "endangerment_status": "Non menacé",
+            "habitat": "Toundra",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 7,
+            "id_animal": 7,
+            "name": "Dauphin",
+            "endangerment_status": "Vulnérable",
+            "habitat": "Océan, mer",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 8,
+            "id_animal": 8,
+            "name": "Grand requin blanc",
+            "endangerment_status": "En danger",
+            "habitat": "Océan, mer",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 9,
+            "id_animal": 9,
+            "name": "Zèbre",
+            "endangerment_status": "En danger",
+            "habitat": "Prairies, savane",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 10,
+            "id_animal": 10,
+            "name": "Rhinocéros",
+            "endangerment_status": "En danger critique",
+            "habitat": "Prairies, savane",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 11,
+            "id_animal": 11,
+            "name": "Sanglier d'Europe centrale",
+            "endangerment_status": "Préoccupation mineure",
+            "habitat": "Forêts",
+            "diet": "Omnivore"
+        },
+        {
+            "id": 12,
+            "id_animal": 12,
+            "name": "Ours brun d'Europe",
+            "endangerment_status": "En danger",
+            "habitat": "Montagnes densément boisées",
+            "diet": "Omnivore"
+        },
+        {
+            "id": 13,
+            "id_animal": 13,
+            "name": "Cerf mulet",
+            "endangerment_status": "En danger",
+            "habitat": "Environnements rocheux",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 14,
+            "id_animal": 14,
+            "name": "Loup gris européen",
+            "endangerment_status": "En danger",
+            "habitat": "Forêts, toundra, montagnes",
+            "diet": "Principalement carnivore"
+        },
+        {
+            "id": 15,
+            "id_animal": 15,
+            "name": "Loup arctique",
+            "endangerment_status": "Préoccupation mineure",
+            "habitat": "Toundra arctique",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 16,
+            "id_animal": 16,
+            "name": "Lièvre d'Europe",
+            "endangerment_status": "Préoccupation mineure",
+            "habitat": "Champs ouverts",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 17,
+            "id_animal": 17,
+            "name": "Corbeau freux",
+            "endangerment_status": "Préoccupation mineure",
+            "habitat": "Partout",
+            "diet": "Omnivore"
+        },
+        {
+            "id": 18,
+            "id_animal": 18,
+            "name": "Chèvre de Guernesey dorée",
+            "endangerment_status": "En danger",
+            "habitat": "Îles Anglo-Normandes",
+            "diet": "Herbivore"
+        },
+        {
+            "id": 19,
+            "id_animal": 19,
+            "name": "Calmar de Humboldt",
+            "endangerment_status": "Non classé",
+            "habitat": "Profondeurs de 200m à 700m",
+            "diet": "Carnivore"
+        },
+        {
+            "id": 20,
+            "id_animal": 20,
+            "name": "Tortue luth",
+            "endangerment_status": "En danger",
+            "habitat": "Eaux marines de tous les océans",
+            "diet": "Pélagique"
+        }
+    ]
+}

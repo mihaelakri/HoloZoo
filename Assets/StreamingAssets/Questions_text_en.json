@@ -1,0 +1,124 @@
+{
+    "question_text_en": [
+        {
+            "id": 1,
+            "id_question": 1,
+            "question_text": "Where does a whale live?",
+            "answer_one": "African Savannah",
+            "answer_two": "Ocean",
+            "answer_three": "European jungles"
+        },
+        {
+            "id": 2,
+            "id_question": 2,
+            "question_text": "What does a crocodile eat?",
+            "answer_one": "Fish",
+            "answer_two": "Flowers",
+            "answer_three": "Coconut"
+        },
+        {
+            "id": 3,
+            "id_question": 3,
+            "question_text": "What is african elephant's endangerment status?",
+            "answer_one": "Critically endangered",
+            "answer_two": "Vulnerable",
+            "answer_three": "Not endangered"
+        },
+        {
+            "id": 4,
+            "id_question": 4,
+            "question_text": "What is lion's diet?",
+            "answer_one": "Herbivore",
+            "answer_two": "Carnivore",
+            "answer_three": "Least concern"
+        },
+        {
+            "id": 5,
+            "id_question": 5,
+            "question_text": "What is african elephant's habitat?",
+            "answer_one": "Jungle",
+            "answer_two": "Savannah",
+            "answer_three": "Steppe"
+        },
+        {
+            "id": 6,
+            "id_question": 6,
+            "question_text": "What is hippopotamus weight? ",
+            "answer_one": "100",
+            "answer_two": "200",
+            "answer_three": "1.5"
+        },
+        {
+            "id": 7,
+            "id_question": 7,
+            "question_text": "What is the main difference between lion and lioness?",
+            "answer_one": "Tail",
+            "answer_two": "Claws",
+            "answer_three": "Mane"
+        },
+        {
+            "id": 8,
+            "id_question": 8,
+            "question_text": "Where does a hippopotamus live?",
+            "answer_one": "Rivers and lakes",
+            "answer_two": "Tundra",
+            "answer_three": "Desert"
+        },
+        {
+            "id": 9,
+            "id_question": 9,
+            "question_text": "What is adult rhinoceros weight?",
+            "answer_one": "1000 - 1.500 kg",
+            "answer_two": "2,500–3,200 kg",
+            "answer_three": "6,500 – 7,200 kg"
+        },
+        {
+            "id": 10,
+            "id_question": 10,
+            "question_text": "Which of these animals can weight more than a ton? ",
+            "answer_one": "Great white shark",
+            "answer_two": "Bald Eagle",
+            "answer_three": "Lion"
+        },
+        {
+            "id": 11,
+            "id_question": 11,
+            "question_text": "Where does the leatherback sea turtle live",
+            "answer_one": "Lakes",
+            "answer_two": "River",
+            "answer_three": "Marine waters"
+        },
+        {
+            "id": 12,
+            "id_question": 12,
+            "question_text": "What is bear's diet?",
+            "answer_one": "Herbivore",
+            "answer_two": "Carnivore",
+            "answer_three": "Omnivore"
+        },
+        {
+            "id": 13,
+            "id_question": 13,
+            "question_text": "Arctic wolf is known for which fur color?",
+            "answer_one": "White",
+            "answer_two": "Gray",
+            "answer_three": "Black"
+        },
+        {
+            "id": 14,
+            "id_question": 14,
+            "question_text": "Where does a zebra live?",
+            "answer_one": "Tundra",
+            "answer_two": "Savannah",
+            "answer_three": "Rocky environments"
+        },
+        {
+            "id": 15,
+            "id_question": 15,
+            "question_text": "Which animal mostly eats fish?",
+            "answer_one": "Lioness",
+            "answer_two": "Golden Guernsey",
+            "answer_three": "Dolphin"
+        }
+    ]
+}
