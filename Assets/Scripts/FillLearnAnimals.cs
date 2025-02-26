@@ -56,7 +56,7 @@ public class FillLearnAnimals : MonoBehaviour
                     newText.text = a.name;
                     newobj.name = a.id_animal.ToString();
                 }
-                GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().LoadAndStyle();
+                GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().LoadAndStyle();
             }
         }
     }

@@ -18,6 +18,9 @@
 - [ ] fix: animal model scaling on Game device
 - [ ] fix: animal model scaling on Hologram device
 - [ ] fix: screen size
+- [ ] build!: remove unused animal models
+- [ ] feat: remove all calls to remote host
+- [ ] feat: remove internet connection checks
 
 ## Done List
 

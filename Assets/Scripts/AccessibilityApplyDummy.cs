@@ -4,6 +4,6 @@ public class AccessibilityApplyDummy : MonoBehaviour
 {
     void Start()
     {
-        GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().LoadAndStyle();
+        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().LoadAndStyle();
     }
 }

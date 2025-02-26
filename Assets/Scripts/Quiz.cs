@@ -163,7 +163,7 @@ public class Quiz : MonoBehaviour
         answerButtons[0].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_one;
         answerButtons[1].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_two;
         answerButtons[2].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_three;
-        GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
+        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
     }
 
     private void ColorButtons()

@@ -176,6 +176,6 @@ public class Accessibility : MonoBehaviour
     public void hideAccesibility()
     {
         transform.LeanMoveLocal(new Vector2(0, -645), 1).setEaseOutQuart();
-        GameObject.Find("AccessHelper").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
+        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
     }
 }
