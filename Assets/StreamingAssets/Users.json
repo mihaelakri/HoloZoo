@@ -1,25 +1,23 @@
-{
-    "users": [
-        {
-            "id": 1,
-            "level": 3,
-            "username": "test1234",
-            "password": "$2y$10$O0eTYXNJnjP5eiHBeb83GuLGtLYOq2RDg5TtmMDoe6eBJQgohb6Ra",
-            "experience": 40
-        },
-        {
-            "id": 2,
-            "level": 3,
-            "username": "francuski",
-            "password": "$2y$10$G1vzvjqBjujZOjvH.2SWWu.ZCiZwEIHBK5z2o6JPnacek96pwJ6Ja",
-            "experience": 20
-        },
-        {
-            "id": 3,
-            "level": 1,
-            "username": "ivanaFER",
-            "password": "$2y$10$GuvBKxJvCCw6BrwDV.2fneYQSMcSVWwY4OLtIqEOW6fuO1Z\/KIgZO",
-            "experience": 50
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "level": 3,
+        "username": "test1234",
+        "password": "$2y$10$O0eTYXNJnjP5eiHBeb83GuLGtLYOq2RDg5TtmMDoe6eBJQgohb6Ra",
+        "experience": 40
+    },
+    {
+        "id": 2,
+        "level": 3,
+        "username": "francuski",
+        "password": "$2y$10$G1vzvjqBjujZOjvH.2SWWu.ZCiZwEIHBK5z2o6JPnacek96pwJ6Ja",
+        "experience": 20
+    },
+    {
+        "id": 3,
+        "level": 1,
+        "username": "ivanaFER",
+        "password": "$2y$10$GuvBKxJvCCw6BrwDV.2fneYQSMcSVWwY4OLtIqEOW6fuO1Z\/KIgZO",
+        "experience": 50
+    }
+]

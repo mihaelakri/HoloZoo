@@ -1,184 +1,182 @@
-{
-    "animals": [
-        {
-            "id": 1,
-            "id_area": 1,
-            "level": 1,
-            "url_model": "African Animals Pack\/Elephant\/Prefabs\/Elephant_Legacy",
-            "url_slika": "animprof_elephant.png",
-            "weight": "6,000kg",
-            "population": 415000
-        },
-        {
-            "id": 2,
-            "id_area": 1,
-            "level": 1,
-            "url_model": "African Animals Pack\/Crocodile\/Prefabs\/Crocodile_Legacy",
-            "url_slika": "animprof_krokodil.png",
-            "weight": "40-750kg",
-            "population": 60000
-        },
-        {
-            "id": 3,
-            "id_area": 1,
-            "level": 1,
-            "url_model": "African Animals Pack\/Hippopotamus\/Prefabs\/Hippopotamus_PBR",
-            "url_slika": "animprof_hippo.png",
-            "weight": "1,500-3,200kg",
-            "population": 125
-        },
-        {
-            "id": 4,
-            "id_area": 1,
-            "level": 1,
-            "url_model": "African Animals Pack\/Lion and Lioness\/Prefabs\/Lion_Legacy",
-            "url_slika": "animprof_lion.png",
-            "weight": "190kg",
-            "population": 20000
-        },
-        {
-            "id": 5,
-            "id_area": 1,
-            "level": 2,
-            "url_model": "African Animals Pack\/Lion and Lioness\/Prefabs\/Lioness_Legacy",
-            "url_slika": "animprof_lion.png",
-            "weight": "130kg",
-            "population": 20000
-        },
-        {
-            "id": 6,
-            "id_area": 8,
-            "level": 1,
-            "url_model": "Birds Pack\/Golden Eagle\/Prefabs\/Eagle_Legacy",
-            "url_slika": "animprof_eagle.png",
-            "weight": "3-6kg",
-            "population": 130000
-        },
-        {
-            "id": 7,
-            "id_area": 1,
-            "level": 1,
-            "url_model": "Ocean Animals Pack Vol 1\/Dolphin\/Prefab\/Dolphin",
-            "url_slika": "animprof_dolphin.png",
-            "weight": "100-450kg",
-            "population": 8000000
-        },
-        {
-            "id": 8,
-            "id_area": 9,
-            "level": 1,
-            "url_model": "Ocean Animals Pack Vol 1\/Great White Shark\/Prefab\/GreatWhiteShark",
-            "url_slika": "animprof_gwshark.png",
-            "weight": "680-1,100kg",
-            "population": 3500
-        },
-        {
-            "id": 9,
-            "id_area": 1,
-            "level": 1,
-            "url_model": "African Animals Pack\/Zebra\/Prefabs\/Zebra_Legacy",
-            "url_slika": "animprof_zebra.png",
-            "weight": "280-400kg",
-            "population": 500000
-        },
-        {
-            "id": 10,
-            "id_area": 1,
-            "level": 2,
-            "url_model": "African Animals Pack\/Rhinoceros\/Prefabs\/Rhinoceros_Legacy",
-            "url_slika": "animprof_rhino.png",
-            "weight": "2,500-3,200kg",
-            "population": 27000
-        },
-        {
-            "id": 11,
-            "id_area": 2,
-            "level": 1,
-            "url_model": "Forest Animals Pack\/Boar\/Prefabs\/Boar_Legacy",
-            "url_slika": "animprof_boar.png",
-            "weight": "120-200kg",
-            "population": 74000000
-        },
-        {
-            "id": 12,
-            "id_area": 2,
-            "level": 1,
-            "url_model": "Forest Animals Pack\/Bear\/Prefabs\/Bear_Legacy",
-            "url_slika": "animprof_bear.png",
-            "weight": "150-260kg",
-            "population": 17000
-        },
-        {
-            "id": 13,
-            "id_area": 8,
-            "level": 1,
-            "url_model": "Forest Animals Pack\/Deer\/Stag\/Prefabs\/DeerStag_Legacy",
-            "url_slika": "animprof_deer.png",
-            "weight": "43-150kg",
-            "population": 400000
-        },
-        {
-            "id": 14,
-            "id_area": 2,
-            "level": 1,
-            "url_model": "Forest Animals Pack\/Wolf\/Prefabs\/Wolf_Legacy",
-            "url_slika": "animprof_wolf.png",
-            "weight": "30-50kg",
-            "population": 19000
-        },
-        {
-            "id": 15,
-            "id_area": 8,
-            "level": 2,
-            "url_model": "Forest Animals Pack\/Wolf\/Prefabs\/WolfArctic_PBR",
-            "url_slika": "animprof_arctic_wolf.png",
-            "weight": "30-40kg",
-            "population": 200000
-        },
-        {
-            "id": 16,
-            "id_area": 2,
-            "level": 1,
-            "url_model": "Forest Animals Pack\/Rabbit\/Prefabs\/Rabbit_Legacy",
-            "url_slika": "animprof_rabbit.png",
-            "weight": "3-5kg",
-            "population": 10000000
-        },
-        {
-            "id": 17,
-            "id_area": 2,
-            "level": 1,
-            "url_model": "Birds Pack\/Crow\/Prefabs\/Crow_Legacy",
-            "url_slika": "animprof_crow.png",
-            "weight": "0.5kg",
-            "population": 33300000
-        },
-        {
-            "id": 18,
-            "id_area": 2,
-            "level": 3,
-            "url_model": "Farm Animals Pack\/Goat\/Prefabs\/Goat_Legacy",
-            "url_slika": "animprof_goat.png",
-            "weight": "50-90kg",
-            "population": 1381
-        },
-        {
-            "id": 19,
-            "id_area": 7,
-            "level": 1,
-            "url_model": "Ocean Animals Pack Vol 1\/Humboldt Squid\/Prefab\/HumboldtSquid",
-            "url_slika": "animprof_squid.png",
-            "weight": "50kg",
-            "population": 4300000
-        },
-        {
-            "id": 20,
-            "id_area": 9,
-            "level": 3,
-            "url_model": "Ocean Animals Pack Vol 1\/Leatherback Sea Turtle\/Prefab\/LeatherbackSeaTurtle",
-            "url_slika": "animprof_seaturtle.png",
-            "weight": "250-700kg",
-            "population": 30000
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "id_area": 1,
+        "level": 1,
+        "url_model": "African Animals Pack\/Elephant\/Prefabs\/Elephant_Legacy",
+        "url_slika": "animprof_elephant.png",
+        "weight": "6,000kg",
+        "population": 415000
+    },
+    {
+        "id": 2,
+        "id_area": 1,
+        "level": 1,
+        "url_model": "African Animals Pack\/Crocodile\/Prefabs\/Crocodile_Legacy",
+        "url_slika": "animprof_krokodil.png",
+        "weight": "40-750kg",
+        "population": 60000
+    },
+    {
+        "id": 3,
+        "id_area": 1,
+        "level": 1,
+        "url_model": "African Animals Pack\/Hippopotamus\/Prefabs\/Hippopotamus_PBR",
+        "url_slika": "animprof_hippo.png",
+        "weight": "1,500-3,200kg",
+        "population": 125
+    },
+    {
+        "id": 4,
+        "id_area": 1,
+        "level": 1,
+        "url_model": "African Animals Pack\/Lion and Lioness\/Prefabs\/Lion_Legacy",
+        "url_slika": "animprof_lion.png",
+        "weight": "190kg",
+        "population": 20000
+    },
+    {
+        "id": 5,
+        "id_area": 1,
+        "level": 2,
+        "url_model": "African Animals Pack\/Lion and Lioness\/Prefabs\/Lioness_Legacy",
+        "url_slika": "animprof_lion.png",
+        "weight": "130kg",
+        "population": 20000
+    },
+    {
+        "id": 6,
+        "id_area": 8,
+        "level": 1,
+        "url_model": "Birds Pack\/Golden Eagle\/Prefabs\/Eagle_Legacy",
+        "url_slika": "animprof_eagle.png",
+        "weight": "3-6kg",
+        "population": 130000
+    },
+    {
+        "id": 7,
+        "id_area": 1,
+        "level": 1,
+        "url_model": "Ocean Animals Pack Vol 1\/Dolphin\/Prefab\/Dolphin",
+        "url_slika": "animprof_dolphin.png",
+        "weight": "100-450kg",
+        "population": 8000000
+    },
+    {
+        "id": 8,
+        "id_area": 9,
+        "level": 1,
+        "url_model": "Ocean Animals Pack Vol 1\/Great White Shark\/Prefab\/GreatWhiteShark",
+        "url_slika": "animprof_gwshark.png",
+        "weight": "680-1,100kg",
+        "population": 3500
+    },
+    {
+        "id": 9,
+        "id_area": 1,
+        "level": 1,
+        "url_model": "African Animals Pack\/Zebra\/Prefabs\/Zebra_Legacy",
+        "url_slika": "animprof_zebra.png",
+        "weight": "280-400kg",
+        "population": 500000
+    },
+    {
+        "id": 10,
+        "id_area": 1,
+        "level": 2,
+        "url_model": "African Animals Pack\/Rhinoceros\/Prefabs\/Rhinoceros_Legacy",
+        "url_slika": "animprof_rhino.png",
+        "weight": "2,500-3,200kg",
+        "population": 27000
+    },
+    {
+        "id": 11,
+        "id_area": 2,
+        "level": 1,
+        "url_model": "Forest Animals Pack\/Boar\/Prefabs\/Boar_Legacy",
+        "url_slika": "animprof_boar.png",
+        "weight": "120-200kg",
+        "population": 74000000
+    },
+    {
+        "id": 12,
+        "id_area": 2,
+        "level": 1,
+        "url_model": "Forest Animals Pack\/Bear\/Prefabs\/Bear_Legacy",
+        "url_slika": "animprof_bear.png",
+        "weight": "150-260kg",
+        "population": 17000
+    },
+    {
+        "id": 13,
+        "id_area": 8,
+        "level": 1,
+        "url_model": "Forest Animals Pack\/Deer\/Stag\/Prefabs\/DeerStag_Legacy",
+        "url_slika": "animprof_deer.png",
+        "weight": "43-150kg",
+        "population": 400000
+    },
+    {
+        "id": 14,
+        "id_area": 2,
+        "level": 1,
+        "url_model": "Forest Animals Pack\/Wolf\/Prefabs\/Wolf_Legacy",
+        "url_slika": "animprof_wolf.png",
+        "weight": "30-50kg",
+        "population": 19000
+    },
+    {
+        "id": 15,
+        "id_area": 8,
+        "level": 2,
+        "url_model": "Forest Animals Pack\/Wolf\/Prefabs\/WolfArctic_PBR",
+        "url_slika": "animprof_arctic_wolf.png",
+        "weight": "30-40kg",
+        "population": 200000
+    },
+    {
+        "id": 16,
+        "id_area": 2,
+        "level": 1,
+        "url_model": "Forest Animals Pack\/Rabbit\/Prefabs\/Rabbit_Legacy",
+        "url_slika": "animprof_rabbit.png",
+        "weight": "3-5kg",
+        "population": 10000000
+    },
+    {
+        "id": 17,
+        "id_area": 2,
+        "level": 1,
+        "url_model": "Birds Pack\/Crow\/Prefabs\/Crow_Legacy",
+        "url_slika": "animprof_crow.png",
+        "weight": "0.5kg",
+        "population": 33300000
+    },
+    {
+        "id": 18,
+        "id_area": 2,
+        "level": 3,
+        "url_model": "Farm Animals Pack\/Goat\/Prefabs\/Goat_Legacy",
+        "url_slika": "animprof_goat.png",
+        "weight": "50-90kg",
+        "population": 1381
+    },
+    {
+        "id": 19,
+        "id_area": 7,
+        "level": 1,
+        "url_model": "Ocean Animals Pack Vol 1\/Humboldt Squid\/Prefab\/HumboldtSquid",
+        "url_slika": "animprof_squid.png",
+        "weight": "50kg",
+        "population": 4300000
+    },
+    {
+        "id": 20,
+        "id_area": 9,
+        "level": 3,
+        "url_model": "Ocean Animals Pack Vol 1\/Leatherback Sea Turtle\/Prefab\/LeatherbackSeaTurtle",
+        "url_slika": "animprof_seaturtle.png",
+        "weight": "250-700kg",
+        "population": 30000
+    }
+]

@@ -1,164 +1,162 @@
-{
-    "animal_text_hu": [
-        {
-            "id": 1,
-            "id_animal": 1,
-            "name": "Afrikai elefánt",
-            "endangerment_status": "Kritikusan veszélyeztetett",
-            "habitat": "Szavanna",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 2,
-            "id_animal": 2,
-            "name": "Nílusi krokodil",
-            "endangerment_status": "Nem fenyegetett",
-            "habitat": "Nílus folyó",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 3,
-            "id_animal": 5,
-            "name": "Nőstény oroszlán ",
-            "endangerment_status": "Sebezhető",
-            "habitat": "Füves puszták, szavanna",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 4,
-            "id_animal": 4,
-            "name": "Hím oroszlán ",
-            "endangerment_status": "Sebezhető",
-            "habitat": "Füves puszták, szavanna",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 5,
-            "id_animal": 3,
-            "name": "Víziló",
-            "endangerment_status": "Sebezhető",
-            "habitat": "Folyók, tavak és más vízi élőhelyek",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 6,
-            "id_animal": 6,
-            "name": "Szirti sas",
-            "endangerment_status": "Nem fenyegetett",
-            "habitat": "Tundra",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 7,
-            "id_animal": 7,
-            "name": "Delfin",
-            "endangerment_status": "Sebezhető",
-            "habitat": "Óceán, tenger",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 8,
-            "id_animal": 8,
-            "name": "Nagy fehér cápa",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Óceán, tenger",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 9,
-            "id_animal": 9,
-            "name": "Zebra",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Füves puszták, szavanna",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 10,
-            "id_animal": 10,
-            "name": "Orrszarvú",
-            "endangerment_status": "Kritikusan veszélyeztetett",
-            "habitat": "Füves puszták, szavanna",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 11,
-            "id_animal": 11,
-            "name": "Közép-európai vaddisznó",
-            "endangerment_status": "Nem fenyegetett",
-            "habitat": "Erdők",
-            "diet": "Mindenevő"
-        },
-        {
-            "id": 12,
-            "id_animal": 12,
-            "name": "Európai barnamedve",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Sűrű erdős hegységek",
-            "diet": "Mindenevő"
-        },
-        {
-            "id": 13,
-            "id_animal": 13,
-            "name": "Öszvérszarvas",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Sziklás környezet",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 14,
-            "id_animal": 14,
-            "name": "Európai szürke farkas",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Erdők, tundra, hegyek",
-            "diet": "Főként húsevő"
-        },
-        {
-            "id": 15,
-            "id_animal": 15,
-            "name": "Sarki farkas",
-            "endangerment_status": "Nem fenyegetett",
-            "habitat": "Északi tundra",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 16,
-            "id_animal": 16,
-            "name": "Európai nyúl ",
-            "endangerment_status": "Nem fenyegetett",
-            "habitat": "Nyílt mezők",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 17,
-            "id_animal": 17,
-            "name": "Kormos varjú",
-            "endangerment_status": "Nem fenyegetett",
-            "habitat": "Mindenhol",
-            "diet": "Mindenevő"
-        },
-        {
-            "id": 18,
-            "id_animal": 18,
-            "name": "Arany guernsey-i  kecske",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Csatorna-szigetek",
-            "diet": "Növényevő"
-        },
-        {
-            "id": 21,
-            "id_animal": 19,
-            "name": "Humboldt-tintahal",
-            "endangerment_status": "Nem besorolt",
-            "habitat": "200m és 700m mélység között",
-            "diet": "Húsevő"
-        },
-        {
-            "id": 22,
-            "id_animal": 20,
-            "name": "Kérgesteknős",
-            "endangerment_status": "Veszélyeztetett",
-            "habitat": "Óceánok tengervize",
-            "diet": "Pelágikus"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "id_animal": 1,
+        "name": "Afrikai elefánt",
+        "endangerment_status": "Kritikusan veszélyeztetett",
+        "habitat": "Szavanna",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 2,
+        "id_animal": 2,
+        "name": "Nílusi krokodil",
+        "endangerment_status": "Nem fenyegetett",
+        "habitat": "Nílus folyó",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 3,
+        "id_animal": 5,
+        "name": "Nőstény oroszlán ",
+        "endangerment_status": "Sebezhető",
+        "habitat": "Füves puszták, szavanna",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 4,
+        "id_animal": 4,
+        "name": "Hím oroszlán ",
+        "endangerment_status": "Sebezhető",
+        "habitat": "Füves puszták, szavanna",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 5,
+        "id_animal": 3,
+        "name": "Víziló",
+        "endangerment_status": "Sebezhető",
+        "habitat": "Folyók, tavak és más vízi élőhelyek",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 6,
+        "id_animal": 6,
+        "name": "Szirti sas",
+        "endangerment_status": "Nem fenyegetett",
+        "habitat": "Tundra",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 7,
+        "id_animal": 7,
+        "name": "Delfin",
+        "endangerment_status": "Sebezhető",
+        "habitat": "Óceán, tenger",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 8,
+        "id_animal": 8,
+        "name": "Nagy fehér cápa",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Óceán, tenger",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 9,
+        "id_animal": 9,
+        "name": "Zebra",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Füves puszták, szavanna",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 10,
+        "id_animal": 10,
+        "name": "Orrszarvú",
+        "endangerment_status": "Kritikusan veszélyeztetett",
+        "habitat": "Füves puszták, szavanna",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 11,
+        "id_animal": 11,
+        "name": "Közép-európai vaddisznó",
+        "endangerment_status": "Nem fenyegetett",
+        "habitat": "Erdők",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 12,
+        "id_animal": 12,
+        "name": "Európai barnamedve",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Sűrű erdős hegységek",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 13,
+        "id_animal": 13,
+        "name": "Öszvérszarvas",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Sziklás környezet",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 14,
+        "id_animal": 14,
+        "name": "Európai szürke farkas",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Erdők, tundra, hegyek",
+        "diet": "Főként húsevő"
+    },
+    {
+        "id": 15,
+        "id_animal": 15,
+        "name": "Sarki farkas",
+        "endangerment_status": "Nem fenyegetett",
+        "habitat": "Északi tundra",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 16,
+        "id_animal": 16,
+        "name": "Európai nyúl ",
+        "endangerment_status": "Nem fenyegetett",
+        "habitat": "Nyílt mezők",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 17,
+        "id_animal": 17,
+        "name": "Kormos varjú",
+        "endangerment_status": "Nem fenyegetett",
+        "habitat": "Mindenhol",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 18,
+        "id_animal": 18,
+        "name": "Arany guernsey-i  kecske",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Csatorna-szigetek",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 21,
+        "id_animal": 19,
+        "name": "Humboldt-tintahal",
+        "endangerment_status": "Nem besorolt",
+        "habitat": "200m és 700m mélység között",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 22,
+        "id_animal": 20,
+        "name": "Kérgesteknős",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Óceánok tengervize",
+        "diet": "Pelágikus"
+    }
+]

@@ -1,164 +1,162 @@
-{
-    "animal_text_hr": [
-        {
-            "id": 1,
-            "id_animal": 1,
-            "name": "Afrički slon",
-            "endangerment_status": "Kritično ugrožen",
-            "habitat": "Savana",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 2,
-            "id_animal": 2,
-            "name": "Nilski krokodil",
-            "endangerment_status": "Najmanja zabrinutost",
-            "habitat": "Rijeka Nil",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 3,
-            "id_animal": 5,
-            "name": "Lavica",
-            "endangerment_status": "Ranjiva",
-            "habitat": "Travnjaci, savana",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 4,
-            "id_animal": 4,
-            "name": "Lav",
-            "endangerment_status": "Ranjiv",
-            "habitat": "Travnjaci, savana",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 5,
-            "id_animal": 3,
-            "name": "Nilski konj",
-            "endangerment_status": "Ranjiv",
-            "habitat": "Rijeke, jezera i druga vodena tijela",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 6,
-            "id_animal": 6,
-            "name": "Bjeloglavi orao",
-            "endangerment_status": "Nije ugrožen",
-            "habitat": "Tundra",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 7,
-            "id_animal": 7,
-            "name": "Dupin",
-            "endangerment_status": "Ranjiv",
-            "habitat": "Ocean, more",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 8,
-            "id_animal": 8,
-            "name": "Velika bijela psina",
-            "endangerment_status": "Ugrožena",
-            "habitat": "Ocean, more",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 9,
-            "id_animal": 9,
-            "name": "Zebra",
-            "endangerment_status": "Ugrožena",
-            "habitat": "Travnjaci, savana",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 10,
-            "id_animal": 10,
-            "name": "Nosorog",
-            "endangerment_status": "Kritično ugrožen",
-            "habitat": "Travnjaci, savana",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 11,
-            "id_animal": 11,
-            "name": "Srednjoeuropska divlja svinja",
-            "endangerment_status": "Najmanja zabrinutost",
-            "habitat": "Šume",
-            "diet": "Svejed"
-        },
-        {
-            "id": 12,
-            "id_animal": 12,
-            "name": "Europski smeđi medvjed",
-            "endangerment_status": "Ugrožen",
-            "habitat": "Guste šumske planine",
-            "diet": "Svejed"
-        },
-        {
-            "id": 13,
-            "id_animal": 13,
-            "name": "Jelen",
-            "endangerment_status": "Ugrožen",
-            "habitat": "Stjenovito okruženje",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 14,
-            "id_animal": 14,
-            "name": "Europski sivi vuk",
-            "endangerment_status": "Ugrožen",
-            "habitat": "Šume, tundra, planine",
-            "diet": "Pretežno mesožder"
-        },
-        {
-            "id": 15,
-            "id_animal": 15,
-            "name": "Arktički vuk",
-            "endangerment_status": "Najmanja zabrinutost",
-            "habitat": "Arktička tundra",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 16,
-            "id_animal": 16,
-            "name": "Europski zec",
-            "endangerment_status": "Najmanja zabrinutost",
-            "habitat": "Otvorena polja",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 17,
-            "id_animal": 17,
-            "name": "Strvinarski gavran",
-            "endangerment_status": "Najmanja zabrinutost",
-            "habitat": "Svugdje",
-            "diet": "Svejed"
-        },
-        {
-            "id": 18,
-            "id_animal": 18,
-            "name": "Zlatna Guernsey koza",
-            "endangerment_status": "Ugrožena",
-            "habitat": "Kanalski otoci",
-            "diet": "Biljojed"
-        },
-        {
-            "id": 19,
-            "id_animal": 19,
-            "name": "Humboldtova lignja",
-            "endangerment_status": "Neklasificirano",
-            "habitat": "Dubine od 200m do 700m",
-            "diet": "Mesojed"
-        },
-        {
-            "id": 20,
-            "id_animal": 20,
-            "name": "Sedmopruga usminjača",
-            "endangerment_status": "Ugrožena",
-            "habitat": "Morske vode u svim oceanima",
-            "diet": "Pelagična"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "id_animal": 1,
+        "name": "Afrički slon",
+        "endangerment_status": "Kritično ugrožen",
+        "habitat": "Savana",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 2,
+        "id_animal": 2,
+        "name": "Nilski krokodil",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Rijeka Nil",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 3,
+        "id_animal": 5,
+        "name": "Lavica",
+        "endangerment_status": "Ranjiva",
+        "habitat": "Travnjaci, savana",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 4,
+        "id_animal": 4,
+        "name": "Lav",
+        "endangerment_status": "Ranjiv",
+        "habitat": "Travnjaci, savana",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 5,
+        "id_animal": 3,
+        "name": "Nilski konj",
+        "endangerment_status": "Ranjiv",
+        "habitat": "Rijeke, jezera i druga vodena tijela",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 6,
+        "id_animal": 6,
+        "name": "Bjeloglavi orao",
+        "endangerment_status": "Nije ugrožen",
+        "habitat": "Tundra",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 7,
+        "id_animal": 7,
+        "name": "Dupin",
+        "endangerment_status": "Ranjiv",
+        "habitat": "Ocean, more",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 8,
+        "id_animal": 8,
+        "name": "Velika bijela psina",
+        "endangerment_status": "Ugrožena",
+        "habitat": "Ocean, more",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 9,
+        "id_animal": 9,
+        "name": "Zebra",
+        "endangerment_status": "Ugrožena",
+        "habitat": "Travnjaci, savana",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 10,
+        "id_animal": 10,
+        "name": "Nosorog",
+        "endangerment_status": "Kritično ugrožen",
+        "habitat": "Travnjaci, savana",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 11,
+        "id_animal": 11,
+        "name": "Srednjoeuropska divlja svinja",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Šume",
+        "diet": "Svejed"
+    },
+    {
+        "id": 12,
+        "id_animal": 12,
+        "name": "Europski smeđi medvjed",
+        "endangerment_status": "Ugrožen",
+        "habitat": "Guste šumske planine",
+        "diet": "Svejed"
+    },
+    {
+        "id": 13,
+        "id_animal": 13,
+        "name": "Jelen",
+        "endangerment_status": "Ugrožen",
+        "habitat": "Stjenovito okruženje",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 14,
+        "id_animal": 14,
+        "name": "Europski sivi vuk",
+        "endangerment_status": "Ugrožen",
+        "habitat": "Šume, tundra, planine",
+        "diet": "Pretežno mesožder"
+    },
+    {
+        "id": 15,
+        "id_animal": 15,
+        "name": "Arktički vuk",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Arktička tundra",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 16,
+        "id_animal": 16,
+        "name": "Europski zec",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Otvorena polja",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 17,
+        "id_animal": 17,
+        "name": "Strvinarski gavran",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Svugdje",
+        "diet": "Svejed"
+    },
+    {
+        "id": 18,
+        "id_animal": 18,
+        "name": "Zlatna Guernsey koza",
+        "endangerment_status": "Ugrožena",
+        "habitat": "Kanalski otoci",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 19,
+        "id_animal": 19,
+        "name": "Humboldtova lignja",
+        "endangerment_status": "Neklasificirano",
+        "habitat": "Dubine od 200m do 700m",
+        "diet": "Mesojed"
+    },
+    {
+        "id": 20,
+        "id_animal": 20,
+        "name": "Sedmopruga usminjača",
+        "endangerment_status": "Ugrožena",
+        "habitat": "Morske vode u svim oceanima",
+        "diet": "Pelagična"
+    }
+]

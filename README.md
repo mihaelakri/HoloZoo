@@ -18,7 +18,7 @@
 - [ ] fix: animal model scaling on Game device
 - [ ] fix: animal model scaling on Hologram device
 - [ ] fix: screen size
-- [ ] build!: remove unused animal models
+- [x] build!: remove unused animal models
 - [ ] feat: remove all calls to remote host
 - [ ] feat: remove internet connection checks
 
@@ -56,9 +56,13 @@
 ```sh
 git clone https://github.com/mihaelakri/HoloZoo.git
 ```
-- Run Unity Hub in Administrator mode
-- Install *Unity 2021.3.14f1* (no addons) through Unity Hub.
-- Modify the Unity installation by adding Android tools.
-- Add the project to Unity Hub by **Add project from disk** and open it
-- Open the *Package manager*, view **My Assets** and import **ANIMALS FULL PACK**
-- Move the `ANIMALS FULL PACK` directory from `Assets` to `Assets/Resources`
+1. Run Unity Hub in Administrator mode
+2. Install *Unity 2021.3.14f1* (no addons) through Unity Hub.
+3. Modify the Unity installation by adding Android tools.
+4. Add the project to Unity Hub by **Add project from disk** and open it
+5. Open the *Package manager*, view **My Assets** and import **ANIMALS FULL PACK**
+6. Open `Editor > UsedAssets.cs` and edit the desired assets
+7. Go to `HoloTools`
+    1. Run `Convert Animal PNG textures to JPG` 
+    2. Run `Copy Used Animals to Resources`
+    3. Run `Modify Animal Animations`

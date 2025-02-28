@@ -1,76 +1,74 @@
-{
-    "areas": [
-        {
-            "id": 1,
-            "name_en": "Africa",
-            "name_fr": "Afrique",
-            "name_hr": "Afrika",
-            "name_es": "África",
-            "name_hu": "Afrika"
-        },
-        {
-            "id": 2,
-            "name_en": "Europe",
-            "name_fr": "Europe",
-            "name_hr": "Europa",
-            "name_es": "Europa",
-            "name_hu": "Európa"
-        },
-        {
-            "id": 3,
-            "name_en": "Asia",
-            "name_fr": "Asie",
-            "name_hr": "Azija",
-            "name_es": "Asia",
-            "name_hu": "Ázsia"
-        },
-        {
-            "id": 4,
-            "name_en": "Australia",
-            "name_fr": "Australie",
-            "name_hr": "Australija",
-            "name_es": "Australia",
-            "name_hu": "Ausztrália"
-        },
-        {
-            "id": 5,
-            "name_en": "Russia",
-            "name_fr": "Russie",
-            "name_hr": "Rusija",
-            "name_es": "Rusia",
-            "name_hu": "Oroszország"
-        },
-        {
-            "id": 6,
-            "name_en": "Antartica",
-            "name_fr": "Antarctique",
-            "name_hr": "Antartika",
-            "name_es": "Antártida",
-            "name_hu": "Antarktisz"
-        },
-        {
-            "id": 7,
-            "name_en": "South America",
-            "name_fr": "Amérique du Sud",
-            "name_hr": "Južna Amerika",
-            "name_es": "Sudamérica",
-            "name_hu": "Dél-Amerika"
-        },
-        {
-            "id": 8,
-            "name_en": "North America",
-            "name_fr": "Amérique du Nord",
-            "name_hr": "Sjeverna Ammerika",
-            "name_es": "Norte américa",
-            "name_hu": "Észak-Amerika"
-        },
-        {
-            "id": 9,
-            "name_en": "Oceans",
-            "name_fr": "Océans",
-            "name_hr": "Oceania",
-            "name_es": "Océanos",
-            "name_hu": "Óceánok"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "name_en": "Africa",
+        "name_fr": "Afrique",
+        "name_hr": "Afrika",
+        "name_es": "África",
+        "name_hu": "Afrika"
+    },
+    {
+        "id": 2,
+        "name_en": "Europe",
+        "name_fr": "Europe",
+        "name_hr": "Europa",
+        "name_es": "Europa",
+        "name_hu": "Európa"
+    },
+    {
+        "id": 3,
+        "name_en": "Asia",
+        "name_fr": "Asie",
+        "name_hr": "Azija",
+        "name_es": "Asia",
+        "name_hu": "Ázsia"
+    },
+    {
+        "id": 4,
+        "name_en": "Australia",
+        "name_fr": "Australie",
+        "name_hr": "Australija",
+        "name_es": "Australia",
+        "name_hu": "Ausztrália"
+    },
+    {
+        "id": 5,
+        "name_en": "Russia",
+        "name_fr": "Russie",
+        "name_hr": "Rusija",
+        "name_es": "Rusia",
+        "name_hu": "Oroszország"
+    },
+    {
+        "id": 6,
+        "name_en": "Antartica",
+        "name_fr": "Antarctique",
+        "name_hr": "Antartika",
+        "name_es": "Antártida",
+        "name_hu": "Antarktisz"
+    },
+    {
+        "id": 7,
+        "name_en": "South America",
+        "name_fr": "Amérique du Sud",
+        "name_hr": "Južna Amerika",
+        "name_es": "Sudamérica",
+        "name_hu": "Dél-Amerika"
+    },
+    {
+        "id": 8,
+        "name_en": "North America",
+        "name_fr": "Amérique du Nord",
+        "name_hr": "Sjeverna Ammerika",
+        "name_es": "Norte américa",
+        "name_hu": "Észak-Amerika"
+    },
+    {
+        "id": 9,
+        "name_en": "Oceans",
+        "name_fr": "Océans",
+        "name_hr": "Oceania",
+        "name_es": "Océanos",
+        "name_hu": "Óceánok"
+    }
+]

@@ -1,164 +1,162 @@
-{
-    "animal_text_en": [
-        {
-            "id": 1,
-            "id_animal": 1,
-            "name": "African elephant",
-            "endangerment_status": "Critically endangered",
-            "habitat": "Savanah",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 2,
-            "id_animal": 2,
-            "name": "Nile crocodile",
-            "endangerment_status": "Least concern",
-            "habitat": "Nile river",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 3,
-            "id_animal": 5,
-            "name": "Lioness",
-            "endangerment_status": "Vulnerable",
-            "habitat": "Grassland, savanna",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 4,
-            "id_animal": 4,
-            "name": "Lion ",
-            "endangerment_status": "Vulnerable",
-            "habitat": "Grassland, savanna",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 5,
-            "id_animal": 3,
-            "name": "Hippopotamus",
-            "endangerment_status": "Vulnerable",
-            "habitat": "Rivers, lakes, and other water bodies",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 6,
-            "id_animal": 6,
-            "name": "Golden Eagle",
-            "endangerment_status": "Not threatened ",
-            "habitat": "Tundra",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 7,
-            "id_animal": 7,
-            "name": "Dolphin",
-            "endangerment_status": "Vulnerable",
-            "habitat": "Ocenan, sea",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 8,
-            "id_animal": 8,
-            "name": "Great white shark",
-            "endangerment_status": "Endangered",
-            "habitat": "Ocean, sea",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 9,
-            "id_animal": 9,
-            "name": "Zebra",
-            "endangerment_status": "Endangered",
-            "habitat": "Grasslands, savanna",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 10,
-            "id_animal": 10,
-            "name": "Rhinoceros",
-            "endangerment_status": "Critically endangered",
-            "habitat": "Grasslands, savanna ",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 11,
-            "id_animal": 11,
-            "name": "Central European boar",
-            "endangerment_status": "Least concern",
-            "habitat": " Forests",
-            "diet": "Omnivore"
-        },
-        {
-            "id": 12,
-            "id_animal": 12,
-            "name": "European brown bear",
-            "endangerment_status": "Endangered",
-            "habitat": "Densely forested mountains",
-            "diet": "Omnivore"
-        },
-        {
-            "id": 13,
-            "id_animal": 13,
-            "name": "Mule deer",
-            "endangerment_status": "Endangered",
-            "habitat": "Rocky environment",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 14,
-            "id_animal": 14,
-            "name": "European grey wolf",
-            "endangerment_status": " Endangered",
-            "habitat": " Forests, tundra, mountains",
-            "diet": "Mainly carnivorous"
-        },
-        {
-            "id": 15,
-            "id_animal": 15,
-            "name": "Arctic wolf",
-            "endangerment_status": "Least Concern",
-            "habitat": "Arctic tundra",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 16,
-            "id_animal": 16,
-            "name": "European hare ",
-            "endangerment_status": "Least concern ",
-            "habitat": "Open fields",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 17,
-            "id_animal": 17,
-            "name": "Carrion crow",
-            "endangerment_status": " Least Concern",
-            "habitat": "Everywhere ",
-            "diet": "Omnivore"
-        },
-        {
-            "id": 18,
-            "id_animal": 18,
-            "name": "Golden Guernsey",
-            "endangerment_status": "Endangered",
-            "habitat": "Channel Islands",
-            "diet": "Herbivore"
-        },
-        {
-            "id": 19,
-            "id_animal": 19,
-            "name": "Humboldt squid",
-            "endangerment_status": "Not classified",
-            "habitat": "Depths of 200m to 700m",
-            "diet": "Carnivore"
-        },
-        {
-            "id": 20,
-            "id_animal": 20,
-            "name": "Leatherback sea turtle",
-            "endangerment_status": "Endangered",
-            "habitat": "Marine waters throughout Oceans",
-            "diet": "Pelagic"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "id_animal": 1,
+        "name": "African elephant",
+        "endangerment_status": "Critically endangered",
+        "habitat": "Savanah",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 2,
+        "id_animal": 2,
+        "name": "Nile crocodile",
+        "endangerment_status": "Least concern",
+        "habitat": "Nile river",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 3,
+        "id_animal": 5,
+        "name": "Lioness",
+        "endangerment_status": "Vulnerable",
+        "habitat": "Grassland, savanna",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 4,
+        "id_animal": 4,
+        "name": "Lion ",
+        "endangerment_status": "Vulnerable",
+        "habitat": "Grassland, savanna",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 5,
+        "id_animal": 3,
+        "name": "Hippopotamus",
+        "endangerment_status": "Vulnerable",
+        "habitat": "Rivers, lakes, and other water bodies",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 6,
+        "id_animal": 6,
+        "name": "Golden Eagle",
+        "endangerment_status": "Not threatened ",
+        "habitat": "Tundra",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 7,
+        "id_animal": 7,
+        "name": "Dolphin",
+        "endangerment_status": "Vulnerable",
+        "habitat": "Ocenan, sea",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 8,
+        "id_animal": 8,
+        "name": "Great white shark",
+        "endangerment_status": "Endangered",
+        "habitat": "Ocean, sea",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 9,
+        "id_animal": 9,
+        "name": "Zebra",
+        "endangerment_status": "Endangered",
+        "habitat": "Grasslands, savanna",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 10,
+        "id_animal": 10,
+        "name": "Rhinoceros",
+        "endangerment_status": "Critically endangered",
+        "habitat": "Grasslands, savanna ",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 11,
+        "id_animal": 11,
+        "name": "Central European boar",
+        "endangerment_status": "Least concern",
+        "habitat": " Forests",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 12,
+        "id_animal": 12,
+        "name": "European brown bear",
+        "endangerment_status": "Endangered",
+        "habitat": "Densely forested mountains",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 13,
+        "id_animal": 13,
+        "name": "Mule deer",
+        "endangerment_status": "Endangered",
+        "habitat": "Rocky environment",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 14,
+        "id_animal": 14,
+        "name": "European grey wolf",
+        "endangerment_status": " Endangered",
+        "habitat": " Forests, tundra, mountains",
+        "diet": "Mainly carnivorous"
+    },
+    {
+        "id": 15,
+        "id_animal": 15,
+        "name": "Arctic wolf",
+        "endangerment_status": "Least Concern",
+        "habitat": "Arctic tundra",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 16,
+        "id_animal": 16,
+        "name": "European hare ",
+        "endangerment_status": "Least concern ",
+        "habitat": "Open fields",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 17,
+        "id_animal": 17,
+        "name": "Carrion crow",
+        "endangerment_status": " Least Concern",
+        "habitat": "Everywhere ",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 18,
+        "id_animal": 18,
+        "name": "Golden Guernsey",
+        "endangerment_status": "Endangered",
+        "habitat": "Channel Islands",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 19,
+        "id_animal": 19,
+        "name": "Humboldt squid",
+        "endangerment_status": "Not classified",
+        "habitat": "Depths of 200m to 700m",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 20,
+        "id_animal": 20,
+        "name": "Leatherback sea turtle",
+        "endangerment_status": "Endangered",
+        "habitat": "Marine waters throughout Oceans",
+        "diet": "Pelagic"
+    }
+]

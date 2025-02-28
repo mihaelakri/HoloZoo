@@ -1,124 +1,122 @@
-{
-    "question_text_hu": [
-        {
-            "id": 1,
-            "id_question": 1,
-            "question_text": "Hol él a bálna?",
-            "answer_one": "Afrikai szavanna",
-            "answer_two": "Óceán",
-            "answer_three": "Európai dzsungelek"
-        },
-        {
-            "id": 2,
-            "id_question": 2,
-            "question_text": "Mit eszik a krokodil?",
-            "answer_one": "Halak",
-            "answer_two": "Virágok",
-            "answer_three": "Kókuszdió"
-        },
-        {
-            "id": 3,
-            "id_question": 3,
-            "question_text": "Mi az afrikai elefánt veszélyeztetettségi besorolása?",
-            "answer_one": "Súlyosan veszélyeztetett",
-            "answer_two": "Sebezhető",
-            "answer_three": "Nem veszélyeztetett"
-        },
-        {
-            "id": 4,
-            "id_question": 4,
-            "question_text": "Mi az oroszlán étrendje?",
-            "answer_one": "Növényevő",
-            "answer_two": "Ragadozó",
-            "answer_three": "Mindenevő"
-        },
-        {
-            "id": 5,
-            "id_question": 5,
-            "question_text": "Mi az afrikai elefánt élőhelye?",
-            "answer_one": "Dzsungel",
-            "answer_two": "Szavanna",
-            "answer_three": "Sztyeppék"
-        },
-        {
-            "id": 6,
-            "id_question": 6,
-            "question_text": "Mekkora a víziló súlya?",
-            "answer_one": "100 kg",
-            "answer_two": "200 kg",
-            "answer_three": "1,5 t"
-        },
-        {
-            "id": 7,
-            "id_question": 7,
-            "question_text": "Mi a legfeltünőbb különbség a hím és a nőstény oroszlán között?",
-            "answer_one": "Farok",
-            "answer_two": "Karmok",
-            "answer_three": "Sörény"
-        },
-        {
-            "id": 8,
-            "id_question": 8,
-            "question_text": "Hol él a víziló?",
-            "answer_one": "Folyók és tavak",
-            "answer_two": "Tundra",
-            "answer_three": "Sivatag"
-        },
-        {
-            "id": 9,
-            "id_question": 9,
-            "question_text": "Mennyi a felnőtt orrszarvú súlya?",
-            "answer_one": "1000 - 1500 kg",
-            "answer_two": "2500-3200 kg",
-            "answer_three": "6500 - 7200 kg"
-        },
-        {
-            "id": 10,
-            "id_question": 10,
-            "question_text": "Melyik állat súlya lehet több mint egy tonna?",
-            "answer_one": "Nagy fehér cápa",
-            "answer_two": "Kopasz sas",
-            "answer_three": "Oroszlán"
-        },
-        {
-            "id": 11,
-            "id_question": 11,
-            "question_text": "Mi az élőhelye a kérgesteknősnek?",
-            "answer_one": "Tavak",
-            "answer_two": "Folyó",
-            "answer_three": "Tengeri vizek"
-        },
-        {
-            "id": 12,
-            "id_question": 12,
-            "question_text": "Mit eszik a medve étrendje?",
-            "answer_one": "Növényevő",
-            "answer_two": "Húsevő",
-            "answer_three": "Mindenevő"
-        },
-        {
-            "id": 13,
-            "id_question": 13,
-            "question_text": "Milyen színű a sarkvidéki farkas bundája?",
-            "answer_one": "Fehér",
-            "answer_two": "Szürke",
-            "answer_three": "Fekete"
-        },
-        {
-            "id": 14,
-            "id_question": 14,
-            "question_text": "Hol él a zebra?",
-            "answer_one": "Tundra",
-            "answer_two": "Szavanna",
-            "answer_three": "Sziklás környezet"
-        },
-        {
-            "id": 15,
-            "id_question": 15,
-            "question_text": "Melyik állat eszik leginkább halat?",
-            "answer_one": "Nőstény oroszlán",
-            "answer_two": "Arany guernsey-i kecske",
-            "answer_three": "Delfin"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "id_question": 1,
+        "question_text": "Hol él a bálna?",
+        "answer_one": "Afrikai szavanna",
+        "answer_two": "Óceán",
+        "answer_three": "Európai dzsungelek"
+    },
+    {
+        "id": 2,
+        "id_question": 2,
+        "question_text": "Mit eszik a krokodil?",
+        "answer_one": "Halak",
+        "answer_two": "Virágok",
+        "answer_three": "Kókuszdió"
+    },
+    {
+        "id": 3,
+        "id_question": 3,
+        "question_text": "Mi az afrikai elefánt veszélyeztetettségi besorolása?",
+        "answer_one": "Súlyosan veszélyeztetett",
+        "answer_two": "Sebezhető",
+        "answer_three": "Nem veszélyeztetett"
+    },
+    {
+        "id": 4,
+        "id_question": 4,
+        "question_text": "Mi az oroszlán étrendje?",
+        "answer_one": "Növényevő",
+        "answer_two": "Ragadozó",
+        "answer_three": "Mindenevő"
+    },
+    {
+        "id": 5,
+        "id_question": 5,
+        "question_text": "Mi az afrikai elefánt élőhelye?",
+        "answer_one": "Dzsungel",
+        "answer_two": "Szavanna",
+        "answer_three": "Sztyeppék"
+    },
+    {
+        "id": 6,
+        "id_question": 6,
+        "question_text": "Mekkora a víziló súlya?",
+        "answer_one": "100 kg",
+        "answer_two": "200 kg",
+        "answer_three": "1,5 t"
+    },
+    {
+        "id": 7,
+        "id_question": 7,
+        "question_text": "Mi a legfeltünőbb különbség a hím és a nőstény oroszlán között?",
+        "answer_one": "Farok",
+        "answer_two": "Karmok",
+        "answer_three": "Sörény"
+    },
+    {
+        "id": 8,
+        "id_question": 8,
+        "question_text": "Hol él a víziló?",
+        "answer_one": "Folyók és tavak",
+        "answer_two": "Tundra",
+        "answer_three": "Sivatag"
+    },
+    {
+        "id": 9,
+        "id_question": 9,
+        "question_text": "Mennyi a felnőtt orrszarvú súlya?",
+        "answer_one": "1000 - 1500 kg",
+        "answer_two": "2500-3200 kg",
+        "answer_three": "6500 - 7200 kg"
+    },
+    {
+        "id": 10,
+        "id_question": 10,
+        "question_text": "Melyik állat súlya lehet több mint egy tonna?",
+        "answer_one": "Nagy fehér cápa",
+        "answer_two": "Kopasz sas",
+        "answer_three": "Oroszlán"
+    },
+    {
+        "id": 11,
+        "id_question": 11,
+        "question_text": "Mi az élőhelye a kérgesteknősnek?",
+        "answer_one": "Tavak",
+        "answer_two": "Folyó",
+        "answer_three": "Tengeri vizek"
+    },
+    {
+        "id": 12,
+        "id_question": 12,
+        "question_text": "Mit eszik a medve étrendje?",
+        "answer_one": "Növényevő",
+        "answer_two": "Húsevő",
+        "answer_three": "Mindenevő"
+    },
+    {
+        "id": 13,
+        "id_question": 13,
+        "question_text": "Milyen színű a sarkvidéki farkas bundája?",
+        "answer_one": "Fehér",
+        "answer_two": "Szürke",
+        "answer_three": "Fekete"
+    },
+    {
+        "id": 14,
+        "id_question": 14,
+        "question_text": "Hol él a zebra?",
+        "answer_one": "Tundra",
+        "answer_two": "Szavanna",
+        "answer_three": "Sziklás környezet"
+    },
+    {
+        "id": 15,
+        "id_question": 15,
+        "question_text": "Melyik állat eszik leginkább halat?",
+        "answer_one": "Nőstény oroszlán",
+        "answer_two": "Arany guernsey-i kecske",
+        "answer_three": "Delfin"
+    }
+]
