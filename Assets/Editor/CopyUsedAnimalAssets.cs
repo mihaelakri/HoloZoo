@@ -9,9 +9,23 @@ public class CopyUsedAnimalAssets
 {
     static string resourcesRoot = "Assets/Resources/AnimalModels/";
 
-    [MenuItem("Tools/Copy Used Animals to Resources")]
+    [MenuItem("HoloTools/Copy Used Animals to Resources")]
     public static void CopyAssetsToResources()
     {
+        bool confirm = EditorUtility.DisplayDialog(
+            "Copy Used Animals to Resources",
+            $"This copies assets (defined in UsedAssets.cs) to Resources directory." + 
+            "If AnimatorController is included, it is moved instead.\n\n" +
+            "Are you sure you want to begin?",
+            "Yes", "Cancel"
+        );
+
+        if (!confirm)
+        {
+            Debug.Log("'Copy Used Animals to Resources' canceled.");
+            return;
+        }
+
         foreach (string assetPath in UsedAssets.assets)
         {
             if (!File.Exists(assetPath))

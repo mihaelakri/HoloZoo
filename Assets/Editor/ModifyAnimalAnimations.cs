@@ -5,9 +5,22 @@ using UnityEditor.Animations;
 
 public class ModifyAnimalAnimations
 {
-    [MenuItem("Tools/Modify Animal Animations")]
+    [MenuItem("HoloTools/Modify Animal Animations")]
     public static void ModifyGroup()
     {
+        bool confirm = EditorUtility.DisplayDialog(
+            "Modify Animal Animations",
+            $"This reconfigures AnimatorController transitions as defined in UsedAssets.cs.\n\n" +
+            "Are you sure you want to begin?",
+            "Yes", "Cancel"
+        );
+
+        if (!confirm)
+        {
+            Debug.Log("'Modify Animal Animations' canceled.");
+            return;
+        }
+
         // Animations are expected to already be in the transition order as they are in the controller
         foreach (var animationGroup in UsedAssets.animations)
         {
@@ -61,7 +74,7 @@ public class ModifyAnimalAnimations
     {
         string transitionName = "holozoo-loop";
         AnimatorStateTransition transition = null;
-        
+
         foreach (var existingTransition in lastState.transitions)
         {
             if (existingTransition.name == transitionName)
