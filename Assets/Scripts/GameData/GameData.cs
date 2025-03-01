@@ -113,12 +113,17 @@ public class GameData : MonoBehaviour
         return animals.Where(a => a.level < levelCap).ToList();
     }
 
+    public List<Animal>? GetAreaAnimals(Area area)
+    {
+        return animals.Where(a => a.id_area == area.id).ToList();
+    }
+
     public Area? GetArea(int id)
     {
         return areas.First(a => a.id == id);
     }
 
-    public void CreateUser(string username, string password)
+    public User CreateUser(string username, string password)
     {
         int maxUserId = users.OrderByDescending(user => user.id).First().id;
         User user = new()
@@ -132,6 +137,7 @@ public class GameData : MonoBehaviour
         };
         users.Add(user);
         SaveUserData();
+        return user;
     }
 
     public User? GetUser(int id)
@@ -139,15 +145,46 @@ public class GameData : MonoBehaviour
         return users.First(u => u.id == id);
     }
 
-    public void UpdateExperience(int correctAnswers, User user)
+    public User? GetCurrentUser()
+    {
+        return GetUser(PlayerPrefs.GetInt("ID", -1));
+    }
+
+    public void UpdateUserExperience(int correctAnswers, User user)
     {
         user.experience = correctAnswers * 10;
         SaveUserData();
     }
 
-    public User? CheckUserCredentials(string username, string password)
+    public void UpdateUserPassword(string password, User user)
     {
-        return users.Where(u => u.username == username && u.password == password).DefaultIfEmpty(null).First();
+        user.password = password;
+        SaveUserData();
+    }
+
+    public enum CredentialResponse
+    {
+        WrongUsername,
+        WrongPassword,
+        Success
+    }
+
+    public (User?, CredentialResponse) CheckUserCredentials(string username, string password)
+    {
+        var user = users.Where(u => u.username == username).DefaultIfEmpty(null).First();
+
+        if (user == null)
+        {
+            Debug.Log($"{nameof(GameData)} - Username non-existent");
+            return (user, CredentialResponse.WrongUsername);
+        }
+        else if (user.password != password)
+        {
+            Debug.Log($"{nameof(GameData)} - Wrong password");
+            return (user, CredentialResponse.WrongPassword);
+        }
+
+        return (user, CredentialResponse.Success);
     }
 
     public List<Question> GetQuizQuestions(int difficulty)

@@ -1,23 +1,19 @@
 using System;
-using System.Globalization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-using UnityEngine.Android;
 
 public class Login : MonoBehaviour
 {
- public InputField usernameField;
- public InputField passwordField;
- public Text toast; 
+   public InputField usernameField;
+   public InputField passwordField;
+   public Text toast;
 
- public Button submitButton;
+   public Button submitButton;
 
- private string selectedLanguage;
+   private string selectedLanguage;
 
    private Dictionary<string, Dictionary<string, string>> errorMessages = new Dictionary<string, Dictionary<string, string>>()
    {
@@ -64,64 +60,38 @@ public class Login : MonoBehaviour
    };
 
    void Start()
-    {
-        selectedLanguage = PlayerPrefs.GetString("lang","en"); 
-    }
+   {
+      selectedLanguage = PlayerPrefs.GetString("lang", "en");
+   }
 
-   public void CallLogin(){
-      if (!Permission.HasUserAuthorizedPermission("android.permission.INTERNET"))
-                              Permission.RequestUserPermission("android.permission.INTERNET");
+   public void CallLogin()
+   {
       StartCoroutine(Log_in());
    }
 
- IEnumerator Log_in(){
-    WWWForm form = new WWWForm();
-    form.AddField("username", usernameField.text);
-    form.AddField("password", passwordField.text);
-    form.AddField("flag", "1");
-    
+   IEnumerator Log_in()
+   {
+      var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text);
 
-   using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL+"middle_man.php", form)){
+      if (response == GameData.CredentialResponse.WrongUsername)
+      {
+         Debug.Log($"{nameof(Login)} - Wrong Username");
+         toast.text = errorMessages[selectedLanguage]["0"];
+         yield break;
+      }
 
-      yield return www.SendWebRequest();
+      if (response == GameData.CredentialResponse.WrongPassword)
+      {
+         Debug.Log($"{nameof(Login)} - Wrong Password");
+         toast.text = errorMessages[selectedLanguage]["-1"];
+         yield break;
+      }
 
-         if (www.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.error);
-                }
-         if (www.downloadHandler.text == "400" || www.downloadHandler.text == "404")
-            {
-               Debug.Log("Bad Request or Flag not found");
-               toast.text = errorMessages[selectedLanguage]["400"];
-            }
-            else if (www.downloadHandler.text == "-1")
-            {
-               Debug.Log("User login failed. Error#" + www.downloadHandler.text);
-               toast.text = errorMessages[selectedLanguage]["-1"];
-            }
-            else if (www.downloadHandler.text != "0") 
-            {
-               Debug.Log("Response: " + www.downloadHandler.text);
-               Debug.Log(errorMessages[selectedLanguage]["success"]);
-               int id = Convert.ToInt16(www.downloadHandler.text);
-               Setint(id);
-                if(PlayerPrefs.GetString("device")=="mobile") {
-                  SceneManager.LoadScene("Home"); 
-               } else {
-                  SceneManager.LoadScene("HologramTablet"); 
-               }
-            }
-            else
-            {
-               Debug.Log("User login failed. Error#" + www.downloadHandler.text);
-               toast.text = errorMessages[selectedLanguage]["0"];
-            }
-         }
+      PlayerPrefs.SetInt("ID", Convert.ToInt16(user.id));
+
+      if (PlayerPrefs.GetString("device") == "mobile")
+         SceneManager.LoadScene("Home");
+      else
+         SceneManager.LoadScene("HologramTablet");
    }
-
-   public void Setint(int Value)
-    {
-        PlayerPrefs.SetInt("ID", Value);
-    }
- }
-
+}

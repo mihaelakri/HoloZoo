@@ -1,16 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using HoloZoo.DataModels;
 
 public class Quiz : MonoBehaviour
 {
     public Text questionText;
-    private Questions questions;
+    private List<Question> questions;
     public int questionsCount;
     public int questionsCounter;
 
@@ -25,24 +24,6 @@ public class Quiz : MonoBehaviour
 
     private string selectedLanguage;
     private int correctAnswerCount;
-
-    [Serializable]
-    private class Question
-    {
-        public int id_question;
-        public int id_animal;
-        public string question_text;
-        public string correct_answer;
-        public string answer_one;
-        public string answer_two;
-        public string answer_three;
-    }
-
-    [Serializable]
-    private class Questions
-    {
-        public Question[] question;
-    }
 
     private Dictionary<string, Dictionary<string, string>> translations = new Dictionary<string, Dictionary<string, string>>
     {
@@ -94,31 +75,13 @@ public class Quiz : MonoBehaviour
 
     IEnumerator FillQuestion()
     {
-        WWWForm form = new();
-        form.AddField("difficulty", PlayerPrefs.GetInt("diff"));
+        questions = GameData.Instance.GetQuizQuestions(PlayerPrefs.GetInt("diff"));
+        questionsCount = questions.Count;
+        questionsCounter = 0;
 
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "quiz_view.php", form))
-        {
-            yield return www.SendWebRequest();
+        FillDataInUI();
 
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                if (www.downloadHandler.text == "404")
-                {
-                    Debug.Log("Invalid input.");
-                }
-                questions = JsonUtility.FromJson<Questions>(www.downloadHandler.text);
-
-                questionsCount = questions.question.Length;
-                questionsCounter = 0;
-
-                FillDataInUI();
-            }
-        }
+        yield break;
     }
 
     public void CheckAnswer()
@@ -159,16 +122,16 @@ public class Quiz : MonoBehaviour
 
     private void FillDataInUI()
     {
-        questionText.text = questions.question[questionsCounter].question_text;
-        answerButtons[0].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_one;
-        answerButtons[1].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_two;
-        answerButtons[2].GetComponentInChildren<Text>().text = questions.question[questionsCounter].answer_three;
+        questionText.text = questions[questionsCounter].question_text;
+        answerButtons[0].GetComponentInChildren<Text>().text = questions[questionsCounter].answer_one;
+        answerButtons[1].GetComponentInChildren<Text>().text = questions[questionsCounter].answer_two;
+        answerButtons[2].GetComponentInChildren<Text>().text = questions[questionsCounter].answer_three;
         GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
     }
 
     private void ColorButtons()
     {
-        int correct = int.Parse(questions.question[questionsCounter].correct_answer);
+        int correct = questions[questionsCounter].correct_answer;
         int chosen = EventSystem.current.currentSelectedGameObject.transform.GetSiblingIndex() + 1;
 
         foreach (Button button in answerButtons)

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 
 public class FillScore : MonoBehaviour
 {
@@ -42,34 +41,10 @@ public class FillScore : MonoBehaviour
 
     IEnumerator SetExperience()
     {
-        WWWForm form = new WWWForm();
-        form.AddField("points", PlayerPrefs.GetInt("Score"));
-
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "quiz_view.php", form))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log(www.downloadHandler.text);
-                if (www.downloadHandler.text == "400")
-                {
-                    Debug.Log("Bad Request");
-                }
-                else if (www.downloadHandler.text == "0")
-                {
-                    Debug.Log("Failed update of experience");
-                }
-                else if (www.downloadHandler.text == "1")
-                {
-                    Debug.Log("Experience updated");
-                }
-            }
-        }
+        var user = GameData.Instance.GetCurrentUser();
+        GameData.Instance.UpdateUserExperience(PlayerPrefs.GetInt("Score"), user);
+        
+        yield break;
     }
 
 }

@@ -1,18 +1,9 @@
 using System;
-using System.Globalization;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class Load3DModelTablet : MonoBehaviour
 {
-    public GameObject variableForPrefab;
-    public String model_url;
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(GetModel());
@@ -20,67 +11,54 @@ public class Load3DModelTablet : MonoBehaviour
 
     public static IEnumerator GetModel()
     {
+        var animal = GameData.Instance.GetAnimal(CommConstants.animal_id);
+        Debug.Log($"{nameof(Load3Dmodel)} - Animal id: {animal.id}");
+
         string model_url;
+        if (CommConstants.animal_id == 0)
+            model_url = "WorldMapGlobe";
+        else
+            model_url = animal.url_model;
 
-        Debug.Log("id_animal: " + CommConstants.animal_id);
+        Debug.Log($"{nameof(Load3Dmodel)} - Animal model: {model_url}");
 
-        WWWForm form = new WWWForm();
-        form.AddField("id_model", CommConstants.animal_id);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(CommConstants.ServerURL + "animal_view.php", form))
+        GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
+        if (parent.transform.childCount > 0)
         {
-
-            yield return www.SendWebRequest();
-
-            if (www.result != UnityWebRequest.Result.Success)
+            // Destroy(parent.transform.GetChild(0).gameObject);
+            foreach (Transform child in parent.transform)
             {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                if (CommConstants.animal_id == 0)
-                {
-                    model_url = "WorldMapGlobe";
-                }
-                else
-                {
-                    model_url = www.downloadHandler.text;
-                }
-
-                GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
-                if (parent.transform.childCount > 0)
-                {
-                    // Destroy(parent.transform.GetChild(0).gameObject);
-                    foreach (Transform child in parent.transform)
-                    {
-                        Destroy(child.gameObject);
-                    }
-                }
-
-                Debug.Log(www.downloadHandler.text);
-
-                GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-                GameObject instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-                //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-
-                if (model_url == "WorldMapGlobe")
-                {
-                    yield break;
-                }
-
-                BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
-                boxCollider.size = new Vector3(1f, 1f, 1f);
-                instantiatedObject.layer = LayerMask.NameToLayer("Animal");
-                Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
-                ResizeUtility.ResizeObjectTablet(instantiatedObject);
-                // instantiatedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
-                instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
-                instantiatedObject.GetComponent<Rigidbody>().isKinematic = true;
-                instantiatedObject.GetComponent<Rigidbody>().detectCollisions = false;
+                Destroy(child.gameObject);
             }
         }
+
+        model_url = "AnimalModels/" + model_url.Split('/')[^1];
+        Debug.Log($"Transformed model_url: {model_url}");
+
+        GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
+        GameObject instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+        //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+
+        Animator animator = instantiatedObject.GetComponent<Animator>();
+        animator.Play("IdleBreathe");
+        animator.StopPlayback();
+
+        if (model_url == "WorldMapGlobe")
+        {
+            yield break;
+        }
+
+        BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
+        boxCollider.size = new Vector3(1f, 1f, 1f);
+        instantiatedObject.layer = LayerMask.NameToLayer("Animal");
+        Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
+        ResizeUtility.ResizeObjectTablet(instantiatedObject);
+        // instantiatedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
+        instantiatedObject.GetComponent<Rigidbody>().isKinematic = true;
+        instantiatedObject.GetComponent<Rigidbody>().detectCollisions = false;
+
+        yield break;
     }
-
-
 }
