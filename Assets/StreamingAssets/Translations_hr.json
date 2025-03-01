@@ -1,0 +1,92 @@
+{
+    "accessibility": {
+        "font_size": "Veličina fonta",
+        "dyslexia": "Font za disleksiju",
+        "contrast_text": "Kontrast",
+        "tts_text": "Tekst u govor",
+        "small": "mali",
+        "medium": "srednji",
+        "large": "veliki"
+    },
+    "buttons": {
+        "btn_confirm": "Potvrdi",
+        "btn_end_instruction": "Započni",
+        "btn_game": "Igra",
+        "btn_globus_mode": "GLOBUS",
+        "btn_hologram": "Hologram",
+        "btn_home": "Početak",
+        "btn_learn": "UČENJE",
+        "btn_list_mode": "POPIS",
+        "btn_login": "PRIJAVA",
+        "btn_new_quiz": "Novi kviz",
+        "btn_next_question": "Sljedeće pitanje",
+        "btn_ok": "OK",
+        "btn_quiz": "KVIZ",
+        "btn_register": "REGISTRACIJA",
+        "btn_save": "SPREMI",
+        "btn_see_results": "Vidi rezultat",
+        "btn_start_quiz": "Započni kviz",
+        "btn_start": "POČNI"
+    },
+    "placeholders": {
+        "placeholder_new_password": "Unesi novu lozinku",
+        "placeholder_password_repeat": "Ponovi lozinku",
+        "placeholder_password": "Lozinka",
+        "placeholder_repeat_new_password": "Ponovi novu lozinku",
+        "placeholder_username": "Korisničko ime"
+    },
+    "messages": {
+        "msg_check_internet": "Provjerite internetsku vezu.",
+        "msg_login_success": "Prijava uspješna!",
+        "msg_password_short": "Lozinka prekratka.",
+        "msg_password_wrong": "Pogrešna lozinka.",
+        "msg_passwords_mismatch": "Lozinke se ne podudaraju.",
+        "msg_register_success": "Registracija uspješna!",
+        "msg_username_short": "Korisničko ime prekratko.",
+        "msg_username_wrong": "Neispravno korisničko ime."
+    },
+    "headings": {
+        "heading_choose_device": "Odaberi svrhu uređaja",
+        "heading_learn_method": "Odaberi način na koji ćeš učiti o životinjama.",
+        "heading_login": "Prijava",
+        "heading_register": "Registracija"
+    },
+    "animal_profile_scene": {
+        "threed_text": "3D prikaz",
+        "endangerment_status": "Status ugroženosti",
+        "region": "Regija",
+        "habitat": "Stanište",
+        "weight": "Težina",
+        "diet": "Prehrana",
+        "population": "Populacija"
+    },
+    "score_scene": {
+        "try_again": "Pokušaj ponovo!",
+        "bravo": "Bravo!"
+    },
+    "info_scene": {
+        "developed_by": "Aplikaciju razvilo",
+        "univ_text": "Sveučilište u Dubrovniku, Fakulteta elektrotehnike i računarstva u sklopu projekta Play2Green (Serious Gaming for Universal Access to Green Education)."
+    },
+    "instruction_scene": {
+        "instruction_one_heading": "Upute za izradu projekcijskog holograma",
+        "instruction_one_materials": "Materijali:",
+        "instruction_one_supply": "4 x A4 acetatni papir\n1 x A4 papir\n1 x škare\n1 x ravnalo\n1 x ljepljiva traka",
+        "instruction_two": "1. Izmjerite dijagonalu zaslona\n\n2. Nacrtajte jednakostranični trokut čija je stranica duljine točno polovice dijagonale zaslona\n\n3. Dvije stranice trokuta podijelite na 3/10 duljine",
+        "instruction_three": "Postavite ekran na ravnu površinu i postavite piramidu na sredinu ekrana."
+    },
+    "profile_scene": {
+        "level": "Level",
+        "experience": "Bodovi"
+    },
+    "quiz_scene": {
+        "choose_difficulty": "Odaberite težinu",
+        "easy": "Lako",
+        "medium": "Srednje",
+        "hard": "Teško"
+    },
+    "welcome_scene": {
+        "hello_text": "Pozdrav! HoloZoo je edukativna igra o životinjama i njihovoj ugroženosti u prirodi.\n\nIgra koristi dva Android mobilna uređaja koja moraju biti povezana putem Bluetooth-a kako bi prikazala hologram s kojim se možete igrati.\n\nNe brinite! Ako ne želite koristiti dva uređaja, hologram će biti prikazan na ovom uređaju.\n\nNaučite kako stvoriti piramidalni hologram u sljedećim koracima.",
+        "welcome": "DOBRODOŠLI"
+    }
+}

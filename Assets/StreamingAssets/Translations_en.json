@@ -1,0 +1,92 @@
+{
+    "accessibility": {
+        "font_size": "Font size",
+        "dyslexia": "Dyslexia font",
+        "contrast_text": "Contrast",
+        "tts_text": "Text to speech",
+        "small": "small",
+        "medium": "medium",
+        "large": "large"
+    },
+    "buttons": {
+        "btn_confirm": "Confirm",
+        "btn_end_instruction": "Start",
+        "btn_game": "Game",
+        "btn_globus_mode": "GLOBUS MODE",
+        "btn_hologram": "Hologram",
+        "btn_home": "Home",
+        "btn_learn": "LEARN",
+        "btn_list_mode": "LIST MODE",
+        "btn_login": "LOG IN",
+        "btn_new_quiz": "New Quiz",
+        "btn_next_question": "Next question",
+        "btn_ok": "OK",
+        "btn_quiz": "QUIZ",
+        "btn_register": "REGISTER",
+        "btn_save": "SAVE",
+        "btn_see_results": "See results",
+        "btn_start_quiz": "Start Quiz",
+        "btn_start": "START"
+    },
+    "placeholders": {
+        "placeholder_new_password": "New password",
+        "placeholder_password_repeat": "Repeat password",
+        "placeholder_password": "Password",
+        "placeholder_repeat_new_password": "Retype password",
+        "placeholder_username": "Username"
+    },
+    "messages": {
+        "msg_check_internet": "Check internet connection.",
+        "msg_login_success": "Login successful!",
+        "msg_password_short": "Password too short.",
+        "msg_password_wrong": "Wrong password.",
+        "msg_passwords_mismatch": "Passwords do not match.",
+        "msg_register_success": "User created successfully!",
+        "msg_username_short": "Username too short.",
+        "msg_username_wrong": "Username invalid."
+    },
+    "headings": {
+        "heading_choose_device": "Choose device purpose",
+        "heading_learn_method": "Choose a way to learn about animals. ",
+        "heading_login": "Log in",
+        "heading_register": "Register"
+    },
+    "animal_profile_scene": {
+        "threed_text": "3D View",
+        "endangerment_status": "Endangerment Status",
+        "region": "Region",
+        "habitat": "Habitat",
+        "weight": "Weight",
+        "diet": "Diet",
+        "population": "Population"
+    },
+    "score_scene": {
+        "try_again": "Try again!",
+        "bravo": "Bravo!"
+    },
+    "info_scene": {
+        "developed_by": "Developed by",
+        "univ_text": "University of Dubrovnik, Faculty of electrical engineering and computing as a part of Play2Green project (Serious Gaming for Universal Access to Green Education)."
+    },
+    "instruction_scene": {
+        "instruction_one_heading": "Instructions for creating a projection hologram",
+        "instruction_one_materials": "Required Materials",
+        "instruction_one_supply": "4 x A4 acetate paper\n1 x A4 paper\n1 x scissors\n1 x ruler\n1 x adhesive tape",
+        "instruction_two": "1. Measure screen diagonal.\n\n2. Draw an equilateral triangle with the side length exactly half of the screen diagonal.\n\n3. Divide two triangle sides into 3-10 of the length\n4. Cut drawn trapeze Tape the edges",
+        "instruction_three": "Place the screen on the flat surface and put the pyramid on the centre of the screen"
+    },
+    "profile_scene": {
+        "level": "Level",
+        "experience": "Experience"
+    },
+    "quiz_scene": {
+        "choose_difficulty": "Choose Difficulty",
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+    },
+    "welcome_scene": {
+        "hello_text": "Hello! HoloZoo is an educational game about animals and their endangerment status in nature.\n\nThe game uses two Android mobile devices that need to be connected via Bluetooth to display a hologram you can interact with.\n\nDon't worry! If you don't want to use two devices, the hologram will still be displayed on this device.\n\nLearn how to create a pyramidal hologram in the following steps.",
+        "welcome": "WELCOME"
+    }
+}

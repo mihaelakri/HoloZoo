@@ -1,0 +1,92 @@
+{
+    "accessibility": {
+        "font_size": "Taille de la police",
+        "dyslexia": "police Dyslexie",
+        "contrast_text": "Contraste",
+        "tts_text": "Synthèse vocale",
+        "small": "petit",
+        "medium": "moyen",
+        "large": "grand"
+    },
+    "buttons": {
+        "btn_confirm": "Confirmer",
+        "btn_end_instruction": "Commencer",
+        "btn_game": "Jeu",
+        "btn_globus_mode": "MODE GLOBUS",
+        "btn_hologram": "Hologramme",
+        "btn_home": "Accueil",
+        "btn_learn": "APPRENDRE",
+        "btn_list_mode": "MODE LISTE",
+        "btn_login": "SE CONNECTER",
+        "btn_new_quiz": "Commencer un autre quiz",
+        "btn_next_question": "Prochaine question",
+        "btn_ok": "OK",
+        "btn_quiz": "QUIZ",
+        "btn_register": "CRÉER UN COMPTE",
+        "btn_save": "ENREGISTRER",
+        "btn_see_results": "Voir les résultats",
+        "btn_start_quiz": "Commencer le quiz",
+        "btn_start": "DÉMARRER"
+    },
+    "placeholders": {
+        "placeholder_new_password": "Entrer un nouveau mot de passe",
+        "placeholder_password_repeat": "Confirmer le mot de passe",
+        "placeholder_password": "Mot de passe",
+        "placeholder_repeat_new_password": "Confirmer le nouveau mot de passe",
+        "placeholder_username": "Nom d'utilisateur"
+    },
+    "messages": {
+        "msg_check_internet": "Vérifiez la connexion Internet.",
+        "msg_login_success": "Connexion réussie !",
+        "msg_password_short": "Mot de passe trop court.",
+        "msg_password_wrong": "Mot de passe incorrect.",
+        "msg_passwords_mismatch": "Les mots de passe ne correspondent pas.",
+        "msg_register_success": "Utilisateur créé avec succès !",
+        "msg_username_short": "Nom d'utilisateur trop court.",
+        "msg_username_wrong": "Nom d'utilisateur non valide."
+    },
+    "headings": {
+        "heading_choose_device": "Choisir le but de l'appareil",
+        "heading_learn_method": "Choisissez un moyen d'apprendre sur les animaux.",
+        "heading_login": "Se connecter",
+        "heading_register": "Créer un compte"
+    },
+    "animal_profile_scene": {
+        "threed_text": "Vue 3D",
+        "endangerment_status": "Statut de menace",
+        "region": "Région",
+        "habitat": "Habitat",
+        "weight": "Poids",
+        "diet": "Régime",
+        "population": "Population"
+    },
+    "score_scene": {
+        "try_again": "Essaie encore !",
+        "bravo": "Félicitations !"
+    },
+    "info_scene": {
+        "developed_by": "Développé par",
+        "univ_text": "l'Université de Dubrovnik, Faculté de génie électrique et d'informatique dans le cadre du projet Play2Green (Serious Gaming pour l'accès universel à l'éducation verte)."
+    },
+    "instruction_scene": {
+        "instruction_one_heading": "Instructions pour la création projecteur à hologramme",
+        "instruction_one_materials": "Matériel",
+        "instruction_one_supply": "x4 feuilles d'acétate format A4\nx1 paire de ciseaux\nx1 règle\nx1 rouleau de ruban adhésif",
+        "instruction_two": "1. Mesurer la diagonale de l'écran\n2. Tracer un triangle équilatéral dont les côtés mesurent exactement la moitié de la diagonale de l'écran\n3. Diviser deux des côtés du triangle en  3/10 de leur longueur\n4. Découper le trapèze tracé\n5. Scotcher les bords",
+        "instruction_three": "Placer l'écran sur une surface plane et positionner la pyramide au centre de l'écran"
+    },
+    "profile_scene": {
+        "level": "Niveau",
+        "experience": "Expérience"
+    },
+    "quiz_scene": {
+        "choose_difficulty": "Choisissez la difficulté",
+        "easy": "Facile",
+        "medium": "Moyen",
+        "hard": "Difficile"
+    },
+    "welcome_scene": {
+        "hello_text": "Bonjour ! HoloZoo est un jeu éducatif sur les animaux et leur statut de mise en danger dans la nature.\n\nLe jeu utilise deux appareils Android qui doivent être connectés via Bluetooth pour afficher un hologramme avec lequel vous pouvez interagir.\n\nNe vous inquiétez pas ! Si vous ne souhaitez pas utiliser deux appareils, l'hologramme sera toujours affiché sur cet appareil.\n\nApprenez à créer un hologramme pyramidal dans les étapes suivantes.",
+        "welcome": "BIENVENUE"
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "accessibility": {
+        "font_size": "Tamaño de fuente",
+        "dyslexia": "Fuente para dislexia",
+        "contrast_text": "Contraste",
+        "tts_text": "Iniciar",
+        "small": "pequeño",
+        "medium": "mediano",
+        "large": "grande"
+    },
+    "buttons": {
+        "btn_confirm": "Confirmar",
+        "btn_end_instruction": "Empieza",
+        "btn_game": "Juego",
+        "btn_globus_mode": "MODO GLOBUS",
+        "btn_hologram": "Holograma",
+        "btn_home": "Inicio",
+        "btn_learn": "APRENDER",
+        "btn_list_mode": "MODO LISTA",
+        "btn_login": "INICIAR SESIÓN",
+        "btn_new_quiz": "Empieza un nuevo test",
+        "btn_next_question": "Próxima pregunta",
+        "btn_ok": "OK",
+        "btn_quiz": "CUESTIONARIO",
+        "btn_register": "REGISTRO",
+        "btn_save": "GUARDAR",
+        "btn_see_results": "Ver resultados",
+        "btn_start_quiz": "Comenzar quiz",
+        "btn_start": "COMENZAR"
+    },
+    "placeholders": {
+        "placeholder_new_password": "Entra una nueva contraseña",
+        "placeholder_password_repeat": "Repite la contraseña",
+        "placeholder_password": "Contraseña",
+        "placeholder_repeat_new_password": "Reita la nueva contraseña",
+        "placeholder_username": "Nombre de usuario"
+    },
+    "messages": {
+        "msg_check_internet": "Verificar conexión a Internet.",
+        "msg_login_success": "¡Inicio de sesión exitoso!",
+        "msg_password_short": "Contraseña demasiado corta.",
+        "msg_password_wrong": "Contraseña incorrecta.",
+        "msg_passwords_mismatch": "Las contraseñas no coinciden.",
+        "msg_register_success": "¡Usuario creado exitosamente!",
+        "msg_username_short": "Nombre de usuario demasiado corto.",
+        "msg_username_wrong": "Nombre de usuario no válido."
+    },
+    "headings": {
+        "heading_choose_device": "Elige el propósito del dispositivo",
+        "heading_learn_method": "Elige una forma de aprender sobre los animales.",
+        "heading_login": "Iniciar sesión",
+        "heading_register": "Registro"
+    },
+    "animal_profile_scene": {
+        "threed_text": "Vista 3D",
+        "endangerment_status": "Estado de peligro",
+        "region": "Región",
+        "habitat": "Hábitat",
+        "weight": "Peso",
+        "diet": "Dieta",
+        "population": "Población"
+    },
+    "score_scene": {
+        "try_again": "¡Inténtalo de nuevo!",
+        "bravo": "¡Bravo!"
+    },
+    "info_scene": {
+        "developed_by": "Desarrollado por",
+        "univ_text": "la Universidad de Dubrovnik, Facultad de Ingeniería Eléctrica y Computación como parte del proyecto Play2Green (Juegos serios para el acceso universal a la educación verde)."
+    },
+    "instruction_scene": {
+        "instruction_one_heading": "Instrucciones para crear un holograma de proyección",
+        "instruction_one_materials": "Materiales:",
+        "instruction_one_supply": "4 x papel acetato tamaño A4\n1 x tijeras\n1 x regla\n1 x celo",
+        "instruction_two": "1. Mide la diagonal de la pantalla\n2. Dibuja un triángulo equilátero con la longitud del lado igual a la diagonal de la pantalla\n3. Divide dos lados del triángulo en 3/10 de la longitud\n4. Corta el trapecio dibujado\n5. Pega los borde con celo",
+        "instruction_three": "Coloca la pantalla sobre la superficie plana y pon la pirámide en el centro de la pantalla"
+    },
+    "profile_scene": {
+        "level": "Nivel",
+        "experience": "Experiencia"
+    },
+    "quiz_scene": {
+        "choose_difficulty": "Elige dificultad",
+        "easy": "Fácil",
+        "medium": "Medio",
+        "hard": "Difícil"
+    },
+    "welcome_scene": {
+        "hello_text": "¡Hola! HoloZoo es un juego educativo sobre los animales y su estado de amenaza en la naturaleza.\n\nEl juego utiliza dos dispositivos Android que deben estar conectados a través de Bluetooth para mostrar un holograma con el que puedes interactuar.\n\nNo te preocupes. Si no deseas usar dos dispositivos, el holograma se mostrará en este dispositivo.\n\nAprende a crear un holograma piramidal en los siguientes pasos.",
+        "welcome": "BIENVENIDO"
+    }
+}

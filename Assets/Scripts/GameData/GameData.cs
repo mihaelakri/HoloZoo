@@ -15,6 +15,7 @@ public class GameData : MonoBehaviour
     public List<Animal> animals;
     public List<Question> questions;
     public List<User> users;
+    public Translations translations;
 
     private void Awake()
     {
@@ -78,6 +79,8 @@ public class GameData : MonoBehaviour
                 })
             }
         );
+
+        translations = JsonConvert.DeserializeObject<Translations>(File.ReadAllText(Application.streamingAssetsPath + $"/Translations_{lang}.json"));
     }
 
     public void SaveUserData()

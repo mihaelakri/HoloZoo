@@ -1,0 +1,92 @@
+{
+    "accessibility": {
+        "font_size": "Betűméret",
+        "dyslexia": "Dyslexia font",
+        "contrast_text": "Diszlexia betűtípus",
+        "tts_text": "Szöveg beszédté",
+        "small": "kicsi",
+        "medium": "közepes",
+        "large": "nagy"
+    },
+    "buttons": {
+        "btn_confirm": "Megerősítés",
+        "btn_end_instruction": "Start",
+        "btn_game": "Játék",
+        "btn_globus_mode": "GLOBUS MÓD",
+        "btn_hologram": "Hologram",
+        "btn_home": "Kezdőképernyő",
+        "btn_learn": "TANUL",
+        "btn_list_mode": "LISTA MÓD",
+        "btn_login": "BEJELENTKEZÉS",
+        "btn_new_quiz": "Új kvíz indítása",
+        "btn_next_question": "Következő kérdés",
+        "btn_ok": "OK",
+        "btn_quiz": "KVÍZ",
+        "btn_register": "REGISZTRÁCIÓ",
+        "btn_save": "MEGTAKARÍTÁS",
+        "btn_see_results": "Lásd az eredményeket",
+        "btn_start_quiz": "Indítsa el a kvízt",
+        "btn_start": "KEZDÉS"
+    },
+    "placeholders": {
+        "placeholder_new_password": "Új jelszó megadása",
+        "placeholder_password_repeat": "Jelszó újra",
+        "placeholder_password": "Jelszó",
+        "placeholder_repeat_new_password": "Új jelszó megismétlése",
+        "placeholder_username": "Felhasználónév"
+    },
+    "messages": {
+        "msg_check_internet": "Ellenőrizze az internetkapcsolatot.",
+        "msg_login_success": "Sikeres bejelentkezés!",
+        "msg_password_short": "A jelszó túl rövid.",
+        "msg_password_wrong": "Rossz jelszó.",
+        "msg_passwords_mismatch": "A jelszavak nem egyeznek.",
+        "msg_register_success": "Felhasználó sikeresen létrehozva!",
+        "msg_username_short": "A felhasználónév túl rövid.",
+        "msg_username_wrong": "Érvénytelen felhasználónév."
+    },
+    "headings": {
+        "heading_choose_device": "Válaszd ki az eszköz célját",
+        "heading_learn_method": "Válassz egy módot az állatok megismerésére.",
+        "heading_login": "Bejelentkezés",
+        "heading_register": "Regisztráció"
+    },
+    "animal_profile_scene": {
+        "threed_text": "Kattints az állat képére a 3D-s nézet megtekintéséhez",
+        "endangerment_status": "Veszélyeztetettségi állapot",
+        "region": "Régió",
+        "habitat": "Élőhely",
+        "weight": "Súly",
+        "diet": "Táplálkozás",
+        "population": "Populáció"
+    },
+    "score_scene": {
+        "try_again": "Próbáld újra!",
+        "bravo": "Bravó!"
+    },
+    "info_scene": {
+        "developed_by": "Által kifejlesztett",
+        "univ_text": "Dubrovniki Egyetem Villamosmérnöki és Számítástechnikai Kar a Play2Green projekt (Serious Gaming for Universal Access to Green Education) részeként."
+    },
+    "instruction_scene": {
+        "instruction_one_heading": "Utasítások a hologramos vetítéshez",
+        "instruction_one_materials": "Anyagok",
+        "instruction_one_supply": "4 db A4-es átlátszó műanyag lap\n1 db olló\n1 db vonalzó\n1 db ragasztószalag",
+        "instruction_two": "1. Mérd meg a képernyő átlóját\n2. Rajzolj egy egyenlő oldalú háromszöget, amelynek oldalhossza pontosan a képernyő átlójának fele.\n3.  A háromszög két szomszédos oldalán jelöld meg a pontokat az oldal 3/10-ed részénél a sarok levágásához.\n4. Vágd ki a keletkezett trapézt\n5. Ragaszd össze a széleket",
+        "instruction_three": "Tedd az eszközödet egy sík felületre, és helyezd a piramist a képernyő közepére."
+    },
+    "profile_scene": {
+        "level": "Szint",
+        "experience": "Tapasztalat"
+    },
+    "quiz_scene": {
+        "choose_difficulty": "Válaszd ki a kvíz nehézségi szintjé",
+        "easy": "Könnyű",
+        "medium": "Közepes",
+        "hard": "Nehéz"
+    },
+    "welcome_scene": {
+        "hello_text": "Helló! A HoloZoo egy oktató játék az állatokról és azok természetben való veszélyeztetettségi státuszáról.\n\nA játék két Android mobil eszközt használ, amelyek Bluetooth-on keresztül kell kapcsolódjanak, hogy megjeleníthessenek egy hologramot, amellyel interakcióba léphetsz.\n\nNe aggódj! Ha nem szeretnél két eszközt használni, a hologram továbbra is megjelenik ezen az eszközön.\n\nTudd meg, hogyan készíthetsz piramis alakú hologramot a következő lépésekben.",
+        "welcome": "ÜDVÖZÖLJÜK"
+    }
+}
