@@ -5,6 +5,7 @@ using HoloZoo.DataModels;
 using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 public class GameData : MonoBehaviour
 {
@@ -35,7 +36,6 @@ public class GameData : MonoBehaviour
 
     public void LoadGameData(string lang)
     {
-        areas = JsonConvert.DeserializeObject<List<Area>>(File.ReadAllText(Application.streamingAssetsPath + "/Areas.json"));
         LoadTranslatedTables(lang);
         CopyEditableFiles();
         users = JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(Application.persistentDataPath + "/Users.json"));
@@ -66,6 +66,18 @@ public class GameData : MonoBehaviour
         string question_main = File.ReadAllText(Application.streamingAssetsPath + "/Questions.json");
         string question_text = File.ReadAllText(Application.streamingAssetsPath + $"/Questions_text_{lang}.json");
         questions = MergeJArrays<Question>(question_main, question_text, "id_question");
+
+        areas = JsonConvert.DeserializeObject<List<Area>>(
+            File.ReadAllText(Application.streamingAssetsPath + "/Areas.json"),
+            new JsonSerializerSettings
+            {
+                ContractResolver = new CustomPropertyResolver(new Dictionary<string, string> {
+                    {
+                        $"name_{lang}","name"
+                    },
+                })
+            }
+        );
     }
 
     public void SaveUserData()
@@ -73,6 +85,21 @@ public class GameData : MonoBehaviour
         string updatedJson = JsonUtility.ToJson(users, true);
         File.WriteAllText(Application.persistentDataPath + "/Users.json", updatedJson);
         Debug.Log($"{nameof(GameData)}: User data saved");
+    }
+
+    class CustomPropertyResolver : DefaultContractResolver
+    {
+        private readonly Dictionary<string, string> _propertyMappings;
+
+        public CustomPropertyResolver(Dictionary<string, string> propertyMappings)
+        {
+            _propertyMappings = propertyMappings;
+        }
+
+        protected override string ResolvePropertyName(string propertyName)
+        {
+            return _propertyMappings.TryGetValue(propertyName, out string resolvedName) ? resolvedName : propertyName;
+        }
     }
 
 #nullable enable
@@ -99,6 +126,7 @@ public class GameData : MonoBehaviour
             id = maxUserId + 1,
             level = 0,
             username = username,
+            // TODO hash this, esp. if not stored locally in future
             password = password,
             experience = 0,
         };
