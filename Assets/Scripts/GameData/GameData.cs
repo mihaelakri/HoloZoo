@@ -74,11 +74,12 @@ public class GameData : MonoBehaviour
             {
                 ContractResolver = new CustomPropertyResolver(new Dictionary<string, string> {
                     {
-                        $"name_{lang}","name"
+                        "name", $"name_{lang}"
                     },
                 })
             }
         );
+        // Debug.Log(JsonConvert.SerializeObject(areas, Formatting.Indented));
 
         translations = JsonConvert.DeserializeObject<Translations>(File.ReadAllText(Application.streamingAssetsPath + $"/Translations_{lang}.json"));
     }
@@ -118,7 +119,7 @@ public class GameData : MonoBehaviour
 
     public List<Animal>? GetAreaAnimals(Area area)
     {
-        return animals.Where(a => a.id_area == area.id).ToList();
+        return animals.Where(a => a.id_area.Contains(area.id)).ToList();
     }
 
     public Area? GetArea(int id)
@@ -248,7 +249,7 @@ public class GameData : MonoBehaviour
         }
 
         List<T1> mergedList = mergedArray.ToObject<List<T1>>();
-        Debug.Log(JsonConvert.SerializeObject(mergedList, Formatting.Indented));
+        // Debug.Log(JsonConvert.SerializeObject(mergedList, Formatting.Indented));
 
         return mergedList;
     }

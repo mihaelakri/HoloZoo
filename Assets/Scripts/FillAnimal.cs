@@ -28,15 +28,21 @@ public class FillAnimal : MonoBehaviour
             yield break;
         }
 
-        string areaName = GameData.Instance.GetArea(animal.id_area).name;
-
         nameText.text = animal.name;
         endangermentStatusText.text = animal.endangerment_status;
-        regionText.text = areaName;
         habitatsText.text = animal.habitat;
         weightText.text = animal.weight;
         dietText.text = animal.diet;
         populationText.text = animal.population.ToString();
+
+        regionText.text = "";
+        for (int i = 0; i < animal.id_area.Count; i++)
+        {
+            string areaName = GameData.Instance.GetArea(animal.id_area[i]).name;
+            regionText.text += $"{areaName}";
+            if (i < animal.id_area.Count - 1)
+                regionText.text += ", "; ;
+        }
 
         Texture2D myTexture = Resources.Load<Texture2D>(animal.url_slika);
         Image img = animal_photo.AddComponent<Image>();

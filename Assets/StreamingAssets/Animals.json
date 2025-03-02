@@ -1,7 +1,9 @@
 [
     {
         "id": 1,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 1,
         "url_model": "AnimalModels/Elephant_Legacy",
         "url_slika": "AnimalProfiles/animprof_elephant",
@@ -10,7 +12,9 @@
     },
     {
         "id": 2,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 1,
         "url_model": "AnimalModels/Crocodile_Legacy",
         "url_slika": "AnimalProfiles/animprof_krokodil",
@@ -19,7 +23,9 @@
     },
     {
         "id": 3,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 1,
         "url_model": "AnimalModels/Hippopotamus_PBR",
         "url_slika": "AnimalProfiles/animprof_hippo",
@@ -28,7 +34,9 @@
     },
     {
         "id": 4,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 1,
         "url_model": "AnimalModels/Lion_Legacy",
         "url_slika": "AnimalProfiles/animprof_lion",
@@ -37,7 +45,9 @@
     },
     {
         "id": 5,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 2,
         "url_model": "AnimalModels/Lioness_Legacy",
         "url_slika": "AnimalProfiles/animprof_lion",
@@ -46,7 +56,9 @@
     },
     {
         "id": 6,
-        "id_area": 8,
+        "id_area": [
+            8
+        ],
         "level": 1,
         "url_model": "AnimalModels/Eagle_Legacy",
         "url_slika": "AnimalProfiles/animprof_eagle",
@@ -55,7 +67,9 @@
     },
     {
         "id": 7,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 1,
         "url_model": "AnimalModels/Dolphin",
         "url_slika": "AnimalProfiles/animprof_dolphin",
@@ -64,7 +78,9 @@
     },
     {
         "id": 8,
-        "id_area": 9,
+        "id_area": [
+            9
+        ],
         "level": 1,
         "url_model": "AnimalModels/GreatWhiteShark",
         "url_slika": "AnimalProfiles/animprof_gwshark",
@@ -73,7 +89,9 @@
     },
     {
         "id": 9,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 1,
         "url_model": "AnimalModels/Zebra_Legacy",
         "url_slika": "AnimalProfiles/animprof_zebra",
@@ -82,7 +100,9 @@
     },
     {
         "id": 10,
-        "id_area": 1,
+        "id_area": [
+            1
+        ],
         "level": 2,
         "url_model": "AnimalModels/Rhinoceros_Legacy",
         "url_slika": "AnimalProfiles/animprof_rhino",
@@ -91,7 +111,9 @@
     },
     {
         "id": 11,
-        "id_area": 2,
+        "id_area": [
+            2
+        ],
         "level": 1,
         "url_model": "AnimalModels/Boar_Legacy",
         "url_slika": "AnimalProfiles/animprof_boar",
@@ -100,7 +122,9 @@
     },
     {
         "id": 12,
-        "id_area": 2,
+        "id_area": [
+            2
+        ],
         "level": 1,
         "url_model": "AnimalModels/Bear_Legacy",
         "url_slika": "AnimalProfiles/animprof_bear",
@@ -109,7 +133,9 @@
     },
     {
         "id": 13,
-        "id_area": 8,
+        "id_area": [
+            8
+        ],
         "level": 1,
         "url_model": "AnimalModels/DeerStag_Legacy",
         "url_slika": "AnimalProfiles/animprof_deer",
@@ -118,7 +144,9 @@
     },
     {
         "id": 14,
-        "id_area": 2,
+        "id_area": [
+            2
+        ],
         "level": 1,
         "url_model": "AnimalModels/Wolf_Legacy",
         "url_slika": "AnimalProfiles/animprof_wolf",
@@ -127,7 +155,9 @@
     },
     {
         "id": 15,
-        "id_area": 8,
+        "id_area": [
+            8
+        ],
         "level": 2,
         "url_model": "AnimalModels/WolfArctic_PBR",
         "url_slika": "AnimalProfiles/animprof_arctic_wolf",
@@ -136,7 +166,9 @@
     },
     {
         "id": 16,
-        "id_area": 2,
+        "id_area": [
+            2
+        ],
         "level": 1,
         "url_model": "AnimalModels/Rabbit_Legacy",
         "url_slika": "AnimalProfiles/animprof_rabbit",
@@ -145,7 +177,9 @@
     },
     {
         "id": 17,
-        "id_area": 2,
+        "id_area": [
+            2
+        ],
         "level": 1,
         "url_model": "AnimalModels/Crow_Legacy",
         "url_slika": "AnimalProfiles/animprof_crow",
@@ -154,7 +188,9 @@
     },
     {
         "id": 18,
-        "id_area": 2,
+        "id_area": [
+            2
+        ],
         "level": 3,
         "url_model": "AnimalModels/Goat_Legacy",
         "url_slika": "AnimalProfiles/animprof_goat",
@@ -163,7 +199,9 @@
     },
     {
         "id": 19,
-        "id_area": 7,
+        "id_area": [
+            7
+        ],
         "level": 1,
         "url_model": "AnimalModels/HumboldtSquid",
         "url_slika": "AnimalProfiles/animprof_squid",
@@ -172,7 +210,9 @@
     },
     {
         "id": 20,
-        "id_area": 9,
+        "id_area": [
+            9
+        ],
         "level": 3,
         "url_model": "AnimalModels/LeatherbackSeaTurtle",
         "url_slika": "AnimalProfiles/animprof_seaturtle",

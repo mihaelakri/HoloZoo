@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace HoloZoo.DataModels
 {
@@ -13,7 +14,7 @@ namespace HoloZoo.DataModels
     public class Animal
     {
         public int id;
-        public int id_area;
+        public List<int> id_area;
         public int level;
         public string url_model;
         public string url_slika;
