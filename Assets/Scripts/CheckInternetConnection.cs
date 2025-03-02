@@ -9,40 +9,6 @@ public class CheckInternetConnection : MonoBehaviour
 {
     private static volatile bool shouldCheckInternet;
 
-    public static readonly Dictionary<string, Dictionary<string, string>> connectionMessages = new()
-    {
-        { "en", new Dictionary<string, string>
-            {
-                { "message", "Check internet connection." },
-                { "button", "OK" },
-            }
-        },
-        { "fr", new Dictionary<string, string>
-            {
-                { "message", "Vérifiez la connexion Internet." },
-                { "button", "OK" },
-            }
-        },
-        { "hr", new Dictionary<string, string>
-            {
-                { "message", "Provjerite internetsku vezu." },
-                { "button", "OK" },
-            }
-        },
-        { "es", new Dictionary<string, string>
-            {
-                { "message", "Verificar conexión a Internet." },
-                { "button", "OK" },
-            }
-        },
-        { "hu", new Dictionary<string, string>
-            {
-                { "message", "Ellenőrizze az internetkapcsolatot." },
-                { "button", "OK" },
-            }
-        }
-    };
-
     public static IEnumerator CheckConnection(Action<bool> reportState)
     {
         if (!Permission.HasUserAuthorizedPermission("android.permission.INTERNET"))
@@ -145,9 +111,10 @@ public class CheckInternetConnection : MonoBehaviour
 
                 if (!hasInternet)
                 {
+                    var translation = GameData.Instance.translations;
                     ShowDialog(
-                        connectionMessages[PlayerPrefs.GetString("lang", "en")]["message"],
-                        connectionMessages[PlayerPrefs.GetString("lang", "en")]["button"],
+                        translation.messages.msg_check_internet,
+                        translation.buttons.btn_ok,
                         // shouldCheckInternet is set here to wait for dialog dismissal
                         () =>
                         {

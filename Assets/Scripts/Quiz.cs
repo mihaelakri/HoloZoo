@@ -22,52 +22,11 @@ public class Quiz : MonoBehaviour
     private Button[] answerButtons;
     public Button nextButton;
 
-    private string selectedLanguage;
     private int correctAnswerCount;
-
-    private Dictionary<string, Dictionary<string, string>> translations = new Dictionary<string, Dictionary<string, string>>
-    {
-        {
-            "en", new Dictionary<string, string>
-            {
-                { "next_question", "Next question" },
-                { "see_results", "See results" }
-            }
-        },
-        {
-            "fr", new Dictionary<string, string>
-            {
-                { "next_question", "Prochaine question" },
-                { "see_results", "Voir les résultats" }
-            }
-        },
-        {
-            "hr", new Dictionary<string, string>
-            {
-                { "next_question", "Sljedeće pitanje" },
-                { "see_results", "Vidi rezultat" }
-            }
-        },
-        {
-            "es", new Dictionary<string, string>
-            {
-                { "next_question", "Próxima pregunta" },
-                { "see_results", "Ver resultados" }
-            }
-        },
-        {
-            "hu", new Dictionary<string, string>
-            {
-                { "next_question", "Következő kérdés" },
-                { "see_results", "Lásd az eredményeket" }
-            }
-        }
-    };
 
     // Start is called before the first frame update
     void Start()
     {
-        selectedLanguage = PlayerPrefs.GetString("lang", "en");
         answerButtons = answerParent.GetComponentsInChildren<Button>();
 
         StartCoroutine(FillQuestion());
@@ -92,10 +51,12 @@ public class Quiz : MonoBehaviour
 
         nextButton.gameObject.SetActive(true);
         nextButton.transform.LeanMoveLocal(new Vector2(123, -225), 1).setEaseOutQuart();
+
+        var translation = GameData.Instance.translations;
         if (questionsCounter < questionsCount)
-            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["next_question"];
+            nextButton.transform.GetChild(0).GetComponent<Text>().text = translation.buttons.btn_next_question;
         else
-            nextButton.transform.GetChild(0).GetComponent<Text>().text = translations[selectedLanguage]["see_results"];
+            nextButton.transform.GetChild(0).GetComponent<Text>().text = translation.buttons.btn_see_results;
     }
 
     public void nextQuestion()

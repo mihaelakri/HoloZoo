@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,75 +17,6 @@ public class Accessibility : MonoBehaviour
     public Text medium;
     public Text large;
 
-    private Dictionary<string, Dictionary<string, string>> translations = new Dictionary<string, Dictionary<string, string>>
-    {
-        {
-            "en", new Dictionary<string, string>
-            {
-                { "font_size", "Font size"},
-                { "dyslexia", "Dyslexia font" },
-                { "contrast_text", "Contrast" },
-                { "tts_text", "Text to speech" },
-                { "small", "small" },
-                { "medium", "medium" },
-                { "large", "large" },
-                { "save_btn", "SAVE" }
-            }
-        },
-        {
-            "fr", new Dictionary<string, string>
-            {
-                { "font_size", "Taille de la police"},
-                { "dyslexia", "police Dyslexie" },
-                { "contrast_text", "Contraste" },
-                { "tts_text", "Synthèse vocale" },
-                { "small", "petit" },
-                { "medium", "moyen" },
-                { "large", "grand" },
-                { "save_btn", "ENREGISTRER" }
-            }
-        },
-        {
-            "hr", new Dictionary<string, string>
-            {
-                { "font_size", "Veličina fonta"},
-                { "dyslexia", "Font za disleksiju" },
-                { "contrast_text", "Kontrast" },
-                { "tts_text", "Tekst u govor" },
-                { "small", "mali" },
-                { "medium", "srednji" },
-                { "large", "veliki" },
-                { "save_btn", "SPREMI" }
-            }
-        },
-        {
-            "es", new Dictionary<string, string>
-            {
-                { "font_size", "Tamaño de fuente"},
-                { "dyslexia", "Fuente para dislexia" },
-                { "contrast_text", "Contraste" },
-                { "tts_text", "Iniciar" },
-                { "small", "pequeño" },
-                { "medium", "mediano" },
-                { "large", "grande" },
-                { "save_btn", "GUARDAR" }
-            }
-        },
-        {
-            "hu", new Dictionary<string, string>
-            {
-                { "font_size", "Betűméret"},
-                { "dyslexia", "Dyslexia font" },
-                { "contrast_text", "Diszlexia betűtípus" },
-                { "tts_text", "Szöveg beszédté" },
-                { "small", "kicsi" },
-                { "medium", "közepes" },
-                { "large", "nagy" },
-                { "save_btn", "MEGTAKARÍTÁS" }
-            }
-        }
-    };
-
     void Start()
     {
         ApplyLanguageTexts();
@@ -94,19 +24,17 @@ public class Accessibility : MonoBehaviour
 
     private void ApplyLanguageTexts()
     {
-        string selectedLanguage = PlayerPrefs.GetString("lang", "en");
+        var translation = GameData.Instance.translations;
 
-        var languageTexts = translations[selectedLanguage];
+        font_size.text = translation.accessibility.font_size;
+        dyslexiaText.text = translation.accessibility.dyslexia;
+        contrastText.text = translation.accessibility.contrast_text;
+        ttsText.text = translation.accessibility.tts_text;
+        small.text = translation.accessibility.small;
+        medium.text = translation.accessibility.medium;
+        large.text = translation.accessibility.large;
 
-        font_size.text = languageTexts["font_size"];
-        dyslexiaText.text = languageTexts["dyslexia"];
-        contrastText.text = languageTexts["contrast_text"];
-        ttsText.text = languageTexts["tts_text"];
-        save_btn.text = languageTexts["save_btn"];
-        small.text = languageTexts["small"];
-        medium.text = languageTexts["medium"];
-        large.text = languageTexts["large"];
-
+        save_btn.text = GameData.Instance.translations.buttons.btn_save;
     }
 
     public void SetFontSize()
