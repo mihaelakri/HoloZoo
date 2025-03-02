@@ -1,12 +1,9 @@
 #define LIGHTSPEED
 
 using UnityEngine;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 
-namespace WPM {
+namespace WPM
+{
     public class WorldMapListeners : MonoBehaviour
     {
         WorldMapGlobe map; // the globe
@@ -19,7 +16,7 @@ namespace WPM {
             {
                 // print("The transform has changed!");
                 transform.hasChanged = false;
-                
+
                 rotateModel.rotateGlobeModel(transform.eulerAngles);
             }
         }

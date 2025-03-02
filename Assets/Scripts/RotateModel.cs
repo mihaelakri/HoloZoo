@@ -35,7 +35,7 @@ public class RotateModel : MonoBehaviour
 
     void Update()
     {
-        
+
         if (sceneName != "HologramGlobe")
         {
             if (sceneName == "HologramTablet" && old_animal_id != CommConstants.animal_id)
@@ -50,7 +50,7 @@ public class RotateModel : MonoBehaviour
                 model.transform.GetChild(0).transform.rotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
                 return;
             }
-            
+
             try
             {
                 float interpolationFactor = 10f;
