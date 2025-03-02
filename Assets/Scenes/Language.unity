@@ -1447,11 +1447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65db3519a8bbc964fb0c459c56f8669d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonCroatian: {fileID: 671275444}
   buttonEnglish: {fileID: 1396882521}
   buttonFrench: {fileID: 1264886591}
-  buttonCroatian: {fileID: 671275444}
-  buttonSpanish: {fileID: 1764640766}
   buttonHungarian: {fileID: 1060542019}
+  buttonSpanish: {fileID: 1764640766}
 --- !u!1 &1644006197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +1776,75 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &1859479327
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6158023282251612649, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_Name
+      value: GameDataManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 875.7406
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 950.6311
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.507329
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923746243691022172, guid: 8ee7f6a7e2203c84da3ab8c64667e939,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ee7f6a7e2203c84da3ab8c64667e939, type: 3}
 --- !u!1 &1959316735
 GameObject:
   m_ObjectHideFlags: 0

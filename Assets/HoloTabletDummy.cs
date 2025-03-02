@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HoloTabletDummy : MonoBehaviour
 {
     public int id_model = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+#if UNITY_EDITOR
     void Update()
     {
         if (CommConstants.animal_id != id_model)
@@ -21,4 +13,5 @@ public class HoloTabletDummy : MonoBehaviour
             StartCoroutine(Load3DModelTablet.GetModel());
         }
     }
+#endif
 }

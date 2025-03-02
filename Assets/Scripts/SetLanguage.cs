@@ -36,6 +36,7 @@ public class SetLanguage : MonoBehaviour
         // Spremanje jezika lokalno u PlayerPrefs
         PlayerPrefs.SetString("lang", languageCode);
         PlayerPrefs.Save();
+        GameData.Instance.LoadTranslatedTables(languageCode);
         Debug.Log($"{nameof(SetLanguage)} - Language successfully set");
 
         // Nakon slanja, učitavanje sljedeće scene
