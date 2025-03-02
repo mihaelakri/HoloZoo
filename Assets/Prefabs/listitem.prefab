@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8162310945683347617}
-  - component: {fileID: 8060180607651707740}
   - component: {fileID: 3959218316543421608}
+  - component: {fileID: 7428349533695276232}
   m_Layer: 0
   m_Name: listitem
   m_TagString: img-dark
@@ -39,18 +39,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 602}
   m_SizeDelta: {x: 300, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8060180607651707740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3807964570434529346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22cda94ed951fb748a419e51121ad30f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3959218316543421608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,9 +83,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8060180607651707740}
-        m_TargetAssemblyTypeName: SceneChangeTag, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 7428349533695276232}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: ChangeSceneToAnimalProfile
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -107,6 +95,18 @@ MonoBehaviour:
           m_StringArgument: Animal_list
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7428349533695276232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807964570434529346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f316c0bd7de20d489c153fd9be5ead8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7297165752418982274
 GameObject:
   m_ObjectHideFlags: 0

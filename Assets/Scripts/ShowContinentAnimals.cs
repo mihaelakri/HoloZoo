@@ -128,7 +128,7 @@ namespace WPM
                 Texture2D myTexture = Resources.Load<Texture2D>(animal.url_slika);
                 animalImagePrefab.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
 
-                ChangeSceneGlobe changeSceneScript = currentAnimal.GetComponent<ChangeSceneGlobe>();
+                SceneChange changeSceneScript = currentAnimal.GetComponent<SceneChange>();
                 if (changeSceneScript != null)
                 {
                     changeSceneScript.id = animal.id.ToString();

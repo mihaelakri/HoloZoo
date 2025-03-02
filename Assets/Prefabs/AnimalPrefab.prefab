@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6897745211892376733}
   - component: {fileID: 644968614071302613}
-  - component: {fileID: 1378263737871137358}
+  - component: {fileID: 8965371437542372553}
   m_Layer: 0
   m_Name: AnimalPrefab
   m_TagString: AnimalPrefab(Clone)
@@ -116,9 +116,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1378263737871137358}
-        m_TargetAssemblyTypeName: ChangeSceneGlobe, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 8965371437542372553}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: ChangeSceneGlobe
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
           m_StringArgument: Animal_list
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1378263737871137358
+--- !u!114 &8965371437542372553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5157156680379355653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e75e909810ddb2469d8194aeae61028, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f316c0bd7de20d489c153fd9be5ead8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
