@@ -21,10 +21,6 @@ namespace WPM {
 
 		public string province;
 
-		[System.Obsolete("Use localPosition instead")]
-		public Vector3 unitySphereLocation {
-			get { return localPosition; }
-		}
 
 		public Vector3 localPosition;
 		public int population;

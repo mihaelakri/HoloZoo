@@ -16,7 +16,7 @@ namespace WPM {
             GUILayout.Label("This tools deal with hidden GameObjects under the WPM hierarchy (those with the HideFlags.HideInHierarchy flag set).", EditorStyles.wordWrappedLabel);
 
             if (GUILayout.Button("Count Hidden GameObjects")) {
-                GameObject g = FindObjectOfType<WorldMapGlobe>().gameObject;
+                GameObject g = Misc.FindObjectOfType<WorldMapGlobe>().gameObject;
                 int count = 0;
                 foreach (Transform t in g.transform) {
                     if ((t.gameObject.hideFlags & HideFlags.HideInHierarchy) != 0) {
@@ -28,7 +28,7 @@ namespace WPM {
             }
 
             if (GUILayout.Button("Show Hidden GameObjects")) {
-                GameObject g = FindObjectOfType<WorldMapGlobe>().gameObject;
+                GameObject g = Misc.FindObjectOfType<WorldMapGlobe>().gameObject;
                 int count = 0;
                 foreach (Transform t in g.transform) {
                     if ((t.gameObject.hideFlags & HideFlags.HideInHierarchy) != 0) {
@@ -41,7 +41,7 @@ namespace WPM {
             }
 
             if (GUILayout.Button("Destroy Hidden GameObjects")) {
-                GameObject g = FindObjectOfType<WorldMapGlobe>().gameObject;
+                GameObject g = Misc.FindObjectOfType<WorldMapGlobe>().gameObject;
                 int count = 0;
                 foreach (Transform t in g.transform) {
                     if ((t.gameObject.hideFlags & HideFlags.HideInHierarchy) != 0) {

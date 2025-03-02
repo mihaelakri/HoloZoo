@@ -13,8 +13,15 @@ using System.Text;
 
 namespace WPM {
 
+	public enum GEODATA_FORMAT {
+		BinaryFormat = 0,
+		[InspectorName("Packed String Format (legacy)")]
+		PackedStringFormat = 1
+	}
+
 	/* Public WPM Class */
 	public partial class WorldMapGlobe : MonoBehaviour {
+
 
 		static WorldMapGlobe _instance;
 
@@ -24,9 +31,9 @@ namespace WPM {
 		public static WorldMapGlobe instance {
 			get {
 				if (_instance == null) {
-					_instance = FindObjectOfType<WorldMapGlobe> ();
+					_instance = Misc.FindObjectOfType<WorldMapGlobe>();
 					if (_instance == null) {
-						Debug.LogWarning ("'WorldMapGlobe' GameObject could not be found in the scene. Make sure it's created with this name before using any map functionality.");
+						Debug.LogWarning("'WorldMapGlobe' GameObject could not be found in the scene. Make sure it's created with this name before using any map functionality.");
 					}
 				}
 				return _instance;
@@ -40,37 +47,57 @@ namespace WPM {
 		/// </summary>
 		public int surfacesCount { get { return _surfacesCount; } }
 
-        [SerializeField]
-        string _geodataResourcesPath = "Geodata";
+
+		[SerializeField]
+		GEODATA_FORMAT _geodataFormat = GEODATA_FORMAT.BinaryFormat;
 
 		/// <summary>
-        /// Access to the input class
-        /// </summary>
-		public DefaultInputSystem input;
-
-        /// <summary>
-        /// Path where geodata files reside. This path is a relative path below Resources folder. So a geodata file would be read as Resources/<geodataResourcesPath>/cities10 for example.
-        /// Note that your project can contain several Resources folders. Create your own Resources folder so you don't have to backup your geodata folder on each update if you make any modifications to the files.
-        /// </summary>
-        public string geodataResourcesPath {
-            get { return _geodataResourcesPath; }
-            set {
-                if (_geodataResourcesPath != value) {
-                    _geodataResourcesPath = value.Trim();
-                    if (_geodataResourcesPath.Length < 1) {
-                        _geodataResourcesPath = "Geodata";
-                    }
-                    string lc = _geodataResourcesPath.Substring(_geodataResourcesPath.Length - 1, 1);
-                    if (lc.Equals("/") || lc.Equals("\\"))
-                        _geodataResourcesPath = _geodataResourcesPath.Substring(0, _geodataResourcesPath.Length - 1);
-                    isDirty = true;
-                }
-            }
-        }
+		/// The format for the geodata files
+		/// </summary>
+		public GEODATA_FORMAT geodataFormat {
+			get { return _geodataFormat; }
+			set {
+				if (_geodataFormat != value) {
+					_geodataFormat = value;
+					isDirty = true;
+					ReloadData();
+				}
+			}
+		}
 
 
+		/// <summary>
+		/// Access to the input class
+		/// </summary>
+		public IInputProxy input;
 
-        #region Public API area
+
+		[SerializeField]
+		string _geodataResourcesPath = "Geodata";
+
+		/// <summary>
+		/// Path where geodata files reside. This path is a relative path below Resources folder. So a geodata file would be read as Resources/<geodataResourcesPath>/cities10 for example.
+		/// Note that your project can contain several Resources folders. Create your own Resources folder so you don't have to backup your geodata folder on each update if you make any modifications to the files.
+		/// </summary>
+		public string geodataResourcesPath {
+			get { return _geodataResourcesPath; }
+			set {
+				if (_geodataResourcesPath != value) {
+					_geodataResourcesPath = value.Trim();
+					if (_geodataResourcesPath.Length < 1) {
+						_geodataResourcesPath = "Geodata";
+					}
+					string lc = _geodataResourcesPath.Substring(_geodataResourcesPath.Length - 1, 1);
+					if (lc.Equals("/") || lc.Equals("\\"))
+						_geodataResourcesPath = _geodataResourcesPath.Substring(0, _geodataResourcesPath.Length - 1);
+					isDirty = true;
+				}
+			}
+		}
+
+
+
+		#region Public API area
 
 
 		[SerializeField]
@@ -87,6 +114,7 @@ namespace WPM {
 			set {
 				if (_mainCamera != value) {
 					_mainCamera = value;
+					CheckCameraPivot();
 					isDirty = true;
 				}
 			}
@@ -106,8 +134,8 @@ namespace WPM {
 			set {
 				if (_overlayLayerIndex != value) {
 					_overlayLayerIndex = value;
-					DestroyOverlay ();
-					Redraw ();
+					DestroyOverlay();
+					Redraw();
 				}
 			}
 		}
@@ -119,20 +147,20 @@ namespace WPM {
 		/// <param name="needRenderTexture">True if the overlay layer contains blended elements like country names not rendering in world space or tickers in blended mode</param>
 		public GameObject GetOverlayLayer (bool createIfNotExists, bool requireRenderTexture) {
 			if (createIfNotExists && requireRenderTexture && _labelsQuality == LABELS_QUALITY.NotUsed) {
-				DestroyOverlay ();
+				DestroyOverlay();
 				_labelsQuality = LABELS_QUALITY.Medium;
 			}
 			if (overlayLayer != null && sphereOverlayLayer != null) {
-				overlayLayer.transform.localScale = new Vector3 (1.0f / transform.localScale.x, 1.0f / transform.localScale.y, 1.0f / transform.localScale.z);
+				overlayLayer.transform.localScale = new Vector3(1.0f / transform.localScale.x, 1.0f / transform.localScale.y, 1.0f / transform.localScale.z);
 				if (sphereOverlayLayer != null) {
-					sphereOverlayLayer.SetActive (true);
-                    Renderer sphereOverlayRenderer = sphereOverlayLayer.GetComponent<Renderer>();
-                    sphereOverlayRenderer.enabled = _labelsQuality != LABELS_QUALITY.NotUsed;
+					sphereOverlayLayer.SetActive(true);
+					Renderer sphereOverlayRenderer = sphereOverlayLayer.GetComponent<Renderer>();
+					sphereOverlayRenderer.enabled = _labelsQuality != LABELS_QUALITY.NotUsed;
 				}
 				return overlayLayer;
 			} else if (createIfNotExists) {
-				DestroyOverlay ();
-				return CreateOverlay ();
+				DestroyOverlay();
+				return CreateOverlay();
 			} else {
 				return null;
 			}
@@ -142,10 +170,10 @@ namespace WPM {
 		/// Destroys all cached and visible region surfaces.
 		/// </summary>
 		public void DestroySurfaces () {
-			InitSurfacesCache ();
+			InitSurfacesCache();
 		}
 
-		#if !UNITY_WEBPLAYER
+#if !UNITY_WEBPLAYER
 		public Texture2D BakeTexture (string outputFile) {
 
 			// Get all triangles and its colors
@@ -153,46 +181,46 @@ namespace WPM {
 			if (_earthStyle == EARTH_STYLE.SolidColor) {
 				int tw = 2048;
 				int th = 1024;
-				texture = new Texture2D (tw, th, TextureFormat.RGB24, false);
+				texture = new Texture2D(tw, th, TextureFormat.RGB24, false);
 				Color32[] colors32 = new Color32[tw * th];
 				Color32 solidColor = _earthColor;
 				for (int k = 0; k < colors32.Length; k++) {
-					colors32 [k] = solidColor;
+					colors32[k] = solidColor;
 				}
-				texture.SetPixels32 (colors32);
-				texture.Apply ();
+				texture.SetPixels32(colors32);
+				texture.Apply();
 			} else {
-				texture = Instantiate (transform.Find ("WorldMapGlobeEarth").GetComponent<Renderer> ().sharedMaterial.mainTexture) as Texture2D;
+				texture = Instantiate(transform.Find("WorldMapGlobeEarth").GetComponent<Renderer>().sharedMaterial.mainTexture) as Texture2D;
 			}
 			int width = texture.width;
 			int height = texture.height;
-			Color[] colors = texture.GetPixels ();
+			Color[] colors = texture.GetPixels();
 
 			if (_surfacesLayer != null) {
-				Transform[] surfaces = _surfacesLayer.GetComponentsInChildren<Transform> ();
+				Transform[] surfaces = _surfacesLayer.GetComponentsInChildren<Transform>();
 				// Antartica k = 16
 				for (int k = 0; k < surfaces.Length; k++) {
 					// Get the color
 					Color color;
-					Renderer rr = surfaces [k].GetComponent<Renderer> ();
+					Renderer rr = surfaces[k].GetComponent<Renderer>();
 					if (rr != null)
 						color = rr.sharedMaterial.color;
 					else
 						continue; // not valid
 
 					// Get triangles and paint over the texture
-					MeshFilter mf = surfaces [k].GetComponent<MeshFilter> ();
-					if (mf == null || mf.sharedMesh.GetTopology (0) != MeshTopology.Triangles)
+					MeshFilter mf = surfaces[k].GetComponent<MeshFilter>();
+					if (mf == null || mf.sharedMesh.GetTopology(0) != MeshTopology.Triangles)
 						continue;
 					Vector3[] vertex = mf.sharedMesh.vertices;
-					int[] index = mf.sharedMesh.GetTriangles (0);
+					int[] index = mf.sharedMesh.GetTriangles(0);
 
 					float maxEdge = width * 0.8f;
 					float minEdge = width * 0.2f;
 					for (int i = 0; i < index.Length; i += 3) {
-						Vector2 p1 = Conversion.ConvertToTextureCoordinates (vertex [index [i]], width, height);
-						Vector2 p2 = Conversion.ConvertToTextureCoordinates (vertex [index [i + 1]], width, height);
-						Vector2 p3 = Conversion.ConvertToTextureCoordinates (vertex [index [i + 2]], width, height);
+						Vector2 p1 = Conversion.ConvertToTextureCoordinates(vertex[index[i]], width, height);
+						Vector2 p2 = Conversion.ConvertToTextureCoordinates(vertex[index[i + 1]], width, height);
+						Vector2 p3 = Conversion.ConvertToTextureCoordinates(vertex[index[i + 2]], width, height);
 						// Sort points
 						if (p2.x > p3.x) {
 							Vector3 p = p2;
@@ -217,17 +245,17 @@ namespace WPM {
 								p3.x = width - p3.x;
 						} else if (p1.x < minEdge && p2.x > maxEdge && p3.x > maxEdge) {
 							p1.x = width + p1.x;
-						} 
-						Drawing.DrawTriangle (colors, width, height, p1, p2, p3, color);
+						}
+						Drawing.DrawTriangle(colors, width, height, p1, p2, p3, color);
 					}
 				}
-				texture.SetPixels (colors);
-				texture.Apply ();
+				texture.SetPixels(colors);
+				texture.Apply();
 			}
 
-			if (File.Exists (outputFile))
-				File.Delete (outputFile);
-			File.WriteAllBytes (outputFile, texture.EncodeToPNG ());
+			if (File.Exists(outputFile))
+				File.Delete(outputFile);
+			File.WriteAllBytes(outputFile, texture.EncodeToPNG());
 			return texture;
 		}
 
@@ -235,40 +263,41 @@ namespace WPM {
 		/// Hides globe in the scene. This method works faster than disabling the game object.
 		/// </summary>
 		public void Hide () {
-			ToggleGlobalVisibility (false);
+			ToggleGlobalVisibility(false);
 		}
 
 		/// <summary>
 		/// Shows globe in the scene after hiding it with Hide() method. This method works faster than enabling the game object.
 		/// </summary>
 		public void Show () {
-			ToggleGlobalVisibility (true);
+			ToggleGlobalVisibility(true);
 		}
-		#endif
+#endif
 
 
 
 		/// <summary>
 		/// Enables Calculator component and returns a reference to its API.
 		/// </summary>
-		public WorldMapCalculator calc { get { return GetComponent<WorldMapCalculator> () ?? gameObject.AddComponent<WorldMapCalculator> (); } }
+		public WorldMapCalculator calc { get { return GetComponent<WorldMapCalculator>() ?? gameObject.AddComponent<WorldMapCalculator>(); } }
 
 		/// <summary>
 		/// Enables Ticker component and returns a reference to its API.
 		/// </summary>
-		public WorldMapTicker ticker { get { return GetComponent<WorldMapTicker> () ?? gameObject.AddComponent<WorldMapTicker> (); } }
+		public WorldMapTicker ticker { get { return GetComponent<WorldMapTicker>() ?? gameObject.AddComponent<WorldMapTicker>(); } }
 
 		/// <summary>
 		/// Enables Decorator component and returns a reference to its API.
 		/// </summary>
-		public WorldMapDecorator decorator { get { return GetComponent<WorldMapDecorator> () ?? gameObject.AddComponent<WorldMapDecorator> (); } }
+		public WorldMapDecorator decorator { get { return GetComponent<WorldMapDecorator>() ?? gameObject.AddComponent<WorldMapDecorator>(); } }
 
 		/// <summary>
 		/// Enables Editor component and returns a reference to its API.
 		/// </summary>
-		public WorldMapEditor editor { get { return GetComponent<WorldMapEditor> () ?? gameObject.AddComponent<WorldMapEditor> (); } }
+		public WorldMapEditor editor { get { return GetComponent<WorldMapEditor>() ?? gameObject.AddComponent<WorldMapEditor>(); } }
 
 		#endregion
+
 
 	}
 

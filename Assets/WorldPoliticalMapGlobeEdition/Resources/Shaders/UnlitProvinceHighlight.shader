@@ -23,7 +23,7 @@ SubShader {
 			fixed4 _Color;	
 			fixed _Intensity;
 			sampler2D _MainTex;
-			fixed2 _ProvinceHighlightData;
+			fixed3 _ProvinceHighlightData;
 
 			struct AppData {
 				float4 vertex : POSITION;
@@ -52,8 +52,9 @@ SubShader {
 			fixed4 frag(v2f i) : SV_Target {
                 UNITY_SETUP_INSTANCE_ID(i);
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i); 
+				
 				fixed4 pixel = tex2D(_MainTex, i.uv);
-				fixed fade = saturate( (_Time.y - _ProvinceHighlightData.x) / _ProvinceHighlightData.y );
+				fixed fade = _ProvinceHighlightData.z ? saturate( (_Time.y - _ProvinceHighlightData.x) / _ProvinceHighlightData.y ): 1.0;
 				return pixel * _Color * (_Intensity * fade);
 			}
 

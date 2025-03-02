@@ -9,17 +9,13 @@
 
 //#define TRACE_CTL				   // Used by us to debug/trace some events
 using UnityEngine;
-using UnityEngine.XR;
 using System;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Globalization;
 using WPM.Poly2Tri;
 using WPM.PolygonTools;
-using WPM.ClipperLib;
 using TMPro;
+using UnityEngine.EventSystems;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -93,7 +89,7 @@ namespace WPM {
         Dictionary<Color, Material> markerMatLinesCache;
         List<TriangulationPoint> steinerPoints;
         List<Vector2> tmpPoints;
-        StringBuilder sb;
+        readonly StringBuilder sb = new StringBuilder(100);
 
         // FlyTo functionality
         Quaternion flyToStartQuaternion, flyToEndQuaternion;
@@ -180,11 +176,9 @@ namespace WPM {
 
         #endregion
 
-
-
         #region System initialization
 
-        public void Init() {
+        public void Init () {
             // Load materials
 #if TRACE_CTL
 			Debug.Log ("CTL " + DateTime.Now + ": init");
@@ -210,15 +204,9 @@ namespace WPM {
             hudMatCountry = Instantiate(Resources.Load<Material>("Materials/HudCountry"));
             hudMatProvince = Instantiate(Resources.Load<Material>("Materials/HudProvince"));
             hudMatProvince.renderQueue++;
-            citySpot = Resources.Load<GameObject>("Prefabs/CitySpot");
-            citySpotCapitalRegion = Resources.Load<GameObject>("Prefabs/CityCapitalRegionSpot");
-            citySpotCapitalCountry = Resources.Load<GameObject>("Prefabs/CityCapitalCountrySpot");
-            citiesNormalMat = Instantiate(Resources.Load<Material>("Materials/Cities"));
-            citiesNormalMat.name = "Cities";
-            citiesRegionCapitalMat = Instantiate(Resources.Load<Material>("Materials/CitiesCapitalRegion"));
-            citiesRegionCapitalMat.name = "CitiesCapitalRegion";
-            citiesCountryCapitalMat = Instantiate(Resources.Load<Material>("Materials/CitiesCapitalCountry"));
-            citiesCountryCapitalMat.name = "CitiesCapitalCountry";
+            hudMatBlinker = Instantiate(Resources.Load<Material>("Materials/HudBlinker"));
+
+            ReloadCityPrefabs();
             provincesMatOpaque = Instantiate(Resources.Load<Material>("Materials/Provinces"));
             provincesMatAlpha = Instantiate(Resources.Load<Material>("Materials/ProvincesAlpha"));
             outlineMatThinOpaque = Instantiate(Resources.Load<Material>("Materials/Outline"));
@@ -250,11 +238,13 @@ namespace WPM {
 
             // Destroy obsolete labels layer -> now replaced with overlay feature
             GameObject o = GameObject.Find("WPMLabels");
-            if (o != null)
+            if (o != null) {
                 DestroyImmediate(o);
+            }
             Transform tlabel = transform.Find("LabelsLayer");
-            if (tlabel != null)
+            if (tlabel != null) {
                 DestroyImmediate(tlabel.gameObject);
+            }
             // End destroy obsolete.
 
             InitGridSystem();
@@ -269,21 +259,57 @@ namespace WPM {
 
         }
 
+        void ReloadCityPrefabs () {
+            if (_citySpot == null) {
+                _citySpot = Resources.Load<GameObject>("Prefabs/CitySpot");
+            }
+            if (_citySpotCapitalRegion == null) {
+                _citySpotCapitalRegion = Resources.Load<GameObject>("Prefabs/CityCapitalRegionSpot");
+            }
+            if (_citySpotCapitalCountry == null) {
+                _citySpotCapitalCountry = Resources.Load<GameObject>("Prefabs/CityCapitalCountrySpot");
+            }
+
+            citiesNormalMat = GetCityMaterial(_citySpot, "Materials/Cities");
+            citiesRegionCapitalMat = GetCityMaterial(_citySpotCapitalRegion, "Materials/CitiesCapitalRegion");
+            citiesCountryCapitalMat = GetCityMaterial(_citySpotCapitalCountry, "Materials/CitiesCapitalCountry");
+        }
+
+        Material GetCityMaterial (GameObject go, string defaultMaterialName) {
+            Renderer r = go.GetComponentInChildren<Renderer>();
+            Material mat = null;
+            if (r != null) {
+                mat = r.sharedMaterial;
+            }
+            if (mat == null) {
+                mat = Resources.Load(defaultMaterialName) as Material;
+                if (mat == null) {
+                    Debug.LogWarning("Cannot load city prefab or material");
+                    return null;
+                }
+            }
+
+            string matName = mat.name;
+            mat = Instantiate(mat);
+            mat.name = matName;
+            return mat;
+        }
+
         /// <summary>
         /// Reloads the data of frontiers and cities from datafiles and redraws the map.
         /// </summary>
-        public void ReloadData() {
+        public void ReloadData () {
 
             // read baked data
-            ReadCountriesPackedString();
+            ReadCountriesGeoData();
 
             if (_showProvinces) {
-                ReadProvincesPackedString();
+                ReadProvincesGeoData();
             } else {
                 _provinces = null;
             }
             if (_showCities) {
-                ReadCitiesPackedString();
+                ReadCitiesGeoData();
             } else {
                 _cities = null;
             }
@@ -293,7 +319,7 @@ namespace WPM {
             Redraw();
         }
 
-        void GetPointFromPackedString(string s, out float x, out float y) {
+        void GetPointFromPackedString (string s, out float x, out float y) {
             int d = 1;
             float v = 0;
             y = 0;
@@ -316,7 +342,7 @@ namespace WPM {
             x = v / MAP_PRECISION;
         }
 
-        void GetPointFromPackedString(string s, int start, int length, out float x, out float y) {
+        void GetPointFromPackedString (string s, int start, int length, out float x, out float y) {
             int d = 1;
             float v = 0;
             y = 0;
@@ -341,29 +367,26 @@ namespace WPM {
 
         #endregion
 
-
         #region Game loop events
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        static void DomainInit() {
-#if UNITY_2020_1_OR_NEWER
-            WorldMapGlobe[] maps = FindObjectsOfType<WorldMapGlobe>(true);
-#else
-            WorldMapGlobe[] maps = FindObjectsOfType<WorldMapGlobe>();
-#endif
+        static void DomainInit () {
+            WorldMapGlobe[] maps = Misc.FindObjectsOfType<WorldMapGlobe>(true);
             foreach (WorldMapGlobe map in maps) {
                 map.Dispose();
             }
         }
 
-        void Dispose() {
+        void Dispose () {
             OnDestroy();
         }
 
 
 
 
-        void OnEnable() {
+        void OnEnable () {
+
+            VRCheck.Init();
 
 #if UNITY_EDITOR
             // skip double initialization when entering playmode
@@ -371,28 +394,22 @@ namespace WPM {
 #endif
 
 #if UNITY_EDITOR
-#if UNITY_2018_3_OR_NEWER
             PrefabInstanceStatus prefabInstanceStatus = PrefabUtility.GetPrefabInstanceStatus(gameObject);
-            if (prefabInstanceStatus != PrefabInstanceStatus.NotAPrefab && prefabInstanceStatus != PrefabInstanceStatus.Disconnected) {
+            if (prefabInstanceStatus != PrefabInstanceStatus.NotAPrefab) {
                 EditorApplication.delayCall += () => {
+                    if (this == null || gameObject == null) return;
                     PrefabUtility.UnpackPrefabInstance(gameObject.transform.root.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
                     OnEnableDelayed();
                     RestyleEarth();
                 };
                 return;
             }
-#else
-            UnityEditor.PrefabType prefabType = UnityEditor.PrefabUtility.GetPrefabType(gameObject);
-            if (prefabType != UnityEditor.PrefabType.None && prefabType != UnityEditor.PrefabType.DisconnectedPrefabInstance && prefabType != UnityEditor.PrefabType.DisconnectedModelPrefabInstance) {
-                UnityEditor.PrefabUtility.DisconnectPrefabInstance(gameObject);
-            }
-#endif
 #endif
             radius = transform.lossyScale.y * 0.5f;
             OnEnableDelayed();
         }
 
-        void OnEnableDelayed() {
+        void OnEnableDelayed () {
 #if TRACE_CTL
 			Debug.Log ("CTL " + DateTime.Now + ": enable wpm");
 #endif
@@ -402,12 +419,13 @@ namespace WPM {
 #endif
 
             if (input == null) {
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+                input = new NewInputSystem();
+#else
                 input = new DefaultInputSystem();
+#endif
             }
-
-            if (sb == null) {
-                sb = new StringBuilder(100);
-            }
+            input.Init();
 
             if ((int)_earthStyle == 20) {   // migration to new property
                 _earthStyle = EARTH_STYLE.Alternate1;
@@ -496,11 +514,11 @@ namespace WPM {
             }
         }
 
-        void Start() {
+        void Start () {
             RegisterVRPointers();
         }
 
-        void RegisterVRPointers() {
+        void RegisterVRPointers () {
             if (Time.time - lastTimeCheckVRPointers < 1f)
                 return;
             lastTimeCheckVRPointers = Time.time;
@@ -535,7 +553,7 @@ namespace WPM {
 #endif
         }
 
-        void OnDestroy() {
+        void OnDestroy () {
 #if TRACE_CTL
 			Debug.Log ("CTL " + DateTime.Now + ": destroy wpm");
 #endif
@@ -551,16 +569,16 @@ namespace WPM {
             _countries = null;
         }
 
-        void Reset() {
+        void Reset () {
 #if TRACE_CTL
 			Debug.Log ("CTL " + DateTime.Now + ": reset");
 #endif
             Redraw();
         }
 
-        void Update() {
+        void Update () {
 
-            radius = transform.lossyScale.y * 0.5f;
+            radius = transform.lossyScale.x * 0.5f;
 
             CheckOverlay();
 
@@ -629,7 +647,7 @@ namespace WPM {
         }
 
 
-        void CheckMouseOver() {
+        void CheckMouseOver () {
             // Check if it's really outside of sphere
             _mouseEnterGlobeThisFrame = false;
             if (GetGlobeIntersection(out sphereCurrentHitPos)) {
@@ -641,8 +659,10 @@ namespace WPM {
                 if (_mouseIsOver) {
                     if (!leftMouseButtonPressed && !rightMouseButtonPressed) {
                         mouseStartedDragging = false;
-                        HideContinentHighlight();
-                        HideCountryRegionHighlight();
+                        if (_enableCountryHighlight) {
+                            HideContinentHighlight();
+                            HideCountryRegionHighlight();
+                        }
                         HideHighlightedCell();
                     }
                 }
@@ -650,16 +670,19 @@ namespace WPM {
             }
         }
 
-        void CheckEventsOverMap() {
+        void CheckEventsOverMap () {
             // Verify if mouse enter a country boundary - we only check if mouse is inside the sphere of world
             if (mouseIsOver || _VREnabled) {
+#if !UNITY_WEBGL
                 if (Application.isMobilePlatform || TouchScreenKeyboard.isSupported) {
                     if (_VREnabled || leftMouseButtonClick || rightMouseButtonClick) {
                         CheckMousePos();
                     } else if (leftMouseButtonPressed) {
                         UpdateCursorLocation();
                     }
-                } else {
+                } else
+#endif
+                {
                     CheckMousePos();
                 }
 
@@ -673,13 +696,13 @@ namespace WPM {
                     _countryRegionLastClicked = _countryRegionHighlightedIndex;
                     if (_countryLastClicked >= 0) {
                         if (isClick && !fullClick && OnCountryPointerDown != null) {
-                            OnCountryPointerDown(_countryHighlightedIndex, _countryRegionHighlightedIndex, buttonIndex);
+                            OnCountryPointerDown(_countryLastClicked, _countryRegionLastClicked, buttonIndex);
                         } else if (isRelease) {
                             if (OnCountryPointerUp != null) {
-                                OnCountryPointerUp(_countryHighlightedIndex, _countryRegionHighlightedIndex, buttonIndex);
+                                OnCountryPointerUp(_countryLastClicked, _countryRegionLastClicked, buttonIndex);
                             }
                             if (fullClick && OnCountryClick != null) {
-                                OnCountryClick(_countryHighlightedIndex, _countryRegionHighlightedIndex, buttonIndex);
+                                OnCountryClick(_countryLastClicked, _countryRegionLastClicked, buttonIndex);
                             }
                         }
                     }
@@ -747,8 +770,21 @@ namespace WPM {
             simulatedMouseButtonRelease = -1;
         }
 
-        private readonly HashSet<int> currentIgnoredFingerIDs = new HashSet<int>();
-        void CheckPointerOverUI() {
+        readonly List<RaycastResult> raycastAllResults = new List<RaycastResult>();
+        private bool RaycastWithMask () {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = input.mousePosition;
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, raycastAllResults);
+            int hitCount = raycastAllResults.Count;
+            for (int k = 0; k < hitCount; k++) {
+                var hit = raycastAllResults[k];
+                if ((_blockingMask & (1 << hit.gameObject.layer)) != 0) return true;
+            }
+            return false;
+        }
+
+        readonly HashSet<int> currentIgnoredFingerIDs = new HashSet<int>();
+        void CheckPointerOverUI () {
 
             // Check whether the points is on an UI element, then cancels
             if (_respectOtherUI) {
@@ -762,31 +798,36 @@ namespace WPM {
 					return;
 				}
 #endif
-                if (UnityEngine.EventSystems.EventSystem.current != null) {
-                    if (input.touchSupported && input.touchCount > 0) {
-                        for (int i = 0; i < input.touchCount; i++) {
-                            Touch currTouch = input.GetTouch(i);
-                            if (currTouch.phase == TouchPhase.Began && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(currTouch.fingerId)) {
-                                mouseIsOverUIElement = true;
-                                currentIgnoredFingerIDs.Add(currTouch.fingerId);
-                            } else {
-                                mouseIsOverUIElement = currentIgnoredFingerIDs.Contains(currTouch.fingerId);
-                                if (currTouch.phase == TouchPhase.Ended || currTouch.phase == TouchPhase.Canceled) {
-                                    currentIgnoredFingerIDs.Remove(currTouch.fingerId);
+                if (EventSystem.current != null) {
+                    if (_blockingMask > 0) {
+                        mouseIsOverUIElement = RaycastWithMask();
+                        return;
+                    } else {
+                        if (input.touchSupported && input.touchCount > 0) {
+                            for (int i = 0; i < input.touchCount; i++) {
+                                Touch currTouch = input.GetTouch(i);
+                                if (currTouch.phase == TouchPhase.Began && EventSystem.current.IsPointerOverGameObject(currTouch.fingerId)) {
+                                    mouseIsOverUIElement = true;
+                                    currentIgnoredFingerIDs.Add(currTouch.fingerId);
+                                } else {
+                                    mouseIsOverUIElement = currentIgnoredFingerIDs.Contains(currTouch.fingerId);
+                                    if (currTouch.phase == TouchPhase.Ended || currTouch.phase == TouchPhase.Canceled) {
+                                        currentIgnoredFingerIDs.Remove(currTouch.fingerId);
+                                    }
                                 }
                             }
+                            return;
+                        } else if (EventSystem.current.IsPointerOverGameObject(-1)) {
+                            mouseIsOverUIElement = true;
+                            return;
                         }
-                        return;
-                    } else if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1)) {
-                        mouseIsOverUIElement = true;
-                        return;
                     }
                 }
             }
             mouseIsOverUIElement = false;
         }
 
-        void SyncTimeOfDay() {
+        void SyncTimeOfDay () {
             if (_sun == null) return;
             if (_syncTimeOfDay) {
                 SetTimeOfDay(DateTime.Now);
@@ -794,7 +835,7 @@ namespace WPM {
             _earthScenicLightDirection = -_sun.forward;
         }
 
-        void GetButtonState() {
+        void GetButtonState () {
 
             // Check mouse buttons state
 
@@ -884,7 +925,7 @@ namespace WPM {
         }
 
 
-        void PerformAutoRotation() {
+        void PerformAutoRotation () {
             if (!Application.isPlaying) return;
 
             // Check if navigateTo... has been called and in this case rotate the globe until the country is centered
@@ -907,7 +948,8 @@ namespace WPM {
         }
 
 
-        void LateUpdate() {
+        void LateUpdate () {
+
             // Check mapper cam
             if (requestMapperCamShot) {
                 if (mapperCam == null || (overlayRT != null && !overlayRT.IsCreated())) {
@@ -968,13 +1010,12 @@ namespace WPM {
 
         #endregion
 
-
         #region Drawing stuff
 
         /// <summary>
         /// Clears and Repaints the Globe's features (frontiers, cities, provinces, grid, ...)
         /// </summary>
-        public void Redraw(bool rebuildFrontiers = false) {
+        public void Redraw (bool rebuildFrontiers = false) {
             if (!gameObject.activeInHierarchy)
                 return;
 
@@ -1019,7 +1060,7 @@ namespace WPM {
 
         }
 
-        void InitSurfacesCache() {
+        void InitSurfacesCache () {
             if (surfaces != null) {
                 List<GameObject> cached = new List<GameObject>(surfaces.Values);
                 int cachedCount = cached.Count;
@@ -1036,7 +1077,7 @@ namespace WPM {
             DestroySurfacesLayer();
         }
 
-        void CreateSurfacesLayer() {
+        void CreateSurfacesLayer () {
             Transform t = transform.Find("Surfaces");
             if (t != null) {
                 DestroyImmediate(t.gameObject);
@@ -1052,18 +1093,18 @@ namespace WPM {
             _surfacesLayer.transform.localScale = _earthInvertedMode ? Misc.Vector3one * 0.995f : Misc.Vector3one;
         }
 
-        void DestroySurfacesLayer() {
+        void DestroySurfacesLayer () {
             if (_surfacesLayer != null) {
                 DestroyImmediate(_surfacesLayer);
             }
         }
 
-        void DestroyMaterialCaches() {
+        void DestroyMaterialCaches () {
             DestroyMaterialDict(markerMatOtherCache);
             DestroyMaterialDict(markerMatLinesCache);
         }
 
-        void DestroyMaterialDict(Dictionary<Color, Material> dict) {
+        void DestroyMaterialDict (Dictionary<Color, Material> dict) {
             if (dict == null) return;
             foreach (Material mat in dict.Values) {
                 if (mat != null) DestroyImmediate(mat);
@@ -1072,9 +1113,8 @@ namespace WPM {
         }
 
 
-        Material GetColoredMarkerOtherMaterial(Color color) {
-            Material mat;
-            if (markerMatOtherCache.TryGetValue(color, out mat)) {
+        Material GetColoredMarkerOtherMaterial (Color color) {
+            if (markerMatOtherCache.TryGetValue(color, out Material mat) && mat != null) {
                 return mat;
             } else {
                 Material customMat;
@@ -1086,9 +1126,8 @@ namespace WPM {
             }
         }
 
-        Material GetColoredMarkerLineMaterial(Color color) {
-            Material mat;
-            if (markerMatLinesCache.TryGetValue(color, out mat)) {
+        Material GetColoredMarkerLineMaterial (Color color) {
+            if (markerMatLinesCache.TryGetValue(color, out Material mat) && mat != null) {
                 return mat;
             } else {
                 Material customMat;
@@ -1100,7 +1139,7 @@ namespace WPM {
             }
         }
 
-        void ApplyMaterialToSurface(GameObject obj, Material sharedMaterial) {
+        void ApplyMaterialToSurface (GameObject obj, Material sharedMaterial) {
             if (obj != null) {
                 Renderer[] rr = obj.GetComponentsInChildren<Renderer>(true);
                 for (int k = 0; k < rr.Length; k++) {
@@ -1112,7 +1151,7 @@ namespace WPM {
             }
         }
 
-        void ToggleGlobalVisibility(bool visible) {
+        void ToggleGlobalVisibility (bool visible) {
             Renderer[] rr = transform.GetComponentsInChildren<MeshRenderer>();
             for (int k = 0; k < rr.Length; k++) {
                 rr[k].enabled = visible;
@@ -1132,7 +1171,7 @@ namespace WPM {
 
         #region Internal functions
 
-        float ApplyDragThreshold(float value, float threshold) {
+        float ApplyDragThreshold (float value, float threshold) {
             if (threshold > 0) {
                 if (value < 0) {
                     value += threshold;
@@ -1150,7 +1189,7 @@ namespace WPM {
         /// <summary>
         /// Returns true if drag is detected based on displacement threshold
         /// </summary>
-        bool CheckDragThreshold(Vector3 v1, Vector3 v2, float threshold) {
+        bool CheckDragThreshold (Vector3 v1, Vector3 v2, float threshold) {
             if (threshold <= 0f)
                 return true;
 
@@ -1165,7 +1204,7 @@ namespace WPM {
             return false;
         }
 
-        float LerpCameraDistance(float t) {
+        float LerpCameraDistance (float t) {
             float distance = Mathf.Lerp(flyToCameraDistanceStart, flyToCameraDistanceEnd, t);
             if (flyToBounceIntensity > 0) {
                 distance *= 1f + Mathf.Sin(t * Mathf.PI) * flyToBounceIntensity;
@@ -1174,8 +1213,7 @@ namespace WPM {
         }
 
 
-        Quaternion GetCameraStraightLookRotation() {
-            Camera cam = mainCamera;
+        Quaternion GetCameraStraightLookRotation () {
             Vector3 camVec = transform.position - pivotTransform.position;
             if (Mathf.Abs(Vector3.Dot(transform.up, camVec.normalized)) > 0.96f) {   // avoid going crazy around poles
                 return pivotTransform.rotation;
@@ -1191,21 +1229,22 @@ namespace WPM {
             return q;
         }
 
-        float GetFrustumDistance(Camera cam) {
+        float GetFrustumDistance (Camera cam) {
             if (cam == null) return 1;
-            // Gets the max distance from the map
+            // Gets the max distance from the map considering the perspective projection
             float fv = cam.fieldOfView;
-            float radAngle = fv * Mathf.Deg2Rad;
-            float sphereY = radius * Mathf.Sin(radAngle);
-            float sphereX = radius * Mathf.Cos(radAngle);
-            float frustumDistance = sphereY / Mathf.Tan(radAngle * 0.5f) + sphereX;
+            float radAngle = fv * Mathf.Deg2Rad * 0.5f;
+            float cang = Mathf.PI * 0.5f - radAngle;
+            float sphereY = radius * Mathf.Sin(cang);
+            float sphereX = radius * Mathf.Cos(cang);
+            float frustumDistance = sphereY / Mathf.Tan(radAngle) + sphereX;
             return frustumDistance;
         }
 
         /// <summary>
         /// Returns optimum distance between camera and a region maxWidth
         /// </summary>
-        float GetFrustumZoomLevel(float width, float height) {
+        float GetFrustumZoomLevel (float width, float height) {
             Camera cam = mainCamera;
             if (cam == null)
                 return 1;
@@ -1213,15 +1252,16 @@ namespace WPM {
                 return 1;
 
             float fv = cam.fieldOfView;
-            float radAngle = fv * Mathf.Deg2Rad;
+            float radAngle = fv * Mathf.Deg2Rad * 0.5f;
             float aspect = cam.aspect;
-            float frustumDistanceH = height * 0.5f / Mathf.Tan(radAngle * 0.5f);
-            float frustumDistanceW = (width / aspect) * 0.5f / Mathf.Tan(radAngle * 0.5f);
+            float frustumDistanceH = height * 0.5f / Mathf.Tan(radAngle);
+            float frustumDistanceW = (width / aspect) * 0.5f / Mathf.Tan(radAngle);
             float frustumDistance = radius + Mathf.Max(frustumDistanceH, frustumDistanceW);
 
-            float sphereY = radius * Mathf.Sin(radAngle);
-            float sphereX = radius * Mathf.Cos(radAngle);
-            float frustumDistanceSphere = sphereY / Mathf.Tan(radAngle * 0.5f) + sphereX;
+            float cang = Mathf.PI * 0.5f - radAngle;
+            float sphereY = radius * Mathf.Sin(cang);
+            float sphereX = radius * Mathf.Cos(cang);
+            float frustumDistanceSphere = sphereY / Mathf.Tan(radAngle) + sphereX;
             float minRadius = GetCameraMinDistance(cam);
             float zoomLevel = (frustumDistance - minRadius) / (frustumDistanceSphere - minRadius);
 
@@ -1229,7 +1269,7 @@ namespace WPM {
 
         }
 
-        public virtual bool IsPointerOnScreenEdges() {
+        public virtual bool IsPointerOnScreenEdges () {
             float edgeLeft = Screen.width * _dragOnScreenEdgesMarginPercentage;
             float edgeRight = Screen.width * (1f - _dragOnScreenEdgesMarginPercentage);
             float edgeBottom = Screen.height * _dragOnScreenEdgesMarginPercentage;
@@ -1239,7 +1279,7 @@ namespace WPM {
             return (mousePos.x < edgeLeft || mousePos.x > edgeRight || mousePos.y < edgeBottom || mousePos.y > edgeTop);
         }
 
-        protected virtual void CheckUserInteractionNormalMode() {
+        protected virtual void CheckUserInteractionNormalMode () {
 
             Camera cam = mainCamera;
 
@@ -1277,13 +1317,14 @@ namespace WPM {
 #endif
 
                         mouseDragStartCursorLocation = _cursorLocation;
-                        mouseStartedDragging = true;
+                        mouseStartedDragging = _rightButtonDragBehaviour != DRAG_BEHAVIOUR.Drag || (_rightButtonDragBehaviour == DRAG_BEHAVIOUR.Drag && rightMouseButtonClick);
                         mouseStartedDraggingTime = Time.time;
                         hasDragged = false;
                         dragDampingStart = 0;
                         gestureAborted = false;
-                    } else if (!lockPan && mouseStartedDragging && (leftMouseButtonPressed || touchPadTouchStays) && input.touchCount < 2) {
+                    } else if (!lockPan && mouseStartedDragging && (leftMouseButtonPressed || (_rightButtonDragBehaviour == DRAG_BEHAVIOUR.Drag && rightMouseButtonPressed) || touchPadTouchStays) && input.touchCount < 2) {
                         if (_dragConstantSpeed) {
+                            dragAngle = 0;
                             if (_mouseIsOver) {
                                 if (_rotationAxisAllowed == ROTATION_AXIS_ALLOWED.X_AXIS_ONLY) {
                                     mouseDragStartCursorLocation.y = 0;
@@ -1296,17 +1337,19 @@ namespace WPM {
                                     if (_mouseEnterGlobeThisFrame) {
                                         mouseDragStartCursorLocation = _cursorLocation;
                                     }
-                                    dragAngle = FastVector.AngleBetweenNormalizedVectors(mouseDragStartCursorLocation, _cursorLocation);
-                                    if (dragAngle != 0 && _mouseIsOver && input.mousePosition != mouseDragStart) {
-                                        hasDragged = true;
-                                        if (_navigationMode == NAVIGATION_MODE.EARTH_ROTATES) {
-                                            dragAxis = Vector3.Cross(mouseDragStartCursorLocation, _cursorLocation);
-                                            transform.Rotate(dragAxis, dragAngle);
-                                        } else {
-                                            dragAxis = Vector3.Cross(transform.TransformVector(mouseDragStartCursorLocation), transform.TransformVector(_cursorLocation));
-                                            RotateAround(pivotTransform, transform.position, dragAxis, -dragAngle);
+                                    if (input.mousePosition != mouseDragStart) {
+                                        dragAngle = FastVector.AngleBetweenNormalizedVectors(mouseDragStartCursorLocation, _cursorLocation);
+                                        if (dragAngle != 0) {
+                                            hasDragged = true;
+                                            if (_navigationMode == NAVIGATION_MODE.EARTH_ROTATES) {
+                                                dragAxis = Vector3.Cross(mouseDragStartCursorLocation, _cursorLocation);
+                                                transform.Rotate(dragAxis, dragAngle);
+                                            } else {
+                                                dragAxis = Vector3.Cross(transform.TransformVector(mouseDragStartCursorLocation), transform.TransformVector(_cursorLocation));
+                                                RotateAround(pivotTransform, transform.position, dragAxis, -dragAngle);
+                                            }
+                                            mouseDragStart = input.mousePosition;
                                         }
-                                        mouseDragStart = input.mousePosition;
                                     }
                                 }
                             }
@@ -1416,7 +1459,7 @@ namespace WPM {
 
             // Check rotation keys
             if (_allowUserKeys && _allowUserRotation) {
-                CheckRotationKeys();
+                CheckRotationKeys(cam);
             }
 
             // Perform drag damping
@@ -1446,7 +1489,7 @@ namespace WPM {
                 } else {
                     // mouse wheel support
                     if (_mouseIsOver || wheelAccel != 0) {
-                        float wheel = input.GetAxis("Mouse ScrollWheel");
+                        float wheel = input.GetMouseScrollWheel();
 #if VR_OCULUS
                         if (wheel == 0) {
                             if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)) {
@@ -1513,7 +1556,7 @@ namespace WPM {
             AdjustsHexagonalGridMaterial();
         }
 
-        protected virtual void CheckUserInteractionInvertedMode() {
+        protected virtual void CheckUserInteractionInvertedMode () {
             Camera cam = mainCamera;
 
             // if mouse/finger is over map, implement drag and rotation of the world
@@ -1534,6 +1577,7 @@ namespace WPM {
                         hasDragged = false;
                     } else if (mouseStartedDragging && leftMouseButtonPressed && input.touchCount < 2) {
                         if (_dragConstantSpeed) {
+                            dragAngle = 0;
                             if (_rotationAxisAllowed == ROTATION_AXIS_ALLOWED.X_AXIS_ONLY) {
                                 mouseDragStartCursorLocation.y = 0;
                                 _cursorLocation.y = 0;
@@ -1653,7 +1697,7 @@ namespace WPM {
             }
 
             if (dragDampingStart > 0) {
-                float t = 1f - (Time.time - dragDampingStart) / dragDampingDuration;
+                float t = 1f - (Time.time - dragDampingStart) / _dragDampingDuration;
                 if (t >= 0 && t <= 1f) {
                     if (_navigationMode == NAVIGATION_MODE.EARTH_ROTATES) {
                         transform.Rotate(Misc.Vector3up, dragDirection.x * t, Space.World);
@@ -1706,7 +1750,7 @@ namespace WPM {
                 float impulse = 0;
 
                 if (mouseIsOver || wheelAccel != 0) {
-                    float wheel = input.GetAxis("Mouse ScrollWheel");
+                    float wheel = input.GetMouseScrollWheel();
                     impulse = wheel * (_invertZoomDirection ? -1 : 1);
                 }
 
@@ -1755,7 +1799,7 @@ namespace WPM {
             }
         }
 
-        void UpdateSurfaceCount() {
+        void UpdateSurfaceCount () {
             if (_surfacesLayer != null)
                 _surfacesCount = (_surfacesLayer.GetComponentsInChildren<Transform>().Length - 1) / 2;
             else
@@ -1769,7 +1813,7 @@ namespace WPM {
 
         public int layerMask { get { return 1 << mapUnityLayer; } }
 
-        bool GetRay(out Ray ray) {
+        bool GetRay (out Ray ray) {
 
             if (OnRaycast != null) {
                 ray = OnRaycast();
@@ -1825,7 +1869,7 @@ namespace WPM {
         }
 
 
-        public bool GetGlobeIntersection(Ray ray, out Vector3 hitPos) {
+        public bool GetGlobeIntersection (Ray ray, out Vector3 hitPos) {
 
             hitPos = Misc.Vector3zero;
 
@@ -1846,7 +1890,7 @@ namespace WPM {
             return true;
         }
 
-        public bool GetGlobeIntersection(out Vector3 hitPos) {
+        public bool GetGlobeIntersection (out Vector3 hitPos) {
 
             Ray ray;
             if (!GetRay(out ray)) {
@@ -1862,7 +1906,7 @@ namespace WPM {
         }
 
 
-        public bool GetGlobeIntersectionCameraDirection(Camera cam, out Vector3 hitPos) {
+        public bool GetGlobeIntersectionCameraDirection (Camera cam, out Vector3 hitPos) {
 
             Transform t = cam.transform;
             Ray ray = new Ray(t.position, t.forward);
@@ -1875,7 +1919,7 @@ namespace WPM {
         }
 
 
-        bool UpdateCursorLocation() {
+        bool UpdateCursorLocation () {
 
             // Keep cursor while rotating/orbiting
             if (rightMouseButtonPressed) return false;
@@ -1896,15 +1940,14 @@ namespace WPM {
         }
 
 
-        void CheckMousePos() {
+        void CheckMousePos () {
 
             if (UpdateCursorLocation()) {
 
                 if (leftMouseButtonPressed && mouseStartedDragging && !_allowHighlightWhileDragging) return;
 
                 // verify if hitPos is inside any country polygon
-                int c, cr;
-                if (GetCountryUnderMouse(cursorLocation, out c, out cr)) {
+                if (GetCountryUnderMouse(cursorLocation, out int c, out int cr)) {
                     string continent = _countries[c].continent;
                     if (!string.Equals(continent, _continentHighlighted)) {
                         if (OnContinentEnter != null) {
@@ -1916,12 +1959,14 @@ namespace WPM {
                         if (OnCountryBeforeEnter != null) {
                             OnCountryBeforeEnter(c, cr, ref ignoreCountryByEvent);
                         }
-                        if (!ignoreCountryByEvent) {
-                            HighlightCountryRegion(c, cr, false, _showOutline, _outlineColor);
+                        HideCountryRegionHighlight();
 
+                        if (!ignoreCountryByEvent) {
                             // Raise enter event
-                            if (OnCountryEnter != null)
+                            if (OnCountryEnter != null) {
                                 OnCountryEnter(c, cr);
+                            }
+                            HighlightCountryRegion(c, cr, false, _showOutline, _outlineColor);
                         }
                     }
                     if (!ignoreCountryByEvent) {
@@ -1934,14 +1979,14 @@ namespace WPM {
                                 // and now, we check if the mouse if inside a province, so highlight it
                                 int p, pr;
                                 if (GetProvinceUnderMouse(c, cursorLocation, out p, out pr)) {
-                                    bool ignoreByEvent = false;
-                                    if (OnProvinceBeforeEnter != null) {
-                                        OnProvinceBeforeEnter(p, pr, ref ignoreByEvent);
-                                    }
                                     if (p != _provinceHighlightedIndex || (p == _provinceHighlightedIndex && pr != _provinceRegionHighlightedIndex)) {
+                                        bool ignoreProvinceByEvent = false;
+                                        if (OnProvinceBeforeEnter != null) {
+                                            OnProvinceBeforeEnter(p, pr, ref ignoreProvinceByEvent);
+                                        }
                                         HideProvinceRegionHighlight();
 
-                                        if (!ignoreByEvent) {
+                                        if (!ignoreProvinceByEvent) {
                                             // Raise enter event
                                             if (OnProvinceEnter != null) {
                                                 OnProvinceEnter(p, pr);
@@ -1956,8 +2001,7 @@ namespace WPM {
                         }
                         // if show cities is enabled, then check if mouse is over any city
                         if (_showCities) {
-                            int ci;
-                            if (GetCityUnderMouse(c, cursorLocation, out ci)) {
+                            if (GetCityUnderMouse(c, cursorLocation, out int ci)) {
                                 if (ci != _cityHighlightedIndex) {
                                     HideCityHighlight();
 
@@ -1974,16 +2018,17 @@ namespace WPM {
                     }
                 }
             }
+
+            // Raise exit event
             HideCountryRegionHighlight();
             HideContinentHighlight();
         }
 
         #endregion
 
-
         #region Geometric functions
 
-        float SignedAngleBetween(Vector3 a, Vector3 b, Vector3 n) {
+        float SignedAngleBetween (Vector3 a, Vector3 b, Vector3 n) {
             // angle in [0,180]
             float angle = FastVector.Angle(a, b);
             float sign = Mathf.Sign(Vector3.Dot(n, Vector3.Cross(a, b)));
@@ -1994,7 +2039,7 @@ namespace WPM {
             return signed_angle;
         }
 
-        Quaternion GetQuaternion(Vector3 point) {
+        Quaternion GetQuaternion (Vector3 point) {
             Camera cam = mainCamera;
             Quaternion oldRotation = transform.localRotation;
             Quaternion q;
@@ -2028,7 +2073,7 @@ namespace WPM {
         /// <summary>
         /// Better than Transform.RotateAround
         /// </summary>
-        void RotateAround(Transform transform, Vector3 center, Vector3 axis, float angle) {
+        void RotateAround (Transform transform, Vector3 center, Vector3 axis, float angle) {
             Vector3 pos = transform.position;
             Quaternion rot = Quaternion.AngleAxis(angle, axis); // get the desired rotation
             Vector3 dir = pos - center;                         // find current direction relative to center
@@ -2042,7 +2087,7 @@ namespace WPM {
         /// Internal usage. Checks quality of polygon points. Useful before using polygon clipping operations.
         /// Return true if there're changes.
         /// </summary>
-        public bool RegionSanitize(Region region) {
+        public bool RegionSanitize (Region region) {
             if (region == null || region.latlon == null) return false;
             bool changes = false;
             if (tmpPoints == null) {
@@ -2082,7 +2127,7 @@ namespace WPM {
         /// </summary>
         /// <param name="regions">Regions.</param>
         /// <param name="forceSanitize">If set to <c>true</c> it will perform the check regardless of the internal sanitized flag.</param>
-        public void RegionSanitize(List<Region> regions, bool forceSanitize) {
+        public void RegionSanitize (List<Region> regions, bool forceSanitize) {
             if (regions == null) return;
             int regionCount = regions.Count;
             for (int k = 0; k < regionCount; k++) {
@@ -2105,7 +2150,7 @@ namespace WPM {
         /// neighbourRegion is not modified. Region points are the ones that can be modified to match neighbour border.
         /// </summary>
         /// <returns><c>true</c>, if region was changed. <c>false</c> otherwise.</returns>
-        bool RegionMagnet(Region region, Region neighbourRegion) {
+        bool RegionMagnet (Region region, Region neighbourRegion) {
 
             const float tolerance = 1e-6f;
             int pointCount = region.latlon.Length;

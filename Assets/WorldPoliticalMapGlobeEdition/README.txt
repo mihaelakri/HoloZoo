@@ -34,7 +34,76 @@ Please read the documentation PDF and browse/play with the demo scene and sample
 Version history
 ---------------
 
-Current version
+Vession 19.2.1
+- Added a warning to the inspector about compatibility issue with geometry shaders and single pass stereo
+- [Fix] Fixed texture rendering in deferred rendering path in URP
+
+Version 19.2
+- Added shadow support in URP
+
+Version 19.1
+- Added "Highlight Continents" demo scene
+
+Version 19.0
+- Geodata is now provided in binary format for faster loading
+- Added "Geodata Format" option to inspector
+
+Version 18.6
+- Updated server connection data for Xweather (formerly Aeris Weather)
+- Tile system: added Tile Fade Duration option
+
+Version 18.5
+- Added "Use Secure Connection" option to Tile System section
+
+Version 18.4
+- Maximum grid cell count increased to 400
+- Added "Use Background Thread" option for grid generation
+
+Version 18.3
+- Added "centroid" and "centroidSpherical" properties to Region class (better choice than "localPosition" to get an internal center of any region)
+- Added "Drag" option to Right Drag Behaviour setting (let you pan/scroll using right mouse button instead of left mouse button)
+- Improved VR state detection
+- [Fix] Fixed an issue when creating a new country using Map Editor with an existing name
+
+Version 18.2.2
+- Removed standard font dependenciy when TextMesh Pro is used
+- [Fix] Fixed WebGL hover detection issue
+- [Fix] Fixes for Unity 2023.2
+
+Version 18.2
+- New demo scene 17: Highlight by Scripting
+- [Fix] Fixed compiler error when VR module is not present
+- [Fix] Fixed zoom in/out issue when changing main camera property from scripting
+
+Version 18.1
+- Online tile system: ability to store tiles in file system and streaming assets folder
+
+Version 18.0
+- Upgraded to Unity 2021.3
+- [Fix] GetZoomLevel now supports large field of view greater
+
+Version 17.8
+- Improved demo scene 13 with transparent clipping shader examples for URP
+- Added "SyncGlobalPosition" script: can be used to specify which globe should be used to perform shader clipping calculations (when there're more than one globe in the scene)
+
+Version 17.7
+- Ability to replace city icons with custom prefabs
+- [Fix] Fixed navigation issue with "Constant Drag Speed" and "Allow User Keys" options enabled
+
+Version 17.6
+- Added support for the new input system
+- API: added SetTileServer and SetTileServerCurtomUrl methods which accept a "RefreshTiles" parameter to control the refresh behaviour
+- API: added AddTextPro alternative which uses TextMesh Pro instead of legacy Text Mesh component
+
+Version 17.5
+- Added "Blocking Mask" option under "Respect Other UI" to filter UI blocking elements
+
+Version 17.4
+- API: added "includeAllRegions" option to BlinkCountry method
+- A warning is now shown in the inspector if Depth Priming Mode is enabled in URP
+- [Fix] Added missing Norway and France ISO codes
+
+Version 17.3.2
   - CHANGE: API: click / mouseDown & mouseRelease events receive an extra parameter specifying the index of the mouse button used
   - API: added new events: OnContinentEnter, OnContinentExit, OnContinentPointerDown, OnContinentPointerUp, OnContinentClick
   - API: added new properties: continentHighlighted, continentLastClicked

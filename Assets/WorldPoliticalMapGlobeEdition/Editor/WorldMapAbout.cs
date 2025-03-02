@@ -20,7 +20,7 @@ namespace WPM {
 
 
         void OnEnable() {
-            _headerTexture = Resources.Load<Texture2D>("EditorHeader");
+            _headerTexture = Resources.Load<Texture2D>("GlobeEditorHeader");
 
             // load readme.txt
             readmeText = System.IO.File.ReadAllText(GetAssetPath() + "/README.txt");

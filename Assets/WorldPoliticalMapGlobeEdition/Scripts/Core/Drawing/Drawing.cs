@@ -115,6 +115,8 @@ namespace WPM {
 
 
 		public static TextMeshPro CreateTextPro(string text, GameObject parent, int layer, Vector2 center, TMP_FontAsset labelFont, Material fontMaterial, bool instantiateMaterial, Color textColor, bool addShadow, float shadowOffset, Color shadowColor) {
+			if (labelFont == null || fontMaterial == null) return null;
+
 			// create base text
 			GameObject textObj = new GameObject(text);
             if (parent != null) {
@@ -133,12 +135,16 @@ namespace WPM {
 			tmPro.text = text;
 			tmPro.alignment = TextAlignmentOptions.Center;
 			tmPro.color = textColor;
+#if UNITY_2023_1_OR_NEWER
+            tmPro.textWrappingMode = TextWrappingModes.NoWrap;
+#else
 			tmPro.enableWordWrapping = false;
+#endif
 
-			if (addShadow) {
-				fontMaterial.SetColor("_UnderlayColor", shadowColor);
-				fontMaterial.SetFloat("_UnderlayOffsetX", shadowOffset);
-				fontMaterial.SetFloat("_UnderlayOffsetY", -shadowOffset);
+            if (addShadow) {
+				fontMaterial.SetColor(ShaderParams.TextMeshProUnderlayColor, shadowColor);
+				fontMaterial.SetFloat(ShaderParams.TextMeshProUnderlayOffsetX, shadowOffset);
+				fontMaterial.SetFloat(ShaderParams.TextMeshProUnderlayOffsetY, -shadowOffset);
 				fontMaterial.EnableKeyword("UNDERLAY_ON");
 			} else {
 				fontMaterial.DisableKeyword("UNDERLAY_ON");

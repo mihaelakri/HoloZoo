@@ -76,19 +76,38 @@ namespace WPM {
         /// <summary>
         /// Loads and cache province data. This is automatically called when showProvinces is set to true.
         /// </summary>
-        void ReadProvincesPackedString() {
+        void ReadProvincesGeoData () {
             lastProvinceLookupCount = -1;
 
             string frontiersFileName = _geodataResourcesPath + "/provinces10";
-            TextAsset ta = Resources.Load<TextAsset>(frontiersFileName);
+            TextAsset ta = null;
+            if (_geodataFormat == GEODATA_FORMAT.BinaryFormat) {
+                // try to load in binary form first
+                ta = Resources.Load<TextAsset>(frontiersFileName + "_bin");
+                if (ta != null) {
+                    SetProvincesGeoDataBinary(ta.bytes);
+                } else {
+                    Debug.LogWarning("GeoData format is set to binary but provinces binary file can't be found or read.");
+                }
+            }
+
+            if (ta == null) {
+                // load legacy packed string format
+                ta = Resources.Load<TextAsset>(frontiersFileName);
+                if (ta != null) {
+                    SetProvincesGeoData(ta.text);
+                } else {
+                    Debug.LogWarning("Provinces packed string format file can't be read.");
+                }
+            }
+
             if (ta != null) {
-                SetProvinceGeoData(ta.text);
-                Resources.UnloadAsset(ta);
                 ReloadProvincesAttributes();
+                Resources.UnloadAsset(ta);
             }
         }
 
-        void ReloadProvincesAttributes() {
+        void ReloadProvincesAttributes () {
             TextAsset ta = Resources.Load<TextAsset>(_geodataResourcesPath + "/" + _provinceAttributeFile);
             if (ta == null)
                 return;
@@ -97,7 +116,7 @@ namespace WPM {
         }
 
 
-        void DestroyProvincesSurfaces() {
+        void DestroyProvincesSurfaces () {
             if (_provinces == null) return;
             for (int k = 0; k < _provinces.Length; k++) {
                 Province c = _provinces[k];
@@ -110,7 +129,7 @@ namespace WPM {
         /// Assigns the province geodata information. This method is called during startup when loading province file data. Can be called manually to restore the state of provinces obtained with GetProvincesGeoData
         /// </summary>
         /// <param name="s"></param>
-        public void SetProvinceGeoData(string s) {
+        public void SetProvincesGeoData (string s) {
 
             if (_countries == null) {
                 Init();
@@ -153,7 +172,109 @@ namespace WPM {
             }
         }
 
-        public void ReadProvincePackedString(Province province) {
+
+        public void SetProvincesGeoDataBinary (byte[] data) {
+            if (data == null || data.Length < 4) return;
+
+            if (_countries == null) {
+                Init();
+                if (_provinces != null)
+                    return;
+            }
+            DestroyProvincesSurfaces();
+
+            MemoryStream ms = new MemoryStream(data);
+            BinaryReader br = new BinaryReader(ms, Encoding.UTF8);
+
+            Vector2 min = Misc.Vector2one * 10;
+            Vector2 max = -min;
+            Vector2 latlonCenter = new Vector2();
+
+            uint provinceCount = br.ReadUInt32();
+            List<Province> newProvinces = new List<Province>((int)provinceCount);
+            List<Province>[] countryProvinces = new List<Province>[_countries.Length];
+
+            for (int k = 0; k < provinceCount; k++) {
+                string name = br.ReadString();
+                string countryName = br.ReadString();
+                int countryIndex = GetCountryIndex(countryName);
+
+                Province province = new Province(name, countryIndex);
+                province.regions = new List<Region>();
+
+                float maxVol = 0;
+                Vector2 minProvince = new Vector2(10, 10);
+                Vector2 maxProvince = -minProvince;
+
+                int regionsCount = br.ReadUInt16();
+                for (int r = 0; r < regionsCount; r++) {
+                    uint coorCount = br.ReadUInt32();
+                    min.x = min.y = 1000;
+                    max.x = max.y = -1000;
+                    Region provinceRegion = new Region(province, province.regions.Count);
+                    Vector2[] latlon = new Vector2[coorCount];
+                    for (int c = 0; c < coorCount; c++) {
+                        float x = br.ReadSingle();
+                        float y = br.ReadSingle();
+                        if (x < min.x)
+                            min.x = x;
+                        if (x > max.x)
+                            max.x = x;
+                        if (y < min.y)
+                            min.y = y;
+                        if (y > max.y)
+                            max.y = y;
+                        latlon[c].x = x;
+                        latlon[c].y = y;
+                    }
+                    provinceRegion.latlon = latlon;
+                    FastVector.Average(ref min, ref max, ref latlonCenter);
+                    provinceRegion.sanitized = true;
+                    provinceRegion.latlonCenter = latlonCenter;
+                    province.regions.Add(provinceRegion);
+
+                    // Calculate province bounding rect
+                    if (min.x < minProvince.x)
+                        minProvince.x = min.x;
+                    if (min.y < minProvince.y)
+                        minProvince.y = min.y;
+                    if (max.x > maxProvince.x)
+                        maxProvince.x = max.x;
+                    if (max.y > maxProvince.y)
+                        maxProvince.y = max.y;
+                    provinceRegion.latlonRect2D = new Rect(min.x, min.y, max.x - min.x, max.y - min.y);
+                    provinceRegion.rect2DArea = provinceRegion.latlonRect2D.width * provinceRegion.latlonRect2D.height;
+                    float vol = FastVector.SqrDistance(ref min, ref max);
+                    if (vol > maxVol) {
+                        maxVol = vol;
+                        province.mainRegionIndex = r;
+                        province.latlonCenter = provinceRegion.latlonCenter;
+                    }
+                }
+
+                province.regionsRect2D = new Rect(minProvince.x, minProvince.y, Math.Abs(maxProvince.x - minProvince.x), Mathf.Abs(maxProvince.y - minProvince.y));
+
+                newProvinces.Add(province);
+
+                if (countryIndex >= 0) {
+                    if (countryProvinces[countryIndex] == null) {
+                        countryProvinces[countryIndex] = new List<Province>(50);
+                    }
+                    countryProvinces[countryIndex].Add(province);
+                }
+            }
+
+            provinces = newProvinces.ToArray();
+            lastProvinceLookupCount = -1;
+            for (int k = 0; k < countries.Length; k++) {
+                if (countryProvinces[k] != null) {
+                    countries[k].provinces = countryProvinces[k].ToArray();
+                }
+            }            
+        }
+
+
+        public void ReadProvincePackedString (Province province) {
             province.regions = new List<Region>();
 
             float maxVol = float.MinValue;
@@ -172,8 +293,7 @@ namespace WPM {
                 Vector2[] latlon = new Vector2[coorCount];
                 int c = 0;
                 foreach (StringSpan coordsSpan in province.packedRegions.Split(';', regionSpan.start, regionSpan.length)) {
-                    float lat, lon;
-                    GetPointFromPackedString(province.packedRegions, coordsSpan.start, coordsSpan.length, out lat, out lon);
+                    GetPointFromPackedString(province.packedRegions, coordsSpan.start, coordsSpan.length, out float lat, out float lon);
                     if (lat < min.x)
                         min.x = lat;
                     if (lat > max.x)
@@ -219,7 +339,7 @@ namespace WPM {
         /// <summary>
         /// Used internally by the Map Editor. It will recalculate de boundaries and optimize frontiers based on new data of provinces array
         /// </summary>
-        public bool RefreshProvinceDefinition(int provinceIndex) {
+        public bool RefreshProvinceDefinition (int provinceIndex) {
             if (provinceIndex < 0 || provinceIndex >= provinces.Length)
                 return false;
             RefreshProvinceGeometry(provinceIndex);
@@ -230,7 +350,7 @@ namespace WPM {
         /// <summary>
         /// Used internally by the Map Editor. It will recalculate de boundaries and optimize frontiers based on new data of provinces array
         /// </summary>
-        public void RefreshProvinceGeometry(int provinceIndex) {
+        public void RefreshProvinceGeometry (int provinceIndex) {
             if (provinceIndex < 0 || provinceIndex >= provinces.Length)
                 return;
             lastProvinceLookupCount = -1;
@@ -296,14 +416,23 @@ namespace WPM {
         /// <summary>
         /// Returns the file name corresponding to the current province data file
         /// </summary>
-        public string GetProvincesGeoDataFileName() {
+        public string GetProvincesGeoDataFileName () {
             return "provinces10.txt";
         }
+
+
+        /// <summary>
+        /// Returns the file name corresponding to the current province data file
+        /// </summary>
+        public string GetProvinceGeoDataBinaryFileName () {
+            return "provinces10_bin.txt";
+        }
+
 
         /// <summary>
         /// Exports the geographic data in packed string format.
         /// </summary>
-        public string GetProvincesGeoData() {
+        public string GetProvincesGeoData () {
             if (provinces == null) return null;
             StringBuilder sb = new StringBuilder();
             for (int k = 0; k < provinces.Length; k++) {
@@ -340,16 +469,57 @@ namespace WPM {
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Exports the geographic data in binary format.
+        /// </summary>
+        public byte[] GetProvincesGeoDataBinary () {
+            if (provinces == null) return null;
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8);
+            int provincesCount = provinces.Length;
+            bw.Write((UInt32)provincesCount);
+            for (int k = 0; k < provincesCount; k++) {
+                Province province = provinces[k];
+                int countryIndex = province.countryIndex;
+                if (countryIndex < 0 || countryIndex >= countries.Length)
+                    continue;
+                bw.Write(province.name);
+                string countryName = countries[province.countryIndex].name;
+                bw.Write(countryName);
+                int regionsCount = province.regions.Count;
+                bw.Write((ushort)regionsCount);
+                for (int r = 0; r < regionsCount; r++) {
+                    Region region = province.regions[r];
+                    int pointsCount = region.latlon.Length;
+                    bw.Write((uint)pointsCount);
+                    for (int p = 0; p < pointsCount; p++) {
+                        bw.Write(region.latlon[p].x);
+                        bw.Write(region.latlon[p].y);
+                    }
+                }
+            }
+            bw.Flush();
+            return ms.ToArray();
+        }
+
+
         #endregion
 
         #region Drawing stuff
 
+        bool ValidProvinceIndex (int provinceIndex) {
+            return provinceIndex >= 0 && provinces != null && provinceIndex < _provinces.Length;
+        }
 
-        Material GetProvinceColoredTexturedMaterial(Color color, Texture2D texture) {
+        bool ValidProvinceRegionIndex (int provinceIndex, int regionIndex) {
+            return provinceIndex >= 0 && provinces != null && provinceIndex < _provinces.Length && regionIndex >= 0 && _provinces[provinceIndex].regions != null && regionIndex < _provinces[provinceIndex].regions.Count;
+        }
+
+        Material GetProvinceColoredTexturedMaterial (Color color, Texture2D texture) {
             return GetProvinceColoredTexturedMaterial(color, texture, true);
         }
 
-        Material GetProvinceColoredTexturedMaterial(Color color, Texture2D texture, bool autoChooseTransparentMaterial) {
+        Material GetProvinceColoredTexturedMaterial (Color color, Texture2D texture, bool autoChooseTransparentMaterial) {
             Material mat;
             if (texture == null && provinceColoredMatCache.TryGetValue(color, out mat)) {
                 return mat;
@@ -377,7 +547,7 @@ namespace WPM {
             }
         }
 
-        void UpdateProvincesMat() {
+        void UpdateProvincesMat () {
             if (provincesMatCurrent == null)
                 return;
             // Different alpha?
@@ -392,7 +562,7 @@ namespace WPM {
         /// <summary>
         /// Draws all countries provinces.
         /// </summary>
-        void DrawAllProvinceBorders(bool forceRefresh) {
+        void DrawAllProvinceBorders (bool forceRefresh) {
 
             if (!gameObject.activeInHierarchy)
                 return;
@@ -432,7 +602,7 @@ namespace WPM {
         /// <returns><c>true</c>, if provinces was drawn, <c>false</c> otherwise.</returns>
         /// <param name="countryIndex">Country index.</param>
         /// <param name="includeNeighbours">If set to <c>true</c> include neighbours.</param>
-        bool mDrawProvinces(int countryIndex, bool includeNeighbours, bool forceRefresh) {
+        bool mDrawProvinces (int countryIndex, bool includeNeighbours, bool forceRefresh) {
             if (!gameObject.activeInHierarchy || provinces == null) // asset not ready - return
                 return false;
 
@@ -483,7 +653,7 @@ namespace WPM {
         }
 
 
-        bool DrawProvinces(List<Country> targetCountries, bool refresh = true) {
+        bool DrawProvinces (List<Country> targetCountries, bool refresh = true) {
 
             if (provinceFrontiersPoints == null) {
                 provinceFrontiersPoints = new List<Vector3>(200000);
@@ -516,8 +686,7 @@ namespace WPM {
                             Vector3 p0 = region.spherePoints[i];
                             Vector3 p1 = region.spherePoints[i + 1];
                             Vector3 hc = p0 + p1;
-                            Region neighbour;
-                            if (provinceFrontiersCacheHit.TryGetValue(hc, out neighbour)) {
+                            if (provinceFrontiersCacheHit.TryGetValue(hc, out Region neighbour)) {
                                 if (neighbour != region) {
                                     if (!region.neighbours.Contains(neighbour)) {
                                         region.neighbours.Add(neighbour);
@@ -610,7 +779,7 @@ namespace WPM {
 
         #region Province functions
 
-        int ProvinceSizeComparer(Province p1, Province p2) {
+        int ProvinceSizeComparer (Province p1, Province p2) {
             if (p1 == null || p2 == null || p1.regions == null || p2.regions == null)
                 return 0;
             Region r1 = p1.regions[p1.mainRegionIndex];
@@ -620,12 +789,12 @@ namespace WPM {
 
 
 
-        bool GetProvinceUnderMouse(int countryIndex, Vector3 spherePoint, out int provinceIndex, out int regionIndex) {
+        bool GetProvinceUnderMouse (int countryIndex, Vector3 spherePoint, out int provinceIndex, out int regionIndex) {
             float startingDistance = 0;
             provinceIndex = regionIndex = -1;
             Country country = countries[countryIndex];
             if (country.provinces == null && _provinces == null) {
-                ReadProvincesPackedString();
+                ReadProvincesGeoData();
             }
             if (country.provinces == null)
                 return false;
@@ -678,11 +847,11 @@ namespace WPM {
             return false;
         }
 
-        int GetCacheIndexForProvinceRegion(int provinceIndex, int regionIndex) {
+        int GetCacheIndexForProvinceRegion (int provinceIndex, int regionIndex) {
             return 1000000 + provinceIndex * 1000 + regionIndex;
         }
 
-        public void HighlightProvinceRegion(int provinceIndex, int regionIndex, bool refreshGeometry) {
+        public void HighlightProvinceRegion (int provinceIndex, int regionIndex, bool refreshGeometry) {
             if (provinceRegionHighlightedObj != null) {
                 if (!refreshGeometry && _provinceHighlightedIndex == provinceIndex && _provinceRegionHighlightedIndex == regionIndex)
                     return;
@@ -707,7 +876,7 @@ namespace WPM {
                 doHighlight = CheckGlobeDistanceForHighlight(region, _provinceHighlightMaxScreenAreaSize);
             }
             if (doHighlight) {
-                Shader.SetGlobalVector(ShaderParams.ProvinceHighlightData, new Vector4(Time.timeSinceLevelLoad - 0.01f, _provinceHighlightFadeDuration + 0.001f, 0, 0));
+                Shader.SetGlobalVector(ShaderParams.ProvinceHighlightData, new Vector4(Time.timeSinceLevelLoad - 0.01f, _provinceHighlightFadeDuration + 0.001f, 1, 0));
                 if (existsInCache) {
                     provinceRegionHighlightedObj = surfaces[cacheIndex];
                     if (provinceRegionHighlightedObj != null) {
@@ -735,9 +904,11 @@ namespace WPM {
 
         }
 
-        void HideProvinceRegionHighlight() {
-            if (provinceCountryOutlineRef != null && _countryRegionHighlighted == null)
+        void HideProvinceRegionHighlight () {
+            if (provinceCountryOutlineRef != null && _countryRegionHighlighted == null) {
                 provinceCountryOutlineRef.SetActive(false);
+            }
+
             if (_provinceHighlightedIndex < 0)
                 return;
 
@@ -752,8 +923,9 @@ namespace WPM {
             hudMatProvince.mainTexture = null;
 
             // Raise exit event
-            if (OnProvinceExit != null)
+            if (OnProvinceExit != null) {
                 OnProvinceExit(_provinceHighlightedIndex, _provinceRegionHighlightedIndex);
+            }
 
             _provinceHighlighted = null;
             _provinceHighlightedIndex = -1;
@@ -761,7 +933,7 @@ namespace WPM {
             _provinceRegionHighlightedIndex = -1;
         }
 
-        void ProvinceSubstractProvinceEnclaves(int provinceIndex, Region region, Poly2Tri.Polygon poly) {
+        void ProvinceSubstractProvinceEnclaves (int provinceIndex, Region region, Poly2Tri.Polygon poly) {
             List<Region> negativeRegions = new List<Region>();
             for (int oc = 0; oc < _countries.Length; oc++) {
                 Country ocCountry = _countries[oc];
@@ -806,11 +978,11 @@ namespace WPM {
             }
         }
 
-        GameObject GenerateProvinceRegionSurface(int provinceIndex, int regionIndex, Material material, bool temporary) {
+        GameObject GenerateProvinceRegionSurface (int provinceIndex, int regionIndex, Material material, bool temporary) {
             return GenerateProvinceRegionSurface(provinceIndex, regionIndex, material, Vector2.one, Vector2.zero, 0, temporary);
         }
 
-        GameObject GenerateProvinceRegionSurface(int provinceIndex, int regionIndex, Material material, Vector2 textureScale, Vector2 textureOffset, float textureRotation, bool temporary) {
+        GameObject GenerateProvinceRegionSurface (int provinceIndex, int regionIndex, Material material, Vector2 textureScale, Vector2 textureOffset, float textureRotation, bool temporary) {
             if (provinceIndex < 0 || provinceIndex >= provinces.Length)
                 return null;
             if (provinces[provinceIndex].regions == null)

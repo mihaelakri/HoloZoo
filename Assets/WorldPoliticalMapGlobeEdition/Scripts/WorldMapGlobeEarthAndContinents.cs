@@ -625,13 +625,13 @@ namespace WPM {
                     if (_earthInvertedMode) {
                         pivotTransform.position = transform.position;
                         pivotTransform.rotation = Misc.QuaternionZero;
-                        if (!UnityEngine.XR.XRSettings.enabled) {
+                        if (!VRCheck.isVrRunning) {
                             cam.fieldOfView = MAX_FIELD_OF_VIEW;
                         }
                     } else {
                         pivotTransform.position = transform.position + Vector3.back * lastRestyleEarthNormalsScaleCheck.z * 1.2f;
                         pivotTransform.LookAt(transform.position);
-                        if (!UnityEngine.XR.XRSettings.enabled) {
+                        if (!VRCheck.isVrRunning) {
                             cam.fieldOfView = 60;
                         }
                     }

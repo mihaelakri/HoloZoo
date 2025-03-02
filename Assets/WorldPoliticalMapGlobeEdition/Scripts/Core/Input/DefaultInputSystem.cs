@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿#if ENABLE_LEGACY_INPUT_MANAGER || !ENABLE_INPUT_SYSTEM
+
+using UnityEngine;
 
 namespace WPM {
     /// <summary>
     /// This class provides an input layer that can be replaced or overriden to provide other kind of input systems
     /// </summary>
     public class DefaultInputSystem : IInputProxy {
+
+        public virtual void Init() { }
 
         public virtual Vector3 mousePosition { get { return Input.mousePosition; } }
 
@@ -56,7 +60,35 @@ namespace WPM {
             return Input.GetTouch(index);
         }
 
+        public virtual bool IsTouchStarting(int touchIndex) {
+            return Input.GetTouch(touchIndex).phase == TouchPhase.Began;
+        }
 
+        public virtual int GetFingerIdFromTouch(int touchIndex) {
+            return Input.GetTouch(touchIndex).fingerId;
+        }
+
+        public virtual bool IsPointerOverUI() {
+            return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1);
+        }
+
+        public virtual float GetMouseScrollWheel() {
+            return Input.GetAxis("Mouse ScrollWheel");
+        }
+
+        public virtual bool GetKeyDown(string name) {
+            return Input.GetKeyDown(name);
+        }
+
+        public virtual bool GetKeyUp(string name) {
+            return Input.GetKeyUp(name);
+        }
+
+        public virtual bool GetKeyUp(KeyCode keyCode) {
+            return Input.GetKeyUp(keyCode);
+        }
     }
 
 }
+
+#endif

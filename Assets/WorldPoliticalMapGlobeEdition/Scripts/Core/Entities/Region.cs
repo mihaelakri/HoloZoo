@@ -17,6 +17,7 @@ namespace WPM {
             set {
                 _latlon = value;
                 UpdateSpherePointsFromLatLon();
+                ResetCentroid();
             }
         }
 
@@ -31,6 +32,7 @@ namespace WPM {
             set {
                 _spherePoints = value;
                 UpdateLatLonFromSpherePoints();
+                ResetCentroid();
             }
         }
 
@@ -99,6 +101,28 @@ namespace WPM {
 		public GameObject surfaceGameObject;
 
 
+        bool _centroidCalculated;
+
+        Vector2 _centroid;
+        public Vector2 centroid {
+            get {
+                if (!_centroidCalculated) {
+                    ComputeCentroid();
+                }
+                return _centroid;
+            }
+        }
+        Vector3 _centroidSpherical;
+        public Vector3 centroidSpherical {
+            get {
+                if (!_centroidCalculated) {
+                    ComputeCentroid();
+                }
+                return _centroidSpherical;
+            }
+        }
+
+
         public Region(IAdminEntity entity, int regionIndex) {
             this.entity = entity;
             this.regionIndex = regionIndex;
@@ -118,6 +142,9 @@ namespace WPM {
             c.customTextureRotation = this.customTextureRotation;
             c.customOutline = this.customOutline;
             c.customOutlineColor = customOutlineColor;
+            c._centroidCalculated = _centroidCalculated;
+            c._centroid = this._centroid;
+            c._centroidSpherical = this._centroidSpherical;
             c._spherePoints = new Vector3[_spherePoints.Length];
             Array.Copy(_spherePoints, c._spherePoints, _spherePoints.Length);
             c._latlon = new Vector2[_latlon.Length];
@@ -131,6 +158,7 @@ namespace WPM {
             _spherePoints = new Vector3[0];
             _latlonRect2D = new Rect(0, 0, 0, 0);
             _rect2Dbillboard = _latlonRect2D;
+            ResetCentroid();
         }
 
 
@@ -259,6 +287,7 @@ namespace WPM {
             latlon = newPoints.ToArray();
             UpdateRect();
             UpdateSpherePointsFromLatLon();
+            ResetCentroid();
         }
 
         /// <summary>
@@ -269,6 +298,7 @@ namespace WPM {
             latlon = newPoints;
             UpdateRect();
             UpdateSpherePointsFromLatLon();
+            ResetCentroid();
         }
 
         /// <summary>
@@ -387,7 +417,61 @@ namespace WPM {
                 _spherePoints[index] = Conversion.GetSpherePointFromLatLon(newLatlon);
             }
             _latlon[index] = newLatlon;
-
         }
+
+
+        /// <summary>
+        /// Computes the center of the polygon so it falls inside it
+        /// </summary>
+        void ComputeCentroid() {
+
+            Vector2 c = Misc.Vector2zero;
+            float area = 0f;
+
+            int pointCount = _latlon.Length;
+            for (int i = 0; i < pointCount; ++i) {
+                Vector2 p1 = _latlon[i];
+                Vector2 p2 = i + 1 < pointCount ? _latlon[i + 1] : _latlon[0];
+
+                float d = p1.x * p2.y - p1.y * p2.x;
+                float triangleArea = 0.5f * d;
+                area += triangleArea;
+
+                c.x += triangleArea * (p1.x + p2.x) / 3f;
+                c.y += triangleArea * (p1.y + p2.y) / 3f;
+            }
+
+            if (area != 0) {
+                c.x /= area;
+                c.y /= area;
+            }
+            if (!Contains(c)) {
+                Vector2 c1 = c;
+                Vector2 c2 = c;
+                const int STEP_COUNT = 16;
+                Vector2 stepSize = new Vector2(_latlonRect2D.width / STEP_COUNT, _latlonRect2D.height / STEP_COUNT);
+                for (int k=0;k< STEP_COUNT; k++) {
+                    c1.x -= stepSize.x;
+                    if (Contains(c1)) {
+                        c = c1;
+                        break;
+                    }
+                    c2.y -= stepSize.y;
+                    if (Contains(c2)) {
+                        c = c2;
+                        break;
+                    }
+                }
+            }
+
+            _centroid = c;
+            _centroidSpherical = Conversion.GetSpherePointFromLatLon(_centroid);
+            _centroidCalculated = true;
+        }
+
+        public void ResetCentroid() {
+            _centroidCalculated = false;
+        }
+
     }
 }

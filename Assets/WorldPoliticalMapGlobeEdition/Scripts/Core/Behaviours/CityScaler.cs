@@ -42,7 +42,7 @@ namespace WPM {
             if (cam == null || cam.pixelWidth == 0)
                 return 0;
             float oldFV = cam.fieldOfView;
-            if (!UnityEngine.XR.XRSettings.enabled && !map.earthInvertedMode) {
+            if (!VRCheck.isVrRunning && !map.earthInvertedMode) {
                 cam.fieldOfView = 60.0f;
             }
             Vector3 refPos = map.transform.position;
@@ -53,7 +53,7 @@ namespace WPM {
             Vector3 b = new Vector3(a.x, a.y + CITY_SIZE_ON_SCREEN * map.cityIconSize, a.z);
             Vector3 aa = cam.ScreenToWorldPoint(a);
             Vector3 bb = cam.ScreenToWorldPoint(b);
-            if (!UnityEngine.XR.XRSettings.enabled) {
+            if (!VRCheck.isVrRunning) {
                 cam.fieldOfView = oldFV;
             }
             float scale = (aa - bb).magnitude / map.transform.localScale.y;
@@ -70,7 +70,7 @@ namespace WPM {
             lastCamPos = cam.transform.position;
             lastIconSize = map.cityIconSize;
             float oldFV = cam.fieldOfView;
-            if (!UnityEngine.XR.XRSettings.enabled && !map.earthInvertedMode) {
+            if (!VRCheck.isVrRunning && !map.earthInvertedMode) {
                 cam.fieldOfView = 60.0f;
             }
             Vector3 refPos = transform.position;
@@ -80,12 +80,12 @@ namespace WPM {
             Vector3 b = new Vector3(a.x, a.y + CITY_SIZE_ON_SCREEN * map.cityIconSize, a.z);
             Vector3 aa = cam.ScreenToWorldPoint(a);
             Vector3 bb = cam.ScreenToWorldPoint(b);
-            if (!UnityEngine.XR.XRSettings.enabled) {
+            if (!VRCheck.isVrRunning) {
                 cam.fieldOfView = oldFV;
             }
             float scale = (aa - bb).magnitude / map.transform.localScale.y; // * map.cityIconSize;
             scale = Mathf.Clamp(scale, 0.00001f, 0.005f);
-            Vector3 newScale = new Vector3(scale, scale, 1.0f);
+            Vector3 newScale = new Vector3(scale, scale, scale);
             ScaleCities(newScale);
         }
 
@@ -94,16 +94,19 @@ namespace WPM {
             if (customSize == lastCustomSize)
                 return;
             lastCustomSize = customSize;
-            Vector3 newScale = new Vector3(customSize, customSize, 1);
+            Vector3 newScale = new Vector3(customSize, customSize, customSize);
             ScaleCities(newScale);
         }
 
         void ScaleCities(Vector3 newScale) {
+            if (map == null || map.cities == null) return;
+
             if (currentScale == newScale) return;
             currentScale = newScale;
             
             Vector3 countryCapitalScale = newScale * 2f;
             Vector3 regionCapitalScale = newScale * 1.75f;
+
             int cityCount = map.cities.Count;
             for (int k = 0; k < cityCount; k++) {
                 City city = map.cities[k];
@@ -114,21 +117,6 @@ namespace WPM {
                     default: city.renderer.transform.localScale = newScale; break;
                 }
             }
-            //Transform normalCities = transform.Find ("Normal Cities");
-            //if (normalCities != null) {
-            //	foreach (Transform t in normalCities)
-            //		t.localScale = newScale;
-            //}
-            //Transform regionCapitals = transform.Find ("Region Capitals");
-            //if (regionCapitals != null) {
-            //	foreach (Transform t in regionCapitals)
-            //		t.localScale = newScale * 1.75f;
-            //}
-            //Transform countryCapitals = transform.Find ("Country Capitals");
-            //if (countryCapitals != null) {
-            //	foreach (Transform t in countryCapitals)
-            //		t.localScale = newScale * 2.0f;
-            //}
         }
     }
 

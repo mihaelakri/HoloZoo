@@ -424,6 +424,14 @@ namespace WPM {
             } else if (_earthStyle.isScenic()) {
                 UpdateEarthScenicMaterial();
             }
+
+            SetGlobalShaderData();
+        }
+
+        /// <summary>
+        /// Syncs current globe position and radius with clipping shaders
+        /// </summary>
+        public void SetGlobalShaderData() {
             Transform t = transform;
             Shader.SetGlobalVector(ShaderParams.GlobalGlobePos, new Vector4(t.position.x, t.position.y, t.position.z, radius * radius));
         }

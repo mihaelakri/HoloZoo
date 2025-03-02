@@ -32,7 +32,7 @@ namespace WPM {
         /// <summary>
         /// TILE_MAX_ZOOM_LEVEL can be increased if needed
         /// </summary>
-        public const int TILE_MAX_ZOOM_LEVEL = 19;
+        public const int TILE_MAX_ZOOM_LEVEL = 21;
 
         const int TILE_MIN_SIZE = 256;
         const string PREFIX_MIN_ZOOM_LEVEL = "z5_";
@@ -737,10 +737,11 @@ namespace WPM {
                     if (ti.loadStatus == TILE_LOAD_STATUS.Loaded) {
                         if (!ti.hasAnimated) {
                             ti.hasAnimated = true;
-                            if (_tilePreloadTiles && ti.zoomLevel <= TILE_MIN_ZOOM_LEVEL) {
+                            if (ti.dontAnimate || (_tilePreloadTiles && ti.zoomLevel <= TILE_MIN_ZOOM_LEVEL)) {
+                                ti.dontAnimate = false;
                                 ti.Animate(0, AnimationEnded);
                             } else {
-                                ti.Animate(1f, AnimationEnded);
+                                ti.Animate(_tileFadeDuration, AnimationEnded);
                             }
                         }
                     } else if (ti.loadStatus == TILE_LOAD_STATUS.Inactive) {
@@ -756,7 +757,7 @@ namespace WPM {
                                 if (ti.isAnimating || !tiChild.renderer.enabled || tiChild.loadStatus != TILE_LOAD_STATUS.Loaded || ti.texture == currentEarthTexture) {
                                     HideTile(tiChild);
                                 } else if (!tiChild.isAnimating) {
-                                    tiChild.Animate(1f, EndChildFadeOut, true);
+                                    tiChild.Animate(_tileFadeDuration, EndChildFadeOut, true);
                                 }
                             }
                         }
@@ -810,6 +811,7 @@ namespace WPM {
             // Parent is not loaded, find a grand parent
             TileInfo grandParent = parent;
             while (grandParent.loadStatus != TILE_LOAD_STATUS.Loaded) {
+                if (grandParent.parent == null) break;
                 grandParent = grandParent.parent;
             }
 
@@ -1005,7 +1007,7 @@ namespace WPM {
         internal IEnumerator LoadTileContentBackground(TileInfo ti) {
             yield return new WaitForEndOfFrame();
 
-            string url = GetTileURL(_tileServer, ti);
+            string url = GetTileURL(_tileServer, ti, _tileUseSecureConnection);
             if (string.IsNullOrEmpty(url)) {
                 _concurrentLoads--;
                 Debug.LogError("Tile server url not set. Aborting");
@@ -1028,11 +1030,25 @@ namespace WPM {
 
             // Check if tile is in Resources
             if (ti.source == TILE_SOURCE.Unknown && _tileEnableOfflineTiles) {
-                string path = GetTileResourcePath(ti.x, ti.y, ti.zoomLevel, false);
-                ResourceRequest request = Resources.LoadAsync<Texture2D>(path);
-                yield return request;
-                if (request.asset != null) {
-                    ti.texture = (Texture2D)request.asset;
+                Texture2D tileTex = null;
+				if (_tileOfflineTilesSourceType == OFFLINE_TILES_SOURCE_TYPE.Resources) {
+					string path = GetTileResourcePath(ti.x, ti.y, ti.zoomLevel);
+					ResourceRequest request = Resources.LoadAsync<Texture2D>(path);
+					yield return request;
+					tileTex = (Texture2D)request.asset;
+				} else {
+					string path = GetTileResourcePath(ti.x, ti.y, ti.zoomLevel);
+					if (File.Exists(path)) {
+						byte[] texData = File.ReadAllBytes(path);
+						if (texData != null) {
+							tileTex = new Texture2D(2, 2);
+							tileTex.LoadImage(texData);
+						}
+					}
+				}
+
+                if (tileTex != null) {
+					ti.texture = tileTex;
                     ti.source = TILE_SOURCE.Resources;
                 } else if (tileOfflineTilesOnly) {
                     ti.texture = tileResourceFallbackTexture;
@@ -1078,7 +1094,6 @@ namespace WPM {
                 textureBytes = www.bytes;
                 ti.texture = www.textureNonReadable;
                 www.Dispose();
-                www = null;
 
                 // Check texture consistency
                 if (ti.loadedFromCache || _tileEnableLocalCache) {
@@ -1257,24 +1272,77 @@ namespace WPM {
         }
 
 
-        public string GetTileResourcePath(int x, int y, int zoomLevel, bool fullPath = true) {
+		public string GetTileResourcePath (int x, int y, int zoomLevel, bool physicalPath = false) {
+			filePathStr.Length = 0;
+            OFFLINE_TILES_SOURCE_TYPE sourceType = physicalPath && _tileOfflineTilesSourceType == OFFLINE_TILES_SOURCE_TYPE.Resources ? OFFLINE_TILES_SOURCE_TYPE.FileSystem : _tileOfflineTilesSourceType;
+            switch (sourceType) {
+                case OFFLINE_TILES_SOURCE_TYPE.FileSystem:
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+                case OFFLINE_TILES_SOURCE_TYPE.StreamingAssetsPath:
+                    filePathStr.Append(Application.streamingAssetsPath);
+                    filePathStr.Append("/");
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+                case OFFLINE_TILES_SOURCE_TYPE.ApplicationDataPath:
+                    filePathStr.Append(Application.dataPath);
+                    filePathStr.Append("/");
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+                case OFFLINE_TILES_SOURCE_TYPE.ApplicationPersistentDataPath:
+                    filePathStr.Append(Application.persistentDataPath);
+                    filePathStr.Append("/");
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+            }
+			filePathStr.Append ("Tiles");
+			filePathStr.Append ("/");
+			filePathStr.Append ((int)_tileServer);
+			filePathStr.Append ("/z");
+			filePathStr.Append (zoomLevel);
+			filePathStr.Append ("_x");
+			filePathStr.Append (x);
+			filePathStr.Append ("_y");
+			filePathStr.Append (y);
+			if (sourceType != OFFLINE_TILES_SOURCE_TYPE.Resources) {
+				filePathStr.Append (".png");
+			}
+			return filePathStr.ToString ();
+		}
+
+        public string GetTileResourcePhysicalPath() {
             filePathStr.Length = 0;
-            if (fullPath) {
-                filePathStr.Append(_tileResourcePathBase);
-                filePathStr.Append("/");
+            switch (_tileOfflineTilesSourceType) {
+                case OFFLINE_TILES_SOURCE_TYPE.StreamingAssetsPath:
+                    filePathStr.Append(Application.streamingAssetsPath);
+                    filePathStr.Append("/");
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+                case OFFLINE_TILES_SOURCE_TYPE.ApplicationDataPath:
+                    filePathStr.Append(Application.dataPath);
+                    filePathStr.Append("/");
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+                case OFFLINE_TILES_SOURCE_TYPE.ApplicationPersistentDataPath:
+                    filePathStr.Append(Application.persistentDataPath);
+                    filePathStr.Append("/");
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
+                default:
+                    filePathStr.Append(_tileResourcePathBase);
+                    filePathStr.Append("/");
+                    break;
             }
             filePathStr.Append("Tiles");
             filePathStr.Append("/");
             filePathStr.Append((int)_tileServer);
-            filePathStr.Append("/z");
-            filePathStr.Append(zoomLevel);
-            filePathStr.Append("_x");
-            filePathStr.Append(x);
-            filePathStr.Append("_y");
-            filePathStr.Append(y);
-            if (fullPath) {
-                filePathStr.Append(".png");
-            }
             return filePathStr.ToString();
         }
 
@@ -1287,8 +1355,8 @@ namespace WPM {
             if (useCached) {
                 if (!_tilePreloadTiles || !filePath.Contains(PREFIX_MIN_ZOOM_LEVEL)) {
                     //check how old
-                    System.DateTime written = File.GetLastWriteTimeUtc(filePath);
-                    System.DateTime now = System.DateTime.UtcNow;
+                    DateTime written = File.GetLastWriteTimeUtc(filePath);
+                    DateTime now = DateTime.UtcNow;
                     double totalHours = now.Subtract(written).TotalHours;
                     if (totalHours > 300) {
                         File.Delete(filePath);
@@ -1315,13 +1383,13 @@ namespace WPM {
             if (!_tileEnableLocalCache)
                 return false;
 
-            string url = GetTileURL(_tileServer, ti);
+            string url = GetTileURL(_tileServer, ti, _tileUseSecureConnection);
             if (string.IsNullOrEmpty(url)) {
                 return false;
             }
 
             string filePath = GetLocalFilePathForURL(url, ti);
-            if (System.IO.File.Exists(filePath)) {
+            if (File.Exists(filePath)) {
                 //check how old
                 if (!_tilePreloadTiles || ti.zoomLevel != TILE_MIN_ZOOM_LEVEL) {
                     System.DateTime written = File.GetLastWriteTimeUtc(filePath);
@@ -1335,7 +1403,7 @@ namespace WPM {
             } else {
                 return false;
             }
-            byte[] bb = System.IO.File.ReadAllBytes(filePath);
+            byte[] bb = File.ReadAllBytes(filePath);
             ti.texture = new Texture2D(0, 0);
             ti.texture.LoadImage(bb);
             if (ti.texture.width <= 16) { // Invalid texture in local cache, retry
@@ -1381,7 +1449,15 @@ namespace WPM {
 
         }
 
-
+        void RefreshTiles() {
+            foreach(TileInfo ti in cachedTiles.Values) {
+                if (ti.visible && (ti.loadStatus == TILE_LOAD_STATUS.Loaded || ti.loadStatus == TILE_LOAD_STATUS.Loading)) {
+                    ti.loadStatus = TILE_LOAD_STATUS.Inactive;
+                }
+                ti.dontAnimate = true;
+            }
+            shouldCheckTiles = true;
+        }
 
     }
 

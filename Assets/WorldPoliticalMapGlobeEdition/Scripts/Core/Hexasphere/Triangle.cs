@@ -1,9 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
-
-namespace WPM {
+﻿namespace WPM {
 
     public class Triangle {
 

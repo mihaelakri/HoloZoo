@@ -61,15 +61,11 @@ namespace WPM {
 		string[] countryNames;
 
 
-		string cachePath {
-			get {
-				return map.tileResourcePathBase + "/Tiles/" + (int)map.tileServer;
-			}
-		}
+        string cachePath => map.GetTileResourcePhysicalPath();
 
 		public static void ShowWindow () {
 			int w = 450;
-			int h = 540;
+			int h = 560;
 			Rect rect = new Rect (Screen.currentResolution.width / 2 - w / 2, Screen.currentResolution.height / 2 - h / 2, w, h);
 			GetWindowWithRect<WorldMapTilesDownloader> (rect, true, "Tiles Downloader", true);
 		}
@@ -137,18 +133,22 @@ namespace WPM {
 					PickCountryLatLon ();
 				}
 				EditorGUILayout.EndHorizontal ();
+
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.LabelField ("   Latitude Min", GUILayout.Width (120));
 				latMin = EditorGUILayout.Slider (latMin, -90, 90);
 				EditorGUILayout.EndHorizontal ();
+
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.LabelField ("   Longitude Min", GUILayout.Width (120));
 				lonMin = EditorGUILayout.Slider (lonMin, -180, 180);
 				EditorGUILayout.EndHorizontal ();
+
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.LabelField ("   Latitude Max", GUILayout.Width (120));
 				latMax = EditorGUILayout.Slider (latMax, -90, 90);
 				EditorGUILayout.EndHorizontal ();
+
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.LabelField ("   Longitude Max", GUILayout.Width (120));
 				lonMax = EditorGUILayout.Slider (lonMax, -180, 180);
@@ -219,7 +219,8 @@ namespace WPM {
 			if (GUILayout.Button ("Close", GUILayout.Width (60))) {
 				Close ();
 			}
-		}
+            EditorGUILayout.EndHorizontal();
+        }
 
 		Texture2D GetWorldTexture () {
 			if (worldRect.x == latMin && worldRect.y == lonMin && worldRect.z == latMax && worldRect.w == lonMax || worldColors == null) {
@@ -386,9 +387,9 @@ namespace WPM {
 					ti.x = x;
 					ti.y = y;
 					ti.zoomLevel = zoomLevel;
-					string url = map.GetTileURL (map.tileServer, ti);
-					// Is current tile already in Resources path?
-					string tilePath = map.GetTileResourcePath (x, y, zoomLevel);
+					string url = map.GetTileURL (map.tileServer, ti, map.tileUseSecureConnection);
+					// Is current tile already in path?
+					string tilePath = map.GetTileResourcePath (x, y, zoomLevel, true);
 					if (File.Exists (tilePath)) {
 						if (++iterations < 128) {
 							k--;
@@ -470,7 +471,7 @@ namespace WPM {
 					ti.x = x;
 					ti.y = y;
 					ti.zoomLevel = zoomLevel;
-					string url = map.GetTileURL (map.tileServer, ti);
+					string url = map.GetTileURL (map.tileServer, ti, map.tileUseSecureConnection);
 					downloads [k].busy = true;
 					downloads [k].retries = 0;
 					downloads [k].x = x;

@@ -190,7 +190,6 @@ namespace WPM {
 							decorator.textureScale = EditorGUILayout.Vector2Field ("Scale", decorator.textureScale);
 							if (prevVector != decorator.textureScale)
 								requestChanges = true;
-							EditorGUILayout.EndHorizontal ();
 
 							prevVector = decorator.textureOffset;
 							decorator.textureOffset = EditorGUILayout.Vector2Field ("Offset", decorator.textureOffset);

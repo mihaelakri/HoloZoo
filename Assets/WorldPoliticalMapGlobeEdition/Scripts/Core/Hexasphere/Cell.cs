@@ -163,7 +163,7 @@ namespace WPM {
         int[] _neighboursIndices;
         int[] _neighboursCosts;
         bool _neighboursComputed;
-        static Triangle[] tempTriangles = new Triangle[20];
+        static readonly Triangle[] tempTriangles = new Triangle[20];
         Vector2[] _latlon;
         Vector2 _latlonCenter;
 
@@ -224,8 +224,8 @@ namespace WPM {
             }
         }
 
-        static List<int> tempInt = new List<int>(6);
-        static List<Cell> temp = new List<Cell>(6);
+        static readonly List<int> tempInt = new List<int>(6);
+        static readonly List<Cell> temp = new List<Cell>(6);
 
         void ComputeNeighbours() {
             tempInt.Clear();
@@ -256,7 +256,8 @@ namespace WPM {
             Vector3[] verts = vertices;
             _latlon = new Vector2[verts.Length];
             if (_latlon.Length > 0) {
-                for (int k = 0; k < verts.Length; k++) {
+                int vertsLength = verts.Length;
+                for (int k = 0; k < vertsLength; k++) {
                     _latlon[k] = Conversion.GetLatLonFromUnitSpherePoint(verts[k]);
                 }
             }

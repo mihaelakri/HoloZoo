@@ -56,7 +56,7 @@ namespace WPM {
 
         }
 
-        void HandleOnCellClick(int cellIndex) {
+        void HandleOnCellClick(int cellIndex, int buttonIndex) {
             Debug.Log("Clicked cell: " + cellIndex);
 
             switch (selectionMode) {

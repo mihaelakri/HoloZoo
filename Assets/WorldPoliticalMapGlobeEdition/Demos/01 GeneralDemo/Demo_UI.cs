@@ -72,7 +72,6 @@ namespace WPM {
                 Vector2 latLon = Conversion.GetLatLonFromSpherePoint(sphereLocation);
                 Debug.Log("Clicked on Latitude: " + latLon.x + ", Longitude: " + latLon.y);
             };
-
         }
 
 
@@ -94,12 +93,12 @@ namespace WPM {
                         text = map.provinceHighlighted.name + ", " + map.countryHighlighted.name;
                         List<Province> neighbours = map.ProvinceNeighboursOfCurrentRegion();
                         if (neighbours.Count > 0)
-                            text += "\n" + EntityListToString<Province>(neighbours);
+                            text += "\n" + EntityListToString(neighbours);
                     } else if (map.countryHighlighted != null) {
                         text = map.countryHighlighted.name + " (" + map.countryHighlighted.continent + ")";
                         List<Country> neighbours = map.CountryNeighboursOfCurrentRegion();
                         if (neighbours.Count > 0)
-                            text += "\n" + EntityListToString<Country>(neighbours);
+                            text += "\n" + EntityListToString(neighbours);
                     } else {
                         text = "";
                     }
@@ -131,27 +130,6 @@ namespace WPM {
                     animatingField = false;
                     map.zoomMaxDistance = map.GetZoomLevelDistance(1);
                 }
-            }
-
-            if (Input.GetKeyDown(KeyCode.C)) {
-
-                // Get a destination
-                Vector3 destination = map.GetCountry("Spain").localPosition;
-
-                // Modify zoom level to take into account zoomMin and zoomMaxDistance
-
-                // compute zoom level based on altitude
-                float altitudeInMeters = 1000f;
-                const float EARTH_RADIUS_KM = 6371f;
-                float radius = map.transform.localScale.x * 0.5f;
-
-                float distanceToSurfaceWS = radius * (((altitudeInMeters + EARTH_RADIUS_KM) / EARTH_RADIUS_KM) - 1f);
-                float maxDistance = map.GetZoomLevelDistance(1f);
-                float zoomLevel = (distanceToSurfaceWS - map.zoomMinDistance) / (maxDistance - map.zoomMinDistance);
-                zoomLevel = Mathf.Clamp01(zoomLevel);
-
-                // Fly!
-                map.FlyToLocation(destination, 2f, zoomLevel);
             }
 
             if (!animatingField) {
@@ -364,6 +342,9 @@ namespace WPM {
             //		sphereLocation = map.countries[countryIndex].center;
 
             // or... use a custom location lat/lon. Example put the building over New York:
+            //      sphereLocation = Conversion.GetSpherePointFromLatLon(40.71f, -74.00f);
+
+            // or... use the calc converter component
             //		map.calc.fromLatDec = 40.71f;	// 40.71 decimal degrees north
             //		map.calc.fromLonDec = -74.00f;	// 74.00 decimal degrees to the west
             //		map.calc.fromUnit = UNIT_TYPE.DecimalDegrees;
@@ -453,7 +434,8 @@ namespace WPM {
             for (int p = 0; p < usaCountry.provinces.Length; p++) {
                 Province state = usaCountry.provinces[p];
                 Color color = new Color(Random.value, Random.value, Random.value);
-                map.AddText(state.name, state.localPosition, color);
+                map.AddText(state.name, state.localPosition, color);  // Uses legacy Text Mesh
+                //map.AddTextPro(state.name, state.localPosition, color); // Uses Text Mesh Pro
             }
 
             map.FlyToCountry(usaCountry);

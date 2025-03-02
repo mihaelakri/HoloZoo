@@ -4,12 +4,13 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WPM {
+
     public delegate Point GetCachedPointDelegate(Point point);
-
     public delegate void GridCellEvent(int cellIndex);
-
+    public delegate void GridCellClickEvent(int cellIndex, int buttonIndex);
     public delegate int PathFindingEvent(int cellIndex);
 
     public partial class WorldMapGlobe : MonoBehaviour {
@@ -111,8 +112,9 @@ namespace WPM {
                 }
             }
 
-            if (lastHighlightedCellIndex >= 0 && !hasDragged && leftMouseButtonRelease && OnCellClick != null) {
-                OnCellClick(lastHighlightedCellIndex);
+            if (lastHighlightedCellIndex >= 0 && !hasDragged && (leftMouseButtonRelease || rightMouseButtonRelease) && OnCellClick != null) {
+                int buttonIndex = leftMouseButtonClick || leftMouseButtonPressed || leftMouseButtonRelease ? 0 : 1;
+                OnCellClick(lastHighlightedCellIndex, buttonIndex);
             }
         }
 
@@ -136,8 +138,7 @@ namespace WPM {
         bool shouldGenerateGrid;
 
         Point GetCachedPoint(Point point) {
-            Point thePoint;
-            if (points.TryGetValue(point, out thePoint)) {
+            if (points.TryGetValue(point, out Point thePoint)) {
                 return thePoint;
             } else {
                 points[point] = point;
@@ -175,12 +176,50 @@ namespace WPM {
         }
 
 
+        bool generatingGrid;
+        int generatingDivisions;
+
         /// <summary>
         /// Generate the hexasphere geometry.
         /// </summary>
         public void GenerateGrid() {
+
+            if (generatingGrid) {
+                if (_hexaGridDivisions != generatingDivisions) {
+                    shouldGenerateGrid = true;
+                }
+                return;
+            }
+            generatingGrid = true;
+            generatingDivisions = _hexaGridDivisions;
+
+            if (_hexaGridGenerateInBackgroundThread && Application.isPlaying) {
+                StartCoroutine(GenerateGridBackground());
+            } else {
+                GenerateGridMainThread();
+            }
+        }
+
+
+        IEnumerator GenerateGridBackground() {
+            var task = Task.Run(() => internal_GenerateGridData());
+            yield return new WaitUntil(() => task.IsCompleted);
+            internal_GenerateGridMesh();
+            generatingGrid = false;
+        }
+
+
+        void GenerateGridMainThread() {
+            internal_GenerateGridData();
+            internal_GenerateGridMesh();
+            generatingGrid = false;
+        }
+
+
+        void internal_GenerateGridData() {
+
 #if TRACE_PERFORMANCE
-			DateTime dt = DateTime.Now;
+            System.Diagnostics.Stopwatch sw = System.Diagnostics.Stopwatch.StartNew();
 #endif
 
             shouldGenerateGrid = false;
@@ -236,7 +275,6 @@ namespace WPM {
             };
 
 
-            DestroyCachedCells(false);
             lastHighlightedCellIndex = -1;
             lastHighlightedCell = null;
 
@@ -247,7 +285,7 @@ namespace WPM {
             }
 
 #if TRACE_PERFORMANCE
-			Debug.Log ("Stage 1 " + DateTime.Now);
+            Debug.Log("Stage 1 " + sw.ElapsedMilliseconds);
 #endif
 
             List<Point> bottom = new List<Point>();
@@ -257,9 +295,9 @@ namespace WPM {
                 Point point0 = triangles[f].points[0];
                 bottom.Clear();
                 bottom.Add(point0);
-                List<Point> left = point0.Subdivide(triangles[f].points[1], _hexaGridDivisions, GetCachedPoint);
-                List<Point> right = point0.Subdivide(triangles[f].points[2], _hexaGridDivisions, GetCachedPoint);
-                for (int i = 1; i <= _hexaGridDivisions; i++) {
+                List<Point> left = point0.Subdivide(triangles[f].points[1], generatingDivisions, GetCachedPoint);
+                List<Point> right = point0.Subdivide(triangles[f].points[2], generatingDivisions, GetCachedPoint);
+                for (int i = 1; i <= generatingDivisions; i++) {
                     prev = bottom;
                     bottom = left[i].Subdivide(right[i], i, GetCachedPoint);
                     new Triangle(prev[0], bottom[0], bottom[1]);
@@ -271,17 +309,9 @@ namespace WPM {
             }
 
 #if TRACE_PERFORMANCE
-		Debug.Log ("Stage 2 " + DateTime.Now);
+            Debug.Log("Stage 2 " + sw.ElapsedMilliseconds);
 #endif
-            int meshPointsCount = points.Values.Count;
-
-#if TRACE_PERFORMANCE
-			Debug.Log ("Stage 2.1 " + DateTime.Now);
-#endif
-
-#if TRACE_PERFORMANCE
-			Debug.Log ("Stage 2.2 " + DateTime.Now);
-#endif
+            int meshPointsCount = points.Count;
             int p = 0;
             Point.flag = 0;
             cells = new Cell[meshPointsCount];
@@ -290,8 +320,13 @@ namespace WPM {
                 p++;
             }
 #if TRACE_PERFORMANCE
-			Debug.Log ("Stage 3 " + DateTime.Now);
+            Debug.Log("Stage 3 " + sw.ElapsedMilliseconds);
 #endif
+        }
+
+        void internal_GenerateGridMesh() {
+
+            DestroyCachedCells(false);
 
             // Destroy placeholders
             Transform t = gameObject.transform.Find(HEXASPHERE_WIREFRAME);
@@ -304,29 +339,20 @@ namespace WPM {
             // Check grid mask
             bool useGridMask = _hexaGridUseMask && gridColors != null;
             if (useGridMask) {
-                for (int k = 0; k < cells.Length; k++) {
+                int cellsLength = cells.Length;
+                for (int k = 0; k < cellsLength; k++) {
                     // Mask
                     Cell cell = cells[k];
                     // Convert cell center to texture coordinates
                     int colorIndex = Conversion.ConvertToTextureColorIndex(cell.sphereCenter, gridMaskWidthMinusOne, gridMaskHeightMinusOne);
-                    cell.visible = (gridColors[colorIndex].b <= _hexaGridMaskThreshold);
+                    cell.visible = gridColors[colorIndex].b <= _hexaGridMaskThreshold;
                 }
             }
 
             // Create meshes
             BuildWireFrame();
 
-
-#if TRACE_PERFORMANCE
-			Debug.Log ("Stage 3.1 " + DateTime.Now);
-#endif
-
             needRefreshRouteMatrix = true;
-
-#if TRACE_PERFORMANCE
-			Debug.Log ("Stage 4 " + DateTime.Now);
-			Debug.Log ("Time = " + (DateTime.Now - dt).TotalSeconds + " s.");
-#endif
         }
 
         List<T> CheckList<T>(ref List<T> l) {
@@ -594,6 +620,8 @@ namespace WPM {
         }
 
         int GetCellAtLocalPosition(Vector3 localPosition, bool reuseLastHitCell = true) {
+            if (cells == null) return -1;
+
             // If this the same cell? Heuristic: any neighour will be farther
             if (reuseLastHitCell && lastHitCellIndex >= 0 && lastHitCellIndex < cells.Length) {
                 Cell lastHitCell = cells[lastHitCellIndex];
@@ -618,14 +646,11 @@ namespace WPM {
 
             // follow the shortest path to the minimum distance
             Cell nearest = cells[lastHitCellIndex];
-            float cellDist =
-                (nearest.sphereCenter.x - localPosition.x) * (nearest.sphereCenter.x - localPosition.x) +
-                (nearest.sphereCenter.y - localPosition.y) * (nearest.sphereCenter.y - localPosition.y) +
-                (nearest.sphereCenter.z - localPosition.z) * (nearest.sphereCenter.z - localPosition.z);
-            float minDist = float.MaxValue;
             Cell nearestVisible = nearest;
-            for (int k = 0; k < cells.Length; k++) {
-                Cell newNearest = GetNearestCellToPosition(nearest.neighbours, localPosition, out cellDist);
+            float minDist = float.MaxValue;
+            int cellsLength = cells.Length;
+            for (int k = 0; k < cellsLength; k++) {
+                Cell newNearest = GetNearestCellToPosition(nearest.neighbours, localPosition, out float cellDist);
                 if (cellDist < minDist) {
                     minDist = cellDist;
                     nearest = newNearest;

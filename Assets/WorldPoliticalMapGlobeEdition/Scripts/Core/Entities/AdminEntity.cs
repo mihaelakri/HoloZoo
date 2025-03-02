@@ -58,6 +58,17 @@ namespace WPM {
 
 		public virtual Vector3 localPosition { get { return _sphereCenter; } }
 
+        /// <summary>
+        /// Returns the centroid in lat/lon coordinates of the entity's main region (centroid is always inside the polygon while center could be outside in some cases)
+        /// </summary>
+        public Vector2 centroid { get { return mainRegion.centroid; } }
+
+        /// <summary>
+        /// Returns the centroid in spherical coordinates of the entity's main region (centroid is always inside the polygon while center could be outside in some cases)
+        /// </summary>
+        public Vector3 centroidSpherical { get { return mainRegion.centroidSpherical; } }
+
+
         protected JSONObject _attrib;
 
         /// <summary>

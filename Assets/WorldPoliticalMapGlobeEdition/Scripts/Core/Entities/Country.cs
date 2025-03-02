@@ -1,11 +1,11 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 
-namespace WPM {
+namespace WPM
+{
 
-	public partial class Country: AdminEntity {
+    public partial class Country: AdminEntity {
 
 		/// <summary>
 		/// Continent name.

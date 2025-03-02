@@ -12,6 +12,7 @@ using WPM.ClipperLib;
 using WPM.Poly2Tri;
 using TMPro;
 using System.Collections;
+using System.IO;
 
 namespace WPM {
     public partial class WorldMapGlobe : MonoBehaviour {
@@ -28,7 +29,8 @@ namespace WPM {
         Material frontiersMatThinOpaque, frontiersMatThinAlpha, frontiersMatThickOpaque, frontiersMatThickAlpha, frontiersMatCurrent;
         Material inlandFrontiersMatOpaque, inlandFrontiersMatAlpha, inlandFrontiersMatCurrent;
         Material hudMatCountry;
-
+        Material hudMatBlinker;
+        
         // gameObjects
         GameObject countryRegionHighlightedObj;
         GameObject frontiersLayer, inlandFrontiersLayer;
@@ -42,7 +44,7 @@ namespace WPM {
             public int repetitions = 0, countryIndex;
             public Region region;
 
-            public FrontierSegment(Vector3 p0, Vector3 p1, int countryIndex, Region region) {
+            public FrontierSegment (Vector3 p0, Vector3 p1, int countryIndex, Region region) {
                 this.p0 = p0;
                 this.p1 = p1;
                 this.countryIndex = countryIndex;
@@ -84,7 +86,7 @@ namespace WPM {
 
         int fadeCountryIndex;
 
-        void CheckCountryArraysAreUpToDate() {
+        void CheckCountryArraysAreUpToDate () {
             if (_countries != null && _countries.Length > 0 && _countries[0] != null) {
                 int countryCount = _countries.Length;
                 if (_countryLookup != null && countryCount == lastCountryLookupCount)
@@ -129,21 +131,38 @@ namespace WPM {
 
         #endregion
 
-
-
         #region System initialization
 
-        void ReadCountriesPackedString() {
+        void ReadCountriesGeoData () {
             string frontiersFileName = _geodataResourcesPath + (_frontiersDetail == FRONTIERS_DETAIL.Low ? "/countries110" : "/countries10");
-            TextAsset ta = Resources.Load<TextAsset>(frontiersFileName);
+
+            TextAsset ta = null;
+            if (_geodataFormat == GEODATA_FORMAT.BinaryFormat) {
+                // try to load in binary
+                ta = Resources.Load<TextAsset>(frontiersFileName + "_bin");
+                if (ta != null) {
+                    SetCountriesGeoDataBinary(ta.bytes);
+                } else {
+                    Debug.LogWarning("Geodata file is set to binary but the file can't be found or read, trying packed string format.");
+                }
+            }
+
+            if (ta == null) {
+                // load legacy packed string format
+                ta = Resources.Load<TextAsset>(frontiersFileName);
+                if (ta != null) {
+                    SetCountriesGeoData(ta.text);
+                } else {
+                    Debug.LogWarning("Can't load countries packed string format file.");
+                }
+            }
             if (ta != null) {
-                SetCountriesGeoData(ta.text);
                 Resources.UnloadAsset(ta);
                 ReloadCountryAttributes();
             }
         }
 
-        void ReloadCountryAttributes() {
+        void ReloadCountryAttributes () {
             TextAsset ta = Resources.Load<TextAsset>(_geodataResourcesPath + "/" + _countryAttributeFile);
             if (ta == null)
                 return;
@@ -151,7 +170,7 @@ namespace WPM {
             Resources.UnloadAsset(ta);
         }
 
-        void DestroyCountrySurfaces() {
+        void DestroyCountrySurfaces () {
             if (_countries == null) return;
             for (int k = 0; k < _countries.Length; k++) {
                 Country c = _countries[k];
@@ -162,7 +181,7 @@ namespace WPM {
         /// <summary>
         /// Loads country geodata information. Use GetCountryGeoData method to get the current country geodata.
         /// </summary>
-        public void SetCountriesGeoData(string s) {
+        public void SetCountriesGeoData (string s) {
             DestroyCountrySurfaces();
             lastCountryLookupCount = -1;
 
@@ -287,10 +306,104 @@ namespace WPM {
         }
 
 
+        public void SetCountriesGeoDataBinary (byte[] data) {
+            if (data == null || data.Length < 4) return;
+
+            DestroyCountrySurfaces();
+            lastCountryLookupCount = -1;
+
+            MemoryStream ms = new MemoryStream(data);
+            BinaryReader br = new BinaryReader(ms, Encoding.UTF8);
+
+            int countryCount = br.ReadUInt16();
+            List<Country> newCountries = new List<Country>(countryCount);
+            Vector2 min = Misc.Vector2one * 10;
+            Vector2 max = -min;
+            Vector2 latlonCenter = new Vector2();
+
+            for (int k = 0; k < countryCount; k++) {
+                string name = br.ReadString();
+                string continent = br.ReadString();
+                Country country = new Country(name, continent);
+                country.regions = new List<Region>();
+                float maxVol = 0;
+                Vector2 minCountry = new Vector2(10, 10);
+                Vector2 maxCountry = -minCountry;
+
+                int regionsCount = br.ReadUInt16();
+                for (int r = 0; r < regionsCount; r++) {
+                    uint coorCount = br.ReadUInt32();
+                    min.x = min.y = 1000;
+                    max.x = max.y = -1000;
+                    Region countryRegion = new Region(country, country.regions.Count);
+                    Vector2[] newPoints = new Vector2[coorCount];
+                    for (int c = 0; c < coorCount; c++) {
+                        float x = br.ReadSingle();
+                        float y = br.ReadSingle();
+                        if (x < min.x)
+                            min.x = x;
+                        if (x > max.x)
+                            max.x = x;
+                        if (y < min.y)
+                            min.y = y;
+                        if (y > max.y)
+                            max.y = y;
+                        newPoints[c].x = x;
+                        newPoints[c].y = y;
+                    }
+
+                    countryRegion.latlon = newPoints;
+                    float dlon = max.y - min.y;
+                    if (dlon > 180 && min.y > -180 && max.y < 180) { // fix wrapped countries rect2D around 180 longitude line
+                        max.y += 360;
+                    }
+                    FastVector.Average(ref min, ref max, ref latlonCenter);
+                    countryRegion.latlonCenter = latlonCenter;
+
+                    countryRegion.sanitized = true;
+
+                    // Calculate country bounding rect
+                    if (min.x < minCountry.x)
+                        minCountry.x = min.x;
+                    if (min.y < minCountry.y)
+                        minCountry.y = min.y;
+                    if (max.x > maxCountry.x)
+                        maxCountry.x = max.x;
+                    if (max.y > maxCountry.y)
+                        maxCountry.y = max.y;
+                    countryRegion.latlonRect2D = new Rect(min.x, min.y, max.x - min.x, max.y - min.y);
+                    countryRegion.rect2DArea = countryRegion.latlonRect2D.width * countryRegion.latlonRect2D.height;
+                    float vol = FastVector.SqrDistance(ref max, ref min);
+                    if (vol > maxVol) {
+                        maxVol = vol;
+                        country.mainRegionIndex = country.regions.Count;
+                        country.latlonCenter = countryRegion.latlonCenter;
+                    }
+                    country.regions.Add(countryRegion);
+                }
+                country.hidden = br.ReadBoolean();
+                country.fips10_4 = br.ReadString();
+                country.iso_a2 = br.ReadString();
+                country.iso_a3 = br.ReadString();
+                country.iso_n3 = br.ReadString();
+                country.labelVisible = br.ReadBoolean();
+                country.regionsRect2D = new Rect(minCountry.x, minCountry.y, Math.Abs(maxCountry.x - minCountry.x), Mathf.Abs(maxCountry.y - minCountry.y));
+                newCountries.Add(country);
+            }
+
+            newCountries.Sort((Country c1, Country c2) => {
+                return c1.mainRegionArea.CompareTo(c2.mainRegionArea);
+            });
+            countries = newCountries.ToArray();
+
+            OptimizeFrontiers();
+        }
+
+
         /// <summary>
         /// Used internally by the Map Editor. It will recalculate de boundaries and optimize frontiers based on new data of countries array
         /// </summary>
-        public bool RefreshCountryDefinition(int countryIndex, List<Region> filterRegions = null) {
+        public bool RefreshCountryDefinition (int countryIndex, List<Region> filterRegions = null) {
             lastCountryLookupCount = -1;
             if (countryIndex < 0 || countryIndex >= countries.Length)
                 return false;
@@ -308,7 +421,7 @@ namespace WPM {
         }
 
 
-        Rect EncapsulateRect(Rect prev, Rect r) {
+        Rect EncapsulateRect (Rect prev, Rect r) {
             // check if they're crossing the antimeridian
             Rect minRect, maxRect;
             if (r.yMin < prev.yMin) {
@@ -327,7 +440,7 @@ namespace WPM {
         }
 
 
-        public void RefreshCountryGeometry(Country country) {
+        public void RefreshCountryGeometry (Country country) {
             if (country.regions == null)
                 return;
             float maxVol = 0;
@@ -374,14 +487,15 @@ namespace WPM {
         /// <summary>
         /// Regenerates frontiers mesh for all countries
         /// </summary>
-        public void OptimizeFrontiers() {
+        public void OptimizeFrontiers () {
             OptimizeFrontiers(null);
         }
 
         /// <summary>
         /// Generates frontiers mesh for specific regions.
         /// </summary>
-        void OptimizeFrontiers(List<Region> filterRegions) {
+        void OptimizeFrontiers (List<Region> filterRegions) {
+
             if (frontiersPoints == null) {
                 frontiersPoints = new List<Vector3>(200000);
             } else {
@@ -428,22 +542,22 @@ namespace WPM {
                 for (int r = 0; r < lastRegion; r++) {
                     Region region = country.regions[r];
                     if (filterRegions == null || filterRegions.Contains(region)) {
-                        int max = region.latlon.Length - 1;
+                        Vector2[] latlon = region.latlon;
+                        int max = latlon.Length - 1;
                         for (int i = 0; i <= max; i++) {
                             Vector2 p0, p1;
                             if (i < max) {
-                                p0 = region.latlon[i];
-                                p1 = region.latlon[i + 1];
+                                p0 = latlon[i];
+                                p1 = latlon[i + 1];
                             } else {
-                                p0 = region.latlon[i];
-                                p1 = region.latlon[0];
+                                p0 = latlon[i];
+                                p1 = latlon[0];
                             }
                             bool isNew = true;
                             int hc = (int)(p0.x * t1) + (int)(p1.x * t1) + 1000000 * ((int)(p0.y * t1) + (int)(p1.y * t1));
                             for (int h = 0; h < 9; h++) { // 9 = roff.Length
                                 int hc1 = hc + roff[h];
-                                FrontierSegment fs;
-                                if (frontiersCacheHit.TryGetValue(hc1, out fs)) {
+                                if (frontiersCacheHit.TryGetValue(hc1, out FrontierSegment fs)) {
                                     if (fs.countryIndex != k || fs.region.regionIndex != r) {
                                         isNew = false;
                                         fs.repetitions++;
@@ -460,13 +574,14 @@ namespace WPM {
                             }
                             if (isNew) {
                                 // Add frontier segment
+                                Vector3[] spherePoints = region.spherePoints;
                                 Vector3 v0, v1;
                                 if (i < max) {
-                                    v0 = region.spherePoints[i];
-                                    v1 = region.spherePoints[i + 1];
+                                    v0 = spherePoints[i];
+                                    v1 = spherePoints[i + 1];
                                 } else {
-                                    v0 = region.spherePoints[i];
-                                    v1 = region.spherePoints[0];
+                                    v0 = spherePoints[i];
+                                    v1 = spherePoints[0];
                                 }
                                 FrontierSegment ifs = new FrontierSegment(v0, v1, k, region);
                                 frontiersCacheHit[hc] = ifs;
@@ -563,18 +678,24 @@ namespace WPM {
 
         #endregion
 
-
         #region IO stuff
 
         /// <summary>
         /// Returns the file name corresponding to the current country data file (countries10, countries110)
         /// </summary>
-        public string GetCountriesGeoDataFileName() {
+        public string GetCountriesGeoDataFileName () {
             return frontiersDetail == FRONTIERS_DETAIL.Low ? "countries110.txt" : "countries10.txt";
         }
 
+        /// <summary>
+        /// Returns the file name corresponding to the current country data file (countries10, countries110)
+        /// </summary>
+        public string GetCountryGeoDataBinaryFileName () {
+            return frontiersDetail == FRONTIERS_DETAIL.Low ? "countries110_bin.txt" : "countries10_bin.txt";
+        }
 
-        public string GetCountriesGeoData() {
+
+        public string GetCountriesGeoData () {
             if (countries == null) return null;
             StringBuilder sb = new StringBuilder();
             for (int k = 0; k < countries.Length; k++) {
@@ -619,20 +740,55 @@ namespace WPM {
             return sb.ToString();
         }
 
+
+        /// <summary>
+        /// Exports the geographic data in binary format.
+        /// </summary>
+        public byte[] GetCountriesGeoDataBinary () {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8);
+            int countriesCount = countries.Length;
+            bw.Write((ushort)countriesCount);
+            for (int k = 0; k < countriesCount; k++) {
+                Country country = _countries[k];
+                bw.Write(country.name);
+                bw.Write(country.continent);
+                int regionsCount = country.regions.Count;
+                bw.Write((ushort)regionsCount);
+                for (int r = 0; r < regionsCount; r++) {
+                    Region region = country.regions[r];
+                    int pointsCount = region.latlon.Length;
+                    bw.Write((uint)pointsCount);
+                    for (int p = 0; p < pointsCount; p++) {
+                        bw.Write(region.latlon[p].x);
+                        bw.Write(region.latlon[p].y);
+                    }
+                }
+                bw.Write(country.hidden);
+                bw.Write(country.fips10_4);
+                bw.Write(country.iso_a2);
+                bw.Write(country.iso_a3);
+                bw.Write(country.iso_n3);
+                bw.Write(country.labelVisible);
+            }
+            bw.Flush();
+            return ms.ToArray();
+        }
+
         #endregion
 
         #region Drawing stuff
 
 
-        int GetCacheIndexForCountryRegion(int countryIndex, int regionIndex) {
+        int GetCacheIndexForCountryRegion (int countryIndex, int regionIndex) {
             return countryIndex * 1000 + regionIndex;
         }
 
-        Material GetCountryColoredTexturedMaterial(Color color, Texture2D texture) {
+        Material GetCountryColoredTexturedMaterial (Color color, Texture2D texture) {
             return GetCountryColoredTexturedMaterial(color, texture, true);
         }
 
-        Material GetCountryColoredTexturedMaterial(Color color, Texture2D texture, bool autoChooseTransparentMaterial) {
+        Material GetCountryColoredTexturedMaterial (Color color, Texture2D texture, bool autoChooseTransparentMaterial) {
             Material mat;
             if (texture == null && countryColoredMatCache.TryGetValue(color, out mat)) {
                 return mat;
@@ -660,7 +816,7 @@ namespace WPM {
             }
         }
 
-        void UpdateOutlineMatProperties() {
+        void UpdateOutlineMatProperties () {
             if (_frontiersThicknessMode == FRONTIERS_THICKNESS.Custom) {
                 outlineMatCurrent = outlineMatThickOpaque;
             } else {
@@ -673,7 +829,7 @@ namespace WPM {
             outlineMatCurrent.SetFloat(ShaderParams.OutlineThickness, _frontiersThickness);
         }
 
-        void UpdateFrontiersMat() {
+        void UpdateFrontiersMat () {
             if (frontiersMatCurrent == null)
                 return;
             // Different alpha?
@@ -684,14 +840,14 @@ namespace WPM {
             }
         }
 
-        void UpdateFrontiersMatProperties() {
+        void UpdateFrontiersMatProperties () {
             if (frontiersMatCurrent == null)
                 return;
             frontiersMatCurrent.color = _frontiersColor;
             frontiersMatCurrent.SetFloat(ShaderParams.OutlineThickness, _frontiersThickness);
         }
 
-        void UpdateInlandFrontiersMat() {
+        void UpdateInlandFrontiersMat () {
             if (inlandFrontiersMatCurrent == null)
                 return;
             // Different alpha?
@@ -702,15 +858,16 @@ namespace WPM {
             }
         }
 
-        void DrawFrontiers() {
+        void DrawFrontiers () {
 
             if (!gameObject.activeInHierarchy || frontiers == null)
                 return;
 
             // Create frontiers layer
             Transform t = transform.Find(FRONTIERS_LAYER);
-            if (t != null)
+            if (t != null) {
                 DestroyImmediate(t.gameObject);
+            }
             frontiersLayer = new GameObject(FRONTIERS_LAYER);
             frontiersLayer.layer = gameObject.layer;
             frontiersLayer.transform.SetParent(transform, false);
@@ -762,7 +919,7 @@ namespace WPM {
 
         }
 
-        void DrawInlandFrontiers() {
+        void DrawInlandFrontiers () {
             if (!gameObject.activeInHierarchy)
                 return;
 
@@ -818,37 +975,41 @@ namespace WPM {
 
         #endregion
 
-
         #region Map Labels
 
 
-        void ReloadFont() {
-            if (_countryLabelsFont != null && _countryLabelsFont.dynamic) {
-                Debug.LogError("Dynamic font (" + _countryLabelsFont.name + ") is not supported - please select the font and choose other option in the Import settings. Also set Font Size to 160.");
-                _countryLabelsFont = null;
-            }
-            if (_countryLabelsFont == null) {
-                labelsFont = Instantiate(Resources.Load<Font>("Font/Lato"));
+        void ReloadFont () {
+            if (_countryLabelsTextEngine == TEXT_ENGINE.TextMeshStandard) {
+                if (_countryLabelsFont != null && _countryLabelsFont.dynamic) {
+                    Debug.LogError("Dynamic font (" + _countryLabelsFont.name + ") is not supported - please select the font and choose other option in the Import settings. Also set Font Size to 160.");
+                    _countryLabelsFont = null;
+                }
+                if (_countryLabelsFont == null) {
+                    labelsFont = Instantiate(Resources.Load<Font>("Font/Lato"));
+                } else {
+                    labelsFont = Instantiate(_countryLabelsFont);
+                }
+
+                Material fontMaterial = Instantiate(Resources.Load<Material>("Materials/Font")); // this material is linked to a shader that has into account zbuffer
+                if (labelsFont.material != null) {
+                    fontMaterial.mainTexture = labelsFont.material.mainTexture;
+                }
+                labelsFont.material = fontMaterial;
+                labelsShadowMaterial = Instantiate(fontMaterial);
+                labelsShadowMaterial.renderQueue--;
+
             } else {
-                labelsFont = Instantiate(_countryLabelsFont);
-            }
-
-            Material fontMaterial = Instantiate(Resources.Load<Material>("Materials/Font")); // this material is linked to a shader that has into account zbuffer
-            if (labelsFont.material != null) {
-                fontMaterial.mainTexture = labelsFont.material.mainTexture;
-            }
-            labelsFont.material = fontMaterial;
-            labelsShadowMaterial = Instantiate(fontMaterial);
-            labelsShadowMaterial.renderQueue--;
-
-            if (_countryLabelsTextEngine == TEXT_ENGINE.TextMeshPro) {
                 if (_countryLabelsFontTMPro == null) {
                     _countryLabelsFontTMPro = Resources.Load<TMP_FontAsset>("Font/TextMeshPro/Lato SDF");
                     if (_countryLabelsFontTMPro == null) {
                         Debug.LogWarning("Please assign an SDF Font to World Map Globe inspector. You can create SDF Fonts using TextMesh Pro Font Asset creator tool.");
                     }
                 }
+#if UNITY_2023_1_OR_NEWER
+                labelsFontTMPro = (TMP_FontAsset)_countryLabelsFontTMPro;
+#else
                 labelsFontTMPro = Instantiate(_countryLabelsFontTMPro);
+#endif
                 labelsFontTMProMaterial = _countryLabelsFontTMProMaterial;
                 if (labelsFontTMProMaterial == null) {
                     labelsFontTMProMaterial = labelsFontTMPro.material;
@@ -860,7 +1021,7 @@ namespace WPM {
         /// <summary>
         /// Forces redraw of all labels.
         /// </summary>
-        public void RedrawMapLabels() {
+        public void RedrawMapLabels () {
             DestroyMapLabels();
             DrawMapLabels();
         }
@@ -868,7 +1029,7 @@ namespace WPM {
         /// <summary>
         /// Draws the map labels. Note that it will update cached textmesh objects if labels are already drawn.
         /// </summary>
-        void DrawMapLabels() {
+        void DrawMapLabels () {
 
             if (!_showCountryNames)
                 return;
@@ -880,11 +1041,15 @@ namespace WPM {
                     ReloadFont();
                     if (labelsFontTMPro == null) return;
                 }
+            } else {
+                // Set colors for standard font
+                if (labelsFont == null) {
+                    ReloadFont();
+                    if (labelsFont == null) return;
+                }
+                labelsFont.material.color = _countryLabelsColor;
+                labelsShadowMaterial.color = _countryLabelsShadowColor;
             }
-
-            // Set colors
-            labelsFont.material.color = _countryLabelsColor;
-            labelsShadowMaterial.color = _countryLabelsShadowColor;
 
             // Create texts
             GameObject overlay = GetOverlayLayer(true, _labelsRenderMethod == LABELS_RENDER_METHOD.Blended);
@@ -1235,7 +1400,7 @@ namespace WPM {
         }
 
 
-        int OverlapComparer(MeshRect r1, MeshRect r2) {
+        int OverlapComparer (MeshRect r1, MeshRect r2) {
             return (r2.rect.center.y).CompareTo(r1.rect.center.y);
         }
 
@@ -1243,13 +1408,13 @@ namespace WPM {
             public int countryIndex;
             public Rect rect;
 
-            public MeshRect(int countryIndex, Rect rect) {
+            public MeshRect (int countryIndex, Rect rect) {
                 this.countryIndex = countryIndex;
                 this.rect = rect;
             }
         }
 
-        void DestroyMapLabels() {
+        void DestroyMapLabels () {
 #if TRACE_CTL
 			Debug.Log ("CTL " + DateTime.Now + ": destroy labels");
 #endif
@@ -1279,7 +1444,7 @@ namespace WPM {
                 requestMapperCamShot = true;
         }
 
-        void FadeCountryLabels() {
+        void FadeCountryLabels () {
             if (!_showCountryNames || _countries == null)
                 return;
             int maxIterations = _countries.Length;
@@ -1311,7 +1476,7 @@ namespace WPM {
         /// Automatically fades in/out country labels based on their screen size
         /// </summary>
         /// <returns><c>true</c>, if country label was faded, <c>false</c> otherwise.</returns>
-        bool FadeCountryLabelTextMesh(Country country) {
+        bool FadeCountryLabelTextMesh (Country country) {
             Camera cam = mainCamera;
             bool changes = false;
             float maxAlpha = _countryLabelsColor.a;
@@ -1398,7 +1563,7 @@ namespace WPM {
         /// Automatically fades in/out country labels based on their screen size
         /// </summary>
         /// <returns><c>true</c>, if country label was faded, <c>false</c> otherwise.</returns>
-        bool FadeCountryLabelTextMeshPro(Country country) {
+        bool FadeCountryLabelTextMeshPro (Country country) {
             Camera cam = mainCamera;
             bool changes = false;
             float maxAlpha = _countryLabelsColor.a;
@@ -1461,10 +1626,9 @@ namespace WPM {
 
         #endregion
 
-
         #region Country highlighting
 
-        bool GetCountryUnderMouse(Vector3 spherePoint, out int countryIndex, out int regionIndex) {
+        bool GetCountryUnderMouse (Vector3 spherePoint, out int countryIndex, out int regionIndex) {
             if (!GetCountryUnderMouseInt(spherePoint, out countryIndex, out regionIndex)) {
                 // Fallback: search by nearest city
                 int ci = GetCityNearPointFast(spherePoint);
@@ -1477,7 +1641,7 @@ namespace WPM {
             return countryIndex >= 0 && regionIndex >= 0;
         }
 
-        bool GetCountryUnderMouseInt(Vector3 spherePoint, out int countryIndex, out int regionIndex) {
+        bool GetCountryUnderMouseInt (Vector3 spherePoint, out int countryIndex, out int regionIndex) {
             Vector2 latLon;
             Conversion.GetLatLonFromSpherePoint(spherePoint, out latLon);
             float maxArea = float.MaxValue;
@@ -1516,7 +1680,7 @@ namespace WPM {
         /// <summary>
         /// Disables all country regions highlights. This doesn't remove custom materials.
         /// </summary>
-        public void HideCountryRegionHighlights(bool destroyCachedSurfaces) {
+        public void HideCountryRegionHighlights (bool destroyCachedSurfaces) {
             HideCountryRegionHighlight();
             if (countries == null)
                 return;
@@ -1553,7 +1717,7 @@ namespace WPM {
             }
         }
 
-        void HideCountryRegionHighlight() {
+        void HideCountryRegionHighlight () {
             HideProvinceRegionHighlight();
             HideCityHighlight();
             if (_countryRegionHighlightedIndex >= 0 && _countryRegionHighlightedIndex >= 0) {
@@ -1564,9 +1728,6 @@ namespace WPM {
                     }
                 }
                 countryRegionHighlightedObj = null;
-                // Raise exit event
-                if (OnCountryExit != null && _countryHighlightedIndex >= 0)
-                    OnCountryExit(_countryHighlightedIndex, _countryRegionHighlightedIndex);
             }
 
             // hide highlighted continent
@@ -1581,6 +1742,10 @@ namespace WPM {
             }
             highlightedCountries.Clear();
 
+            if (OnCountryExit != null && _countryHighlightedIndex >= 0) {
+                OnCountryExit(_countryHighlightedIndex, _countryRegionHighlightedIndex);
+            }
+
             hudMatCountry.mainTexture = null;
             _countryHighlighted = null;
             _countryHighlightedIndex = -1;
@@ -1588,7 +1753,7 @@ namespace WPM {
             _countryRegionHighlightedIndex = -1;
         }
 
-        void HideCountryRegionHighlightSingle(int countryIndex, int regionIndex) {
+        void HideCountryRegionHighlightSingle (int countryIndex, int regionIndex) {
             int cacheIndex = GetCacheIndexForCountryRegion(countryIndex, regionIndex);
             Country countryHighlighted = _countries[countryIndex];
             Region region = countryHighlighted.regions[regionIndex];
@@ -1611,27 +1776,37 @@ namespace WPM {
             }
         }
 
+        public GameObject HighlightCountry (int countryIndex, bool refreshGeometry, bool drawOutline, Color outlineColor, bool includeContinent = false) {
+            return HighlightCountryRegion(countryIndex, 0, refreshGeometry, drawOutline, outlineColor, true, includeContinent);
+        }
 
-        public GameObject HighlightCountryRegion(int countryIndex, int regionIndex, bool refreshGeometry, bool drawOutline, Color outlineColor) {
+        public GameObject HighlightCountryRegion (int countryIndex, int regionIndex, bool refreshGeometry, bool drawOutline, Color outlineColor) {
+            return HighlightCountryRegion(countryIndex, regionIndex, refreshGeometry, drawOutline, outlineColor, _highlightAllCountryRegions, _enableContinentHighlight);
+        }
+
+
+        public GameObject HighlightCountryRegion (int countryIndex, int regionIndex, bool refreshGeometry, bool drawOutline, Color outlineColor, bool includeAllCountryRegions, bool includeContinent) {
 #if PAINT_MODE
 			ToggleCountrySurface(countryIndex, true, Color.white);
 			return null; 
 #else
+
+            if (countryIndex < 0 || countryIndex >= countries.Length || regionIndex < 0 || regionIndex >= countries[countryIndex].regions.Count)
+                return null;
 
             if (countryRegionHighlightedObj != null) {
                 if (countryIndex == _countryHighlightedIndex && regionIndex == _countryRegionHighlightedIndex && !refreshGeometry)
                     return countryRegionHighlightedObj;
                 HideCountryRegionHighlight();
             }
-            if (countryIndex < 0 || countryIndex >= countries.Length || regionIndex < 0 || regionIndex >= countries[countryIndex].regions.Count)
-                return null;
 
             Country country = _countries[countryIndex];
 
             if (_enableCountryHighlight) {
+
                 Shader.SetGlobalVector(ShaderParams.CountryHighlightData, new Vector4(Time.timeSinceLevelLoad - 0.01f, _countryHighlightFadeDuration + 0.001f, 0, 0));
                 countryRegionHighlightedObj = HighlightCountryRegionSingle(countryIndex, regionIndex, refreshGeometry, drawOutline, outlineColor);
-                if (_highlightAllCountryRegions) {
+                if (includeAllCountryRegions) {
                     int rCount = country.regions.Count;
                     for (int r = 0; r < rCount; r++) {
                         if (r != regionIndex) {
@@ -1640,16 +1815,21 @@ namespace WPM {
                     }
                 }
 
-                if (_enableContinentHighlight) {
+                if (includeContinent) {
                     int countriesLength = countries.Length;
                     for (int k = 0; k < countriesLength; k++) {
                         if (k == countryIndex) continue;
                         Country otherCountry = _countries[k];
                         if (country.continent.Equals(otherCountry.continent)) {
                             highlightedCountries.Add(otherCountry);
-                            int rCount = otherCountry.regions.Count;
-                            for (int r = 0; r < rCount; r++) {
-                                HighlightCountryRegionSingle(k, r, false, false, Color.black);
+                            if (includeAllCountryRegions) {
+                                int rCount = otherCountry.regions.Count;
+                                for (int r = 0; r < rCount; r++) {
+                                    HighlightCountryRegionSingle(k, r, false, false, Color.black);
+                                }
+                            } else {
+                                int otherRegionIndex = otherCountry.mainRegionIndex;
+                                HighlightCountryRegionSingle(k, otherRegionIndex, false, false, Color.black);
                             }
                         }
                     }
@@ -1670,10 +1850,9 @@ namespace WPM {
 #endif
         }
 
-        GameObject HighlightCountryRegionSingle(int countryIndex, int regionIndex, bool refreshGeometry, bool drawOutline, Color outlineColor) {
+        GameObject HighlightCountryRegionSingle (int countryIndex, int regionIndex, bool refreshGeometry, bool drawOutline, Color outlineColor) {
             int cacheIndex = GetCacheIndexForCountryRegion(countryIndex, regionIndex);
-            GameObject surf;
-            bool existsInCache = surfaces.TryGetValue(cacheIndex, out surf);
+            bool existsInCache = surfaces.TryGetValue(cacheIndex, out GameObject surf);
             if (refreshGeometry && existsInCache) {
                 surfaces.Remove(cacheIndex);
                 DestroyImmediate(surf);
@@ -1718,7 +1897,7 @@ namespace WPM {
             return surf;
         }
 
-        bool CheckGlobeDistanceForHighlight(Region region, float threshold) {
+        bool CheckGlobeDistanceForHighlight (Region region, float threshold) {
             if (_showTiles && _currentZoomLevel > _tileMaxZoomLevelFrontiers) return false;
             Camera cam = mainCamera;
             Vector3 regionTR = Conversion.GetSpherePointFromLatLon(region.latlonRect2D.max);
@@ -1730,11 +1909,11 @@ namespace WPM {
             return highlightedArea < threshold;
         }
 
-        GameObject GenerateCountryRegionSurface(int countryIndex, int regionIndex, Material material, bool drawOutline, Color outlineColor, bool temporary) {
+        GameObject GenerateCountryRegionSurface (int countryIndex, int regionIndex, Material material, bool drawOutline, Color outlineColor, bool temporary) {
             return GenerateCountryRegionSurface(countryIndex, regionIndex, material, Misc.Vector2one, Misc.Vector2zero, 0, drawOutline, outlineColor, temporary);
         }
 
-        void CountrySubstractProvinceEnclaves(int countryIndex, Region region, Poly2Tri.Polygon poly) {
+        void CountrySubstractProvinceEnclaves (int countryIndex, Region region, Poly2Tri.Polygon poly) {
             List<Region> negativeRegions = new List<Region>();
             for (int op = 0; op < _countries.Length; op++) {
                 if (op == countryIndex)
@@ -1777,7 +1956,7 @@ namespace WPM {
             }
         }
 
-        void CountrySubstractCountryEnclaves(int countryIndex, Region region, Poly2Tri.Polygon poly) {
+        void CountrySubstractCountryEnclaves (int countryIndex, Region region, Poly2Tri.Polygon poly) {
             List<Region> negativeRegions = new List<Region>();
             int ccount = countriesOrderedBySize.Count;
             for (int ops = 0; ops < ccount; ops++) {
@@ -1814,7 +1993,7 @@ namespace WPM {
             }
         }
 
-        GameObject GenerateCountryRegionSurface(int countryIndex, int regionIndex, Material material, Vector2 textureScale, Vector2 textureOffset, float textureRotation, bool drawOutline, Color outlineColor, bool temporary) {
+        GameObject GenerateCountryRegionSurface (int countryIndex, int regionIndex, Material material, Vector2 textureScale, Vector2 textureOffset, float textureRotation, bool drawOutline, Color outlineColor, bool temporary) {
             if (countryIndex < 0 || countryIndex >= countries.Length)
                 return null;
             Country country = countries[countryIndex];
@@ -1835,7 +2014,7 @@ namespace WPM {
         }
 
 
-        GameObject GenerateCountryRegionSurfaceOne(Transform parent, string name, int countryIndex, int regionIndex, Material material, Vector2 textureScale, Vector2 textureOffset, float textureRotation, bool drawOutline, Color outlineColor, bool temporary) {
+        GameObject GenerateCountryRegionSurfaceOne (Transform parent, string name, int countryIndex, int regionIndex, Material material, Vector2 textureScale, Vector2 textureOffset, float textureRotation, bool drawOutline, Color outlineColor, bool temporary) {
             Country country = countries[countryIndex];
             Region region = country.regions[regionIndex];
 
@@ -1928,7 +2107,7 @@ namespace WPM {
         }
 
 
-        public void DestroyAllCountriesOutline() {
+        public void DestroyAllCountriesOutline () {
             if (_surfacesLayer == null)
                 return;
             MeshRenderer[] rr = _surfacesLayer.GetComponentsInChildren<MeshRenderer>(true);
@@ -1943,11 +2122,19 @@ namespace WPM {
 
         #region Country manipulation
 
+        bool ValidCountryIndex (int countryIndex) {
+            return countryIndex >= 0 && countries != null && countryIndex < _countries.Length;
+        }
+
+        bool ValidCountryRegionIndex (int countryIndex, int regionIndex) {
+            return countryIndex >= 0 && countries != null && countryIndex < _countries.Length && regionIndex >= 0 && _countries[countryIndex].regions != null && regionIndex < _countries[countryIndex].regions.Count;
+        }
+
         /// <summary>
         /// Deletes the country. Optionally also delete its dependencies (provinces, cities, mountpoints).
         /// This internal method does not refresh cachés.
         /// </summary>
-        bool internal_CountryDelete(int countryIndex, bool deleteDependencies) {
+        bool internal_CountryDelete (int countryIndex, bool deleteDependencies) {
             if (countryIndex < 0 || countryIndex >= countries.Length)
                 return false;
 

@@ -60,6 +60,8 @@ namespace WPM {
             map.DrawCities();
             lastCityCount = -1;
             ReloadCityNames();
+            cityIndex = map.cities.Count - 1;
+            CitySelect();
             cityChanges = true;
         }
 

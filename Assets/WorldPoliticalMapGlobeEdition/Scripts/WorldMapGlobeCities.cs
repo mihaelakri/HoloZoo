@@ -35,7 +35,7 @@ namespace WPM {
         public List<City> cities {
             get {
                 if (_cities == null)
-                    ReadCitiesPackedString();
+                    ReadCitiesGeoData();
                 return _cities;
             }
             set {
@@ -112,9 +112,66 @@ namespace WPM {
             }
         }
 
+
+        [SerializeField]
+        GameObject _citySpot;
+        public GameObject citySpot {
+            get {
+                return _citySpot;
+            }
+            set {
+                if (_citySpot != value) {
+                    _citySpot = value;
+                    ReloadCityPrefabs();
+                    if (_showCities) {
+                        DrawCities();
+                    }
+                    isDirty = true;
+                }
+            }
+        }
+
+
+        [SerializeField]
+        GameObject _citySpotCapitalRegion;
+        public GameObject citySpotCapitalRegion {
+            get {
+                return _citySpotCapitalRegion;
+            }
+            set {
+                if (_citySpotCapitalRegion != value) {
+                    _citySpotCapitalRegion = value;
+                    ReloadCityPrefabs();
+                    if (_showCities) {
+                        DrawCities();
+                    }
+                    isDirty = true;
+                }
+            }
+        }
+
+
+        [SerializeField]
+        GameObject _citySpotCapitalCountry;
+        public GameObject citySpotCapitalCountry {
+            get {
+                return _citySpotCapitalCountry;
+            }
+            set {
+                if (_citySpotCapitalCountry != value) {
+                    _citySpotCapitalCountry = value;
+                    ReloadCityPrefabs();
+                    if (_showCities) {
+                        DrawCities();
+                    }
+                    isDirty = true;
+                }
+            }
+        }
+
         [NonSerialized]
         int
-            _numCitiesDrawn = 0;
+            _numCitiesDrawn;
 
         /// <summary>
         /// Gets the number cities drawn.
@@ -470,6 +527,7 @@ namespace WPM {
             return _cities[cityIndex];
         }
 
+
         /// <summary>
         /// Returns the index of a random visible city.
         /// </summary>
@@ -512,11 +570,19 @@ namespace WPM {
         }
 
         /// <summary>
+        /// Returns the index of the city by its name in the cities collection of a given country.
+        /// </summary>
+        public int GetCityIndex(string countryName, string cityName) {
+            int countryIndex = GetCountryIndex(countryName);
+            return GetCityIndexInCountry(countryIndex, cityName);
+        }
+
+
+        /// <summary>
         /// Returns the index of the city by its name in the cities collection of a given country and province.
         /// </summary>
         public int GetCityIndex(int countryIndex, string provinceName, string cityName) {
-            if (countryIndex < 0 || countryIndex >= countries.Length)
-                return -1;
+            if (!ValidCountryIndex(countryIndex)) return -1;
             int provinceIndex = GetProvinceIndex(countryIndex, provinceName);
             if (provinceIndex < 0)
                 return -1;
@@ -527,8 +593,7 @@ namespace WPM {
         /// Returns the index of the city by its name in the cities collection of a given province.
         /// </summary>
         public int GetCityIndexInProvince(int provinceIndex, string cityName) {
-            if (provinceIndex < 0 || provinceIndex >= provinces.Length)
-                return -1;
+            if (!ValidProvinceIndex(provinceIndex)) return -1;
             string provinceName = _provinces[provinceIndex].name;
             int countryIndex = _provinces[provinceIndex].countryIndex;
             int cityCount = cities.Count;
@@ -561,8 +626,7 @@ namespace WPM {
         /// Returns the index of the city by its name in the cities collection of a given country.
         /// </summary>
         public int GetCityIndexInCountry(int countryIndex, string cityName) {
-            if (countryIndex < 0 || countryIndex >= countries.Length)
-                return -1;
+            if (!ValidCountryIndex(countryIndex)) return -1;
             int cityCount = cities.Count;
             for (int k = 0; k < cityCount; k++) {
                 City city = _cities[k];
@@ -700,8 +764,7 @@ namespace WPM {
         /// Gets the name of the city country.
         /// </summary>
         public string GetCityCountryName(int cityIndex) {
-            if (cityIndex < 0 || cityIndex >= cities.Count)
-                return "";
+            if (!ValidCityIndex(cityIndex)) return null;
             int countryIndex = _cities[cityIndex].countryIndex;
             Country country = GetCountry(countryIndex);
             if (country != null)
@@ -709,6 +772,33 @@ namespace WPM {
             else
                 return "";
         }
+
+        /// <summary>
+        /// Returns the latitude and longitude of the city in a Vector2
+        /// </summary>
+        public Vector2 GetCityLatLon(int cityIndex) {
+            if (!ValidCityIndex(cityIndex)) return Vector2.zero;
+            return _cities[cityIndex].latlon;
+        }
+
+        /// <summary>
+        /// Returns the local position of the city on the sphere
+        /// </summary>
+        public Vector3 GetCityPosition(int cityIndex) {
+            if (!ValidCityIndex(cityIndex)) return Vector2.zero;
+            return _cities[cityIndex].localPosition;
+        }
+
+
+        /// <summary>
+        /// Returns the local position of the city on the sphere
+        /// </summary>
+        public Vector3 GetCityPosition(string cityName, string countryName) {
+            int cityIndex = GetCityIndex(countryName, cityName);
+            if (cityIndex < 0) return Vector3.zero;
+            return _cities[cityIndex].localPosition;
+        }
+
 
         /// <summary>
         /// Convenient method that returns the name of the city plus the province and country names
@@ -922,6 +1012,7 @@ namespace WPM {
             for (int k = 0; k < citiesCount; k++) {
                 City city = _cities[k];
                 Renderer r = city.renderer;
+                if (r == null) continue;
                 cityProps.SetColor(ShaderParams.Color, GetCityColorByClass(k));
                 r.SetPropertyBlock(cityProps);
 

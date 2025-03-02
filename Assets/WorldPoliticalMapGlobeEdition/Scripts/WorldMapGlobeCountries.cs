@@ -874,6 +874,7 @@ namespace WPM {
                 if (_countryLabelsTextEngine != value) {
                     _countryLabelsTextEngine = value;
                     isDirty = true;
+                    ReloadFont();
                     RedrawMapLabels();
                 }
             }
@@ -1019,8 +1020,8 @@ namespace WPM {
                 return false;
 
             // Ensure dependencies are loaded
-            if (_provinces == null) ReadProvincesPackedString();
-            if (_cities == null) ReadCitiesPackedString();
+            if (_provinces == null) ReadProvincesGeoData();
+            if (_cities == null) ReadCitiesGeoData();
             if (mountPoints == null) ReloadMountPointsData();
 
             countries[countryIndex].name = newName;
@@ -1537,15 +1538,17 @@ namespace WPM {
         /// <summary>
         /// Adds a country outline
         /// </summary>
-        public void DrawCountryOutline(string countryName, Color color) {
-            ToggleCountryOutline(countryName, true, color);
+        public GameObject DrawCountryOutline(string countryName, Color color) {
+            int countryIndex = GetCountryIndex(countryName);
+            return DrawCountryOutline(countryIndex, color);
         }
 
         /// <summary>
         /// Adds a country outline
         /// </summary>
-        public void DrawCountryOutline(int countryIndex, Color color) {
-            ToggleCountryOutline(countryIndex, true, color);
+        public GameObject DrawCountryOutline(int countryIndex, Color color) {
+            if (!ValidCountryIndex(countryIndex)) return null;
+            return ToggleCountryRegionOutline(countryIndex, countries[countryIndex].mainRegionIndex, true, color);
         }
 
         /// <summary>
@@ -1574,13 +1577,13 @@ namespace WPM {
         /// <summary>
         /// Toggles on/off a country region outline
         /// </summary>
-        public void ToggleCountryRegionOutline(int countryIndex, int regionIndex, bool visible, Color color = default(Color)) {
+        public GameObject ToggleCountryRegionOutline(int countryIndex, int regionIndex, bool visible, Color color = default(Color)) {
             if (countryIndex < 0 || countryIndex >= countries.Length)
-                return;
+                return null;
             Country country = countries[countryIndex];
             int regionsCount = country.regions.Count;
-            if (regionIndex < 0 || regionIndex >= regionsCount) return;
-            ToggleRegionOutline(country.regions[regionIndex], visible, color);
+            if (regionIndex < 0 || regionIndex >= regionsCount) return null;
+            return ToggleRegionOutline(country.regions[regionIndex], visible, color);
         }
 
 
@@ -1722,8 +1725,7 @@ namespace WPM {
         /// </summary>
         public void HideCountryRegionSurface(int countryIndex, int regionIndex) {
             int cacheIndex = GetCacheIndexForCountryRegion(countryIndex, regionIndex);
-            GameObject surf = null;
-            if (surfaces.TryGetValue(cacheIndex, out surf)) {
+            if (surfaces.TryGetValue(cacheIndex, out GameObject surf)) {
                 if (surf != null)
                     surf.SetActive(false);
                 else
@@ -1774,11 +1776,18 @@ namespace WPM {
         /// <summary>
         /// Flashes specified country by index in the countries collection.
         /// </summary>
-        public void BlinkCountry(int countryIndex, Color color1, Color color2, float duration, float blinkingSpeed, bool smoothBlink = false) {
-            if (countryIndex < 0 || countryIndex >= countries.Length)
-                return;
-            int mainRegionIndex = countries[countryIndex].mainRegionIndex;
-            BlinkCountry(countryIndex, mainRegionIndex, color1, color2, duration, blinkingSpeed, smoothBlink);
+        public void BlinkCountry(int countryIndex, Color color1, Color color2, float duration, float blinkingSpeed, bool smoothBlink = false, bool includeAllRegions = false, bool drawOutline = false, Color outlineColor = default) {
+            if (!ValidCountryIndex(countryIndex)) return;
+            Country country = countries[countryIndex];
+            if (country.regions == null) return;
+            if (includeAllRegions) {
+                int regionsCount = country.regions.Count;
+                for (int k = 0; k < regionsCount; k++) {
+                    BlinkCountry(countryIndex, k, color1, color2, duration, blinkingSpeed, smoothBlink);
+                }
+            } else {
+                BlinkCountry(countryIndex, country.mainRegionIndex, color1, color2, duration, blinkingSpeed, drawOutline, outlineColor, smoothBlink);
+            }
         }
 
         /// <summary>
@@ -1792,24 +1801,20 @@ namespace WPM {
         /// Flashes specified country's region.
         /// </summary>
         public void BlinkCountry(int countryIndex, int regionIndex, Color color1, Color color2, float duration, float blinkingSpeed, bool drawOutline, Color outlineColor, bool smoothBlink = false) {
+            if (!ValidCountryRegionIndex(countryIndex, regionIndex)) return;
             int cacheIndex = GetCacheIndexForCountryRegion(countryIndex, regionIndex);
-            GameObject surf;
-            bool disableAtEnd;
-            if (surfaces.ContainsKey(cacheIndex)) {
-                surf = surfaces[cacheIndex];
-                disableAtEnd = !surf.activeSelf;
-            } else {
+            if (!surfaces.TryGetValue(cacheIndex, out GameObject surf) || surf == null) {
                 surf = GenerateCountryRegionSurface(countryIndex, regionIndex, hudMatCountry, drawOutline, outlineColor, true);
-                disableAtEnd = true;
             }
             surf.SetActive(true);
-            SurfaceBlinker sb = surf.AddComponent<SurfaceBlinker>();
-            sb.blinkMaterial = hudMatCountry;
+            SurfaceBlinker sb = surf.GetComponent<SurfaceBlinker>();
+            if (sb != null) DestroyImmediate(sb);
+            sb = surf.AddComponent<SurfaceBlinker>();
+            sb.blinkMaterial = hudMatBlinker;
             sb.color1 = color1;
             sb.color2 = color2;
             sb.duration = duration;
             sb.speed = blinkingSpeed;
-            sb.disableAtEnd = disableAtEnd;
             sb.customizableSurface = countries[countryIndex].regions[regionIndex];
             sb.smoothBlink = smoothBlink;
         }
@@ -2028,7 +2033,7 @@ namespace WPM {
                 return false;
 
             if (_provinces == null && !_showProvinces) {
-                ReadProvincesPackedString(); // Forces loading of provinces
+                ReadProvincesGeoData(); // Forces loading of provinces
             }
 
             // Transfer all provinces records to target country

@@ -25,7 +25,7 @@ namespace WPM {
 
         // resources
         Material citiesNormalMat, citiesRegionCapitalMat, citiesCountryCapitalMat;
-        GameObject citiesLayer, citySpot, citySpotCapitalRegion, citySpotCapitalCountry;
+        GameObject citiesLayer;
         MaterialPropertyBlock cityProps;
 
         #endregion
@@ -61,26 +61,46 @@ namespace WPM {
 
         #region System initialization
 
-        bool ValidCityIndex(int cityIndex) {
+        bool ValidCityIndex (int cityIndex) {
             return cityIndex >= 0 && cities != null && cityIndex < _cities.Count;
         }
 
-        void ReadCitiesPackedString() {
-            ReadCitiesPackedString("cities10");
+        void ReadCitiesGeoData () {
+            ReadCitiesGeoData("cities10");
         }
 
-        void ReadCitiesPackedString(string filename) {
+        void ReadCitiesGeoData (string filename) {
             string cityCatalogFileName = _geodataResourcesPath + "/" + filename;
-            TextAsset ta = Resources.Load<TextAsset>(cityCatalogFileName);
+
+            TextAsset ta = null;
+            if (_geodataFormat == GEODATA_FORMAT.BinaryFormat) {
+                // try to load in binary form first
+                ta = Resources.Load<TextAsset>(cityCatalogFileName + "_bin");
+                if (ta != null) {
+                    SetCitiesGeoDataBinary(ta.bytes);
+                } else {
+                    Debug.LogWarning("Geodata format is set to binary but cities binary file can't be found or read.");
+                }
+            }
+
+            if (ta == null) {
+                // load legacy packed string format
+                ta = Resources.Load<TextAsset>(cityCatalogFileName);
+                if (ta != null) {
+                    SetCitiesGeoData(ta.text);
+                } else {
+                    Debug.LogWarning("Cities packed string format file can't be read.");
+                }
+            }
+
             if (ta != null) {
-                SetCityGeoData(ta.text);
-                Resources.UnloadAsset(ta);
                 ReloadCitiesAttributes();
+                Resources.UnloadAsset(ta);
             }
         }
 
 
-        void ReloadCitiesAttributes() {
+        void ReloadCitiesAttributes () {
             TextAsset ta = Resources.Load<TextAsset>(_geodataResourcesPath + "/" + _cityAttributeFile);
             if (ta == null)
                 return;
@@ -89,10 +109,91 @@ namespace WPM {
         }
 
 
+
+
+
+        #endregion
+
+        #region IO stuff
+
+        /// <summary>
+        /// Returns the file name corresponding to the current city data file
+        /// </summary>
+        public string GetCityGeoDataFileName () {
+            return "cities10.txt";
+        }
+
+
+        /// <summary>
+        /// Returns the file name corresponding to the current country data file (countries10, countries110)
+        /// </summary>
+        public string GetCityGeoDataBinaryFileName () {
+            return "cities10_bin.txt";
+        }
+
+        /// <summary>
+        /// Exports the geographic data in packed string format.
+        /// </summary>
+        public string GetCitiesGeoData () {
+            if (cities == null) return null;
+            StringBuilder sb = new StringBuilder();
+            int citiesCount = cities.Count;
+            for (int k = 0; k < citiesCount; k++) {
+                City city = cities[k];
+                if (k > 0)
+                    sb.Append("|");
+                sb.Append(city.name);
+                sb.Append("$");
+                if (city.province != null && city.province.Length > 0) {
+                    sb.Append(city.province);
+                    sb.Append("$");
+                } else {
+                    sb.Append("$");
+                }
+                sb.Append(countries[city.countryIndex].name);
+                sb.Append("$");
+                sb.Append(city.population);
+                sb.Append("$");
+                sb.Append((int)(city.localPosition.x * WorldMapGlobe.MAP_PRECISION));
+                sb.Append("$");
+                sb.Append((int)(city.localPosition.y * WorldMapGlobe.MAP_PRECISION));
+                sb.Append("$");
+                sb.Append((int)(city.localPosition.z * WorldMapGlobe.MAP_PRECISION));
+                sb.Append("$");
+                sb.Append((int)city.cityClass);
+            }
+            return sb.ToString();
+        }
+
+
+        /// <summary>
+        /// Exports the geographic data in binary format.
+        /// </summary>
+        public byte[] GetCitiesGeoDataBinary () {
+            MemoryStream ms = new MemoryStream();
+            BinaryWriter bw = new BinaryWriter(ms, Encoding.UTF8);
+            int citiesCount = cities.Count;
+            bw.Write((uint)citiesCount);
+            for (int k = 0; k < citiesCount; k++) {
+                City city = cities[k];
+                bw.Write(city.name);
+                bw.Write(city.province);
+                bw.Write(countries[city.countryIndex].name);
+                bw.Write(city.population);
+                bw.Write(city.localPosition.x);
+                bw.Write(city.localPosition.y);
+                bw.Write(city.localPosition.z);
+                bw.Write((byte)city.cityClass);
+            }
+            bw.Flush();
+            return ms.ToArray();
+        }
+
+
         /// <summary>
         /// Reads the cities data from a packed string. Use GetCityGeoData method to get the current city geodata information.
         /// </summary>
-        public void SetCityGeoData(string s) {
+        public void SetCitiesGeoData (string s) {
 
             if (_countries == null) {
                 Init();
@@ -128,51 +229,49 @@ namespace WPM {
             }
         }
 
-        #endregion
-
-        #region IO stuff
-
         /// <summary>
-        /// Returns the file name corresponding to the current city data file
+        /// Loads cities information from a binary array
         /// </summary>
-        public string GetCityGeoDataFileName() {
-            return "cities10.txt";
-        }
+        public void SetCitiesGeoDataBinary (byte[] data) {
+            if (data == null || data.Length < 4) return;
 
-        /// <summary>
-        /// Exports the geographic data in packed string format.
-        /// </summary>
-        public string GetCityGeoData() {
-            if (cities == null) return null;
-            StringBuilder sb = new StringBuilder();
-            int citiesCount = cities.Count;
-            for (int k = 0; k < citiesCount; k++) {
-                City city = cities[k];
-                if (k > 0)
-                    sb.Append("|");
-                sb.Append(city.name);
-                sb.Append("$");
-                if (city.province != null && city.province.Length > 0) {
-                    sb.Append(city.province);
-                    sb.Append("$");
-                } else {
-                    sb.Append("$");
+            MemoryStream ms = new MemoryStream(data);
+            BinaryReader br = new BinaryReader(ms, Encoding.UTF8);
+
+            int cityCount = (int)br.ReadUInt32();
+
+            lastCityLookupCount = -1;
+
+            cities = new List<City>(cityCount);
+            int cityIndex = 0;
+            int unknownCountryIndex = -1;
+            for (int k = 0; k < cityCount; k++) {
+                string name = br.ReadString();
+                string province = br.ReadString();
+                string country = br.ReadString();
+                int countryIndex = GetCountryIndex(country);
+                if (countryIndex < 0) {
+                    if (unknownCountryIndex < 0) {
+                        Country uc = new Country("Unknown", "None");
+                        unknownCountryIndex = CountryAdd(uc);
+                    }
+                    countryIndex = unknownCountryIndex;
                 }
-                sb.Append(countries[city.countryIndex].name);
-                sb.Append("$");
-                sb.Append(city.population);
-                sb.Append("$");
-                sb.Append((int)(city.localPosition.x * WorldMapGlobe.MAP_PRECISION));
-                sb.Append("$");
-                sb.Append((int)(city.localPosition.y * WorldMapGlobe.MAP_PRECISION));
-                sb.Append("$");
-                sb.Append((int)(city.localPosition.z * WorldMapGlobe.MAP_PRECISION));
-                sb.Append("$");
-                sb.Append((int)city.cityClass);
+                if (countryIndex >= 0) {
+                    int population = br.ReadInt32();
+                    float x = br.ReadSingle();
+                    float y = br.ReadSingle();
+                    float z = br.ReadSingle();
+                    CITY_CLASS cityClass = (CITY_CLASS)br.ReadByte();
+                    if (cityClass == CITY_CLASS.COUNTRY_CAPITAL) {
+                        _countries[countryIndex].cityCapitalIndex = cityIndex;
+                    }
+                    City city = new City(name, province, countryIndex, population, new Vector3(x, y, z), cityClass);
+                    cities.Add(city);
+                    cityIndex++;
+                }
             }
-            return sb.ToString();
         }
-
 
         #endregion
 
@@ -181,7 +280,7 @@ namespace WPM {
         /// <summary>
         /// Redraws the cities. This is automatically called by Redraw(). Used internally by the Map Editor. You should not need to call this method directly.
         /// </summary>
-        public virtual void DrawCities() {
+        public virtual void DrawCities () {
 
             if (!_showCities || !gameObject.activeInHierarchy || cities == null)
                 return;
@@ -227,6 +326,20 @@ namespace WPM {
 
             int cityCount = cities.Count;
             int layer = gameObject.layer;
+
+            if (citySpot.GetComponentInChildren<Renderer>() == null) {
+                Debug.LogWarning("City Spot prefab has no renderer attached.");
+                cityCount = 0;
+            }
+            if (citySpotCapitalRegion.GetComponentInChildren<Renderer>() == null) {
+                Debug.LogWarning("City Region Capital prefab has no renderer attached.");
+                cityCount = 0;
+            }
+            if (citySpotCapitalCountry.GetComponentInChildren<Renderer>() == null) {
+                Debug.LogWarning("City Capital has no renderer attached.");
+                cityCount = 0;
+            }
+
             for (int k = 0; k < cityCount; k++) {
                 City city = cities[k];
                 Country country = countries[city.countryIndex];
@@ -251,7 +364,7 @@ namespace WPM {
                             cityParent = normalCities;
                             break;
                     }
-                    city.renderer = cityObj.GetComponent<Renderer>();
+                    city.renderer = cityObj.GetComponentInChildren<Renderer>();
                     city.renderer.sharedMaterial = cityMaterial;
                     cityObj.layer = layer;
                     cityObj.hideFlags = HideFlags.DontSave | HideFlags.HideInHierarchy;
@@ -295,7 +408,7 @@ namespace WPM {
             cityScaler.ScaleCities();
         }
 
-        void HighlightCity(int cityIndex) {
+        void HighlightCity (int cityIndex) {
             if (cityIndex == _cityHighlightedIndex)
                 return;
             if (!ValidCityIndex(cityIndex)) return;
@@ -312,7 +425,7 @@ namespace WPM {
             }
         }
 
-        void HideCityHighlight() {
+        void HideCityHighlight () {
             if (_cityHighlightedIndex < 0)
                 return;
 
@@ -333,7 +446,7 @@ namespace WPM {
 
         /// <summary>
         /// Returns the color of a city by its class
-        Color GetCityColorByClass(int cityIndex) {
+        Color GetCityColorByClass (int cityIndex) {
             switch (cities[cityIndex].cityClass) {
                 case CITY_CLASS.COUNTRY_CAPITAL: return citiesCountryCapitalMat.color;
                 case CITY_CLASS.REGION_CAPITAL: return citiesRegionCapitalMat.color;
@@ -341,10 +454,13 @@ namespace WPM {
             }
         }
 
-        void SetCityColor(int cityIndex, Color color) {
+        void SetCityColor (int cityIndex, Color color) {
             if (cityProps == null) cityProps = new MaterialPropertyBlock();
             cityProps.SetColor(ShaderParams.Color, color);
-            cities[cityIndex].renderer.SetPropertyBlock(cityProps);
+            City city = cities[cityIndex];
+            if (city.renderer != null) {
+                city.renderer.SetPropertyBlock(cityProps);
+            }
         }
 
         /// <summary>
@@ -353,7 +469,7 @@ namespace WPM {
         /// </summary>
         /// <returns>The city near point.</returns>
         /// <param name="localPoint">Local point in sphere coordinates.</param>
-        public int GetCityNearPointFast(Vector3 localPoint) {
+        public int GetCityNearPointFast (Vector3 localPoint) {
             if (visibleCities == null)
                 return -1;
             float hitPrecision = CITY_HIT_PRECISION * _cityIconSize * 5.0f;
@@ -377,7 +493,7 @@ namespace WPM {
             return -1;
         }
 
-        bool GetCityUnderMouse(int countryIndex, Vector3 localPoint, out int cityIndex) {
+        bool GetCityUnderMouse (int countryIndex, Vector3 localPoint, out int cityIndex) {
             cityIndex = -1;
             if (visibleCities == null)
                 return false;
@@ -401,7 +517,7 @@ namespace WPM {
         /// Returns the nearest city to the point specified in sphere coordinates.
         /// </summary>
         /// <param name="localPoint">Local point in sphere coordinates.</param>
-        public int GetCityNearPoint(Vector3 localPoint, int countryIndex = -1) {
+        public int GetCityNearPoint (Vector3 localPoint, int countryIndex = -1) {
             if (visibleCities == null)
                 return -1;
             float minDist = float.MaxValue;
@@ -423,7 +539,7 @@ namespace WPM {
         /// <summary>
         /// Returns cities belonging to a provided country.
         /// </summary>
-        public List<City> GetCities(int countryIndex) {
+        public List<City> GetCities (int countryIndex) {
             List<City> results = new List<City>(20);
             int cityCount = cities.Count;
             for (int c = 0; c < cityCount; c++) {
@@ -436,7 +552,7 @@ namespace WPM {
         /// <summary>
         /// Returns cities enclosed by a region.
         /// </summary>
-        public List<City> GetCities(Region region) {
+        public List<City> GetCities (Region region) {
             List<City> results = new List<City>(20);
             int cityCount = cities.Count;
             for (int c = 0; c < cityCount; c++) {
@@ -451,7 +567,7 @@ namespace WPM {
         /// <summary>
         /// Updates the city scale.
         /// </summary>
-        public void ScaleCities() {
+        public void ScaleCities () {
             if (citiesLayer != null) {
                 CityScaler scaler = citiesLayer.GetComponent<CityScaler>();
                 if (scaler != null) {
@@ -463,7 +579,7 @@ namespace WPM {
         }
 
 
-        int GetCityCountryRegionIndex(City city) {
+        int GetCityCountryRegionIndex (City city) {
             if (city.regionIndex < 0) {
                 int countryIndex = city.countryIndex;
                 if (countryIndex < 0 || countryIndex > countries.Length)

@@ -39,7 +39,6 @@ namespace WPM {
 		}
 	
 		void ClickHandler(Vector3 spherePos, int mouseButtonIndex) {
-            Debug.Log("click handler " + dragging);
             if (dragging) return;
             startPos = spherePos;
 			dragging = true;
@@ -48,14 +47,12 @@ namespace WPM {
 		}
 
 		void DragHandler(Vector3 spherePos) {
-            Debug.Log("drag handler");
 			if (!map.input.GetMouseButton(0)) return;
 			endPos = spherePos;
 			UpdateRectangle(false);
 		}
 
 		void ReleaseHandler(Vector3 spherePos, int buttonIndex) {
-            Debug.Log("release handler");
             UpdateRectangle(true);
 			Destroy (gameObject);
 		}

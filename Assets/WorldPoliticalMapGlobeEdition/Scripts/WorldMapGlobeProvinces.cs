@@ -38,7 +38,7 @@ namespace WPM {
         public Province[] provinces {
             get {
                 if (_provinces == null)
-                    ReadProvincesPackedString();
+                    ReadProvincesGeoData();
                 return _provinces;
             }
             set {
@@ -151,7 +151,7 @@ namespace WPM {
 
                     if (_showProvinces) {
                         if (_provinces == null) {
-                            ReadProvincesPackedString();
+                            ReadProvincesGeoData();
                         }
                         if (_drawAllProvinces) {
                             DrawAllProvinceBorders(true);
@@ -306,7 +306,7 @@ namespace WPM {
         /// </summary>
         /// <param name="countryIndices"></param>
         public void DrawProvinces(List<Country> countryIndices) {
-            if (provinces == null) ReadProvincesPackedString();
+            if (provinces == null) ReadProvincesGeoData();
             for (int k = 0; k < _countries.Length; k++) {
                 Country c = _countries[k];
                 c.allowShowProvinces = countryIndices.Contains(c);
@@ -1082,7 +1082,19 @@ namespace WPM {
         /// <summary>
         /// Flashes specified province by index in the global province array.
         /// </summary>
-        public void BlinkProvince(int provinceIndex, Color color1, Color color2, float duration, float blinkingSpeed, bool smoothBlink = false) {
+        public void BlinkProvince(int provinceIndex, Color color1, Color color2, float duration, float blinkingSpeed, bool smoothBlink = false, bool includeAllRegions = false) {
+            if (!ValidProvinceIndex(provinceIndex)) return;
+            Province province = provinces[provinceIndex];
+            if (province.regions == null) return;
+            if (includeAllRegions) {
+                int regionsCount = province.regions.Count;
+                for (int k = 0; k < regionsCount; k++) {
+                    BlinkCountry(provinceIndex, k, color1, color2, duration, blinkingSpeed, smoothBlink);
+                }
+            } else {
+                BlinkCountry(provinceIndex, province.mainRegionIndex, color1, color2, duration, blinkingSpeed, smoothBlink);
+            }
+
             int mainRegionIndex = provinces[provinceIndex].mainRegionIndex;
             BlinkProvince(provinceIndex, mainRegionIndex, color1, color2, duration, blinkingSpeed, smoothBlink);
         }
@@ -1091,24 +1103,20 @@ namespace WPM {
         /// Flashes specified province's region.
         /// </summary>
         public void BlinkProvince(int provinceIndex, int regionIndex, Color color1, Color color2, float duration, float blinkingSpeed, bool smoothBlink = false) {
+            if (!ValidProvinceRegionIndex(provinceIndex, regionIndex)) return;
             int cacheIndex = GetCacheIndexForProvinceRegion(provinceIndex, regionIndex);
-            GameObject surf;
-            bool disableAtEnd;
-            if (surfaces.ContainsKey(cacheIndex)) {
-                surf = surfaces[cacheIndex];
-                disableAtEnd = !surf.activeSelf;
-            } else {
+            if (!surfaces.TryGetValue(cacheIndex, out GameObject surf) || surf == null) {
                 surf = GenerateProvinceRegionSurface(provinceIndex, regionIndex, hudMatProvince, true);
-                disableAtEnd = true;
             }
             surf.SetActive(true);
-            SurfaceBlinker sb = surf.AddComponent<SurfaceBlinker>();
-            sb.blinkMaterial = hudMatProvince;
+            SurfaceBlinker sb = surf.GetComponent<SurfaceBlinker>();
+            if (sb != null) DestroyImmediate(sb);
+            sb = surf.AddComponent<SurfaceBlinker>();
+            sb.blinkMaterial = hudMatBlinker;
             sb.color1 = color1;
             sb.color2 = color2;
             sb.duration = duration;
             sb.speed = blinkingSpeed;
-            sb.disableAtEnd = disableAtEnd;
             sb.customizableSurface = provinces[provinceIndex].regions[regionIndex];
             sb.smoothBlink = smoothBlink;
         }
@@ -1118,8 +1126,7 @@ namespace WPM {
         /// </summary>
         public GameObject GetProvinceRegionSurfaceGameObject(int provinceIndex, int regionIndex) {
             int cacheIndex = GetCacheIndexForProvinceRegion(provinceIndex, regionIndex);
-            GameObject surf = null;
-            surfaces.TryGetValue(cacheIndex, out surf);
+            surfaces.TryGetValue(cacheIndex, out GameObject surf);
             return surf;
         }
 
@@ -1203,7 +1210,7 @@ namespace WPM {
             List<Province> selectedProvinces = new List<Province>();
 
             if (_provinces == null)
-                ReadProvincesPackedString();
+                ReadProvincesGeoData();
             List<Country> countries = GetVisibleCountries(rectTopLeft, rectBottomRight);
             int countryCount = countries.Count;
             for (int k = 0; k < countryCount; k++) {

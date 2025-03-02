@@ -236,8 +236,8 @@ namespace WPM {
         }
 
 
-        void ToggleRegionOutline(Region region, bool visible, Color color = default(Color)) {
-            if (region == null) return;
+        GameObject ToggleRegionOutline(Region region, bool visible, Color color = default(Color)) {
+            if (region == null) return null;
             if (region.surfaceGameObject == null) {
                 GameObject surf = new GameObject(SURFACE_GAMEOBJECT);
                 surf.layer = surfacesLayer.layer;
@@ -252,9 +252,9 @@ namespace WPM {
                     DestroyImmediate(t.gameObject);
                 }
                 region.customOutline = false;
-                return;
+                return null;
             }
-            DrawRegionOutline(region, region.surfaceGameObject, false, color);
+            return DrawRegionOutline(region, region.surfaceGameObject, false, color);
         }
 
     }

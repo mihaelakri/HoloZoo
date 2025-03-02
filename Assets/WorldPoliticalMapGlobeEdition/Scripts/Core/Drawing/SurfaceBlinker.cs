@@ -8,42 +8,42 @@ namespace WPM {
         public Color color1, color2;
         public float speed;
         public Material blinkMaterial;
-        public bool disableAtEnd;
         public Region customizableSurface;
-        public GameObject surf;
         public bool smoothBlink;
 
         Material oldMaterial;
         float startTime, lapTime;
         bool whichColor;
+        Renderer r;
 
         void Start() {
-            oldMaterial = GetComponent<Renderer>().sharedMaterial;
+            r = GetComponent<Renderer>();
+            oldMaterial = r.sharedMaterial;
             GenerateMaterial();
             startTime = Time.time;
             lapTime = startTime - speed;
+        }
+
+        private void OnDestroy() {
+            if (blinkMaterial != null) {
+                DestroyImmediate(blinkMaterial);
+            }
+            RestoreMaterial();
         }
 
         // Update is called once per frame
         void Update() {
             float elapsed = Time.time - startTime;
             if (elapsed > duration) {
-                // Restores material
-                Material goodMat;
-                if (customizableSurface.customMaterial != null) {
-                    goodMat = customizableSurface.customMaterial;
-                } else {
-                    goodMat = oldMaterial;
-                }
-                GetComponent<Renderer>().sharedMaterial = goodMat;
                 // Hide surface?
-                if (disableAtEnd)
+                if (customizableSurface.customMaterial == null) {
                     gameObject.SetActive(false);
+                }
                 Destroy(this);
                 return;
             }
             if (smoothBlink) {
-                Material mat = GetComponent<Renderer>().sharedMaterial;
+                Material mat = r.sharedMaterial;
                 if (mat != blinkMaterial)
                     GenerateMaterial();
 
@@ -52,7 +52,7 @@ namespace WPM {
 
             } else if (Time.time - lapTime > speed) {
                 lapTime = Time.time;
-                Material mat = GetComponent<Renderer>().sharedMaterial;
+                Material mat = r.sharedMaterial;
                 if (mat != blinkMaterial)
                     GenerateMaterial();
                 whichColor = !whichColor;
@@ -64,9 +64,20 @@ namespace WPM {
             }
         }
 
+        void RestoreMaterial() {
+            if (customizableSurface == null) return;
+            Material goodMat;
+            if (customizableSurface.customMaterial != null) {
+                goodMat = customizableSurface.customMaterial;
+            } else {
+                goodMat = oldMaterial;
+            }
+            r.sharedMaterial = goodMat;
+        }
+
         void GenerateMaterial() {
             blinkMaterial = Instantiate(blinkMaterial);
-            GetComponent<Renderer>().sharedMaterial = blinkMaterial;
+            r.sharedMaterial = blinkMaterial;
         }
     }
 

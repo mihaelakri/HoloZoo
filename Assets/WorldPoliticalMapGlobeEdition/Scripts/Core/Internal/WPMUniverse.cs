@@ -20,7 +20,7 @@ namespace WPM {
         const float MOON_RADIUS_KM = 1737.4f; // radius of Moon in km
 
         void UpdateMoon() {
-            Moon moon = FindObjectOfType<Moon>();
+            Moon moon = Misc.FindObjectOfType<Moon>();
             Transform t;
             if (moon != null) {
                 t = moon.transform;

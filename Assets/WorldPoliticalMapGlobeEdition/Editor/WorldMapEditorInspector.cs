@@ -38,17 +38,23 @@ namespace WPM {
         string[] emptyStringArray;
         EditorAttribGroup mountPointAttribGroup, countryAttribGroup, provinceAttribGroup, cityAttribGroup;
         bool zoomed;
-        Vector3 zoomOldValue;
         Quaternion frontFaceQuaternion;
-        LABELS_QUALITY labelsOldQuality;
         readonly StringBuilder sb = new StringBuilder();
 
         WorldMapGlobe _map { get { return _editor.map; } }
 
+        struct GlobeSettings {
+            public Vector3 scale;
+            public LABELS_QUALITY labelsQuality;
+            public EARTH_STYLE earthStyle;
+            public int minPopulation;
+        }
+
+        GlobeSettings oldSettings;
 
         #region Inspector lifecycle
 
-        void OnEnable() {
+        void OnEnable () {
 
             // Setup basic inspector stuff
             _editor = (WorldMapEditor)target;
@@ -85,7 +91,7 @@ namespace WPM {
             // Setup main toolbar
             mainToolbarIcons = new GUIContent[5];
             mainToolbarIcons[0] = new GUIContent("Select", icons[0], "Selection mode");
-            mainToolbarIcons[1] = new GUIContent("Reshape", icons[1], "Change the shape of this entity");
+            mainToolbarIcons[1] = new GUIContent("Edit", icons[1], "Change the shape of this entity or delete selection");
             mainToolbarIcons[2] = new GUIContent("Create", icons[12], "Add a new entity to this layer");
             mainToolbarIcons[3] = new GUIContent("Revert", icons[2], "Restore shape information");
             mainToolbarIcons[4] = new GUIContent("Save", icons[3], "Confirm changes and save to file");
@@ -172,12 +178,19 @@ namespace WPM {
             // Setup scene view
             _editor.shouldHideEditorMesh = true;
             zoomed = _map.transform.localScale.x >= 1000.0f;
-            if (zoomed) {
-                zoomOldValue = Misc.Vector3one;
-            } else {
-                zoomOldValue = _map.transform.localScale;
-            }
-            labelsOldQuality = _map.labelsQuality;
+            oldSettings.scale = _map.transform.localScale;
+            oldSettings.labelsQuality = _map.labelsQuality;
+            oldSettings.earthStyle = _map.earthStyle;
+            oldSettings.minPopulation = _map.minPopulation;
+
+            // cancel scenic shaders since they look awful in editor window
+            if (_map.earthStyle == EARTH_STYLE.Scenic || _map.earthStyle == EARTH_STYLE.ScenicCityLights)
+                _map.earthStyle = EARTH_STYLE.Natural;
+            if (_map.earthStyle == EARTH_STYLE.NaturalHighResScenic || _map.earthStyle == EARTH_STYLE.NaturalHighResScenicScatter ||
+                _map.earthStyle == EARTH_STYLE.NaturalHighResScenicScatterCityLights || _map.earthStyle == EARTH_STYLE.NaturalHighResScenicCityLights ||
+                _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenicScatter || _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenicScatterCityLights ||
+                _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenic || _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenicCityLights)
+                _map.earthStyle = EARTH_STYLE.NaturalHighRes;
 
             // Select globe and focus it
             if (Selection.activeGameObject != _map.gameObject) {
@@ -199,16 +212,19 @@ namespace WPM {
 #endif
         }
 
-        public void OnCloseEditor() {
+        public void OnCloseEditor () {
             // Disables zoom
             if (zoomed) {
                 DisableZoom();
-                _map.ScaleCities();
-                _map.ScaleMountPoints();
             }
+            _map.labelsQuality = oldSettings.labelsQuality;
+            _map.earthStyle = oldSettings.earthStyle;
+            _map.minPopulation = oldSettings.minPopulation;
+            _map.ScaleCities();
+            _map.ScaleMountPoints();
         }
 
-        public override void OnInspectorGUI() {
+        public override void OnInspectorGUI () {
             if (_editor == null)
                 return;
             if (_map.showProvinces) {
@@ -433,27 +449,27 @@ namespace WPM {
             CheckHideEditorMesh();
         }
 
-        void FocusSceneView() {
+        void FocusSceneView () {
             if (Application.isPlaying) return;
             SceneView sceneView = (SceneView)SceneView.sceneViews[0];
             sceneView.Focus();
         }
 
-        void OnSceneGUI() {
+        void OnSceneGUI () {
             if (Application.isPlaying)
                 return;
             CheckEditorStyles();
             ProcessOperationMode();
         }
 
-        Camera GetSceneViewCamera() {
+        Camera GetSceneViewCamera () {
             SceneView sv = SceneView.lastActiveSceneView;
             if (sv != null)
                 return sv.camera;
             return null;
         }
 
-        void ToggleZoom() {
+        void ToggleZoom () {
             Camera cam = GetSceneViewCamera();
             if (cam == null) {
                 EditorUtility.DisplayDialog("Ops!", "Could not get a reference to the camera in the scene view. Try selecting the Scene View first before using this command. Alternatively you can modify the globe scale and adjust the camera distance manually.", "Ok");
@@ -475,10 +491,9 @@ namespace WPM {
 
         }
 
-        void DisableZoom() {
-            _map.transform.localScale = zoomOldValue;
+        void DisableZoom () {
+            _map.transform.localScale = oldSettings.scale;
             RepositionOverlay();
-            _map.labelsQuality = labelsOldQuality;
             _map.Redraw();
             if (SceneView.lastActiveSceneView != null) {
                 SceneView.lastActiveSceneView.FrameSelected();
@@ -486,11 +501,14 @@ namespace WPM {
             zoomed = false;
         }
 
-        void RepositionOverlay() {
-            _map.GetOverlayLayer(false, false).transform.position = new Vector3(_map.transform.position.x + 5000f, 5000f, 0); // since it's already displaced, applying a zoom of 1000 will throw it into problematic coordinates due to floating point limitations
+        void RepositionOverlay () {
+            GameObject overlay = _map.GetOverlayLayer(false, false);
+            if (overlay != null) {
+                overlay.transform.position = new Vector3(_map.transform.position.x + 5000f, 5000f, 0); // since it's already displaced, applying a zoom of 1000 will throw it into problematic coordinates due to floating point limitations
+            }
         }
 
-        void ChangeEditingMode(EDITING_MODE newMode) {
+        void ChangeEditingMode (EDITING_MODE newMode) {
             _editor.editingMode = newMode;
             // Ensure file is loaded by the map
             switch (_editor.editingMode) {
@@ -505,7 +523,7 @@ namespace WPM {
             }
         }
 
-        void ShowEntitySelectors() {
+        void ShowEntitySelectors () {
 
             // preprocesssing logic first to not interfere with layout and repaint events
             string[] provinceNames, countryNames = _editor.countryNames, countryNeighboursNames = _editor.countryNeighboursNames, provinceCountriesNeighboursNames;
@@ -946,7 +964,7 @@ namespace WPM {
         /// <summary>
         /// Returns true if there're changes
         /// </summary>
-        bool ShowRegionsGroup(IAdminEntity entity, int currentSelectedRegionIndex) {
+        bool ShowRegionsGroup (IAdminEntity entity, int currentSelectedRegionIndex) {
 
             EditorGUILayout.BeginHorizontal();
             entity.foldOut = EditorGUILayout.Foldout(entity.foldOut, "Regions", attribHeaderStyle);
@@ -1026,7 +1044,7 @@ namespace WPM {
 
 
 
-        void ShowReshapingRegionTools() {
+        void ShowReshapingRegionTools () {
             EditorGUILayout.BeginVertical();
 
             EditorGUILayout.BeginHorizontal();
@@ -1185,7 +1203,7 @@ namespace WPM {
             EditorGUILayout.Separator();
         }
 
-        void ShowReshapingCityTools() {
+        void ShowReshapingCityTools () {
             GUILayout.BeginVertical();
 
             EditorGUILayout.BeginHorizontal();
@@ -1240,7 +1258,7 @@ namespace WPM {
             GUILayout.EndVertical();
         }
 
-        void ShowReshapingMountPointTools() {
+        void ShowReshapingMountPointTools () {
             GUILayout.BeginVertical();
 
             EditorGUILayout.BeginHorizontal();
@@ -1295,7 +1313,7 @@ namespace WPM {
             GUILayout.EndVertical();
         }
 
-        void ShowCreateTools() {
+        void ShowCreateTools () {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             CREATE_TOOL prevCTool = _editor.createMode;
@@ -1327,7 +1345,7 @@ namespace WPM {
 
         // Add a menu item called "Restore Backup" to a WPM's context menu.
         [MenuItem("CONTEXT/WorldMapEditor/Restore Backup")]
-        static void RestoreBackup(MenuCommand command) {
+        static void RestoreBackup (MenuCommand command) {
             if (!EditorUtility.DisplayDialog("Restore original geodata files?", "Current geodata files will be replaced by the original files from Backup folder. Any changes will be lost. This operation can't be undone.\n\nRestore files?", "Restore", "Cancel")) {
                 return;
             }
@@ -1355,24 +1373,50 @@ namespace WPM {
 
             // Countries110
             AssetDatabase.DeleteAsset(geoDataFolder + "/countries110.txt");
+            AssetDatabase.DeleteAsset(geoDataFolder + "/countries110_bin.txt");
             AssetDatabase.SaveAssets();
-            AssetDatabase.CopyAsset(backupFolder + "/countries110.txt", geoDataFolder + "/countries110.txt");
+            if (File.Exists(backupFolder + "/countries110.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/countries110.txt", geoDataFolder + "/countries110.txt");
+            }
+            if (File.Exists(backupFolder + "/countries110_bin.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/countries110_bin.txt", geoDataFolder + "/countries110_bin.txt");
+            }
             // Countries10
             AssetDatabase.DeleteAsset(geoDataFolder + "/countries10.txt");
+            AssetDatabase.DeleteAsset(geoDataFolder + "/countries10_bin.txt");
             AssetDatabase.SaveAssets();
-            AssetDatabase.CopyAsset(backupFolder + "/countries10.txt", geoDataFolder + "/countries10.txt");
+            if (File.Exists(backupFolder + "/countries10.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/countries10.txt", geoDataFolder + "/countries10.txt");
+            }
+            if (File.Exists(backupFolder + "/countries10_bin.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/countries10_bin.txt", geoDataFolder + "/countries10_bin.txt");
+            }
             // Provinces10
             AssetDatabase.DeleteAsset(geoDataFolder + "/provinces10.txt");
+            AssetDatabase.DeleteAsset(geoDataFolder + "/provinces10_bin.txt");
             AssetDatabase.SaveAssets();
-            AssetDatabase.CopyAsset(backupFolder + "/provinces10.txt", geoDataFolder + "/provinces10.txt");
+            if (File.Exists(backupFolder + "/provinces10.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/provinces10.txt", geoDataFolder + "/provinces10.txt");
+            }
+            if (File.Exists(backupFolder + "/provinces10_bin.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/provinces10_bin.txt", geoDataFolder + "/provinces10_bin.txt");
+            }
             // Cities10
             AssetDatabase.DeleteAsset(geoDataFolder + "/cities10.txt");
+            AssetDatabase.DeleteAsset(geoDataFolder + "/cities10_bin.txt");
             AssetDatabase.SaveAssets();
-            AssetDatabase.CopyAsset(backupFolder + "/cities10.txt", geoDataFolder + "/cities10.txt");
+            if (File.Exists(backupFolder + "/cities10.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/cities10.txt", geoDataFolder + "/cities10.txt");
+            }
+            if (File.Exists(backupFolder + "/cities10_bin.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/cities10_bin.txt", geoDataFolder + "/cities10_bin.txt");
+            }
             // Mount points
             AssetDatabase.DeleteAsset(geoDataFolder + "/mountPoints.txt");
             AssetDatabase.SaveAssets();
-            AssetDatabase.CopyAsset(backupFolder + "/mountPoints.txt", geoDataFolder + "/mountPoints.txt");
+            if (File.Exists(backupFolder + "/mountPoints.txt")) {
+                AssetDatabase.CopyAsset(backupFolder + "/mountPoints.txt", geoDataFolder + "/mountPoints.txt");
+            }
 
             AssetDatabase.Refresh();
 
@@ -1384,7 +1428,7 @@ namespace WPM {
 
         // Add a menu item called "Create Low Definition Geodata File" to a WPM's context menu.
         [MenuItem("CONTEXT/WorldMapEditor/Create Low Definition Geodata File")]
-        static void CreateLowDefinitionFile(MenuCommand command) {
+        static void CreateLowDefinitionFile (MenuCommand command) {
             WorldMapEditor editor = (WorldMapEditor)command.context;
             if (editor.editingCountryFile != EDITING_COUNTRY_FILE.COUNTRY_HIGHDEF) {
                 EditorUtility.DisplayDialog("Create Low Definition Geodata File", "Switch to the high definition country geodata file first.", "Ok");
@@ -1415,7 +1459,7 @@ namespace WPM {
         }
 
         [MenuItem("CONTEXT/WorldMapEditor/Equalize Provinces")]
-        static void EqualizeProvincesMenuOption(MenuCommand command) {
+        static void EqualizeProvincesMenuOption (MenuCommand command) {
 
             WorldMapProvincesEqualizer.ShowWindow();
 
@@ -1425,7 +1469,7 @@ namespace WPM {
         }
 
         [MenuItem("CONTEXT/WorldMapEditor/Fix Orphan Cities")]
-        static void FixOrphanCities(MenuCommand command) {
+        static void FixOrphanCities (MenuCommand command) {
             if (!EditorUtility.DisplayDialog("Fix Orphan Cities", "This option will assign a country and province to each orphan city (cities without country or province assigned).\n\nThe country surrounding the city or nearest country will be assigned.\nAlso the province surrounding the city will be also assigned.", "Continue?", "Cancel")) {
                 return;
             }
@@ -1438,7 +1482,7 @@ namespace WPM {
         }
 
         [MenuItem("CONTEXT/WorldMapEditor/Fix Duplicate Provinces")]
-        static void FixDuplicateProvinces(MenuCommand command) {
+        static void FixDuplicateProvinces (MenuCommand command) {
             WorldMapEditor editor = (WorldMapEditor)command.context;
             if (editor.editingMode != EDITING_MODE.PROVINCES) {
                 EditorUtility.DisplayDialog("Fix Duplicate Provinces", "This option is only available when editing mode is set to Countries + Provinces.", "Ok");
@@ -1458,7 +1502,7 @@ namespace WPM {
         }
 
         [MenuItem("CONTEXT/WorldMapEditor/Export To File")]
-        static void ExportToFile(MenuCommand command) {
+        static void ExportToFile (MenuCommand command) {
             if (!EditorUtility.DisplayDialog("Export To File", "This option will export country, province and city names and indices to plain text files (placed at root of Unity project).", "Continue?", "Cancel")) {
                 return;
             }
@@ -1468,7 +1512,7 @@ namespace WPM {
             EditorUtility.DisplayDialog("Export To File", "Data exported.", "Ok");
         }
 
-        void SwitchEditingFrontiersFile() {
+        void SwitchEditingFrontiersFile () {
             if (_editor.editingCountryFile == EDITING_COUNTRY_FILE.COUNTRY_HIGHDEF) {
                 _map.frontiersDetail = FRONTIERS_DETAIL.High;
             } else {
@@ -1477,7 +1521,7 @@ namespace WPM {
             _editor.DiscardChanges();
         }
 
-        void ProcessOperationMode() {
+        void ProcessOperationMode () {
 
             AdjustCityIconsScale();
             AdjustMountPointIconsScale();
@@ -1491,32 +1535,35 @@ namespace WPM {
             Event e = Event.current;
 
             // locks control on map
-            if (e != null && !e.alt) {
+            if (e != null) {
                 var controlID = GUIUtility.GetControlID(FocusType.Passive);
-                var eventType = e.GetTypeForControl(controlID);
-                if (GUIUtility.hotControl == controlID && eventType == EventType.MouseUp && e.button == 0) {   // release hot control to allow standard navigation
-                    GUIUtility.hotControl = 0;
-                } else if (eventType == EventType.MouseDown && e.button == 0) {
-                    mouseDown = true;
-                    GUIUtility.hotControl = controlID;
-                    startedReshapeRegion = false;
-                    startedReshapeCity = false;
-                } else if (eventType == EventType.MouseUp && e.button == 0) {
-                    if (undoPushStarted) {
-                        if (startedReshapeRegion) {
-                            UndoPushRegionEndOperation();
-                        }
-                        if (startedReshapeCity) {
-                            UndoPushCityEndOperation();
+                if (!e.alt) {
+                    var eventType = e.GetTypeForControl(controlID);
+                    if (GUIUtility.hotControl == controlID && eventType == EventType.MouseUp && e.button == 0) {   // release hot control to allow standard navigation
+                        GUIUtility.hotControl = 0;
+                        e.Use();
+                    } else if (eventType == EventType.MouseDown && e.button == 0) {
+                        mouseDown = true;
+                        GUIUtility.hotControl = controlID;
+                        startedReshapeRegion = false;
+                        startedReshapeCity = false;
+                    } else if (eventType == EventType.MouseUp && e.button == 0) {
+                        if (undoPushStarted) {
+                            if (startedReshapeRegion) {
+                                UndoPushRegionEndOperation();
+                            }
+                            if (startedReshapeCity) {
+                                UndoPushCityEndOperation();
+                            }
                         }
                     }
                 }
-            }
 
-            if (e.type == EventType.ValidateCommand && e.commandName.Equals("UndoRedoPerformed")) {
-                _editor.UndoHandle();
-                EditorUtility.SetDirty(target);
-                return;
+                if (e.type == EventType.ValidateCommand && e.commandName.Equals("UndoRedoPerformed")) {
+                    _editor.UndoHandle();
+                    EditorUtility.SetDirty(target);
+                    return;
+                }
             }
 
             switch (_editor.operationMode) {
@@ -1632,7 +1679,7 @@ namespace WPM {
         bool onePointSelected;
         Vector3 selectedPoint;
 
-        void ExecuteMoveTool() {
+        void ExecuteMoveTool () {
             if (_editor.entityIndex < 0 || _editor.regionIndex < 0)
                 return;
             bool frontiersUnchanged = true;
@@ -1700,7 +1747,7 @@ namespace WPM {
                             frontiersUnchanged = false;
                             forceDrawFrontiers = true;
                         }
-                        e.Use();
+                        CapturePressEvent();
                     }
                 }
             }
@@ -1726,7 +1773,7 @@ namespace WPM {
             }
         }
 
-        void ExecuteClickTool(Vector2 mousePosition, bool clicked) {
+        void ExecuteClickTool (Vector2 mousePosition, bool clicked) {
             if (_editor.entityIndex < 0 || _editor.entityIndex >= _editor.entities.Length)
                 return;
 
@@ -1779,7 +1826,7 @@ namespace WPM {
             }
         }
 
-        void ExecuteCityCreateTool(Vector2 mousePosition, bool clicked) {
+        void ExecuteCityCreateTool (Vector2 mousePosition, bool clicked) {
 
             // Show the mouse cursor
             if (Camera.current == null)
@@ -1813,7 +1860,7 @@ namespace WPM {
             HandleUtility.Repaint();
         }
 
-        void AdjustCityIconsScale() {
+        void AdjustCityIconsScale () {
             // Adjust city icons in scene view
             if (_map == null || _map.cities == null)
                 return;
@@ -1832,7 +1879,7 @@ namespace WPM {
             }
         }
 
-        void ShowCitySelected() {
+        void ShowCitySelected () {
             if (_editor.cityIndex < 0 || _editor.cityIndex >= _map.cities.Count)
                 return;
             Vector3 cityPos = _map.cities[_editor.cityIndex].localPosition;
@@ -1841,7 +1888,7 @@ namespace WPM {
             Handles.RectangleHandleCap(0, worldPos, frontFaceQuaternion, handleSize, EventType.Repaint);
         }
 
-        void ExecuteCityMoveTool() {
+        void ExecuteCityMoveTool () {
             if (_editor.cityIndex < 0 || _editor.cityIndex >= _map.cities.Count)
                 return;
 
@@ -1862,7 +1909,7 @@ namespace WPM {
             }
         }
 
-        void AdjustMountPointIconsScale() {
+        void AdjustMountPointIconsScale () {
             // Adjust city icons in scene view
             if (_map == null || _map.mountPoints == null)
                 return;
@@ -1879,7 +1926,7 @@ namespace WPM {
             }
         }
 
-        void ExecuteMountPointCreateTool(Vector2 mousePosition, bool clicked) {
+        void ExecuteMountPointCreateTool (Vector2 mousePosition, bool clicked) {
 
             // Show the mouse cursor
             if (Camera.current == null)
@@ -1911,7 +1958,7 @@ namespace WPM {
             HandleUtility.Repaint();
         }
 
-        void ShowMountPointSelected() {
+        void ShowMountPointSelected () {
             if (_editor.mountPointIndex < 0 || _editor.mountPointIndex >= _map.mountPoints.Count)
                 return;
             Vector3 mountPointPos = _map.mountPoints[_editor.mountPointIndex].localPosition;
@@ -1920,7 +1967,7 @@ namespace WPM {
             Handles.RectangleHandleCap(0, worldPos, frontFaceQuaternion, handleSize, EventType.Repaint);
         }
 
-        void ExecuteMountPointMoveTool() {
+        void ExecuteMountPointMoveTool () {
             if (_map.mountPoints == null || _editor.mountPointIndex < 0 || _editor.mountPointIndex >= _map.mountPoints.Count)
                 return;
 
@@ -1941,7 +1988,7 @@ namespace WPM {
             }
         }
 
-        void UndoPushRegionStartOperation(string operationName) {
+        void UndoPushRegionStartOperation (string operationName) {
             startedReshapeRegion = !startedReshapeRegion;
             undoPushStarted = true;
             Undo.RecordObject(target, operationName);   // record changes to the undo dummy flag
@@ -1949,7 +1996,7 @@ namespace WPM {
 
         }
 
-        void UndoPushRegionEndOperation() {
+        void UndoPushRegionEndOperation () {
             undoPushStarted = false;
             _editor.UndoRegionsInsertAtCurrentPos(_editor.highlightedRegions);
             if (_editor.reshapeRegionMode != RESHAPE_REGION_TOOL.SMOOTH) { // Smooth operation doesn't need to refresh labels
@@ -1958,37 +2005,38 @@ namespace WPM {
             _editor.RedrawFrontiers(null, true, true); // draw all frontiers again
         }
 
-        void UndoPushCityStartOperation(string operationName) {
+        void UndoPushCityStartOperation (string operationName) {
             startedReshapeCity = !startedReshapeCity;
             undoPushStarted = true;
             Undo.RecordObject(target, operationName);   // record changes to the undo dummy flag
             _editor.UndoCitiesPush();
         }
 
-        void UndoPushCityEndOperation() {
+        void UndoPushCityEndOperation () {
             undoPushStarted = false;
             _editor.UndoCitiesInsertAtCurrentPos();
         }
 
-        void UndoPushMountPointStartOperation(string operationName) {
+        void UndoPushMountPointStartOperation (string operationName) {
             startedReshapeMountPoint = !startedReshapeMountPoint;
             undoPushStarted = true;
             Undo.RecordObject(target, operationName);   // record changes to the undo dummy flag
             _editor.UndoMountPointsPush();
         }
 
-        void UndoPushMountPointEndOperation() {
+        void UndoPushMountPointEndOperation () {
             undoPushStarted = false;
             _editor.UndoMountPointsInsertAtCurrentPos();
         }
 
-        static void CheckBackup(out string geoDataFolder) {
+
+        static void CheckBackup (out string geoDataFolder) {
 
             string[] paths = AssetDatabase.GetAllAssetPaths();
             bool backupFolderExists = false;
             string rootFolder = "";
             geoDataFolder = "";
-            WorldMapGlobe globe = FindObjectOfType<WorldMapGlobe>();
+            WorldMapGlobe globe = Misc.FindObjectOfType<WorldMapGlobe>();
 
             for (int k = 0; k < paths.Length; k++) {
                 if (paths[k].EndsWith(globe.geodataResourcesPath)) {
@@ -2005,18 +2053,43 @@ namespace WPM {
                 // Do the backup
                 AssetDatabase.CreateFolder(rootFolder, "Backup");
                 string backupFolder = rootFolder + "/Backup";
-                AssetDatabase.CopyAsset(geoDataFolder + "/countries110.txt", backupFolder + "/countries110.txt");
-                AssetDatabase.CopyAsset(geoDataFolder + "/countries10.txt", backupFolder + "/countries10.txt");
-                AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.countryAttributeFile, backupFolder + "/" + globe.countryAttributeFile);
-                AssetDatabase.CopyAsset(geoDataFolder + "/provinces10.txt", backupFolder + "/provinces10.txt");
-                AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.provinceAttributeFile, backupFolder + "/" + globe.provinceAttributeFile);
-                AssetDatabase.CopyAsset(geoDataFolder + "/cities10.txt", backupFolder + "/cities10.txt");
-                AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.cityAttributeFile, backupFolder + "/" + globe.cityAttributeFile);
-                AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.mountPointsAttributeFile, backupFolder + "/" + globe.mountPointsAttributeFile);
+                if (File.Exists(geoDataFolder + "/countries110.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/countries110.txt", backupFolder + "/countries110.txt");
+                }
+                if (File.Exists(geoDataFolder + "/countries110_bin.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/countries110_bin.txt", backupFolder + "/countries110_bin.txt");
+                }                
+                if (File.Exists(geoDataFolder + "/countries10.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/countries10.txt", backupFolder + "/countries10.txt");
+                }
+                if (File.Exists(geoDataFolder + "/" + globe.countryAttributeFile)) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.countryAttributeFile, backupFolder + "/" + globe.countryAttributeFile);
+                }
+                if (File.Exists(geoDataFolder + "/provinces10.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/provinces10.txt", backupFolder + "/provinces10.txt");
+                }
+                if (File.Exists(geoDataFolder + "/provinces10_bin.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/provinces10_bin.txt", backupFolder + "/provinces10_bin.txt");
+                }
+                if (File.Exists(geoDataFolder + "/" + globe.provinceAttributeFile)) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.provinceAttributeFile, backupFolder + "/" + globe.provinceAttributeFile);
+                }
+                if (File.Exists(geoDataFolder + "/cities10.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/cities10.txt", backupFolder + "/cities10.txt");
+                }
+                if (File.Exists(geoDataFolder + "/cities10_bin.txt")) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/cities10_bin.txt", backupFolder + "/cities10_bin.txt");
+                }
+                if (File.Exists(geoDataFolder + "/" + globe.cityAttributeFile)) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.cityAttributeFile, backupFolder + "/" + globe.cityAttributeFile);
+                }
+                if (File.Exists(geoDataFolder + "/" + globe.mountPointsAttributeFile)) {
+                    AssetDatabase.CopyAsset(geoDataFolder + "/" + globe.mountPointsAttributeFile, backupFolder + "/" + globe.mountPointsAttributeFile);
+                }
             }
         }
 
-        string GetAssetsFolder() {
+        string GetAssetsFolder () {
             string fullPathName = Application.dataPath;
             int pos = fullPathName.LastIndexOf("/Assets");
             if (pos > 0)
@@ -2024,7 +2097,7 @@ namespace WPM {
             return fullPathName;
         }
 
-        bool SaveMapChanges() {
+        bool SaveMapChanges () {
             if (!_editor.countryChanges && !_editor.countryAttribChanges && !_editor.provinceChanges && !_editor.provinceAttribChanges && !_editor.cityChanges && !_editor.cityAttribChanges && !_editor.mountPointChanges)
                 return false;
 
@@ -2044,13 +2117,19 @@ namespace WPM {
             }
             // Save changes to countries
             if (_editor.countryChanges) {
-                dataFileName = _editor.map.GetCountriesGeoDataFileName();
-                fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
-                string data = _editor.map.GetCountriesGeoData();
-                if (data != null) {
-                    File.WriteAllText(fullPathName, data, Encoding.UTF8);
-                    Debug.Log("Country geodata file updated.");
+                if (_map.geodataFormat == GEODATA_FORMAT.BinaryFormat) {
+                    dataFileName = _map.GetCountryGeoDataBinaryFileName();
+                    fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
+                    File.WriteAllBytes(fullPathName, _map.GetCountriesGeoDataBinary());
+                } else {
+                    dataFileName = _editor.map.GetCountriesGeoDataFileName();
+                    fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
+                    string data = _editor.map.GetCountriesGeoData();
+                    if (data != null) {
+                        File.WriteAllText(fullPathName, data, Encoding.UTF8);
+                    }
                 }
+                Debug.Log("Country geodata file updated.");
                 _editor.countryChanges = false;
             }
             // Save changes to province attributes
@@ -2058,20 +2137,25 @@ namespace WPM {
                 fullPathName = GetAssetsFolder() + geoDataFolder + "/" + _map.provinceAttributeFile + ".json";
                 string data = _map.GetProvincesAttributes(true);
                 if (data != null) {
-                    File.WriteAllText(fullPathName, data, System.Text.Encoding.UTF8);
+                    File.WriteAllText(fullPathName, data, Encoding.UTF8);
                 }
                 _editor.provinceAttribChanges = false;
             }
             // Save changes to provinces
             if (_editor.provinceChanges) {
-                dataFileName = _editor.map.GetProvincesGeoDataFileName();
-                fullPathName = GetAssetsFolder();
-                string fullAssetPathName = fullPathName + geoDataFolder + "/" + dataFileName;
-                string data = _editor.map.GetProvincesGeoData();
-                if (data != null) {
-                    File.WriteAllText(fullAssetPathName, data, Encoding.UTF8);
-                    Debug.Log("Province geodata file updated.");
+                if (_map.geodataFormat == GEODATA_FORMAT.BinaryFormat) {
+                    dataFileName = _map.GetProvinceGeoDataBinaryFileName();
+                    fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
+                    File.WriteAllBytes(fullPathName, _map.GetProvincesGeoDataBinary());
+                } else {
+                    dataFileName = _editor.map.GetProvincesGeoDataFileName();
+                    string fullAssetPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
+                    string data = _editor.map.GetProvincesGeoData();
+                    if (data != null) {
+                        File.WriteAllText(fullAssetPathName, data, Encoding.UTF8);
+                    }
                 }
+                Debug.Log("Province geodata file updated.");
                 _editor.provinceChanges = false;
             }
             // Save changes to cities attributes
@@ -2085,14 +2169,20 @@ namespace WPM {
             }
             // Save changes to cities
             if (_editor.cityChanges) {
-                dataFileName = _editor.map.GetCityGeoDataFileName();
-                fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
-                string data = _editor.map.GetCityGeoData();
-                if (data != null) {
-                    File.WriteAllText(fullPathName, data, Encoding.UTF8);
-                    Debug.Log("City geodata file updated.");
+                if (_map.geodataFormat == GEODATA_FORMAT.BinaryFormat) {
+                    dataFileName = _map.GetCityGeoDataBinaryFileName();
+                    fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
+                    File.WriteAllBytes(fullPathName, _map.GetCitiesGeoDataBinary());
+                } else {
+                    dataFileName = _map.GetCityGeoDataFileName();
+                    fullPathName = GetAssetsFolder() + geoDataFolder + "/" + dataFileName;
+                    string data = _map.GetCitiesGeoData();
+                    if (data != null) {
+                        File.WriteAllText(fullPathName, data, Encoding.UTF8);
+                        Debug.Log("City geodata file updated.");
+                    }
+                    _editor.cityChanges = false;
                 }
-                _editor.cityChanges = false;
             }
             // Save changes to mount points
             if (_editor.mountPointChanges) {
@@ -2108,7 +2198,7 @@ namespace WPM {
             return true;
         }
 
-        float SignedAngleBetween(Vector3 a, Vector3 b, Vector3 n) {
+        float SignedAngleBetween (Vector3 a, Vector3 b, Vector3 n) {
             // angle in [0,180]
             float angle = FastVector.Angle(a, b);
             float sign = Mathf.Sign(Vector3.Dot(n, Vector3.Cross(a, b)));
@@ -2119,7 +2209,7 @@ namespace WPM {
             return signed_angle;
         }
 
-        void FocusSpherePoint(Vector3 point) {
+        void FocusSpherePoint (Vector3 point) {
             if (SceneView.lastActiveSceneView == null)
                 return;
             Camera cam = SceneView.lastActiveSceneView.camera;
@@ -2141,7 +2231,7 @@ namespace WPM {
 
         #region Editor UI handling
 
-        void CheckHideEditorMesh() {
+        void CheckHideEditorMesh () {
             if (!_editor.shouldHideEditorMesh)
                 return;
             _editor.shouldHideEditorMesh = false;
@@ -2152,7 +2242,7 @@ namespace WPM {
             }
         }
 
-        void ShowShapePoints(bool highlightInsideCircle) {
+        void ShowShapePoints (bool highlightInsideCircle) {
             if (_map.countries == null)
                 return;
             if (_editor.entityIndex >= 0 && _editor.entities != null && _editor.entityIndex < _editor.entities.Length && _editor.regionIndex >= 0) {
@@ -2217,7 +2307,7 @@ namespace WPM {
         /// <summary>
         /// Shows a potential new point near from cursor location (point parameter, which is in local coordinates)
         /// </summary>
-        void ShowCandidatePoint() {
+        void ShowCandidatePoint () {
             if (_editor.entityIndex < 0 || _editor.regionIndex < 0 || _editor.entities[_editor.entityIndex].regions == null)
                 return;
             Region region = _editor.entities[_editor.entityIndex].regions[_editor.regionIndex];
@@ -2249,7 +2339,7 @@ namespace WPM {
             }
         }
 
-        void NewShapeInit() {
+        void NewShapeInit () {
             if (_editor.newShape == null) {
                 _editor.newShape = new List<Vector3>();
             } else {
@@ -2261,7 +2351,7 @@ namespace WPM {
         /// <summary>
         /// Returns any city near the point specified in local coordinates.
         /// </summary>
-        int NewShapeGetIndexNearPoint(Vector3 localPoint) {
+        int NewShapeGetIndexNearPoint (Vector3 localPoint) {
             for (int c = 0; c < _editor.newShape.Count; c++) {
                 Vector3 pos = _editor.newShape[c];
                 if (Vector3.Distance(pos, localPoint) < WorldMapEditor.HIT_PRECISION)
@@ -2273,7 +2363,7 @@ namespace WPM {
         /// <summary>
         /// Shows a potential point to be added to the new shape and draws current shape polygon
         /// </summary>
-        void ExecuteShapeCreateTool(Vector3 mousePosition, bool mouseDown) {
+        void ExecuteShapeCreateTool (Vector3 mousePosition, bool mouseDown) {
             // Show the mouse cursor
             if (Camera.current == null)
                 return;
@@ -2318,14 +2408,14 @@ namespace WPM {
                 // Shift + X: remove last point
                 if (numPoints > 0 && Event.current.shift && Event.current.keyCode == KeyCode.X) {
                     _editor.newShape.RemoveAt(numPoints - 1);
-                    Event.current.Use();
+                    CapturePressEvent();
                     // Escape: remove all points
                 } else if (Event.current.keyCode == KeyCode.Escape) {
                     _editor.newShape.Clear();
-                    Event.current.Use();
+                    CapturePressEvent();
                 } else if (Event.current.shift && Event.current.keyCode == KeyCode.S) {
                     snapRequested = true;
-                    Event.current.Use();
+                    CapturePressEvent();
                 }
             }
 
@@ -2368,11 +2458,13 @@ namespace WPM {
                 Handles.DotHandleCap(0, pt, frontFaceQuaternion, handleSize, EventType.Repaint);
                 Handles.color = Color.white;
 
-                // Hotkey for closing polygon (Control + C)
-                if (numPoints > 4 && (Event.current != null && Event.current.shift && Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.C)) {
+                // Hotkey for closing polygon (Shift + C)
+                if (Event.current != null && Event.current.shift && Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.C) {
+                    if (numPoints > 4) {
+                        canClosePolygon = true;
+                    }
                     mouseDown = true;
-                    canClosePolygon = true;
-                    Event.current.Use();
+                    CapturePressEvent();
                 }
 
                 if (mouseDown) {
@@ -2404,8 +2496,14 @@ namespace WPM {
             }
         }
 
+        void CapturePressEvent () {
+            GUIUtility.hotControl = GUIUtility.GetControlID(FocusType.Passive);
+            if (Event.current != null) {
+                Event.current.Use();
+            }
+        }
 
-        void DrawCursorLatLonLabel(Camera cam) {
+        void DrawCursorLatLonLabel (Camera cam) {
             Vector2 latlon = Conversion.GetLatLonFromSpherePoint(_editor.cursor);
             string text = "Longitude: " + latlon.y.ToString("F4") + " Latitude: " + latlon.x.ToString("F4");
             Vector3 labelPos = Camera.current.ScreenToWorldPoint(new Vector3(10, 60, cam.nearClipPlane));
@@ -2415,7 +2513,7 @@ namespace WPM {
         /// <summary>
         /// Returns true if there're changes
         /// </summary>
-        bool ShowAttributeGroup(EditorAttribGroup attribGroup, string title) {
+        bool ShowAttributeGroup (EditorAttribGroup attribGroup, string title) {
 
             EditorGUILayout.BeginHorizontal();
             attribGroup.foldOut = EditorGUILayout.Foldout(attribGroup.foldOut, title, attribHeaderStyle);
@@ -2468,7 +2566,7 @@ namespace WPM {
 
         GUIStyle warningLabelStyle;
 
-        void DrawCenteredLabel(string s) {
+        void DrawCenteredLabel (string s) {
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUILayout.Label(s);
@@ -2476,7 +2574,7 @@ namespace WPM {
             EditorGUILayout.EndHorizontal();
         }
 
-        void DrawWarningLabel(string s) {
+        void DrawWarningLabel (string s) {
             if (warningLabelStyle == null) {
                 warningLabelStyle = new GUIStyle(GUI.skin.label);
             }
@@ -2485,7 +2583,7 @@ namespace WPM {
             GUILayout.Label(s, warningLabelStyle);
         }
 
-        void DrawEditorProvinceNames() {
+        void DrawEditorProvinceNames () {
             if (_editor.highlightedRegions == null || labelsStyle == null)
                 return;
             Transform mapTransform = _map.transform;
@@ -2498,7 +2596,7 @@ namespace WPM {
             }
         }
 
-        void CheckScale() {
+        void CheckScale () {
             if (EditorPrefs.HasKey(EDITORPREF_SCALE_WARNED))
                 return;
             EditorPrefs.SetBool(EDITORPREF_SCALE_WARNED, true);
@@ -2507,7 +2605,7 @@ namespace WPM {
             }
         }
 
-        void CheckEditorStyles() {
+        void CheckEditorStyles () {
 
             if (labelsStyle == null) {
                 labelsStyle = new GUIStyle();

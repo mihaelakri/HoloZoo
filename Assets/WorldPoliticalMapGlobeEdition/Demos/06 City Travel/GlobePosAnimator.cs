@@ -76,10 +76,10 @@ namespace WPM
 
 			// Iterate again until we reach progress
 			int steps = latLon.Count;
-			float acum = 0, acumPrev = 0;
+            float acum = 0;
 			for (int k=0; k<steps-1; k++) {
-				acumPrev = acum;
-				acum += stepLengths [k] / totalLength;
+                float acumPrev = acum;
+                acum += stepLengths [k] / totalLength;
 				if (acum > progress) {
 					// This is the step where "progress" is contained.
 					if (k > 0) {

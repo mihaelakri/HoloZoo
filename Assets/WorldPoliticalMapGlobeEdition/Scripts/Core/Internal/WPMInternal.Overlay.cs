@@ -34,7 +34,7 @@ namespace WPM {
 
 
         WPMOverlay FindOverlay() {
-            WPMOverlay[] overlays = FindObjectsOfType<WPMOverlay>();
+            WPMOverlay[] overlays = Misc.FindObjectsOfType<WPMOverlay>();
             for (int k=0;k<overlays.Length;k++) {
                 if (overlays[k].map == this) return overlays[k];
             }

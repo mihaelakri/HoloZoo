@@ -43,6 +43,20 @@ namespace WPM {
             }
         }
 
+        [SerializeField]
+        bool
+            _hexaGridGenerateInBackgroundThread;
+
+        public bool hexaGridGenerateInBackgroundThread {
+            get { return _hexaGridGenerateInBackgroundThread; }
+            set {
+                if (_hexaGridGenerateInBackgroundThread != value) {
+                    _hexaGridGenerateInBackgroundThread = value;
+                    isDirty = true;
+                }
+            }
+        }
+
 
         [SerializeField]
         bool
@@ -81,7 +95,7 @@ namespace WPM {
         }
 
 
-        [Range(15, 200)]
+        [Range(15, 400)]
         [SerializeField]
         int
             _hexaGridDivisions = 15;
@@ -154,7 +168,7 @@ namespace WPM {
         /// <summary>
         /// Fired when path finding algorithmn evaluates a cell. Return the increased cost for cell.
         /// </summary>
-        public event GridCellEvent OnCellClick;
+        public event GridCellClickEvent OnCellClick;
 
         /// <summary>
         /// Fired when cursor enters a cell

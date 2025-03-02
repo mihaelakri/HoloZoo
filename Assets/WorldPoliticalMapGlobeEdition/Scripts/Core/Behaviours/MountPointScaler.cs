@@ -38,7 +38,7 @@ namespace WPM {
 			lastCamPos = cam.transform.position;
 			lastIconSize = map.cityIconSize;
 			float oldFV = cam.fieldOfView;
-			if (!UnityEngine.XR.XRSettings.enabled) {
+			if (!VRCheck.isVrRunning) {
 				cam.fieldOfView = 60.0f;
 			}
 			Vector3 refPos = transform.position;
@@ -48,7 +48,7 @@ namespace WPM {
 			Vector3 b = new Vector3 (a.x, a.y + MOUNTPOINT_SIZE_ON_SCREEN * map.cityIconSize, a.z);
 			Vector3 aa = cam.ScreenToWorldPoint (a);
 			Vector3 bb = cam.ScreenToWorldPoint (b);
-			if (!UnityEngine.XR.XRSettings.enabled) {
+			if (!VRCheck.isVrRunning) {
 				cam.fieldOfView = oldFV;
 			}
 			float scale = (aa - bb).magnitude / map.transform.localScale.x;

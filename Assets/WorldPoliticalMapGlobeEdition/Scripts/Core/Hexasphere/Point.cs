@@ -1,8 +1,8 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace WPM {
+
     public class Point : IEqualityComparer<Point> {
 
         public float x, y, z;
@@ -14,16 +14,17 @@ namespace WPM {
             get {
                 if (_projectedVector3Computed) {
                     return _projectedVector3;
-                } else {
-                    double length = System.Math.Sqrt(x * x + y * y + z * z);
-                    length *= 2.0f; // equals to multiply by 0.5 when dividing
-                    _projectedVector3.x = (float)(x / length);
-                    _projectedVector3.y = (float)(y / length);
-                    _projectedVector3.z = (float)(z / length);
-                    //_projectedVector3 = new Vector3(x, y, z).normalized * 0.5f;
-                    _projectedVector3Computed = true;
-                    return _projectedVector3;
                 }
+
+                double length = System.Math.Sqrt(x * x + y * y + z * z);
+                length *= 2.0f; // equals to multiply by 0.5 when dividing
+                _projectedVector3.x = (float)(x / length);
+                _projectedVector3.y = (float)(y / length);
+                _projectedVector3.z = (float)(z / length);
+                //_projectedVector3 = new Vector3(x, y, z).normalized * 0.5f;
+                _projectedVector3Computed = true;
+                return _projectedVector3;
+
             }
         }
 
@@ -38,24 +39,6 @@ namespace WPM {
             this.y = y;
             this.z = z;
         }
-
-        //public List<Point> Subdivide(Point point, int count, GetCachedPointDelegate checkPoint) {
-        //    List<Point> segments = new List<Point>(count + 1);
-        //    segments.Add(this);
-
-        //    for (int i = 1; i < count; i++) {
-        //        Point np = new Point(x + ((point.x - x) * i / count),
-        //                        y + ((point.y - y) * i / count),
-        //                        z + ((point.z - z) * i / count));
-        //        np = checkPoint(np);
-        //        segments.Add(np);
-        //    }
-
-        //    segments.Add(point);
-
-        //    return segments;
-
-        //}
 
         public List<Point> Subdivide(Point point, int count, GetCachedPointDelegate checkPoint) {
             List<Point> segments = new List<Point>(count + 1);
@@ -154,6 +137,26 @@ namespace WPM {
 
         public static Point operator *(Point point, float v) {
             return new Point(point.x * v, point.y * v, point.z * v);
+        }
+
+        public static Point operator +(Point p1, Point p2) {
+            return new Point(p1.x + p2.x, p1.y + p2.y, p1.z + p2.z);
+        }
+
+        public static Point operator -(Point p1, Point p2) {
+            return new Point(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);
+        }
+
+        public static Point Cross(Point lhs, Point rhs) {
+            return new Point(
+                lhs.y * rhs.z - lhs.z * rhs.y,
+                lhs.z * rhs.x - lhs.x * rhs.z,
+                lhs.x * rhs.y - lhs.y * rhs.x
+            );
+        }
+
+        public static float Dot(Point lhs, Point rhs) {
+            return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
         }
 
     }

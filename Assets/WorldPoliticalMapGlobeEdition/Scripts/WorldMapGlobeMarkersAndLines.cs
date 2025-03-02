@@ -11,6 +11,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 
 namespace WPM {
 
@@ -381,12 +382,12 @@ namespace WPM {
         /// </summary>
         /// <returns>The TextMesh component attached to the label gameobject.</returns>
         /// <param name="sphereLocation">Sphere location.</param>
-        /// <param name="name">Text label.</param>
-        public TextMesh AddText(string name, Vector3 sphereLocation, Color color, float scale = 0.004f, Font font = null, FontStyle fontStyle = FontStyle.Normal) {
+        /// <param name="text">Text label.</param>
+        public TextMesh AddText(string text, Vector3 sphereLocation, Color color, float scale = 0.004f, Font font = null, FontStyle fontStyle = FontStyle.Normal) {
             if (fontMaterial == null) {
-                fontMaterial = Instantiate<Material>(Resources.Load<Material>("Materials/Font"));
+                fontMaterial = Instantiate(Resources.Load<Material>("Materials/Font"));
             }
-            GameObject go = new GameObject(name);
+            GameObject go = new GameObject(text);
             go.layer = gameObject.layer;
             go.transform.SetParent(transform, false);
             go.transform.localPosition = sphereLocation; // <-- the location of the city in spherical coordinates
@@ -401,9 +402,35 @@ namespace WPM {
             }
             fontMaterial.mainTexture = tm.font.material.mainTexture;
             go.GetComponent<Renderer>().sharedMaterial = fontMaterial;
-            tm.text = name;
+            tm.text = text;
             tm.alignment = TextAlignment.Center;
             tm.anchor = TextAnchor.MiddleCenter;
+            tm.color = color;
+            return tm;
+        }
+
+        /// <summary>
+        /// Adds a text label over the globe using Text Mesh Pro.
+        /// </summary>
+        /// <returns>The TextMesh component attached to the label gameobject.</returns>
+        /// <param name="sphereLocation">Sphere location.</param>
+        /// <param name="text">Text label.</param>
+        public TextMeshPro AddTextPro(string text, Vector3 sphereLocation, Color color, float scale = 0.001f, TMP_FontAsset font = null, FontStyles fontStyle = FontStyles.Normal) {
+            GameObject go = new GameObject(text);
+            go.layer = gameObject.layer;
+            go.transform.SetParent(transform, false);
+            go.transform.localPosition = sphereLocation; // <-- the location of the city in spherical coordinates
+            go.transform.localScale = Vector3.one * scale;
+            go.transform.LookAt(transform.position, transform.up);
+            TextMeshPro tm = go.AddComponent<TextMeshPro>();
+            if (font != null) {
+                tm.font = font;
+            }
+            if (fontStyle != FontStyles.Normal) {
+                tm.fontStyle = fontStyle;
+            }
+            tm.text = text;
+            tm.alignment = TextAlignmentOptions.Center;
             tm.color = color;
             return tm;
         }

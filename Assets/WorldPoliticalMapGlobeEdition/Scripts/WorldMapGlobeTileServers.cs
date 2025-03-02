@@ -29,7 +29,7 @@ namespace WPM {
         GoogleMapsSatelliteNoLabels = 81,
         GoogleMapsRelief = 82,
         Sputnik = 100,
-        AerisWeather = 110,
+        XWeather = 110,
         MapsForFree = 120,
         USGSSattelite = 130,
         ESRITopo = 140,
@@ -55,8 +55,8 @@ namespace WPM {
             return (int)server >= 150 && (int)server < 160;
         }
 
-        public static bool IsAerisWeather(this TILE_SERVER server) {
-            return server == TILE_SERVER.AerisWeather;
+        public static bool IsXweather(this TILE_SERVER server) {
+            return server == TILE_SERVER.XWeather;
         }
 
         public static bool IsMapTiler(this TILE_SERVER server) {
@@ -90,7 +90,7 @@ namespace WPM {
             "Google Maps Satellite No Labels",
             "Google Maps Relief",
             "Sputnik",
-            "AerisWeather",
+            "Xweather",
             "Maps-For-Free",
             "USGS Satellite",
             "ESRI Topo",
@@ -130,7 +130,7 @@ namespace WPM {
             (int)TILE_SERVER.GoogleMapsSatelliteNoLabels,
             (int)TILE_SERVER.GoogleMapsRelief,
             (int)TILE_SERVER.Sputnik,
-            (int)TILE_SERVER.AerisWeather,
+            (int)TILE_SERVER.XWeather,
             (int)TILE_SERVER.MapsForFree,
             (int)TILE_SERVER.USGSSattelite,
             (int)TILE_SERVER.ESRITopo,
@@ -205,8 +205,8 @@ namespace WPM {
                 case TILE_SERVER.Sputnik:
                     copyright = "Map tiles © Sputnik, Data © www.osm.org/copyright";
                     break;
-                case TILE_SERVER.AerisWeather:
-                    copyright = "Map tiles © Aeris Weather, www.aerisweather.com";
+                case TILE_SERVER.XWeather:
+                    copyright = "Map tiles © Xweather, www.xweather.com";
                     break;
                 case TILE_SERVER.MapsForFree:
                     copyright = "Map tiles © OpenStreetMap contributors";
@@ -234,7 +234,7 @@ namespace WPM {
 
         static string[] subservers = new string[] { "a", "b", "c" };
 
-        public string GetTileURL(TILE_SERVER server, TileInfo ti) {
+        public string GetTileURL(TILE_SERVER server, TileInfo ti, bool forceHTTPS) {
 
             string url;
             subserverSeq++;
@@ -335,9 +335,10 @@ namespace WPM {
                 case TILE_SERVER.Sputnik:
                     url = "http://" + subservers[subserverSeq % 3] + ".tiles.maps.sputnik.ru/tiles/kmt2/" + ti.zoomLevel + "/" + ti.x + "/" + ti.y + ".png";
                     break;
-                case TILE_SERVER.AerisWeather:
+                case TILE_SERVER.XWeather:
                     //https://maps[server].aerisapi.com/[client_id]_[client_key]/[type]/[zoom]/[x]/[y]/[offset].png
-                    url = "http://maps" + ((subserverSeq % 4) + 1).ToString() + ".aerisapi.com/" + _tileServerClientId + "_" + _tileServerAPIKey + "/" + _tileServerLayerTypes + "/" + ti.zoomLevel + "/" + ti.x + "/" + ti.y + "/" + _tileServerTimeOffset + ".png";
+                    //url = "http://maps" + ((subserverSeq % 4) + 1).ToString() + ".aerisapi.com/" + _tileServerClientId + "_" + _tileServerAPIKey + "/" + _tileServerLayerTypes + "/" + ti.zoomLevel + "/" + ti.x + "/" + ti.y + "/" + _tileServerTimeOffset + ".png";
+                    url = "http://maps" + ((subserverSeq % 4) + 1).ToString() + ".api.xweather.com/" + _tileServerClientId + "_" + _tileServerAPIKey + "/" + _tileServerLayerTypes + "/" + ti.zoomLevel + "/" + ti.x + "/" + ti.y + "/" + _tileServerTimeOffset + ".png";
                     break;
                 case TILE_SERVER.ESRITopo:
                     url = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/" + ti.zoomLevel + "/" + ti.y + "/" + ti.x + ".jpg";
@@ -369,9 +370,20 @@ namespace WPM {
                     break;
             }
 
-            if (!server.IsMapBox() && !server.IsAerisWeather() && !server.IsMapTiler() && server != TILE_SERVER.Custom && !string.IsNullOrEmpty(_tileServerAPIKey)) {
+            if (!server.IsMapBox() && !server.IsXweather() && !server.IsMapTiler() && server != TILE_SERVER.Custom && !string.IsNullOrEmpty(_tileServerAPIKey)) {
                 url += "?" + _tileServerAPIKey;
             }
+
+            if (forceHTTPS) {
+                url = url.Replace("http://", "https://");
+            }
+#if UNITY_EDITOR && UNITY_6000_0_OR_NEWER
+            else {
+                if (UnityEditor.PlayerSettings.insecureHttpOption != UnityEditor.InsecureHttpOption.AlwaysAllowed) {
+                    Debug.LogWarning("Enable non-secure connections in Player Settings or try enabling 'Use Secure Connection' option in World Map Globe inspector.");
+                }
+            }
+#endif
 
             if (OnTileURLRequest != null) {
                 url = OnTileURLRequest(url, server, ti.zoomLevel, ti.x, ti.y);

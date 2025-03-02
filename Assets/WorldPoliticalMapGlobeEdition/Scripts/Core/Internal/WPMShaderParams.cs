@@ -60,6 +60,10 @@ namespace WPM {
         public static int CameraRot = Shader.PropertyToID("_CameraRot");
         public static int CountryHighlightData = Shader.PropertyToID("_CountryHighlightData");
         public static int ProvinceHighlightData = Shader.PropertyToID("_ProvinceHighlightData");
+
+        public static int TextMeshProUnderlayColor = Shader.PropertyToID("_UnderlayColor");
+        public static int TextMeshProUnderlayOffsetX = Shader.PropertyToID("_UnderlayOffsetX");
+        public static int TextMeshProUnderlayOffsetY = Shader.PropertyToID("_UnderlayOffsetY");
     }
 
 

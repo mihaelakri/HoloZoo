@@ -354,6 +354,7 @@ namespace WPM {
             newProvince.regions.Add(region);
             region.CheckWorldEdgesAndSplit();
             map.ProvinceAdd(newProvince);
+            provinceIndex = map.GetProvinceIndex(newProvince);
             map.RefreshProvinceDefinition(provinceIndex);
             lastProvinceCount = -1;
             ReloadProvinceNames();

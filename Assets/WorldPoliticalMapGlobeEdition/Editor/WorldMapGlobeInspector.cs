@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 using TMPro;
+using UnityEngine.Rendering;
+using System.Reflection;
+using System.Collections.Generic;
 
 namespace WPM {
     [CustomEditor(typeof(WorldMapGlobe))]
@@ -23,11 +26,11 @@ namespace WPM {
         SerializedProperty isDirty;
         float zoomLevel;
 
-        void OnEnable() {
+        void OnEnable () {
             _map = (WorldMapGlobe)target;
-            _headerTexture = Resources.Load<Texture2D>("EditorHeader");
+            _headerTexture = Resources.Load<Texture2D>("GlobeEditorHeader");
             blackBack = new GUIStyle();
-            blackBack.normal.background = MakeTex(4, 4, Color.black);
+            blackBack.normal.background = MakeTex(4, 4, new Color32(0, 0, 0, 255));
 
             earthStyleOptions = new string[] {
                 "Natural (2K, Unlit)", "Natural (2K, Standard Shader)", "Natural (2K, Scenic)", "Natural (2K, Scenic + City Lights)", "Alternate Style 1 (2K)", "Alternate Style 2 (2K)", "Alternate Style 3 (2K)", "Natural (8K, Unlit)", "Natural (8K, Standard Shader)", "Natural (8K Scenic)", "Natural (8K Scenic + City Lights)", "Natural (8K Scenic Scatter)", "Natural (8K Scenic Scatter + City Lights)",  "Natural (16K, Unlit)",  "Natural (16K Scenic)", "Natural (16K Scenic + City Lights)",  "Natural (16K Scenic Scatter)", "Natural (16K Scenic Scatter + City Lights)", "Solid Color", "Custom"
@@ -97,7 +100,7 @@ namespace WPM {
             zoomLevel = Mathf.Clamp(_map.GetZoomLevel(), 0, 5f);
         }
 
-        void OnDisable() {
+        void OnDisable () {
             EditorPrefs.SetBool("WPMGlobeUniverseExpand", expandUniverseSection);
             EditorPrefs.SetBool("WPMGlobeEarthExpand", expandEarthSection);
             EditorPrefs.SetBool("WPMGlobeGridExpand", expandGridSection);
@@ -111,14 +114,14 @@ namespace WPM {
             EditorPrefs.SetBool("WPMGlobeCameraControlExpand", expandCameraControlSection);
         }
 
-        void UpdateExtraComponentStatus() {
+        void UpdateExtraComponentStatus () {
             extracomp[CALCULATOR] = _map.gameObject.GetComponent<WorldMapCalculator>() != null;
             extracomp[TICKERS] = _map.gameObject.GetComponent<WorldMapTicker>() != null;
             extracomp[DECORATOR] = _map.gameObject.GetComponent<WorldMapDecorator>() != null;
             extracomp[EDITOR] = _map.gameObject.GetComponent<WorldMapEditor>() != null;
         }
 
-        public override void OnInspectorGUI() {
+        public override void OnInspectorGUI () {
             if (_map == null || _map.countries == null) {
                 return;
             }
@@ -133,6 +136,7 @@ namespace WPM {
                 serializedObject.UpdateIfRequiredOrScript();
             }
 
+
             if (sectionHeaderNormalStyle == null) {
                 sectionHeaderNormalStyle = new GUIStyle(EditorStyles.foldout);
             }
@@ -146,6 +150,9 @@ namespace WPM {
             GUILayout.EndHorizontal();
 
             EditorGUILayout.Separator();
+
+            CheckDepthPrimingMode();
+
             EditorGUILayout.BeginVertical();
 
             expandUniverseSection = EditorGUILayout.Foldout(expandUniverseSection, "Universe Settings", sectionHeaderNormalStyle);
@@ -339,11 +346,12 @@ namespace WPM {
                 if (_map.showHexagonalGrid) {
                     EditorGUI.indentLevel++;
                     EditorGUILayout.BeginHorizontal();
-                    _map.hexaGridDivisions = EditorGUILayout.IntSlider("Divisions", _map.hexaGridDivisions, 15, 200);
+                    _map.hexaGridDivisions = EditorGUILayout.IntSlider("Divisions", _map.hexaGridDivisions, 15, 400);
                     if (_map.cells != null) {
                         GUILayout.Label(_map.cells.Length + " cells");
                     }
                     EditorGUILayout.EndHorizontal();
+                    _map.hexaGridGenerateInBackgroundThread = EditorGUILayout.Toggle(new GUIContent("Use Background Thread", "Generates the grid using a background thread so main thread is not blocked. This options is only used in play mode."), _map.hexaGridGenerateInBackgroundThread);
                     float prevAlpha = _map.hexaGridColor.a;
                     _map.hexaGridColor = WPMEditorStyles.HDRColorPicker("Color", _map.hexaGridColor);
                     GUICheckTransparentColor(_map.hexaGridColor.a, prevAlpha);
@@ -395,24 +403,27 @@ namespace WPM {
                         _map.tileServerCustomUrl = EditorGUILayout.TextField(_map.tileServerCustomUrl);
                         EditorGUILayout.EndHorizontal();
                         EditorGUILayout.HelpBox("Use:\n$N$ for random [a-c] node (optional)\n$Z$ for zoom level (required)\n$X$ and $Y$ for X/Y tile indices (required).", MessageType.Info);
-                    } else if (_map.tileServer.IsAerisWeather()) {
-                        EditorGUILayout.LabelField("Copyright Notice");
-                        EditorGUILayout.SelectableLabel(_map.tileServerCopyrightNotice);
-                        _map.tileServerClientId = EditorGUILayout.TextField(new GUIContent("Client Id", "The client id of your Aeris Weather account."), _map.tileServerClientId);
-                        _map.tileServerAPIKey = EditorGUILayout.TextField(new GUIContent("Secret Key", "Secret key linked to your Aeris Weather account."), _map.tileServerAPIKey);
-                        _map.tileServerLayerTypes = EditorGUILayout.TextField(new GUIContent("Layer Types", "Enter the desired layer types (eg: radar,radar-2m,fradar,satellite-visible,satellite,satellite-infrared-color,satellite-water-vapor,fsatellite"), _map.tileServerLayerTypes);
-                        if (string.IsNullOrEmpty(_map.tileServerClientId) || string.IsNullOrEmpty(_map.tileServerAPIKey) || string.IsNullOrEmpty(_map.tileServerLayerTypes)) {
-                            EditorGUILayout.HelpBox("To access AerisWeather service, ClientId, SecretKey as well as one or more Layer Types must be specified.", MessageType.Warning);
-                        }
-                        _map.tileServerTimeOffset = EditorGUILayout.TextField(new GUIContent("Time Offset", "Enter the map time offset from now (eg. current or -10min or +1hour) or an exact date with format: YYYYMMDDhhiiss."), _map.tileServerTimeOffset);
-                    } else if (_map.tileServer.IsMapBox()) {
-                        EditorGUILayout.LabelField("Copyright Notice");
-                        EditorGUILayout.SelectableLabel(_map.tileServerCopyrightNotice);
-                        _map.tileServerAPIKey = EditorGUILayout.TextField(new GUIContent("Access Token (Required)", "Access token of your MapBox account."), _map.tileServerAPIKey);
                     } else {
-                        EditorGUILayout.LabelField("Copyright Notice");
-                        EditorGUILayout.SelectableLabel(_map.tileServerCopyrightNotice);
-                        _map.tileServerAPIKey = EditorGUILayout.TextField(new GUIContent("API Key", "Custom portion added to tile request url. For example: apikey=1234589"), _map.tileServerAPIKey);
+                        _map.tileUseSecureConnection = EditorGUILayout.Toggle(new GUIContent("Use Secure Connection", "Forces https connection (if server supports it) intead of regular http non-secure connection"), _map.tileUseSecureConnection);
+                        if (_map.tileServer.IsXweather()) {
+                            EditorGUILayout.LabelField("Copyright Notice");
+                            EditorGUILayout.SelectableLabel(_map.tileServerCopyrightNotice);
+                            _map.tileServerClientId = EditorGUILayout.TextField(new GUIContent("Client Id", "The client id of your Xweather account."), _map.tileServerClientId);
+                            _map.tileServerAPIKey = EditorGUILayout.TextField(new GUIContent("Secret Key", "Secret key linked to your Xweather account."), _map.tileServerAPIKey);
+                            _map.tileServerLayerTypes = EditorGUILayout.TextField(new GUIContent("Layer Types", "Enter the desired layer types (eg: radar,radar-2m,fradar,satellite-visible,satellite,satellite-infrared-color,satellite-water-vapor,fsatellite"), _map.tileServerLayerTypes);
+                            if (string.IsNullOrEmpty(_map.tileServerClientId) || string.IsNullOrEmpty(_map.tileServerAPIKey) || string.IsNullOrEmpty(_map.tileServerLayerTypes)) {
+                                EditorGUILayout.HelpBox("To access Xweather service, ClientId, SecretKey as well as one or more Layer Types must be specified.", MessageType.Warning);
+                            }
+                            _map.tileServerTimeOffset = EditorGUILayout.TextField(new GUIContent("Time Offset", "Enter the map time offset from now (eg. current or -10min or +1hour) or an exact date with format: YYYYMMDDhhiiss."), _map.tileServerTimeOffset);
+                        } else if (_map.tileServer.IsMapBox()) {
+                            EditorGUILayout.LabelField("Copyright Notice");
+                            EditorGUILayout.SelectableLabel(_map.tileServerCopyrightNotice);
+                            _map.tileServerAPIKey = EditorGUILayout.TextField(new GUIContent("Access Token (Required)", "Access token of your MapBox account."), _map.tileServerAPIKey);
+                        } else {
+                            EditorGUILayout.LabelField("Copyright Notice");
+                            EditorGUILayout.SelectableLabel(_map.tileServerCopyrightNotice);
+                            _map.tileServerAPIKey = EditorGUILayout.TextField(new GUIContent("API Key", "Custom portion added to tile request url. For example: apikey=1234589"), _map.tileServerAPIKey);
+                        }
                     }
 
                     if (Application.isPlaying) {
@@ -423,10 +434,10 @@ namespace WPM {
                     _map.tileMaxZoomLevel = EditorGUILayout.IntSlider(new GUIContent("Max Zoom Level", "Allowed maximum zoom level. Also check Zoom Distance Min under Interaction section."), _map.tileMaxZoomLevel, WorldMapGlobe.TILE_MIN_ZOOM_LEVEL, WorldMapGlobe.TILE_MAX_ZOOM_LEVEL);
                     _map.tileMaxZoomLevelFrontiers = EditorGUILayout.IntSlider(new GUIContent("Max Zoom Level Frontiers", "Automatically hide frontiers beyond this zoom level."), _map.tileMaxZoomLevelFrontiers, WorldMapGlobe.TILE_MIN_ZOOM_LEVEL, WorldMapGlobe.TILE_MAX_ZOOM_LEVEL);
                     _map.tileTransparentLayer = EditorGUILayout.Toggle(new GUIContent("Transparent Tiles", "Enable this option to render tiles with transparency (slower)."), _map.tileTransparentLayer);
-
                     if (_map.tileTransparentLayer) {
                         _map.tileMaxAlpha = EditorGUILayout.Slider(new GUIContent("Max Alpha", "Maximum level of opacity."), _map.tileMaxAlpha, 0, 1f);
                     }
+                    _map.tileFadeDuration = EditorGUILayout.Slider(new GUIContent("Fade Duration", "Duration of the tile fade animation"), _map.tileFadeDuration, 0, 2);
 
                     _map.tileBackgroundColor = EditorGUILayout.ColorField(new GUIContent("Background Color", "Default color for rendering background Earth. For best results, assign a color that matches the current tile theme/style"), _map.tileBackgroundColor);
                     _map.tilePolesMaterial = (Material)EditorGUILayout.ObjectField(new GUIContent("Poles Material", "Optional custom material used to render the poles. Tile systems do not provide data for latitudes > 85 degrees so the poles need to be filled with an arbitrary color or texture."), _map.tilePolesMaterial, typeof(Material), false);
@@ -470,10 +481,16 @@ namespace WPM {
 
                     _map.tileEnableOfflineTiles = EditorGUILayout.Toggle("Enable Offline Tiles", _map.tileEnableOfflineTiles);
                     if (_map.tileEnableOfflineTiles) {
-                        _map.tileResourcePathBase = EditorGUILayout.TextField("Resources Path", _map.tileResourcePathBase);
-                        _map.tileOfflineTilesOnly = EditorGUILayout.Toggle(new GUIContent("Only Offline Tiles", "If enabled, only existing tiles from Resources path will be loaded - cache and online tiles will be ignored."), _map.tileOfflineTilesOnly);
-                        if (_map.tileEnableOfflineTiles) {
-                            _map.tileResourceFallbackTexture = (Texture2D)EditorGUILayout.ObjectField(new GUIContent("Fallback Texture", "Fallback texture if the tile is not found in Resources path."), _map.tileResourceFallbackTexture, typeof(Texture2D), false);
+                        _map.tileOfflineTilesSourceType = (OFFLINE_TILES_SOURCE_TYPE)EditorGUILayout.EnumPopup("   Source Type", _map.tileOfflineTilesSourceType);
+                        switch (_map.tileOfflineTilesSourceType) {
+                            case OFFLINE_TILES_SOURCE_TYPE.Resources: EditorGUILayout.HelpBox("Tiles are stored inside a Resources folder in your project indicated by the path. The path is used by the Tiles Downloader to store there the downloaded tiles (for example, path = 'Assets/Resources').", MessageType.Info); break;
+                            case OFFLINE_TILES_SOURCE_TYPE.FileSystem: EditorGUILayout.HelpBox("Tiles are stored inside the given path below. The path is relative to the app location. In Unity Editor, the path is relative to the project root folder.", MessageType.Info); break;
+                            case OFFLINE_TILES_SOURCE_TYPE.StreamingAssetsPath: EditorGUILayout.HelpBox("Tiles are stored inside the given path below. The path is relative to the StreamingAssetsPath folder.", MessageType.Info); break;
+                        }
+                        _map.tileResourcePathBase = EditorGUILayout.TextField("   Path", _map.tileResourcePathBase);
+                        _map.tileOfflineTilesOnly = EditorGUILayout.Toggle(new GUIContent("   Only Offline Tiles", "If enabled, only existing tiles from Resources path will be loaded - cache and online tiles will be ignored."), _map.tileOfflineTilesOnly);
+                        if (_map.tileOfflineTilesOnly) {
+                            _map.tileResourceFallbackTexture = (Texture2D)EditorGUILayout.ObjectField(new GUIContent("   Fallback Texture", "Fallback texture if the tile is not found in Resources path."), _map.tileResourceFallbackTexture, typeof(Texture2D), false);
                         }
 
                         if (GUILayout.Button("Open Tiles Downloader")) {
@@ -518,9 +535,14 @@ namespace WPM {
 
                     _map.showCoastalFrontiers = EditorGUILayout.Toggle("Coastal Frontiers", _map.showCoastalFrontiers);
                     _map.frontiersThicknessMode = (FRONTIERS_THICKNESS)EditorGUILayout.EnumPopup("Line Thickness", _map.frontiersThicknessMode);
-                    EditorGUILayout.BeginHorizontal();
-                    if (_map.frontiersThicknessMode == FRONTIERS_THICKNESS.Thin)
+                    if (_map.frontiersThicknessMode == FRONTIERS_THICKNESS.Thin) {
                         GUI.enabled = false;
+                    } else {
+                        if (VRCheck.isActive) {
+                            EditorGUILayout.HelpBox("Custom thickness is not supported in VR Single Pass or Multi-View rendering.", MessageType.Warning);
+                        }
+                    }
+                    EditorGUILayout.BeginHorizontal();
                     _map.frontiersThickness = EditorGUILayout.FloatField("Line Width", _map.frontiersThickness);
                     GUI.enabled = true;
                     if (GUILayout.Button("?", GUILayout.Width(20))) {
@@ -535,7 +557,7 @@ namespace WPM {
                 if (_map.enableCountryHighlight) {
                     EditorGUI.indentLevel++;
                     _map.fillColor = WPMEditorStyles.HDRColorPicker("Highlight Color", _map.fillColor, false);
-                    _map.countryHighlightFadeDuration = EditorGUILayout.FloatField("Fade Duration", _map.countryHighlightFadeDuration);
+                    _map.countryHighlightFadeDuration = EditorGUILayout.FloatField("Fade In Duration", _map.countryHighlightFadeDuration);
 
                     _map.showOutline = EditorGUILayout.Toggle("Draw Outline", _map.showOutline);
                     if (_map.showOutline) {
@@ -637,7 +659,7 @@ namespace WPM {
                     if (_map.enableProvinceHighlight) {
                         EditorGUI.indentLevel++;
                         _map.provincesFillColor = WPMEditorStyles.HDRColorPicker("Color", _map.provincesFillColor);
-                        _map.provinceHighlightFadeDuration = EditorGUILayout.FloatField("Fade Duration", _map.provinceHighlightFadeDuration);
+                        _map.provinceHighlightFadeDuration = EditorGUILayout.FloatField("Fade In Duration", _map.provinceHighlightFadeDuration);
                         _map.provinceHighlightMaxScreenAreaSize = EditorGUILayout.Slider(new GUIContent("Max Screen Size", "Defines the maximum screen area of a highlighted province. To prevent filling the whole screen with the highlight color, you can reduce this value and if the highlighted screen area size is greater than this factor (1=whole screen) the province won't be filled at all (it will behave as selected though)"), _map.provinceHighlightMaxScreenAreaSize, 0, 1f);
                         _map.showProvinceCountryOutline = EditorGUILayout.Toggle("Show Country Outline", _map.showProvinceCountryOutline);
                         EditorGUI.indentLevel--;
@@ -661,8 +683,11 @@ namespace WPM {
                 if (_map.showCities && _map.cities != null) {
                     EditorGUI.indentLevel++;
 
+                    _map.citySpot = (GameObject)EditorGUILayout.ObjectField("Cities Prefab", _map.citySpot, typeof(GameObject), false);
                     _map.citiesColor = WPMEditorStyles.HDRColorPicker("Cities Color", _map.citiesColor);
+                    _map.citySpotCapitalRegion = (GameObject)EditorGUILayout.ObjectField("Region Cap. Prefab", _map.citySpotCapitalRegion, typeof(GameObject), false);
                     _map.citiesRegionCapitalColor = WPMEditorStyles.HDRColorPicker("Region Cap. Color", _map.citiesRegionCapitalColor);
+                    _map.citySpotCapitalCountry = (GameObject)EditorGUILayout.ObjectField("Capital Prefab", _map.citySpotCapitalCountry, typeof(GameObject), false);
                     _map.citiesCountryCapitalColor = WPMEditorStyles.HDRColorPicker("Capital Color", _map.citiesCountryCapitalColor);
                     _map.cityIconSize = EditorGUILayout.Slider("Icon Size", _map.cityIconSize, 0.02f, 1f);
 
@@ -744,7 +769,11 @@ namespace WPM {
                 }
 
                 _map.respectOtherUI = EditorGUILayout.Toggle("Respect Other UI", _map.respectOtherUI);
-
+                if (_map.respectOtherUI) {
+                    EditorGUI.indentLevel++;
+                    _map.blockingMask = LayerMaskField(new GUIContent("Blocking Mask", "This option let you specify which UI elements can block the interaction"), _map.blockingMask);
+                    EditorGUI.indentLevel--;
+                }
                 _map.allowUserRotation = EditorGUILayout.Toggle("Allow User Rotation", _map.allowUserRotation);
                 if (_map.allowUserRotation) {
                     EditorGUI.indentLevel++;
@@ -927,7 +956,7 @@ namespace WPM {
                 EditorGUILayout.BeginHorizontal();
                 _map.geodataResourcesPath = EditorGUILayout.TextField(new GUIContent("Geodata Folder", "Path after any Resources folder where geodata files reside."), _map.geodataResourcesPath);
                 if (GUILayout.Button("Show", GUILayout.Width(60))) {
-                    string path = GetGeodataReourcesFullPath();
+                    string path = GetGeoDataReourcesFullPath();
                     if (System.IO.Directory.Exists(path)) {
                         Object obj = AssetDatabase.LoadAssetAtPath(path, typeof(UnityEngine.Object));
                         if (obj != null) {
@@ -938,6 +967,7 @@ namespace WPM {
                     }
                 }
                 EditorGUILayout.EndHorizontal();
+                _map.geodataFormat = (GEODATA_FORMAT)EditorGUILayout.EnumPopup("Geodata Format", _map.geodataFormat);
             }
 
             EditorGUILayout.EndVertical();
@@ -956,7 +986,7 @@ namespace WPM {
                         if (e != null)
                             DestroyImmediate(e);
                         UpdateExtraComponentStatus();
-                        EditorGUIUtility.ExitGUI();
+                        GUIUtility.ExitGUI();
                     }
                 } else {
                     if (GUILayout.Button("Open Calculator", GUILayout.Width(buttonWidth))) {
@@ -973,7 +1003,7 @@ namespace WPM {
                         if (e != null)
                             DestroyImmediate(e);
                         UpdateExtraComponentStatus();
-                        EditorGUIUtility.ExitGUI();
+                        GUIUtility.ExitGUI();
                     }
                 } else {
                     if (GUILayout.Button("Open Ticker", GUILayout.Width(buttonWidth))) {
@@ -1006,16 +1036,9 @@ namespace WPM {
                 } else {
                     if (GUILayout.Button("Open Map Editor", GUILayout.Width(buttonWidth))) {
                         WorldMapEditor e = _map.gameObject.GetComponent<WorldMapEditor>();
-                        if (e == null)
+                        if (e == null) {
                             _map.gameObject.AddComponent<WorldMapEditor>();
-                        // cancel scenic shaders since they look awful in editor window
-                        if (_map.earthStyle == EARTH_STYLE.Scenic || _map.earthStyle == EARTH_STYLE.ScenicCityLights)
-                            _map.earthStyle = EARTH_STYLE.Natural;
-                        if (_map.earthStyle == EARTH_STYLE.NaturalHighResScenic || _map.earthStyle == EARTH_STYLE.NaturalHighResScenicScatter ||
-                            _map.earthStyle == EARTH_STYLE.NaturalHighResScenicScatterCityLights || _map.earthStyle == EARTH_STYLE.NaturalHighResScenicCityLights ||
-                            _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenicScatter || _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenicScatterCityLights ||
-                            _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenic || _map.earthStyle == EARTH_STYLE.NaturalHighRes16KScenicCityLights)
-                            _map.earthStyle = EARTH_STYLE.NaturalHighRes;
+                        }
                         UpdateExtraComponentStatus();
                         // Unity 5.3.1 prevents raycasting in the scene view if rigidbody is present
                         Rigidbody rb = _map.gameObject.GetComponent<Rigidbody>();
@@ -1065,7 +1088,7 @@ namespace WPM {
         }
 
 
-        void GUICheckTransparentColor(float newAlpha, float prevAlpha) {
+        void GUICheckTransparentColor (float newAlpha, float prevAlpha) {
             if (newAlpha != prevAlpha)
                 GUIUtility.ExitGUI();
             if (newAlpha < 1f) {
@@ -1077,7 +1100,7 @@ namespace WPM {
 #if !UNITY_WEBPLAYER
         // Add a menu item called "Bake Earth Texture" to a WPM's context menu.
         [MenuItem("CONTEXT/WorldMapGlobe/Bake Earth Texture")]
-        static void RestoreBackup(MenuCommand command) {
+        static void RestoreBackup (MenuCommand command) {
             if (!EditorUtility.DisplayDialog("Bake Earth Texture", "This command will render the colorized areas to the current texture and save it to EarthCustom.png file inside Textures folder (existing file from a previous bake texture operation will be replaced).\n\nThis command can take some time depending on the current texture resolution and CPU speed, from a few seconds to one minute for high-res (8K) texstures.\n\nProceed?", "Ok", "Cancel"))
                 return;
 
@@ -1106,28 +1129,28 @@ namespace WPM {
 
 
         [MenuItem("CONTEXT/WorldMapGlobe/Tiles Downloader")]
-        static void TilesDownloaderMenuOption(MenuCommand command) {
+        static void TilesDownloaderMenuOption (MenuCommand command) {
             WorldMapTilesDownloader.ShowWindow();
         }
 
 
 
-        Texture2D MakeTex(int width, int height, Color col) {
-            Color[] pix = new Color[width * height];
+        Texture2D MakeTex (int width, int height, Color32 col) {
+            Color32[] pix = new Color32[width * height];
 
             for (int i = 0; i < pix.Length; i++)
                 pix[i] = col;
 
             TextureFormat tf = SystemInfo.SupportsTextureFormat(TextureFormat.RGBAFloat) ? TextureFormat.RGBAFloat : TextureFormat.RGBA32;
             Texture2D result = new Texture2D(width, height, tf, false);
-            result.SetPixels(pix);
+            result.SetPixels32(pix);
             result.Apply();
 
             return result;
         }
 
 
-        string GetGeodataReourcesFullPath() {
+        string GetGeoDataReourcesFullPath () {
             string rootFolder;
             string path = "";
             string[] paths = AssetDatabase.GetAllAssetPaths();
@@ -1141,6 +1164,72 @@ namespace WPM {
             return path;
         }
 
+        readonly List<string> layers = new List<string>();
+        readonly List<int> layerNumbers = new List<int>();
+        LayerMask LayerMaskField (GUIContent label, LayerMask layerMask) {
+            layers.Clear();
+            layerNumbers.Clear();
+            for (int i = 0; i < 32; i++) {
+                string layerName = LayerMask.LayerToName(i);
+                if (!string.IsNullOrEmpty(layerName)) {
+                    layers.Add(layerName);
+                    layerNumbers.Add(i);
+                }
+            }
+            int maskWithoutEmpty = 0;
+            for (int i = 0; i < layerNumbers.Count; i++) {
+                if (((1 << layerNumbers[i]) & layerMask.value) > 0)
+                    maskWithoutEmpty |= (1 << i);
+            }
+            maskWithoutEmpty = EditorGUILayout.MaskField(label, maskWithoutEmpty, layers.ToArray());
+            int mask = 0;
+            bool everything = true;
+            for (int i = 0; i < layerNumbers.Count; i++) {
+                if ((maskWithoutEmpty & (1 << i)) > 0) {
+                    mask |= 1 << layerNumbers[i];
+                } else {
+                    everything = false;
+                }
+            }
+            layerMask.value = everything ? -1 : mask;
+            return layerMask;
+        }
+
+
+        #region SRP utils
+
+
+        void CheckDepthPrimingMode () {
+            RenderPipelineAsset pipe = GraphicsSettings.currentRenderPipeline;
+            if (pipe == null) return;
+            // Check depth priming mode
+            FieldInfo renderers = pipe.GetType().GetField("m_RendererDataList", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (renderers == null) return;
+            foreach (var renderer in (object[])renderers.GetValue(pipe)) {
+                if (renderer == null) continue;
+                FieldInfo depthPrimingModeField = renderer.GetType().GetField("m_DepthPrimingMode", BindingFlags.NonPublic | BindingFlags.Instance);
+                int depthPrimingMode = -1;
+                if (depthPrimingModeField != null) {
+                    depthPrimingMode = (int)depthPrimingModeField.GetValue(renderer);
+                }
+
+                FieldInfo renderingModeField = renderer.GetType().GetField("m_RenderingMode", BindingFlags.NonPublic | BindingFlags.Instance);
+                int renderingMode = -1;
+                if (renderingModeField != null) {
+                    renderingMode = (int)renderingModeField.GetValue(renderer);
+                }
+                if (depthPrimingMode > 0 && renderingMode != 1) {
+                    EditorGUILayout.HelpBox("Depth Priming Mode in URP asset must be disabled.", MessageType.Warning);
+                    if (GUILayout.Button("Show Pipeline Asset")) {
+                        Selection.activeObject = (Object)renderer;
+                        GUIUtility.ExitGUI();
+                    }
+                    EditorGUILayout.Separator();
+                }
+            }
+        }
+
+        #endregion
 
     }
 

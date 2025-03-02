@@ -1,16 +1,21 @@
 using UnityEngine;
 using System;
-using System.Linq;
-using System.Threading;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace WPM {
+namespace WPM
+{
 
     public delegate bool TileRequestEvent(int zoomLevel, int x, int y, out Texture2D texture, out string error);
     public delegate void TileEvent(TileInfo ti);
     public delegate void TileMapVisibleEvent(List<TileInfo> visibleTiles);
+
+    public enum OFFLINE_TILES_SOURCE_TYPE {
+        Resources,
+        FileSystem,
+        StreamingAssetsPath,
+        ApplicationDataPath,
+        ApplicationPersistentDataPath
+    }
 
     public partial class WorldMapGlobe : MonoBehaviour {
 
@@ -194,6 +199,25 @@ namespace WPM {
         }
 
 
+
+        [SerializeField]
+        [Range(0, 2f)]
+        float _tileFadeDuration = 1f;
+
+        /// <summary>
+        /// Duration of the tile fade animation
+        /// </summary>
+        public float tileFadeDuration {
+            get { return _tileFadeDuration; }
+            set {
+                if (_tileFadeDuration != value) {
+                    _tileFadeDuration = Mathf.Clamp01(value);
+                    isDirty = true;
+                }
+            }
+        }
+
+
         [SerializeField]
         bool _tileEnableLocalCache = true;
 
@@ -302,6 +326,24 @@ namespace WPM {
         }
 
         [SerializeField]
+        bool _tileUseSecureConnection;
+
+        /// <summary>
+        /// Use https instead of simple http for secure connection to default servers.
+        /// </summary>
+        public bool tileUseSecureConnection {
+            get { return _tileUseSecureConnection; }
+            set {
+                if (_tileUseSecureConnection != value) {
+                    _tileUseSecureConnection = value;
+                    ResetTiles();
+                    isDirty = true;
+                }
+            }
+        }
+
+
+        [SerializeField]
         string _tileServerCustomUrl = "http://$N$.tile.openstreetmap.org/$Z$/$X$/$Y$.png";
 
         /// <summary>
@@ -312,9 +354,37 @@ namespace WPM {
             set {
                 if (_tileServerCustomUrl != value) {
                     _tileServerCustomUrl = value;
-                    ResetTiles();
                     isDirty = true;
+                    ResetTiles();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Sets the tile server Url and optionally reset tiles.
+        /// </summary>
+        /// <param name="quickUpdate">If false, destroys all current tiles and load them again. If true, refreshes current visible tiles</param>
+        public void SetTileServerCustomUrl(string url, bool quickUpdate = false) {
+            _tileServerCustomUrl = url;
+            isDirty = true;
+            if (quickUpdate) {
+                RefreshTiles();
+            } else {
+                ResetTiles();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the tile server.
+        /// </summary>
+        /// <param name="quickUpdate">If false, destroys all current tiles and load them again. If true, refreshes current visible tiles</param>
+        public void SetTileServer(TILE_SERVER server, bool quickUpdate = false) {
+            _tileServer = server;
+            isDirty = true;
+            if (quickUpdate) {
+                RefreshTiles();
+            } else {
+                ResetTiles();
             }
         }
 
@@ -400,7 +470,7 @@ namespace WPM {
 
 
         [SerializeField]
-        string _tileServerLayerTypes;
+        string _tileServerLayerTypes = "radar";
 
         /// <summary>
         /// Returns current tile server layer types used by some providers
@@ -526,6 +596,22 @@ namespace WPM {
         }
 
 
+        [SerializeField]
+        OFFLINE_TILES_SOURCE_TYPE _tileOfflineTilesSourceType = OFFLINE_TILES_SOURCE_TYPE.Resources;
+
+        /// <summary>
+        /// Specifies the type of source for the offline tiles (Resources, File System or Streaming Assets Path)
+        /// </summary>
+        public OFFLINE_TILES_SOURCE_TYPE tileOfflineTilesSourceType {
+            get { return _tileOfflineTilesSourceType; }
+            set {
+                if (_tileOfflineTilesSourceType != value) {
+                    _tileOfflineTilesSourceType = value;
+                    isDirty = true;
+                }
+            }
+        }
+
 
         [SerializeField]
         bool _tileOfflineTilesOnly = true;
@@ -622,7 +708,8 @@ namespace WPM {
 
         public Material tilePolesMaterial {
             get { return _tilePolesMaterial; }
-            set { if (_tilePolesMaterial != value) {
+            set {
+                if (_tilePolesMaterial != value) {
                     _tilePolesMaterial = value;
                     isDirty = true;
                 }

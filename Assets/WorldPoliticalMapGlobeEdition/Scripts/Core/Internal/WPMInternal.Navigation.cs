@@ -222,7 +222,7 @@ namespace WPM {
         }
 
         void PerformDragDamping(Camera cam) {
-            float t = (Time.time - dragDampingStart) / (dragDampingDuration + 0.001f);
+            float t = (Time.time - dragDampingStart) / (_dragDampingDuration + 0.001f);
             t = 1f - t * t;
             if (t < 0) {
                 t = 0;
@@ -230,7 +230,10 @@ namespace WPM {
             } else if (t > 1f) {
                 t = 1f;
             }
+            Rotate(cam, t);
+        }
 
+        void Rotate(Camera cam, float t) { 
             if (_navigationMode == NAVIGATION_MODE.EARTH_ROTATES) {
                 transform.Rotate(cam.transform.up, dragDirection.x * t, Space.World);
                 Vector3 axisY = Vector3.Cross(transform.position - cam.transform.position, cam.transform.up);
@@ -282,9 +285,8 @@ namespace WPM {
 
 
         void CheckLatitudeConstraint() {
-            Vector3 hitPos;
             Ray ray = new Ray(pivotTransform.position, pivotTransform.forward);
-            if (!GetGlobeIntersection(ray, out hitPos)) return;
+            if (!GetGlobeIntersection(ray, out Vector3 hitPos)) return;
             hitPos = transform.InverseTransformPoint(hitPos);
 
             float sy = hitPos.y * 2f;
@@ -313,7 +315,7 @@ namespace WPM {
             dragDampingStart = 0;
         }
 
-        void CheckRotationKeys() {
+        void CheckRotationKeys(Camera cam) {
             bool pressed = false;
             Vector3 dragKeyVert = Misc.Vector3zero;
             if (input.GetKey(KeyCode.W)) {
@@ -336,8 +338,7 @@ namespace WPM {
                 float distFactor = Mathf.Min((Vector3.Distance(pivotTransform.position, transform.position) - radius) / radius, 1f);
                 dragDirection *= distFactor * dragSensibility;
                 if (_dragConstantSpeed) {
-                    dragDirection *= 18f;
-                    dragDampingStart = Time.time + dragDampingDuration;
+                    Rotate(cam, 1f);
                 } else {
                     dragDampingStart = Time.time;
                 }

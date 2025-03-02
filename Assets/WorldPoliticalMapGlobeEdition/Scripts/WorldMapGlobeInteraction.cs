@@ -27,7 +27,8 @@ namespace WPM {
     public enum DRAG_BEHAVIOUR {
         None = 0,
         Rotate = 1,
-        CameraOrbit = 2
+        CameraOrbit = 2,
+        Drag = 3
     }
 
     public delegate void GlobeClickEvent(Vector3 sphereLocation, int mouseButtonIndex);
@@ -371,6 +372,23 @@ namespace WPM {
             set {
                 if (value != _respectOtherUI) {
                     _respectOtherUI = value;
+                    isDirty = true;
+                }
+            }
+        }
+
+        [SerializeField]
+        LayerMask
+            _blockingMask = -1;
+
+        /// <summary>
+        /// Layer mask to determine which UI elements can block the interaction
+        /// </summary>
+        public LayerMask blockingMask {
+            get { return _blockingMask; }
+            set {
+                if (value != _blockingMask) {
+                    _blockingMask = value;
                     isDirty = true;
                 }
             }
@@ -923,9 +941,9 @@ namespace WPM {
             } else {
                 // Takes the distance from the focus point and adjust it according to the zoom level
                 float frustumDistance = GetFrustumDistance(cam);
-                float dist = Vector3.Distance(transform.position, pivotTransform.position);
+                float camDist = Vector3.Distance(transform.position, pivotTransform.position);
                 float minRadius = GetCameraMinDistance(cam);
-                zoomLevel = (dist - minRadius) / (frustumDistance - minRadius);
+                zoomLevel = (camDist - minRadius) / (frustumDistance - minRadius);
                 if (zoomLevel < 0) zoomLevel = 0;
             }
             return zoomLevel;
