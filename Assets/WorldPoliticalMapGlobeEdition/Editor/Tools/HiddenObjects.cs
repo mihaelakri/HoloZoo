@@ -18,7 +18,7 @@ namespace WPM {
             if (GUILayout.Button("Count Hidden GameObjects")) {
                 GameObject g = Misc.FindObjectOfType<WorldMapGlobe>().gameObject;
                 int count = 0;
-                foreach (Transform t in g.transform) {
+                foreach (Transform t in g.GetComponentsInChildren<Transform>()) {
                     if ((t.gameObject.hideFlags & HideFlags.HideInHierarchy) != 0) {
                         Debug.Log(t.gameObject.name + " is invisible in the hierarchy.");
                         count++;
@@ -30,7 +30,7 @@ namespace WPM {
             if (GUILayout.Button("Show Hidden GameObjects")) {
                 GameObject g = Misc.FindObjectOfType<WorldMapGlobe>().gameObject;
                 int count = 0;
-                foreach (Transform t in g.transform) {
+                foreach (Transform t in g.GetComponentsInChildren<Transform>()) {
                     if ((t.gameObject.hideFlags & HideFlags.HideInHierarchy) != 0) {
                         t.gameObject.hideFlags ^= HideFlags.HideInHierarchy;
                         count++;
@@ -43,7 +43,7 @@ namespace WPM {
             if (GUILayout.Button("Destroy Hidden GameObjects")) {
                 GameObject g = Misc.FindObjectOfType<WorldMapGlobe>().gameObject;
                 int count = 0;
-                foreach (Transform t in g.transform) {
+                foreach (Transform t in g.GetComponentsInChildren<Transform>()) {
                     if ((t.gameObject.hideFlags & HideFlags.HideInHierarchy) != 0) {
                         count++;
                         Debug.Log(t.gameObject.name + " destroyed.");
