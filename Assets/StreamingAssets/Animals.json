@@ -79,7 +79,7 @@
     {
         "id": 8,
         "id_area": [
-            9
+            4
         ],
         "level": 1,
         "url_model": "AnimalModels/GreatWhiteShark",
@@ -211,7 +211,7 @@
     {
         "id": 20,
         "id_area": [
-            9
+            4
         ],
         "level": 3,
         "url_model": "AnimalModels/LeatherbackSeaTurtle",

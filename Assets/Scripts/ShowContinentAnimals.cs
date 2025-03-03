@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,175 +7,101 @@ namespace WPM
     {
         public GameObject prefabPanel;
         public GameObject prefabAnimal;
-        public string contNameGlobe;
         WorldMapGlobe map;
         GameObject currentPanel;
         GameObject currentAnimal;
-        int counter = 0;
-
         public Text contName;
-
-        private Dictionary<string, string[]> continentTranslations;
 
         void Start()
         {
-            // Get a reference to the World Map API:đ
-
-            continentTranslations = new Dictionary<string, string[]>(){
-                    { "Africa", new string[] { "Africa", "Afrique", "Afrika", "África", "Afrika" } },
-                    { "Europe", new string[] { "Europe", "Europe", "Europa", "Europa", "Európa" } },
-                    { "Asia", new string[] { "Asia", "Asie", "Azija", "Asia", "Ázsia" } },
-                    { "Australia", new string[] { "Australia", "Australie", "Australija", "Australia", "Ausztrália" } },
-                    { "Eurasia", new string[] { "Eurasia", "Eurasie", "Eurazija", "Eurasia", "Eurázsia" } },
-                    { "Antarctica", new string[] { "Antarctica", "Antarctique", "Antarktika", "Antártida", "Antarktisz" } },
-                    { "South America", new string[] { "South America", "Amérique du Sud", "Južna Amerika", "Sudamérica", "Dél-Amerika" } },
-                    { "North America", new string[] { "North America", "Amérique du Nord", "Sjeverna Amerika", "América del Norte", "Észak-Amerika" } },
-                    { "Oceania", new string[] { "Oceania", "Océanie", "Oceanija", "Oceanía", "Óceánia" } }
-                };
-
+            // Get a reference to the World Map API:
             map = WorldMapGlobe.instance;
-            map.OnContinentClick += (string continent, int buttonIndex) => AddPanel(map.countryHighlighted.continent);
+            map.OnContinentClick += (continent, buttonIndex) => AddPanel(continent, buttonIndex);
         }
 
-        void AddPanel(string continent)
+        void AddPanel(string continent, int buttonIndex)
         {
-            GameObject[] allAnimalPrefabs;
-            int id_continent;
+            // Instantiate panel if not open
+            if (currentPanel == null)
+                currentPanel = Instantiate(prefabPanel, GameObject.FindGameObjectWithTag("Content").transform, true);
 
-            allAnimalPrefabs = GameObject.FindGameObjectsWithTag("AnimalPrefab(Clone)");
+            // Empty out the panel
+            for (int i = 1; i < currentPanel.transform.childCount; i++)
+                Destroy(currentPanel.transform.GetChild(i).gameObject);
 
-            foreach (GameObject animprefab in allAnimalPrefabs)
-            {
-                Destroy(animprefab);
-            }
+            int id_continent = GetContinentId(continent);
+            string continentTranslated = GameData.Instance.GetArea(id_continent).name;
 
-            // If previous panel exists, destroy it
-            if (currentPanel != null)
-            {
-                Destroy(currentPanel);
-            }
-
-            // Instantiate panel
-            currentPanel = Instantiate<GameObject>(prefabPanel);
-            currentPanel.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform);
             contName = currentPanel.GetComponentInChildren<Text>();
+            contName.text = continentTranslated;
 
-            string selectedLang = PlayerPrefs.GetString("lang", "en"); // Default to "en"
-            int langIndex = 0; // Default is English
-
-            // Mapiranje jezika
-            switch (selectedLang)
-            {
-                case "fr":
-                    langIndex = 1; break;
-                case "hr":
-                    langIndex = 2; break;
-                case "es":
-                    langIndex = 3; break;
-                case "hu":
-                    langIndex = 4; break;
-            }
-
-            string continentName = continentTranslations.ContainsKey(continent) ? continentTranslations[continent][langIndex] : continent;
-            contName.text = continentName;
-
-            id_continent = getContinentId(continent);
-
-            contNameGlobe = map.countryHighlighted.continent;
-
-            StartCoroutine(FillAnimalInfoo(id_continent));
+            Debug.Log($"{nameof(ShowContinentAnimals)} - Continent: {continent}, Translated: {continentTranslated}");
+            FillAnimalInfoo(id_continent);
         }
 
-        IEnumerator FillAnimalInfoo(int id_continent)
+        void FillAnimalInfoo(int id_continent)
         {
             var area = GameData.Instance.GetArea(id_continent);
             var animals = GameData.Instance.GetAreaAnimals(area);
 
-            var x = -255;
-            var y = 500;
-            counter = 1;
+            int x = -255;
+            int y = 500;
 
-            foreach (var animal in animals)
+            for (int row = 0; row < animals.Count / 3; row++)
             {
-                Debug.Log(animal.name);
-                currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("oblacic").transform);
-
-                // 3 po 3 imaju isti y ali razliciti x
-                // isti x imaju svaki treci
-
-                currentAnimal.transform.localPosition = new Vector3(x, y, 0);
-
-                x += 250;
-
-                if (counter % 3 == 0)
+                for (int column = 0; column < 3; column++)
                 {
-                    y -= 270;
-                    x = -235;
+                    int index = row * 3 + column;
+
+                    currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("oblacic").transform);
+                    currentAnimal.transform.localPosition = new Vector3(x, y, 0);
+
+                    // Update panel text and image
+                    Text animalNamePrefab = currentAnimal.transform.Find("GameObject/Text").GetComponent<Text>();
+                    Image animalImagePrefab = currentAnimal.transform.Find("GameObject/Image").GetComponent<Image>();
+
+                    animalNamePrefab.text = animals[index].name;
+
+                    Texture2D myTexture = Resources.Load<Texture2D>(animals[index].url_slika);
+                    animalImagePrefab.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
+
+                    if (currentAnimal.TryGetComponent<SceneChange>(out var changeSceneScript))
+                        changeSceneScript.id = animals[index].id.ToString();
+
+                    x += 250;
                 }
-                counter += 1;
-
-                // Update panel text and image
-                Text animalNamePrefab;
-                Image animalImagePrefab;
-
-                animalNamePrefab = currentAnimal.transform.Find("GameObject/Text").GetComponent<Text>();
-                animalImagePrefab = currentAnimal.transform.Find("GameObject/Image").GetComponent<Image>();
-
-                animalNamePrefab.text = animal.name;
-
-                Texture2D myTexture = Resources.Load<Texture2D>(animal.url_slika);
-                animalImagePrefab.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
-
-                SceneChange changeSceneScript = currentAnimal.GetComponent<SceneChange>();
-                if (changeSceneScript != null)
-                {
-                    changeSceneScript.id = animal.id.ToString();
-                }
+                y -= 270;
+                x = -235;
             }
-            yield break;
         }
 
-        public int getContinentId(string contName)
+        public int GetContinentId(string continentName)
         {
-            if (contName == "Africa")
+            switch (continentName)
             {
-                return 1;
-            }
-            else if (contName == "Europe")
-            {
-                return 2;
-            }
-            else if (contName == "Asia")
-            {
-                return 3;
-            }
-            else if (contName == "Australia")
-            {
-                return 4;
-            }
-            else if (contName == "Eurasia")
-            {
-                return 5;
-            }
-            else if (contName == "Antarctica")
-            {
-                return 6;
-            }
-            else if (contName == "South America")
-            {
-                return 7;
-            }
-            else if (contName == "North America")
-            {
-                return 8;
-            }
-            else if (contName == "Oceania")
-            {
-                return 9;
-            }
-            else
-            {
-                return 0;
+                case "Africa":
+                    return 1;
+                case "Europe":
+                    return 2;
+                case "Asia":
+                    return 3;
+                case "Australia":
+                    return 4;
+                case "Eurasia":
+                    Debug.LogWarning($"{nameof(ShowContinentAnimals)} - continent Eurasia shouldn't be available, but is selected.");
+                    return 5;
+                case "Antarctica":
+                    return 6;
+                case "South America":
+                    return 7;
+                case "North America":
+                    return 8;
+                case "Oceania":
+                    Debug.LogWarning($"{nameof(ShowContinentAnimals)} - continent Oceania shouldn't be available, but is selected.");
+                    return 9;
+                default:
+                    Debug.LogError($"{nameof(ShowContinentAnimals)} - GetContinentId failed to find a continent with name '{continentName}'");
+                    return 0;
             }
         }
     }
