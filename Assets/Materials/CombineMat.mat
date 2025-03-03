@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CombineMat
-  m_Shader: {fileID: 4800000, guid: d800d52feebcc4bcfaf38421e8ee127f, type: 3}
+  m_Shader: {fileID: 4800000, guid: c8e0972f62a03fa44ad09510d96e5f40, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _EMISSION

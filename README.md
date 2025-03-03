@@ -11,7 +11,7 @@
 - [x] \(**@izelentrovic**) feat: replace remote database with local JSON files
 - [x] \(**@izelentrovic**) feat: remember previous scene for animal profile scene (globe/list)
 - [x] \(**@izelentrovic**) feat: change "area" DB table so that animals can have multiple areas
-- [ ] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  
+- [x] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  
 <br/>
 
 - [ ] fix: animal model spawn coordinates

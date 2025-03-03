@@ -17,6 +17,15 @@ namespace WPM
             // Get a reference to the World Map API:
             map = WorldMapGlobe.instance;
             map.OnContinentClick += (continent, buttonIndex) => AddPanel(continent, buttonIndex);
+
+            map.OnClick += (sphereLocation, mouseButtonIndex) =>
+            {
+                if (!map.GetCountryUnderSpherePosition(sphereLocation, out int countryIndex, out int regionIndex))
+                {
+                    // Debug.Log($"{nameof(ShowContinentAnimals)} - Country not found at sphereLocation: {sphereLocation}");
+                    AddPanel("Oceans", 0);
+                }
+            };
         }
 
         void AddPanel(string continent, int buttonIndex)
@@ -96,8 +105,7 @@ namespace WPM
                     return 7;
                 case "North America":
                     return 8;
-                case "Oceania":
-                    Debug.LogWarning($"{nameof(ShowContinentAnimals)} - continent Oceania shouldn't be available, but is selected.");
+                case "Oceans":
                     return 9;
                 default:
                     Debug.LogError($"{nameof(ShowContinentAnimals)} - GetContinentId failed to find a continent with name '{continentName}'");
