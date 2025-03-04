@@ -109,7 +109,12 @@ public class GameData : MonoBehaviour
 #nullable enable
     public Animal? GetAnimal(int id)
     {
-        return animals.First(a => a.id == id);
+        if (id == 0)    // Special-case for Globe
+            return new Animal()
+            {
+                id = 0,
+            };
+        return animals.FirstOrDefault(a => a.id == id);
     }
 
     public List<Animal>? GetAnimalNames(int levelCap)
@@ -124,7 +129,7 @@ public class GameData : MonoBehaviour
 
     public Area? GetArea(int id)
     {
-        return areas.First(a => a.id == id);
+        return areas.FirstOrDefault(a => a.id == id);
     }
 
     public User CreateUser(string username, string password)
@@ -146,7 +151,7 @@ public class GameData : MonoBehaviour
 
     public User? GetUser(int id)
     {
-        return users.First(u => u.id == id);
+        return users.FirstOrDefault(u => u.id == id);
     }
 
     public User? GetCurrentUser()

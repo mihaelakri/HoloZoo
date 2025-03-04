@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HoloTabletDummy : MonoBehaviour
 {
+    [Range(0, 21)]
     public int id_model = 1;
 
 #if UNITY_EDITOR

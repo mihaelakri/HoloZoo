@@ -18,7 +18,7 @@ public class Load3DModelTablet : MonoBehaviour
         if (CommConstants.animal_id == 0)
             model_url = "WorldMapGlobe";
         else
-            model_url = animal.url_model;
+            model_url = "AnimalModels/" + animal.url_model.Split('/')[^1];
 
         Debug.Log($"{nameof(Load3Dmodel)} - Animal model: {model_url}");
 
@@ -32,21 +32,18 @@ public class Load3DModelTablet : MonoBehaviour
             }
         }
 
-        model_url = "AnimalModels/" + model_url.Split('/')[^1];
-        Debug.Log($"Transformed model_url: {model_url}");
-
         GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
         GameObject instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
         //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-
-        Animator animator = instantiatedObject.GetComponent<Animator>();
-        animator.Play("IdleBreathe");
-        animator.StopPlayback();
 
         if (model_url == "WorldMapGlobe")
         {
             yield break;
         }
+        
+        Animator animator = instantiatedObject.GetComponent<Animator>();
+        animator.Play("IdleBreathe");
+        animator.StopPlayback();
 
         BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
         boxCollider.size = new Vector3(1f, 1f, 1f);
