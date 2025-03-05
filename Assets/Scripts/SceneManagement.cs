@@ -28,21 +28,15 @@ public class SceneManagement : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-
         if (scene.name == "Animal_list")
         {
             Button btn = GameObject.Find("Back").GetComponent<Button>();
 
-            string previousScene_copy = previousScene;  // prevents pass-by-ref bug
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene(previousScene_copy);
-                // Debug.Log($"{nameof(SceneManagement)} - listener prev_scene: {previousScene_copy}");
+                SceneManager.LoadScene((string)previousScene.Clone());
             });
-
-            // Debug.Log($"{nameof(SceneManagement)} - {previousScene} set as previous scene for {scene.name}");
         }
         else if (scene.name != "HologramAnimalMobile")
         {
