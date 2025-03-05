@@ -381,50 +381,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &284205529
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 284205531}
-  - component: {fileID: 284205530}
-  m_Layer: 0
-  m_Name: CreateAndJoinRooms
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &284205530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284205529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c6479722bc6484698a097624e19d93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &284205531
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284205529}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 374.70883, y: 266.3407, z: -7.8578176}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319980394
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +390,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 319980395}
-  - component: {fileID: 319980398}
   - component: {fileID: 319980397}
   - component: {fileID: 319980396}
   m_Layer: 0
@@ -506,27 +461,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319980394}
   m_CullTransparentMesh: 1
---- !u!114 &319980398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319980394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:216
-  fixedName: LOG IN
-  tags: 0a000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &642351316
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +604,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894226619}
-  - component: {fileID: 894226618}
   - component: {fileID: 894226622}
   - component: {fileID: 894226621}
   - component: {fileID: 894226620}
@@ -681,27 +614,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &894226618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894226617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:189
-  fixedName: Log in-register
-  tags: 03000000020000000c00000001000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!224 &894226619
 RectTransform:
   m_ObjectHideFlags: 0
@@ -784,7 +696,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1174637847}
-  - component: {fileID: 1174637848}
   - component: {fileID: 1174637850}
   - component: {fileID: 1174637849}
   m_Layer: 0
@@ -816,27 +727,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -64}
   m_SizeDelta: {x: 193, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1174637848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174637846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:217
-  fixedName: Quiz Button
-  tags: 01000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!114 &1174637849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,6 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f316c0bd7de20d489c153fd9be5ead8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
 --- !u!114 &1174637850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,7 +805,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1204956839}
-  - component: {fileID: 1204956842}
   - component: {fileID: 1204956841}
   - component: {fileID: 1204956840}
   m_Layer: 0
@@ -982,27 +872,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204956838}
   m_CullTransparentMesh: 1
---- !u!114 &1204956842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204956838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:218
-  fixedName: Rectangle 9
-  tags: 0c000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1254712097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +881,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1254712102}
-  - component: {fileID: 1254712101}
   - component: {fileID: 1254712100}
   - component: {fileID: 1254712099}
   - component: {fileID: 1254712098}
@@ -1086,329 +954,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &1254712101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254712097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb50b5b4038022744b7d09fe41d03007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model:
-    controller: {fileID: 1254712101}
-    aligmentRaw: []
-    aligments: []
-    mainSettings:
-      controller: {fileID: 1254712101}
-      currentFigmaUser:
-        Id: 984886605559417108
-        Email: mihaelakri@hotmail.com
-        Handle: Mihaela
-        ImgUrl: https://www.gravatar.com/avatar/86aa4ab5f341b08697baa04d32e40f85?size=240&default=https%3A%2F%2Fs3-alpha.figma.com%2Fstatic%2Fuser_m_v2.png
-      token: figu_lOxfC5kAnsiUcjQ8IULnuIv22uuPE82Qna6izYpS
-      projectUrl: 5oBSTBgECqBLB0RJ4y11aM
-      redownloadSprites: 0
-      imageFormat: 0
-      imageScale: 6
-      imageComponent: 0
-      shadowType: 0
-      textComponent: 0
-      componentDetectionType: 0
-      useI2Localization: 0
-      debugMode: 0
-    puiSettings:
-      controller: {fileID: 0}
-      type: 0
-      raycastTarget: 1
-      falloffDistance: 1
-    mpuikitSettings:
-      controller: {fileID: 0}
-      type: 0
-      raycastTarget: 1
-      falloffDistance: 0.5
-    unityImageSettings:
-      controller: {fileID: 1254712101}
-      type: 0
-      raycastTarget: 1
-    shapes2D_Settings:
-      controller: {fileID: 0}
-      type: 0
-      raycastTarget: 1
-    debugModeSettings:
-      controller: {fileID: 0}
-    guid: 0b631ee9
-    selectableFrames:
-    - Id: 6:250
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz choose difficulty
-      Selected: 0
-    - Id: 6:201
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Home
-      Selected: 0
-    - Id: 58:105
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Home
-      Selected: 0
-    - Id: 1:2
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Loading Screen
-      Selected: 0
-    - Id: 19:42
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - instuction dialogue
-      Selected: 0
-    - Id: 58:60
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - instuction dialogue
-      Selected: 0
-    - Id: 21:17
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz - wrong answer
-      Selected: 0
-    - Id: 21:33
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz - question and answers
-      Selected: 0
-    - Id: 21:75
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - rotate screen
-      Selected: 0
-    - Id: 100:260
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen animal- rotate screen
-      Selected: 0
-    - Id: 75:45
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Instruction 3
-      Selected: 0
-    - Id: 79:189
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Log in/register
-      Selected: 1
-    - Id: 21:85
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - map
-      Selected: 0
-    - Id: 21:172
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn screen - pin selected
-      Selected: 0
-    - Id: 21:222
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Quiz - Correct answer
-      Selected: 0
-    - Id: 38:187
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Profile Screen
-      Selected: 0
-    - Id: 38:203
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Accessibility Screen
-      Selected: 0
-    - Id: 56:15
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn - list of animals
-      Selected: 0
-    - Id: 58:130
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Learn - list of animals
-      Selected: 0
-    - Id: 75:43
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Instruction 1
-      Selected: 0
-    - Id: 75:44
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Instruction 2
-      Selected: 0
-    - Id: 75:71
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Frame 7
-      Selected: 0
-    - Id: 75:112
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Good score
-      Selected: 0
-    - Id: 76:284
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Bad score
-      Selected: 0
-    - Id: 79:220
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Login
-      Selected: 0
-    - Id: 79:256
-      ParentId: 0:1_Page 1
-      ParentName: Page 1
-      Name: Register
-      Selected: 0
-    textMeshSettings:
-      controller: {fileID: 0}
-      autoSize: 0
-      overrideTags: 0
-      wrapping: 1
-      richText: 1
-      raycastTarget: 1
-      parseEscapeCharacters: 1
-      visibleDescender: 1
-      kerning: 1
-      extraPadding: 0
-      overflow: 0
-      horizontalMapping: 0
-      verticalMapping: 0
-      geometrySorting: 0
-      Fonts: []
-    unityTextSettings:
-      controller: {fileID: 1254712101}
-      fontLineSpacing: 1
-      horizontalWrapMode: 0
-      verticalWrapMode: 0
-      bestFit: 1
-      Fonts: []
-    SelectableHamburgerItems:
-    - Id: MAIN_SETTINGS_KEY
-      State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: MAIN SETTINGS
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: UNITY_IMAGE_SETTINGS_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: UNITY IMAGE SETTINGS
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: UNITY_TEXT_SETTINGS_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: UNITY TEXT SETTINGS
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: ASSET_TOOLS_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: ASSET TOOLS
-        m_Image: {fileID: 0}
-        m_Tooltip: Auxiliary tools for using the asset.
-    - Id: ASSETS_CONFIG_KEY
-      State: 0
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: ADDITIONAL ASSETS CONFIG
-        m_Image: {fileID: 0}
-        m_Tooltip: Once you have imported one of the third party assets that the
-          FCU supports,\nyou need to activate them in this section.
-    - Id: FRAMES_KEY
-      State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: FRAMES TO DOWNLOAD (26/26)
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-    - Id: 0:1_Page 1
-      State: 1
-      CheckBoxValue: 0
-      CheckBoxValueTemp: 0
-      GUIContent:
-        m_Text: Page 1 (26/26)
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-  webClient:
-    controller: {fileID: 1254712101}
-    pbarProgress: 0
-    pbarBytes: 0
-  projectParser:
-    controller: {fileID: 1254712101}
-    lastImportedFrames:
-    - {fileID: 894226617}
-    fcuMetas:
-    - {fileID: 1480921929}
-    - {fileID: 1204956842}
-    - {fileID: 1174637848}
-    - {fileID: 319980398}
-    - {fileID: 1673360762}
-    - {fileID: 1280516847}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 894226618}
-  canvasDrawer:
-    controller: {fileID: 1254712101}
-    imageDrawer:
-      controller: {fileID: 1254712101}
-    textDrawer:
-      controller: {fileID: 1254712101}
-    layoutGroupDrawer:
-      controller: {fileID: 0}
-      aligments: []
-    maskDrawer:
-      controller: {fileID: 1254712101}
-    buttonDrawer:
-      controller: {fileID: 1254712101}
-      buttons: []
-    inputFieldDrawer:
-      controller: {fileID: 1254712101}
-    i2LocalizationDrawer:
-      controller: {fileID: 0}
-    shadowDrawer:
-      controller: {fileID: 0}
-    canvasGroupDrawer:
-      controller: {fileID: 0}
-    drawnObjectsCount: 20
-    objectsToDrawCount: 13
-  tools:
-    controller: {fileID: 1254712101}
-    spritesPath: Assets\Sprites
-    fontsPath: Assets\Fonts
-  cacher:
-    controller: {fileID: 1254712101}
 --- !u!224 &1254712102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1631,7 +1176,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1280516848}
-  - component: {fileID: 1280516847}
   - component: {fileID: 1280516850}
   - component: {fileID: 1280516849}
   m_Layer: 0
@@ -1641,27 +1185,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1280516847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280516846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:214
-  fixedName: Learn Button
-  tags: 01000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!224 &1280516848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1696,6 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f316c0bd7de20d489c153fd9be5ead8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
 --- !u!114 &1280516850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,7 +1286,7 @@ PrefabInstance:
     - target: {fileID: 4172461124905510864, guid: 10b47015eaba36e4597b6c432c728d6c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4172461124905510864, guid: 10b47015eaba36e4597b6c432c728d6c,
         type: 3}
@@ -1964,7 +1488,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480921926}
-  - component: {fileID: 1480921929}
   - component: {fileID: 1480921928}
   - component: {fileID: 1480921927}
   m_Layer: 0
@@ -2036,27 +1559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480921925}
   m_CullTransparentMesh: 1
---- !u!114 &1480921929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480921925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:219
-  fixedName: REGISTER
-  tags: 0a000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 0
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1498297758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,7 +1647,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1673360759}
-  - component: {fileID: 1673360762}
   - component: {fileID: 1673360761}
   - component: {fileID: 1673360760}
   m_Layer: 0
@@ -2213,27 +1714,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673360758}
   m_CullTransparentMesh: 1
---- !u!114 &1673360762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673360758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b42570416bdca4697b2749e5bf8c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 79:215
-  fixedName: Rectangle 8
-  tags: 0c000000
-  rootFrame: {fileID: 894226618}
-  fcuInstance: {fileID: 1254712101}
-  isDownloadable: 1
-  text: {fileID: 0}
-  buttonComponent: 0
-  figmaAligment: 
 --- !u!1 &1807652565
 GameObject:
   m_ObjectHideFlags: 0
