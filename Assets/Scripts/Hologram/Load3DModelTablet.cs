@@ -1,60 +1,47 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class Load3DModelTablet : MonoBehaviour
 {
+    public Camera referenceCamera;
+
     void Start()
     {
         StartCoroutine(GetModel());
     }
 
-    public static IEnumerator GetModel()
+    public IEnumerator GetModel()
     {
         var animal = GameData.Instance.GetAnimal(CommConstants.animal_id);
-        Debug.Log($"{nameof(Load3Dmodel)} - Animal id: {animal.id}");
-
         string model_url;
+
         if (CommConstants.animal_id == 0)
             model_url = "WorldMapGlobe";
         else
             model_url = "AnimalModels/" + animal.url_model.Split('/')[^1];
 
-        Debug.Log($"{nameof(Load3Dmodel)} - Animal model: {model_url}");
-
         GameObject parent = GameObject.FindGameObjectWithTag("3d-obj");
         if (parent.transform.childCount > 0)
         {
-            // Destroy(parent.transform.GetChild(0).gameObject);
             foreach (Transform child in parent.transform)
             {
                 Destroy(child.gameObject);
             }
         }
 
-        GameObject variableForPrefab = (GameObject)Resources.Load(model_url, typeof(GameObject));
-        GameObject instantiatedObject = Instantiate(variableForPrefab, new Vector3(0, -1, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
-        //Instantiate(variableForPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("3d-obj").transform);
+        GameObject modelPrefab = Resources.Load<GameObject>(model_url);
 
         if (model_url == "WorldMapGlobe")
         {
-            yield break;
+            GameObject instantiatedObject = Instantiate(modelPrefab, new Vector3(0, 0, 0), Quaternion.identity, parent.transform);
+            ResizeUtility.ScaleObjectToFitCamera(instantiatedObject, instantiatedObject.GetComponentInChildren<MeshRenderer>(), referenceCamera, 0.8f);
         }
-        
-        Animator animator = instantiatedObject.GetComponent<Animator>();
-        animator.Play("IdleBreathe");
-        animator.StopPlayback();
-
-        BoxCollider boxCollider = instantiatedObject.AddComponent<BoxCollider>();
-        boxCollider.size = new Vector3(1f, 1f, 1f);
-        instantiatedObject.layer = LayerMask.NameToLayer("Animal");
-        Rigidbody rb = (Rigidbody)instantiatedObject.gameObject.AddComponent(typeof(Rigidbody));
-        ResizeUtility.ResizeObjectTablet(instantiatedObject);
-        // instantiatedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
-        instantiatedObject.GetComponent<Rigidbody>().useGravity = false;
-        instantiatedObject.GetComponent<Rigidbody>().isKinematic = true;
-        instantiatedObject.GetComponent<Rigidbody>().detectCollisions = false;
+        else
+        {
+            GameObject instantiatedObject = Instantiate(modelPrefab, new Vector3(0, 0, 0), Quaternion.identity, parent.transform);
+            ResizeUtility.ScaleObjectToFitCamera(instantiatedObject, instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>(), referenceCamera);
+            ResizeUtility.CenterObjectVertically3(instantiatedObject, instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>(), referenceCamera);
+        }
 
         yield break;
     }

@@ -14,9 +14,9 @@
 - [x] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  
 <br/>
 
-- [ ] fix: animal model spawn coordinates
-- [ ] fix: animal model scaling on Game device
-- [ ] fix: animal model scaling on Hologram device
+- [x] fix: animal model spawn coordinates
+- [x] fix: animal model scaling on Game device
+- [x] fix: animal model scaling on Hologram device
 - [ ] fix: screen size
 - [x] build!: remove unused animal models
 - [ ] feat: remove all calls to remote host

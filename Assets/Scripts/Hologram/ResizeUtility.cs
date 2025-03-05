@@ -2,198 +2,61 @@ using UnityEngine;
 
 public static class ResizeUtility
 {
-    public static void ResizeObject(GameObject obj)
+    public static void ScaleObjectToFitCamera(GameObject targetObject, Renderer referenceRenderer, Camera referenceCamera, float paddingPercent = 0.95f)
     {
-        // LODGroup lodGroup = obj.GetComponent<LODGroup>();
-        // Debug.Log("LODGroup size: " + lodGroup.GetLODs()[0].renderers[0].bounds.size);
-
-        SkinnedMeshRenderer skinnedMeshRenderer = obj.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>();
-
-        if (skinnedMeshRenderer != null)
+        if (targetObject == null || referenceRenderer == null || referenceCamera == null)
         {
-            // Get the bounding box of the temporary object
-            Bounds bounds = skinnedMeshRenderer.bounds;
-
-            // Access the size and center of the bounds
-            Vector3 boundsSize = bounds.size;
-
-            // Print the values to the console
-            Debug.Log("Bounds Size: " + boundsSize);
-
-            // Check if the bounding box has valid size
-            if (bounds.size != Vector3.zero)
-            {
-                // Calculate the largest dimension of the bounding box
-                float largestDimension = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
-
-                // Check if the largest dimension is greater than zero
-                if (largestDimension > 10)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = ((largestDimension / 2) / largestDimension);
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-                }
-                else if (largestDimension < 4)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = (3f * largestDimension);
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-
-                }
-                else if (largestDimension > 4 && largestDimension < 10)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = ((largestDimension - 1) / largestDimension);
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-
-                }
-                else
-                {
-                    Debug.Log("Invalid bounding box size. Ensure the mesh has non-zero dimensions.");
-                }
-                Debug.Log("Object Resized bounds: " + boundsSize);
-            }
-            else
-            {
-                Debug.Log("Invalid bounding box size. Check the SkinnedMeshRenderer component.");
-            }
+            Debug.LogError($"{nameof(Load3DModelTablet)}, ScaleObjectToFitCamera - Something is null: " +
+                $"targetObject: {targetObject}, referenceRenderer: {referenceRenderer}, referenceCamera: {referenceCamera}");
+            return;
         }
+
+        // Calculate the object's local bounds
+        Bounds localBounds = referenceRenderer.bounds;
+        Vector3 objectSize = localBounds.size;
+
+        // Calculate distance to object
+        Vector3 cameraToObject = targetObject.transform.position - referenceCamera.transform.position;
+        float distanceToObject = cameraToObject.magnitude;
+
+        // Calculate the camera's view size at the specified distance
+        float cameraHeight = 2.0f * distanceToObject * Mathf.Tan(referenceCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        float cameraWidth = cameraHeight * referenceCamera.aspect;
+
+        // Find the largest axis of the object's bounding box
+        float maxObjectAxis = Mathf.Max(objectSize.x, objectSize.y, objectSize.z);
+
+        // Find the smallest camera axis
+        float minCameraAxis = Mathf.Min(cameraWidth, cameraHeight);
+
+        // Calculate the scale factor
+        float scaleFactor = (minCameraAxis / maxObjectAxis) * paddingPercent;
+
+        // Apply the scale
+        targetObject.transform.localScale = Vector3.one * scaleFactor;
     }
 
-    public static void ResizeObjectTablet(GameObject obj)
+    public static void CenterObjectVertically3(GameObject targetObject, Renderer referenceRenderer, Camera referenceCamera)
     {
-        // LODGroup lodGroup = obj.GetComponent<LODGroup>();
-        // Debug.Log("LODGroup size: " + lodGroup.GetLODs()[0].renderers[0].bounds.size);
-
-        SkinnedMeshRenderer skinnedMeshRenderer = obj.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>();
-
-        if (skinnedMeshRenderer != null)
+        if (targetObject == null || referenceRenderer == null || referenceCamera == null)
         {
-            // Get the bounding box of the temporary object
-            Bounds bounds = skinnedMeshRenderer.bounds;
-
-            // Access the size and center of the bounds
-            Vector3 boundsSize = bounds.size;
-
-            // Print the values to the console
-            Debug.Log("Bounds Size: " + boundsSize);
-
-            // Check if the bounding box has valid size
-            if (bounds.size != Vector3.zero)
-            {
-                // Calculate the largest dimension of the bounding box
-                float largestDimension = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
-
-                // Check if the largest dimension is greater than zero
-                if (largestDimension > 5.5)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = ((largestDimension / 2) / largestDimension) * 0.75f;
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-                }
-                else if (largestDimension < 1.5)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = (6f * largestDimension);
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-
-                }
-                else if (largestDimension >= 1.5 && largestDimension < 3)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = ((largestDimension - 1) / largestDimension) * 1.5f;
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-
-                }
-                else if (largestDimension >= 3 && largestDimension < 5.5)
-                {
-                    // Calculate the scaling factor to match the target size
-                    float scaleFactor = ((largestDimension - 1) / largestDimension) * 1.2f;
-
-                    // Check for infinity or NaN
-                    if (!float.IsInfinity(scaleFactor) && !float.IsNaN(scaleFactor))
-                    {
-                        // Apply the scaling factor to resize the object
-                        obj.transform.localScale *= scaleFactor;
-                    }
-                    else
-                    {
-                        Debug.Log("Invalid scale factor. Check the bounding box size and target size.");
-                    }
-
-                }
-                else
-                {
-                    Debug.Log("Invalid bounding box size. Ensure the mesh has non-zero dimensions.");
-                }
-                Debug.Log("Object Resized bounds: " + boundsSize);
-            }
-            else
-            {
-                Debug.Log("Invalid bounding box size. Check the SkinnedMeshRenderer component.");
-            }
+            Debug.LogError($"{nameof(Load3DModelTablet)}, ScaleObjectToFitCamera - Something is null: " +
+                $"targetObject: {targetObject}, referenceRenderer: {referenceRenderer}, referenceCamera: {referenceCamera}");
+            return;
         }
+
+        // Get the world-space center of the referenceRenderer
+        Bounds bounds = referenceRenderer.bounds;
+        float objectVerticalCenter = bounds.center.y;
+
+        // Get the world-space vertical center of the camera
+        Vector3 cameraCenter = referenceCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, referenceCamera.nearClipPlane));
+        float cameraVerticalCenter = cameraCenter.y;
+
+        // Compute the vertical offset
+        float verticalOffset = cameraVerticalCenter - objectVerticalCenter;
+
+        // Apply the offset to the targetObject
+        targetObject.transform.position += new Vector3(0, verticalOffset, 0);
     }
 }
-
-

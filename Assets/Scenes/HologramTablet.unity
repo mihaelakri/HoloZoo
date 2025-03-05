@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &154041758 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20510485085500360, guid: f50c9ed172719c747a3bba12d31b4a43,
+    type: 3}
+  m_PrefabInstance: {fileID: 782218186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462323718
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477c1b42528b35049bfca09ee9235787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  referenceCamera: {fileID: 154041758}
 --- !u!114 &462323724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +606,11 @@ PrefabInstance:
     - target: {fileID: 4835151856045200, guid: f50c9ed172719c747a3bba12d31b4a43, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 20510485085500360, guid: f50c9ed172719c747a3bba12d31b4a43,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114836776589688606, guid: f50c9ed172719c747a3bba12d31b4a43,
         type: 3}

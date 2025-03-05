@@ -16,6 +16,7 @@ public class RotateModel : MonoBehaviour
     Scene m_Scene;
     string sceneName;
     private float lastUpdateTime;
+    Load3DModelTablet load3DModelTablet;
 
     void Start()
     {
@@ -31,6 +32,10 @@ public class RotateModel : MonoBehaviour
         {
             rotateModel();
         }
+        else if (sceneName == "HologramTablet")
+        {
+            load3DModelTablet = gameObject.transform.GetComponent<Load3DModelTablet>();
+        }
     }
 
     void Update()
@@ -40,8 +45,7 @@ public class RotateModel : MonoBehaviour
         {
             if (sceneName == "HologramTablet" && old_animal_id != CommConstants.animal_id)
             {
-                // StartCoroutine(SwapModel());
-                StartCoroutine(Load3DModelTablet.GetModel());
+                StartCoroutine(load3DModelTablet.GetModel());
                 old_animal_id = CommConstants.animal_id;
             }
 
@@ -61,7 +65,7 @@ public class RotateModel : MonoBehaviour
                 }
 
                 Quaternion currentRotation = model.transform.GetChild(0).transform.rotation;
-                Quaternion targetRotation = Quaternion.Euler(CommConstants.x, CommConstants.y, CommConstants.z);
+                Quaternion targetRotation = Quaternion.Euler(CommConstants.x, CommConstants.y + 180, CommConstants.z);
                 Quaternion smoothedRotation;
 
                 if (Quaternion.Dot(currentRotation, targetRotation) < 0f)

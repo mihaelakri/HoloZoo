@@ -1353,8 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b17851d5194384180f5c4e09663c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variableForPrefab: {fileID: 1302347127}
-  model_url: 
+  referenceCamera: {fileID: 272713053}
 --- !u!1 &1697960018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,6 +1519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f316c0bd7de20d489c153fd9be5ead8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
 --- !u!114 &2071286063
 MonoBehaviour:
   m_ObjectHideFlags: 0
