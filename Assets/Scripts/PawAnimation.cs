@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PawAnimation : MonoBehaviour
@@ -9,17 +10,14 @@ public class PawAnimation : MonoBehaviour
     [SerializeField]
     private float y;
 
-    private float timeElapsed;
+    void Start()
+    {
+        StartCoroutine(DelayedAnimation(delay));
+    }
 
-    void Update(){
-        timeElapsed += Time.deltaTime;
-
-        if (timeElapsed >= delay){
-            FallingDown(x,y);
-        }
-    } 
-
-    public void FallingDown(float x, float y){
-        transform.LeanMoveLocal(new Vector2(x,y),1).setEaseOutQuart();
+    IEnumerator DelayedAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        transform.LeanMoveLocal(new Vector2(x, y), 1f).setEaseOutQuart();
     }
 }
