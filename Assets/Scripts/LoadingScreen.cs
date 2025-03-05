@@ -24,6 +24,8 @@ public class LoadingScreen : MonoBehaviour
             yield break;
         }
 
+        yield return new WaitUntil(() => GameData.isMainDataLoaded);
+
         if (PlayerPrefs.GetString("device") == "mobile")
             SceneManager.LoadScene("Home");
         else

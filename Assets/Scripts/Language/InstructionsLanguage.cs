@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InstuctionsLanguage : MonoBehaviour
+public class InstructionsLanguage : MonoBehaviour
 {
     // First page
     public Text instructionOneHeading;

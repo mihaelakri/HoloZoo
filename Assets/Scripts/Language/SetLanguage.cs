@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SetLanguage : MonoBehaviour
 {
@@ -15,19 +16,19 @@ public class SetLanguage : MonoBehaviour
     void Start()
     {
         // listeneri za svaki gumb
-        buttonCroatian.onClick.AddListener(() => SetLanguageAndProceed("hr"));
-        buttonEnglish.onClick.AddListener(() => SetLanguageAndProceed("en"));
-        buttonFrench.onClick.AddListener(() => SetLanguageAndProceed("fr"));
-        buttonHungarian.onClick.AddListener(() => SetLanguageAndProceed("hu"));
-        buttonSpanish.onClick.AddListener(() => SetLanguageAndProceed("es"));
+        buttonCroatian.onClick.AddListener(() => StartCoroutine(SetLanguageAndProceed("hr")));
+        buttonEnglish.onClick.AddListener(() => StartCoroutine(SetLanguageAndProceed("en")));
+        buttonFrench.onClick.AddListener(() => StartCoroutine(SetLanguageAndProceed("fr")));
+        buttonHungarian.onClick.AddListener(() => StartCoroutine(SetLanguageAndProceed("hu")));
+        buttonSpanish.onClick.AddListener(() => StartCoroutine(SetLanguageAndProceed("es")));
     }
 
-    void SetLanguageAndProceed(string languageCode)
+    IEnumerator SetLanguageAndProceed(string languageCode)
     {
         if (isLanguageSet)
         {
             Debug.Log($"{nameof(SetLanguage)} - Language already set");
-            return;
+            yield break;
         }
 
         // Avoids multiple button presses
@@ -36,7 +37,7 @@ public class SetLanguage : MonoBehaviour
         // Spremanje jezika lokalno u PlayerPrefs
         PlayerPrefs.SetString("lang", languageCode);
         PlayerPrefs.Save();
-        GameData.Instance.LoadTranslatedTables(languageCode);
+        yield return StartCoroutine(GameData.Instance.LoadTranslatedTables(languageCode));
         Debug.Log($"{nameof(SetLanguage)} - Language successfully set");
 
         // Nakon slanja, učitavanje sljedeće scene

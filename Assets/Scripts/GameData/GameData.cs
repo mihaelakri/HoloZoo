@@ -6,10 +6,15 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using UnityEngine.Networking;
+using System.Collections;
+using System;
+using UnityEditor;
 
 public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
+    public static bool isMainDataLoaded = false;
 
     public List<Area> areas;
     public List<Animal> animals;
@@ -25,51 +30,84 @@ public class GameData : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Start()
     {
-        LoadGameData(PlayerPrefs.GetString("lang", "en"));
+        LoadGameData();
     }
 
-    public void LoadGameData(string lang)
+    public void LoadGameData()
     {
-        LoadTranslatedTables(lang);
-        CopyEditableFiles();
-        users = JsonConvert.DeserializeObject<List<User>>(File.ReadAllText(Application.persistentDataPath + "/Users.json"));
+        if (PlayerPrefs.HasKey("lang"))
+            StartCoroutine(LoadTranslatedTables(PlayerPrefs.GetString("lang", "en")));
+        StartCoroutine(LoadUserTable());
+    }
+
+    IEnumerator FetchText(string path, Action<string> callback)
+    {
+        using UnityWebRequest unityWebRequest = UnityWebRequest.Get(path);
+        var request = unityWebRequest.SendWebRequest();
+
+        yield return request;
+
+        callback?.Invoke(unityWebRequest.downloadHandler.text);
     }
 
     // Editable files cannot be stored in `Application.streamingAssetsPath`
-    void CopyEditableFiles()
+    IEnumerator LoadUserTable()
     {
-        List<string> filePaths = new() {
-            "/Users.json",
-        };
-        foreach (string filePath in filePaths)
+        string user_json = null;
+        if (!File.Exists(Application.persistentDataPath + "/Users.json"))
         {
-            if (!File.Exists(Application.persistentDataPath + filePath))
+            yield return StartCoroutine(FetchText(Application.streamingAssetsPath + "/Users.json", jsonResp =>
             {
-                File.Copy(Application.streamingAssetsPath + filePath, Application.persistentDataPath + filePath);
-                Debug.Log($"{nameof(GameData)}: Copied {filePath} to persistent");
-            }
+                user_json = jsonResp;
+            }));
+            users = JsonConvert.DeserializeObject<List<User>>(user_json);
+            Debug.Log($"{nameof(GameData)}: Users.json missing, creating with: {user_json}");
+            SaveUserData();
+        }
+        else
+        {
+            user_json = File.ReadAllText(Application.persistentDataPath + "/Users.json");
+            users = JsonConvert.DeserializeObject<List<User>>(user_json);
         }
     }
 
-    public void LoadTranslatedTables(string lang)
+    public IEnumerator LoadTranslatedTables(string lang)
     {
-        string animal_main = File.ReadAllText(Application.streamingAssetsPath + "/Animals.json");
-        string animal_text = File.ReadAllText(Application.streamingAssetsPath + $"/Animal_text_{lang}.json");
+        string animal_main, animal_text, question_main, question_text, area_json, translation_json;
+        animal_main = animal_text = question_main = question_text = area_json = translation_json = null;
+
+        yield return StartCoroutine(FetchText(Application.streamingAssetsPath + "/Animals.json", jsonResp =>
+        {
+            animal_main = jsonResp;
+        }));
+        yield return StartCoroutine(FetchText(Application.streamingAssetsPath + $"/Animal_text_{lang}.json", jsonResp =>
+        {
+            animal_text = jsonResp;
+        }));
         animals = MergeJArrays<Animal>(animal_main, animal_text, "id_animal");
 
-        string question_main = File.ReadAllText(Application.streamingAssetsPath + "/Questions.json");
-        string question_text = File.ReadAllText(Application.streamingAssetsPath + $"/Questions_text_{lang}.json");
+        yield return StartCoroutine(FetchText(Application.streamingAssetsPath + "/Questions.json", jsonResp =>
+        {
+            question_main = jsonResp;
+        }));
+        yield return StartCoroutine(FetchText(Application.streamingAssetsPath + $"/Questions_text_{lang}.json", jsonResp =>
+        {
+            question_text = jsonResp;
+        }));
         questions = MergeJArrays<Question>(question_main, question_text, "id_question");
 
+        yield return StartCoroutine(FetchText(Application.streamingAssetsPath + "/Areas.json", jsonResp =>
+        {
+            area_json = jsonResp;
+        }));
+
         areas = JsonConvert.DeserializeObject<List<Area>>(
-            File.ReadAllText(Application.streamingAssetsPath + "/Areas.json"),
+            area_json,
             new JsonSerializerSettings
             {
                 ContractResolver = new CustomPropertyResolver(new Dictionary<string, string> {
@@ -79,16 +117,21 @@ public class GameData : MonoBehaviour
                 })
             }
         );
-        // Debug.Log(JsonConvert.SerializeObject(areas, Formatting.Indented));
 
-        translations = JsonConvert.DeserializeObject<Translations>(File.ReadAllText(Application.streamingAssetsPath + $"/Translations_{lang}.json"));
+        yield return StartCoroutine(FetchText(Application.streamingAssetsPath + $"/Translations_{lang}.json", jsonResp =>
+        {
+            translation_json = jsonResp;
+        }));
+        translations = JsonConvert.DeserializeObject<Translations>(translation_json);
+
+        isMainDataLoaded = true;
     }
 
     public void SaveUserData()
     {
-        string updatedJson = JsonUtility.ToJson(users, true);
+        string updatedJson = JsonConvert.SerializeObject(users);
         File.WriteAllText(Application.persistentDataPath + "/Users.json", updatedJson);
-        Debug.Log($"{nameof(GameData)}: User data saved");
+        Debug.Log($"{nameof(GameData)}: User data saved: {updatedJson}");
     }
 
     class CustomPropertyResolver : DefaultContractResolver
@@ -161,7 +204,10 @@ public class GameData : MonoBehaviour
 
     public void UpdateUserExperience(int correctAnswers, User user)
     {
-        user.experience = correctAnswers * 10;
+        int expTotal = user.experience + (correctAnswers * 10);
+        user.experience = expTotal % 100;
+        user.level += expTotal / 100;
+
         SaveUserData();
     }
 
