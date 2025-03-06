@@ -22,7 +22,7 @@
 - [ ] feat: remove all calls to remote host
 - [x] feat: remove internet connection checks
 - [ ] chore: turn unused coroutines to methods
-- [ ] fix: globe initial weird rendering
+- [x] fix: globe initial weird rendering
 
 ## Done List
 

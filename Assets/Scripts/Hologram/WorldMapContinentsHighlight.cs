@@ -35,6 +35,7 @@ namespace HoloZoo
             map.OnCountryEnter += OnCountryEnter;
             map.OnCountryExit += OnCountryExit;
             SetupOceanHighlight();
+            UnhighlightOcean();
             HighlightOcean();
         }
 
