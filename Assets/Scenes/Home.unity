@@ -1685,7 +1685,7 @@ PrefabInstance:
     - target: {fileID: 2503574930546895039, guid: 83ac77b3b5971b6419c863d8c7b1c97b,
         type: 3}
       propertyPath: m_Name
-      value: Accessibility sign
+      value: AccessibilityButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83ac77b3b5971b6419c863d8c7b1c97b, type: 3}

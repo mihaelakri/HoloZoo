@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2503574930546895028}
   - component: {fileID: 2503574930546895029}
   m_Layer: 0
-  m_Name: Accessibility sign
+  m_Name: AccessibilityButton
   m_TagString: img-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

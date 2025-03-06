@@ -30,7 +30,7 @@ public class SceneManagement : MonoBehaviour
     {
         if (scene.name == "AnimalProfile")
         {
-            Button btn = GameObject.Find("Back").GetComponent<Button>();
+            Button btn = GameObject.Find("BackButton").GetComponent<Button>();
 
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(() =>
