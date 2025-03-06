@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7505610857916013905}
   - component: {fileID: 2704394394361800473}
   m_Layer: 0
-  m_Name: oblacic
+  m_Name: GlobeAnimalPanel
   m_TagString: oblacic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

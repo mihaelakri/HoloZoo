@@ -28,7 +28,7 @@ public class SceneManagement : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Animal_list")
+        if (scene.name == "AnimalProfile")
         {
             Button btn = GameObject.Find("Back").GetComponent<Button>();
 

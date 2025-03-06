@@ -62,7 +62,7 @@ namespace WPM
                 {
                     int index = row * 3 + column;
 
-                    currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("oblacic").transform);
+                    currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("GlobeAnimalPanel").transform);
                     currentAnimal.transform.localPosition = new Vector3(x, y, 0);
 
                     // Update panel text and image

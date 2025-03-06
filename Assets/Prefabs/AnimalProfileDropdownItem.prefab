@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4702154344198344118}
   - component: {fileID: -8257333741395085750}
   m_Layer: 0
-  m_Name: DropdownItem
+  m_Name: AnimalProfileDropdownItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
