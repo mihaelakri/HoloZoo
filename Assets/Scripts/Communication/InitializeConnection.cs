@@ -6,6 +6,7 @@ using UnityEngine;
 public class InitializeConnection : MonoBehaviour
 {
     private static InitializeConnection Instance;
+    private readonly string serverUUID = "d81a5833-37f4-460d-8a9f-347ff95474ad";
 
     private void Awake()
     {
@@ -15,9 +16,7 @@ public class InitializeConnection : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Start()
@@ -28,21 +27,68 @@ public class InitializeConnection : MonoBehaviour
         if (CommConstants.conn_method == "bluetooth")
         {
             BluetoothForAndroid.Initialize();
+            EnsureBTEnabled();
+
             if (PlayerPrefs.GetString("device") == "mobile")
+                ServerStart();
+            else
+                ClientConnect();
+        }
+        else
+            Debug.LogError($"{nameof(InitializeConnection)} - Unknown connection method");
+    }
+
+    // Handle Android's activity lifecycle to ensure bluetooth turns off on exit
+    void OnApplicationPause(bool pause)
+    {
+        if (PlayerPrefs.GetString("device") == "mobile")
+        {
+            if (pause)
             {
-                Debug.Log("Bluetooth - CreateServer");
-                BluetoothForAndroid.CreateServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
+                BluetoothForAndroid.StopServer();
+                Debug.Log("Bluetooth - onPause, StopServer");
             }
             else
             {
-                Debug.Log("Bluetooth - ConnectToServer");
-                BluetoothForAndroid.ConnectToServer("d81a5833-37f4-460d-8a9f-347ff95474ad");
+                ServerStart();
+                Debug.Log("Bluetooth - onPause, ServerStart");
             }
         }
         else
         {
-            Debug.LogError("Unknown connection method");
+            if (pause)
+            {
+                BluetoothForAndroid.Disconnect();
+                Debug.Log("Bluetooth - onPause, Disconnect");
+            }
+            else
+            {
+                ClientConnect();
+                Debug.Log("Bluetooth - onPause, ClientConnect");
+            }
         }
+    }
+
+    void EnsureBTEnabled()
+    {
+        if (!BluetoothForAndroid.IsBTEnabled())
+        {
+            BluetoothForAndroid.EnableBT();
+            Debug.Log("Bluetooth - EnabledBT");
+        }
+    }
+
+    void ServerStart()
+    {
+        EnsureBTEnabled();
+        BluetoothForAndroid.CreateServer(serverUUID);
+        Debug.Log("Bluetooth - CreateServer");
+    }
+
+    void ClientConnect()
+    {
+        BluetoothForAndroid.ConnectToServer(serverUUID);
+        Debug.Log("Bluetooth - ConnectToServer");
     }
 
     // Bluetooth events
@@ -70,8 +116,7 @@ public class InitializeConnection : MonoBehaviour
     }
     private void BTDeviceSelected(string data)
     {
-        Debug.Log("Bluetooth - BTDeviceSelected");
-        Debug.Log("Bluetooth - Data: " + data);
+        Debug.Log($"Bluetooth - BTDeviceSelected, data: {data}");
         CommConstants.paired_BT_server = data.Split(',')[1];
     }
     private void BTConnected()
@@ -90,14 +135,12 @@ public class InitializeConnection : MonoBehaviour
             BTReconnect();
         }
         else
-        {
             CheckInternetConnection.ShowToast("Bluetooth disconnected");
-        }
     }
     private void BTFailConnectToServer()
     {
         Debug.Log("Bluetooth - BTFailConnectToServer");
-        BTReconnect();
+        BTReconnect();  // This loops trying to reconnect
     }
     private void BTReconnect()
     {

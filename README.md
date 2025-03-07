@@ -23,6 +23,7 @@
 - [x] feat: remove internet connection checks
 - [ ] chore: turn unused coroutines to methods
 - [x] fix: globe initial weird rendering
+- [ ] feat: manual Bluetooth turn on/off/connect
 
 ## Done List
 
