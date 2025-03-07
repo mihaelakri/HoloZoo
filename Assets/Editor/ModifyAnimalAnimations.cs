@@ -132,12 +132,19 @@ public class ModifyAnimalAnimations
         return targetState;
     }
 
-    static void ChangeAllTransitions(AnimatorState targetState, bool state)
+    static void ChangeAllTransitions(AnimatorState targetState, bool keepTransition)
     {
-        // Change "Has Exit Time" for all transitions from the target state
+        // Enable "Has Exit Time" or remove all transitions from the target state
         foreach (var transition in targetState.transitions)
         {
-            transition.hasExitTime = state;
+            if (keepTransition)
+            {
+                transition.hasExitTime = true;
+            }
+            else
+            {
+                targetState.RemoveTransition(transition);
+            }
         }
     }
 }
