@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class TextToSp : MonoBehaviour
 {
@@ -15,12 +16,17 @@ public class TextToSp : MonoBehaviour
     IEnumerator DownloadTheAudio()
     {
         string url = "https://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=SampleText&tl=En-gb";
-        WWW www = new WWW(url);
-        yield return www;
+        using UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
+        yield return request.SendWebRequest();
 
-        _audio.clip = www.GetAudioClip(false, true, AudioType.MPEG);
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log($"{nameof(TextToSp)} - Request failed: {request.result}");
+            yield break;
+        }
+
+        _audio.clip = DownloadHandlerAudioClip.GetContent(request);
         _audio.Play();
-
     }
 
     public void ButtonClick()
