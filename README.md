@@ -17,9 +17,9 @@
 - [x] fix: animal model spawn coordinates
 - [x] fix: animal model scaling on Game device
 - [x] fix: animal model scaling on Hologram device
-- [ ] fix: screen size
+- [x] fix: screen size
 - [x] build!: remove unused animal models
-- [ ] feat: remove all calls to remote host
+- [x] feat: remove all calls to remote host
 - [x] feat: remove internet connection checks
 - [ ] chore: turn unused coroutines to methods
 - [x] fix: globe initial weird rendering
