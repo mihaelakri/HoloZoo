@@ -2,7 +2,7 @@
 
 ## TO DO LIST
 
-- [ ] \(**@mihaelakri**) feat: dodati logout na HologramTablet
+- [x] \(**@mihaelakri**) feat: dodati logout na HologramTablet
 - [ ] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
 - [ ] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
 <br/>
