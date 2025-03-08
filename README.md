@@ -4,7 +4,7 @@
 
 - [x] \(**@mihaelakri**) feat: dodati logout na HologramTablet
 - [ ] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
-- [ ] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
+- [x] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
 <br/>
   
 - [ ] ~~\(**@izelentrovic**) build: add SQLite natively as instructed by [this](https://old.reddit.com/r/Unity3D/comments/sayh3r/ill_simply_add_sqlite_to_my_unity_project_and/kg91fm0/) and [this comment](https://github.com/praeclarum/sqlite-net/issues/1023#issuecomment-821950695)~~

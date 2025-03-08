@@ -162,12 +162,20 @@ public class GameData : MonoBehaviour
 
     public List<Animal>? GetAnimalNames(int levelCap)
     {
-        return animals.Where(a => a.level < levelCap).ToList();
+        var result = animals.Where(a => a.level < levelCap);
+        return result.Any() ? result.ToList() : null;
     }
 
     public List<Animal>? GetAreaAnimals(Area area)
     {
-        return animals.Where(a => a.id_area.Contains(area.id)).ToList();
+        var result = animals.Where(a => a.id_area.Contains(area.id));
+        return result.Any() ? result.ToList() : null;
+    }
+
+    public List<Animal>? GetAnimalsAtLevel(int level)
+    {
+        var result = animals.Where(a => a.level == level);
+        return result.Any() ? result.ToList() : null;
     }
 
     public Area? GetArea(int id)
@@ -202,13 +210,15 @@ public class GameData : MonoBehaviour
         return GetUser(PlayerPrefs.GetInt("ID", -1));
     }
 
-    public void UpdateUserExperience(int correctAnswers, User user)
+    public bool UpdateUserExperience(int correctAnswers, User user)
     {
+        int xpPerLevel = 100;
         int expTotal = user.experience + (correctAnswers * 10);
-        user.experience = expTotal % 100;
-        user.level += expTotal / 100;
+        user.experience = expTotal % xpPerLevel;
+        user.level += expTotal / xpPerLevel;
 
         SaveUserData();
+        return expTotal >= xpPerLevel;
     }
 
     public void UpdateUserPassword(string password, User user)
