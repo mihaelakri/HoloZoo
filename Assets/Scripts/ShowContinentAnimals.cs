@@ -5,12 +5,11 @@ namespace WPM
 {
     public class ShowContinentAnimals : MonoBehaviour
     {
-        public GameObject prefabPanel;
+        public GameObject animalPanel;
+        public GameObject animalContainer;
         public GameObject prefabAnimal;
+        public Text continentName;
         WorldMapGlobe map;
-        GameObject currentPanel;
-        GameObject currentAnimal;
-        public Text contName;
 
         void Start()
         {
@@ -30,19 +29,16 @@ namespace WPM
 
         void AddPanel(string continent, int buttonIndex)
         {
-            // Instantiate panel if not open
-            if (currentPanel == null)
-                currentPanel = Instantiate(prefabPanel, GameObject.FindGameObjectWithTag("Content").transform, true);
+            // Enable panel
+            animalPanel.SetActive(true);
 
             // Empty out the panel
-            for (int i = 1; i < currentPanel.transform.childCount; i++)
-                Destroy(currentPanel.transform.GetChild(i).gameObject);
+            for (int i = 1; i < animalContainer.transform.childCount; i++)
+                Destroy(animalContainer.transform.GetChild(i).gameObject);
 
             int id_continent = GetContinentId(continent);
             string continentTranslated = GameData.Instance.GetArea(id_continent).name;
-
-            contName = currentPanel.GetComponentInChildren<Text>();
-            contName.text = continentTranslated;
+            continentName.text = continentTranslated;
 
             Debug.Log($"{nameof(ShowContinentAnimals)} - Continent: {continent}, Translated: {continentTranslated}");
             FillAnimalInfoo(id_continent);
@@ -53,35 +49,21 @@ namespace WPM
             var area = GameData.Instance.GetArea(id_continent);
             var animals = GameData.Instance.GetAreaAnimals(area);
 
-            int x = -255;
-            int y = 500;
-            int index = 0;
-
-            while (index < animals.Count)
+            foreach (var animal in animals)
             {
-                currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("GlobeAnimalPanel").transform);
-                currentAnimal.transform.localPosition = new Vector3(x, y, 0);
+                var currentAnimal = Instantiate(prefabAnimal, animalContainer.transform);
 
                 // Update panel text and image
-                Text animalNamePrefab = currentAnimal.transform.Find("GameObject/Text").GetComponent<Text>();
-                Image animalImagePrefab = currentAnimal.transform.Find("GameObject/Image").GetComponent<Image>();
+                Text animalNamePrefab = currentAnimal.transform.GetComponentInChildren<Text>();
+                Image animalImagePrefab = currentAnimal.transform.GetComponentInChildren<Image>();
 
-                animalNamePrefab.text = animals[index].name;
+                animalNamePrefab.text = animal.name;
 
-                Texture2D myTexture = Resources.Load<Texture2D>(animals[index].url_slika);
+                Texture2D myTexture = Resources.Load<Texture2D>(animal.url_slika);
                 animalImagePrefab.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
 
                 if (currentAnimal.TryGetComponent<SceneChange>(out var changeSceneScript))
-                    changeSceneScript.id = animals[index].id.ToString();
-
-                x += 250;
-
-                if (index % 3 == 2)
-                {
-                    y -= 270;
-                    x = -235;
-                }
-                index++;
+                    changeSceneScript.id = animal.id.ToString();
             }
         }
 
