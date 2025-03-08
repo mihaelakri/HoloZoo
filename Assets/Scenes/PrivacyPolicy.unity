@@ -246,7 +246,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 07945bfd2e86a7c4482b44b1847961e8, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -258,32 +258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mattis
-    neque, ut semper arcu. Praesent in lacus sed neque dignissim pretium. Duis sed
-    tincidunt orci. Phasellus fermentum sollicitudin ligula. Integer malesuada nisl
-    quis nibh malesuada venenatis. Morbi ligula tellus, tincidunt sed rutrum in,
-    dictum eu metus. Vestibulum ullamcorper id justo nec venenatis. Integer pretium
-    dui elit, sit amet convallis metus luctus sed. Etiam blandit tortor a consequat
-    vulputate. Integer ac scelerisque arcu.\r\n\r\nProin cursus dolor id lectus mollis
-    laoreet. Donec auctor, ipsum quis tincidunt fringilla, orci nibh consectetur
-    orci, et mattis erat dolor id lorem. Pellentesque ut neque eu quam accumsan bibendum
-    sit amet in erat. Curabitur quis tincidunt orci. In et congue lectus, sed dictum
-    tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada
-    fames ac turpis egestas. Integer lorem arcu, efficitur eu justo in, convallis
-    cursus massa. Aliquam feugiat nunc ligula, in commodo elit sodales sed. \n Lorem
-    ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mattis neque, ut
-    semper arcu. Praesent in lacus sed neque dignissim pretium. Duis sed tincidunt
-    orci. Phasellus fermentum sollicitudin ligula. Integer malesuada nisl quis nibh
-    malesuada venenatis. Morbi ligula tellus, tincidunt sed rutrum in, dictum eu
-    metus. Vestibulum ullamcorper id justo nec venenatis. Integer pretium dui elit,
-    sit amet convallis metus luctus sed. Etiam blandit tortor a consequat vulputate.
-    Integer ac scelerisque arcu.\r\n\r\nProin cursus dolor id lectus mollis laoreet.
-    Donec auctor, ipsum quis tincidunt fringilla, orci nibh consectetur orci, et
-    mattis erat dolor id lorem. Pellentesque ut neque eu quam accumsan bibendum sit
-    amet in erat. Curabitur quis tincidunt orci. In et congue lectus, sed dictum
-    tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada
-    fames ac turpis egestas. Integer lorem arcu, efficitur eu justo in, convallis
-    cursus massa. Aliquam feugiat nunc ligula, in commodo elit sodales sed. "
+  m_Text: 
 --- !u!222 &292976677
 CanvasRenderer:
   m_ObjectHideFlags: 0

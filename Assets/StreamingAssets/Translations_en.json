@@ -92,5 +92,10 @@
     "welcome_scene": {
         "hello_text": "Hello! HoloZoo is an educational game about animals and their endangerment status in nature.\n\nThe game uses two Android mobile devices that need to be connected via Bluetooth to display a hologram you can interact with.\n\nDon't worry! If you don't want to use two devices, the hologram will still be displayed on this device.\n\nLearn how to create a pyramidal hologram in the following steps.",
         "welcome": "WELCOME"
+    },
+    "privacy_scene": {
+        "header": "Privacy Policy",
+        "body": "Privacy and Data Protection\nThis mobile application respects your privacy and collects only the minimal data necessary for its operation.\n\nWhat data do we collect?\nUser Account: The application allows you to create a user account, where the username and password are stored locally on your device. These data are not transmitted or stored on external servers.\nOther Data: The application may collect usage data, but it does not collect personal data or any information that can identify you.\n\nHow do we use your data?\nThe username and password are used solely for local login within the application.\nCollected usage data is used only to improve the user experience.\n\nData Sharing\nWe do not share, sell, or transfer your data to third parties in any way. All data remains on your device.\n\nData Security\nSince the data is stored locally, we recommend using a strong password and securing access to your device to protect your account."
     }
+
 }

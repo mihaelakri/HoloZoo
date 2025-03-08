@@ -92,5 +92,10 @@
     "welcome_scene": {
         "hello_text": "Helló! A HoloZoo egy oktató játék az állatokról és azok természetben való veszélyeztetettségi státuszáról.\n\nA játék két Android mobil eszközt használ, amelyek Bluetooth-on keresztül kell kapcsolódjanak, hogy megjeleníthessenek egy hologramot, amellyel interakcióba léphetsz.\n\nNe aggódj! Ha nem szeretnél két eszközt használni, a hologram továbbra is megjelenik ezen az eszközön.\n\nTudd meg, hogyan készíthetsz piramis alakú hologramot a következő lépésekben.",
         "welcome": "ÜDVÖZÖLJÜK"
+    },
+    "privacy_scene": {
+        "header": "Adatvédelmi irányelvek",
+        "body": "Adatvédelem és adatbiztonság\nEz a mobilalkalmazás tiszteletben tartja a magánéletét, és csak a működéséhez szükséges minimális adatokat gyűjti.\n\nMilyen adatokat gyűjtünk?\nFelhasználói fiók: Az alkalmazás lehetővé teszi felhasználói fiók létrehozását, ahol a felhasználónevet és a jelszót helyben tároljuk az eszközén. Ezeket az adatokat nem továbbítjuk, és nem tároljuk külső szervereken.\nEgyéb adatok: Az alkalmazás gyűjthet használati adatokat, de nem gyűjt személyes adatokat, és nem gyűjt olyan információkat, amelyek azonosíthatnak téged.\n\nHogyan használjuk fel az adataidat?\nA felhasználónév és a jelszó kizárólag a helyi bejelentkezéshez használatos az alkalmazásban.\nA gyűjtött használati adatokat kizárólag a felhasználói élmény javítására használjuk.\n\nAdatok megosztása\nNem osztjuk meg, nem értékesítjük, és semmilyen módon nem továbbítjuk az adataidat harmadik feleknek. Minden adat az eszközödön marad.\n\nAdatbiztonság\nMivel az adatok helyben tárolódnak, azt javasoljuk, hogy használj erős jelszót, és védd le az eszközöd hozzáférését a fiókod védelme érdekében."
     }
+
 }
