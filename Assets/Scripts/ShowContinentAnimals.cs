@@ -55,32 +55,33 @@ namespace WPM
 
             int x = -255;
             int y = 500;
+            int index = 0;
 
-            for (int row = 0; row < animals.Count / 3; row++)
+            while (index < animals.Count)
             {
-                for (int column = 0; column < 3; column++)
+                currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("GlobeAnimalPanel").transform);
+                currentAnimal.transform.localPosition = new Vector3(x, y, 0);
+
+                // Update panel text and image
+                Text animalNamePrefab = currentAnimal.transform.Find("GameObject/Text").GetComponent<Text>();
+                Image animalImagePrefab = currentAnimal.transform.Find("GameObject/Image").GetComponent<Image>();
+
+                animalNamePrefab.text = animals[index].name;
+
+                Texture2D myTexture = Resources.Load<Texture2D>(animals[index].url_slika);
+                animalImagePrefab.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
+
+                if (currentAnimal.TryGetComponent<SceneChange>(out var changeSceneScript))
+                    changeSceneScript.id = animals[index].id.ToString();
+
+                x += 250;
+
+                if (index % 3 == 2)
                 {
-                    int index = row * 3 + column;
-
-                    currentAnimal = Instantiate(prefabAnimal, new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("GlobeAnimalPanel").transform);
-                    currentAnimal.transform.localPosition = new Vector3(x, y, 0);
-
-                    // Update panel text and image
-                    Text animalNamePrefab = currentAnimal.transform.Find("GameObject/Text").GetComponent<Text>();
-                    Image animalImagePrefab = currentAnimal.transform.Find("GameObject/Image").GetComponent<Image>();
-
-                    animalNamePrefab.text = animals[index].name;
-
-                    Texture2D myTexture = Resources.Load<Texture2D>(animals[index].url_slika);
-                    animalImagePrefab.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
-
-                    if (currentAnimal.TryGetComponent<SceneChange>(out var changeSceneScript))
-                        changeSceneScript.id = animals[index].id.ToString();
-
-                    x += 250;
+                    y -= 270;
+                    x = -235;
                 }
-                y -= 270;
-                x = -235;
+                index++;
             }
         }
 
