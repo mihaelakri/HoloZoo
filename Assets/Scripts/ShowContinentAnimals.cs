@@ -47,6 +47,8 @@ namespace WPM
         void FillAnimalInfoo(int id_continent)
         {
             var area = GameData.Instance.GetArea(id_continent);
+            if (area == null)
+                Debug.LogError($"{nameof(ShowContinentAnimals)} - area not found, id_continent: {id_continent}");
             var animals = GameData.Instance.GetAreaAnimals(area);
 
             foreach (var animal in animals)
