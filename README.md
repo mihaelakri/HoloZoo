@@ -2,6 +2,15 @@
 
 ## TO DO LIST
 
+- [ ] fix: not showing animals in oceas/south america (randomly started to work?)
+- [ ] fix: not showing animals with muliple area ids
+- [ ] fix: not applying dyslexia font on globe popup font 
+- [ ] fix: info screen dyslexia font not apllying on project number text 
+- [ ] fix: UI scalability 
+- [ ] fix: globe popup not big enough for 3rd row (?)
+- [x] fix: level scrollbar not interactable 
+
+
 - [x] \(**@mihaelakri**) feat: dodati logout na HologramTablet
 - [x] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
 - [x] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
