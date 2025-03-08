@@ -75,6 +75,10 @@
         "instruction_two": "1. Mérd meg a képernyő átlóját\n2. Rajzolj egy egyenlő oldalú háromszöget, amelynek oldalhossza pontosan a képernyő átlójának fele.\n3.  A háromszög két szomszédos oldalán jelöld meg a pontokat az oldal 3/10-ed részénél a sarok levágásához.\n4. Vágd ki a keletkezett trapézt\n5. Ragaszd össze a széleket",
         "instruction_three": "Tedd az eszközödet egy sík felületre, és helyezd a piramist a képernyő közepére."
     },
+    "privacy_scene": {
+        "header": "Privacy Policy",
+        "body": ""
+    },
     "profile_scene": {
         "level": "Szint",
         "experience": "Tapasztalat"

@@ -75,6 +75,10 @@
         "instruction_two": "1. Izmjerite dijagonalu zaslona\n\n2. Nacrtajte jednakostranični trokut čija je stranica duljine točno polovice dijagonale zaslona\n\n3. Dvije stranice trokuta podijelite na 3/10 duljine",
         "instruction_three": "Postavite ekran na ravnu površinu i postavite piramidu na sredinu ekrana."
     },
+    "privacy_scene": {
+        "header": "Privacy Policy",
+        "body": ""
+    },
     "profile_scene": {
         "level": "Level",
         "experience": "Bodovi"

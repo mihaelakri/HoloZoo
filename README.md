@@ -3,7 +3,7 @@
 ## TO DO LIST
 
 - [x] \(**@mihaelakri**) feat: dodati logout na HologramTablet
-- [ ] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
+- [x] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
 - [x] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
 <br/>
   
@@ -24,6 +24,7 @@
 - [ ] chore: turn unused coroutines to methods
 - [x] fix: globe initial weird rendering
 - [ ] feat: manual Bluetooth turn on/off/connect
+- [ ] fix: translations for PrivacyPolicy
 
 ## Done List
 

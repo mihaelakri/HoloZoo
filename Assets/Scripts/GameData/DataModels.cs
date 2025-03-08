@@ -59,6 +59,7 @@ namespace HoloZoo.DataModels
         public ScoreData score_scene;
         public InfoData info_scene;
         public InstructionData instruction_scene;
+        public PrivacyData privacy_scene;
         public ProfileData profile_scene;
         public QuizData quiz_scene;
         public WelcomeData welcome_scene;
@@ -155,6 +156,12 @@ namespace HoloZoo.DataModels
             public string instruction_one_supply;
             public string instruction_two;
             public string instruction_three;
+        }
+
+        public class PrivacyData
+        {
+            public string header;
+            public string body;
         }
 
         public class ProfileData

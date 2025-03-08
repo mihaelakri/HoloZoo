@@ -75,6 +75,10 @@
         "instruction_two": "1. Mesurer la diagonale de l'écran\n2. Tracer un triangle équilatéral dont les côtés mesurent exactement la moitié de la diagonale de l'écran\n3. Diviser deux des côtés du triangle en  3/10 de leur longueur\n4. Découper le trapèze tracé\n5. Scotcher les bords",
         "instruction_three": "Placer l'écran sur une surface plane et positionner la pyramide au centre de l'écran"
     },
+    "privacy_scene": {
+        "header": "Privacy Policy",
+        "body": ""
+    },
     "profile_scene": {
         "level": "Niveau",
         "experience": "Expérience"
