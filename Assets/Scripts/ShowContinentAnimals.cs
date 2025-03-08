@@ -42,6 +42,8 @@ namespace WPM
 
             Debug.Log($"{nameof(ShowContinentAnimals)} - Continent: {continent}, Translated: {continentTranslated}");
             FillAnimalInfoo(id_continent);
+            GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().LoadObjects();
+            GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
         }
 
         void FillAnimalInfoo(int id_continent)

@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 76796801}
   m_Layer: 0
   m_Name: Click on the picture to see 3D model
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3733,7 +3733,7 @@ GameObject:
   - component: {fileID: 1756759631}
   m_Layer: 0
   m_Name: AnimalName
-  m_TagString: Untagged
+  m_TagString: text-dark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

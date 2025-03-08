@@ -4,7 +4,7 @@
 
 - [ ] fix: not showing animals in oceas/south america (randomly started to work?)
 - [ ] fix: not showing animals with muliple area ids
-- [ ] fix: not applying dyslexia font on globe popup font 
+- [x] fix: not applying dyslexia font on globe popup font 
 - [x] fix: info screen dyslexia font not applying on project number text 
 - [ ] fix: UI scalability 
 - [ ] fix: globe popup not big enough for 3rd row (?)
