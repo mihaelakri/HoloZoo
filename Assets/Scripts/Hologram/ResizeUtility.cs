@@ -59,4 +59,14 @@ public static class ResizeUtility
         // Apply the offset to the targetObject
         targetObject.transform.position += new Vector3(0, verticalOffset, 0);
     }
+
+    public static void CreateCenterPivot(GameObject instantiatedObject, Transform parent)
+    {
+        GameObject pivotObject = new GameObject("PivotDummy");
+        pivotObject.transform.SetParent(parent);
+        pivotObject.transform.position = instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>().bounds.center;
+        pivotObject.transform.rotation = instantiatedObject.transform.rotation;
+
+        instantiatedObject.transform.SetParent(pivotObject.transform);
+    }
 }

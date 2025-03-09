@@ -28,6 +28,7 @@ public class Load3Dmodel : MonoBehaviour
 
         ResizeUtility.ScaleObjectToFitCamera(instantiatedObject, instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>(), referenceCamera);
         ResizeUtility.CenterObjectVertically3(instantiatedObject, instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>(), referenceCamera);
+        ResizeUtility.CreateCenterPivot(instantiatedObject, GameObject.FindGameObjectWithTag("3d-obj").transform);
 
         yield break;
     }

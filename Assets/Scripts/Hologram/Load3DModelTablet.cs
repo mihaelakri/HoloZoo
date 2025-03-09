@@ -41,6 +41,7 @@ public class Load3DModelTablet : MonoBehaviour
             GameObject instantiatedObject = Instantiate(modelPrefab, new Vector3(0, 0, 0), Quaternion.identity, parent.transform);
             ResizeUtility.ScaleObjectToFitCamera(instantiatedObject, instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>(), referenceCamera);
             ResizeUtility.CenterObjectVertically3(instantiatedObject, instantiatedObject.GetComponentInChildren<SkinnedMeshRenderer>(), referenceCamera);
+            ResizeUtility.CreateCenterPivot(instantiatedObject, parent.transform);
         }
 
         yield break;
