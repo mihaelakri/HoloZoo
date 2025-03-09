@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using CommMsgs;
 using MemoryPack;
 using SVSBluetooth;
@@ -7,11 +8,11 @@ using UnityEngine;
 public class RotateModelBase : MonoBehaviour
 {
     public GameObject model;
-    private float lastUpdateTime;
+    private bool isRotationNew = false;
+    protected bool isSendingRotation = false;
 
     protected virtual void Start()
     {
-        lastUpdateTime = Time.time;
     }
 
     protected void RotateModel()
@@ -52,14 +53,20 @@ public class RotateModelBase : MonoBehaviour
         }
     }
 
-    protected void BTSendModelRotation()
+    protected IEnumerator BTSendModelRotationLoop()
     {
-        if (Time.time - lastUpdateTime >= 0.04)  // 25Hz send rate limit
+        isSendingRotation = true;
+
+        while (isSendingRotation)
         {
+            yield return new WaitUntil(() => isRotationNew);
+
             byte[] serializedMsg = MemoryPackSerializer.Serialize(CommConstants.rotationMsg);
             // Debug.Log("Bluetooth - BTSendRotate3DModel: " + serializedMsg);
-            lastUpdateTime = Time.time;
             BluetoothForAndroid.WriteMessage(serializedMsg);
+            isRotationNew = false;
+
+            yield return new WaitForSecondsRealtime(0.025f);    // 40 Hz
         }
     }
 
@@ -70,6 +77,7 @@ public class RotateModelBase : MonoBehaviour
         CommConstants.z = z;
 
         CommConstants.rotationMsg = new RotationMsg(x, y, z, CommConstants.animal_id);
-        BTSendModelRotation();
+        isRotationNew = true;
+        // BTSendModelRotation();
     }
 }

@@ -24,6 +24,8 @@ Login+<Log_in>d__4.MoveNext () (at Assets/Scripts/Login.cs:20) što je ubiti red
  - [ ] In LogIn, Home and globe : NullReferenceException: Object reference not set to an instance of an object
 ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessibility.cs:134)
 
+- [ ] fix: animal mobile camera clipping (e.g. on elephant)
+- [ ] fix: animal model pivot should be centered
 
 ## Done List
 

@@ -1,5 +1,6 @@
 using MemoryPack;
 using SVSBluetooth;
+using UnityEngine;
 
 namespace CommMsgs
 {
@@ -16,7 +17,8 @@ namespace CommMsgs
             set
             {
                 _animal_id = value;
-                BluetoothForAndroid.WriteMessage(MemoryPackSerializer.Serialize(this));
+                if (PlayerPrefs.GetString("device") == "mobile")
+                    BluetoothForAndroid.WriteMessage(MemoryPackSerializer.Serialize(this));
             }
         }
 

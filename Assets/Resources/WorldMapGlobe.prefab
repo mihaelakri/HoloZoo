@@ -494,7 +494,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5354200602259035251}
   - component: {fileID: 5354200602253252031}
-  - component: {fileID: 4237654907459701735}
   - component: {fileID: 4061259468032937253}
   m_Layer: 0
   m_Name: WorldMapGlobe
@@ -3459,20 +3458,6 @@ MonoBehaviour:
   _skyboxEnvironmentTransitionAltitudeMax: 1100
   _skyboxEnvironmentTextureHDR: {fileID: 0}
   _syncTimeOfDay: 0
---- !u!114 &4237654907459701735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5354200602258722091}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2fee0c60b5e5a04c932958a282a9335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  rotateModel: {fileID: 0}
 --- !u!114 &4061259468032937253
 MonoBehaviour:
   m_ObjectHideFlags: 0

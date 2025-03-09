@@ -10,9 +10,10 @@ namespace WPM
         {
             base.Start();
             RotateGlobeModel(transform.eulerAngles);
+            StartCoroutine(BTSendModelRotationLoop());
         }
 
-        void Update()
+        void FixedUpdate()
         {
             if (transform.hasChanged)
             {

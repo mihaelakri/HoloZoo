@@ -9,6 +9,7 @@ public class RotateModelAnimal : RotateModelBase
     {
         base.Start();
         UpdateRotationCallback();
+        StartCoroutine(BTSendModelRotationLoop());
     }
 
     void Update()
