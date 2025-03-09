@@ -15,6 +15,7 @@
 - [ ] feat: manual Bluetooth turn on/off/connect
 - [x] fix: translations for PrivacyPolicy
 - [ ] fix: re-do low resolution sprites
+- [ ] refactor: bluetooth sending in FixedUpdate
 
  ## BUGS noticed
 
