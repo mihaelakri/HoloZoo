@@ -75,10 +75,6 @@
         "instruction_two": "1. Mesurer la diagonale de l'écran\n2. Tracer un triangle équilatéral dont les côtés mesurent exactement la moitié de la diagonale de l'écran\n3. Diviser deux des côtés du triangle en  3/10 de leur longueur\n4. Découper le trapèze tracé\n5. Scotcher les bords",
         "instruction_three": "Placer l'écran sur une surface plane et positionner la pyramide au centre de l'écran"
     },
-    "privacy_scene": {
-        "header": "Privacy Policy",
-        "body": ""
-    },
     "profile_scene": {
         "level": "Niveau",
         "experience": "Expérience"
@@ -97,5 +93,4 @@
         "header": "Politique de confidentialité",
         "body": "Confidentialité et protection des données\nCette application mobile respecte votre vie privée et ne collecte que les données minimales nécessaires à son fonctionnement.\n\nQuelles données collectons-nous ?\nCompte utilisateur : L'application permet de créer un compte utilisateur, où le nom d'utilisateur et le mot de passe sont stockés localement sur votre appareil. Ces données ne sont pas transmises ni stockées sur des serveurs externes.\nAutres données : L'application peut collecter des données d'utilisation, mais ne collecte pas de données personnelles ni d'informations permettant de vous identifier.\n\nComment utilisons-nous vos données ?\nLe nom d'utilisateur et le mot de passe sont utilisés uniquement pour la connexion locale à l'application.\nLes données collectées sur l'utilisation de l'application sont utilisées uniquement pour améliorer l'expérience utilisateur.\n\nPartage des données\nNous ne partageons, ne vendons ni ne transférons vos données à des tiers de quelque manière que ce soit. Toutes les données restent sur votre appareil.\n\nSécurité des données\nÉtant donné que les données sont stockées localement, nous vous recommandons d'utiliser un mot de passe sécurisé et de protéger l'accès à votre appareil pour protéger votre compte."
     }
-
 }

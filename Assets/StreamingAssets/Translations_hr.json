@@ -75,10 +75,6 @@
         "instruction_two": "1. Izmjerite dijagonalu zaslona\n\n2. Nacrtajte jednakostranični trokut čija je stranica duljine točno polovice dijagonale zaslona\n\n3. Dvije stranice trokuta podijelite na 3/10 duljine",
         "instruction_three": "Postavite ekran na ravnu površinu i postavite piramidu na sredinu ekrana."
     },
-    "privacy_scene": {
-        "header": "Privacy Policy",
-        "body": ""
-    },
     "profile_scene": {
         "level": "Level",
         "experience": "Bodovi"
@@ -97,5 +93,4 @@
         "header": "Pravila privatnosti",
         "body": "Privatnost i zaštita podataka\nOva mobilna aplikacija poštuje vašu privatnost i prikuplja minimalne podatke potrebne za njezino funkcioniranje. Koje podatke prikupljamo?\nKorisnički račun: Aplikacija omogućuje izradu korisničkog računa, pri čemu se korisničko ime i lozinka pohranjuju lokalno na vašem uređaju. Ovi podaci se ne prenose niti pohranjuju na vanjskim poslužiteljima.\nOstali podaci: Aplikacija može prikupljati podatke o načinu korištenja, ali ne prikuplja osobne podatke niti podatke koji vas mogu identificirati.\n\nKako koristimo vaše podatke?\nKorisničko ime i lozinka koriste se isključivo za lokalnu prijavu u aplikaciju.\nPrikupljeni podaci o korištenju aplikacije služe samo za poboljšanje korisničkog iskustva.\n\nDijeljenje podataka\nNe dijelimo, ne prodajemo niti na bilo koji način ne prenosimo vaše podatke trećim stranama. Svi podaci ostaju na vašem uređaju. Sigurnost podataka\n\nBudući da su podaci pohranjeni lokalno, preporučujemo da koristite sigurnu lozinku i osigurate pristup svom uređaju kako biste zaštitili svoj račun."
     }
-
 }

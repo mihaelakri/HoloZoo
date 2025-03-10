@@ -75,10 +75,6 @@
         "instruction_two": "1. Mérd meg a képernyő átlóját\n2. Rajzolj egy egyenlő oldalú háromszöget, amelynek oldalhossza pontosan a képernyő átlójának fele.\n3.  A háromszög két szomszédos oldalán jelöld meg a pontokat az oldal 3/10-ed részénél a sarok levágásához.\n4. Vágd ki a keletkezett trapézt\n5. Ragaszd össze a széleket",
         "instruction_three": "Tedd az eszközödet egy sík felületre, és helyezd a piramist a képernyő közepére."
     },
-    "privacy_scene": {
-        "header": "Privacy Policy",
-        "body": ""
-    },
     "profile_scene": {
         "level": "Szint",
         "experience": "Tapasztalat"
@@ -97,5 +93,4 @@
         "header": "Adatvédelmi irányelvek",
         "body": "Adatvédelem és adatbiztonság\nEz a mobilalkalmazás tiszteletben tartja a magánéletét, és csak a működéséhez szükséges minimális adatokat gyűjti.\n\nMilyen adatokat gyűjtünk?\nFelhasználói fiók: Az alkalmazás lehetővé teszi felhasználói fiók létrehozását, ahol a felhasználónevet és a jelszót helyben tároljuk az eszközén. Ezeket az adatokat nem továbbítjuk, és nem tároljuk külső szervereken.\nEgyéb adatok: Az alkalmazás gyűjthet használati adatokat, de nem gyűjt személyes adatokat, és nem gyűjt olyan információkat, amelyek azonosíthatnak téged.\n\nHogyan használjuk fel az adataidat?\nA felhasználónév és a jelszó kizárólag a helyi bejelentkezéshez használatos az alkalmazásban.\nA gyűjtött használati adatokat kizárólag a felhasználói élmény javítására használjuk.\n\nAdatok megosztása\nNem osztjuk meg, nem értékesítjük, és semmilyen módon nem továbbítjuk az adataidat harmadik feleknek. Minden adat az eszközödön marad.\n\nAdatbiztonság\nMivel az adatok helyben tárolódnak, azt javasoljuk, hogy használj erős jelszót, és védd le az eszközöd hozzáférését a fiókod védelme érdekében."
     }
-
 }

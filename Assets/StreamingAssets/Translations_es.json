@@ -75,10 +75,6 @@
         "instruction_two": "1. Mide la diagonal de la pantalla\n2. Dibuja un triángulo equilátero con la longitud del lado igual a la diagonal de la pantalla\n3. Divide dos lados del triángulo en 3/10 de la longitud\n4. Corta el trapecio dibujado\n5. Pega los borde con celo",
         "instruction_three": "Coloca la pantalla sobre la superficie plana y pon la pirámide en el centro de la pantalla"
     },
-    "privacy_scene": {
-        "header": "Privacy Policy",
-        "body": ""
-    },
     "profile_scene": {
         "level": "Nivel",
         "experience": "Experiencia"
@@ -97,6 +93,4 @@
         "header": "Política de privacidad",
         "body": "Privacidad y protección de datos\nEsta aplicación móvil respeta su privacidad y recopila solo los datos mínimos necesarios para su funcionamiento.\n\n¿Qué datos recopilamos?\nCuenta de usuario: La aplicación permite crear una cuenta de usuario, donde el nombre de usuario y la contraseña se almacenan localmente en su dispositivo. Estos datos no se transmiten ni se almacenan en servidores externos.\nOtros datos: La aplicación puede recopilar datos sobre el uso, pero no recopila datos personales ni información que pueda identificarle.\n\n¿Cómo utilizamos sus datos?\nEl nombre de usuario y la contraseña se utilizan únicamente para el inicio de sesión local en la aplicación.\nLos datos de uso recopilados se utilizan solo para mejorar la experiencia del usuario.\n\nCompartición de datos\nNo compartimos, vendemos ni transferimos sus datos a terceros de ninguna manera. Todos los datos permanecen en su dispositivo.\n\nSeguridad de los datos\nDado que los datos se almacenan localmente, recomendamos utilizar una contraseña segura y proteger el acceso a su dispositivo para mantener segura su cuenta."
     }
-
-
 }
