@@ -118,5 +118,13 @@
         "answer_one": "Nőstény oroszlán",
         "answer_two": "Arany guernsey-i kecske",
         "answer_three": "Delfin"
+    },
+    {
+        "id": 16,
+        "id_question": 16,
+        "question_text": "Melyik európai állat él Ausztráliában?",
+        "answer_one": "Európai mezei nyúl",
+        "answer_two": "Arany Guernsey kecske",
+        "answer_three": "Európai szürke farkas"
     }
 ]

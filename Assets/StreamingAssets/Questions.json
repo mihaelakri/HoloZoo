@@ -73,5 +73,10 @@
         "id": 15,
         "id_animal": 7,
         "correct_answer": 3
+    },
+    {
+        "id": 16,
+        "id_animal": 16,
+        "correct_answer": 1
     }
 ]

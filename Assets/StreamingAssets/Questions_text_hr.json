@@ -118,5 +118,13 @@
         "answer_one": "Lavica",
         "answer_two": "Zlatna Guernsey koza",
         "answer_three": "Dupin"
+    },
+    {
+        "id": 16,
+        "id_question": 16,
+        "question_text": "Koja europska životinja živi u Australiji?",
+        "answer_one": "Europski zec",
+        "answer_two": "Zlatna Guernsey koza",
+        "answer_three": "Europski sivi vuk"
     }
 ]

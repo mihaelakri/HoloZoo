@@ -118,5 +118,13 @@
         "answer_one": "Leona",
         "answer_two": "Guernsey dorado",
         "answer_three": "Delfín"
+    },
+    {
+        "id": 16,
+        "id_question": 16,
+        "question_text": "¿Qué animal europeo vive en Australia?",
+        "answer_one": "Liebre europea",
+        "answer_two": "Cabra dorada de Guernsey",
+        "answer_three": "Lobo gris europeo"
     }
 ]

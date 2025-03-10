@@ -118,5 +118,13 @@
         "answer_one": "La lionne",
         "answer_two": "La chèvre dorée de Guernesey",
         "answer_three": "Le dauphin"
+    },
+    {
+        "id": 16,
+        "id_question": 16,
+        "question_text": "Quel animal européen vit en Australie ?",
+        "answer_one": "Lièvre européen",
+        "answer_two": "Chèvre Guernsey dorée",
+        "answer_three": "Loup gris européen"
     }
 ]
