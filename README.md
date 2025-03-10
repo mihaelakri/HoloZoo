@@ -28,7 +28,7 @@ ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessib
 - [x] refactor: bluetooth sending in FixedUpdate
 - [x] fix: animal mobile camera clipping (e.g. on elephant)
 - [x] fix: animal model pivot should be centered
-- [ ] fix: score unlocked animals shouldn't show up when empty
+- [x] fix: score unlocked animals shouldn't show up when empty
 - [ ] fix: FillScore - ShowUnlockedAnimals: add translation
 - [ ] fix?: revisit bluetooth sending and FixedUpdate
 

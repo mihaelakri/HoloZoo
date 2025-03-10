@@ -51,7 +51,13 @@ public class FillScore : MonoBehaviour
 
     void ShowUnlockedAnimals(User user)
     {
-        Debug.Log($"{nameof(FillScore)} - ShowUnlockedAnimals");
+        var newAnimals = GameData.Instance.GetAnimalsAtLevel(user.level);
+        Debug.Log($"{nameof(FillScore)} - ShowUnlockedAnimals, count: {newAnimals.Count}");
+
+        if (newAnimals.Count < 1)
+        {
+            return;
+        }
 
         notificationContainer.SetActive(true);
         
@@ -59,7 +65,6 @@ public class FillScore : MonoBehaviour
         // TODO get real translations for this
         notificationHeader.transform.GetComponent<Text>().text = GameData.Instance.translations.score_scene.bravo;
 
-        var newAnimals = GameData.Instance.GetAnimalsAtLevel(user.level);
         foreach (var animal in newAnimals)
         {
             var animalProfile = Instantiate(animalProfilePrefab, animalContainer.transform);
