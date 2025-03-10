@@ -4,36 +4,17 @@
 
 - [ ] fix: not showing animals in oceas/south america (randomly started to work?)
 - [ ] fix: not showing animals with muliple area ids
-- [ ] fix: not applying dyslexia font on globe popup font 
-- [ ] fix: info screen dyslexia font not apllying on project number text 
+- [x] fix: not applying dyslexia font on globe popup font 
+- [x] fix: info screen dyslexia font not applying on project number text 
 - [ ] fix: UI scalability 
 - [ ] fix: globe popup not big enough for 3rd row (?)
 - [x] fix: level scrollbar not interactable 
 
-
-- [x] \(**@mihaelakri**) feat: dodati logout na HologramTablet
-- [x] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
-- [x] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
-<br/>
-  
-- [ ] ~~\(**@izelentrovic**) build: add SQLite natively as instructed by [this](https://old.reddit.com/r/Unity3D/comments/sayh3r/ill_simply_add_sqlite_to_my_unity_project_and/kg91fm0/) and [this comment](https://github.com/praeclarum/sqlite-net/issues/1023#issuecomment-821950695)~~
-- [x] \(**@izelentrovic**) feat: replace remote database with local JSON files
-- [x] \(**@izelentrovic**) feat: remember previous scene for animal profile scene (globe/list)
-- [x] \(**@izelentrovic**) feat: change "area" DB table so that animals can have multiple areas
-- [x] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  
-<br/>
-
-- [x] fix: animal model spawn coordinates
-- [x] fix: animal model scaling on Game device
-- [x] fix: animal model scaling on Hologram device
-- [x] fix: screen size
-- [x] build!: remove unused animal models
-- [x] feat: remove all calls to remote host
-- [x] feat: remove internet connection checks
 - [ ] chore: turn unused coroutines to methods
-- [x] fix: globe initial weird rendering
 - [ ] feat: manual Bluetooth turn on/off/connect
-- [ ] fix: translations for PrivacyPolicy
+- [x] fix: translations for PrivacyPolicy
+- [ ] fix: re-do low resolution sprites
+
 
 ## Done List
 
@@ -62,6 +43,22 @@
 - [x] fix: Quiz score not tracking 
 - [x] feat: loading indicator when fetching from host
 - [x] fix: Animal_list contrast colors
+- [x] \(**@mihaelakri**) feat: dodati logout na HologramTablet
+- [x] \(**@mihaelakri**) feat: dodati privacy policy kod registacije i negdje scenu sa privacy policy 
+- [x] \(**@mihaelakri**) feat: dodati obavijest o novoj životinji kad ju korisnik osvoji (na kraju kviza)  
+- [ ] ~~\(**@izelentrovic**) build: add SQLite natively as instructed by [this](https://old.reddit.com/r/Unity3D/comments/sayh3r/ill_simply_add_sqlite_to_my_unity_project_and/kg91fm0/) and [this comment](https://github.com/praeclarum/sqlite-net/issues/1023#issuecomment-821950695)~~
+- [x] \(**@izelentrovic**) feat: replace remote database with local JSON files
+- [x] \(**@izelentrovic**) feat: remember previous scene for animal profile scene (globe/list)
+- [x] \(**@izelentrovic**) feat: change "area" DB table so that animals can have multiple areas
+- [x] \(**@izelentrovic**) feat: modify globe to have ocean as a clickable area and change Eurasia  
+- [x] fix: animal model spawn coordinates
+- [x] fix: animal model scaling on Game device
+- [x] fix: animal model scaling on Hologram device
+- [x] fix: screen size
+- [x] build!: remove unused animal models
+- [x] feat: remove all calls to remote host
+- [x] feat: remove internet connection checks
+- [x] fix: globe initial weird rendering
 
 ## Cloning and running the project
 

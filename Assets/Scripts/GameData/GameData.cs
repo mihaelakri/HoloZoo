@@ -160,22 +160,25 @@ public class GameData : MonoBehaviour
         return animals.FirstOrDefault(a => a.id == id);
     }
 
-    public List<Animal>? GetAnimalNames(int levelCap)
+    public List<Animal> GetAnimalNames(int levelCap)
     {
-        var result = animals.Where(a => a.level < levelCap);
-        return result.Any() ? result.ToList() : null;
+        var result = animals.Where(a => a.level <= levelCap).ToList();
+        Debug.Log($"{nameof(GameData)} - {nameof(GetAnimalNames)}, found {result.Count} animals");
+        return result;
     }
 
-    public List<Animal>? GetAreaAnimals(Area area)
+    public List<Animal> GetAreaAnimals(Area area)
     {
-        var result = animals.Where(a => a.id_area.Contains(area.id));
-        return result.Any() ? result.ToList() : null;
+        var result = animals.Where(a => a.id_area.Contains(area.id)).ToList();
+        Debug.Log($"{nameof(GameData)} - {nameof(GetAreaAnimals)}, found {result.Count} animals");
+        return result;
     }
 
-    public List<Animal>? GetAnimalsAtLevel(int level)
+    public List<Animal> GetAnimalsAtLevel(int level)
     {
-        var result = animals.Where(a => a.level == level);
-        return result.Any() ? result.ToList() : null;
+        var result = animals.Where(a => a.level == level).ToList();
+        Debug.Log($"{nameof(GameData)} - {nameof(GetAnimalsAtLevel)}, found {result.Count} animals");
+        return result;
     }
 
     public Area? GetArea(int id)
