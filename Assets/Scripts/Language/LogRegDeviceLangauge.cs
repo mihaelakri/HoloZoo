@@ -25,6 +25,6 @@ public class LogRegDeviceLangauge : MonoBehaviour
         mobile.text = translation.buttons.btn_game;
         tablet.text = translation.buttons.btn_hologram;
         login.text = translation.buttons.btn_login;
-        register.text = translation.buttons.btn_login;
+        register.text = translation.buttons.btn_register;
     }
 }
