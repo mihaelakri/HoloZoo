@@ -29,4 +29,9 @@ public class SceneChange : MonoBehaviour
         CommConstants.animal_id = int.Parse(PlayerPrefs.GetString("id_animal"));
         SceneManager.LoadScene(sceneNameToLoad);
     }
+
+    public void GoBack()
+    {
+        SceneManagement.Instance.HandleBackButton();
+    }
 }

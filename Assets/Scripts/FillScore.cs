@@ -39,6 +39,9 @@ public class FillScore : MonoBehaviour
     {
         var user = GameData.Instance.GetCurrentUser();
         bool userLeveledUp = GameData.Instance.UpdateUserExperience(PlayerPrefs.GetInt("Score"), user);
+        
+        // Reset score to prevent multi-scoring on scene switch
+        PlayerPrefs.SetInt("Score", 0);
 
         if (userLeveledUp)
             ShowUnlockedAnimals(user);

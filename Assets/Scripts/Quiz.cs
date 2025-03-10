@@ -24,9 +24,11 @@ public class Quiz : MonoBehaviour
 
     private int correctAnswerCount;
 
-    // Start is called before the first frame update
     void Start()
     {
+        // Reset score to prevent multi-scoring on scene switch
+        PlayerPrefs.SetInt("Score", 0);
+
         answerButtons = answerParent.GetComponentsInChildren<Button>();
 
         StartCoroutine(FillQuestion());
