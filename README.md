@@ -2,18 +2,26 @@
 
 ## TO DO LIST
 
-- [ ] fix: not showing animals in oceas/south america (randomly started to work?)
-- [ ] fix: not showing animals with muliple area ids
+- [x] fix: not showing animals in oceas/south america (randomly started to work?)
+- [x] fix: not showing animals with muliple area ids
 - [x] fix: not applying dyslexia font on globe popup font 
 - [x] fix: info screen dyslexia font not applying on project number text 
 - [ ] fix: UI scalability 
-- [ ] fix: globe popup not big enough for 3rd row (?)
+- [x] fix: globe popup not big enough for 3rd row (?)
 - [x] fix: level scrollbar not interactable 
+- [ ] chore: add more questions and animals
 
-- [ ] chore: turn unused coroutines to methods
+- [x] chore: turn unused coroutines to methods
 - [ ] feat: manual Bluetooth turn on/off/connect
 - [x] fix: translations for PrivacyPolicy
 - [ ] fix: re-do low resolution sprites
+
+ ## BUGS noticed
+
+ - [ ] In LogIn screen :  Object reference not set to an instance of an object
+Login+<Log_in>d__4.MoveNext () (at Assets/Scripts/Login.cs:20) što je ubiti redak    var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text) 
+ - [ ] In LogIn, Home and globe : NullReferenceException: Object reference not set to an instance of an object
+ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessibility.cs:134)
 
 
 ## Done List
