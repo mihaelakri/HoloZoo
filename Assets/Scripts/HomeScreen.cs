@@ -7,15 +7,15 @@ public class HomeScreen : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("ID"))
         {
-            StartCoroutine(GetUsername());
+           GetUsername();
         }
     }
-    IEnumerator GetUsername()
+    private void GetUsername()
     {
         var user = GameData.Instance.GetCurrentUser();
         if (user != null)
             PlayerPrefs.SetString("username", user.username);
 
-        yield break;
+        return;
     }
 }

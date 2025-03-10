@@ -15,17 +15,17 @@ public class FillAnimal : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FillAnimalInfo());
+        FillAnimalInfo();
     }
 
-    IEnumerator FillAnimalInfo()
+    private void FillAnimalInfo()
     {
         var animal = GameData.Instance.GetAnimal(int.Parse(PlayerPrefs.GetString("id_animal")));
 
         if (animal == null)
         {
             Debug.LogError($"{nameof(FillAnimal)} - Animal is null");
-            yield break;
+            return;
         }
 
         nameText.text = animal.name;

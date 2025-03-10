@@ -15,27 +15,27 @@ public class Registration : MonoBehaviour
 
    public void CallRegister()
    {
-      StartCoroutine(Register());
+     Register();
    }
 
-   IEnumerator Register()
+   private void Register()
    {
       var translation = GameData.Instance.translations;
 
       if (usernameField.text.Length < 6)
       {
          toast.text = translation.messages.msg_username_short;
-         yield break;
+         return;
       }
       else if (passwordField.text.Length < 8)
       {
          toast.text = translation.messages.msg_password_short;
-         yield break;
+         return;
       }
       else if (retypepasswordField.text != passwordField.text)
       {
          toast.text = translation.messages.msg_passwords_mismatch;
-         yield break;
+         return;
       }
 
       var user = GameData.Instance.CreateUser(usernameField.text, passwordField.text);
@@ -43,9 +43,7 @@ public class Registration : MonoBehaviour
 
       PlayerPrefs.SetInt("ID", Convert.ToInt16(user.id));
 
-      if (PlayerPrefs.GetString("device") == "mobile")
-         SceneManager.LoadScene("Home");
-      else
-         SceneManager.LoadScene("HologramTablet");
+      string sceneToLoad = PlayerPrefs.GetString("device") == "mobile" ? "Home" : "HologramTablet";
+      SceneManager.LoadScene(sceneToLoad);
    }
 }

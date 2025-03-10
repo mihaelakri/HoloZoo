@@ -10,20 +10,20 @@ public class ChangePassword : MonoBehaviour
 
     public void CallChangePassword()
     {
-        StartCoroutine(ChangePass());
+        ChangePass();
     }
 
-    IEnumerator ChangePass()
+    private void ChangePass()
     {
         if (newPasswordField.text.Length < 8)
         {
             toast.text = "Password too short";
-            yield break;
+            return;
         }
         if (retypepasswordField.text != newPasswordField.text)
         {
             toast.text = "Passwords do not match";
-            yield break;
+            return;
         }
 
         var user = GameData.Instance.GetUser(PlayerPrefs.GetInt("ID"));
@@ -31,7 +31,7 @@ public class ChangePassword : MonoBehaviour
         if (user == null)
         {
             toast.text = "Error updating password";
-            yield break;
+            return;
         }
 
         GameData.Instance.UpdateUserPassword(newPasswordField.text, user);

@@ -12,17 +12,17 @@ public class FillProfile : MonoBehaviour
     void Start()
     {
         if (PlayerPrefs.HasKey("ID"))
-            StartCoroutine(Profileinfo());
+            Profileinfo();
     }
 
-    IEnumerator Profileinfo()
+    private void Profileinfo()
     {
         var user = GameData.Instance.GetUser(PlayerPrefs.GetInt("ID"));
 
         if (user == null)
         {
             Debug.LogError($"{nameof(FillProfile)} - User is null");
-            yield break;
+            return;
         }
 
         lvlTxt.text = user.level.ToString();
