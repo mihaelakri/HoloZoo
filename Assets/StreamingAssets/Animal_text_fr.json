@@ -158,5 +158,13 @@
         "endangerment_status": "En danger",
         "habitat": "Eaux marines de tous les océans",
         "diet": "Pélagique"
+    },
+    {
+        "id": 21,
+        "id_animal": 21,
+        "name": "Grand-duc d'Amérique",
+        "endangerment_status": "Préoccupation mineure",
+        "habitat": "forêts, jungles",
+        "diet": "Carnivore"
     }
 ]

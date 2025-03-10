@@ -218,5 +218,16 @@
         "url_slika": "AnimalProfiles/animprof_seaturtle",
         "weight": "250-700kg",
         "population": 30000
+    },
+    {
+        "id": 21,
+        "id_area": [
+            7, 8
+        ],
+        "level": 3,
+        "url_model": "AnimalModels/GreatHornedOwl_Legacy",
+        "url_slika": "AnimalProfiles/animprof_owl",
+        "weight": "910g -2.5 kg",
+        "population": "5.7 milijuna"
     }
 ]

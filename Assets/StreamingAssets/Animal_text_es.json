@@ -158,5 +158,13 @@
         "endangerment_status": "En peligro",
         "habitat": "Aguas marinas de todos los océanos",
         "diet": "Pelágico"
+    },
+    {
+        "id": 21,
+        "id_animal": 21,
+        "name": "Búho real norteamericano",
+        "endangerment_status": "Preocupación menor",
+        "habitat": "bosques, selvas",
+        "diet": "Carnívoro"
     }
 ]

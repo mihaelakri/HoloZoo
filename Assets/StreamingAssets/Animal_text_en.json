@@ -158,5 +158,13 @@
         "endangerment_status": "Endangered",
         "habitat": "Marine waters throughout Oceans",
         "diet": "Pelagic"
+    },
+    {
+        "id": 21,
+        "id_animal": 21,
+        "name": "Great Horned Owl",
+        "endangerment_status": "Least Concern",
+        "habitat": "forests, jungles",
+        "diet": "Carnivore"
     }
 ]

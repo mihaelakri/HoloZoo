@@ -144,7 +144,7 @@
         "diet": "Növényevő"
     },
     {
-        "id": 21,
+        "id": 19,
         "id_animal": 19,
         "name": "Humboldt-tintahal",
         "endangerment_status": "Nem besorolt",
@@ -152,11 +152,19 @@
         "diet": "Húsevő"
     },
     {
-        "id": 22,
+        "id": 20,
         "id_animal": 20,
         "name": "Kérgesteknős",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Óceánok tengervize",
         "diet": "Pelágikus"
+    },
+    {
+        "id": 21,
+        "id_animal": 21,
+        "name": "Észak-amerikai uhu",
+        "endangerment_status": "Legkevésbé aggasztó",
+        "habitat": "erdők, dzsungelek",
+        "diet": "Húsevő"
     }
 ]

@@ -158,5 +158,13 @@
         "endangerment_status": "Ugrožena",
         "habitat": "Morske vode u svim oceanima",
         "diet": "Pelagična"
+    },
+    {
+        "id": 21,
+        "id_animal": 21,
+        "name": "Sjevernoamerička velika ušara",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "šume, prašume",
+        "diet": "Mesojed"
     }
 ]
