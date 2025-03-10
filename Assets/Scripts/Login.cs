@@ -12,10 +12,10 @@ public class Login : MonoBehaviour
 
    public void CallLogin()
    {
-      StartCoroutine(Log_in());
+      Log_in();
    }
 
-   IEnumerator Log_in()
+   private void Log_in()
    {
       var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text);
       var translation = GameData.Instance.translations;
