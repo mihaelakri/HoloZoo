@@ -17,6 +17,19 @@ public class Login : MonoBehaviour
 
    private void Log_in()
    {
+      // Check if GameData is initialized 
+      if (GameData.Instance == null)
+      {
+         Debug.LogError("GameData.Instance is null! Make sure GameData is initialized.");
+         return;
+      }
+
+      if (usernameField == null || passwordField == null)
+      {
+         Debug.LogError("Username or Password field is not assigned in the Inspector.");
+         return;
+      }
+
       var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text);
       var translation = GameData.Instance.translations;
 
@@ -24,21 +37,19 @@ public class Login : MonoBehaviour
       {
          Debug.Log($"{nameof(Login)} - Wrong Username");
          toast.text = translation.messages.msg_username_wrong;
-         yield break;
+         return;
       }
 
       if (response == GameData.CredentialResponse.WrongPassword)
       {
          Debug.Log($"{nameof(Login)} - Wrong Password");
          toast.text = translation.messages.msg_password_wrong;
-         yield break;
+         return;
       }
 
       PlayerPrefs.SetInt("ID", Convert.ToInt16(user.id));
 
-      if (PlayerPrefs.GetString("device") == "mobile")
-         SceneManager.LoadScene("Home");
-      else
-         SceneManager.LoadScene("HologramTablet");
+      string sceneToLoad = PlayerPrefs.GetString("device") == "mobile" ? "Home" : "HologramTablet";
+      SceneManager.LoadScene(sceneToLoad);
    }
 }
