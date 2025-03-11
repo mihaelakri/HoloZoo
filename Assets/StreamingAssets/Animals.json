@@ -15,7 +15,7 @@
         "id_area": [
             1
         ],
-        "level": 1,
+        "level": 6,
         "url_model": "AnimalModels/Crocodile_Legacy",
         "url_slika": "AnimalProfiles/animprof_krokodil",
         "weight": "40-750kg",
@@ -70,7 +70,7 @@
         "id_area": [
             9
         ],
-        "level": 1,
+        "level": 3,
         "url_model": "AnimalModels/Dolphin",
         "url_slika": "AnimalProfiles/animprof_dolphin",
         "weight": "100-450kg",
@@ -246,7 +246,7 @@
         "id_area": [
             9
         ],
-        "level": 1,
+        "level": 6,
         "url_model": "AnimalModels/Orca",
         "url_slika": "AnimalProfiles/animprof_orca",
         "weight": "3000 - 4000 kg",
@@ -257,7 +257,7 @@
         "id_area": [
             9
         ],
-        "level": 1,
+        "level": 5,
         "url_model": "AnimalModels/RightWhale",
         "url_slika": "AnimalProfiles/animprof_whale",
         "weight": "40 - 70 t",
@@ -312,7 +312,7 @@
         "id_area": [
             1, 2, 3, 4, 8
         ],
-        "level": 1,
+        "level": 4,
         "url_model": "AnimalModels/Fox_Legacy",
         "url_slika": "AnimalProfiles/animprof_fox",
         "weight": "2,2 – 14 kg",
