@@ -5,7 +5,7 @@
 ### \(**@mihaelakri**)
 - [ ] fix: UI scalability 
 - [ ] chore add more questions
-- [ ] chore: add more animals per level 
+- [x] chore: add more animals per level 
 - [ ] fix: FillScore - ShowUnlockedAnimals: add translation
 
 ### \(**@izelentrovic**)

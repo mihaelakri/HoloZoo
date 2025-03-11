@@ -26,7 +26,7 @@
         "id_area": [
             1
         ],
-        "level": 1,
+        "level": 4,
         "url_model": "AnimalModels/Hippopotamus_PBR",
         "url_slika": "AnimalProfiles/animprof_hippo",
         "weight": "1,500-3,200kg",
@@ -81,7 +81,7 @@
         "id_area": [
             9
         ],
-        "level": 1,
+        "level": 5,
         "url_model": "AnimalModels/GreatWhiteShark",
         "url_slika": "AnimalProfiles/animprof_gwshark",
         "weight": "680-1,100kg",
@@ -112,7 +112,7 @@
     {
         "id": 11,
         "id_area": [
-            2
+            1, 2, 3, 4, 7, 8
         ],
         "level": 1,
         "url_model": "AnimalModels/Boar_Legacy",
@@ -167,7 +167,7 @@
     {
         "id": 16,
         "id_area": [
-            2, 4
+            2, 3, 4, 7
         ],
         "level": 1,
         "url_model": "AnimalModels/Rabbit_Legacy",
