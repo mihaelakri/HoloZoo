@@ -1,4 +1,6 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChooseDevice : MonoBehaviour
@@ -6,7 +8,7 @@ public class ChooseDevice : MonoBehaviour
     public GameObject panel;
     public GameObject backButton;
     public Toggle m_Toggle;
-
+    public SceneAsset TabletScene;
     public void chooseMobile()
     {
         storeCommMethod();
@@ -17,7 +19,8 @@ public class ChooseDevice : MonoBehaviour
     {
         storeCommMethod();
         PlayerPrefs.SetString("device", "tablet");
-        panel.transform.LeanMoveLocal(new Vector2(0, -645), 0.75f).setEaseOutQuart();
+        // panel.transform.LeanMoveLocal(new Vector2(0, -645), 0.75f).setEaseOutQuart();
+        SceneManager.LoadScene(TabletScene.name);
     }
 
     public void chooseAgain()

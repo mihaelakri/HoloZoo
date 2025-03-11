@@ -34,7 +34,7 @@ ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessib
 - [x] fix: score unlocked animals shouldn't show up when empty
 - [ ] fix: FillScore - ShowUnlockedAnimals: add translation
 - [ ] fix?: revisit bluetooth sending and FixedUpdate
-- [ ] feat?: remove login from Hologram device
+- [x] feat?: remove login from Hologram device
 
  ## BUGS noticed
 
