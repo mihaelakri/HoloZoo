@@ -62,7 +62,8 @@
     },
     "score_scene": {
         "try_again": "Próbáld újra!",
-        "bravo": "Bravó!"
+        "bravo": "Bravó!",
+        "unlocked_animals": "Új állatok feloldva!"
     },
     "info_scene": {
         "developed_by": "Által kifejlesztett",

@@ -63,7 +63,7 @@ public class FillScore : MonoBehaviour
         
         buttonOk.transform.GetComponent<Text>().text = GameData.Instance.translations.buttons.btn_ok;
         // TODO get real translations for this
-        notificationHeader.transform.GetComponent<Text>().text = GameData.Instance.translations.score_scene.bravo;
+        notificationHeader.transform.GetComponent<Text>().text = GameData.Instance.translations.score_scene.unlocked_animals;
 
         foreach (var animal in newAnimals)
         {

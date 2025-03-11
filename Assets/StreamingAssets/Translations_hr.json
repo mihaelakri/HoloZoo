@@ -62,7 +62,8 @@
     },
     "score_scene": {
         "try_again": "Pokušaj ponovo!",
-        "bravo": "Bravo!"
+        "bravo": "Bravo!",
+        "unlocked_animals": "Nove životinje otključane!"
     },
     "info_scene": {
         "developed_by": "Aplikaciju razvilo",

@@ -62,7 +62,8 @@
     },
     "score_scene": {
         "try_again": "Try again!",
-        "bravo": "Bravo!"
+        "bravo": "Bravo!",
+        "unlocked_animals": "New animals unlocked!"
     },
     "info_scene": {
         "developed_by": "Developed by",
