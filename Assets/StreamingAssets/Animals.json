@@ -317,16 +317,5 @@
         "url_slika": "AnimalProfiles/animprof_fox",
         "weight": "2,2 – 14 kg",
         "population": 7200000
-    },
-    {
-       "id": 30,
-        "id_area": [
-            1, 2, 3, 4, 7, 8
-        ],
-        "level": 1,
-        "url_model": "AnimalModels/Fox_Legacy",
-        "url_slika": "AnimalProfiles/animprof_fox",
-        "weight": "2,2 – 14 kg",
-        "population": 7200000
     }
 ]
