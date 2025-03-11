@@ -166,5 +166,70 @@
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "erdők, dzsungelek",
         "diet": "Húsevő"
+    },
+    {
+        "id": 22,
+        "id_animal": 22,
+        "name": "Veréb",
+        "endangerment_status": "Legkevésbé aggasztó",
+        "habitat": "városok, falvak, erdők",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 23,
+        "id_animal": 23,
+        "name": "Orka",
+        "endangerment_status": "Elégtelen adatok",
+        "habitat": "hideg és mérsékelt óceánok",
+        "diet": "Húsevő"
+    },
+    {
+        "id": 24,
+        "id_animal": 24,
+        "name": "Simabálna",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "Atlanti-óceán",
+        "diet": "Húsevő (plankton)"
+    },
+    {
+        "id": 25,
+        "id_animal": 25,
+        "name": "Tőkés réce",
+        "endangerment_status": "Legkevésbé aggasztó",
+        "habitat": "vizes élőhelyek",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 26,
+        "id_animal": 26,
+        "name": "Sziklagalamb",
+        "endangerment_status": "Legkevésbé aggasztó",
+        "habitat": "városok, falvak",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 27,
+        "id_animal": 27,
+        "name": "Ezüstsirály",
+        "endangerment_status": "Legkevésbé aggasztó",
+        "habitat": "partvidéki területek",
+        "diet": "Mindenevő"
+    },
+    {
+        "id": 28,
+        "id_animal": 28,
+        "name": "Szarvastehén",
+        "endangerment_status": "Veszélyeztetett",
+        "habitat": "sziklás környezet",
+        "diet": "Növényevő"
+    },
+    {
+        "id": 29,
+        "id_animal": 29,
+        "name": "Vörös róka",
+        "endangerment_status": "Legkevésbé aggasztó",
+        "habitat": "erdők, mezők",
+        "diet": "Mindenevő"
     }
+    
 ]

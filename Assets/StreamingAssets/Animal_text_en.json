@@ -166,5 +166,69 @@
         "endangerment_status": "Least Concern",
         "habitat": "forests, jungles",
         "diet": "Carnivore"
+    },
+    {
+       "id": 22,
+        "id_animal": 22,
+        "name": "Sparrow",
+        "endangerment_status": "Least concern",
+        "habitat": "cities, villages, parks",
+        "diet": "Omnivore"
+    },
+    {
+       "id": 23,
+        "id_animal": 23,
+        "name": "Orca",
+        "endangerment_status": "Data deficient",
+        "habitat": "cold and temperate oceans",
+        "diet": "Carnivore"
+    },
+    {
+       "id": 24,
+        "id_animal": 24,
+        "name": "Right whale",
+        "endangerment_status": "Endangered",
+        "habitat": "Atlantic Ocean",
+        "diet": "Carnivore (plankton)"
+    },
+    {
+       "id": 25,
+        "id_animal": 25,
+        "name": "Wild duck",
+        "endangerment_status": "Least Concern",
+        "habitat": "wetlands",
+        "diet": "Omnivore"
+    },
+    {
+       "id": 26,
+        "id_animal": 26,
+        "name": "Domestic pigeon",
+        "endangerment_status": "Least Concern",
+        "habitat": "cities, villages, parks",
+        "diet": "Omnivore"
+    },
+    {
+       "id": 27,
+        "id_animal": 27,
+        "name": "European herring gull",
+        "endangerment_status": "Least Concern",
+        "habitat": "Coastal areas",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 28,
+        "id_animal": 28,
+        "name": "Doe",
+        "endangerment_status": "Endangered",
+        "habitat": "Rocky environment, forests",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 29,
+        "id_animal": 29,
+        "name": "Red fox",
+        "endangerment_status": "Least Concern",
+        "habitat": "forests, fields",
+        "diet": "Omnivore"
     }
 ]

@@ -166,5 +166,70 @@
         "endangerment_status": "Preocupación menor",
         "habitat": "bosques, selvas",
         "diet": "Carnívoro"
+    },
+    {
+        "id": 22,
+        "id_animal": 22,
+        "name": "Gorrión",
+        "endangerment_status": "Preocupación menor",
+        "habitat": "ciudades, pueblos, bosques",
+        "diet": "Omnívoro"
+    },
+    {
+        "id": 23,
+        "id_animal": 23,
+        "name": "Orca",
+        "endangerment_status": "Datos insuficientes",
+        "habitat": "océanos fríos y templados",
+        "diet": "Carnívoro"
+    },
+    {
+        "id": 24,
+        "id_animal": 24,
+        "name": "Ballena franca",
+        "endangerment_status": "En peligro",
+        "habitat": "Océano Atlántico",
+        "diet": "Carnívoro (plancton)"
+    },
+    {
+        "id": 25,
+        "id_animal": 25,
+        "name": "Ánade real",
+        "endangerment_status": "Preocupación menor",
+        "habitat": "humedales",
+        "diet": "Omnívoro"
+    },
+    {
+        "id": 26,
+        "id_animal": 26,
+        "name": "Paloma bravía",
+        "endangerment_status": "Preocupación menor",
+        "habitat": "ciudades, pueblos",
+        "diet": "Omnívoro"
+    },
+    {
+        "id": 27,
+        "id_animal": 27,
+        "name": "Gaviota argéntea",
+        "endangerment_status": "Preocupación menor",
+        "habitat": "zonas costeras",
+        "diet": "Omnívoro"
+    },
+    {
+        "id": 28,
+        "id_animal": 28,
+        "name": "Cierva",
+        "endangerment_status": "En peligro",
+        "habitat": "entornos rocosos",
+        "diet": "Herbívoro"
+    },
+    {
+        "id": 29,
+        "id_animal": 29,
+        "name": "Zorro rojo",
+        "endangerment_status": "Preocupación menor",
+        "habitat": "bosques, campos",
+        "diet": "Omnívoro"
     }
+    
 ]

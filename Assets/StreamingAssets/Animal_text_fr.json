@@ -166,5 +166,70 @@
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, jungles",
         "diet": "Carnivore"
+    },
+    {
+        "id": 22,
+        "id_animal": 22,
+        "name": "Moineau",
+        "endangerment_status": "Préoccupation mineure",
+        "habitat": "villes, villages, forêts",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 23,
+        "id_animal": 23,
+        "name": "Orque",
+        "endangerment_status": "Données insuffisantes",
+        "habitat": "océans froids et tempérés",
+        "diet": "Carnivore"
+    },
+    {
+        "id": 24,
+        "id_animal": 24,
+        "name": "Baleine franche",
+        "endangerment_status": "En danger",
+        "habitat": "Océan Atlantique",
+        "diet": "Carnivore (plancton)"
+    },
+    {
+        "id": 25,
+        "id_animal": 25,
+        "name": "Canard colvert",
+        "endangerment_status": "Préoccupation mineure",
+        "habitat": "zones humides",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 26,
+        "id_animal": 26,
+        "name": "Pigeon biset",
+        "endangerment_status": "Préoccupation mineure",
+        "habitat": "villes, villages",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 27,
+        "id_animal": 27,
+        "name": "Goéland argenté",
+        "endangerment_status": "Préoccupation mineure",
+        "habitat": "zones côtières",
+        "diet": "Omnivore"
+    },
+    {
+        "id": 28,
+        "id_animal": 28,
+        "name": "Biche",
+        "endangerment_status": "En danger",
+        "habitat": "environnements rocheux",
+        "diet": "Herbivore"
+    },
+    {
+        "id": 29,
+        "id_animal": 29,
+        "name": "Renard roux",
+        "endangerment_status": "Préoccupation mineure",
+        "habitat": "forêts, champs",
+        "diet": "Omnivore"
     }
+    
 ]

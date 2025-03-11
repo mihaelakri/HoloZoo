@@ -166,5 +166,69 @@
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "šume, prašume",
         "diet": "Mesojed"
+    },
+    {
+       "id": 22,
+        "id_animal": 22,
+        "name": "Vrabac",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "gradovi, sela, šume",
+        "diet": "Svejed"
+    },
+    {
+       "id": 23,
+        "id_animal": 23,
+        "name": "Orka",
+        "endangerment_status": "Nedovoljno podataka",
+        "habitat": "hladni i umjereni oceani",
+        "diet": "Mesojed"
+    },
+    {
+       "id": 24,
+        "id_animal": 24,
+        "name": "Glatki kit",
+        "endangerment_status": "Ugrožen",
+        "habitat": "Atlantski ocean",
+        "diet": "Mesojed (plankton)"
+    },
+    {
+       "id": 25,
+        "id_animal": 25,
+        "name": "Divlja patka",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "močvarna područja",
+        "diet": "Svejed"
+    },
+    {
+       "id": 26,
+        "id_animal": 26,
+        "name": "Gradski golub",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "gradovi, sela",
+        "diet": "Svejed"
+    },
+    {
+       "id": 27,
+        "id_animal": 27,
+        "name": "Srebrnasti galeb",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Obalna područja",
+        "diet": "Svejed"
+    },
+    {
+        "id": 28,
+        "id_animal": 28,
+        "name": "Košuta",
+        "endangerment_status": "Ugrožen",
+        "habitat": "Stjenovito okruženje",
+        "diet": "Biljojed"
+    },
+    {
+        "id": 29,
+        "id_animal": 29,
+        "name": "Crvena lisica",
+        "endangerment_status": "Najmanja zabrinutost",
+        "habitat": "Šume, polja",
+        "diet": "Svejed"
     }
 ]

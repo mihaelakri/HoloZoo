@@ -224,10 +224,109 @@
         "id_area": [
             7, 8
         ],
-        "level": 3,
+        "level": 4,
         "url_model": "AnimalModels/GreatHornedOwl_Legacy",
         "url_slika": "AnimalProfiles/animprof_owl",
         "weight": "910g -2.5 kg",
-        "population": "5.7 milijuna"
+        "population": 5700000
+    },
+    {
+        "id": 22,
+        "id_area": [
+            1, 2, 3, 4, 7, 8
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Sparrow_Legacy",
+        "url_slika": "AnimalProfiles/animprof_pticice",
+        "weight": "24g - 40g",
+        "population": 160000000
+    },
+    {
+        "id": 23,
+        "id_area": [
+            9
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Orca",
+        "url_slika": "AnimalProfiles/animprof_orca",
+        "weight": "3000 - 4000 kg",
+        "population": 50000
+    },
+    {
+        "id": 24,
+        "id_area": [
+            9
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/RightWhale",
+        "url_slika": "AnimalProfiles/animprof_whale",
+        "weight": "40 - 70 t",
+        "population": 370
+    },
+    {
+        "id": 25,
+        "id_area": [
+            2, 3, 8
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Duck_Legacy",
+        "url_slika": "AnimalProfiles/animprof_duck",
+        "weight": " 0,5 - 1,6 kg",
+        "population": 34000000
+    },
+    {
+        "id": 26,
+        "id_area": [
+            1, 2, 3, 7, 8
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Pigeon_Legacy",
+        "url_slika": "AnimalProfiles/animprof_pigeon",
+        "weight": " 240 - 380 g",
+        "population": 300000000
+    },
+    {
+        "id": 27,
+        "id_area": [
+            2
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Seagull_Legacy",
+        "url_slika": "AnimalProfiles/animprof_seagull",
+        "weight": "0,7 - 1,1 kg",
+        "population": 1060000
+    },
+    {
+       "id": 28,
+        "id_area": [
+            2, 3
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/DeerDoe_Legacy",
+        "url_slika": "AnimalProfiles/animprof_doe",
+        "weight": "43-150kg",
+        "population": 400000
+    },
+    {
+       "id": 29,
+        "id_area": [
+            1, 2, 3, 4, 8
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Fox_Legacy",
+        "url_slika": "AnimalProfiles/animprof_fox",
+        "weight": "2,2 – 14 kg",
+        "population": 7200000
+    },
+    {
+       "id": 30,
+        "id_area": [
+            1, 2, 3, 4, 7, 8
+        ],
+        "level": 1,
+        "url_model": "AnimalModels/Fox_Legacy",
+        "url_slika": "AnimalProfiles/animprof_fox",
+        "weight": "2,2 – 14 kg",
+        "population": 7200000
     }
 ]
