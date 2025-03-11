@@ -2,22 +2,20 @@
 
 ## TO DO LIST
 
-- [x] fix: not showing animals in oceas/south america (randomly started to work?)
-- [x] fix: not showing animals with muliple area ids
-- [x] fix: not applying dyslexia font on globe popup font 
-- [x] fix: info screen dyslexia font not applying on project number text 
+### \(**@mihaelakri**)
 - [ ] fix: UI scalability 
-- [x] fix: globe popup not big enough for 3rd row (?)
-- [x] fix: level scrollbar not interactable 
-- [x] chore: add more and animals
 - [ ] chore add more questions
 - [ ] chore: add more animals per level 
+- [ ] fix: FillScore - ShowUnlockedAnimals: add translation
 
-- [x] chore: turn unused coroutines to methods
+### \(**@izelentrovic**)
 - [ ] feat: manual Bluetooth turn on/off/connect
-- [x] fix: translations for PrivacyPolicy
 - [ ] fix: re-do low resolution sprites
 - [ ] refactor: bluetooth sending in FixedUpdate
+- [ ] fix?: revisit bluetooth sending and FixedUpdate
+
+### Unsorted
+- [ ] feat: BT overlays translations
 
  ## BUGS noticed
 
@@ -25,15 +23,6 @@
 Login+<Log_in>d__4.MoveNext () (at Assets/Scripts/Login.cs:20) što je ubiti redak    var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text) 
  - [ ] In LogIn, Home and globe : NullReferenceException: Object reference not set to an instance of an object
 ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessibility.cs:134)
- - [ ] different font-size animals globe popup
-
-- [ ] fix: animal mobile camera clipping (e.g. on elephant)
-- [x] refactor: bluetooth sending in FixedUpdate
-- [x] fix: animal mobile camera clipping (e.g. on elephant)
-- [x] fix: animal model pivot should be centered
-- [x] fix: score unlocked animals shouldn't show up when empty
-- [ ] fix: FillScore - ShowUnlockedAnimals: add translation
-- [ ] fix?: revisit bluetooth sending and FixedUpdate
 
 ## Done List
 
@@ -78,6 +67,21 @@ ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessib
 - [x] feat: remove all calls to remote host
 - [x] feat: remove internet connection checks
 - [x] fix: globe initial weird rendering
+
+- [x] fix: not showing animals in oceas/south america (randomly started to work?)
+- [x] fix: not showing animals with muliple area ids
+- [x] fix: not applying dyslexia font on globe popup font 
+- [x] fix: info screen dyslexia font not applying on project number text 
+- [x] fix: globe popup not big enough for 3rd row (?)
+- [x] fix: level scrollbar not interactable 
+- [x] chore: add more and animals
+- [x] chore: turn unused coroutines to methods
+- [x] fix: translations for PrivacyPolicy
+- [x] refactor: bluetooth sending in FixedUpdate
+- [x] fix: animal mobile camera clipping (e.g. on elephant)
+- [x] fix: animal model pivot should be centered
+- [x] fix: score unlocked animals shouldn't show up when empty
+- [x] feat?: remove login from Hologram device
 
 ## Cloning and running the project
 

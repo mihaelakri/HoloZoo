@@ -258,7 +258,13 @@ public class GameData : MonoBehaviour
     public List<Question> GetQuizQuestions(int difficulty)
     {
         int numQuestions = difficulty * 3;
-        return ShuffleList(questions).GetRange(0, numQuestions);
+        var userLevel = GetCurrentUser()?.level ?? int.MinValue;
+
+        var questions_lvlcapped = questions.Where(q =>
+            (GetAnimal(q.id_animal)?.level ?? int.MaxValue) <= userLevel
+        ).ToList();
+
+        return ShuffleList(questions_lvlcapped).GetRange(0, numQuestions);
     }
 
 #nullable restore
