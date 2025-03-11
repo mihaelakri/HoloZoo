@@ -141,6 +141,7 @@ namespace HoloZoo.DataModels
         {
             public string try_again;
             public string bravo;
+            public string unlocked_animals;
         }
 
         public class InfoData
