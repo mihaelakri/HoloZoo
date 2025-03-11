@@ -9,7 +9,9 @@
 - [ ] fix: UI scalability 
 - [x] fix: globe popup not big enough for 3rd row (?)
 - [x] fix: level scrollbar not interactable 
-- [ ] chore: add more questions and animals
+- [x] chore: add more and animals
+- [ ] chore add more questions
+- [ ] chore: add more animals per level 
 
 - [x] chore: turn unused coroutines to methods
 - [ ] feat: manual Bluetooth turn on/off/connect
@@ -23,6 +25,7 @@
 Login+<Log_in>d__4.MoveNext () (at Assets/Scripts/Login.cs:20) što je ubiti redak    var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text) 
  - [ ] In LogIn, Home and globe : NullReferenceException: Object reference not set to an instance of an object
 ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessibility.cs:134)
+ - [ ] different font-size animals globe popup
 
 - [ ] fix: animal mobile camera clipping (e.g. on elephant)
 - [x] refactor: bluetooth sending in FixedUpdate
