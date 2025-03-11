@@ -157,4 +157,17 @@ public class InitializeConnection : MonoBehaviour
         CommConstants.animal_id = rotationMsg.animal_id;
         // Debug.Log("Bluetooth - BTReceiveRotate3DModel: " + CommConstants.x + ", " + CommConstants.y + ", " + CommConstants.z + ", " + CommConstants.animal_id);
     }
+
+    public void EnableBluetoothDiscoverability(int duration = 300)
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            using AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            using AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+            using AndroidJavaObject intent = new AndroidJavaObject("android.content.Intent", "android.bluetooth.adapter.action.REQUEST_DISCOVERABLE");
+
+            intent.Call<AndroidJavaObject>("putExtra", "android.bluetooth.adapter.extra.DISCOVERABLE_DURATION", duration);
+            currentActivity.Call("startActivity", intent);
+        }
+    }
 }
