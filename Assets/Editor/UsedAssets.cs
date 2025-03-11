@@ -17,7 +17,7 @@ public static class UsedAssets
 
         $"{prefix}Ocean Animals Pack Vol 1/Great White Shark/Prefab/GreatWhiteShark.prefab",
 
-        $"{prefix}Ocean Animals Pack Vol 1/Orca/Prefabs/Orca.prefab",
+        $"{prefix}Ocean Animals Pack Vol 1/Orca/Prefab/Orca.prefab",
 
         $"{prefix}African Animals Pack/Zebra/Prefabs/Zebra_Legacy.prefab",
 
