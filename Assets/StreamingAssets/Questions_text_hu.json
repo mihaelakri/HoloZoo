@@ -126,5 +126,158 @@
         "answer_one": "Európai mezei nyúl",
         "answer_two": "Arany Guernsey kecske",
         "answer_three": "Európai szürke farkas"
+    },
+    {
+        "id": 17,
+        "id_question": 17,
+        "question_text": "Melyik állat táplálkozik főleg planktonnal?",
+        "answer_one": "Delfin",
+        "answer_two": "Orka",
+        "answer_three": "Eubalaena"
+    },
+    {
+        "id": 18,
+        "id_question": 18,
+        "question_text": "Melyik madár nem mindenevő?",
+        "answer_one": "Tőkés réce",
+        "answer_two": "Óriás szarvasbagoly",
+        "answer_three": "Kopó varjú"
+    },
+    {
+        "id": 19,
+        "id_question": 19,
+        "question_text": "Melyik állat él leginkább sűrű erdőkben a hegyekben?",
+        "answer_one": "Európai barna medve",
+        "answer_two": "Rhinocérosz",
+        "answer_three": "Ezüstgólya"
+    },
+    {
+        "id": 20,
+        "id_question": 20,
+        "question_text": "Melyik kontinensen nem él a vörös róka?",
+        "answer_one": "Észak-Amerika",
+        "answer_two": "Ázsia",
+        "answer_three": "Dél-Amerika"
+    },
+    {
+        "id": 21,
+        "id_question": 21,
+        "question_text": "Melyik madár súlya több mint egy kilogramm?",
+        "answer_one": "Veréb",
+        "answer_two": "Ázsiai",
+        "answer_three": "Ezüstgólya"
+    },
+    {
+        "id": 22,
+        "id_question": 22,
+        "question_text": "Melyik állat nem él Afrikában?",
+        "answer_one": "Szarvas",
+        "answer_two": "Vörös róka",
+        "answer_three": "Eurázsiai vaddisznó"
+    },
+    {
+        "id": 23,
+        "id_question": 23,
+        "question_text": "Melyik állat nem él Ázsiában?",
+        "answer_one": "Fehérfejű halászlé",
+        "answer_two": "Eurázsiai vaddisznó",
+        "answer_three": "Európai barna medve"
+    },
+    {
+        "id": 24,
+        "id_question": 24,
+        "question_text": "Melyik állatnak van kevesebb mint 1000 egyedje?",
+        "answer_one": "Orka",
+        "answer_two": "Imbrik teknős",
+        "answer_three": "Eubalaena"
+    },
+    {
+        "id": 25,
+        "id_question": 25,
+        "question_text": "Mi a rinocérosz megőrzési állapota?",
+        "answer_one": "Kritikusan veszélyeztetett",
+        "answer_two": "Veszélyeztetett",
+        "answer_three": "Nem besorolt"
+    },
+    {
+        "id": 26,
+        "id_question": 26,
+        "question_text": "Melyik madár él leginkább mocsaras területeken?",
+        "answer_one": "Kopó varjú",
+        "answer_two": "Tőkés réce",
+        "answer_three": "Ezüstgólya"
+    },
+    {
+        "id": 27,
+        "id_question": 27,
+        "question_text": "Melyik állat endemikus a Csatorna-szigetekre?",
+        "answer_one": "Guernsey aranykecske",
+        "answer_two": "Imbrik teknős",
+        "answer_three": "Óriás szarvasbagoly"
+    },
+    {
+        "id": 28,
+        "id_question": 28,
+        "question_text": "Hány víziló maradt vadonban?",
+        "answer_one": "2500",
+        "answer_two": "125",
+        "answer_three": "780"
+    },
+    {
+        "id": 29,
+        "id_question": 29,
+        "question_text": "Melyik állat érheti el a legnagyobb súlyt?",
+        "answer_one": "Eubalaena",
+        "answer_two": "Orka",
+        "answer_three": "Afrikai elefánt"
+    },
+    {
+        "id": 30,
+        "id_question": 30,
+        "question_text": "Melyik állat él a tundrában?",
+        "answer_one": "Nagy fehér cápa",
+        "answer_two": "Európai szürke farkas",
+        "answer_three": "Sarki farkas"
+    },
+    {
+        "id": 31,
+        "id_question": 31,
+        "question_text": "Mi a különbség a delfin és a cápa között?",
+        "answer_one": "Megőrzési állapot",
+        "answer_two": "Élőhely",
+        "answer_three": "Táplálkozás"
+    },
+    {
+        "id": 32,
+        "id_question": 32,
+        "question_text": "Melyik állat él kizárólag Észak-Amerikában?",
+        "answer_one": "Fehérfejű halászlé",
+        "answer_two": "Európai nyúl",
+        "answer_three": "Tőkés réce"
+    },
+    {
+        "id": 33,
+        "id_question": 33,
+        "question_text": "Mi a szarvas nőstényének neve?",
+        "answer_one": "Kanca",
+        "answer_two": "Szarvas",
+        "answer_three": "Tehén"
+    },
+    {
+        "id": 34,
+        "id_question": 34,
+        "question_text": "Mi a különbség a szarvas és a szarvas között?",
+        "answer_one": "Szín",
+        "answer_two": "Sörény",
+        "answer_three": "Bika"
+    },
+    {
+        "id": 35,
+        "id_question": 35,
+        "question_text": "Melyik állat nem besorolt megőrzési állapotú?",
+        "answer_one": "Orka",
+        "answer_two": "Humboldt tintahal",
+        "answer_three": "Rinocérosz"
     }
+    
 ]

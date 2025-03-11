@@ -126,5 +126,158 @@
         "answer_one": "Lièvre européen",
         "answer_two": "Chèvre Guernsey dorée",
         "answer_three": "Loup gris européen"
+    },
+    {
+        "id": 17,
+        "id_question": 17,
+        "question_text": "Quel animal se nourrit principalement de plancton ?",
+        "answer_one": "Dauphin",
+        "answer_two": "Orque",
+        "answer_three": "Baleine franche"
+    },
+    {
+        "id": 18,
+        "id_question": 18,
+        "question_text": "Lequel des oiseaux suivants n'est pas omnivore ?",
+        "answer_one": "Canard colvert",
+        "answer_two": "Hibou grand-duc d'Amérique",
+        "answer_three": "Corbeau nécrophage"
+    },
+    {
+        "id": 19,
+        "id_question": 19,
+        "question_text": "Quel animal vit principalement dans les montagnes densément boisées ?",
+        "answer_one": "Ours brun européen",
+        "answer_two": "Rhinocéros",
+        "answer_three": "Goéland argenté"
+    },
+    {
+        "id": 20,
+        "id_question": 20,
+        "question_text": "Sur quel continent le renard roux n'habite-t-il pas ?",
+        "answer_one": "Amérique du Nord",
+        "answer_two": "Asie",
+        "answer_three": "Amérique du Sud"
+    },
+    {
+        "id": 21,
+        "id_question": 21,
+        "question_text": "Lequel des oiseaux suivants peut peser plus d'un kilogramme ?",
+        "answer_one": "Moineau",
+        "answer_two": "Asie",
+        "answer_three": "Goéland argenté"
+    },
+    {
+        "id": 22,
+        "id_question": 22,
+        "question_text": "Lequel des animaux suivants ne vit pas en Afrique ?",
+        "answer_one": "Cerf",
+        "answer_two": "Renard roux",
+        "answer_three": "Sanglier d'Eurasie"
+    },
+    {
+        "id": 23,
+        "id_question": 23,
+        "question_text": "Lequel des animaux suivants ne vit pas en Asie ?",
+        "answer_one": "Pygargue à tête blanche",
+        "answer_two": "Sanglier d'Eurasie",
+        "answer_three": "Ours brun européen"
+    },
+    {
+        "id": 24,
+        "id_question": 24,
+        "question_text": "Lequel des animaux suivants a une population de moins de 1000 individus ?",
+        "answer_one": "Orque",
+        "answer_two": "Tortue imbriquée",
+        "answer_three": "Baleine franche"
+    },
+    {
+        "id": 25,
+        "id_question": 25,
+        "question_text": "Quel est l'état de conservation du rhinocéros ?",
+        "answer_one": "En danger critique",
+        "answer_two": "En danger",
+        "answer_three": "Non classé"
+    },
+    {
+        "id": 26,
+        "id_question": 26,
+        "question_text": "Lequel des oiseaux suivants vit principalement dans les zones marécageuses ?",
+        "answer_one": "Corbeau nécrophage",
+        "answer_two": "Canard colvert",
+        "answer_three": "Goéland argenté"
+    },
+    {
+        "id": 27,
+        "id_question": 27,
+        "question_text": "Lequel des animaux suivants est une espèce endémique des îles Anglo-Normandes ?",
+        "answer_one": "Chèvre dorée de Guernesey",
+        "answer_two": "Tortue imbriquée",
+        "answer_three": "Hibou grand-duc d'Amérique"
+    },
+    {
+        "id": 28,
+        "id_question": 28,
+        "question_text": "Combien reste-t-il d'hippopotames à l'état sauvage ?",
+        "answer_one": "2500",
+        "answer_two": "125",
+        "answer_three": "780"
+    },
+    {
+        "id": 29,
+        "id_question": 29,
+        "question_text": "Lequel des animaux suivants peut atteindre le poids le plus élevé ?",
+        "answer_one": "Baleine franche",
+        "answer_two": "Orque",
+        "answer_three": "Éléphant d'Afrique"
+    },
+    {
+        "id": 30,
+        "id_question": 30,
+        "question_text": "Lequel des animaux suivants vit dans la toundra ?",
+        "answer_one": "Grand requin blanc",
+        "answer_two": "Loup gris européen",
+        "answer_three": "Loup arctique"
+    },
+    {
+        "id": 31,
+        "id_question": 31,
+        "question_text": "Quelle est la différence entre le dauphin et le requin ?",
+        "answer_one": "État de conservation",
+        "answer_two": "Habitat",
+        "answer_three": "Régime alimentaire"
+    },
+    {
+        "id": 32,
+        "id_question": 32,
+        "question_text": "Lequel des animaux suivants vit exclusivement en Amérique du Nord ?",
+        "answer_one": "Pygargue à tête blanche",
+        "answer_two": "Lièvre européen",
+        "answer_three": "Canard colvert"
+    },
+    {
+        "id": 33,
+        "id_question": 33,
+        "question_text": "Comment s'appelle la femelle du cerf ?",
+        "answer_one": "Jument",
+        "answer_two": "Biche",
+        "answer_three": "Chevrette"
+    },
+    {
+        "id": 34,
+        "id_question": 34,
+        "question_text": "Quelle est la différence entre un cerf et une biche ?",
+        "answer_one": "Couleur",
+        "answer_two": "Crinière",
+        "answer_three": "Bois"
+    },
+    {
+        "id": 35,
+        "id_question": 35,
+        "question_text": "Lequel des animaux suivants a un état de conservation non classé ?",
+        "answer_one": "Orque",
+        "answer_two": "Calmar de Humboldt",
+        "answer_three": "Rhinocéros"
     }
+    
 ]

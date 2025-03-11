@@ -78,5 +78,100 @@
         "id": 16,
         "id_animal": 16,
         "correct_answer": 1
+    },
+    {
+        "id": 17,
+        "id_animal": 24,
+        "correct_answer": 3
+    },
+    {
+        "id": 18,
+        "id_animal": 21,
+        "correct_answer": 2
+    },
+    {
+        "id": 19,
+        "id_animal": 12,
+        "correct_answer": 1
+    },
+    {
+        "id": 20,
+        "id_animal": 29,
+        "correct_answer": 1
+    },
+    {
+        "id": 21,
+        "id_animal": 13,
+        "correct_answer": 3
+    },
+    {
+        "id": 22,
+        "id_animal": 12,
+        "correct_answer": 1
+    },
+    {
+        "id": 23,
+        "id_animal": 6,
+        "correct_answer": 1
+    },
+    {
+        "id": 24,
+        "id_animal": 24,
+        "correct_answer": 3
+    },
+    {
+        "id": 25,
+        "id_animal": 10,
+        "correct_answer": 1
+    },
+    {
+        "id": 26,
+        "id_animal": 25,
+        "correct_answer": 2
+    },
+    {
+        "id": 27,
+        "id_animal": 18,
+        "correct_answer": 1
+    },
+    {
+        "id": 28,
+        "id_animal": 3,
+        "correct_answer": 2
+    },
+    {
+        "id": 29,
+        "id_animal": 24,
+        "correct_answer": 1
+    },
+    {
+        "id": 30,
+        "id_animal": 15,
+        "correct_answer": 3
+    },
+    {
+        "id": 31,
+        "id_animal": 8,
+        "correct_answer": 1
+    },
+    {
+        "id": 32,
+        "id_animal": 6,
+        "correct_answer": 1
+    },
+    {
+        "id": 33,
+        "id_animal": 28,
+        "correct_answer": 2
+    },
+    {
+        "id": 34,
+        "id_animal": 28,
+        "correct_answer": 3
+    },
+    {
+        "id": 35,
+        "id_animal": 19,
+        "correct_answer": 2
     }
 ]

@@ -126,5 +126,158 @@
         "answer_one": "European hare",
         "answer_two": "Golden Guernsey goat",
         "answer_three": "European grey wolf"
+    },
+    {
+        "id": 17,
+        "id_question": 17,
+        "question_text": "Which animal primarily feeds on plankton?",
+        "answer_one": "Dolphin",
+        "answer_two": "Orca",
+        "answer_three": "Right whale"
+    },
+    {
+        "id": 18,
+        "id_question": 18,
+        "question_text": "Which of the following birds is not an omnivore?",
+        "answer_one": "Mallard",
+        "answer_two": "Great horned owl",
+        "answer_three": "Common raven"
+    },
+    {
+        "id": 19,
+        "id_question": 19,
+        "question_text": "Which animal mostly lives in densely forested mountains?",
+        "answer_one": "European brown bear",
+        "answer_two": "Rhinoceros",
+        "answer_three": "Herring gull"
+    },
+    {
+        "id": 20,
+        "id_question": 20,
+        "question_text": "Which continent is not inhabited by the red fox?",
+        "answer_one": "North America",
+        "answer_two": "Asia",
+        "answer_three": "South America"
+    },
+    {
+        "id": 21,
+        "id_question": 21,
+        "question_text": "Which of the following birds can weigh more than one kilogram?",
+        "answer_one": "Sparrow",
+        "answer_two": "Asia",
+        "answer_three": "Herring gull"
+    },
+    {
+        "id": 22,
+        "id_question": 22,
+        "question_text": "Which of the following animals does not live in Africa?",
+        "answer_one": "Deer",
+        "answer_two": "Red fox",
+        "answer_three": "Central European wild boar"
+    },
+    {
+        "id": 23,
+        "id_question": 23,
+        "question_text": "Which of the following animals does not live in Asia?",
+        "answer_one": "Bald eagle",
+        "answer_two": "Central European wild boar",
+        "answer_three": "European brown bear"
+    },
+    {
+        "id": 24,
+        "id_question": 24,
+        "question_text": "Which of the following animals has a population of fewer than 1000 individuals?",
+        "answer_one": "Orca",
+        "answer_two": "Seven-banded armadillo",
+        "answer_three": "North Atlantic right whale"
+    },
+    {
+        "id": 25,
+        "id_question": 25,
+        "question_text": "What is the conservation status of the rhinoceros?",
+        "answer_one": "Critically endangered",
+        "answer_two": "Endangered",
+        "answer_three": "Unclassified"
+    },
+    {
+        "id": 26,
+        "id_question": 26,
+        "question_text": "Which of the following birds primarily inhabits wetland areas?",
+        "answer_one": "Common raven",
+        "answer_two": "Mallard",
+        "answer_three": "Herring gull"
+    },
+    {
+        "id": 27,
+        "id_question": 27,
+        "question_text": "Which of the following species is endemic to the Channel Islands?",
+        "answer_one": "Golden Guernsey goat",
+        "answer_two": "Seven-banded armadillo",
+        "answer_three": "Great horned owl"
+    },
+    {
+        "id": 28,
+        "id_question": 28,
+        "question_text": "How many wild hippos are left in nature?",
+        "answer_one": "2500",
+        "answer_two": "125",
+        "answer_three": "780"
+    },
+    {
+        "id": 29,
+        "id_question": 29,
+        "question_text": "Which of the following animals can reach the greatest weight?",
+        "answer_one": "North Atlantic right whale",
+        "answer_two": "Orca",
+        "answer_three": "African elephant"
+    },
+    {
+        "id": 30,
+        "id_question": 30,
+        "question_text": "Which of the following animals lives in tundras?",
+        "answer_one": "Great white shark",
+        "answer_two": "European grey wolf",
+        "answer_three": "Arctic wolf"
+    },
+    {
+        "id": 31,
+        "id_question": 31,
+        "question_text": "How do dolphins and sharks differ?",
+        "answer_one": "Conservation status",
+        "answer_two": "Habitat",
+        "answer_three": "Diet"
+    },
+    {
+        "id": 32,
+        "id_question": 32,
+        "question_text": "Which of the following animals lives exclusively in North America?",
+        "answer_one": "Bald eagle",
+        "answer_two": "European hare",
+        "answer_three": "Mallard"
+    },
+    {
+        "id": 33,
+        "id_question": 33,
+        "question_text": "What is the name of a female deer?",
+        "answer_one": "Mare",
+        "answer_two": "Doe",
+        "answer_three": "Roe deer"
+    },
+    {
+        "id": 34,
+        "id_question": 34,
+        "question_text": "How do a stag and a doe differ?",
+        "answer_one": "Color",
+        "answer_two": "Mane",
+        "answer_three": "Antlers"
+    },
+    {
+        "id": 35,
+        "id_question": 35,
+        "question_text": "Which of the following animals has an unclassified conservation status?",
+        "answer_one": "Orca",
+        "answer_two": "Humboldt squid",
+        "answer_three": "Rhinoceros"
     }
+
 ]

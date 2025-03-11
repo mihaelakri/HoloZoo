@@ -42,7 +42,7 @@
     {
         "id": 6,
         "id_question": 6,
-        "question_text": "Koliko teži hippopotam?",
+        "question_text": "Koliko teži nilski konj?",
         "answer_one": "100 kg",
         "answer_two": "200 kg",
         "answer_three": "1.5 t"
@@ -58,7 +58,7 @@
     {
         "id": 8,
         "id_question": 8,
-        "question_text": "Gdje živi hippopotam?",
+        "question_text": "Gdje živi nilski konj?",
         "answer_one": "Rijeke i jezera",
         "answer_two": "Tundra",
         "answer_three": "Pustinja"
@@ -122,9 +122,161 @@
     {
         "id": 16,
         "id_question": 16,
-        "question_text": "Koja europska životinja živi u Australiji?",
+        "question_text": "Koja europska životinja živi i u Australiji?",
         "answer_one": "Europski zec",
         "answer_two": "Zlatna Guernsey koza",
         "answer_three": "Europski sivi vuk"
+    },
+    {
+        "id": 17,
+        "id_question": 17,
+        "question_text": "Koja životinja jede uglavnom plaktone?",
+        "answer_one": "Dupin",
+        "answer_two": "Orka",
+        "answer_three": "Glatki kit"
+    },
+    {
+        "id": 18,
+        "id_question": 18,
+        "question_text": "Koja od navedenih ptica nije svejed?",
+        "answer_one": "Divlja patka",
+        "answer_two": "Sjevernoamerička velika ušara",
+        "answer_three": "Strvinarski gavran"
+    },
+    {
+        "id": 19,
+        "id_question": 19,
+        "question_text": "Koja životinja njaviše živi u gusto šumovitim planinama?",
+        "answer_one": "Europski smeđi medvjed",
+        "answer_two": "Nosorog",
+        "answer_three": "Srebrnasti galeb"
+    },
+    {
+        "id": 20,
+        "id_question": 20,
+        "question_text": "Koji kontinet crvena lisica ne naseljava?",
+        "answer_one": "Sjevernu Ameriku",
+        "answer_two": "Aziju",
+        "answer_three": "Južnu Ameriku"
+    },
+    {
+        "id": 21,
+        "id_question": 21,
+        "question_text": "Koja od navedenih ptica može težiti više od jednog kilograma?",
+        "answer_one": "Vrabac",
+        "answer_two": "Aziju",
+        "answer_three": "Srebrnasti galeb"
+    },
+    {
+        "id": 22,
+        "id_question": 22,
+        "question_text": "Koja od navedenih životinja ne živi u Africi?",
+        "answer_one": "Jelen",
+        "answer_two": "Crvena lisica",
+        "answer_three": "Srednjoeuropska divlja svinja"
+    },
+    {
+        "id": 23,
+        "id_question": 23,
+        "question_text": "Koja od navedenih životinja ne živi u Aziji?",
+        "answer_one": "Bjeloglavi orao",
+        "answer_two": "Srednjoeuropska divlja svinja",
+        "answer_three": "Europski smeđi medvjed"
+    },
+    {
+        "id": 24,
+        "id_question": 24,
+        "question_text": "Koja od navedenih životinja ima populaciju manju od 1000 jedinki?",
+        "answer_one": "Orka",
+        "answer_two": "Sedmopruga usminjača",
+        "answer_three": "Glatki kit"
+    },
+    {
+        "id": 25,
+        "id_question": 25,
+        "question_text": "Koji je status ugroženosti nosoroga?",
+        "answer_one": "Kritično ugrožen",
+        "answer_two": "Ugrožen",
+        "answer_three": "Neklasificirano"
+    },
+    {
+        "id": 26,
+        "id_question": 26,
+        "question_text": "Koja od navedenih ptica živi pretežito u močvarim područjima?",
+        "answer_one": "Strvinarski gavran",
+        "answer_two": "Divlja patka",
+        "answer_three": "Srebrnasti galeb"
+    },
+    {
+        "id": 27,
+        "id_question": 27,
+        "question_text": "Koja od navedenih živi kao endemska vrsta na Kanalskim otocima?",
+        "answer_one": "Zlatna Guernsey koza",
+        "answer_two": "Sedmopruga usminjača",
+        "answer_three": "Sjevernoamerička velika ušara"
+    },
+    {
+        "id": 28,
+        "id_question": 28,
+        "question_text": "Koliko je jedniki nilskog konja preostalo u prirodi?",
+        "answer_one": "2500",
+        "answer_two": "125",
+        "answer_three": "780"
+    },
+    {
+        "id": 29,
+        "id_question": 29,
+        "question_text": "Koja od navedenih životinja može postići najveću težinu?",
+        "answer_one": "Glatki kit",
+        "answer_two": "Orka",
+        "answer_three": "Afrički slon"
+    },
+    {
+        "id": 30,
+        "id_question": 30,
+        "question_text": "Koja od navedenih životinja živi u tundrama?",
+        "answer_one": "Velika bijela psina",
+        "answer_two": "Europski sivi vuk",
+        "answer_three": "Arktički vuk"
+    },
+    {
+        "id": 31,
+        "id_question": 31,
+        "question_text": "Po kojoj se od navedenih stavki razlikuju dupin i morski pas?",
+        "answer_one": "Statusu ugroženosti",
+        "answer_two": "Području u kojem žive",
+        "answer_three": "Prehrani"
+    },
+    {
+        "id": 32,
+        "id_question": 32,
+        "question_text": "Koja od navedenih životinja živi isključivo u Sjevernoj Americi?",
+        "answer_one": "Bjeloglavi orao",
+        "answer_two": "Europski zec",
+        "answer_three": "Divlja patka"
+    },
+    {
+        "id": 33,
+        "id_question": 33,
+        "question_text": "Kako se zove ženka Jelena?",
+        "answer_one": "Kobila",
+        "answer_two": "Košuta",
+        "answer_three": "Srna"
+    },
+    {
+        "id": 34,
+        "id_question": 34,
+        "question_text": "Po čemu se razlikuju jelen i košuta?",
+        "answer_one": "Boja",
+        "answer_two": "Griva",
+        "answer_three": "Rogovi"
+    },
+    {
+        "id": 35,
+        "id_question": 35,
+        "question_text": "Koja od navedenih životinja ima nekvalificirani status ugroženosti?",
+        "answer_one": "Orka",
+        "answer_two": "Humboldtova lignja",
+        "answer_three": "Nosorog"
     }
 ]

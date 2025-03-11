@@ -126,5 +126,158 @@
         "answer_one": "Liebre europea",
         "answer_two": "Cabra dorada de Guernsey",
         "answer_three": "Lobo gris europeo"
+    },
+    {
+        "id": 17,
+        "id_question": 17,
+        "question_text": "¿Qué animal se alimenta principalmente de plancton?",
+        "answer_one": "Delfín",
+        "answer_two": "Orca",
+        "answer_three": "Ballena franca"
+    },
+    {
+        "id": 18,
+        "id_question": 18,
+        "question_text": "¿Cuál de las siguientes aves no es omnívora?",
+        "answer_one": "Ánade real",
+        "answer_two": "Búho real de América del Norte",
+        "answer_three": "Cuervo carroñero"
+    },
+    {
+        "id": 19,
+        "id_question": 19,
+        "question_text": "¿Qué animal vive principalmente en montañas densamente boscosas?",
+        "answer_one": "Oso pardo europeo",
+        "answer_two": "Rinoceronte",
+        "answer_three": "Gaviota argéntea"
+    },
+    {
+        "id": 20,
+        "id_question": 20,
+        "question_text": "¿En qué continente no habita el zorro rojo?",
+        "answer_one": "América del Norte",
+        "answer_two": "Asia",
+        "answer_three": "América del Sur"
+    },
+    {
+        "id": 21,
+        "id_question": 21,
+        "question_text": "¿Cuál de las siguientes aves puede pesar más de un kilogramo?",
+        "answer_one": "Gorrión",
+        "answer_two": "Asia",
+        "answer_three": "Gaviota argéntea"
+    },
+    {
+        "id": 22,
+        "id_question": 22,
+        "question_text": "¿Cuál de los siguientes animales no vive en África?",
+        "answer_one": "Ciervo",
+        "answer_two": "Zorro rojo",
+        "answer_three": "Jabalí euroasiático"
+    },
+    {
+        "id": 23,
+        "id_question": 23,
+        "question_text": "¿Cuál de los siguientes animales no vive en Asia?",
+        "answer_one": "Águila calva",
+        "answer_two": "Jabalí euroasiático",
+        "answer_three": "Oso pardo europeo"
+    },
+    {
+        "id": 24,
+        "id_question": 24,
+        "question_text": "¿Cuál de los siguientes animales tiene una población de menos de 1000 individuos?",
+        "answer_one": "Orca",
+        "answer_two": "Tortuga carey",
+        "answer_three": "Ballena franca"
+    },
+    {
+        "id": 25,
+        "id_question": 25,
+        "question_text": "¿Cuál es el estado de conservación del rinoceronte?",
+        "answer_one": "En peligro crítico",
+        "answer_two": "En peligro",
+        "answer_three": "No clasificado"
+    },
+    {
+        "id": 26,
+        "id_question": 26,
+        "question_text": "¿Cuál de las siguientes aves vive principalmente en zonas pantanosas?",
+        "answer_one": "Cuervo carroñero",
+        "answer_two": "Ánade real",
+        "answer_three": "Gaviota argéntea"
+    },
+    {
+        "id": 27,
+        "id_question": 27,
+        "question_text": "¿Cuál de los siguientes animales es una especie endémica de las Islas del Canal?",
+        "answer_one": "Cabra dorada de Guernsey",
+        "answer_two": "Tortuga carey",
+        "answer_three": "Búho real de América del Norte"
+    },
+    {
+        "id": 28,
+        "id_question": 28,
+        "question_text": "¿Cuántos hipopótamos quedan en estado salvaje?",
+        "answer_one": "2500",
+        "answer_two": "125",
+        "answer_three": "780"
+    },
+    {
+        "id": 29,
+        "id_question": 29,
+        "question_text": "¿Cuál de los siguientes animales puede alcanzar el mayor peso?",
+        "answer_one": "Ballena franca",
+        "answer_two": "Orca",
+        "answer_three": "Elefante africano"
+    },
+    {
+        "id": 30,
+        "id_question": 30,
+        "question_text": "¿Cuál de los siguientes animales vive en la tundra?",
+        "answer_one": "Tiburón blanco",
+        "answer_two": "Lobo gris europeo",
+        "answer_three": "Lobo ártico"
+    },
+    {
+        "id": 31,
+        "id_question": 31,
+        "question_text": "¿En qué se diferencian el delfín y el tiburón?",
+        "answer_one": "Estado de conservación",
+        "answer_two": "Hábitat",
+        "answer_three": "Dieta"
+    },
+    {
+        "id": 32,
+        "id_question": 32,
+        "question_text": "¿Cuál de los siguientes animales vive exclusivamente en América del Norte?",
+        "answer_one": "Águila calva",
+        "answer_two": "Liebre europea",
+        "answer_three": "Ánade real"
+    },
+    {
+        "id": 33,
+        "id_question": 33,
+        "question_text": "¿Cómo se llama la hembra del ciervo?",
+        "answer_one": "Yegua",
+        "answer_two": "Cierva",
+        "answer_three": "Corza"
+    },
+    {
+        "id": 34,
+        "id_question": 34,
+        "question_text": "¿En qué se diferencian el ciervo y la cierva?",
+        "answer_one": "Color",
+        "answer_two": "Crin",
+        "answer_three": "Cuernos"
+    },
+    {
+        "id": 35,
+        "id_question": 35,
+        "question_text": "¿Cuál de los siguientes animales tiene un estado de conservación no clasificado?",
+        "answer_one": "Orca",
+        "answer_two": "Calamar de Humboldt",
+        "answer_three": "Rinoceronte"
     }
+    
 ]
