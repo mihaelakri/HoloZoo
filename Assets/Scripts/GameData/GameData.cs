@@ -15,6 +15,7 @@ public class GameData : MonoBehaviour
 {
     public static GameData Instance { get; private set; }
     public static bool isMainDataLoaded = false;
+    public static bool isUserDataLoaded = false;
 
     public List<Area> areas;
     public List<Animal> animals;
@@ -74,6 +75,7 @@ public class GameData : MonoBehaviour
             user_json = File.ReadAllText(Application.persistentDataPath + "/Users.json");
             users = JsonConvert.DeserializeObject<List<User>>(user_json);
         }
+        isUserDataLoaded = true;
     }
 
     public IEnumerator LoadTranslatedTables(string lang)
