@@ -4,9 +4,9 @@
 
 ### \(**@mihaelakri**)
 - [ ] fix: UI scalability 
-- [ ] chore add more questions
+- [x] chore add more questions
 - [x] chore: add more animals per level 
-- [ ] fix: FillScore - ShowUnlockedAnimals: add translation
+- [x] fix: FillScore - ShowUnlockedAnimals: add translation
 
 ### \(**@izelentrovic**)
 - [ ] feat: manual Bluetooth turn on/off/connect
