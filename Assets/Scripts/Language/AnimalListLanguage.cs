@@ -1,16 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AnimalListLanguage : MonoBehaviour
 {
-    // Accessibility 
-    public Text threed_text;
-    public Text endangerment_status;
-    public Text region;
-    public Text habitat;
-    public Text weight;
-    public Text diet;
-    public Text population;
+   // Accessibility 
+    public Text list_text;
 
     void Start()
     {
@@ -21,12 +17,6 @@ public class AnimalListLanguage : MonoBehaviour
     {
         var translation = GameData.Instance.translations;
 
-        threed_text.text = translation.animal_profile_scene.threed_text;
-        endangerment_status.text = translation.animal_profile_scene.endangerment_status;
-        region.text = translation.animal_profile_scene.region;
-        habitat.text = translation.animal_profile_scene.habitat;
-        weight.text = translation.animal_profile_scene.weight;
-        diet.text = translation.animal_profile_scene.diet;
-        population.text = translation.animal_profile_scene.population;
+        list_text.text = translation.animal_list_scene.list_text;
     }
 }
