@@ -51,6 +51,9 @@
         "heading_login": "Bejelentkezés",
         "heading_register": "Regisztráció"
     },
+    "animal_list_scene": {
+        "list": "Állatok listája"
+    },
     "animal_profile_scene": {
         "threed_text": "Kattints az állat képére a 3D-s nézet megtekintéséhez",
         "endangerment_status": "Veszélyeztetettségi állapot",

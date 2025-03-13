@@ -51,6 +51,9 @@
         "heading_login": "Se connecter",
         "heading_register": "Créer un compte"
     },
+    "animal_list_scene": {
+        "list": "Liste des animaux"
+    },
     "animal_profile_scene": {
         "threed_text": "Vue 3D",
         "endangerment_status": "Statut de menace",

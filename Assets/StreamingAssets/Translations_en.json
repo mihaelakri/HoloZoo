@@ -51,6 +51,9 @@
         "heading_login": "Log in",
         "heading_register": "Register"
     },
+    "animal_list_scene": {
+        "list": "List of animals"
+    },
     "animal_profile_scene": {
         "threed_text": "3D View",
         "endangerment_status": "Endangerment Status",
