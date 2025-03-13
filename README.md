@@ -9,7 +9,7 @@
 - [x] fix: FillScore - ShowUnlockedAnimals: add translation
 
 ### \(**@izelentrovic**)
-- [ ] feat: manual Bluetooth turn on/off/connect
+- [x] feat: manual Bluetooth turn on/off/connect
 - [ ] fix: re-do low resolution sprites
 - [ ] refactor: bluetooth sending in FixedUpdate
 - [ ] fix?: revisit bluetooth sending and FixedUpdate

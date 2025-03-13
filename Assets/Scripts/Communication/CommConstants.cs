@@ -2,11 +2,7 @@ using CommMsgs;
 
 public static class CommConstants
 {
-    public static string conn_method;
-    public static bool is_BTConnected = false;
-    public static string paired_BT_server;
-
     public static float x = 0f, y = 0f, z = 0f;
     public static int animal_id = 1;
-    public static RotationMsg rotationMsg = new RotationMsg(0f, 0f, 0f, 0);
+    public static RotationMsg rotationMsg = new(0f, 0f, 0f, 0);
 }

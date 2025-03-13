@@ -17,18 +17,17 @@ public class LoadingScreen : MonoBehaviour
     IEnumerator SceneSwitch()
     {
         yield return new WaitForSeconds(delayBeforeLoading);
-
-        if (!PlayerPrefs.HasKey("ID"))
-        {
-            SceneManager.LoadScene(sceneNameToLoad);
-            yield break;
-        }
-
-        yield return new WaitUntil(() => GameData.isMainDataLoaded);
-
-        if (PlayerPrefs.GetString("device") == "mobile")
-            SceneManager.LoadScene("Home");
-        else
+        yield return new WaitUntil(() => 
+            GameData.isMainDataLoaded && GameData.isUserDataLoaded
+        );
+        
+        if (PlayerPrefs.GetString("device") == "tablet")
             SceneManager.LoadScene("HologramTablet");
+
+        else if (!PlayerPrefs.HasKey("ID"))
+            SceneManager.LoadScene(sceneNameToLoad);
+
+        else if (PlayerPrefs.GetString("device") == "mobile")
+            SceneManager.LoadScene("Home");
     }
 }
