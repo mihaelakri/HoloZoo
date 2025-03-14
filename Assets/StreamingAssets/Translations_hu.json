@@ -52,7 +52,7 @@
         "heading_register": "Regisztráció"
     },
     "animal_list_scene": {
-        "list": "Állatok listája"
+        "list_text": "Állatok listája"
     },
     "animal_profile_scene": {
         "threed_text": "Kattints az állat képére a 3D-s nézet megtekintéséhez",

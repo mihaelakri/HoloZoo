@@ -52,7 +52,7 @@
         "heading_register": "Registracija"
     },
     "animal_list_scene": {
-        "list": "Popis životinja"
+        "list_text": "Popis životinja"
     },
     "animal_profile_scene": {
         "threed_text": "3D prikaz",

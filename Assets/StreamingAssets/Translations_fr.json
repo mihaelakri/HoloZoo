@@ -52,7 +52,7 @@
         "heading_register": "Créer un compte"
     },
     "animal_list_scene": {
-        "list": "Liste des animaux"
+        "list_text": "Liste des animaux"
     },
     "animal_profile_scene": {
         "threed_text": "Vue 3D",

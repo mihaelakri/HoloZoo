@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,5 +16,6 @@ public class AnimalListLanguage : MonoBehaviour
         var translation = GameData.Instance.translations;
 
         list_text.text = translation.animal_list_scene.list_text;
+       
     }
 }

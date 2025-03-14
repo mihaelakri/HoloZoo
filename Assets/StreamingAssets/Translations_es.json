@@ -52,7 +52,7 @@
         "heading_register": "Registro"
     },
     "animal_list_scene": {
-        "list": "Lista de animales"
+        "list_text": "Lista de animales"
     },
     "animal_profile_scene": {
         "threed_text": "Vista 3D",
