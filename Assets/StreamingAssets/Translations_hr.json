@@ -51,6 +51,9 @@
         "heading_login": "Prijava",
         "heading_register": "Registracija"
     },
+    "registration_scene": {
+        "privacy_policy_text": "Registracijom prihvaćate pravila privatnosti."
+    },
     "animal_list_scene": {
         "list_text": "Popis životinja"
     },

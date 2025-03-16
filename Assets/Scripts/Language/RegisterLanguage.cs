@@ -9,6 +9,7 @@ public class RegisterLanguage : MonoBehaviour
     public Text password_placeholder;
     public Text password_repeat_placeholder;
     public Text register_btn;
+    public Text privacy_policy_text;
 
     void Start()
     {
@@ -24,5 +25,7 @@ public class RegisterLanguage : MonoBehaviour
         password_placeholder.text = translation.placeholders.placeholder_password;
         password_repeat_placeholder.text = translation.placeholders.placeholder_password_repeat;
         register_btn.text = translation.buttons.btn_register;
+        privacy_policy_text.text = translation.registration_scene.privacy_policy_text;
+
     }
 }

@@ -55,6 +55,8 @@ namespace HoloZoo.DataModels
         public PlaceholdersData placeholders;
         public MessagesData messages;
         public HeadingsData headings;
+
+        public RegistrationData registration_scene;
         public AnimalListData animal_list_scene;
         public AnimalProfileData animal_profile_scene;
         public ScoreData score_scene;
@@ -125,6 +127,12 @@ namespace HoloZoo.DataModels
             public string heading_learn_method;
             public string heading_login;
             public string heading_register;
+        }
+
+        
+        public class RegistrationData
+        {
+            public string privacy_policy_text;
         }
 
         public class AnimalListData

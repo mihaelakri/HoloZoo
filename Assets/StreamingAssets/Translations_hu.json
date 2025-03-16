@@ -51,6 +51,9 @@
         "heading_login": "Bejelentkezés",
         "heading_register": "Regisztráció"
     },
+    "registration_scene": {
+        "privacy_policy_text": "A regisztrációval elfogadja az adatvédelmi szabályzatot."
+    },
     "animal_list_scene": {
         "list_text": "Állatok listája"
     },

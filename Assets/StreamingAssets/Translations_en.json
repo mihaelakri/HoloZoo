@@ -51,6 +51,9 @@
         "heading_login": "Log in",
         "heading_register": "Register"
     },
+    "registration_scene": {
+        "privacy_policy_text": "By registering you accept the privacy policy."
+    },
     "animal_list_scene": {
         "list_text": "List of animals"
     },
