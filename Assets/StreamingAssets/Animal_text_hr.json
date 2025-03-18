@@ -3,6 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Afrički slon",
+        "general_info": "",
         "endangerment_status": "Kritično ugrožen",
         "habitat": "Savana",
         "diet": "Biljojed"
@@ -11,6 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Nilski krokodil",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Rijeka Nil",
         "diet": "Mesojed"
@@ -19,6 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Lavica",
+        "general_info": "",
         "endangerment_status": "Ranjiva",
         "habitat": "Travnjaci, savana",
         "diet": "Mesojed"
@@ -27,6 +30,7 @@
         "id": 4,
         "id_animal": 4,
         "name": "Lav",
+        "general_info": "",
         "endangerment_status": "Ranjiv",
         "habitat": "Travnjaci, savana",
         "diet": "Mesojed"
@@ -35,6 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Nilski konj",
+        "general_info": "",
         "endangerment_status": "Ranjiv",
         "habitat": "Rijeke, jezera i druga vodena tijela",
         "diet": "Biljojed"
@@ -43,6 +48,7 @@
         "id": 6,
         "id_animal": 6,
         "name": "Bjeloglavi orao",
+        "general_info": "",
         "endangerment_status": "Nije ugrožen",
         "habitat": "Tundra",
         "diet": "Mesojed"
@@ -51,6 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Dupin",
+        "general_info": "",
         "endangerment_status": "Ranjiv",
         "habitat": "Ocean, more",
         "diet": "Mesojed"
@@ -59,6 +66,7 @@
         "id": 8,
         "id_animal": 8,
         "name": "Velika bijela psina",
+        "general_info": "",
         "endangerment_status": "Ugrožena",
         "habitat": "Ocean, more",
         "diet": "Mesojed"
@@ -67,6 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Zebra",
+        "general_info": "",
         "endangerment_status": "Ugrožena",
         "habitat": "Travnjaci, savana",
         "diet": "Biljojed"
@@ -75,6 +84,7 @@
         "id": 10,
         "id_animal": 10,
         "name": "Nosorog",
+        "general_info": "",
         "endangerment_status": "Kritično ugrožen",
         "habitat": "Travnjaci, savana",
         "diet": "Biljojed"
@@ -83,6 +93,7 @@
         "id": 11,
         "id_animal": 11,
         "name": "Srednjoeuropska divlja svinja",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Šume",
         "diet": "Svejed"
@@ -91,6 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "Europski smeđi medvjed",
+        "general_info": "",
         "endangerment_status": "Ugrožen",
         "habitat": "Guste šumske planine",
         "diet": "Svejed"
@@ -99,6 +111,7 @@
         "id": 13,
         "id_animal": 13,
         "name": "Jelen",
+        "general_info": "",
         "endangerment_status": "Ugrožen",
         "habitat": "Stjenovito okruženje",
         "diet": "Biljojed"
@@ -107,6 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "Europski sivi vuk",
+        "general_info": "",
         "endangerment_status": "Ugrožen",
         "habitat": "Šume, tundra, planine",
         "diet": "Pretežno mesožder"
@@ -115,6 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Arktički vuk",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Arktička tundra",
         "diet": "Mesojed"
@@ -123,6 +138,7 @@
         "id": 16,
         "id_animal": 16,
         "name": "Europski zec",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Otvorena polja",
         "diet": "Biljojed"
@@ -131,6 +147,7 @@
         "id": 17,
         "id_animal": 17,
         "name": "Strvinarski gavran",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Svugdje",
         "diet": "Svejed"
@@ -139,6 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Zlatna Guernsey koza",
+        "general_info": "",
         "endangerment_status": "Ugrožena",
         "habitat": "Kanalski otoci",
         "diet": "Biljojed"
@@ -147,6 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Humboldtova lignja",
+        "general_info": "",
         "endangerment_status": "Neklasificirano",
         "habitat": "Dubine od 200m do 700m",
         "diet": "Mesojed"
@@ -155,6 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Sedmopruga usminjača",
+        "general_info": "",
         "endangerment_status": "Ugrožena",
         "habitat": "Morske vode u svim oceanima",
         "diet": "Pelagična"
@@ -163,6 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Sjevernoamerička velika ušara",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "šume, prašume",
         "diet": "Mesojed"
@@ -171,6 +192,7 @@
        "id": 22,
         "id_animal": 22,
         "name": "Vrabac",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "gradovi, sela, šume",
         "diet": "Svejed"
@@ -179,6 +201,7 @@
        "id": 23,
         "id_animal": 23,
         "name": "Orka",
+        "general_info": "",
         "endangerment_status": "Nedovoljno podataka",
         "habitat": "hladni i umjereni oceani",
         "diet": "Mesojed"
@@ -187,6 +210,7 @@
        "id": 24,
         "id_animal": 24,
         "name": "Glatki kit",
+        "general_info": "",
         "endangerment_status": "Ugrožen",
         "habitat": "Atlantski ocean",
         "diet": "Mesojed (plankton)"
@@ -195,6 +219,7 @@
        "id": 25,
         "id_animal": 25,
         "name": "Divlja patka",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "močvarna područja",
         "diet": "Svejed"
@@ -203,6 +228,7 @@
        "id": 26,
         "id_animal": 26,
         "name": "Gradski golub",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "gradovi, sela",
         "diet": "Svejed"
@@ -211,6 +237,7 @@
        "id": 27,
         "id_animal": 27,
         "name": "Srebrnasti galeb",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Obalna područja",
         "diet": "Svejed"
@@ -219,6 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Košuta",
+        "general_info": "",
         "endangerment_status": "Ugrožen",
         "habitat": "Stjenovito okruženje",
         "diet": "Biljojed"
@@ -227,6 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Crvena lisica",
+        "general_info": "",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Šume, polja",
         "diet": "Svejed"

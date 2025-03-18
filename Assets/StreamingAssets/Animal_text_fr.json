@@ -3,6 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Éléphant d'Afrique",
+        "general_info": "",
         "endangerment_status": "En danger critique",
         "habitat": "Savane",
         "diet": "Herbivore"
@@ -11,6 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Crocodile du Nil",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Fleuve Nil",
         "diet": "Carnivore"
@@ -19,6 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Lionne",
+        "general_info": "",
         "endangerment_status": "Vulnérable",
         "habitat": "Prairies, savane",
         "diet": "Carnivore"
@@ -27,6 +30,7 @@
         "id": 4,
         "id_animal": 4,
         "name": "Lion",
+        "general_info": "",
         "endangerment_status": "Vulnérable",
         "habitat": "Prairies, savane",
         "diet": "Carnivore"
@@ -35,6 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Hippopotame",
+        "general_info": "",
         "endangerment_status": "Vulnérable",
         "habitat": "Rivières, lacs et autres plans d'eau",
         "diet": "Herbivore"
@@ -43,6 +48,7 @@
         "id": 6,
         "id_animal": 6,
         "name": "Aigle royal",
+        "general_info": "",
         "endangerment_status": "Non menacé",
         "habitat": "Toundra",
         "diet": "Carnivore"
@@ -51,6 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Dauphin",
+        "general_info": "",
         "endangerment_status": "Vulnérable",
         "habitat": "Océan, mer",
         "diet": "Carnivore"
@@ -59,6 +66,7 @@
         "id": 8,
         "id_animal": 8,
         "name": "Grand requin blanc",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Océan, mer",
         "diet": "Carnivore"
@@ -67,6 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Zèbre",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Prairies, savane",
         "diet": "Herbivore"
@@ -75,6 +84,7 @@
         "id": 10,
         "id_animal": 10,
         "name": "Rhinocéros",
+        "general_info": "",
         "endangerment_status": "En danger critique",
         "habitat": "Prairies, savane",
         "diet": "Herbivore"
@@ -83,6 +93,7 @@
         "id": 11,
         "id_animal": 11,
         "name": "Sanglier d'Europe centrale",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Forêts",
         "diet": "Omnivore"
@@ -91,6 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "Ours brun d'Europe",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Montagnes densément boisées",
         "diet": "Omnivore"
@@ -99,6 +111,7 @@
         "id": 13,
         "id_animal": 13,
         "name": "Cerf mulet",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Environnements rocheux",
         "diet": "Herbivore"
@@ -107,6 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "Loup gris européen",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Forêts, toundra, montagnes",
         "diet": "Principalement carnivore"
@@ -115,6 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Loup arctique",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Toundra arctique",
         "diet": "Carnivore"
@@ -123,6 +138,7 @@
         "id": 16,
         "id_animal": 16,
         "name": "Lièvre d'Europe",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Champs ouverts",
         "diet": "Herbivore"
@@ -131,6 +147,7 @@
         "id": 17,
         "id_animal": 17,
         "name": "Corbeau freux",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Partout",
         "diet": "Omnivore"
@@ -139,6 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Chèvre de Guernesey dorée",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Îles Anglo-Normandes",
         "diet": "Herbivore"
@@ -147,6 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Calmar de Humboldt",
+        "general_info": "",
         "endangerment_status": "Non classé",
         "habitat": "Profondeurs de 200m à 700m",
         "diet": "Carnivore"
@@ -155,6 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Tortue luth",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Eaux marines de tous les océans",
         "diet": "Pélagique"
@@ -163,6 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Grand-duc d'Amérique",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, jungles",
         "diet": "Carnivore"
@@ -171,6 +192,7 @@
         "id": 22,
         "id_animal": 22,
         "name": "Moineau",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "villes, villages, forêts",
         "diet": "Omnivore"
@@ -179,6 +201,7 @@
         "id": 23,
         "id_animal": 23,
         "name": "Orque",
+        "general_info": "",
         "endangerment_status": "Données insuffisantes",
         "habitat": "océans froids et tempérés",
         "diet": "Carnivore"
@@ -187,6 +210,7 @@
         "id": 24,
         "id_animal": 24,
         "name": "Baleine franche",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "Océan Atlantique",
         "diet": "Carnivore (plancton)"
@@ -195,6 +219,7 @@
         "id": 25,
         "id_animal": 25,
         "name": "Canard colvert",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "zones humides",
         "diet": "Omnivore"
@@ -203,6 +228,7 @@
         "id": 26,
         "id_animal": 26,
         "name": "Pigeon biset",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "villes, villages",
         "diet": "Omnivore"
@@ -211,6 +237,7 @@
         "id": 27,
         "id_animal": 27,
         "name": "Goéland argenté",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "zones côtières",
         "diet": "Omnivore"
@@ -219,6 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Biche",
+        "general_info": "",
         "endangerment_status": "En danger",
         "habitat": "environnements rocheux",
         "diet": "Herbivore"
@@ -227,6 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Renard roux",
+        "general_info": "",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, champs",
         "diet": "Omnivore"

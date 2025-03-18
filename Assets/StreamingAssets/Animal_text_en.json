@@ -165,6 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Humboldt squid",
+        "general_info": "The Humboldt squid, also known as the jumbo squid, is a large, aggressive cephalopod found in the eastern Pacific Ocean, known for its ability to rapidly change color and hunt in coordinated groups. It can grow up to 1.5 meters long and is an opportunistic predator, feeding on fish and other squid using its sharp beak and powerful tentacles.",
         "endangerment_status": "Not classified",
         "habitat": "Depths of 200m to 700m",
         "diet": "Carnivore"
@@ -172,7 +173,8 @@
     {
         "id": 20,
         "id_animal": 20,
-        "name": "Leatherback sea turtle",
+        "name": "The leatherback sea turtle is the largest of all sea turtles, distinguished by its unique leathery shell instead of a hard carapace. It is a highly migratory species, traveling thousands of kilometers across oceans to feed on jellyfish, which it consumes in large quantities.",
+        "general_info": "",
         "endangerment_status": "Endangered",
         "habitat": "Marine waters throughout Oceans",
         "diet": "Pelagic"
@@ -181,6 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Great Horned Owl",
+        "general_info": "The great horned owl is a powerful and adaptable bird of prey found across the Americas, known for its distinctive ear tufts and deep hooting call. It is a skilled hunter with excellent night vision and a strong grip, capable of taking down prey much larger than itself.", 
         "endangerment_status": "Least Concern",
         "habitat": "forests, jungles",
         "diet": "Carnivore"
@@ -189,6 +192,7 @@
        "id": 22,
         "id_animal": 22,
         "name": "Sparrow",
+        "general_info": "Sparrows are small, social birds found worldwide, known for their adaptability to urban environments and distinctive chirping. They primarily feed on seeds and insects and often build nests in close proximity to humans.", 
         "endangerment_status": "Least concern",
         "habitat": "cities, villages, parks",
         "diet": "Omnivore"
@@ -197,6 +201,7 @@
        "id": 23,
         "id_animal": 23,
         "name": "Orca",
+        "general_info": "Orcas, also known as killer whales, are highly intelligent and social marine mammals that live in complex family groups called pods. They are apex predators with a diverse diet, using sophisticated hunting techniques to catch prey ranging from fish to large marine mammals.",
         "endangerment_status": "Data deficient",
         "habitat": "cold and temperate oceans",
         "diet": "Carnivore"
@@ -205,6 +210,7 @@
        "id": 24,
         "id_animal": 24,
         "name": "Right whale",
+        "general_info": "Right whales are large, slow-moving baleen whales known for their massive heads covered in rough patches called callosities. They are filter feeders that primarily consume tiny zooplankton and are among the most endangered whale species due to past whaling and ongoing threats like ship strikes and entanglement in fishing gear.", 
         "endangerment_status": "Endangered",
         "habitat": "Atlantic Ocean",
         "diet": "Carnivore (plankton)"
@@ -213,6 +219,7 @@
        "id": 25,
         "id_animal": 25,
         "name": "Wild duck",
+        "general_info": "Wild ducks are highly adaptable waterfowl found in lakes, rivers, and wetlands worldwide, known for their strong flying abilities and diverse plumage. They are omnivorous, feeding on plants, insects, and small aquatic creatures, and many species migrate seasonally over long distances.",
         "endangerment_status": "Least Concern",
         "habitat": "wetlands",
         "diet": "Omnivore"
@@ -221,6 +228,7 @@
        "id": 26,
         "id_animal": 26,
         "name": "Domestic pigeon",
+        "general_info": "Domestic pigeons are descendants of wild rock doves, known for their strong homing instincts and ability to adapt to urban environments. They have been used throughout history for communication, companionship, and racing, and they thrive on a diet of grains and seeds.",
         "endangerment_status": "Least Concern",
         "habitat": "cities, villages, parks",
         "diet": "Omnivore"
@@ -229,6 +237,7 @@
        "id": 27,
         "id_animal": 27,
         "name": "European herring gull",
+        "general_info": "The European herring gull is a large, widespread seabird found along coastal regions of Europe, known for its striking white and grey plumage and loud, harsh call. It is an opportunistic feeder, often scavenging for food in urban areas and on fishing boats, and can live in a variety of coastal and inland habitats.",
         "endangerment_status": "Least Concern",
         "habitat": "Coastal areas",
         "diet": "Omnivore"
@@ -237,6 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Doe",
+        "general_info": "A doe is a female deer, typically found in a variety of species including white-tailed, mule, and red deer. Known for their graceful movements, does primarily graze on vegetation and play a key role in the reproductive cycles of deer populations.",
         "endangerment_status": "Endangered",
         "habitat": "Rocky environment, forests",
         "diet": "Herbivore"
@@ -245,6 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Red fox",
+        "general_info": "The red fox is a highly adaptable mammal with a distinctive reddish-orange coat, found across a wide range of habitats from forests to urban areas. It is an omnivorous predator, hunting small animals, birds, and insects, but also feeding on fruits, vegetables, and human food scraps.",
         "endangerment_status": "Least Concern",
         "habitat": "forests, fields",
         "diet": "Omnivore"

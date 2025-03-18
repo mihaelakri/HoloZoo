@@ -21,6 +21,7 @@ namespace HoloZoo.DataModels
         public string weight;
         public int population;
         public string name;
+        public string general_info;
         public string endangerment_status;
         public string habitat;
         public string diet;
