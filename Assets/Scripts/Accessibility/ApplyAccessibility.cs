@@ -145,7 +145,7 @@ public class ApplyAccessibility : MonoBehaviour
 
     public void ApplyAccessibilitySettings()
     {
-        int fontSize = PlayerPrefs.GetInt("font_size", 14);
+        int fontSize = PlayerPrefs.GetInt("font_size", 18);
         bool isDyslexiaEnabled = PlayerPrefs.GetInt("dyslexia", 0) == 1;
         bool isContrastEnabled = PlayerPrefs.GetInt("contrast", 0) == 1;
 

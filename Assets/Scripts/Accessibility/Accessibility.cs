@@ -86,9 +86,11 @@ public class Accessibility : MonoBehaviour
 
     public void showAccesibility()
     {
-        if (PlayerPrefs.GetInt("font_size") == 16)
+        int fontSize = PlayerPrefs.GetInt("font_size", 18);
+
+        if (fontSize == 16)
             fontSizeScrollBar.value = 0;
-        else if (PlayerPrefs.GetInt("font_size") == 18)
+        else if (fontSize == 18)
             fontSizeScrollBar.value = 0.5f;
         else
             fontSizeScrollBar.value = 1;
