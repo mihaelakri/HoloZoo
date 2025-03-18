@@ -9,8 +9,12 @@
         "large": "grand"
     },
     "buttons": {
+        "btn_cancel": "ANNULER",
         "btn_confirm": "Confirmer",
+        "btn_connect": "CONNECTER",
+        "btn_disconnect": "DÉCONNECTER",
         "btn_end_instruction": "Commencer",
+        "btn_forget": "OUBLIER",
         "btn_game": "Jeu",
         "btn_globus_mode": "MODE GLOBUS",
         "btn_hologram": "Hologramme",
@@ -20,6 +24,7 @@
         "btn_login": "SE CONNECTER",
         "btn_new_quiz": "Commencer un autre quiz",
         "btn_next_question": "Prochaine question",
+        "btn_pair": "APPAIRER",
         "btn_ok": "OK",
         "btn_quiz": "QUIZ",
         "btn_register": "CRÉER UN COMPTE",
@@ -54,6 +59,15 @@
     "registration_scene": {
         "privacy_policy_text": "En vous inscrivant, vous acceptez la politique de confidentialité."
     },
+    "bluetoothOverlays": {
+        "notConnectedHeader": "Connectez le dispositif holographique",
+        "connectedHeader": "Connecté à",
+        "tabletUnpairedHeader": "Aucun appareil couplé",
+        "tabletPairedHeader": "Associé à",
+        "tabletConnectedHeader": "Connecté à",
+        "tabletUnpairedBody1": "Activer le",
+        "tabletUnpairedBody2": "sur un autre appareil"
+    },
     "animal_list_scene": {
         "list_text": "Liste des animaux"
     },
@@ -71,7 +85,6 @@
         "try_again": "Essaie encore !",
         "bravo": "Félicitations !",
         "unlocked_animals": "Nouveaux animaux débloqués !"
-
     },
     "info_scene": {
         "developed_by": "Développé par",

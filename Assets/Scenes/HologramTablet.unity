@@ -3389,6 +3389,7 @@ GameObject:
   - component: {fileID: 1381762375}
   - component: {fileID: 1381762374}
   - component: {fileID: 1381762377}
+  - component: {fileID: 1381762378}
   m_Layer: 0
   m_Name: BluetoothButton
   m_TagString: Untagged
@@ -3527,6 +3528,28 @@ MonoBehaviour:
   connectedOverlay: {fileID: 1214761627}
   pairedDeviceText: {fileID: 234403836}
   connectedDeviceText: {fileID: 95740094}
+--- !u!114 &1381762378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381762372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5382381a5a75148a00040ad5075d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unpairedHeader: {fileID: 137679594}
+  pairedHeader: {fileID: 400873882}
+  connectedHeader: {fileID: 465384582}
+  unpairedBody1: {fileID: 1571711426}
+  unpairedBody2: {fileID: 1107225972}
+  pairButton: {fileID: 1112926627}
+  connectButton: {fileID: 1624197430}
+  disconnectButton: {fileID: 1472801743}
+  forgetButton1: {fileID: 130093293}
+  forgetButton2: {fileID: 426480160}
 --- !u!1 &1472801741
 GameObject:
   m_ObjectHideFlags: 0

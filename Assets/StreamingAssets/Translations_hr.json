@@ -9,8 +9,12 @@
         "large": "veliki"
     },
     "buttons": {
+        "btn_cancel": "OTKAŽI",
         "btn_confirm": "Potvrdi",
+        "btn_connect": "POVEŽI",
+        "btn_disconnect": "PREKINI VEZU",
         "btn_end_instruction": "Započni",
+        "btn_forget": "ZABORAVI",
         "btn_game": "Igra",
         "btn_globus_mode": "GLOBUS",
         "btn_hologram": "Hologram",
@@ -20,6 +24,7 @@
         "btn_login": "PRIJAVA",
         "btn_new_quiz": "Novi kviz",
         "btn_next_question": "Sljedeće pitanje",
+        "btn_pair": "UPARI",
         "btn_ok": "OK",
         "btn_quiz": "KVIZ",
         "btn_register": "REGISTRACIJA",
@@ -53,6 +58,15 @@
     },
     "registration_scene": {
         "privacy_policy_text": "Registracijom prihvaćate pravila privatnosti."
+    },
+    "bluetoothOverlays": {
+        "notConnectedHeader": "Spojite hologramski uređaj",
+        "connectedHeader": "Povezan s",
+        "tabletUnpairedHeader": "Nijedan uređaj nije uparen",
+        "tabletPairedHeader": "Uparen sa",
+        "tabletConnectedHeader": "Povezan s",
+        "tabletUnpairedBody1": "Uključi",
+        "tabletUnpairedBody2": "na drugom uređaju"
     },
     "animal_list_scene": {
         "list_text": "Popis životinja"

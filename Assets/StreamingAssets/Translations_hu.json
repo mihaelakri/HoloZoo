@@ -9,8 +9,12 @@
         "large": "nagy"
     },
     "buttons": {
+        "btn_cancel": "MÉGSE",
         "btn_confirm": "Megerősítés",
+        "btn_connect": "CSATLAKOZÁS",
+        "btn_disconnect": "LEKAPCSOLÁS",
         "btn_end_instruction": "Start",
+        "btn_forget": "ELFELEJTÉS",
         "btn_game": "Játék",
         "btn_globus_mode": "GLOBUS MÓD",
         "btn_hologram": "Hologram",
@@ -20,6 +24,7 @@
         "btn_login": "BEJELENTKEZÉS",
         "btn_new_quiz": "Új kvíz indítása",
         "btn_next_question": "Következő kérdés",
+        "btn_pair": "PÁROSÍTÁS",
         "btn_ok": "OK",
         "btn_quiz": "KVÍZ",
         "btn_register": "REGISZTRÁCIÓ",
@@ -53,6 +58,15 @@
     },
     "registration_scene": {
         "privacy_policy_text": "A regisztrációval elfogadja az adatvédelmi szabályzatot."
+    },
+    "bluetoothOverlays": {
+        "notConnectedHeader": "Csatlakoztassa a hologramos eszközt",
+        "connectedHeader": "Csatlakozva a következőhöz",
+        "tabletUnpairedHeader": "Nincs eszköz párosítva",
+        "tabletPairedHeader": "Párosítva ezzel",
+        "tabletConnectedHeader": "Csatlakozva a következőhöz",
+        "tabletUnpairedBody1": "Kapcsolja be a",
+        "tabletUnpairedBody2": "másik eszközön"
     },
     "animal_list_scene": {
         "list_text": "Állatok listája"

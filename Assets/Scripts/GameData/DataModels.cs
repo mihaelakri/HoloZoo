@@ -58,6 +58,7 @@ namespace HoloZoo.DataModels
         public HeadingsData headings;
 
         public RegistrationData registration_scene;
+        public BluetoothOverlays bluetoothOverlays;
         public AnimalListData animal_list_scene;
         public AnimalProfileData animal_profile_scene;
         public ScoreData score_scene;
@@ -81,8 +82,12 @@ namespace HoloZoo.DataModels
 
         public class ButtonsData
         {
+            public string btn_cancel;
             public string btn_confirm;
+            public string btn_connect;
+            public string btn_disconnect;
             public string btn_end_instruction;
+            public string btn_forget;
             public string btn_game;
             public string btn_globus_mode;
             public string btn_hologram;
@@ -93,6 +98,7 @@ namespace HoloZoo.DataModels
             public string btn_new_quiz;
             public string btn_next_question;
             public string btn_ok;
+            public string btn_pair;
             public string btn_quiz;
             public string btn_register;
             public string btn_save;
@@ -130,10 +136,21 @@ namespace HoloZoo.DataModels
             public string heading_register;
         }
 
-        
         public class RegistrationData
         {
             public string privacy_policy_text;
+        }
+        
+        public class BluetoothOverlays
+        {
+            public string notConnectedHeader;
+            public string connectedHeader;
+
+            public string tabletUnpairedHeader;
+            public string tabletPairedHeader;
+            public string tabletConnectedHeader;
+            public string tabletUnpairedBody1;
+            public string tabletUnpairedBody2;
         }
 
         public class AnimalListData

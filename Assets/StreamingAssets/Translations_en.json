@@ -9,8 +9,12 @@
         "large": "large"
     },
     "buttons": {
+        "btn_cancel": "CANCEL",
         "btn_confirm": "Confirm",
+        "btn_connect": "CONNECT",
+        "btn_disconnect": "DISCONNECT",
         "btn_end_instruction": "Start",
+        "btn_forget": "FORGET",
         "btn_game": "Game",
         "btn_globus_mode": "GLOBUS MODE",
         "btn_hologram": "Hologram",
@@ -20,6 +24,7 @@
         "btn_login": "LOG IN",
         "btn_new_quiz": "New Quiz",
         "btn_next_question": "Next question",
+        "btn_pair": "PAIR",
         "btn_ok": "OK",
         "btn_quiz": "QUIZ",
         "btn_register": "REGISTER",
@@ -53,6 +58,15 @@
     },
     "registration_scene": {
         "privacy_policy_text": "By registering you accept the privacy policy."
+    },
+    "bluetoothOverlays": {
+        "notConnectedHeader": "Connect the hologram device",
+        "connectedHeader": "Connected to:",
+        "tabletUnpairedHeader": "No device paired",
+        "tabletPairedHeader": "Paired with:",
+        "tabletConnectedHeader": "Connected to:",
+        "tabletUnpairedBody1": "Turn on",
+        "tabletUnpairedBody2": "on other device"
     },
     "animal_list_scene": {
         "list_text": "List of animals"
