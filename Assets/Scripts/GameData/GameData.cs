@@ -17,6 +17,12 @@ public class GameData : MonoBehaviour
     public static bool isMainDataLoaded = false;
     public static bool isUserDataLoaded = false;
 
+    readonly JsonSerializerSettings jsonSettings = new()
+    {
+        MissingMemberHandling = MissingMemberHandling.Error,
+        ContractResolver = new RequireAllPropertiesResolver()
+    };
+
     public List<Area> areas;
     public List<Animal> animals;
     public List<Question> questions;
@@ -66,14 +72,14 @@ public class GameData : MonoBehaviour
             {
                 user_json = jsonResp;
             }));
-            users = JsonConvert.DeserializeObject<List<User>>(user_json);
+            users = JsonConvert.DeserializeObject<List<User>>(user_json, jsonSettings);
             Debug.Log($"{nameof(GameData)}: Users.json missing, creating with: {user_json}");
             SaveUserData();
         }
         else
         {
             user_json = File.ReadAllText(Application.persistentDataPath + "/Users.json");
-            users = JsonConvert.DeserializeObject<List<User>>(user_json);
+            users = JsonConvert.DeserializeObject<List<User>>(user_json, jsonSettings);
         }
         isUserDataLoaded = true;
     }
@@ -124,7 +130,7 @@ public class GameData : MonoBehaviour
         {
             translation_json = jsonResp;
         }));
-        translations = JsonConvert.DeserializeObject<Translations>(translation_json);
+        translations = JsonConvert.DeserializeObject<Translations>(translation_json, jsonSettings);
 
         isMainDataLoaded = true;
     }
@@ -136,7 +142,17 @@ public class GameData : MonoBehaviour
         Debug.Log($"{nameof(GameData)}: User data saved: {updatedJson}");
     }
 
-    class CustomPropertyResolver : DefaultContractResolver
+    public class RequireAllPropertiesResolver : DefaultContractResolver
+    {
+        protected override JsonProperty CreateProperty(System.Reflection.MemberInfo member, MemberSerialization memberSerialization)
+        {
+            var prop = base.CreateProperty(member, memberSerialization);
+            prop.Required = Required.Always;
+            return prop;
+        }
+    }
+
+    class CustomPropertyResolver : RequireAllPropertiesResolver
     {
         private readonly Dictionary<string, string> _propertyMappings;
 
@@ -310,6 +326,7 @@ public class GameData : MonoBehaviour
 
             if (foreignKeyLookup.TryGetValue(id, out JObject obj2))
             {
+                obj2.Remove(foreignKey);
                 mergedObject.Merge(obj2);
             }
             else
@@ -320,7 +337,7 @@ public class GameData : MonoBehaviour
             mergedArray.Add(mergedObject);
         }
 
-        List<T1> mergedList = mergedArray.ToObject<List<T1>>();
+        List<T1> mergedList = mergedArray.ToObject<List<T1>>(JsonSerializer.Create(jsonSettings));
         // Debug.Log(JsonConvert.SerializeObject(mergedList, Formatting.Indented));
 
         return mergedList;
