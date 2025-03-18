@@ -3,6 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "African elephant",
+        "general_info": "The African elephant is the largest living terrestrial animal, normally reaching 6 to 7.3 meters in length and 3.5 to 4 meters in height at the shoulder, and weighing between 6,000 to 9,000 kg. The African elephant is a herbivorous animal. Its diet varies according to its habitat; elephants living in forests, partial deserts, and grasslands all eat different proportions of herbs and tree or shrubbery leaves. Elephants inhabiting the shores of Lake Kariba have been recorded eating underwater plant life. To break down the plants it consumes, the African elephant has four large molars, two in each mandible of the jaw. Each of these molars is 10 cm wide and 30 cm long. Over time, these molars are worn away and new ones are grown to replace them as the elephant ages.",
         "endangerment_status": "Critically endangered",
         "habitat": "Savanah",
         "diet": "Herbivore"
@@ -11,6 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Nile crocodile",
+        "general_info": "The Nile crocodile is the largest freshwater predator in Africa, and may be considered the second-largest extant reptile and crocodilian in the world, after the saltwater crocodile. The Nile crocodile is quite widespread throughout sub-Saharan Africa, occurring mostly in the central, eastern, and southern regions of the continent and lives in different types of aquatic environments such as lakes, rivers, and marshlands. Although capable of living in saline environments, this species is rarely found in saltwater, but occasionally inhabits deltas and brackish lakes. The range of this species once stretched northward throughout the Nile, as far north as the Nile delta.",
         "endangerment_status": "Least concern",
         "habitat": "Nile river",
         "diet": "Carnivore"
@@ -19,6 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Lioness",
+        "general_info": "The lioness is a social feline, living in prides where she plays a key role in hunting and raising cubs. Lionesses are slightly smaller than male lions and lack a mane. They hunt in groups, often targeting large herbivores like zebras and wildebeest. Their strong social bonds make them effective cooperative hunters.",
         "endangerment_status": "Vulnerable",
         "habitat": "Grassland, savanna",
         "diet": "Carnivore"
@@ -26,7 +29,8 @@
     {
         "id": 4,
         "id_animal": 4,
-        "name": "Lion ",
+        "name": "Lion",
+        "general_info": "Lions are one of the most recognizable big cats, known for their majestic manes and social structure. They live in prides and are apex predators, relying on cooperative hunting to catch prey such as zebras, buffalo, and antelope. Males protect the territory while females do most of the hunting.",
         "endangerment_status": "Vulnerable",
         "habitat": "Grassland, savanna",
         "diet": "Carnivore"
@@ -35,6 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Hippopotamus",
+        "general_info": "The hippopotamus is a semi-aquatic mammal found in rivers and lakes. Despite their stocky appearance, they are highly aggressive and can run surprisingly fast on land. They spend most of the day in water to keep cool, emerging at night to graze on grasses.",
         "endangerment_status": "Vulnerable",
         "habitat": "Rivers, lakes, and other water bodies",
         "diet": "Herbivore"
@@ -43,7 +48,8 @@
         "id": 6,
         "id_animal": 6,
         "name": "Golden Eagle",
-        "endangerment_status": "Not threatened ",
+        "general_info": "Golden eagles are large birds of prey known for their keen eyesight and powerful hunting skills. They primarily feed on small to medium-sized mammals and birds, using their speed and sharp talons to catch prey. These eagles are found in open terrain, such as mountains and tundras.",
+        "endangerment_status": "Not threatened",
         "habitat": "Tundra",
         "diet": "Carnivore"
     },
@@ -51,14 +57,16 @@
         "id": 7,
         "id_animal": 7,
         "name": "Dolphin",
+        "general_info": "Dolphins are highly intelligent marine mammals known for their playful behavior and complex social structures. They use echolocation to navigate and hunt, feeding primarily on fish and squid. Dolphins communicate using a variety of clicks and whistles.",
         "endangerment_status": "Vulnerable",
-        "habitat": "Ocenan, sea",
+        "habitat": "Ocean, sea",
         "diet": "Carnivore"
     },
     {
         "id": 8,
         "id_animal": 8,
         "name": "Great white shark",
+        "general_info": "The great white shark is a powerful apex predator, reaching up to 6 meters in length. It has a keen sense of smell and excellent eyesight, allowing it to detect prey from long distances. These sharks feed mainly on fish and marine mammals like seals.",
         "endangerment_status": "Endangered",
         "habitat": "Ocean, sea",
         "diet": "Carnivore"
@@ -67,6 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Zebra",
+        "general_info": "Zebras are striped herbivores native to the African savanna. Their distinctive black-and-white stripes serve as a form of camouflage and help deter predators. They are highly social animals and travel in herds to stay safe from lions and other predators.",
         "endangerment_status": "Endangered",
         "habitat": "Grasslands, savanna",
         "diet": "Herbivore"
@@ -75,14 +84,16 @@
         "id": 10,
         "id_animal": 10,
         "name": "Rhinoceros",
+        "general_info": "Rhinoceroses are large, thick-skinned herbivores with a distinctive horn made of keratin. They are known for their strength and aggressive behavior when threatened. Due to poaching for their horns, rhinos are critically endangered.",
         "endangerment_status": "Critically endangered",
-        "habitat": "Grasslands, savanna ",
+        "habitat": "Grasslands, savanna",
         "diet": "Herbivore"
     },
     {
         "id": 11,
         "id_animal": 11,
         "name": "Central European boar",
+        "general_info": "The Central European boar is a highly adaptable wild pig species known for its intelligence and strong foraging abilities. It feeds on a variety of foods, including roots, nuts, small animals, and carrion. These boars have sharp tusks and can be aggressive when threatened.",
         "endangerment_status": "Least concern",
         "habitat": " Forests",
         "diet": "Omnivore"
@@ -91,6 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "European brown bear",
+        "general_info": "The European brown bear is one of the largest land carnivores, though it has an omnivorous diet consisting of berries, fish, and small mammals. It is a solitary animal that hibernates in winter and plays a key role in maintaining ecological balance in its habitat.",
         "endangerment_status": "Endangered",
         "habitat": "Densely forested mountains",
         "diet": "Omnivore"
@@ -99,6 +111,7 @@
         "id": 13,
         "id_animal": 13,
         "name": "Mule deer",
+        "general_info": "The mule deer is a medium-sized species of deer native to North America. Mule deer can leap over 8 feet high, making them excellent jumpers when they need to escape predators!",
         "endangerment_status": "Endangered",
         "habitat": "Rocky environment",
         "diet": "Herbivore"
@@ -107,6 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "European grey wolf",
+        "general_info": "The European grey wolf is a large carnivorous species found across Europe and parts of Asia, known for its powerful build and pack-oriented behavior. Wolves communicate with each other through a variety of vocalizations, including howls that can be heard up to 10 miles away in the right conditions!",
         "endangerment_status": " Endangered",
         "habitat": " Forests, tundra, mountains",
         "diet": "Mainly carnivorous"
@@ -115,6 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Arctic wolf",
+        "general_info": "The Arctic wolf is a subspecies of the grey wolf adapted to the harsh Arctic environment. These wolves have a thick white coat that provides camouflage in the snow and helps them survive in cold temperatures. Arctic wolves primarily feed on muskoxen and Arctic hares.",
         "endangerment_status": "Least Concern",
         "habitat": "Arctic tundra",
         "diet": "Carnivore"
@@ -122,7 +137,8 @@
     {
         "id": 16,
         "id_animal": 16,
-        "name": "European hare ",
+        "name": "European hare",
+        "general_info": "The European hare is a fast-running species native to Europe and parts of Asia, often seen in open fields and grasslands. European hares are known for their impressive speed and agility, capable of reaching up to 45 miles per hour when evading predators!", 
         "endangerment_status": "Least concern ",
         "habitat": "Open fields",
         "diet": "Herbivore"
@@ -131,6 +147,7 @@
         "id": 17,
         "id_animal": 17,
         "name": "Carrion crow",
+        "general_info": "The carrion crow is a highly intelligent bird found across Europe and parts of Asia, known for its all-black plumage and distinctive cawing call. Carrion crows are known to use tools, such as sticks, to extract food from hard-to-reach places, showcasing their remarkable problem-solving skills!",
         "endangerment_status": " Least Concern",
         "habitat": "Everywhere ",
         "diet": "Omnivore"
@@ -139,6 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Golden Guernsey",
+        "general_info": "The Golden Guernsey is a rare and distinctive breed of goat from the Channel Islands, known for its golden or cream-colored coat and docile nature. Golden Guernseys are excellent milk producers, and their rich, flavorful milk is often used to make delicious cheese!",
         "endangerment_status": "Endangered",
         "habitat": "Channel Islands",
         "diet": "Herbivore"
