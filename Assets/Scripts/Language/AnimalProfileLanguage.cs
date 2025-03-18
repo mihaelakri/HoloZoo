@@ -5,6 +5,7 @@ public class AnimalProfileLanguage : MonoBehaviour
 {
     // Accessibility 
     public Text threed_text;
+    public Text general_info;
     public Text endangerment_status;
     public Text region;
     public Text habitat;
@@ -22,6 +23,7 @@ public class AnimalProfileLanguage : MonoBehaviour
         var translation = GameData.Instance.translations;
 
         threed_text.text = translation.animal_profile_scene.threed_text;
+        general_info.text = translation.animal_profile_scene.general_info;
         endangerment_status.text = translation.animal_profile_scene.endangerment_status;
         region.text = translation.animal_profile_scene.region;
         habitat.text = translation.animal_profile_scene.habitat;

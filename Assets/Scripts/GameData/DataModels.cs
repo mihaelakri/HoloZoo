@@ -143,6 +143,7 @@ namespace HoloZoo.DataModels
         public class AnimalProfileData
         {
             public string threed_text;
+            public string general_info;
             public string endangerment_status;
             public string region;
             public string habitat;

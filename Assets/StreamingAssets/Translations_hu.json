@@ -59,6 +59,7 @@
     },
     "animal_profile_scene": {
         "threed_text": "Kattints az állat képére a 3D-s nézet megtekintéséhez",
+        "general_info": "Általános információ",
         "endangerment_status": "Veszélyeztetettségi állapot",
         "region": "Régió",
         "habitat": "Élőhely",

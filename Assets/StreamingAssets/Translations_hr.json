@@ -59,6 +59,7 @@
     },
     "animal_profile_scene": {
         "threed_text": "3D prikaz",
+        "general_info": "Opći podaci",
         "endangerment_status": "Status ugroženosti",
         "region": "Regija",
         "habitat": "Stanište",

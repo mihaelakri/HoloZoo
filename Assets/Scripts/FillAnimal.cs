@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class FillAnimal : MonoBehaviour
 {
     public Text nameText;
+    public Text generalInfoText;
     public Text endangermentStatusText;
     public Text regionText;
     public Text habitatsText;
@@ -29,6 +30,7 @@ public class FillAnimal : MonoBehaviour
         }
 
         nameText.text = animal.name;
+        generalInfoText.text = animal.general_info;
         endangermentStatusText.text = animal.endangerment_status;
         habitatsText.text = animal.habitat;
         weightText.text = animal.weight;

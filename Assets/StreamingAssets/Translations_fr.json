@@ -59,6 +59,7 @@
     },
     "animal_profile_scene": {
         "threed_text": "Vue 3D",
+        "general_info": "Informations générales",
         "endangerment_status": "Statut de menace",
         "region": "Région",
         "habitat": "Habitat",
