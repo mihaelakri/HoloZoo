@@ -49,6 +49,8 @@ public class GameData : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("lang"))
             StartCoroutine(LoadTranslatedTables(PlayerPrefs.GetString("lang", "en")));
+        else
+            isMainDataLoaded = true;
         StartCoroutine(LoadUserTable());
     }
 
