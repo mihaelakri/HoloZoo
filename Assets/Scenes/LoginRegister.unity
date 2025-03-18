@@ -945,7 +945,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -992,7 +992,6 @@ MonoBehaviour:
   panel: {fileID: 2108828895}
   backButton: {fileID: 1212239281843352109}
   m_Toggle: {fileID: 0}
-  TabletScene: {fileID: 102900000, guid: 10a2d4e38ffb195468ff14606a20b727, type: 3}
 --- !u!114 &1254712105
 MonoBehaviour:
   m_ObjectHideFlags: 0

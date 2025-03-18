@@ -354,7 +354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click on the picture to see 3D model
+  m_Text: 
 --- !u!222 &76796802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2500,7 +2500,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -2543,6 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 1756759631}
+  generalInfoText: {fileID: 0}
   endangermentStatusText: {fileID: 1576657825}
   regionText: {fileID: 41006573}
   habitatsText: {fileID: 385545775}
