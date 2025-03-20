@@ -97,7 +97,7 @@
     {
         "id": 20,
         "id_animal": 29,
-        "correct_answer": 1
+        "correct_answer": 3
     },
     {
         "id": 21,
@@ -198,7 +198,7 @@
         "id": 40,
         "id_animal": 3,
         "correct_answer": 1
-    }
+    },
     {
         "id": 41,
         "id_animal": 3,
@@ -248,5 +248,120 @@
         "id": 50,
         "id_animal": 10,
         "correct_answer": 3
+    },
+    {
+        "id": 51,
+        "id_animal": 11,
+        "correct_answer": 2
+    },
+    {
+        "id": 52,
+        "id_animal": 12,
+        "correct_answer": 2
+    },
+    {
+        "id": 53,
+        "id_animal": 12,
+        "correct_answer": 3
+    },
+    {
+        "id": 54,
+        "id_animal": 13,
+        "correct_answer": 2
+    },
+    {
+        "id": 55,
+        "id_animal": 14,
+        "correct_answer": 1
+    },
+    {
+        "id": 56,
+        "id_animal": 14,
+        "correct_answer": 2
+    },
+    {
+        "id": 57,
+        "id_animal": 15,
+        "correct_answer": 1
+    },
+    {
+        "id": 58,
+        "id_animal": 16,
+        "correct_answer": 3
+    },
+    {
+        "id": 59,
+        "id_animal": 17,
+        "correct_answer": 1
+    },
+    {
+        "id": 60,
+        "id_animal": 18,
+        "correct_answer": 3
+    },
+    {
+        "id": 61,
+        "id_animal": 19,
+        "correct_answer": 2
+    },
+    {
+        "id": 62,
+        "id_animal": 19,
+        "correct_answer": 2
+    },
+    {
+        "id": 63,
+        "id_animal": 20,
+        "correct_answer": 3
+    },
+    {
+        "id": 64,
+        "id_animal": 20,
+        "correct_answer": 3
+    },
+    {
+        "id": 65,
+        "id_animal": 20,
+        "correct_answer": 2
+    },
+    {
+        "id": 66,
+        "id_animal": 21,
+        "correct_answer": 1
+    },
+    {
+        "id": 67,
+        "id_animal": 22,
+        "correct_answer": 2
+    },
+    {
+        "id": 68,
+        "id_animal": 23,
+        "correct_answer": 1
+    },
+    {
+        "id": 69,
+        "id_animal": 23,
+        "correct_answer": 1
+    },
+    {
+        "id": 70,
+        "id_animal": 23,
+        "correct_answer": 2
+    },
+    {
+        "id": 71,
+        "id_animal": 24,
+        "correct_answer": 3
+    },
+    {
+        "id": 72,
+        "id_animal": 24,
+        "correct_answer": 2
+    },
+    {
+        "id": 73,
+        "id_animal": 24,
+        "correct_answer": 1
     }
 ]

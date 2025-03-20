@@ -164,7 +164,7 @@
         "id_question": 21,
         "question_text": "Which of the following birds can weigh more than one kilogram?",
         "answer_one": "Sparrow",
-        "answer_two": "Asia",
+        "answer_two": "Crow",
         "answer_three": "Herring gull"
     },
     {
@@ -398,7 +398,189 @@
         "answer_one": "Habitat loss",
         "answer_two": "Climate change",
         "answer_three": "Poaching for their horns"
+    },
+    {
+        "id": 51,
+        "id_question": 51,
+        "question_text": "What do Central European boars eat?",
+        "answer_one": "Only plants",
+        "answer_two": "Meat and plants",
+        "answer_three": "Only meat"
+    },
+    {
+        "id": 52,
+        "id_question": 52,
+        "question_text": "When do European brown bears hibernate?",
+        "answer_one": "Summer",   
+        "answer_two": "Winter",
+        "answer_three": "Spring"
+    },
+    {
+        "id": 53,
+        "id_question": 53,
+        "question_text": "Do European brown bears live in groups?",
+        "answer_one": "Yes, in pairs",   
+        "answer_two": "Yes, in a pack",
+        "answer_three": "No, they are solitary"
+    },
+    {
+        "id": 54,
+        "id_question": 54,
+        "question_text": "What do male deer grow and shed each year?",
+        "answer_one": "Tusks",   
+        "answer_two": "Antlers",
+        "answer_three": "Horns"
+    },
+    {
+        "id": 55,
+        "id_question": 55,
+        "question_text": "How do wolves primarily communicate over long distances?",
+        "answer_one": "Howling",   
+        "answer_two": "Barking",
+        "answer_three": "Growling"
+    },
+    {
+        "id": 56,
+        "id_question": 56,
+        "question_text": "What is the social structure of a wolf pack?",
+        "answer_one": "Lone hunters",   
+        "answer_two": "Family-based pack",
+        "answer_three": "Random groups"
+    },
+    {
+        "id": 57,
+        "id_question": 57,
+        "question_text": "How does the Arctic wolf’s fur help it survive?",
+        "answer_one": "Provides camouflage and warmth",   
+        "answer_two": "Helps it swim faster",
+        "answer_three": "Scares away predators"
+    },
+    {
+        "id": 58,
+        "id_question": 58,
+        "question_text": "How fast can a European hare run?",
+        "answer_one": "Up to 30 mph",   
+        "answer_two": "Up to 60 mph",
+        "answer_three": "Up to 45 mph"
+    },
+    {
+        "id": 59,
+        "id_question": 59,
+        "question_text": "What is a unique skill of the carrion crow?",
+        "answer_one": "Using tools to extract food",   
+        "answer_two": "Singing complex songs",
+        "answer_three": "Building large nests"
+    },
+    {
+        "id": 60,
+        "id_question": 60,
+        "question_text": "What is the Golden Guernsey goat known for?",
+        "answer_one": "Having a spotted coat",   
+        "answer_two": "Being a fast runner",
+        "answer_three": "Producing rich milk for cheese"
+    },
+    {
+        "id": 61,
+        "id_question": 61,
+        "question_text": "What is a key characteristic of the Humboldt squid?",
+        "answer_one": "It lives in deep ocean caves",   
+        "answer_two": "It can rapidly change color",
+        "answer_three": "It feeds only on plankton"
+    },
+    {
+        "id": 62,
+        "id_question": 62,
+        "question_text": "How long can the Humboldt squid grow?",
+        "answer_one": "Up to 1 meter",   
+        "answer_two": "Up to 1.5 meters",
+        "answer_three": "Up to 3 meters"
+    },
+    {
+        "id": 63,
+        "id_question": 63,
+        "question_text": "What distinguishes the leatherback sea turtle from other sea turtles?",
+        "answer_one": "Its hard carapace",   
+        "answer_two": "Its ability to fly",
+        "answer_three": "Its leathery shell"
+    },
+    {
+        "id": 64,
+        "id_question": 64,
+        "question_text": "What is the primary diet of the leatherback sea turtle?",
+        "answer_one": "Seaweed",   
+        "answer_two": "Small fish",
+        "answer_three": "Jellyfish"
+    },
+    {
+        "id": 65,
+        "id_question": 65,
+        "question_text": "What is the travel behavior of the leatherback sea turtle?",
+        "answer_one": "It travels in groups",   
+        "answer_two": "It migrates thousands of kilometers alone", 
+        "answer_three": "It stays in one area"
+    },
+    {
+        "id": 66,
+        "id_question": 66,
+        "question_text": "What is a distinctive feature of the great horned owl?",
+        "answer_one": "Ear tufts",
+        "answer_two": "Bright feathers",
+        "answer_three": "Long wings"
+    },
+    {
+        "id": 67,
+        "id_question": 67,
+        "question_text": "Where do sparrows often build their nests?",
+        "answer_one": "In forests away from humans",
+        "answer_two": "In close proximity to humans",
+        "answer_three": "In caves"
+    },
+    {
+        "id": 68,
+        "id_question": 68,
+        "question_text": "What is the name of the group orcas live in?",
+        "answer_one": "Pods",
+        "answer_two": "Schools",
+        "answer_three": "Flocks"
+    },
+    {
+        "id": 69,
+        "id_question": 69,
+        "question_text": "What is a primary characteristic of orcas?",
+        "answer_one": "They live in family groups",
+        "answer_two": "They migrate alone",
+        "answer_three": "They are solitary hunters"
+    },
+    {
+        "id": 70,
+        "id_question": 70,
+        "question_text": "Why are orcas called killer whales?",
+        "answer_one": "Because they eat large quantities of fish",
+        "answer_two": "Because they attack large marine mammals",
+        "answer_three": "Because they were often confused with whales"
+    },
+    {
+        "id": 71,
+        "id_question": 71,
+        "question_text": "Why are right whales considered endangered?",
+        "answer_one": "Because they only live in cold waters",
+        "answer_two": "Because of overfishing",
+        "answer_three": "Due to past whaling and current threats like ship strikes"
+    },
+    {
+        "id": 72,
+        "id_question": 72,
+        "question_text": "Right whales are recognizable by their:",
+        "answer_one": "Brightly colored skin",
+        "answer_two": "Massive heads covered in callosities",
+        "answer_three": "Long tails with fin-like features"
+    },
+    {
+        "id": 73,
+        "id_question": 73,
+        "question_text": "What does it mean that right whales are filter feeders?",
+        "answer_one": "They use baleen plates to filter tiny zooplankton from the water",
+        "answer_two": "They hunt in packs to catch larger fish",
+        "answer_three": "They swallow food whole without chewing"
     }
-
-
 ]

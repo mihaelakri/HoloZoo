@@ -164,7 +164,7 @@
         "id_question": 21,
         "question_text": "Melyik madár súlya több mint egy kilogramm?",
         "answer_one": "Veréb",
-        "answer_two": "Ázsiai",
+        "answer_two": "Kormos varjú",
         "answer_three": "Ezüstgólya"
     },
     {
@@ -278,6 +278,310 @@
         "answer_one": "Orka",
         "answer_two": "Humboldt tintahal",
         "answer_three": "Rinocérosz"
-    }
+    },
+    {
+        "id": 36,
+        "id_question": 36,
+        "question_text": "Milyen színű a vörös róka bundája általában?",
+        "answer_one": "Fehér és szürke",
+        "answer_two": "Vöröses-narancssárga",
+        "answer_three": "Barna és fekete"
+    },
+    {
+        "id": 37,
+        "id_question": 37,
+        "question_text": "Milyen állatként van besorolva a vörös róka?",
+        "answer_one": "Növényevő",
+        "answer_two": "Húsevő",
+        "answer_three": "Mindenevő"
+    },
+    {
+        "id": 38,
+        "id_question": 38,
+        "question_text": "Hogyan segítik az elefánt zápfogai a különböző növénytípusok feldolgozását?",
+        "answer_one": "A kemény növényzet lebontására",
+        "answer_two": "A hús tépésére",
+        "answer_three": "A magvak őrlésére"
+    },
+    {
+        "id": 39,
+        "id_question": 39,
+        "question_text": "Melyik állat Afrika legnagyobb édesvízi ragadozója?",
+        "answer_one": "Víziló",
+        "answer_two": "Nagy fehér cápa",
+        "answer_three": "Nílusi krokodil"
+    },
+    {
+        "id": 40,
+        "id_question": 40,
+        "question_text": "Hogyan nevezzük az oroszlánok csoportját?",
+        "answer_one": "Falka",
+        "answer_two": "Horda",
+        "answer_three": "Raj"
+    },
+    {
+        "id": 41,
+        "id_question": 41,
+        "question_text": "Az oroszlánfalkában ki vadászik a legtöbbet?",
+        "answer_one": "Oroszlánnőstények",
+        "answer_two": "Hím oroszlánok",
+        "answer_three": "Egyenlő arányban mindkettő"
+    },
+    {
+        "id": 42,
+        "id_question": 42,
+        "question_text": "Hol töltik a vízilovak a nap nagy részét?",
+        "answer_one": "A szárazföldön",
+        "answer_two": "A vízben",
+        "answer_three": "A fákon"
+    },
+    {
+        "id": 43,
+        "id_question": 43,
+        "question_text": "Mivel táplálkoznak főként a szirti sasok?",
+        "answer_one": "Halakkal",
+        "answer_two": "Rovarokkal",
+        "answer_three": "Kis és közepes méretű emlősökkel és madarakkal"
+    },
+    {
+        "id": 44,
+        "id_question": 44,
+        "question_text": "Hogyan tájékozódnak és vadásznak a delfinek?",
+        "answer_one": "Ekolokációval",
+        "answer_two": "A szemüket használva",
+        "answer_three": "Az áramlatokat követve"
+    },
+    {
+        "id": 45,
+        "id_question": 45,
+        "question_text": "Milyen maximális hosszúságot érhet el egy nagy fehér cápa?",
+        "answer_one": "10 méter",
+        "answer_two": "3 méter",
+        "answer_three": "6 méter"
+    },
+    {
+        "id": 46,
+        "id_question": 46,
+        "question_text": "Melyik tengeri állat él bonyolult társas struktúrákban?",
+        "answer_one": "Cápák",
+        "answer_two": "Delfinek",
+        "answer_three": "Humboldt-kalmar"
+    },
+    {
+        "id": 47,
+        "id_question": 47,
+        "question_text": "Mi a zebra fekete-fehér csíkjainak elsődleges szerepe?",
+        "answer_one": "Párkeresés",
+        "answer_two": "Álcázás",
+        "answer_three": "Testhőmérséklet szabályozása"
+    },
+    {
+        "id": 48,
+        "id_question": 48,
+        "question_text": "Hogyan nevezzük a zebrák csoportját?",
+        "answer_one": "Csorda",
+        "answer_two": "Falka",
+        "answer_three": "Horda"
+    },
+    {
+        "id": 49,
+        "id_question": 49,
+        "question_text": "Mire a legismertebbek az orrszarvúk?",
+        "answer_one": "Hosszú nyakukra",
+        "answer_two": "Gyorsaságukra",
+        "answer_three": "Erejükre és agresszivitásukra"
+    },
+    {
+        "id": 50,
+        "id_question": 50,
+        "question_text": "Miért vannak az orrszarvúk kritikusan veszélyeztetett helyzetben?",
+        "answer_one": "Élőhelyük elvesztése miatt",
+        "answer_two": "Klímaváltozás miatt",
+        "answer_three": "A szarvukért való orvvadászat miatt"
+    },
+    {
+        "id": 51,
+        "id_question": 51,
+        "question_text": "Mit esznek a közép-európai vaddisznók?",
+        "answer_one": "Csak növényeket",
+        "answer_two": "Húst és növényeket",
+        "answer_three": "Csak húst"
+    },
+    {
+        "id": 52,
+        "id_question": 52,
+        "question_text": "Mikor alszanak téli álmot az európai barnamedvék?",
+        "answer_one": "Nyáron",
+        "answer_two": "Télen",
+        "answer_three": "Tavasszal"
+    },
+    {
+        "id": 53,
+        "id_question": 53,
+        "question_text": "Csoportosan élnek-e az európai barnamedvék?",
+        "answer_one": "Igen, párokban",
+        "answer_two": "Igen, falkában",
+        "answer_three": "Nem, magányosan élnek"
+    },
+    {
+        "id": 54,
+        "id_question": 54,
+        "question_text": "Mit növesztenek és hullatnak el évente a hím szarvasok?",
+        "answer_one": "Agyarakat",
+        "answer_two": "Agancsokat",
+        "answer_three": "Szarvakat"
+    },
+    {
+        "id": 55,
+        "id_question": 55,
+        "question_text": "Hogyan kommunikálnak a farkasok elsősorban nagy távolságokon?",
+        "answer_one": "Üvöltéssel",
+        "answer_two": "Ugassal",
+        "answer_three": "Morgással"
+    },
+    {
+        "id": 56,
+        "id_question": 56,
+        "question_text": "Milyen társadalmi szerkezet jellemző a farkasfalkára?",
+        "answer_one": "Magányos vadászok",   
+        "answer_two": "Családi alapú falka",
+        "answer_three": "Véletlenszerű csoportok"
+    },
+    {
+        "id": 57,
+        "id_question": 57,
+        "question_text": "Hogyan segíti az északi farkas bundája a túlélést?",
+        "answer_one": "Álcázást és meleget biztosít",   
+        "answer_two": "Segít gyorsabban úszni",
+        "answer_three": "Elriasztja a ragadozókat"
+    },
+    {
+        "id": 58,
+        "id_question": 58,
+        "question_text": "Milyen gyorsan tud futni az európai mezei nyúl?",
+        "answer_one": "Legfeljebb 48 km/h",   
+        "answer_two": "Legfeljebb 96 km/h",
+        "answer_three": "Legfeljebb 72 km/h"
+    },
+    {
+        "id": 59,
+        "id_question": 59,
+        "question_text": "Mi az egyik különleges képessége a dolmányos varjúnak?",
+        "answer_one": "Eszközöket használ táplálékszerzésre",   
+        "answer_two": "Bonyolult dallamokat énekel",
+        "answer_three": "Nagy fészkeket épít"
+    },
+    {
+        "id": 60,
+        "id_question": 60,
+        "question_text": "Milyen tulajdonságáról ismert a Golden Guernsey kecske?",
+        "answer_one": "Foltos bundája van",   
+        "answer_two": "Gyors futásáról ismert",
+        "answer_three": "Gazdag tejéből sajtot készítenek"
+    },
+    {
+        "id": 61,
+        "id_question": 61,
+        "question_text": "Mi a Humboldt-kalmar egyik jellemző tulajdonsága?",
+        "answer_one": "Mély óceáni barlangokban él",   
+        "answer_two": "Gyorsan tudja változtatni a színét",
+        "answer_three": "Csak planktonnal táplálkozik"
+    },
+    {
+        "id": 62,
+        "id_question": 62,
+        "question_text": "Milyen hosszúra nőhet a Humboldt-kalmar?",
+        "answer_one": "Legfeljebb 1 méter",   
+        "answer_two": "Legfeljebb 1,5 méter",
+        "answer_three": "Legfeljebb 3 méter"
+    },
+    {
+        "id": 63,
+        "id_question": 63,
+        "question_text": "Mi különbözteti meg a kérgesteknőst más tengeri teknősöktől?",
+        "answer_one": "Kemény páncélja",   
+        "answer_two": "Képes repülni",
+        "answer_three": "Bőrszerű páncélja"
+    },
+    {
+        "id": 64,
+        "id_question": 64,
+        "question_text": "Mi a kérgesteknős elsődleges tápláléka?",
+        "answer_one": "Tengeri hínár",   
+        "answer_two": "Apró halak",
+        "answer_three": "Medúzák"
+    },
+    {
+        "id": 65,
+        "id_question": 65,
+        "question_text": "Milyen vándorlási szokásai vannak a kérgesteknősnek?",
+        "answer_one": "Csoportosan vándorol",   
+        "answer_two": "Egyedül vándorol több ezer kilométert", 
+        "answer_three": "Egy adott területen marad"
+    },
+    {
+        "id": 66,
+        "id_question": 66,
+        "question_text": "Mi a nagy fülesbagoly egyik jellegzetes tulajdonsága?",
+        "answer_one": "Fülszerű tollbóbiták",
+        "answer_two": "Élénk tollazat",
+        "answer_three": "Hosszú szárnyak"
+    },
+    {
+        "id": 67,
+        "id_question": 67,
+        "question_text": "Hol építik gyakran fészkeiket a verebek?",
+        "answer_one": "Erdőkben, távol az emberektől",
+        "answer_two": "Emberek közelében",
+        "answer_three": "Barlangokban"
+    },
+    {
+        "id": 68,
+        "id_question": 68,
+        "question_text": "Hogyan nevezik az orka családi csoportját?",
+        "answer_one": "Rajok",
+        "answer_two": "Iskolák",
+        "answer_three": "Csapatok"
+    },
+    {
+        "id": 69,
+        "id_question": 69,
+        "question_text": "Mi az orka egyik legfőbb jellemzője?",
+        "answer_one": "Családi csoportokban él",
+        "answer_two": "Egyedül vándorol",
+        "answer_three": "Magányos vadász"
+    },
+    {
+        "id": 70,
+        "id_question": 70,
+        "question_text": "Miért nevezik az orkát gyilkos bálnának?",
+        "answer_one": "Mert nagy mennyiségű halat fogyaszt",
+        "answer_two": "Mert nagy tengeri emlősökre vadászik",
+        "answer_three": "Mert gyakran összetévesztették a bálnákkal"
+    },
+    {
+        "id": 71,
+        "id_question": 71,
+        "question_text": "Miért számítanak veszélyeztetettnek a simabálnák?",
+        "answer_one": "Mert csak hideg vizekben élnek",
+        "answer_two": "A túlhalászás miatt",
+        "answer_three": "A múltbeli vadászat és a mai veszélyek, például hajóütközések miatt"
+    },
+    {
+        "id": 72,
+        "id_question": 72,
+        "question_text": "Mi alapján lehet felismerni a simabálnát?",
+        "answer_one": "Élénk színű bőr",
+        "answer_two": "Masszív fej, amelyet kérges kinövések borítanak",
+        "answer_three": "Hosszú farok uszonyszerű képződményekkel"
+    },
+    {
+        "id": 73,
+        "id_question": 73,
+        "question_text": "Mit jelent az, hogy a simabálnák szűrő táplálkozók?",
+        "answer_one": "Bálna bajuszlemezeikkel kis zooplanktonokat szűrnek ki a vízből",
+        "answer_two": "Csoportosan vadásznak nagyobb halakra",
+        "answer_three": "Egészben nyelik le a táplálékot, rágás nélkül"
+    }    
     
 ]

@@ -141,12 +141,12 @@
         "question_text": "Koja od navedenih ptica nije svejed?",
         "answer_one": "Divlja patka",
         "answer_two": "Sjevernoamerička velika ušara",
-        "answer_three": "Strvinarski gavran"
+        "answer_three": "Vrana"
     },
     {
         "id": 19,
         "id_question": 19,
-        "question_text": "Koja životinja njaviše živi u gusto šumovitim planinama?",
+        "question_text": "Koja životinja pretežito živi u gusto šumovitim planinama?",
         "answer_one": "Europski smeđi medvjed",
         "answer_two": "Nosorog",
         "answer_three": "Srebrnasti galeb"
@@ -164,7 +164,7 @@
         "id_question": 21,
         "question_text": "Koja od navedenih ptica može težiti više od jednog kilograma?",
         "answer_one": "Vrabac",
-        "answer_two": "Aziju",
+        "answer_two": "Vrana",
         "answer_three": "Srebrnasti galeb"
     },
     {
@@ -278,5 +278,309 @@
         "answer_one": "Orka",
         "answer_two": "Humboldtova lignja",
         "answer_three": "Nosorog"
-    }
+    },
+    {
+        "id": 36,
+        "id_question": 36,
+        "question_text": "Koja je tipična boja krzna crvene lisice?",
+        "answer_one": "Bijela i siva",
+        "answer_two": "Crvenkasto-narančasta",
+        "answer_three": "Smeđa i crna"
+    },
+    {
+        "id": 37,
+        "id_question": 37,
+        "question_text": "Koja je prehrana crvene lisice?",
+        "answer_one": "Biljojed",
+        "answer_two": "Mesojed",
+        "answer_three": "Svejed"
+    },
+    {
+        "id": 38,
+        "id_question": 38,
+        "question_text": "Kako kljuvekutnjaci kod slonova pomažu u preradi različitih vrsta biljaka?",
+        "answer_one": "Za razgradnju tvrde vegetacije",
+        "answer_two": "Za cijepanje mesa",
+        "answer_three": "Za mljevenje sjemenki"
+    },
+    {
+        "id": 39,
+        "id_question": 39,
+        "question_text": "Koji je najveći slatkovodni grabežljivic u Africi?",
+        "answer_one": "Nilski konj",
+        "answer_two": "Veliki bijela psina",
+        "answer_three": "Nilski krokodil"
+    },
+    {
+        "id": 40,
+        "id_question": 40,
+        "question_text": "Kako se zove grupa lavova?",
+        "answer_one": "Stado",
+        "answer_two": "Čopor",
+        "answer_three": "Jato"
+    },
+    {
+        "id": 41,
+        "id_question": 41,
+        "question_text": "T ko najviše lovi u lavljem čoporu?",
+        "answer_one": "Lavice",
+        "answer_two": "Lavovi",
+        "answer_three": "Oboje podjednako"
+    },
+    {
+        "id": 42,
+        "id_question": 42,
+        "question_text": "Gdje nilski konji provode najveći dio dana?",
+        "answer_one": "Na kopnu",
+        "answer_two": "U vodi",
+        "answer_three": "Na drveću"
+    },
+    {
+        "id": 43,
+        "id_question": 43,
+        "question_text": "Čime se suri orlovi prvenstveno hrane?",
+        "answer_one": "Ribom",
+        "answer_two": "Insektima",
+        "answer_three": "Malim i srednjim sisavcima i pticama"
+    },
+    {
+        "id": 44,
+        "id_question": 44,
+        "question_text": "Kako se dupini navigiraju po oceanima i morima te love?",
+        "answer_one": "Eholokacijom",
+        "answer_two": "Korištenjem svog izvrnog vida",
+        "answer_three": "Slijedeći morske struje"
+    },
+    {
+        "id": 45,
+        "id_question": 45,
+        "question_text": "Koja je maksimalna dužina koju može doseći velika bijela psina?",
+        "answer_one": "10 metara",
+        "answer_two": "3 metra",
+        "answer_three": "6 metara"
+    },
+    {
+        "id": 46,
+        "id_question": 46,
+        "question_text": "Koja morska životinja živi u složenim društvenim strukturama?",
+        "answer_one": "Morski psi",
+        "answer_two": "Dupini",
+        "answer_three": "Humboldtove lignje"
+    },
+    {
+        "id": 47,
+        "id_question": 47,
+        "question_text": "Koja je primarna svrha crno-bijelih pruga na zebri?",
+        "answer_one": "Privlačenje partnera",
+        "answer_two": "Kamuflaža",
+        "answer_three": "Regulacija tjelesne temperature"
+    },
+    {
+        "id": 48,
+        "id_question": 48,
+        "question_text": "Kako se zove grupa zebri?",
+        "answer_one": "Stado",
+        "answer_two": "Ponos",
+        "answer_three": "Čopor"
+    },
+    {
+        "id": 49,
+        "id_question": 49,
+        "question_text": "Po čemu su nosorozi poznati?",
+        "answer_one": "Po svojim dugim vratovima",
+        "answer_two": "Po svojoj brzini",
+        "answer_three": "Po snazi i agresivnosti"
+    },
+    {
+        "id": 50,
+        "id_question": 50,
+        "question_text": "Zašto su nosorozi kritično ugroženi?",
+        "answer_one": "Gubitak staništa",
+        "answer_two": "Klimatske promjene",
+        "answer_three": "Krivolov zbog njihovih rogova"
+    },
+    {
+        "id": 51,
+        "id_question": 51,
+        "question_text": "Što jedu središnje europske divlje svinje?",
+        "answer_one": "Samo biljke",
+        "answer_two": "Meso i biljke",
+        "answer_three": "Samo meso"
+    },
+    {
+        "id": 52,
+        "id_question": 52,
+        "question_text": "Kada europski smeđi medvjedi spavaju zimski san?",
+        "answer_one": "Ljeti",
+        "answer_two": "Zimi",
+        "answer_three": "U proljeće"
+    },
+    {
+        "id": 53,
+        "id_question": 53,
+        "question_text": "Žive li europski smeđi medvjedi u grupama?",
+        "answer_one": "Da, u parovima",
+        "answer_two": "Da, u čoporu",
+        "answer_three": "Ne, samotnjaci su"
+    },
+    {
+        "id": 54,
+        "id_question": 54,
+        "question_text": "Što mužjacima jelena raste i opada svake godine?",
+        "answer_one": "Kljove",
+        "answer_two": "Rogovlje",
+        "answer_three": "Rogovi"
+    },
+    {
+        "id": 55,
+        "id_question": 55,
+        "question_text": "Kako vukovi najčešće komuniciraju na velikim udaljenostima?",
+        "answer_one": "Zavijanjem",
+        "answer_two": "Lajanjem",
+        "answer_three": "Režanjem"
+    },
+    {
+        "id": 56,
+        "id_question": 56,
+        "question_text": "Koja je socijalna struktura čopora vukova?",
+        "answer_one": "Samostalni lovci",
+        "answer_two": "Obiteljski čopor",
+        "answer_three": "Slučajni skupovi"
+    },
+    {
+        "id": 57,
+        "id_question": 57,
+        "question_text": "Kako krzno arktičkom vuku pomaže u preživljavanju?",
+        "answer_one": "Omogućava kamuflažu i toplinu",
+        "answer_two": "Pomaže mu u bržem plivanju",
+        "answer_three": "Plaši predatore"
+    },
+    {
+        "id": 58,
+        "id_question": 58,
+        "question_text": "Koliko brzo može trčati europski zec?",
+        "answer_one": "Do 48 km/h",
+        "answer_two": "Do 96 km/h",
+        "answer_three": "Do 72 km/h"
+    },
+    {
+        "id": 59,
+        "id_question": 59,
+        "question_text": "Koja je jedinstvena vještina vrane?",
+        "answer_one": "Korištenje alata za vađenje hrane",
+        "answer_two": "Pjevanje složenih pjesama",
+        "answer_three": "Gradnja velikih gnijezda"
+    },
+    {
+        "id": 60,
+        "id_question": 60,
+        "question_text": "Po čemu je poznata zlatna Guernsey koza?",
+        "answer_one": "Po krznu s pjegama",
+        "answer_two": "Po svojoj brzini",
+        "answer_three": "Po proizvodnji bogatog mlijeka za sir"
+    },
+    {
+        "id": 61,
+        "id_question": 61,
+        "question_text": "Koja je ključna karakteristika Humboldtove lignje?",
+        "answer_one": "Živi u dubokim oceanima",
+        "answer_two": "Može brzo mijenjati boje",
+        "answer_three": "Hrani se samo planktonom"
+    },
+    {
+        "id": 62,
+        "id_question": 62,
+        "question_text": "Koliko može narasti Humboldtova lignja?",
+        "answer_one": "Do 1 metra",
+        "answer_two": "Do 1,5 metar",
+        "answer_three": "Do 3 metra"
+    },
+    {
+        "id": 63,
+        "id_question": 63,
+        "question_text": "Što razlikuje kornjaču sedmoprugu usminjaču od drugih morskih kornjača?",
+        "answer_one": "Njezina tvrda ljuska",
+        "answer_two": "Njena sposobnost letenja",
+        "answer_three": "Njena kožnata ljuska"
+    },
+    {
+        "id": 64,
+        "id_question": 64,
+        "question_text": "Koja je primarna prehrana kožne sedmopruge usminjače?",
+        "answer_one": "Alge",
+        "answer_two": "Male ribe",
+        "answer_three": "Meduze"
+    },
+    {
+        "id": 65,
+        "id_question": 65,
+        "question_text": "Koje je ponašanje pri migracijama sedmopruge usminjače?",
+        "answer_one": "Putuje u grupama",
+        "answer_two": "Seli samotno tisućama kilometara",
+        "answer_three": "Ostaje na jednom području"
+    },
+    {
+        "id": 66,
+        "id_question": 66,
+        "question_text": "Koja je karakteristična osobina sjevernoameričke velike ušare?",
+        "answer_one": "Ušni čuperci",
+        "answer_two": "Sjajno perje",
+        "answer_three": "Duga krila"
+    },
+    {
+        "id": 67,
+        "id_question": 67,
+        "question_text": "Gdje vrabci često grade svoja gnijezda?",
+        "answer_one": "U šumama daleko od ljudi",
+        "answer_two": "U stablima, u blizini ljudi",
+        "answer_three": "U špiljama"
+    },
+    {
+        "id": 68,
+        "id_question": 68,
+        "question_text": "Kako se zove skupina u kojoj žive orke?",
+        "answer_one": "Obitelj",
+        "answer_two": "Škola",
+        "answer_three": "Čopor"
+    },
+    {
+        "id": 69,
+        "id_question": 69,
+        "question_text": "Koja je osnovna karakteristika orki?",
+        "answer_one": "Žive u obiteljskim grupama",
+        "answer_two": "Sele se samotno",
+        "answer_three": "Samostalni su lovci"
+    },
+    {
+        "id": 70,
+        "id_question": 70,
+        "question_text": "Zašto se orke još nazivaju 'Kitovi ubojice'?",
+        "answer_one": "Zato što jedu velike količine ribe",
+        "answer_two": "Zato što napadaju velike morske sisavce",
+        "answer_three": "Zato što se često miješa s kitovima"
+    },
+    {
+        "id": 71,
+        "id_question": 71,
+        "question_text": "Zašto se glatki kitovi smatraju ugroženima?",
+        "answer_one": "Zato što žive samo u hladnim vodama",
+        "answer_two": "Zbog prekomjernog ribolova",
+        "answer_three": "Zbog kitolova u prošlosti i sudara s brodovima"
+    },
+    {
+        "id": 72,
+        "id_question": 72,
+        "question_text": "Glatki kitovi prepoznaju se po svojim:",
+        "answer_one": "Jarko obojanim perajama",
+        "answer_two": "Masivnim glavama prekrivenim brazdama",
+        "answer_three": "Dugim repovima s perastim karakteristikama"
+    },
+    {
+        "id": 73,
+        "id_question": 73,
+        "question_text": "Što znači da glatki kitovi filtriraju hranu?",
+        "answer_one": "Koriste usne ploče za filtriranje sitnih zooplanktona iz vode",
+        "answer_two": "Love u jatima kako bi ulovili veće ribe",
+        "answer_three": "Progutaju velike komade hrane cijele bez žvakanja"
+    }    
 ]

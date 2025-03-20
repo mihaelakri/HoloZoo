@@ -201,7 +201,7 @@
        "id": 23,
         "id_animal": 23,
         "name": "Orka",
-        "general_info": "Orke, također poznate kao ubojica kitova (ili kit ubojica), su vrlo inteligentni i društveni morski sisavci koji žive u složenim obiteljskim grupama nazvanim čoporima. Oni su vrhunski grabežljivci s raznolika dijetom, koristeći sofisticirane tehnike lova kako bi ulovili plijen koji varira od riba do velikih morskih sisavaca.",
+        "general_info": "Orke, također poznate kao ubojica kitova (ili kit ubojica), su vrlo inteligentni i društveni morski sisavci koji žive u složenim obiteljskim grupama nazvanim obitelj. Oni su vrhunski grabežljivci s raznolika dijetom, koristeći sofisticirane tehnike lova kako bi ulovili plijen koji varira od riba do velikih morskih sisavaca.",
         "endangerment_status": "Nedovoljno podataka",
         "habitat": "hladni i umjereni oceani",
         "diet": "Mesojed"
@@ -210,7 +210,7 @@
        "id": 24,
         "id_animal": 24,
         "name": "Glatki kit",
-        "general_info": "Glatki kitovi su velike, sporo plivajuće kitove sa žlijezdom poznati po svojim masivnim glavama prekrivenim grubim mrljama koje se nazivaju kaloziteti. Oni su filter-feeders koji se prvenstveno hrane sitnim zooplanktonima i spadaju među najugroženije vrste kitova zbog prošlog lova na kitove i kontinuiranih prijetnji poput sudara s brodovima i zaplitanja u ribolovni alat.",
+        "general_info": "Glatki kitovi su veliki, sporo plivajući kitovi poznati po svojim masivnim glavama prekrivenim grubim mrljama odnosno brazdama. Oni se hrane filtriranjem, prvenstveno sitnim zooplanktonima i spadaju među najugroženije vrste kitova zbog prošlog lova na kitove i kontinuiranih prijetnji poput sudara s brodovima i zaplitanja u ribolovni alat.",
         "endangerment_status": "Ugrožen",
         "habitat": "Atlantski ocean",
         "diet": "Mesojed (plankton)"

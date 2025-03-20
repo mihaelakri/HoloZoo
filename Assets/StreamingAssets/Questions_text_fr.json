@@ -164,7 +164,7 @@
         "id_question": 21,
         "question_text": "Lequel des oiseaux suivants peut peser plus d'un kilogramme ?",
         "answer_one": "Moineau",
-        "answer_two": "Asie",
+        "answer_two": "Corbeau freux",
         "answer_three": "Goéland argenté"
     },
     {
@@ -278,6 +278,310 @@
         "answer_one": "Orque",
         "answer_two": "Calmar de Humboldt",
         "answer_three": "Rhinocéros"
+    },
+    {
+        "id": 36,
+        "id_question": 36,
+        "question_text": "Quelle est la couleur typique du pelage d'un renard roux ?",
+        "answer_one": "Blanc et gris",
+        "answer_two": "Orange-roux",
+        "answer_three": "Marron et noir"
+    },
+    {
+        "id": 37,
+        "id_question": 37,
+        "question_text": "À quelle catégorie d'animaux appartient le renard roux ?",
+        "answer_one": "Herbivore",
+        "answer_two": "Carnivore",
+        "answer_three": "Omnivore"
+    },
+    {
+        "id": 38,
+        "id_question": 38,
+        "question_text": "Comment les molaires des éléphants les aident-elles à traiter différents types de plantes ?",
+        "answer_one": "Pour broyer la végétation dure",
+        "answer_two": "Pour déchirer la viande",
+        "answer_three": "Pour écraser les graines"
+    },
+    {
+        "id": 39,
+        "id_question": 39,
+        "question_text": "Quel est le plus grand prédateur d'eau douce en Afrique ?",
+        "answer_one": "Hippopotame",
+        "answer_two": "Grand requin blanc",
+        "answer_three": "Crocodile du Nil"
+    },
+    {
+        "id": 40,
+        "id_question": 40,
+        "question_text": "Comment appelle-t-on un groupe de lions ?",
+        "answer_one": "Une troupe",
+        "answer_two": "Une meute",
+        "answer_three": "Un vol"
+    },
+    {
+        "id": 41,
+        "id_question": 41,
+        "question_text": "Dans une troupe de lions, qui chasse le plus ?",
+        "answer_one": "Les lionnes",
+        "answer_two": "Les lions",
+        "answer_three": "Les deux de manière égale"
+    },
+    {
+        "id": 42,
+        "id_question": 42,
+        "question_text": "Où les hippopotames passent-ils la majeure partie de leur journée ?",
+        "answer_one": "Sur la terre ferme",
+        "answer_two": "Dans l'eau",
+        "answer_three": "Dans les arbres"
+    },
+    {
+        "id": 43,
+        "id_question": 43,
+        "question_text": "De quoi se nourrissent principalement les aigles royaux ?",
+        "answer_one": "Poissons",
+        "answer_two": "Insectes",
+        "answer_three": "Mammifères et oiseaux de petite à moyenne taille"
+    },
+    {
+        "id": 44,
+        "id_question": 44,
+        "question_text": "Comment les dauphins naviguent-ils et chassent-ils ?",
+        "answer_one": "Écholocalisation",
+        "answer_two": "Avec leurs yeux",
+        "answer_three": "En suivant les courants"
+    },
+    {
+        "id": 45,
+        "id_question": 45,
+        "question_text": "Quelle est la longueur maximale qu'un grand requin blanc peut atteindre ?",
+        "answer_one": "10 mètres",
+        "answer_two": "3 mètres",
+        "answer_three": "6 mètres"
+    },
+    {
+        "id": 46,
+        "id_question": 46,
+        "question_text": "Quel animal marin vit dans des structures sociales complexes ?",
+        "answer_one": "Requins",
+        "answer_two": "Dauphins",
+        "answer_three": "Calmar de Humboldt"
+    },
+    {
+        "id": 47,
+        "id_question": 47,
+        "question_text": "Quel est le principal rôle des rayures noires et blanches d'un zèbre ?",
+        "answer_one": "Attirer des partenaires",
+        "answer_two": "Camouflage",
+        "answer_three": "Réguler la température corporelle"
+    },
+    {
+        "id": 48,
+        "id_question": 48,
+        "question_text": "Comment appelle-t-on un groupe de zèbres ?",
+        "answer_one": "Un troupeau",
+        "answer_two": "Une troupe",
+        "answer_three": "Une meute"
+    },
+    {
+        "id": 49,
+        "id_question": 49,
+        "question_text": "Pourquoi les rhinocéros sont-ils principalement connus ?",
+        "answer_one": "Leur long cou",
+        "answer_two": "Leur rapidité",
+        "answer_three": "Leur force et leur agressivité"
+    },
+    {
+        "id": 50,
+        "id_question": 50,
+        "question_text": "Pourquoi les rhinocéros sont-ils en danger critique d'extinction ?",
+        "answer_one": "Perte d'habitat",
+        "answer_two": "Changement climatique",
+        "answer_three": "Braconnage pour leurs cornes"
+    },
+    {
+        "id": 51,
+        "id_question": 51,
+        "question_text": "Que mangent les sangliers d'Europe centrale ?",
+        "answer_one": "Uniquement des plantes",
+        "answer_two": "De la viande et des plantes",
+        "answer_three": "Uniquement de la viande"
+    },
+    {
+        "id": 52,
+        "id_question": 52,
+        "question_text": "Quand les ours bruns d'Europe hibernent-ils ?",
+        "answer_one": "En été",
+        "answer_two": "En hiver",
+        "answer_three": "Au printemps"
+    },
+    {
+        "id": 53,
+        "id_question": 53,
+        "question_text": "Les ours bruns d'Europe vivent-ils en groupe ?",
+        "answer_one": "Oui, en couple",
+        "answer_two": "Oui, en meute",
+        "answer_three": "Non, ils sont solitaires"
+    },
+    {
+        "id": 54,
+        "id_question": 54,
+        "question_text": "Que poussent et perdent les cerfs mâles chaque année ?",
+        "answer_one": "Des défenses",
+        "answer_two": "Des bois",
+        "answer_three": "Des cornes"
+    },
+    {
+        "id": 55,
+        "id_question": 55,
+        "question_text": "Comment les loups communiquent-ils principalement sur de longues distances ?",
+        "answer_one": "En hurlant",
+        "answer_two": "En aboyant",
+        "answer_three": "En grondant"
+    },
+    {
+        "id": 56,
+        "id_question": 56,
+        "question_text": "Quelle est la structure sociale d'une meute de loups ?",
+        "answer_one": "Chasseurs solitaires",
+        "answer_two": "Meute basée sur la famille",
+        "answer_three": "Groupes aléatoires"
+    },
+    {
+        "id": 57,
+        "id_question": 57,
+        "question_text": "Comment le pelage du loup arctique l’aide-t-il à survivre ?",
+        "answer_one": "Fournit un camouflage et de la chaleur",
+        "answer_two": "L’aide à nager plus vite",
+        "answer_three": "Effraie les prédateurs"
+    },
+    {
+        "id": 58,
+        "id_question": 58,
+        "question_text": "À quelle vitesse un lièvre européen peut-il courir ?",
+        "answer_one": "Jusqu'à 50 km/h",
+        "answer_two": "Jusqu'à 96 km/h",
+        "answer_three": "Jusqu'à 72 km/h"
+    },
+    {
+        "id": 59,
+        "id_question": 59,
+        "question_text": "Quelle est une compétence unique de la corneille noire ?",
+        "answer_one": "Utiliser des outils pour extraire de la nourriture",
+        "answer_two": "Chanter des chansons complexes",
+        "answer_three": "Construire de grands nids"
+    },
+    {
+        "id": 60,
+        "id_question": 60,
+        "question_text": "Pourquoi la chèvre Golden Guernsey est-elle connue ?",
+        "answer_one": "Avoir un pelage tacheté",
+        "answer_two": "Être une coureuse rapide",
+        "answer_three": "Produire un lait riche pour le fromage"
+    },
+    {
+        "id": 61,
+        "id_question": 61,
+        "question_text": "Quelle est une caractéristique clé du calmar de Humboldt ?",
+        "answer_one": "Il vit dans des grottes océaniques profondes",
+        "answer_two": "Il peut changer de couleur rapidement",
+        "answer_three": "Il se nourrit uniquement de plancton"
+    },
+    {
+        "id": 62,
+        "id_question": 62,
+        "question_text": "Quelle est la taille maximale du calmar de Humboldt ?",
+        "answer_one": "Jusqu'à 1 mètre",
+        "answer_two": "Jusqu'à 1,5 mètre",
+        "answer_three": "Jusqu'à 3 mètres"
+    },
+    {
+        "id": 63,
+        "id_question": 63,
+        "question_text": "Qu'est-ce qui distingue la tortue luth des autres tortues marines ?",
+        "answer_one": "Sa carapace dure",
+        "answer_two": "Sa capacité à voler",
+        "answer_three": "Sa carapace en cuir"
+    },
+    {
+        "id": 64,
+        "id_question": 64,
+        "question_text": "Quel est le régime alimentaire principal de la tortue luth ?",
+        "answer_one": "Algues",
+        "answer_two": "Petits poissons",
+        "answer_three": "Méduses"
+    },
+    {
+        "id": 65,
+        "id_question": 65,
+        "question_text": "Quel est le comportement migratoire de la tortue luth ?",
+        "answer_one": "Elle voyage en groupe",
+        "answer_two": "Elle migre seule sur des milliers de kilomètres",
+        "answer_three": "Elle reste dans une même zone"
+    },
+    {
+        "id": 66,
+        "id_question": 66,
+        "question_text": "Quelle est une caractéristique distinctive du grand-duc d'Amérique ?",
+        "answer_one": "Touffes de plumes sur les oreilles",
+        "answer_two": "Plumes brillantes",
+        "answer_three": "Longues ailes"
+    },
+    {
+        "id": 67,
+        "id_question": 67,
+        "question_text": "Où les moineaux construisent-ils souvent leurs nids ?",
+        "answer_one": "Dans les forêts éloignées des humains",
+        "answer_two": "À proximité des humains",
+        "answer_three": "Dans des grottes"
+    },
+    {
+        "id": 68,
+        "id_question": 68,
+        "question_text": "Quel est le nom du groupe dans lequel vivent les orques ?",
+        "answer_one": "Bancs",
+        "answer_two": "Écoles",
+        "answer_three": "Troupes"
+    },
+    {
+        "id": 69,
+        "id_question": 69,
+        "question_text": "Quelle est une caractéristique principale des orques ?",
+        "answer_one": "Elles vivent en groupes familiaux",
+        "answer_two": "Elles migrent seules",
+        "answer_three": "Elles chassent en solitaire"
+    },
+    {
+        "id": 70,
+        "id_question": 70,
+        "question_text": "Pourquoi les orques sont-elles appelées 'épaulards' ?",
+        "answer_one": "Parce qu'elles consomment de grandes quantités de poissons",
+        "answer_two": "Parce qu'elles attaquent de grands mammifères marins",
+        "answer_three": "Parce qu'elles étaient souvent confondues avec des baleines"
+    },
+    {
+        "id": 71,
+        "id_question": 71,
+        "question_text": "Pourquoi les baleines franches sont-elles considérées comme en danger ?",
+        "answer_one": "Parce qu'elles ne vivent que dans les eaux froides",
+        "answer_two": "À cause de la surpêche",
+        "answer_three": "En raison de la chasse passée et des menaces actuelles comme les collisions avec des navires"
+    },
+    {
+        "id": 72,
+        "id_question": 72,
+        "question_text": "Comment reconnaît-on les baleines franches ?",
+        "answer_one": "Leur peau de couleur vive",
+        "answer_two": "Leurs énormes têtes couvertes de callosités",
+        "answer_three": "Leurs longues queues avec des caractéristiques en forme d’ailes"
+    },
+    {
+        "id": 73,
+        "id_question": 73,
+        "question_text": "Que signifie le fait que les baleines franches sont des filtreurs ?",
+        "answer_one": "Elles utilisent des fanons pour filtrer le zooplancton dans l’eau",
+        "answer_two": "Elles chassent en groupe pour attraper de plus gros poissons",
+        "answer_three": "Elles avalent leur nourriture entière sans la mâcher"
     }
     
 ]

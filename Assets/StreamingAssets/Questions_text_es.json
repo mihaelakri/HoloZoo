@@ -164,7 +164,7 @@
         "id_question": 21,
         "question_text": "¿Cuál de las siguientes aves puede pesar más de un kilogramo?",
         "answer_one": "Gorrión",
-        "answer_two": "Asia",
+        "answer_two": "Cuervo carroñero",
         "answer_three": "Gaviota argéntea"
     },
     {
@@ -278,6 +278,309 @@
         "answer_one": "Orca",
         "answer_two": "Calamar de Humboldt",
         "answer_three": "Rinoceronte"
+    },
+    {
+        "id": 36,
+        "id_question": 36,
+        "question_text": "¿Cuál es el color típico del pelaje de un zorro rojo?",
+        "answer_one": "Blanco y gris",
+        "answer_two": "Anaranjado rojizo",
+        "answer_three": "Marrón y negro"
+    },
+    {
+        "id": 37,
+        "id_question": 37,
+        "question_text": "¿A qué tipo de animal se clasifica el zorro rojo?",
+        "answer_one": "Herbívoro",
+        "answer_two": "Carnívoro",
+        "answer_three": "Omnívoro"
+    },
+    {
+        "id": 38,
+        "id_question": 38,
+        "question_text": "¿Cómo ayudan los molares de los elefantes a procesar diferentes tipos de plantas?",
+        "answer_one": "Para descomponer vegetación dura",
+        "answer_two": "Para desgarrar carne",
+        "answer_three": "Para moler semillas"
+    },
+    {
+        "id": 39,
+        "id_question": 39,
+        "question_text": "¿Qué animal es el mayor depredador de agua dulce en África?",
+        "answer_one": "Hipopótamo",
+        "answer_two": "Tiburón blanco",
+        "answer_three": "Cocodrilo del Nilo"
+    },
+    {
+        "id": 40,
+        "id_question": 40,
+        "question_text": "¿Cómo se llama un grupo de leones?",
+        "answer_one": "Manada",
+        "answer_two": "Pandilla",
+        "answer_three": "Rebaño"
+    },
+    {
+        "id": 41,
+        "id_question": 41,
+        "question_text": "¿En una manada de leones, quién hace la mayor parte de la caza?",
+        "answer_one": "Leonas",
+        "answer_two": "Leones",
+        "answer_three": "Ambos por igual"
+    },
+    {
+        "id": 42,
+        "id_question": 42,
+        "question_text": "¿Dónde pasan la mayor parte del día los hipopótamos?",
+        "answer_one": "En tierra",
+        "answer_two": "En el agua",
+        "answer_three": "En los árboles"
+    },
+    {
+        "id": 43,
+        "id_question": 43,
+        "question_text": "¿De qué se alimentan principalmente los águilas reales?",
+        "answer_one": "Peces",
+        "answer_two": "Insectos",
+        "answer_three": "Mamíferos y aves de tamaño pequeño a mediano"
+    },
+    {
+        "id": 44,
+        "id_question": 44,
+        "question_text": "¿Cómo navegan y cazan los delfines?",
+        "answer_one": "Ecolocalización",
+        "answer_two": "Usando sus ojos",
+        "answer_three": "Siguiendo las corrientes"
+    },
+    {
+        "id": 45,
+        "id_question": 45,
+        "question_text": "¿Cuál es la longitud máxima que puede alcanzar un tiburón blanco?",
+        "answer_one": "10 metros",
+        "answer_two": "3 metros",
+        "answer_three": "6 metros"
+    },
+    {
+        "id": 46,
+        "id_question": 46,
+        "question_text": "¿Qué animal marino vive en estructuras sociales complejas?",
+        "answer_one": "Tiburones",
+        "answer_two": "Delfines",
+        "answer_three": "Calamar Humboldt"
+    },
+    {
+        "id": 47,
+        "id_question": 47,
+        "question_text": "¿Cuál es el propósito principal de las rayas blanco y negro de una cebra?",
+        "answer_one": "Atraer parejas",
+        "answer_two": "Camuflaje",
+        "answer_three": "Regular la temperatura corporal"
+    },
+    {
+        "id": 48,
+        "id_question": 48,
+        "question_text": "¿Cómo se llama un grupo de cebras?",
+        "answer_one": "Manada",
+        "answer_two": "Rebaño",
+        "answer_three": "Bando"
+    },
+    {
+        "id": 49,
+        "id_question": 49,
+        "question_text": "¿Por qué se conocen principalmente los rinocerontes?",
+        "answer_one": "Por sus largos cuellos",
+        "answer_two": "Por su velocidad",
+        "answer_three": "Fuerza y agresividad"
+    },
+    {
+        "id": 50,
+        "id_question": 50,
+        "question_text": "¿Por qué los rinocerontes están en peligro crítico de extinción?",
+        "answer_one": "Pérdida de hábitat",
+        "answer_two": "Cambio climático",
+        "answer_three": "Caza furtiva por sus cuernos"
+    },
+    {
+        "id": 51,
+        "id_question": 51,
+        "question_text": "¿Qué comen los jabalíes de Europa Central?",
+        "answer_one": "Solo plantas",
+        "answer_two": "Carne y plantas",
+        "answer_three": "Solo carne"
+    },
+    {
+        "id": 52,
+        "id_question": 52,
+        "question_text": "¿Cuándo hibernan los osos pardos europeos?",
+        "answer_one": "Verano",
+        "answer_two": "Invierno",
+        "answer_three": "Primavera"
+    },
+    {
+        "id": 53,
+        "id_question": 53,
+        "question_text": "¿Viven los osos pardos europeos en grupos?",
+        "answer_one": "Sí, en pareja",
+        "answer_two": "Sí, en una manada",
+        "answer_three": "No, son solitarios"
+    },
+    {
+        "id": 54,
+        "id_question": 54,
+        "question_text": "¿Qué crecen y desechan los ciervos machos cada año?",
+        "answer_one": "Colmillos",
+        "answer_two": "Cornamenta",
+        "answer_three": "Cuernos"
+    },
+    {
+        "id": 55,
+        "id_question": 55,
+        "question_text": "¿Cómo se comunican principalmente los lobos a largas distancias?",
+        "answer_one": "Aullando",
+        "answer_two": "Ladrando",
+        "answer_three": "Gruñendo"
+    },
+    {
+        "id": 56,
+        "id_question": 56,
+        "question_text": "¿Cuál es la estructura social de una manada de lobos?",
+        "answer_one": "Cazadores solitarios",   
+        "answer_two": "Manada basada en la familia",
+        "answer_three": "Grupos aleatorios"
+    },
+    {
+        "id": 57,
+        "id_question": 57,
+        "question_text": "¿Cómo ayuda el pelaje del lobo ártico a su supervivencia?",
+        "answer_one": "Proporciona camuflaje y calor",   
+        "answer_two": "Le ayuda a nadar más rápido",
+        "answer_three": "Asusta a los depredadores"
+    },
+    {
+        "id": 58,
+        "id_question": 58,
+        "question_text": "¿Qué tan rápido puede correr una liebre europea?",
+        "answer_one": "Hasta 48 km/h",   
+        "answer_two": "Hasta 96 km/h",
+        "answer_three": "Hasta 72 km/h"
+    },
+    {
+        "id": 59,
+        "id_question": 59,
+        "question_text": "¿Qué habilidad única tiene el cuervo carroñero?",
+        "answer_one": "Usar herramientas para extraer comida",   
+        "answer_two": "Cantar canciones complejas",
+        "answer_three": "Construir nidos grandes"
+    },
+    {
+        "id": 60,
+        "id_question": 60,
+        "question_text": "¿Por qué es conocida la cabra dorada de Guernsey?",
+        "answer_one": "Por tener un pelaje moteado",   
+        "answer_two": "Por ser una corredora rápida",
+        "answer_three": "Por producir leche rica para queso"
+    },
+    {
+        "id": 61,
+        "id_question": 61,
+        "question_text": "¿Cuál es una característica clave del calamar Humboldt?",
+        "answer_one": "Vive en cuevas profundas del océano",   
+        "answer_two": "Puede cambiar de color rápidamente",
+        "answer_three": "Se alimenta solo de plancton"
+    },
+    {
+        "id": 62,
+        "id_question": 62,
+        "question_text": "¿Cuánto puede crecer el calamar Humboldt?",
+        "answer_one": "Hasta 1 metro",   
+        "answer_two": "Hasta 1,5 metros",
+        "answer_three": "Hasta 3 metros"
+    },
+    {
+        "id": 63,
+        "id_question": 63,
+        "question_text": "¿Qué distingue a la tortuga laúd de otras tortugas marinas?",
+        "answer_one": "Su caparazón duro",   
+        "answer_two": "Su capacidad para volar",
+        "answer_three": "Su caparazón de cuero"
+    },
+    {
+        "id": 64,
+        "id_question": 64,
+        "question_text": "¿Cuál es la dieta principal de la tortuga laúd?",
+        "answer_one": "Algas marinas",   
+        "answer_two": "Peces pequeños",
+        "answer_three": "Medusas"
+    },
+    {
+        "id": 65,
+        "id_question": 65,
+        "question_text": "¿Cuál es el comportamiento migratorio de la tortuga laúd?",
+        "answer_one": "Viaja en grupos",   
+        "answer_two": "Migra miles de kilómetros sola", 
+        "answer_three": "Se queda en un área"
+    },
+    {
+        "id": 66,
+        "id_question": 66,
+        "question_text": "¿Cuál es una característica distintiva del búho cornudo?",
+        "answer_one": "Plumas en las orejas",
+        "answer_two": "Plumas brillantes",
+        "answer_three": "Alas largas"
+    },
+    {
+        "id": 67,
+        "id_question": 67,
+        "question_text": "¿Dónde suelen construir sus nidos los gorriones?",
+        "answer_one": "En bosques alejados de los humanos",
+        "answer_two": "Cerca de los humanos",
+        "answer_three": "En cuevas"
+    },
+    {
+        "id": 68,
+        "id_question": 68,
+        "question_text": "¿Cómo se llama el grupo en el que viven las orcas?",
+        "answer_one": "Manadas",
+        "answer_two": "Escuelas",
+        "answer_three": "Bandadas"
+    },
+    {
+        "id": 69,
+        "id_question": 69,
+        "question_text": "¿Cuál es una característica principal de las orcas?",
+        "answer_one": "Viven en grupos familiares",
+        "answer_two": "Migran solas",
+        "answer_three": "Son cazadoras solitarias"
+    },
+    {
+        "id": 70,
+        "id_question": 70,
+        "question_text": "¿Por qué se les llama ballenas asesinas a las orcas?",
+        "answer_one": "Porque comen grandes cantidades de peces",
+        "answer_two": "Porque atacan a grandes mamíferos marinos",
+        "answer_three": "Porque a menudo se las confundía con ballenas"
+    },
+    {
+        "id": 71,
+        "id_question": 71,
+        "question_text": "¿Por qué las ballenas francas están en peligro de extinción?",
+        "answer_one": "Porque solo viven en aguas frías",
+        "answer_two": "Por la sobrepesca",
+        "answer_three": "Debido a la caza de ballenas en el pasado y amenazas actuales como las colisiones con barcos"
+    },
+    {
+        "id": 72,
+        "id_question": 72,
+        "question_text": "Las ballenas francas se reconocen por sus:",
+        "answer_one": "Piel de colores brillantes",
+        "answer_two": "Cabezas masivas cubiertas de callosidades",
+        "answer_three": "Colas largas con características parecidas a las aletas"
+    },
+    {
+        "id": 73,
+        "id_question": 73,
+        "question_text": "¿Qué significa que las ballenas francas sean filtradoras?",
+        "answer_one": "Usan placas de ballena para filtrar pequeños zooplancton del agua",
+        "answer_two": "Cazan en manadas para atrapar peces más grandes",
+        "answer_three": "Tragan los alimentos enteros sin masticarlos"
     }
-    
 ]
