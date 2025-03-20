@@ -3,7 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Elefante africano",
-        "general_info": "",
+        "general_info": "El elefante africano es el animal terrestre más grande que existe, alcanzando normalmente entre 6 y 7,3 metros de largo y de 3,5 a 4 metros de altura en el hombro, y pesando entre 6,000 y 9,000 kg. El elefante africano es un animal herbívoro. Su dieta varía según su hábitat; los elefantes que viven en bosques, desiertos parciales y praderas consumen diferentes proporciones de hierbas y hojas de árboles o arbustos. Los elefantes que habitan las orillas del Lago Kariba se han registrado comiendo vida vegetal submarina. Para descomponer las plantas que consume, el elefante africano tiene cuatro grandes molares, dos en cada mandíbula. Cada uno de estos molares mide 10 cm de ancho y 30 cm de largo. Con el tiempo, estos molares se desgastan y se desarrollan otros nuevos para reemplazarlos a medida que el elefante envejece.",
         "endangerment_status": "En peligro crítico",
         "habitat": "Sabana",
         "diet": "Herbívoro"
@@ -12,7 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Cocodrilo del Nilo",
-        "general_info": "",
+        "general_info": "El cocodrilo del Nilo es el depredador de agua dulce más grande de África y puede considerarse el segundo reptil y cocodrilo más grande del mundo, después del cocodrilo de agua salada. El cocodrilo del Nilo está bastante extendido por toda África subsahariana, ocurriendo principalmente en las regiones central, oriental y meridional del continente, y vive en diferentes tipos de ambientes acuáticos como lagos, ríos y pantanos. Aunque es capaz de vivir en ambientes salinos, esta especie rara vez se encuentra en agua salada, pero ocasionalmente habita en deltas y lagos salobres. El rango de esta especie una vez se extendió hacia el norte a lo largo del Nilo, hasta el delta del Nilo.",
         "endangerment_status": "Preocupación menor",
         "habitat": "Río Nilo",
         "diet": "Carnívoro"
@@ -21,7 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Leona",
-        "general_info": "",
+        "general_info": "La leona es un felino social que vive en manadas, donde desempeña un papel clave en la caza y el cuidado de los cachorros. Las leonas son ligeramente más pequeñas que los leones machos y carecen de melena. Cazan en grupo, a menudo enfocándose en grandes herbívoros como cebras y ñus. Sus fuertes lazos sociales las convierten en cazadoras cooperativas efectivas.",
         "endangerment_status": "Vulnerable",
         "habitat": "Praderas, sabana",
         "diet": "Carnívoro"
@@ -30,7 +30,7 @@
         "id": 4,
         "id_animal": 4,
         "name": "León",
-        "general_info": "",
+        "general_info": "Los leones son una de las grandes especies de felinos más reconocibles, conocidos por sus majestuosas melenas y su estructura social. Viven en manadas y son depredadores ápice, dependiendo de la caza cooperativa para atrapar presas como cebras, búfalos y antílopes. Los machos protegen el territorio, mientras que las hembras realizan la mayor parte de la caza.",
         "endangerment_status": "Vulnerable",
         "habitat": "Praderas, sabana",
         "diet": "Carnívoro"
@@ -39,7 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Hipopótamo",
-        "general_info": "",
+        "general_info": "El hipopótamo es un mamífero semiacuático que se encuentra en ríos y lagos. A pesar de su apariencia robusta, son altamente agresivos y pueden correr sorprendentemente rápido en tierra. Pasan la mayor parte del día en el agua para mantenerse frescos, saliendo por la noche a pastar hierba.",
         "endangerment_status": "Vulnerable",
         "habitat": "Ríos, lagos y otros cuerpos de agua",
         "diet": "Herbívoro"
@@ -48,7 +48,7 @@
         "id": 6,
         "id_animal": 6,
         "name": "Águila real",
-        "general_info": "",
+        "general_info": "Las águilas reales son grandes aves rapaces conocidas por su aguda visión y poderosas habilidades de caza. Se alimentan principalmente de mamíferos y aves de tamaño pequeño a mediano, utilizando su velocidad y garras afiladas para atrapar a sus presas. Estas águilas se encuentran en terrenos abiertos, como montañas y tundras.",
         "endangerment_status": "No amenazado",
         "habitat": "Tundra",
         "diet": "Carnívoro"
@@ -57,7 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Delfín",
-        "general_info": "",
+        "general_info": "Los delfines son mamíferos marinos altamente inteligentes conocidos por su comportamiento juguetón y estructuras sociales complejas. Usan la ecolocalización para navegar y cazar, alimentándose principalmente de peces y calamares. Los delfines se comunican usando una variedad de clics y silbidos.",
         "endangerment_status": "Vulnerable",
         "habitat": "Océano, mar",
         "diet": "Carnívoro"
@@ -66,7 +66,7 @@
         "id": 8,
         "id_animal": 8,
         "name": "Gran tiburón blanco",
-        "general_info": "",
+        "general_info": "El gran tiburón blanco es un poderoso depredador ápice, alcanzando hasta 6 metros de longitud. Tiene un agudo sentido del olfato y una excelente vista, lo que le permite detectar presas a largas distancias. Estos tiburones se alimentan principalmente de peces y mamíferos marinos como focas.",
         "endangerment_status": "En peligro",
         "habitat": "Océano, mar",
         "diet": "Carnívoro"
@@ -75,7 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Cebra",
-        "general_info": "",
+        "general_info": "Las cebras son herbívoros rayados originarios de la sabana africana. Sus distintivas rayas blancas y negras sirven como una forma de camuflaje y ayudan a disuadir a los depredadores. Son animales muy sociales y viajan en manadas para mantenerse a salvo de los leones y otros depredadores.",
         "endangerment_status": "En peligro",
         "habitat": "Praderas, sabana",
         "diet": "Herbívoro"
@@ -84,7 +84,7 @@
         "id": 10,
         "id_animal": 10,
         "name": "Rinoceronte",
-        "general_info": "",
+        "general_info": "Los rinocerontes son grandes herbívoros de piel gruesa con un cuerno distintivo hecho de queratina. Son conocidos por su fuerza y comportamiento agresivo cuando se sienten amenazados. Debido a la caza furtiva por sus cuernos, los rinocerontes están en peligro crítico de extinción.",
         "endangerment_status": "En peligro crítico",
         "habitat": "Praderas, sabana",
         "diet": "Herbívoro"
@@ -93,7 +93,7 @@
         "id": 11,
         "id_animal": 11,
         "name": "Jabalí europeo central",
-        "general_info": "",
+        "general_info": "El jabalí europeo central es una especie de cerdo salvaje altamente adaptable, conocida por su inteligencia y fuertes habilidades para buscar alimento. Se alimenta de una variedad de alimentos, incluidos raíces, nueces, pequeños animales y carroña. Estos jabalíes tienen colmillos afilados y pueden ser agresivos cuando se sienten amenazados.",
         "endangerment_status": "Preocupación menor",
         "habitat": "Bosques",
         "diet": "Omnívoro"
@@ -102,7 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "Oso pardo europeo",
-        "general_info": "",
+        "general_info": "El oso pardo europeo es uno de los carnívoros terrestres más grandes, aunque tiene una dieta omnívora que incluye bayas, peces y mamíferos pequeños. Es un animal solitario que hiberna en invierno y juega un papel clave en el mantenimiento del equilibrio ecológico en su hábitat.",
         "endangerment_status": "En peligro",
         "habitat": "Montañas densamente boscosas",
         "diet": "Omnívoro"
@@ -110,8 +110,8 @@
     {
         "id": 13,
         "id_animal": 13,
-        "name": "Ciervo mula",
-        "general_info": "",
+        "name": "Ciervo",
+        "general_info": "Los ciervos son mamíferos herbívoros que habitan bosques, praderas y otros hábitats alrededor del mundo. Son conocidos por su agilidad, movimientos gráciles y cuernos que los machos crecen y mudan anualmente.",
         "endangerment_status": "En peligro",
         "habitat": "Entorno rocoso",
         "diet": "Herbívoro"
@@ -120,7 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "Lobo gris europeo",
-        "general_info": "",
+        "general_info": "El lobo gris europeo es una gran especie carnívora que se encuentra en toda Europa y en partes de Asia, conocida por su poderosa constitución y su comportamiento orientado a la manada. Los lobos se comunican entre sí a través de una variedad de vocalizaciones, incluidos los aullidos que pueden escucharse hasta 16 kilómetros de distancia en las condiciones adecuadas.",
         "endangerment_status": "En peligro",
         "habitat": "Bosques, tundra, montañas",
         "diet": "Principalmente carnívoro"
@@ -129,7 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Lobo ártico",
-        "general_info": "",
+        "general_info": "El lobo ártico es una subespecie del lobo gris adaptada al duro entorno del Ártico. Estos lobos tienen un espeso pelaje blanco que les proporciona camuflaje en la nieve y les ayuda a sobrevivir en temperaturas frías. Se alimentan principalmente de bueyes almizcleros y liebres árticas.",
         "endangerment_status": "Preocupación menor",
         "habitat": "Tundra ártica",
         "diet": "Carnívoro"
@@ -138,7 +138,7 @@
         "id": 16,
         "id_animal": 16,
         "name": "Liebre europea",
-        "general_info": "",
+        "general_info": "El liebre europeo es una especie de rápido corredor nativa de Europa y partes de Asia, que a menudo se ve en campos abiertos y praderas. Las liebres europeas son conocidas por su impresionante velocidad y agilidad, capaces de alcanzar hasta 72 kilómetros por hora cuando evaden a los depredadores.",
         "endangerment_status": "Preocupación menor",
         "habitat": "Campos abiertos",
         "diet": "Herbívoro"
@@ -147,7 +147,7 @@
         "id": 17,
         "id_animal": 17,
         "name": "Cuervo carroñero",
-        "general_info": "",
+        "general_info": "El cuervo carroñero es un ave muy inteligente que se encuentra en toda Europa y partes de Asia, conocida por su plumaje completamente negro y su característico canto. Se sabe que los cuervos carroñeros usan herramientas, como palos, para extraer alimentos de lugares de difícil acceso, demostrando sus notables habilidades para resolver problemas.",
         "endangerment_status": "Preocupación menor",
         "habitat": "En todas partes",
         "diet": "Omnívoro"
@@ -156,7 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Cabra dorada de Guernsey",
-        "general_info": "",
+        "general_info": "La cabra Golden Guernsey es una raza rara y distintiva de cabra originaria de las Islas del Canal, conocida por su pelaje de color dorado o crema y su naturaleza dócil. Las Golden Guernsey son excelentes productoras de leche, y su leche rica y sabrosa se utiliza a menudo para hacer deliciosos quesos.",
         "endangerment_status": "En peligro",
         "habitat": "Islas del Canal",
         "diet": "Herbívoro"
@@ -165,7 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Calamar de Humboldt",
-        "general_info": "",
+        "general_info": "El calamar de Humboldt, también conocido como el calamar gigante, es un cefalópodo grande y agresivo que se encuentra en el océano Pacífico oriental. Es conocido por su capacidad para cambiar rápidamente de color y cazar en grupos coordinados. Puede crecer hasta 1,5 metros de largo y es un depredador oportunista, alimentándose de peces y otros calamares utilizando su afilado pico y potentes tentáculos.",
         "endangerment_status": "No clasificada (ND)",
         "habitat": "Profundidades de 200 a 700 m",
         "diet": "Carnívoro"
@@ -174,7 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Tortuga laúd",
-        "general_info": "",
+        "general_info": "La tortuga laúd es la más grande de todas las tortugas marinas, distinguida por su concha única de cuero en lugar de un caparazón duro. Es una especie altamente migratoria, viajando miles de kilómetros a través de los océanos para alimentarse de medusas, que consume en grandes cantidades.",
         "endangerment_status": "En peligro",
         "habitat": "Aguas marinas de todos los océanos",
         "diet": "Pelágico"
@@ -182,8 +182,8 @@
     {
         "id": 21,
         "id_animal": 21,
-        "name": "Búho real norteamericano",
-        "general_info": "",
+        "name": "Búho real americano",
+        "general_info": "El búho cornudo, búho tigre o búho real americano es un ave de presa poderosa y adaptable que se encuentra en las Américas, conocida por sus distintivas plumas en forma de orejas y su profundo canto. Es un cazador hábil con excelente visión nocturna y un agarre fuerte, capaz de derribar presas mucho más grandes que él.",
         "endangerment_status": "Preocupación menor",
         "habitat": "bosques, selvas",
         "diet": "Carnívoro"
@@ -192,7 +192,7 @@
         "id": 22,
         "id_animal": 22,
         "name": "Gorrión",
-        "general_info": "",
+        "general_info": "Los gorriones son aves pequeñas y sociales que se encuentran en todo el mundo, conocidas por su adaptabilidad a los entornos urbanos y su canto característico. Se alimentan principalmente de semillas e insectos y a menudo construyen nidos cerca de los humanos.",
         "endangerment_status": "Preocupación menor",
         "habitat": "ciudades, pueblos, bosques",
         "diet": "Omnívoro"
@@ -201,7 +201,7 @@
         "id": 23,
         "id_animal": 23,
         "name": "Orca",
-        "general_info": "",
+        "general_info": "Las orcas, también conocidas como ballenas asesinas, son mamíferos marinos altamente inteligentes y sociales que viven en grupos familiares complejos llamados manadas. Son depredadores ápice con una dieta diversa, utilizando técnicas de caza sofisticadas para capturar presas que van desde peces hasta grandes mamíferos marinos.",
         "endangerment_status": "Datos insuficientes",
         "habitat": "océanos fríos y templados",
         "diet": "Carnívoro"
@@ -210,7 +210,7 @@
         "id": 24,
         "id_animal": 24,
         "name": "Ballena franca",
-        "general_info": "",
+        "general_info": "Las ballenas francas son grandes ballenas de barbas de movimiento lento, conocidas por sus enormes cabezas cubiertas de manchas rugosas llamadas callosidades. Son filtradores que consumen principalmente diminutos zooplancton y están entre las especies de ballenas más amenazadas debido a la caza de ballenas en el pasado y las amenazas actuales como las colisiones con barcos y el enredo en el equipo de pesca.",
         "endangerment_status": "En peligro",
         "habitat": "Océano Atlántico",
         "diet": "Carnívoro (plancton)"
@@ -219,7 +219,7 @@
         "id": 25,
         "id_animal": 25,
         "name": "Ánade real",
-        "general_info": "",
+        "general_info": "El Ánade real es un ave acuática altamente adaptable que se encuentra en lagos, ríos y humedales en todo el mundo, conocida por sus fuertes habilidades para volar y su variada plumaje. Es omnívora, alimentándose de plantas, insectos y pequeñas criaturas acuáticas, y muchas especies migran estacionalmente a largas distancias.",
         "endangerment_status": "Preocupación menor",
         "habitat": "humedales",
         "diet": "Omnívoro"
@@ -227,8 +227,8 @@
     {
         "id": 26,
         "id_animal": 26,
-        "name": "Paloma bravía",
-        "general_info": "",
+        "name": "Paloma doméstica",
+        "general_info": "Las palomas domésticas, descendientes de las palomas bravas (Columba livia), son conocidas por su fuerte instinto de orientación y su capacidad para adaptarse a entornos urbanos. A lo largo de la historia, se han utilizado para la comunicación, la compañía y las carreras. Su dieta se compone principalmente de granos y semillas.",
         "endangerment_status": "Preocupación menor",
         "habitat": "ciudades, pueblos",
         "diet": "Omnívoro"
@@ -236,8 +236,8 @@
     {
         "id": 27,
         "id_animal": 27,
-        "name": "Gaviota argéntea",
-        "general_info": "",
+        "name": "Gaviota europea",
+        "general_info": "La gaviota europea es una gran ave marina extendida que se encuentra a lo largo de las regiones costeras de Europa, conocida por su plumaje blanco y gris llamativo y su fuerte y áspero canto. Es una alimentadora oportunista, que a menudo busca comida en áreas urbanas y en barcos pesqueros, y puede vivir en una variedad de hábitats costeros e interiores.",
         "endangerment_status": "Preocupación menor",
         "habitat": "zonas costeras",
         "diet": "Omnívoro"
@@ -246,7 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Cierva",
-        "general_info": "",
+        "general_info": "Una cierva es una cierva hembra, típicamente encontrada en una variedad de especies, incluyendo el ciervo de cola blanca, el ciervo mulo y el ciervo rojo. Conocidas por sus movimientos gráciles, las ciervas se alimentan principalmente de vegetación y juegan un papel clave en los ciclos reproductivos de las poblaciones de ciervos.",
         "endangerment_status": "En peligro",
         "habitat": "entornos rocosos",
         "diet": "Herbívoro"
@@ -255,7 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Zorro rojo",
-        "general_info": "",
+        "general_info": "El zorro rojo es un mamífero altamente adaptable con un pelaje distintivo de color rojo-anaranjado, que se encuentra en una amplia variedad de hábitats, desde bosques hasta áreas urbanas. Es un depredador omnívoro, cazando pequeños animales, aves e insectos, pero también alimentándose de frutas, verduras y restos de comida humana.",
         "endangerment_status": "Preocupación menor",
         "habitat": "bosques, campos",
         "diet": "Omnívoro"

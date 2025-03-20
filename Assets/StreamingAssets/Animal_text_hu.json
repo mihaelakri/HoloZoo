@@ -3,7 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Afrikai elefánt",
-        "general_info": "",
+        "general_info": "Az afrikai elefánt a legnagyobb szárazföldi élő állat, általában 6 és 7,3 méter közötti hosszúságú, és 3,5 és 4 méter közötti vállmagassággal rendelkezik, súlya pedig 6 000 és 9 000 kg között változik. Az afrikai elefánt növényevő állat. Táplálkozása az élőhelyétől függően változik; az erdőkben, félsivatagokban és fűföldeken élő elefántok más-más arányban fogyasztanak fűt, fa- és bokorleveleket. A Kariba-tó partjain élő elefántokat víz alatti növények fogyasztásáról is feljegyezték. A növények lebontásához az afrikai elefánt négy nagy moláris foggal rendelkezik, kettő a felső állkapocsban és kettő az alsó állkapocsban. Ezek a molárisok 10 cm szélesek és 30 cm hosszúak. Idővel ezek a molárisok elkopnak, és újakat növesztenek, hogy helyettesítsék őket, ahogy az elefánt öregszik.",
         "endangerment_status": "Kritikusan veszélyeztetett",
         "habitat": "Szavanna",
         "diet": "Növényevő"
@@ -12,7 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Nílusi krokodil",
-        "general_info": "",
+        "general_info": "A Nílusi krokodil Afrika legnagyobb édesvízi ragadozója, és a világ második legnagyobb élő hüllője és krokodília, a sósvízi krokodilt követően. A Nílusi krokodil meglehetősen elterjedt a Szahara déli részén, főleg a kontinentális középső, keleti és déli részeken, és különféle vízi környezetekben él, mint tavak, folyók és mocsarak. Bár képes sós vízben is élni, ezt a fajt ritkán találják meg sós vízben, de időnként él deltákban és sós tavakban. E faj egykori elterjedési területe észak felé húzódott, egészen a Nílusi deltáig.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Nílus folyó",
         "diet": "Húsevő"
@@ -21,7 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Nőstény oroszlán ",
-        "general_info": "",
+        "general_info": "A nőstény oroszlán társas állat, aki csapatokban él, ahol kulcsszerepet játszik a vadászatban és az oroszlánkölykök nevelésében. A nőstények kissé kisebbek, mint a hím oroszlánok, és nincs sörényük. Csoportokban vadásznak, gyakran nagy növényevőkre, mint a zebrák és gnúk. Erős társas kötődéseik hatékony együttműködő vadászokká teszik őket.",
         "endangerment_status": "Sebezhető",
         "habitat": "Füves puszták, szavanna",
         "diet": "Húsevő"
@@ -30,7 +30,7 @@
         "id": 4,
         "id_animal": 4,
         "name": "Hím oroszlán ",
-        "general_info": "",
+        "general_info": "Az oroszlánok az egyik legismertebb nagymacska faj, amelyek híresek a fenséges sörényükről és társadalmi struktúrájukról. Csapatokban élnek, és csúcsragadozók, akik a kooperatív vadászatra támaszkodnak, hogy zsákmányt, például zebrákat, bivalyokat és antilopokat ejtsenek. A hímek védik a területet, míg a nőstények végzik a vadászat nagy részét.",
         "endangerment_status": "Sebezhető",
         "habitat": "Füves puszták, szavanna",
         "diet": "Húsevő"
@@ -39,7 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Víziló",
-        "general_info": "",
+        "general_info": "A víziló egy félig vízi emlős, amely folyókban és tavakban él. Annak ellenére, hogy robusztus külsejűek, rendkívül agresszívek és meglepően gyorsan futnak szárazföldön. A nap nagy részét vízben töltik, hogy lehűljenek, éjszaka pedig kiemelkednek, hogy füvet legeljenek.",
         "endangerment_status": "Sebezhető",
         "habitat": "Folyók, tavak és más vízi élőhelyek",
         "diet": "Növényevő"
@@ -48,7 +48,7 @@
         "id": 6,
         "id_animal": 6,
         "name": "Szirti sas",
-        "general_info": "",
+        "general_info": "A szirti sasok nagy ragadozó madarak, amelyek kiemelkedő látásukról és erőteljes vadászati képességeikről ismertek. Főként kis- és közepes méretű emlősökkel és madarakkal táplálkoznak, sebességüket és éles karmukat használva a zsákmány elkapására. Ezek a sasok nyílt terepeken találhatók, például hegyekben és tundrákon.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Tundra",
         "diet": "Húsevő"
@@ -57,7 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Delfin",
-        "general_info": "",
+        "general_info": "A delfinek rendkívül intelligens tengeri emlősök, akiket játékos viselkedésükről és összetett társadalmi struktúráikról ismernek. Echolokációval navigálnak és vadásznak, elsősorban halakat és tintahalakat fogyasztanak. A delfinek különféle kattogó és sípoló hangokkal kommunikálnak.",
         "endangerment_status": "Sebezhető",
         "habitat": "Óceán, tenger",
         "diet": "Húsevő"
@@ -66,7 +66,7 @@
         "id": 8,
         "id_animal": 8,
         "name": "Nagy fehér cápa",
-        "general_info": "",
+        "general_info": "A nagy fehér cápák erőteljes csúcsragadozók, amelyek akár 6 méteres hosszúságot is elérhetnek. Kiváló szaglással és látással rendelkeznek, amely lehetővé teszi számukra, hogy hosszú távolságról észleljék a zsákmányt. Ezek a cápák főként halakkal és tengeri emlősökkel, például fókákkal táplálkoznak.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Óceán, tenger",
         "diet": "Húsevő"
@@ -75,7 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Zebra",
-        "general_info": "",
+        "general_info": "A zebrák csíkos növényevők, amelyek az afrikai szavannán élnek. A jellegzetes fekete-fehér csíkjaik álcázásként szolgálnak, és segítenek elriasztani a ragadozókat. Nagyon társas lények, és csapatokban utaznak, hogy biztonságban maradjanak az oroszlánok és más ragadozók elől.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Füves puszták, szavanna",
         "diet": "Növényevő"
@@ -84,7 +84,7 @@
         "id": 10,
         "id_animal": 10,
         "name": "Orrszarvú",
-        "general_info": "",
+        "general_info": "Az orrszarvúk nagy, vastag bőrű növényevők, amelyek jellegzetes, keratinból készült szarvval rendelkeznek. Erősségükről és agresszív viselkedésükről híresek, amikor fenyegetve érzik magukat. A szarvuk miatt végzett orvvadászat következtében az orrszarvúk kritikus veszélyeztetettek.",
         "endangerment_status": "Kritikusan veszélyeztetett",
         "habitat": "Füves puszták, szavanna",
         "diet": "Növényevő"
@@ -93,7 +93,7 @@
         "id": 11,
         "id_animal": 11,
         "name": "Közép-európai vaddisznó",
-        "general_info": "",
+        "general_info": "Az Közép-európai vaddisznó egy rendkívül alkalmazkodóképes vadsertés faj, amely híres intelligenciájáról és erős táplálékszerző képességeiről. Különböző ételekkel táplálkozik, beleértve a gyökereket, dióféléket, kis állatokat és dögöket. Ezeknek a vaddisznóknak éles agyaraik vannak, és agresszívek lehetnek, ha fenyegetve érzik magukat.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Erdők",
         "diet": "Mindenevő"
@@ -102,7 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "Európai barnamedve",
-        "general_info": "",
+        "general_info": "Az európai barnamedve az egyik legnagyobb szárazföldi ragadozó, bár étrendje omnívor, amely bogyókat, halakat és kis emlősöket tartalmaz. Magányos állat, amely télen hibernál, és kulcsszerepet játszik az ökológiai egyensúly fenntartásában élőhelyén.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Sűrű erdős hegységek",
         "diet": "Mindenevő"
@@ -110,8 +110,8 @@
     {
         "id": 13,
         "id_animal": 13,
-        "name": "Öszvérszarvas",
-        "general_info": "",
+        "name": "Gímszarvas",
+        "general_info": "A gímszarvasok növényevő emlősök, melyek erdőkben, füves területeken és más élőhelyeken találhatók szerte a világon. Rugalmas mozgásukról, kecses mozdulataikról és agancsukról ismertek, melyet a hímek évente növesztenek és vedlenek.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Sziklás környezet",
         "diet": "Növényevő"
@@ -120,7 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "Európai szürke farkas",
-        "general_info": "",
+        "general_info": "Az európai szürke farkas egy nagy ragadozó faj, amely Európában és Ázsia egyes részein él, és híres erős felépítéséről és csapat-orientált viselkedéséről. A farkasok különböző hangadásokkal kommunikálnak egymással, beleértve a vonyítást, amely megfelelő körülmények között akár 16 kilométer távolságra is hallható.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Erdők, tundra, hegyek",
         "diet": "Főként húsevő"
@@ -129,7 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Sarki farkas",
-        "general_info": "",
+        "general_info": "Sarki farkas egy szürke farkas alfaja, amely alkalmazkodott az Északi-sark kemikális környezetéhez. Ezeknek a farkasoknak sűrű fehér bundájuk van, amely elrejtőzik a hóban és segíti őket a hideg hőmérsékletek túlélésében. Főként pézsmaborjakra és sarki nyulakra vadásznak.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Északi tundra",
         "diet": "Húsevő"
@@ -138,7 +138,7 @@
         "id": 16,
         "id_animal": 16,
         "name": "Európai nyúl ",
-        "general_info": "",
+        "general_info": "Az európai nyúl egy gyors futó faj, amely Európában és Ázsia egyes részein őshonos, és gyakran látható nyílt mezőkön és füves területeken. Az európai nyulak híresek lenyűgöző sebességükről és fürgeségükről, képesek akár 72 km/h sebességgel is elmenekülni a ragadozók elől.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Nyílt mezők",
         "diet": "Növényevő"
@@ -147,7 +147,7 @@
         "id": 17,
         "id_animal": 17,
         "name": "Kormos varjú",
-        "general_info": "",
+        "general_info": "A kormos varjú egy rendkívül intelligens madár, amely Európa és Ázsia egyes részein található, és teljesen fekete tollazatáról, valamint jellegzetes károgó hangjáról ismert. A kormos varjak arról híresek, hogy eszközöket, például botokat használnak, hogy ételt nyerjenek elérhetetlen helyekről, ezzel bemutatva figyelemre méltó problémamegoldó képességeiket.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Mindenhol",
         "diet": "Mindenevő"
@@ -156,7 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Arany guernsey-i  kecske",
-        "general_info": "",
+        "general_info": "Az Arany Guernsey-i kecske egy ritka és jellegzetes kecskefajta a Csatorna-szigetekről, amely arany vagy krémszínű bundájáról és szelíd természetéről ismert. Az Arany Guernsey-i kecskék kiváló tejtermelők, és gazdag, ízletes tejüket gyakran használják finom sajtok készítésére.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Csatorna-szigetek",
         "diet": "Növényevő"
@@ -165,7 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Humboldt-tintahal",
-        "general_info": "",
+        "general_info": "A Humboldt-tintahal, más néven óriástintahal, egy nagy, agresszív fejfejű, amelyet a Keleti-csendes-óceánban találnak. Ismert arról, hogy gyorsan képes megváltoztatni a színét és koordinált csoportokban vadászik. Akár 1,5 méter hosszúra is megnőhet, és opportunista ragadozó, amely halakkal és más tintahalakkal táplálkozik éles csőrét és erős csápjait használva.",
         "endangerment_status": "Nem besorolt",
         "habitat": "200m és 700m mélység között",
         "diet": "Húsevő"
@@ -174,7 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Kérgesteknős",
-        "general_info": "",
+        "general_info": "A kérgesteknős a legnagyobb a tengeri teknősök közül, melyet egyedi bőrös páncélja különböztet meg a kemény páncéltól. Magas migrációs hajlamú faj, amely több ezer kilométert tesz meg az óceánokon keresztül, hogy medúzákkal táplálkozzon, melyeket nagy mennyiségben fogyaszt.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Óceánok tengervize",
         "diet": "Pelágikus"
@@ -183,7 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Észak-amerikai uhu",
-        "general_info": "",
+        "general_info": "Az észak-amerikai uhu egy erőteljes és alkalmazkodó ragadozó madár, amely az Amerikák szerte megtalálható, különleges füleivel és mély ho-ho-hó kiáltásával ismert. Kiváló vadász, remek éjjellátással és erős fogással, képes nagyobb zsákmányokat is elfogni, mint saját magát.",
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "erdők, dzsungelek",
         "diet": "Húsevő"
@@ -192,7 +192,7 @@
         "id": 22,
         "id_animal": 22,
         "name": "Veréb",
-        "general_info": "",
+        "general_info": "A verebek kis, szociális madarak, amelyek világszerte megtalálhatók, és híresek a városi környezetekhez való alkalmazkodóképességükről és jellegzetes csicsergésükről. Főként magvakkal és rovarokkal táplálkoznak, és gyakran építenek fészket az emberek közelében.",
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "városok, falvak, erdők",
         "diet": "Mindenevő"
@@ -201,7 +201,7 @@
         "id": 23,
         "id_animal": 23,
         "name": "Orka",
-        "general_info": "",
+        "general_info": "Az orkákat, más néven gyilkos bálnákat, rendkívül intelligens és szociális tengeri emlősöknek tartják, amelyek összetett családi csoportokban élnek, amelyeket podoknak neveznek. Csúcsragadozók, változatos étrenddel, fejlett vadásztechnikákat alkalmaznak, hogy zsákmányt ejtsenek, amelyek a halaktól kezdve a nagy tengeri emlősökig terjednek.",
         "endangerment_status": "Elégtelen adatok",
         "habitat": "hideg és mérsékelt óceánok",
         "diet": "Húsevő"
@@ -210,7 +210,7 @@
         "id": 24,
         "id_animal": 24,
         "name": "Eubalaena",
-        "general_info": "",
+        "general_info": "Az Eubalaena fajta nagy, lassan mozgó szűrőbálnák, amelyeket hatalmas fejük jellemez, és durva foltok borítják őket, úgynevezett kallózusok. Ők szűrőfejők, amelyek elsősorban apró zooplanktont fogyasztanak, és a legveszélyeztetettebb bálnafajok közé tartoznak a múltbéli bálnavadászat és a folyamatos fenyegetések, mint a hajóütközések és a halászhálókba akadás miatt.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "Atlanti-óceán",
         "diet": "Húsevő (plankton)"
@@ -219,7 +219,7 @@
         "id": 25,
         "id_animal": 25,
         "name": "Tőkés réce",
-        "general_info": "",
+        "general_info": "A tőkés récék rendkívül alkalmazkodó vízi madarak, amelyek a világ tavakban, folyókban és mocsarakban találhatók, és erős repülési képességeikről és változatos tollazatukról ismertek. Mindenevők, növényeket, rovarokat és kis vízi élőlényeket fogyasztanak, és sok faj szezonálisan, hosszú távolságokat vándorol.",
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "vizes élőhelyek",
         "diet": "Mindenevő"
@@ -227,8 +227,8 @@
     {
         "id": 26,
         "id_animal": 26,
-        "name": "Sziklagalamb",
-        "general_info": "",
+        "name": "Házi galamb",
+        "general_info": "A házi galambok, melyek a vadgerle leszármazottai, ismert erős tájékozódó képességükről és alkalmazkodóképességükről a városi környezetekhez. Történelmük során kommunikációra, társaságra és versenyzésre használták őket. Táplálékuk elsősorban gabonákból és magvakból áll.",
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "városok, falvak",
         "diet": "Mindenevő"
@@ -237,7 +237,7 @@
         "id": 27,
         "id_animal": 27,
         "name": "Ezüstsirály",
-        "general_info": "",
+        "general_info": "Az ezüstsirály egy nagy, széles elterjedésű tengeri madár, amely Európa part menti területein található, jellegzetes fehér és szürke tollazatáról és hangos, durva hívó szaváról ismert. Oportunista táplálkozó, gyakran keres ételt városi területeken és halászhajókon, és különböző part menti és szárazföldi élőhelyeken élhet.",
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "partvidéki területek",
         "diet": "Mindenevő"
@@ -245,8 +245,8 @@
     {
         "id": 28,
         "id_animal": 28,
-        "name": "Szarvastehén",
-        "general_info": "",
+        "name": "Őz",
+        "general_info": "Az őz egy nőstény szarvas, amely általában különböző fajokban fordul elő, beleértve a fehérfarkú, a szarvasmulett és a vörös szarvast. Az elegáns mozgásukról ismert őzek elsősorban növényzetet legelnek, és kulcsszerepet játszanak a szarvaspopulációk szaporodási ciklusaiban.",
         "endangerment_status": "Veszélyeztetett",
         "habitat": "sziklás környezet",
         "diet": "Növényevő"
@@ -255,7 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Vörös róka",
-        "general_info": "",
+        "general_info": "A vörös róka egy rendkívül alkalmazkodóképes emlős, jellegzetes vörös-narancssárga bundájával, amely széles körű élőhelyeken, az erdőktől a városi területekig megtalálható. Ominivor ragadozó, kicsi állatokat, madarakat és rovarokat vadászik, de gyümölcsöket, zöldségeket és emberi ételmaradékokat is fogyaszt.",
         "endangerment_status": "Legkevésbé aggasztó",
         "habitat": "erdők, mezők",
         "diet": "Mindenevő"

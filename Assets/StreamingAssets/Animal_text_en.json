@@ -110,8 +110,8 @@
     {
         "id": 13,
         "id_animal": 13,
-        "name": "Mule deer",
-        "general_info": "The mule deer is a medium-sized species of deer native to North America. Mule deer can leap over 8 feet high, making them excellent jumpers when they need to escape predators!",
+        "name": "Deer",
+        "general_info": "Deers are herbivorous mammals found in forests, grasslands, and other habitats around the world. They are known for their agility, graceful movements, and antlers, which males grow and shed annually.",
         "endangerment_status": "Endangered",
         "habitat": "Rocky environment",
         "diet": "Herbivore"
@@ -173,8 +173,8 @@
     {
         "id": 20,
         "id_animal": 20,
-        "name": "The leatherback sea turtle is the largest of all sea turtles, distinguished by its unique leathery shell instead of a hard carapace. It is a highly migratory species, traveling thousands of kilometers across oceans to feed on jellyfish, which it consumes in large quantities.",
-        "general_info": "",
+        "name": "Leatherback Sea Turtle",
+        "general_info": "The leatherback sea turtle is the largest of all sea turtles, distinguished by its unique leathery shell instead of a hard carapace. It is a highly migratory species, traveling thousands of kilometers across oceans to feed on jellyfish, which it consumes in large quantities.",
         "endangerment_status": "Endangered",
         "habitat": "Marine waters throughout Oceans",
         "diet": "Pelagic"

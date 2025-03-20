@@ -3,7 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Éléphant d'Afrique",
-        "general_info": "",
+        "general_info": "L'éléphant d'Afrique est le plus grand animal terrestre vivant, atteignant normalement de 6 à 7,3 mètres de long et de 3,5 à 4 mètres de hauteur au niveau de l'épaule, et pesant entre 6 000 et 9 000 kg. L'éléphant africain est un animal herbivore. Son alimentation varie en fonction de son habitat ; les éléphants vivant dans les forêts, les déserts partiels et les prairies mangent des proportions différentes d'herbes et de feuilles d'arbres ou d'arbustes. Les éléphants vivant sur les rives du lac Kariba ont été observés en train de manger de la végétation aquatique. Pour décomposer les plantes qu'il consomme, l'éléphant africain possède quatre grandes molaires, deux dans chaque mandibule. Chacune de ces molaires mesure 10 cm de large et 30 cm de long. Avec le temps, ces molaires s'usent et de nouvelles poussent pour les remplacer à mesure que l'éléphant vieillit.",
         "endangerment_status": "En danger critique",
         "habitat": "Savane",
         "diet": "Herbivore"
@@ -12,7 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Crocodile du Nil",
-        "general_info": "",
+        "general_info": "Le crocodile du Nil est le plus grand prédateur d'eau douce d'Afrique, et peut être considéré comme le deuxième plus grand reptile et crocodilien vivant au monde, après le crocodile marin. Le crocodile du Nil est largement répandu dans toute l'Afrique subsaharienne, se trouvant principalement dans les régions centrales, orientales et méridionales du continent, et il vit dans différents types d'environnements aquatiques tels que des lacs, des rivières et des marais. Bien qu'il soit capable de vivre dans des environnements salins, cette espèce se trouve rarement dans l'eau salée, mais elle habite parfois des deltas et des lacs saumâtres. L'aire de répartition de cette espèce s'étendait autrefois vers le nord, à travers le Nil, jusqu'au delta du Nil.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Fleuve Nil",
         "diet": "Carnivore"
@@ -21,7 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Lionne",
-        "general_info": "",
+        "general_info": "La lionne est un félin social, vivant en groupes appelés 'troupes', où elle joue un rôle clé dans la chasse et l'élevage des lionceaux. Les lionnes sont légèrement plus petites que les lions mâles et n'ont pas de crinière. Elles chassent en groupe, ciblant souvent de grands herbivores tels que les zèbres et les gnous. Leurs liens sociaux forts en font des chasseuses coopératives efficaces.",
         "endangerment_status": "Vulnérable",
         "habitat": "Prairies, savane",
         "diet": "Carnivore"
@@ -30,7 +30,7 @@
         "id": 4,
         "id_animal": 4,
         "name": "Lion",
-        "general_info": "",
+        "general_info": "Les lions sont l'un des grands félins les plus reconnaissables, connus pour leur crinière majestueuse et leur structure sociale. Ils vivent en groupes appelés 'troupes' et sont des prédateurs au sommet de la chaîne alimentaire, comptant sur la chasse coopérative pour capturer des proies telles que les zèbres, les buffles et les antilopes. Les mâles protègent le territoire tandis que les femelles s'occupent de la plupart des chasses.",
         "endangerment_status": "Vulnérable",
         "habitat": "Prairies, savane",
         "diet": "Carnivore"
@@ -39,7 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Hippopotame",
-        "general_info": "",
+        "general_info": "L'hippopotame est un mammifère semi-aquatique que l'on trouve dans les rivières et les lacs. Malgré leur apparence trapue, ils sont très agressifs et peuvent courir étonnamment vite sur terre. Ils passent la majeure partie de la journée dans l'eau pour rester au frais, émergeant la nuit pour paître de l'herbe.",
         "endangerment_status": "Vulnérable",
         "habitat": "Rivières, lacs et autres plans d'eau",
         "diet": "Herbivore"
@@ -48,7 +48,7 @@
         "id": 6,
         "id_animal": 6,
         "name": "Aigle royal",
-        "general_info": "",
+        "general_info": "Les aigles royaux sont de grands oiseaux de proie connus pour leur acuité visuelle et leurs puissantes capacités de chasse. Ils se nourrissent principalement de petits à moyens mammifères et oiseaux, utilisant leur vitesse et leurs serres acérées pour attraper leur proie. Ces aigles se trouvent dans des terrains ouverts, tels que les montagnes et les toundras.",
         "endangerment_status": "Non menacé",
         "habitat": "Toundra",
         "diet": "Carnivore"
@@ -57,7 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Dauphin",
-        "general_info": "",
+        "general_info": "Les dauphins sont des mammifères marins très intelligents, connus pour leur comportement joueur et leurs structures sociales complexes. Ils utilisent l'écholocation pour naviguer et chasser, se nourrissant principalement de poissons et de calmars. Les dauphins communiquent en utilisant une variété de clics et de sifflements.",
         "endangerment_status": "Vulnérable",
         "habitat": "Océan, mer",
         "diet": "Carnivore"
@@ -66,7 +66,7 @@
         "id": 8,
         "id_animal": 8,
         "name": "Grand requin blanc",
-        "general_info": "",
+        "general_info": "Le grand requin blanc est un puissant prédateur au sommet de la chaîne alimentaire, atteignant jusqu'à 6 mètres de long. Il possède un sens de l'odorat très développé et une excellente vue, ce qui lui permet de détecter ses proies à de grandes distances. Ces requins se nourrissent principalement de poissons et de mammifères marins comme les phoques.",
         "endangerment_status": "En danger",
         "habitat": "Océan, mer",
         "diet": "Carnivore"
@@ -75,7 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Zèbre",
-        "general_info": "",
+        "general_info": "Les zèbres sont des herbivores rayés originaires de la savane africaine. Leurs rayures noires et blanches distinctives servent de camouflage et aident à dissuader les prédateurs. Ce sont des animaux très sociaux qui voyagent en troupeaux pour se protéger des lions et autres prédateurs.",
         "endangerment_status": "En danger",
         "habitat": "Prairies, savane",
         "diet": "Herbivore"
@@ -84,7 +84,7 @@
         "id": 10,
         "id_animal": 10,
         "name": "Rhinocéros",
-        "general_info": "",
+        "general_info": "Les rhinocéros sont de grands herbivores à la peau épaisse, dotés d'une corne distinctive faite de kératine. Ils sont connus pour leur force et leur comportement agressif lorsqu'ils sont menacés. En raison du braconnage pour leurs cornes, les rhinocéros sont en danger critique d'extinction.",
         "endangerment_status": "En danger critique",
         "habitat": "Prairies, savane",
         "diet": "Herbivore"
@@ -93,7 +93,7 @@
         "id": 11,
         "id_animal": 11,
         "name": "Sanglier d'Europe centrale",
-        "general_info": "",
+        "general_info": "Le sanglier d'Europe centrale est une espèce de cochon sauvage très adaptable, connue pour son intelligence et ses fortes capacités de recherche de nourriture. Il se nourrit d'une variété d'aliments, y compris des racines, des noix, de petits animaux et des charognes. Ces sangliers ont des dents pointues et peuvent être agressifs lorsqu'ils se sentent menacés.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Forêts",
         "diet": "Omnivore"
@@ -102,7 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "Ours brun d'Europe",
-        "general_info": "",
+        "general_info": "L'ours brun européen est l'un des plus grands carnivores terrestres, bien qu'il ait un régime omnivore composé de baies, de poissons et de petits mammifères. C'est un animal solitaire qui hiberne en hiver et joue un rôle clé dans le maintien de l'équilibre écologique de son habitat.",
         "endangerment_status": "En danger",
         "habitat": "Montagnes densément boisées",
         "diet": "Omnivore"
@@ -110,8 +110,8 @@
     {
         "id": 13,
         "id_animal": 13,
-        "name": "Cerf mulet",
-        "general_info": "",
+        "name": "Cerf",
+        "general_info": "Les cerfs sont des mammifères herbivores que l'on trouve dans les forêts, les prairies et d'autres habitats à travers le monde. Ils sont connus pour leur agilité, leurs mouvements gracieux et les bois que les mâles développent et perdent chaque année.",
         "endangerment_status": "En danger",
         "habitat": "Environnements rocheux",
         "diet": "Herbivore"
@@ -120,7 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "Loup gris européen",
-        "general_info": "",
+        "general_info": "Le loup gris européen est une grande espèce carnivore que l'on trouve à travers l'Europe et certaines parties de l'Asie, connue pour sa constitution robuste et son comportement centré sur la meute. Les loups communiquent entre eux par une variété de vocalisations, y compris des hurlements qui peuvent être entendus jusqu'à 16 kilomètres de distance dans les bonnes conditions.",
         "endangerment_status": "En danger",
         "habitat": "Forêts, toundra, montagnes",
         "diet": "Principalement carnivore"
@@ -129,7 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Loup arctique",
-        "general_info": "",
+        "general_info": "Le loup arctique est une sous-espèce du loup gris adaptée aux conditions rigoureuses de l'Arctique. Ces loups possèdent un pelage blanc épais qui les camoufle dans la neige et les aide à survivre dans des températures froides. Ils se nourrissent principalement de bœufs musqués et de lièvres arctiques.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Toundra arctique",
         "diet": "Carnivore"
@@ -138,7 +138,7 @@
         "id": 16,
         "id_animal": 16,
         "name": "Lièvre d'Europe",
-        "general_info": "",
+        "general_info": "Le lièvre européen est une espèce de coureur rapide originaire d'Europe et de certaines parties de l'Asie, souvent observé dans des champs ouverts et des prairies. Les lièvres européens sont connus pour leur grande vitesse et agilité, capables d'atteindre jusqu'à 72 kilomètres par heure lorsqu'ils échappent aux prédateurs.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Champs ouverts",
         "diet": "Herbivore"
@@ -147,7 +147,7 @@
         "id": 17,
         "id_animal": 17,
         "name": "Corbeau freux",
-        "general_info": "",
+        "general_info": "Le corbeau freux est un oiseau très intelligent que l'on trouve à travers l'Europe et certaines parties de l'Asie, connu pour son plumage entièrement noir et son cri caractéristique. Les corbeaux freux sont connus pour utiliser des outils, comme des bâtons, pour extraire de la nourriture de lieux difficiles d'accès, montrant ainsi leurs remarquables compétences en résolution de problèmes.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Partout",
         "diet": "Omnivore"
@@ -156,7 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Chèvre de Guernesey dorée",
-        "general_info": "",
+        "general_info": "La chèvre de Guernesey dorée est une race rare et distinctive originaire des îles Anglo-Normandes, reconnue pour son pelage doré ou crème et son caractère docile. Les Golden Guernsey sont d'excellentes productrices de lait, et leur lait riche et savoureux est souvent utilisé pour fabriquer de délicieux fromages.",
         "endangerment_status": "En danger",
         "habitat": "Îles Anglo-Normandes",
         "diet": "Herbivore"
@@ -165,7 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Calmar de Humboldt",
-        "general_info": "",
+        "general_info": "Le calmar de Humboldt, également connu sous le nom de calmar géant, est un gros céphalopode trouvé dans l'océan Pacifique oriental. Il est connu pour sa capacité à changer rapidement de couleur et à chasser en groupes coordonnés. Il peut atteindre jusqu'à 1,5 mètre de long et est un prédateur opportuniste, se nourrissant de poissons et d'autres calmars à l'aide de son bec tranchant et de ses puissants tentacules.",
         "endangerment_status": "Non classé",
         "habitat": "Profondeurs de 200m à 700m",
         "diet": "Carnivore"
@@ -174,7 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Tortue luth",
-        "general_info": "",
+        "general_info": "La tortue luth est la plus grande de toutes les tortues marines, distinguée par sa carapace unique en cuir au lieu d'une carapace dure. C'est une espèce hautement migratrice, parcourant des milliers de kilomètres à travers les océans pour se nourrir de méduses, qu'elle consomme en grandes quantités.",
         "endangerment_status": "En danger",
         "habitat": "Eaux marines de tous les océans",
         "diet": "Pélagique"
@@ -183,7 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Grand-duc d'Amérique",
-        "general_info": "",
+        "general_info": "Le grand-duc d'Amérique est un puissant et adaptable oiseau de proie que l'on trouve à travers les Amériques, connu pour ses touffes distinctives sur les oreilles et son cri profond. C'est un chasseur habile avec une excellente vision nocturne et une prise forte, capable d'abattre des proies beaucoup plus grandes que lui",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, jungles",
         "diet": "Carnivore"
@@ -192,7 +192,7 @@
         "id": 22,
         "id_animal": 22,
         "name": "Moineau",
-        "general_info": "",
+        "general_info": "Les moineaux sont de petits oiseaux sociaux que l'on trouve dans le monde entier, connus pour leur capacité d'adaptation aux environnements urbains et leur chant caractéristique. Ils se nourrissent principalement de graines et d'insectes et construisent souvent leurs nids à proximité des humains.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "villes, villages, forêts",
         "diet": "Omnivore"
@@ -201,7 +201,7 @@
         "id": 23,
         "id_animal": 23,
         "name": "Orque",
-        "general_info": "",
+        "general_info": "Les orques, également connues sous le nom de baleines tueuses, sont des mammifères marins hautement intelligents et sociaux vivant dans des groupes familiaux complexes appelés groupes. Ce sont des prédateurs apex ayant un régime alimentaire varié, utilisant des techniques de chasse sophistiquées pour capturer des proies allant des poissons aux grands mammifères marins.",
         "endangerment_status": "Données insuffisantes",
         "habitat": "océans froids et tempérés",
         "diet": "Carnivore"
@@ -210,7 +210,7 @@
         "id": 24,
         "id_animal": 24,
         "name": "Baleine franche",
-        "general_info": "",
+        "general_info": "Les baleines franches sont de grandes baleines à fanons à mouvement lent, connues pour leurs têtes massives couvertes de taches rugueuses appelées callosités. Ce sont des filtreurs qui consomment principalement de minuscules zooplanctons et font partie des espèces de baleines les plus menacées en raison de la chasse à la baleine passée et des menaces continues telles que les collisions avec des navires et l'enchevêtrement dans les équipements de pêche.",
         "endangerment_status": "En danger",
         "habitat": "Océan Atlantique",
         "diet": "Carnivore (plancton)"
@@ -219,7 +219,7 @@
         "id": 25,
         "id_animal": 25,
         "name": "Canard colvert",
-        "general_info": "",
+        "general_info": "Le Canard colvert est un oiseau aquatique très adaptable que l'on trouve dans les lacs, les rivières et les zones humides du monde entier, connu pour ses grandes capacités de vol et son plumage varié. Il est omnivore, se nourrissant de plantes, d'insectes et de petites créatures aquatiques, et de nombreuses espèces migrent saisonnièrement sur de longues distances.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "zones humides",
         "diet": "Omnivore"
@@ -227,8 +227,8 @@
     {
         "id": 26,
         "id_animal": 26,
-        "name": "Pigeon biset",
-        "general_info": "",
+        "name": "Pigeon domestique",
+        "general_info": "Les pigeons domestiques, descendants du pigeon biset, sont reconnus pour leur fort instinct de retour et leur capacité à s'adapter aux environnements urbains. Ils ont été utilisés tout au long de l'histoire pour la communication, la compagnie et les courses. Leur régime alimentaire se compose principalement de grains et de graines.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "villes, villages",
         "diet": "Omnivore"
@@ -237,7 +237,7 @@
         "id": 27,
         "id_animal": 27,
         "name": "Goéland argenté",
-        "general_info": "",
+        "general_info": "Le goéland argenté est un grand oiseau de mer largement répandu le long des côtes de l'Europe, connu pour son plumage blanc et gris frappant et son cri bruyant et aigu. C'est une nourrice opportuniste, cherchant souvent de la nourriture dans les zones urbaines et sur les bateaux de pêche, et elle peut vivre dans une variété d'habitats côtiers et intérieurs.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "zones côtières",
         "diet": "Omnivore"
@@ -246,7 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Biche",
-        "general_info": "",
+        "general_info": "Une biche est une femelle cerf, généralement trouvée dans une variété d'espèces, y compris le cerf à queue blanche, le cerf mulet et le cerf rouge. Connues pour leurs mouvements gracieux, les biches broutent principalement de la végétation et jouent un rôle clé dans les cycles reproductifs des populations de cerfs.",
         "endangerment_status": "En danger",
         "habitat": "environnements rocheux",
         "diet": "Herbivore"
@@ -255,7 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Renard roux",
-        "general_info": "",
+        "general_info": "Le renard roux est un mammifère hautement adaptable avec un pelage distinctif rouge-orangé, que l'on trouve dans une large gamme d'habitats, des forêts aux zones urbaines. C'est un prédateur omnivore, chassant de petits animaux, des oiseaux et des insectes, mais se nourrissant également de fruits, de légumes et de restes alimentaires humains.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, champs",
         "diet": "Omnivore"

@@ -3,7 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Afrički slon",
-        "general_info": "",
+        "general_info": "Afrički slon najveća je živuća kopnena životinja, obično dosežući duljinu od 6 do 7,3 metra i visinu od 3,5 do 4 metra u ramenima, te težinu između 6.000 i 9.000 kg. Afrički slon je biljojed. Njegova prehrana varira ovisno o staništu; slonovi koji žive u šumama, djelomičnim pustinjama i travnjacima jedu različite omjere trava te lišća drveća i grmlja. Zabilježeno je da slonovi koji nastanjuju obale jezera Kariba jedu podvodnu vegetaciju. Kako bi usitnio biljke koje konzumira, afrički slon ima četiri velika kutnjaka, po dva u svakoj čeljusti. Svaki od tih kutnjaka širok je 10 cm i dug 30 cm. S vremenom se ti kutnjaci troše, a novi izrastaju kako slon stari.",
         "endangerment_status": "Kritično ugrožen",
         "habitat": "Savana",
         "diet": "Biljojed"
@@ -12,7 +12,7 @@
         "id": 2,
         "id_animal": 2,
         "name": "Nilski krokodil",
-        "general_info": "",
+        "general_info": "Nilski krokodil najveći je slatkovodni grabežljivac u Africi i može se smatrati drugim najvećim živućim gmazom i krokodilom na svijetu, odmah nakon morskog krokodila. Nilski krokodil je široko rasprostranjen u subsaharskoj Africi, uglavnom u središnjim, istočnim i južnim dijelovima kontinenta, a živi u različitim vrstama vodenih staništa poput jezera, rijeka i močvara. Iako može preživjeti u slanim okruženjima, rijetko se nalazi u morskoj vodi, ali povremeno nastanjuje delte i bočata jezera. Nekada je područje rasprostranjenosti ove vrste sezalo daleko na sjever duž Nila, sve do delte Nila.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Rijeka Nil",
         "diet": "Mesojed"
@@ -21,7 +21,7 @@
         "id": 3,
         "id_animal": 5,
         "name": "Lavica",
-        "general_info": "",
+        "general_info": "Lavica je društvena mačka koja živi u čoporima, gdje ima ključnu ulogu u lovu i odgoju mladunaca. Lavice su nešto manje od mužjaka i nemaju grivu. Love u skupinama, često ciljajući velike biljojede poput zebri i gnuova. Njihove snažne društvene veze čine ih učinkovitim suradničkim lovcima.",
         "endangerment_status": "Ranjiva",
         "habitat": "Travnjaci, savana",
         "diet": "Mesojed"
@@ -30,7 +30,7 @@
         "id": 4,
         "id_animal": 4,
         "name": "Lav",
-        "general_info": "",
+        "general_info": "Lavovi su jedne od najprepoznatljivijih velikih mačaka, poznati po svojim veličanstvenim grivama i društvenoj strukturi. Žive u čoporima i vršni su grabežljivci, oslanjajući se na zajednički lov kako bi ulovili plijen poput zebri, bivola i antilopa. Mužjaci štite teritorij, dok ženke obavljaju većinu lova.",
         "endangerment_status": "Ranjiv",
         "habitat": "Travnjaci, savana",
         "diet": "Mesojed"
@@ -39,7 +39,7 @@
         "id": 5,
         "id_animal": 3,
         "name": "Nilski konj",
-        "general_info": "",
+        "general_info": "Nilski konj je poluvodeni sisavac koji živi u rijekama i jezerima. Unatoč svom zdepastom izgledu, izuzetno je agresivan i može iznenađujuće brzo trčati na kopnu. Veći dio dana provodi u vodi kako bi se rashladio, a noću izlazi na kopno kako bi se hranio travom.",
         "endangerment_status": "Ranjiv",
         "habitat": "Rijeke, jezera i druga vodena tijela",
         "diet": "Biljojed"
@@ -47,8 +47,8 @@
     {
         "id": 6,
         "id_animal": 6,
-        "name": "Bjeloglavi orao",
-        "general_info": "",
+        "name": "Suri orao",
+        "general_info": "Suri orlovi su velike grabljivice poznate po svom izvanrednom vidu i snažnim lovačkim vještinama. Primarno se hrane malim i srednje velikim sisavcima i pticama, koristeći brzinu i oštre kandže za hvatanje plijena. Ovi orlovi nastanjuju otvorena područja poput planina i tundri.",
         "endangerment_status": "Nije ugrožen",
         "habitat": "Tundra",
         "diet": "Mesojed"
@@ -57,7 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Dupin",
-        "general_info": "",
+        "general_info": "Dupini su vrlo inteligentni morski sisavci poznati po svom razigranom ponašanju i složenim društvenim strukturama. Koriste eholokaciju za navigaciju i lov, pri čemu se uglavnom hrane ribama i lignjama. Dupini komuniciraju pomoću različitih klikova i zvižduka.",
         "endangerment_status": "Ranjiv",
         "habitat": "Ocean, more",
         "diet": "Mesojed"
@@ -66,7 +66,7 @@
         "id": 8,
         "id_animal": 8,
         "name": "Velika bijela psina",
-        "general_info": "",
+        "general_info": "Velika bijela psina moćan je vršni grabežljivac koji može doseći duljinu do 6 metara. Ima izuzetno osjetljiv njuh i odlično vid, što joj omogućuje otkrivanje plijena na velikim udaljenostima. Ove psine uglavnom se hrane ribama i morskim sisavcima poput tuljana.",
         "endangerment_status": "Ugrožena",
         "habitat": "Ocean, more",
         "diet": "Mesojed"
@@ -75,7 +75,7 @@
         "id": 9,
         "id_animal": 9,
         "name": "Zebra",
-        "general_info": "",
+        "general_info": "Zebre su prugasti biljojedi porijeklom iz afričke savane. Njihove prepoznatljive crno-bijele pruge služe kao oblik kamuflaže i pomažu u odvraćanju grabežljivaca. Vrlo su društvene životinje i putuju u krdima kako bi se zaštitile od lavova i drugih predatora.",
         "endangerment_status": "Ugrožena",
         "habitat": "Travnjaci, savana",
         "diet": "Biljojed"
@@ -84,7 +84,7 @@
         "id": 10,
         "id_animal": 10,
         "name": "Nosorog",
-        "general_info": "",
+        "general_info": "Nosorozi su veliki, debelokožni biljojedi s prepoznatljivim rogom izrađenim od keratina. Poznati su po svojoj snazi i agresivnom ponašanju kada se osjećaju ugroženo. Zbog krivolova usmjerenog na njihove rogove, nosorozi su kritično ugrožena vrsta.",
         "endangerment_status": "Kritično ugrožen",
         "habitat": "Travnjaci, savana",
         "diet": "Biljojed"
@@ -93,7 +93,7 @@
         "id": 11,
         "id_animal": 11,
         "name": "Srednjoeuropska divlja svinja",
-        "general_info": "",
+        "general_info": "Sredinjoeuropski divlji vepar je vrlo prilagodljiva vrsta divlje svinje, poznata po svojoj inteligenciji i snažnim sposobnostima traženja hrane. Hrani se raznovrsnom hranom, uključujući korijenje, orahe, male životinje i lešine. Ovi veprevi imaju oštre kljove i mogu biti agresivni kada se osjećaju ugroženi.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Šume",
         "diet": "Svejed"
@@ -102,7 +102,7 @@
         "id": 12,
         "id_animal": 12,
         "name": "Europski smeđi medvjed",
-        "general_info": "",
+        "general_info": "Europski smeđi medvjed je jedan od najvećih kopnenih mesoždera, iako ima omnivornu prehranu koja se sastoji od bobica, riba i malih sisavaca. To je samotna životinja koja hibernira zimi i igra ključnu ulogu u održavanju ekološke ravnoteže u svom staništu.",
         "endangerment_status": "Ugrožen",
         "habitat": "Guste šumske planine",
         "diet": "Svejed"
@@ -111,7 +111,7 @@
         "id": 13,
         "id_animal": 13,
         "name": "Jelen",
-        "general_info": "",
+        "general_info": "Jeleni su biljojedi sisavci koji se nalaze u šumama, travnjacima i drugim staništima diljem svijeta. Poznati su po svojoj okretnosti, gracioznim pokretima i rogovima koje mužjaci rastu i odbacuju svake godine.",
         "endangerment_status": "Ugrožen",
         "habitat": "Stjenovito okruženje",
         "diet": "Biljojed"
@@ -120,7 +120,7 @@
         "id": 14,
         "id_animal": 14,
         "name": "Europski sivi vuk",
-        "general_info": "",
+        "general_info": "Europski sivi vuk je velika mesožderska vrsta koja se nalazi diljem Europe i dijelovima Azije, poznata po svojoj snažnoj građi i ponašanju usmjerenom na čopor. Vukovi komuniciraju međusobno kroz različite vokalizacije, uključujući zavijanje koje se može čuti do 16 kilometara daleko u pravim uvjetima!",
         "endangerment_status": "Ugrožen",
         "habitat": "Šume, tundra, planine",
         "diet": "Pretežno mesožder"
@@ -129,7 +129,7 @@
         "id": 15,
         "id_animal": 15,
         "name": "Arktički vuk",
-        "general_info": "",
+        "general_info": "Arktički vuk je podvrsta sivog vuka prilagođena oštroj arktičkoj sredini. Ovi vukovi imaju gust bijeli krzno koje im pruža kamuflažu u snijegu i pomaže im preživjeti na niskim temperaturama. Arktički vukovi uglavnom se hrane mošusnim volovima i arktičkim zečevima.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Arktička tundra",
         "diet": "Mesojed"
@@ -138,7 +138,7 @@
         "id": 16,
         "id_animal": 16,
         "name": "Europski zec",
-        "general_info": "",
+        "general_info": "Europski zec je brza vrsta porijeklom iz Europe i dijelova Azije, često viđena na otvorenim poljima i travnjacima. Europski zečevi poznati su po svojoj impresivnoj brzini i okretnosti, sposobni postići brzinu do 72 kilometra na sat kada izbjegavaju grabežljivce!",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Otvorena polja",
         "diet": "Biljojed"
@@ -146,8 +146,8 @@
     {
         "id": 17,
         "id_animal": 17,
-        "name": "Strvinarski gavran",
-        "general_info": "",
+        "name": "Vrana",
+        "general_info": "Vrana je lešinar i vrlo e inteligentna ptica koja se nalazi diljem Europe i dijelova Azije, poznata po svom potpuno crnom perjanju i prepoznatljivom kukanju. Vranama lešinarima poznato je da koriste alate, poput štapova, kako bi izvadile hranu iz teško dostupnih mjesta, pokazujući svoje izvanredne vještine rješavanja problema!",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Svugdje",
         "diet": "Svejed"
@@ -156,7 +156,7 @@
         "id": 18,
         "id_animal": 18,
         "name": "Zlatna Guernsey koza",
-        "general_info": "",
+        "general_info": "Zlatna Guernsey je rijetka i prepoznatljiva pasmina koza s Kanalskih otoka, poznata po svom zlatnom ili kremastom krznu i mirnoj prirodi. Golden Guernseysi su izvrsni proizvođači mlijeka, a njihovo bogato i ukusno mlijeko često se koristi za proizvodnju ukusnog sira!",
         "endangerment_status": "Ugrožena",
         "habitat": "Kanalski otoci",
         "diet": "Biljojed"
@@ -165,7 +165,7 @@
         "id": 19,
         "id_animal": 19,
         "name": "Humboldtova lignja",
-        "general_info": "",
+        "general_info": "Humboldtova lignja, također poznata kao džambo lignja, velika je i agresivna glavonožaca koja se nalazi u istočnom Pacifičkom oceanu, poznata po svojoj sposobnosti brzog mijenjanja boje i lovu u koordiniranim grupama. Može narasti do 1,5 metara dužine i oportunistički je grabežljivac, hraneći se ribama i drugim lignjama koristeći svoj oštar kljun i snažne pipke.",
         "endangerment_status": "Neklasificirano",
         "habitat": "Dubine od 200m do 700m",
         "diet": "Mesojed"
@@ -174,7 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Sedmopruga usminjača",
-        "general_info": "",
+        "general_info": "Sedmopruga usminjača je najveća od svih morskih kornjača, prepoznatljiva po svojoj jedinstvenoj kožnoj ljusci umjesto tvrde oklopa. To je vrlo migracijska vrsta, koja prelazi tisuće kilometara preko oceana kako bi se hranila meduzama, koje konzumira u velikim količinama.",
         "endangerment_status": "Ugrožena",
         "habitat": "Morske vode u svim oceanima",
         "diet": "Pelagična"
@@ -183,7 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Sjevernoamerička velika ušara",
-        "general_info": "",
+        "general_info": "Sjevernoamerička velika ušara je snažna i prilagodljiva ptica grabljivica koja se nalazi širom Amerike, poznata po svojim prepoznatljivim tufnama na ušima i dubokom hučućem pozivu. To je vješt lovac s izvrsnim noćnim vidom i snažnim stisakom, sposoban oboriti plijen mnogo veći od sebe.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "šume, prašume",
         "diet": "Mesojed"
@@ -192,7 +192,7 @@
        "id": 22,
         "id_animal": 22,
         "name": "Vrabac",
-        "general_info": "",
+        "general_info": "Vrabci su male, društvene ptice koje se nalaze širom svijeta, poznate po svojoj prilagodljivosti urbanim sredinama i prepoznatljivom cvrčanju. Najčešće se hrane sjemenkama i insektima, a često prave gnijezda u blizini ljudi.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "gradovi, sela, šume",
         "diet": "Svejed"
@@ -201,7 +201,7 @@
        "id": 23,
         "id_animal": 23,
         "name": "Orka",
-        "general_info": "",
+        "general_info": "Orke, također poznate kao ubojica kitova (ili kit ubojica), su vrlo inteligentni i društveni morski sisavci koji žive u složenim obiteljskim grupama nazvanim čoporima. Oni su vrhunski grabežljivci s raznolika dijetom, koristeći sofisticirane tehnike lova kako bi ulovili plijen koji varira od riba do velikih morskih sisavaca.",
         "endangerment_status": "Nedovoljno podataka",
         "habitat": "hladni i umjereni oceani",
         "diet": "Mesojed"
@@ -210,7 +210,7 @@
        "id": 24,
         "id_animal": 24,
         "name": "Glatki kit",
-        "general_info": "",
+        "general_info": "Glatki kitovi su velike, sporo plivajuće kitove sa žlijezdom poznati po svojim masivnim glavama prekrivenim grubim mrljama koje se nazivaju kaloziteti. Oni su filter-feeders koji se prvenstveno hrane sitnim zooplanktonima i spadaju među najugroženije vrste kitova zbog prošlog lova na kitove i kontinuiranih prijetnji poput sudara s brodovima i zaplitanja u ribolovni alat.",
         "endangerment_status": "Ugrožen",
         "habitat": "Atlantski ocean",
         "diet": "Mesojed (plankton)"
@@ -219,7 +219,7 @@
        "id": 25,
         "id_animal": 25,
         "name": "Divlja patka",
-        "general_info": "",
+        "general_info": "Divlje patke su vrlo prilagodljive vodene ptice koje se nalaze u jezerima, rijekama i vlažnim područjima širom svijeta, poznate po svojim snažnim sposobnostima letenja i raznolikom perjanju. Oni su omnivori, hraneći se biljkama, insektima i malim vodenim stvorenjima, a mnoge vrste sele sezonski na velike udaljenosti.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "močvarna područja",
         "diet": "Svejed"
@@ -228,7 +228,7 @@
        "id": 26,
         "id_animal": 26,
         "name": "Gradski golub",
-        "general_info": "",
+        "general_info": "Gradski goluib su potomci divljih golubova, poznati su po svojim snažnim instinktima za povratak kući i sposobnosti prilagodbe urbanim sredinama. Kroz povijest su korištene za komunikaciju, društvo i utrke, a uspijevaju na prehrani koja se sastoji od žitarica i sjemenki.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "gradovi, sela",
         "diet": "Svejed"
@@ -237,7 +237,7 @@
        "id": 27,
         "id_animal": 27,
         "name": "Srebrnasti galeb",
-        "general_info": "",
+        "general_info": "Srebrnasti galeb je velika, široko rasprostranjena morska ptica koja se nalazi duž obalnih područja Europe, poznata po svom upečatljivom bijelom i sivom perju te glasnom, oštrom pozivu. To je oportunistički hranilac, često traži hranu u urbanim područjima i na ribarskim brodovima, a može živjeti u različitim obalnim i unutrašnjim staništima.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Obalna područja",
         "diet": "Svejed"
@@ -246,7 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Košuta",
-        "general_info": "",
+        "general_info": "Košuta je ženka jelena, obično se nalazi u različitim vrstama uključujući bijelorepu, mule i crvenog jelena. Poznata po svojim gracioznim pokretima, jelenice se uglavnom hrane vegetacijom i igraju ključnu ulogu u reproduktivnim ciklusima populacija jelena.",
         "endangerment_status": "Ugrožen",
         "habitat": "Stjenovito okruženje",
         "diet": "Biljojed"
@@ -255,7 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Crvena lisica",
-        "general_info": "",
+        "general_info": "Crvena lisica je vrlo prilagodljiv sisavac s karakterističnim crvenkasto-narančastim krznom, koji se nalazi u širokom rasponu staništa, od šuma do urbanih područja. Ona je svejed grabežljivac, lovi male životinje, ptice i insekte, ali se također hrani voćem, povrćem i otpacima ljudske hrane.",
         "endangerment_status": "Najmanja zabrinutost",
         "habitat": "Šume, polja",
         "diet": "Svejed"
