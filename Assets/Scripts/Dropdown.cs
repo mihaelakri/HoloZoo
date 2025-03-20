@@ -16,7 +16,7 @@ public class Dropdown : MonoBehaviour
             // re-parent item to alternate object
             dropdownItem.transform.SetParent(alternateObject.transform, true);
             // move item off screen
-            dropdownItem.transform.position = new Vector3(563, -255, 0);
+            dropdownItem.transform.position = new Vector3(563, -500, 0);
         }
         else
         {
