@@ -76,7 +76,7 @@
         "id_question": 10,
         "question_text": "Which of these animals can weight more than a ton? ",
         "answer_one": "Great white shark",
-        "answer_two": "Bald Eagle",
+        "answer_two": "Golden Eagle",
         "answer_three": "Lion"
     },
     {
@@ -179,7 +179,7 @@
         "id": 23,
         "id_question": 23,
         "question_text": "Which of the following animals does not live in Asia?",
-        "answer_one": "Bald eagle",
+        "answer_one": "Golden eagle",
         "answer_two": "Central European wild boar",
         "answer_three": "European brown bear"
     },
@@ -251,7 +251,7 @@
         "id": 32,
         "id_question": 32,
         "question_text": "Which of the following animals lives exclusively in North America?",
-        "answer_one": "Bald eagle",
+        "answer_one": "Golden eagle",
         "answer_two": "European hare",
         "answer_three": "Mallard"
     },
@@ -278,6 +278,127 @@
         "answer_one": "Orca",
         "answer_two": "Humboldt squid",
         "answer_three": "Rhinoceros"
+    },
+    {
+        "id": 36,
+        "id_question": 36,
+        "question_text": "What is the typical coat color of a red fox?",
+        "answer_one": "White and grey",
+        "answer_two": "Reddish-orange",
+        "answer_three": "Brown and black"
+    },
+    {
+        "id": 37,
+        "id_question": 37,
+        "question_text": "What kind of animal is a red fox classified as?",
+        "answer_one": "Herbivore",
+        "answer_two": "Carnivore",
+        "answer_three": "Omnivore"
+    },
+    {
+        "id": 38,
+        "id_question": 38,
+        "question_text": "How do elephant molars help them process different types of plants?",
+        "answer_one": "To break down tough vegetation",
+        "answer_two": "To tear meat",
+        "answer_three": "To grind seeds"
+    },
+    {
+        "id": 39,
+        "id_question": 39,
+        "question_text": "What animal is the largest freshwater predator in Africa?",
+        "answer_one": "Hippopotamus",
+        "answer_two": "Great white shark",
+        "answer_three": "Nile crocodile"
+    },
+    {
+        "id": 40,
+        "id_question": 40,
+        "question_text": "What is the name for a group of lions?",
+        "answer_one": "Pride",
+        "answer_two": "Pack",
+        "answer_three": "Flock"
+    },
+    {
+        "id": 41,
+        "id_question": 41,
+        "question_text": "In a lion pride, who does most of the hunting?",
+        "answer_one": "Lionesses",
+        "answer_two": "Lions",
+        "answer_three": "Both equally"
+    },
+    {
+        "id": 42,
+        "id_question": 42,
+        "question_text": "Where do hippos spend most of their day?",
+        "answer_one": "On land",
+        "answer_two": "In the water",
+        "answer_three": "In trees"
+    },
+    {
+        "id": 43,
+        "id_question": 43,
+        "question_text": "What do golden eagles primarily feed on?",
+        "answer_one": "Fish",
+        "answer_two": "Insects",
+        "answer_three": "Small to medium-sized mammals and birds"
+    },
+    {
+        "id": 44,
+        "id_question": 44,
+        "question_text": "How do dolphins navigate and hunt?",
+        "answer_one": "Echolocation",
+        "answer_two": "Using their eyes",
+        "answer_three": "By following currents"
+    },
+    {
+        "id": 45,
+        "id_question": 45,
+        "question_text": "What is the maximum length a great white shark can reach?",
+        "answer_one": "10 meters",
+        "answer_two": "3 meters",
+        "answer_three": "6 meters"
+    },
+    {
+        "id": 46,
+        "id_question": 46,
+        "question_text": "Which ocean animal lives in complex social structures?",
+        "answer_one": "Sharks",
+        "answer_two": "Dolphins",
+        "answer_three": "Humboldt squid"
+    },
+    {
+        "id": 47,
+        "id_question": 47,
+        "question_text": "What is the primary purpose of a zebra's black-and-white stripes?",
+        "answer_one": "Attracting mates",
+        "answer_two": "Camouflage",
+        "answer_three": "Regulating body temperature"
+    },
+    {
+        "id": 48,
+        "id_question": 48,
+        "question_text": "What is the name of a group of zebras?",
+        "answer_one": "Herd",
+        "answer_two": "Pride",
+        "answer_three": "Pack"
+    },
+    {
+        "id": 49,
+        "id_question": 49,
+        "question_text": "What are rhinoceroses primarily known for?",
+        "answer_one": "Their long necks",
+        "answer_two": "Their speed",
+        "answer_three": "Strength and aggression"
+    },
+    {
+        "id": 50,
+        "id_question": 50,
+        "question_text": "Why are rhinoceroses critically endangered?",
+        "answer_one": "Habitat loss",
+        "answer_two": "Climate change",
+        "answer_three": "Poaching for their horns"
     }
+
 
 ]

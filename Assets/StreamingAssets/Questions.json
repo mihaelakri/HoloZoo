@@ -173,5 +173,80 @@
         "id": 35,
         "id_animal": 19,
         "correct_answer": 2
+    },
+    {
+        "id": 36,
+        "id_animal": 29,
+        "correct_answer": 2
+    },
+    {
+        "id": 37,
+        "id_animal": 29,
+        "correct_answer": 3
+    },
+    {
+        "id": 38,
+        "id_animal": 1,
+        "correct_answer": 3
+    },
+    {
+        "id": 39,
+        "id_animal": 2,
+        "correct_answer": 3
+    },
+    {
+        "id": 40,
+        "id_animal": 3,
+        "correct_answer": 1
+    }
+    {
+        "id": 41,
+        "id_animal": 3,
+        "correct_answer": 2
+    },
+    {
+        "id": 42,
+        "id_animal": 5,
+        "correct_answer": 2
+    },
+    {
+        "id": 43,
+        "id_animal": 6,
+        "correct_answer": 2
+    },
+    {
+        "id": 44,
+        "id_animal": 7,
+        "correct_answer": 1
+    },
+    {
+        "id": 45,
+        "id_animal": 8,
+        "correct_answer": 3
+    },
+    {
+        "id": 46,
+        "id_animal": 7,
+        "correct_answer": 2
+    },
+    {
+        "id": 47,
+        "id_animal": 9,
+        "correct_answer": 2
+    },
+    {
+        "id": 48,
+        "id_animal": 9,
+        "correct_answer": 1
+    },
+    {
+        "id": 49,
+        "id_animal": 10,
+        "correct_answer": 3
+    },
+    {
+        "id": 50,
+        "id_animal": 10,
+        "correct_answer": 3
     }
 ]
