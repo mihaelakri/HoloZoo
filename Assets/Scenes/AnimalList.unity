@@ -612,6 +612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list_element: {fileID: 3807964570434529346, guid: 882b42d69c2e76c42ba260b5eaa98ff4,
     type: 3}
+  lockedAnimalElement: {fileID: 3807964570434529346, guid: 495b2c64de0308e4b8813b50634507af,
+    type: 3}
 --- !u!114 &1304121544
 MonoBehaviour:
   m_ObjectHideFlags: 0

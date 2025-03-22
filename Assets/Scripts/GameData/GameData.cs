@@ -187,6 +187,13 @@ public class GameData : MonoBehaviour
         return result;
     }
 
+    public List<Animal> GetLockedAnimalNames(int levelCap)
+    {
+        var result = animals.Where(a => a.level > levelCap).OrderBy(a => a.level).ThenBy(a => a.name).ToList();
+        Debug.Log($"{nameof(GameData)} - {nameof(GetLockedAnimalNames)}, found {result.Count} animals");
+        return result;
+    }
+
     public List<Animal> GetAreaAnimals(Area area)
     {
         var result = animals.Where(a => a.id_area.Contains(area.id)).ToList();
