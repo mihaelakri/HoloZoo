@@ -46,6 +46,7 @@ public class BTButtonController : MonoBehaviour
             InitializeConnection.Instance.EnableBluetoothDiscoverability();
             InitializeConnection.Instance.ServerStart();
         }
+        ApplyAccessibility.Instance.LoadAndStyle();
     }
 
     public void Disconnect()

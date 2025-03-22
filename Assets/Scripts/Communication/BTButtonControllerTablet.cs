@@ -51,6 +51,7 @@ public class BTButtonControllerTablet : MonoBehaviour
         {
             unpairedOverlay.SetActive(true);
         }
+        // ApplyAccessibility.Instance.LoadAndStyle();
     }
 
     public void Connect()
