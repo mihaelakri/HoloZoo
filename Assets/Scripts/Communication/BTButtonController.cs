@@ -10,17 +10,24 @@ public class BTButtonController : MonoBehaviour
     [SerializeField]
     Text deviceName;
 
-    void Start()
+    void OnEnable()
     {
-        BluetoothForAndroid.DeviceConnected += () =>
-        {
-            notConnectedOverlay.SetActive(false);
-        };
+        BluetoothForAndroid.DeviceConnected += CloseNotConnectedOverlay;
+    }
+
+    void OnDisable()
+    {
+        BluetoothForAndroid.DeviceConnected -= CloseNotConnectedOverlay;
+    }
+
+    private void CloseNotConnectedOverlay()
+    {
+        notConnectedOverlay.SetActive(false);
     }
 
     public void CloseOverlays()
     {
-        notConnectedOverlay.SetActive(false);
+        CloseNotConnectedOverlay();
         connectedOverlay.SetActive(false);
     }
 
