@@ -68,6 +68,11 @@
         "tabletUnpairedBody1": "Turn on",
         "tabletUnpairedBody2": "on other device"
     },
+    "bluetoothToasts": {
+        "connected": "Device connected",
+        "disconnected": "Device disconnected",
+        "failed": "Connection failed"
+    },
     "animal_list_scene": {
         "list_text": "List of animals"
     },

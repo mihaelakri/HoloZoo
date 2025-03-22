@@ -68,6 +68,11 @@
         "tabletUnpairedBody1": "Uključi",
         "tabletUnpairedBody2": "na drugom uređaju"
     },
+    "bluetoothToasts": {
+        "connected": "Uređaj povezan",
+        "disconnected": "Uređaj odspojen",
+        "failed": "Povezivanje nije uspjelo"
+    },
     "animal_list_scene": {
         "list_text": "Popis životinja"
     },

@@ -68,6 +68,11 @@
         "tabletUnpairedBody1": "Kapcsolja be a",
         "tabletUnpairedBody2": "másik eszközön"
     },
+    "bluetoothToasts": {
+        "connected": "Eszköz csatlakoztatva",
+        "disconnected": "Eszköz leválasztva",
+        "failed": "A csatlakozás sikertelen"
+    },
     "animal_list_scene": {
         "list_text": "Állatok listája"
     },
