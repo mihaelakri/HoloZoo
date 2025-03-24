@@ -15,7 +15,8 @@ public class Registration : MonoBehaviour
 
    public void CallRegister()
    {
-     Register();
+      SceneManagement.Instance.ClearBackstack();
+      Register();
    }
 
    private void Register()

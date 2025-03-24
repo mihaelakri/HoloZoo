@@ -10,12 +10,12 @@
 
 ### \(**@izelentrovic**)
 - [x] feat: manual Bluetooth turn on/off/connect
-- [ ] fix: re-do low resolution sprites
+- [x] fix: re-do low resolution sprites
 - [ ] refactor: bluetooth sending in FixedUpdate
 - [ ] fix?: revisit bluetooth sending and FixedUpdate
 
 ### Unsorted
-- [ ] feat: BT overlays translations
+- [x] feat: BT overlays translations
 
  ## BUGS noticed
 
