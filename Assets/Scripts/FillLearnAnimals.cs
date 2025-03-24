@@ -38,7 +38,7 @@ public class FillLearnAnimals : MonoBehaviour
             texts[1].text = $"lvl {lockedAnimal.level}";
             newElement.name = lockedAnimal.id.ToString();
         }
-        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().LoadAndStyle();
+        ApplyAccessibility.Instance.LoadAndStyle();
 
         yield break;
     }

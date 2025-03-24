@@ -50,6 +50,6 @@ public class FillAnimal : MonoBehaviour
         Image img = animal_photo.AddComponent<Image>();
         img.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
 
-        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
+        ApplyAccessibility.Instance.ApplyAccessibilitySettings();
     }
 }
