@@ -1,21 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Accessibility : MonoBehaviour
 {
-    public Scrollbar fontSizeScrollBar;
-    public Toggle dyslexiaToggle;
-    public Toggle contrastToggle;
-    public Toggle textToSpeechToggle;
-
-    public Text font_size;
-    public Text dyslexiaText;
-    public Text contrastText;
-    public Text ttsText;
-    public Text save_btn;
-    public Text small;
-    public Text medium;
-    public Text large;
+    [SerializeField]
+    Scrollbar fontSizeScrollBar;
+    [SerializeField]
+    Toggle dyslexiaToggle, contrastToggle, textToSpeechToggle;
+    [SerializeField]
+    Text font_size, dyslexiaText, contrastText, ttsText, save_btn, small, medium, large;
+    [SerializeField]
+    UnityEngine.UI.Dropdown dropdown;
+    readonly List<string> languages = new() { "en", "fr", "hr", "es", "hu" };
+    bool languageChanged = false;
 
     void Start()
     {
@@ -34,7 +32,7 @@ public class Accessibility : MonoBehaviour
         medium.text = translation.accessibility.medium;
         large.text = translation.accessibility.large;
 
-        save_btn.text = GameData.Instance.translations.buttons.btn_save;
+        save_btn.text = translation.buttons.btn_save;
     }
 
     public void SetFontSize()
@@ -101,11 +99,31 @@ public class Accessibility : MonoBehaviour
             contrastToggle.isOn = true;
         if (PlayerPrefs.GetInt("tts") == 1)
             textToSpeechToggle.isOn = true;
+
+        dropdown.value = languages.IndexOf(PlayerPrefs.GetString("lang", "en"));
     }
 
     public void hideAccesibility()
     {
         transform.LeanMoveLocal(new Vector2(0, -645), 1).setEaseOutQuart();
-        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
+        ApplyAccessibility.Instance.ApplyAccessibilitySettings();
+
+        if (languageChanged)
+        {
+            ApplyAccessibility.Instance.OnLanguageChanged();
+            languageChanged = false;
+        }
+    }
+
+    public void SetLanguageByIndex(int langIndex)
+    {
+        languageChanged = true;
+        string languageCode = languages[langIndex];
+
+        // Spremanje jezika lokalno u PlayerPrefs
+        PlayerPrefs.SetString("lang", languageCode);
+        PlayerPrefs.Save();
+        StartCoroutine(GameData.Instance.LoadTranslatedTables(languageCode));
+        Debug.Log($"{nameof(Accessibility)} - Language '{languageCode}' successfully set");
     }
 }
