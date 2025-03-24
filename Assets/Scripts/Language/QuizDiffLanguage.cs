@@ -1,21 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuizDiffLanguage : MonoBehaviour
+public class QuizDiffLanguage : LanguageBase
 {
-    // Choose diffciulty 
-    public Text choose_difficulty;
-    public Text easy;
-    public Text medium;
-    public Text hard;
-    public Text start_quiz_btn;
+    [SerializeField]
+    Text choose_difficulty, easy, medium, hard, start_quiz_btn;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

@@ -1,20 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LearningModeLanguage : MonoBehaviour
+public class LearningModeLanguage : LanguageBase
 {
-    public Text intro_cm;
+    [SerializeField]
+    Text intro_cm, globus_mode, list_mode;
 
-    // Mode buttons
-    public Text globus_mode;
-    public Text list_mode;
-
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

@@ -5,13 +5,9 @@ using System.Collections;
 
 public class SetLanguage : MonoBehaviour
 {
-    public Button buttonCroatian;
-    public Button buttonEnglish;
-    public Button buttonFrench;
-    public Button buttonHungarian;
-    public Button buttonSpanish;
-
-    private bool isLanguageSet = false;
+    [SerializeField]
+    Button buttonCroatian, buttonEnglish, buttonFrench, buttonHungarian, buttonSpanish;
+    bool isLanguageSet = false;
 
     void Start()
     {

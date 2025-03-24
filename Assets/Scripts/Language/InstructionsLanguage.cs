@@ -2,24 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InstructionsLanguage : MonoBehaviour
+public class InstructionsLanguage : LanguageBase
 {
-    // First page
-    public Text instructionOneHeading;
-    public Text instructionOneMaterials;
-    public Text instructionOneSupply;
-    // Second page
-    public Text instructionTwo;
-    // Third page
-    public Text instructionThree;
-    public TMP_Text buttonFinish;
+    [SerializeField]
+    Text instructionOneHeading, instructionOneMaterials, instructionOneSupply, instructionTwo, instructionThree;
+    [SerializeField]
+    TMP_Text buttonFinish;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

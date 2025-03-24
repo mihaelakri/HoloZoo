@@ -12,6 +12,8 @@ public class ApplyAccessibility : MonoBehaviour
     public Font openDyslexic;
     public Font jostFont;
     public GameObject accessibilityDummy;
+    
+    public static event Action LanguageChanged;
 
     List<object> taggedObjects;
     Text[] textObjects;
@@ -168,5 +170,10 @@ public class ApplyAccessibility : MonoBehaviour
     {
         LoadObjects();
         ApplyAccessibilitySettings();
+    }
+
+    public void OnLanguageChanged()
+    {
+        LanguageChanged?.Invoke();
     }
 }

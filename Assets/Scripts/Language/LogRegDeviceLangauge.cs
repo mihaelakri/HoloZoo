@@ -1,23 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LogRegDeviceLangauge : MonoBehaviour
+public class LogRegDeviceLangauge : LanguageBase
 {
-    //Pop up window (Choose device) 
-    public Text choose_device;
-    public Text mobile;
-    public Text tablet;
+    [SerializeField]
+    Text choose_device, mobile, tablet, login, register;
 
-    // Buttons (log in/ register)
-    public Text login;
-    public Text register;
-
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 
