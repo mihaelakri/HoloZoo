@@ -141,7 +141,7 @@
         "question_text": "Which of the following birds is not an omnivore?",
         "answer_one": "Mallard",
         "answer_two": "Great horned owl",
-        "answer_three": "Common raven"
+        "answer_three": "Carrion crow"
     },
     {
         "id": 19,
@@ -188,7 +188,7 @@
         "id_question": 24,
         "question_text": "Which of the following animals has a population of fewer than 1000 individuals?",
         "answer_one": "Orca",
-        "answer_two": "Seven-banded armadillo",
+        "answer_two": "Dolphins",
         "answer_three": "North Atlantic right whale"
     },
     {
@@ -203,7 +203,7 @@
         "id": 26,
         "id_question": 26,
         "question_text": "Which of the following birds primarily inhabits wetland areas?",
-        "answer_one": "Common raven",
+        "answer_one": "Carrion crow",
         "answer_two": "Mallard",
         "answer_three": "Herring gull"
     },
@@ -212,7 +212,7 @@
         "id_question": 27,
         "question_text": "Which of the following species is endemic to the Channel Islands?",
         "answer_one": "Golden Guernsey goat",
-        "answer_two": "Seven-banded armadillo",
+        "answer_two": "Leatherback Sea Turtle",
         "answer_three": "Great horned owl"
     },
     {
@@ -227,7 +227,7 @@
         "id": 29,
         "id_question": 29,
         "question_text": "Which of the following animals can reach the greatest weight?",
-        "answer_one": "North Atlantic right whale",
+        "answer_one": "Right whale",
         "answer_two": "Orca",
         "answer_three": "African elephant"
     },
@@ -459,9 +459,9 @@
         "id": 58,
         "id_question": 58,
         "question_text": "How fast can a European hare run?",
-        "answer_one": "Up to 30 mph",   
-        "answer_two": "Up to 60 mph",
-        "answer_three": "Up to 45 mph"
+        "answer_one": "Up to 48 km/h",   
+        "answer_two": "Up to 96 km/h",
+        "answer_three": "Up to 72 km/h"
     },
     {
         "id": 59,
