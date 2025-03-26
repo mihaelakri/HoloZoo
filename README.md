@@ -4,25 +4,62 @@
 
 ### \(**@mihaelakri**)
 - [ ] fix: UI scalability 
-- [x] chore add more questions
-- [x] chore: add more animals per level 
-- [x] fix: FillScore - ShowUnlockedAnimals: add translation
 
 ### \(**@izelentrovic**)
-- [x] feat: manual Bluetooth turn on/off/connect
-- [x] fix: re-do low resolution sprites
 - [ ] refactor: bluetooth sending in FixedUpdate
 - [ ] fix?: revisit bluetooth sending and FixedUpdate
 
 ### Unsorted
-- [x] feat: BT overlays translations
+- [ ]
 
- ## BUGS noticed
+## BUGS noticed
 
  - [ ] In LogIn screen :  Object reference not set to an instance of an object
 Login+<Log_in>d__4.MoveNext () (at Assets/Scripts/Login.cs:20) što je ubiti redak    var (user, response) = GameData.Instance.CheckUserCredentials(usernameField.text, passwordField.text) 
  - [ ] In LogIn, Home and globe : NullReferenceException: Object reference not set to an instance of an object
 ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessibility.cs:134)
+
+## Publishing to Google Play Store
+
+- Build Settings
+    - Identification 
+        - Package name (`com.companyname.appname`), must be unique
+        - Version (SemVer, e.g. `1.0.0`) to display to users
+            - Version Code (increment for every upload to Google Play)
+        - Minimum API level - based on required features
+        - Target API level - should match the latest Google Play requirement (usually set to highest available)
+    - Functional
+        - Release build (uncheck **Development Build**)
+        - **Compression Method** to `LZ4HC`
+        - Target architecture (ARMv7 for older, ARM64 for newer devices - required)
+        - *(questionable)* Disable **Auto Graphics API** unless necessary
+            - Vulkan (Optional, good performance)
+            - OpenGLES3 (Widely supported)
+        - *(questionable)* Enable **SRGB Write** and verify color settings for correct rendering
+    - Build system
+        - Use **Gradle (recommended)** as the build system
+        - Export as a `.aab` *(Android App Bundle)*
+- Google Play requirements    
+    - Privacy Policy (if app collects personal data)
+    - 64-bit support (ARM64 support)
+    - App Bundle (.aab) submission
+    - **Prepare assets**:
+        - Screenshots
+        - Feature Graphic
+        - App Icon (512x512)
+        - Short & Full Descriptions
+
+### Keystore
+
+There are 2 main ways to manage a keystore, *manual* and *Google managed*.
+Google managed is the easier, newer and safer way.  
+The process is described [here in Android docs](https://developer.android.com/studio/publish/app-signing#app-signing-google-play).
+Main feature is it removes the risk of getting locked out of updating the app if keystore is lost.  
+It seems that in both approaches the usual way is to put a secure password on the keystore and host it on the same repo as the rest of the source code.
+
+### Analytics/Crash reports
+
+If actual ongoing support is desired, crash reports need to be collected using e.g. [Unity Cloud Diagnostics](https://docs.unity.com/ugs/manual/cloud-diagnostics/manual/CloudDiagnostics/WelcometoCloudDiagnostics), [Firebase](https://firebase.google.com/docs/unity/setup) or [Sentry](https://docs.sentry.io/platforms/unity/). Some SDKs like Firebase can also collect analytics to collect data about user behaviour and app usage.
 
 ## Done List
 
@@ -82,6 +119,13 @@ ApplyAccessibility.LoadObjects () (at Assets/Scripts/Accessibility/ApplyAccessib
 - [x] fix: animal model pivot should be centered
 - [x] fix: score unlocked animals shouldn't show up when empty
 - [x] feat?: remove login from Hologram device
+
+- [x] chore add more questions
+- [x] chore: add more animals per level 
+- [x] fix: FillScore - ShowUnlockedAnimals: add translation
+- [x] feat: manual Bluetooth turn on/off/connect
+- [x] fix: re-do low resolution sprites
+- [x] feat: BT overlays translations
 
 ## Cloning and running the project
 
