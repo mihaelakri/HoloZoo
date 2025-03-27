@@ -219,7 +219,7 @@ public class GameData : MonoBehaviour
         User user = new()
         {
             id = maxUserId + 1,
-            level = 0,
+            level = 1,
             username = username,
             // TODO hash this, esp. if not stored locally in future
             password = password,
