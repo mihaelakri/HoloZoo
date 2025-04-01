@@ -13,6 +13,8 @@ public class ApplyAccessibility : MonoBehaviour
     public Font jostFont;
     public GameObject accessibilityDummy;
 
+    public static event Action LanguageChanged;
+
     List<object> taggedObjects;
     Text[] textObjects;
 
@@ -129,18 +131,31 @@ public class ApplyAccessibility : MonoBehaviour
         }).ToArray();
     }
 
-    public void LoadObjects()
+    public void LoadTexts()
     {
         foreach (var taggedObject in taggedObjects)
         {
             if (taggedObject is TaggedObjects<Text> taggedTextObject)
                 taggedTextObject.FetchObjects();
-            else if (taggedObject is TaggedObjects<Image> taggedImageObject)
-                taggedImageObject.FetchObjects();
         }
         textObjects = taggedObjects.Where(e => e is TaggedObjects<Text>)
             .SelectMany(e => ((TaggedObjects<Text>)e).objects.Select(o => o.Item1))
             .ToArray();
+    }
+
+    public void LoadImages()
+    {
+        foreach (var taggedObject in taggedObjects)
+        {
+            if (taggedObject is TaggedObjects<Image> taggedImageObject)
+                taggedImageObject.FetchObjects();
+        }
+    }
+
+    public void LoadObjects()
+    {
+        LoadTexts();
+        LoadImages();
     }
 
     public void ApplyAccessibilitySettings()
@@ -168,5 +183,10 @@ public class ApplyAccessibility : MonoBehaviour
     {
         LoadObjects();
         ApplyAccessibilitySettings();
+    }
+
+    public void OnLanguageChanged()
+    {
+        LanguageChanged?.Invoke();
     }
 }

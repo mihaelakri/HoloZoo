@@ -1,18 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuizScoreLanguage : MonoBehaviour
+public class QuizScoreLanguage : LanguageBase
 {
-    // Quiz Score Buttons
-    public Text home_btn;
-    public Text new_quiz_btn;
+    [SerializeField]
+    Text home_btn, new_quiz_btn;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

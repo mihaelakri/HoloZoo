@@ -1,18 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InfoLanguage : MonoBehaviour
+public class InfoLanguage : LanguageBase
 {
-    //texts
-    public Text developed_by;
-    public Text univ_text;
+    [SerializeField]
+    Text developed_by, univ_text;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

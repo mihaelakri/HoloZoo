@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BTOverlayTabletLanguage : MonoBehaviour
+public class BTOverlayTabletLanguage : LanguageBase
 {
     [SerializeField]
     Text unpairedHeader, pairedHeader, connectedHeader;
@@ -10,12 +10,7 @@ public class BTOverlayTabletLanguage : MonoBehaviour
     [SerializeField]
     Text pairButton, connectButton, disconnectButton, forgetButton1, forgetButton2;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

@@ -68,6 +68,11 @@
         "tabletUnpairedBody1": "Uključi",
         "tabletUnpairedBody2": "na drugom uređaju"
     },
+    "bluetoothToasts": {
+        "connected": "Uređaj povezan",
+        "disconnected": "Uređaj odspojen",
+        "failed": "Povezivanje nije uspjelo"
+    },
     "animal_list_scene": {
         "list_text": "Popis životinja"
     },
@@ -88,7 +93,7 @@
     },
     "info_scene": {
         "developed_by": "Aplikaciju razvilo",
-        "univ_text": "Sveučilište u Dubrovniku, Fakultet elektrotehnike i računarstva u sklopu projekta Play2Green (Serious Gaming for Universal Access to Green Education). Razvijatelji: Ivan Zelentović, Mihaela Kristić i Ivan Sentić."
+        "univ_text": "Sveučilište u Dubrovniku, Fakultet elektrotehnike i primijenjenog računarstva u sklopu projekta Play2Green (Serious Gaming for Universal Access to Green Education). Razvijatelji: Ivan Zelentović, Mihaela Kristić i Ivan Sentić."
     },
     "instruction_scene": {
         "instruction_one_heading": "Upute za izradu projekcijskog holograma",

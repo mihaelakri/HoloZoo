@@ -7,9 +7,9 @@
 
 # Custom edit
 ex/
-ex_BurstDebugInformation_DoNotShip/
 ex_tablet/
-ex_tablet_BurstDebugInformation_DoNotShip/
+*_BurstDebugInformation_DoNotShip/
+*_BackUpThisFolder_ButDontShipItWithYourGame/
 ANIMALS FULL PACK/
 ANIMALS FULL PACK.meta
 Assets/Resources/ANIMALS FULL PACK/

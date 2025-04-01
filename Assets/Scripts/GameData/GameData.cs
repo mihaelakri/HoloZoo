@@ -182,21 +182,28 @@ public class GameData : MonoBehaviour
 
     public List<Animal> GetAnimalNames(int levelCap)
     {
-        var result = animals.Where(a => a.level <= levelCap).ToList();
+        var result = animals.Where(a => a.level <= levelCap).OrderBy(a => a.name).ToList();
         Debug.Log($"{nameof(GameData)} - {nameof(GetAnimalNames)}, found {result.Count} animals");
         return result;
     }
 
-    public List<Animal> GetAreaAnimals(Area area)
+    public List<Animal> GetLockedAnimalNames(int levelCap)
     {
-        var result = animals.Where(a => a.id_area.Contains(area.id)).ToList();
+        var result = animals.Where(a => a.level > levelCap).OrderBy(a => a.level).ThenBy(a => a.name).ToList();
+        Debug.Log($"{nameof(GameData)} - {nameof(GetLockedAnimalNames)}, found {result.Count} animals");
+        return result;
+    }
+
+    public List<Animal> GetAreaAnimals(Area area, int levelCap)
+    {
+        var result = animals.Where(a => a.id_area.Contains(area.id) && a.level <= levelCap).OrderBy(a => a.name).ToList();
         Debug.Log($"{nameof(GameData)} - {nameof(GetAreaAnimals)}, found {result.Count} animals");
         return result;
     }
 
     public List<Animal> GetAnimalsAtLevel(int level)
     {
-        var result = animals.Where(a => a.level == level).ToList();
+        var result = animals.Where(a => a.level == level).OrderBy(a => a.name).ToList();
         Debug.Log($"{nameof(GameData)} - {nameof(GetAnimalsAtLevel)}, found {result.Count} animals");
         return result;
     }

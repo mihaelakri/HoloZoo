@@ -5,10 +5,11 @@ namespace WPM
 {
     public class ShowContinentAnimals : MonoBehaviour
     {
-        public GameObject animalPanel;
-        public GameObject animalContainer;
-        public GameObject prefabAnimal;
-        public Text continentName;
+        [SerializeField]
+        GameObject animalPanel, animalContainer, prefabAnimal, prefabRow;
+
+        [SerializeField]
+        Text continentName;
         WorldMapGlobe map;
 
         void Start()
@@ -42,20 +43,28 @@ namespace WPM
 
             Debug.Log($"{nameof(ShowContinentAnimals)} - Continent: {continent}, Translated: {continentTranslated}");
             FillAnimalInfoo(id_continent);
-            GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().LoadObjects();
-            GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().ApplyAccessibilitySettings();
+            ApplyAccessibility.Instance.LoadAndStyle();
         }
 
         void FillAnimalInfoo(int id_continent)
         {
             var area = GameData.Instance.GetArea(id_continent);
+            int userLevel = GameData.Instance.GetCurrentUser()?.level ?? 1;
             if (area == null)
                 Debug.LogError($"{nameof(ShowContinentAnimals)} - area not found, id_continent: {id_continent}");
-            var animals = GameData.Instance.GetAreaAnimals(area);
+            var animals = GameData.Instance.GetAreaAnimals(area, userLevel);
+
+            int rowCounter = 0;
+            GameObject row = Instantiate(prefabRow, animalContainer.transform);
 
             foreach (var animal in animals)
             {
-                var currentAnimal = Instantiate(prefabAnimal, animalContainer.transform);
+                if (rowCounter >= 3)
+                {
+                    row = Instantiate(prefabRow, animalContainer.transform);
+                    rowCounter = 0;
+                }
+                var currentAnimal = Instantiate(prefabAnimal, row.transform);
 
                 // Update panel text and image
                 Text animalNamePrefab = currentAnimal.transform.GetComponentInChildren<Text>();
@@ -68,6 +77,8 @@ namespace WPM
 
                 if (currentAnimal.TryGetComponent<SceneChange>(out var changeSceneScript))
                     changeSceneScript.id = animal.id.ToString();
+
+                rowCounter++;
             }
         }
 

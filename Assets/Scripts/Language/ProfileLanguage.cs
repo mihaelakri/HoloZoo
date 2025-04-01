@@ -1,23 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProfileLanguage : MonoBehaviour
+public class ProfileLanguage : LanguageBase
 {
-    //txts
-    public Text level;
-    public Text experience;
-    public Text new_password;
-    public Text reapeat_password;
+    [SerializeField]
+    Text level, experience, new_password, reapeat_password, confirm;
 
-    // Button
-    public Text confirm;
-
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

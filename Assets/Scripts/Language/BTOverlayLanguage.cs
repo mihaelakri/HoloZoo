@@ -1,17 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BTOverlayLanguage : MonoBehaviour
+public class BTOverlayLanguage : LanguageBase
 {
     [SerializeField]
     Text connectedHeader, notConnectedHeader, cancelButton, disconnectButton;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

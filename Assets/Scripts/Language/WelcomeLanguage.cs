@@ -2,19 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WelcomeLanguage : MonoBehaviour
+public class WelcomeLanguage : LanguageBase
 {
-    public Text welcome;
-    public TextMeshProUGUI hello_text;
+    [SerializeField]
+    Text welcome;
+    [SerializeField]
+    TextMeshProUGUI hello_text, start_btn;
 
-    public TextMeshProUGUI start_btn;
-
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

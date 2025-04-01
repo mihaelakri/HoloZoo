@@ -15,19 +15,20 @@ public class Registration : MonoBehaviour
 
    public void CallRegister()
    {
-     Register();
+      SceneManagement.Instance.ClearBackstack();
+      Register();
    }
 
    private void Register()
    {
       var translation = GameData.Instance.translations;
 
-      if (usernameField.text.Length < 6)
+      if (usernameField.text.Length < 3)
       {
          toast.text = translation.messages.msg_username_short;
          return;
       }
-      else if (passwordField.text.Length < 8)
+      else if (passwordField.text.Length < 5)
       {
          toast.text = translation.messages.msg_password_short;
          return;

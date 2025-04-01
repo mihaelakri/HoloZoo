@@ -166,13 +166,13 @@ public class InitializeConnection : MonoBehaviour
 
         // Refresh name in case user changed it
         PlayerPrefs.SetString("BTDevName", BluetoothForAndroid.GetConnectedDeviceName());
-        CheckInternetConnection.ShowToast("Bluetooth connected");
+        CheckInternetConnection.ShowToast(GameData.Instance.translations.bluetoothToasts.connected);
     }
     private void BTDisconnected()
     {
         Debug.Log($"{nameof(InitializeConnection)} - {nameof(BTDisconnected)}");
 
-        CheckInternetConnection.ShowToast("Bluetooth disconnected");
+        CheckInternetConnection.ShowToast(GameData.Instance.translations.bluetoothToasts.disconnected);
         if (PlayerPrefs.GetString("device") == "mobile")
             ServerStart();
     }
@@ -180,7 +180,7 @@ public class InitializeConnection : MonoBehaviour
     {
         Debug.Log($"{nameof(InitializeConnection)} - {nameof(BTFailConnectToServer)}");
 
-        CheckInternetConnection.ShowToast("Connection failed");
+        CheckInternetConnection.ShowToast(GameData.Instance.translations.bluetoothToasts.failed);
     }
     private void BTReconnect()
     {

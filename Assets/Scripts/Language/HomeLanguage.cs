@@ -1,18 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HomeLanguage : MonoBehaviour
+public class HomeLanguage : LanguageBase
 {
-    // home buttons
-    public Text learn;
-    public Text quiz;
+    [SerializeField]
+    Text learn, quiz;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

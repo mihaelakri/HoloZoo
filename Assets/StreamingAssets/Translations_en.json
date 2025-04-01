@@ -68,6 +68,11 @@
         "tabletUnpairedBody1": "Turn on",
         "tabletUnpairedBody2": "on other device"
     },
+    "bluetoothToasts": {
+        "connected": "Device connected",
+        "disconnected": "Device disconnected",
+        "failed": "Connection failed"
+    },
     "animal_list_scene": {
         "list_text": "List of animals"
     },
@@ -88,7 +93,7 @@
     },
     "info_scene": {
         "developed_by": "Developed by",
-        "univ_text": "University of Dubrovnik, Faculty of electrical engineering and computing as a part of Play2Green project (Serious Gaming for Universal Access to Green Education). Developers: Ivan Zelentović, Mihaela Kristić and Ivan Sentić."
+        "univ_text": "A Dubrovniki Egyetem Villamosmérnöki és Alkalmazott Számítástechnikai Kara a Play2Green projekt (Serious Gaming for Universal Access to Green Education) részeként. Developers: Ivan Zelentović, Mihaela Kristić and Ivan Sentić."
     },
     "instruction_scene": {
         "instruction_one_heading": "Instructions for creating a projection hologram",

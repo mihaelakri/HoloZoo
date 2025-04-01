@@ -20,7 +20,7 @@
     {
         "id": 3,
         "id_animal": 5,
-        "name": "Nőstény oroszlán ",
+        "name": "Nőstény oroszlán",
         "general_info": "A nőstény oroszlán társas állat, aki csapatokban él, ahol kulcsszerepet játszik a vadászatban és az oroszlánkölykök nevelésében. A nőstények kissé kisebbek, mint a hím oroszlánok, és nincs sörényük. Csoportokban vadásznak, gyakran nagy növényevőkre, mint a zebrák és gnúk. Erős társas kötődéseik hatékony együttműködő vadászokká teszik őket.",
         "endangerment_status": "Sebezhető",
         "habitat": "Füves puszták, szavanna",
@@ -29,7 +29,7 @@
     {
         "id": 4,
         "id_animal": 4,
-        "name": "Hím oroszlán ",
+        "name": "Hím oroszlán",
         "general_info": "Az oroszlánok az egyik legismertebb nagymacska faj, amelyek híresek a fenséges sörényükről és társadalmi struktúrájukról. Csapatokban élnek, és csúcsragadozók, akik a kooperatív vadászatra támaszkodnak, hogy zsákmányt, például zebrákat, bivalyokat és antilopokat ejtsenek. A hímek védik a területet, míg a nőstények végzik a vadászat nagy részét.",
         "endangerment_status": "Sebezhető",
         "habitat": "Füves puszták, szavanna",
@@ -137,7 +137,7 @@
     {
         "id": 16,
         "id_animal": 16,
-        "name": "Európai nyúl ",
+        "name": "Európai nyúl",
         "general_info": "Az európai nyúl egy gyors futó faj, amely Európában és Ázsia egyes részein őshonos, és gyakran látható nyílt mezőkön és füves területeken. Az európai nyulak híresek lenyűgöző sebességükről és fürgeségükről, képesek akár 72 km/h sebességgel is elmenekülni a ragadozók elől.",
         "endangerment_status": "Nem fenyegetett",
         "habitat": "Nyílt mezők",

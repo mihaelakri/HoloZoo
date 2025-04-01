@@ -219,7 +219,7 @@
        "id": 25,
         "id_animal": 25,
         "name": "Wild duck",
-        "general_info": "Wild ducks are highly adaptable waterfowl found in lakes, rivers, and wetlands worldwide, known for their strong flying abilities and diverse plumage. They are omnivorous, feeding on plants, insects, and small aquatic creatures, and many species migrate seasonally over long distances.",
+        "general_info": "Wild ducks or mallards are highly adaptable waterfowl found in lakes, rivers, and wetlands worldwide, known for their strong flying abilities and diverse plumage. They are omnivorous, feeding on plants, insects, and small aquatic creatures, and many species migrate seasonally over long distances.",
         "endangerment_status": "Least Concern",
         "habitat": "wetlands",
         "diet": "Omnivore"

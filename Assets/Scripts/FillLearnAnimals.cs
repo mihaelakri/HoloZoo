@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class FillLearnAnimals : MonoBehaviour
 {
-    public GameObject list_element;
+    [SerializeField]
+    GameObject list_element, lockedAnimalElement;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class FillLearnAnimals : MonoBehaviour
     {
         int level = GameData.Instance.GetCurrentUser().level;
         var animals = GameData.Instance.GetAnimalNames(level);
+        var lockedAnimals = GameData.Instance.GetLockedAnimalNames(level);
 
         foreach (var animal in animals)
         {
@@ -27,7 +29,16 @@ public class FillLearnAnimals : MonoBehaviour
             newText.text = animal.name;
             newobj.name = animal.id.ToString();
         }
-        GameObject.Find("AccessibilityManager").GetComponent<ApplyAccessibility>().LoadAndStyle();
+        foreach (var lockedAnimal in lockedAnimals)
+        {
+            GameObject newElement = Instantiate(lockedAnimalElement);
+            newElement.transform.SetParent(GameObject.FindGameObjectWithTag("Content").transform, false);
+            var texts = newElement.GetComponentsInChildren<Text>();
+            texts[0].text = lockedAnimal.name;
+            texts[1].text = $"lvl {lockedAnimal.level}";
+            newElement.name = lockedAnimal.id.ToString();
+        }
+        ApplyAccessibility.Instance.LoadAndStyle();
 
         yield break;
     }

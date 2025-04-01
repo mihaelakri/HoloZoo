@@ -68,6 +68,11 @@
         "tabletUnpairedBody1": "Activar el",
         "tabletUnpairedBody2": "en otro dispositivo"
     },
+    "bluetoothToasts": {
+        "connected": "Dispositivo conectado",
+        "disconnected": "Dispositivo desconectado",
+        "failed": "Falló la conexión"
+    },
     "animal_list_scene": {
         "list_text": "Lista de animales"
     },
@@ -88,7 +93,7 @@
     },
     "info_scene": {
         "developed_by": "Desarrollado por",
-        "univ_text": "la Universidad de Dubrovnik, Facultad de Ingeniería Eléctrica y Computación como parte del proyecto Play2Green (Juegos serios para el acceso universal a la educación verde). Desarrolladores: Ivan Zelentović, Mihaela Kristić e Ivan Sentić."
+        "univ_text": "la Universidad de Dubrovnik, Facultad de Ingeniería Eléctrica y Computación Aplicada como parte del proyecto Play2Green (Juegos serios para el acceso universal a la educación verde). Desarrolladores: Ivan Zelentović, Mihaela Kristić e Ivan Sentić."
     },
     "instruction_scene": {
         "instruction_one_heading": "Instrucciones para crear un holograma de proyección",

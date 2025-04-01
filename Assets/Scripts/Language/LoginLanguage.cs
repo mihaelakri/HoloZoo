@@ -1,21 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoginLanguage : MonoBehaviour
+public class LoginLanguage : LanguageBase
 {
-    //Login form
-    public Text login_heading;
-    public Text username_placeholder;
-    public Text password_placeholder;
-    public Text register_btn;
-    public Text login_btn;
+    [SerializeField]
+    Text login_heading, username_placeholder, password_placeholder, register_btn, login_btn;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

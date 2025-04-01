@@ -1,24 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimalProfileLanguage : MonoBehaviour
+public class AnimalProfileLanguage : LanguageBase
 {
-    // Accessibility 
-    public Text threed_text;
-    public Text general_info;
-    public Text endangerment_status;
-    public Text region;
-    public Text habitat;
-    public Text weight;
-    public Text diet;
-    public Text population;
+    [SerializeField]
+    Text threed_text, general_info, endangerment_status, region, habitat, weight, diet, population;
 
-    void Start()
-    {
-        ApplyLanguageTexts();
-    }
-
-    void ApplyLanguageTexts()
+    protected override void ApplyLanguageTexts()
     {
         var translation = GameData.Instance.translations;
 

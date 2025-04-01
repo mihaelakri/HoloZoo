@@ -59,6 +59,7 @@ namespace HoloZoo.DataModels
 
         public RegistrationData registration_scene;
         public BluetoothOverlays bluetoothOverlays;
+        public BluetoothToasts bluetoothToasts;
         public AnimalListData animal_list_scene;
         public AnimalProfileData animal_profile_scene;
         public ScoreData score_scene;
@@ -140,7 +141,7 @@ namespace HoloZoo.DataModels
         {
             public string privacy_policy_text;
         }
-        
+
         public class BluetoothOverlays
         {
             public string notConnectedHeader;
@@ -151,6 +152,13 @@ namespace HoloZoo.DataModels
             public string tabletConnectedHeader;
             public string tabletUnpairedBody1;
             public string tabletUnpairedBody2;
+        }
+
+        public class BluetoothToasts
+        {
+            public string connected;
+            public string disconnected;
+            public string failed;
         }
 
         public class AnimalListData

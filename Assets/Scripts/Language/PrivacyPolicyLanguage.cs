@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PrivacyPolicyLanguage : MonoBehaviour
+public class PrivacyPolicyLanguage : LanguageBase
 {
-    public Text header;
-    public Text body;
+    [SerializeField]
+    Text header, body;
 
-    void Start()
+    protected override void ApplyLanguageTexts()
     {
-        header.text = GameData.Instance.translations.privacy_scene.header;
-        body.text = GameData.Instance.translations.privacy_scene.body;
+        var translation = GameData.Instance.translations;
+
+        header.text = translation.privacy_scene.header;
+        body.text = translation.privacy_scene.body;
     }
 }
