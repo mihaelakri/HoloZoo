@@ -1,10 +1,13 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dropdown : MonoBehaviour
 {
     public GameObject dropdownItem;
     public GameObject parentObject;
     public GameObject alternateObject;
+    public ScrollRect scrollRect;
 
     private float y;
     private bool isExpanded = false;
@@ -24,6 +27,9 @@ public class Dropdown : MonoBehaviour
             dropdownItem.transform.SetParent(parentObject.transform, true);
             // adjust item position in hierarchy
             dropdownItem.transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex() + 1);
+            // move scroll rect to top
+            StartCoroutine(ScrollToTopCoroutine());
+            
         }
 
         // move following dropdowns up/down
@@ -40,4 +46,12 @@ public class Dropdown : MonoBehaviour
         gameObject.transform.GetChild(0).transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
         isExpanded = !isExpanded;
     }
+
+    IEnumerator ScrollToTopCoroutine()
+    {
+        yield return new WaitForEndOfFrame();  // Wait for UI to render
+        LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+        scrollRect.verticalNormalizedPosition = 1f;
+    }
+
 }

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -943,6 +942,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 1761655093}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!1 &235252145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1588,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 514766486}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!114 &434421000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2620,6 +2621,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 664602623}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!114 &811354517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2915,6 +2917,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -2961,6 +2964,7 @@ MonoBehaviour:
   dietText: {fileID: 274929651}
   populationText: {fileID: 1641049986}
   animal_photo: {fileID: 671773094}
+  scrollRect: {fileID: 541456618}
 --- !u!114 &844002136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3160,6 +3164,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 237042485}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!114 &1161141019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3386,6 +3391,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 828402105}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!114 &1271087351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4076,6 +4082,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 1296869546}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!114 &1606115213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4215,7 +4222,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 763489399}
   m_HandleRect: {fileID: 763489398}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4582,6 +4589,7 @@ MonoBehaviour:
   dropdownItem: {fileID: 1317008696}
   parentObject: {fileID: 1582125718}
   alternateObject: {fileID: 371823657}
+  scrollRect: {fileID: 871440720}
 --- !u!114 &1755848735
 MonoBehaviour:
   m_ObjectHideFlags: 0

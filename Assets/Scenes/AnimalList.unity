@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -573,6 +572,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -614,6 +614,7 @@ MonoBehaviour:
     type: 3}
   lockedAnimalElement: {fileID: 3807964570434529346, guid: 495b2c64de0308e4b8813b50634507af,
     type: 3}
+  scrollRect: {fileID: 1366383157}
 --- !u!114 &1304121544
 MonoBehaviour:
   m_ObjectHideFlags: 0
