@@ -113,7 +113,7 @@
         "hard": "Nehéz"
     },
     "welcome_scene": {
-        "hello_text": "Helló! A HoloZoo egy oktató játék az állatokról és azok természetben való veszélyeztetettségi státuszáról.\n\nA játék két Android mobil eszközt használ, amelyek Bluetooth-on keresztül kell kapcsolódjanak, hogy megjeleníthessenek egy hologramot, amellyel interakcióba léphetsz.\n\nNe aggódj! Ha nem szeretnél két eszközt használni, a hologram továbbra is megjelenik ezen az eszközön.\n\nTudd meg, hogyan készíthetsz piramis alakú hologramot a következő lépésekben.",
+        "hello_text": "Szia! A HoloZoo egy oktató játék az állatokról és azok természetben való veszélyeztetettségi besorolásáról.\n\nA játék két Android mobil eszközt használ, amelyeknek Bluetooth-on keresztül kell kapcsolódniuk egymáshoz egy interaktív hologram megjelenítéséhez.\n\nNe aggódj! Ha nem szeretnél két eszközt használni, attól még a hologram megjelenik ezen az eszközön.\n\nA következő lépésekben megmutatjuk, hogyan készíthetsz piramis alakú hologramot.",
         "welcome": "ÜDVÖZÖLJÜK"
     },
     "privacy_scene": {

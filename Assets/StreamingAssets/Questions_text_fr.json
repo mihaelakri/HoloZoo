@@ -123,33 +123,33 @@
         "id": 16,
         "id_question": 16,
         "question_text": "Quel animal européen vit en Australie ?",
-        "answer_one": "Lièvre européen",
-        "answer_two": "Chèvre Guernsey dorée",
-        "answer_three": "Loup gris européen"
+        "answer_one": "Le lièvre européen",
+        "answer_two": "La chèvre dorée de Guernesey",
+        "answer_three": "Le loup européen"
     },
     {
         "id": 17,
         "id_question": 17,
         "question_text": "Quel animal se nourrit principalement de plancton ?",
-        "answer_one": "Dauphin",
-        "answer_two": "Orque",
-        "answer_three": "Baleine franche"
+        "answer_one": "Le dauphin",
+        "answer_two": "L'orque",
+        "answer_three": "La baleine franche"
     },
     {
         "id": 18,
         "id_question": 18,
         "question_text": "Lequel des oiseaux suivants n'est pas omnivore ?",
-        "answer_one": "Canard colvert",
-        "answer_two": "Hibou grand-duc d'Amérique",
-        "answer_three": "Corbeau nécrophage"
+        "answer_one": "Le canard colvert",
+        "answer_two": "Le grand-duc d'Amérique",
+        "answer_three": "La corneille noire"
     },
     {
         "id": 19,
         "id_question": 19,
         "question_text": "Quel animal vit principalement dans les montagnes densément boisées ?",
-        "answer_one": "Ours brun européen",
-        "answer_two": "Rhinocéros",
-        "answer_three": "Goéland argenté"
+        "answer_one": "L'ours brun d'Europe",
+        "answer_two": "Le rhinocéros",
+        "answer_three": "Le goéland argenté"
     },
     {
         "id": 20,
@@ -163,33 +163,33 @@
         "id": 21,
         "id_question": 21,
         "question_text": "Lequel des oiseaux suivants peut peser plus d'un kilogramme ?",
-        "answer_one": "Moineau",
-        "answer_two": "Corbeau freux",
-        "answer_three": "Goéland argenté"
+        "answer_one": "Le moineau",
+        "answer_two": "Le corbeau",
+        "answer_three": "Le goéland argenté"
     },
     {
         "id": 22,
         "id_question": 22,
         "question_text": "Lequel des animaux suivants ne vit pas en Afrique ?",
-        "answer_one": "Cerf",
-        "answer_two": "Renard roux",
-        "answer_three": "Sanglier d'Eurasie"
+        "answer_one": "Le cerf",
+        "answer_two": "Le renard roux",
+        "answer_three": "Le sanglier"
     },
     {
         "id": 23,
         "id_question": 23,
-        "question_text": "Lequel des animaux suivants ne vit pas en Asie ?",
-        "answer_one": "Pygargue à tête blanche",
-        "answer_two": "Sanglier d'Eurasie",
-        "answer_three": "Ours brun européen"
+        "question_text": "Lequel de ces animaux ne vit pas en Asie ?",
+        "answer_one": "L'aigle royal",
+        "answer_two": "Le sanglier",
+        "answer_three": "L'ours brun d'Europe"
     },
     {
         "id": 24,
         "id_question": 24,
-        "question_text": "Lequel des animaux suivants a une population de moins de 1000 individus ?",
-        "answer_one": "Orque",
-        "answer_two": "Tortue imbriquée",
-        "answer_three": "Baleine franche"
+        "question_text": "Lequel de ces animaux a une population de moins de 1000 individus ?",
+        "answer_one": "L'orque",
+        "answer_two": "Le dauphin",
+        "answer_three": "La baleine franche de l'Atlantique nord"
     },
     {
         "id": 25,
@@ -197,23 +197,23 @@
         "question_text": "Quel est l'état de conservation du rhinocéros ?",
         "answer_one": "En danger critique",
         "answer_two": "En danger",
-        "answer_three": "Non classé"
+        "answer_three": "Non évalué"
     },
     {
         "id": 26,
         "id_question": 26,
         "question_text": "Lequel des oiseaux suivants vit principalement dans les zones marécageuses ?",
-        "answer_one": "Corbeau nécrophage",
-        "answer_two": "Canard colvert",
-        "answer_three": "Goéland argenté"
+        "answer_one": "La corneille noire",
+        "answer_two": "Le canard sauvage",
+        "answer_three": "Le goéland argenté"
     },
     {
         "id": 27,
         "id_question": 27,
-        "question_text": "Lequel des animaux suivants est une espèce endémique des îles Anglo-Normandes ?",
-        "answer_one": "Chèvre dorée de Guernesey",
-        "answer_two": "Tortue imbriquée",
-        "answer_three": "Hibou grand-duc d'Amérique"
+        "question_text": "Lequel de ces animaux est une espèce endémique des îles Anglo-Normandes ?",
+        "answer_one": "La chèvre dorée de Guernesey",
+        "answer_two": "La tortue luth",
+        "answer_three": "Le grand-duc d'Amérique"
     },
     {
         "id": 28,
@@ -226,58 +226,58 @@
     {
         "id": 29,
         "id_question": 29,
-        "question_text": "Lequel des animaux suivants peut atteindre le poids le plus élevé ?",
-        "answer_one": "Baleine franche",
-        "answer_two": "Orque",
-        "answer_three": "Éléphant d'Afrique"
+        "question_text": "Lequel de ces animaux peut atteindre le poids le plus élevé ?",
+        "answer_one": "La baleine franche",
+        "answer_two": "L'orque",
+        "answer_three": "L'éléphant d'Afrique"
     },
     {
         "id": 30,
         "id_question": 30,
         "question_text": "Lequel des animaux suivants vit dans la toundra ?",
-        "answer_one": "Grand requin blanc",
-        "answer_two": "Loup gris européen",
-        "answer_three": "Loup arctique"
+        "answer_one": "Le grand requin blanc",
+        "answer_two": "Le loup européen",
+        "answer_three": "Le loup arctique"
     },
     {
         "id": 31,
         "id_question": 31,
         "question_text": "Quelle est la différence entre le dauphin et le requin ?",
-        "answer_one": "État de conservation",
-        "answer_two": "Habitat",
-        "answer_three": "Régime alimentaire"
+        "answer_one": "Le statut de conservation",
+        "answer_two": "L'habitat",
+        "answer_three": "Le régime alimentaire"
     },
     {
         "id": 32,
         "id_question": 32,
         "question_text": "Lequel des animaux suivants vit exclusivement en Amérique du Nord ?",
-        "answer_one": "Pygargue à tête blanche",
+        "answer_one": "L'aigle royal",
         "answer_two": "Lièvre européen",
-        "answer_three": "Canard colvert"
+        "answer_three": "Le canard sauvage"
     },
     {
         "id": 33,
         "id_question": 33,
         "question_text": "Comment s'appelle la femelle du cerf ?",
-        "answer_one": "Jument",
-        "answer_two": "Biche",
-        "answer_three": "Chevrette"
+        "answer_one": "La jument",
+        "answer_two": "La biche",
+        "answer_three": "La chevrette"
     },
     {
         "id": 34,
         "id_question": 34,
         "question_text": "Quelle est la différence entre un cerf et une biche ?",
-        "answer_one": "Couleur",
-        "answer_two": "Crinière",
-        "answer_three": "Bois"
+        "answer_one": "La couleur",
+        "answer_two": "La crinière",
+        "answer_three": "Les bois"
     },
     {
         "id": 35,
         "id_question": 35,
-        "question_text": "Lequel des animaux suivants a un état de conservation non classé ?",
-        "answer_one": "Orque",
-        "answer_two": "Calmar de Humboldt",
-        "answer_three": "Rhinocéros"
+        "question_text": "Lequel de ces animaux a un statut de conservation non classé ?",
+        "answer_one": "L'orque",
+        "answer_two": "L'encornet géant",
+        "answer_three": "Le rhinocéros"
     },
     {
         "id": 36,
@@ -299,17 +299,17 @@
         "id": 38,
         "id_question": 38,
         "question_text": "Comment les molaires des éléphants les aident-elles à traiter différents types de plantes ?",
-        "answer_one": "Pour broyer la végétation dure",
-        "answer_two": "Pour déchirer la viande",
-        "answer_three": "Pour écraser les graines"
+        "answer_one": "En broyant la végétation dure",
+        "answer_two": "En déchirant la viande",
+        "answer_three": "En écrasant les graines"
     },
     {
         "id": 39,
         "id_question": 39,
         "question_text": "Quel est le plus grand prédateur d'eau douce en Afrique ?",
-        "answer_one": "Hippopotame",
-        "answer_two": "Grand requin blanc",
-        "answer_three": "Crocodile du Nil"
+        "answer_one": "L'hippopotame",
+        "answer_two": "Le grand requin blanc",
+        "answer_three": "Le crocodile du Nil"
     },
     {
         "id": 40,
@@ -317,7 +317,7 @@
         "question_text": "Comment appelle-t-on un groupe de lions ?",
         "answer_one": "Une troupe",
         "answer_two": "Une meute",
-        "answer_three": "Un vol"
+        "answer_three": "Un troupeau"
     },
     {
         "id": 41,
@@ -339,15 +339,15 @@
         "id": 43,
         "id_question": 43,
         "question_text": "De quoi se nourrissent principalement les aigles royaux ?",
-        "answer_one": "Poissons",
-        "answer_two": "Insectes",
-        "answer_three": "Mammifères et oiseaux de petite à moyenne taille"
+        "answer_one": "De poissons",
+        "answer_two": "D'insectes",
+        "answer_three": "De mammifères et oiseaux de petite à moyenne taille"
     },
     {
         "id": 44,
         "id_question": 44,
         "question_text": "Comment les dauphins naviguent-ils et chassent-ils ?",
-        "answer_one": "Écholocalisation",
+        "answer_one": "Par écholocalisation",
         "answer_two": "Avec leurs yeux",
         "answer_three": "En suivant les courants"
     },
@@ -363,17 +363,17 @@
         "id": 46,
         "id_question": 46,
         "question_text": "Quel animal marin vit dans des structures sociales complexes ?",
-        "answer_one": "Requins",
-        "answer_two": "Dauphins",
-        "answer_three": "Calmar de Humboldt"
+        "answer_one": "Le requin",
+        "answer_two": "Le dauphin",
+        "answer_three": "L'encornet géant"
     },
     {
         "id": 47,
         "id_question": 47,
         "question_text": "Quel est le principal rôle des rayures noires et blanches d'un zèbre ?",
-        "answer_one": "Attirer des partenaires",
-        "answer_two": "Camouflage",
-        "answer_three": "Réguler la température corporelle"
+        "answer_one": "L'attraction de partenaires",
+        "answer_two": "Le camouflage",
+        "answer_three": "La régulation de la température corporelle"
     },
     {
         "id": 48,
@@ -451,9 +451,9 @@
         "id": 57,
         "id_question": 57,
         "question_text": "Comment le pelage du loup arctique l’aide-t-il à survivre ?",
-        "answer_one": "Fournit un camouflage et de la chaleur",
-        "answer_two": "L’aide à nager plus vite",
-        "answer_three": "Effraie les prédateurs"
+        "answer_one": "Il fournit un camouflage et de la chaleur",
+        "answer_two": "Il l'aide à nager plus vite",
+        "answer_three": "Il effraie les prédateurs"
     },
     {
         "id": 58,
@@ -466,7 +466,7 @@
     {
         "id": 59,
         "id_question": 59,
-        "question_text": "Quelle est une compétence unique de la corneille noire ?",
+        "question_text": "En quoi consiste le talent unique dont fait preuve la corneille noire ?",
         "answer_one": "Utiliser des outils pour extraire de la nourriture",
         "answer_two": "Chanter des chansons complexes",
         "answer_three": "Construire de grands nids"
@@ -474,15 +474,15 @@
     {
         "id": 60,
         "id_question": 60,
-        "question_text": "Pourquoi la chèvre Golden Guernsey est-elle connue ?",
-        "answer_one": "Avoir un pelage tacheté",
-        "answer_two": "Être une coureuse rapide",
-        "answer_three": "Produire un lait riche pour le fromage"
+        "question_text": "Pour quoi la chèvre dorée de Guernesey est-elle connue ?",
+        "answer_one": "Pour son pelage tacheté",
+        "answer_two": "Pour sa capacité à courir vite",
+        "answer_three": "Pour son lait riche pour le fromage"
     },
     {
         "id": 61,
         "id_question": 61,
-        "question_text": "Quelle est une caractéristique clé du calmar de Humboldt ?",
+        "question_text": "Quelle est une caractéristique clé de l'encornet géant ?",
         "answer_one": "Il vit dans des grottes océaniques profondes",
         "answer_two": "Il peut changer de couleur rapidement",
         "answer_three": "Il se nourrit uniquement de plancton"
@@ -490,7 +490,7 @@
     {
         "id": 62,
         "id_question": 62,
-        "question_text": "Quelle est la taille maximale du calmar de Humboldt ?",
+        "question_text": "Quelle est la taille maximale de l'encornet géant ?",
         "answer_one": "Jusqu'à 1 mètre",
         "answer_two": "Jusqu'à 1,5 mètre",
         "answer_three": "Jusqu'à 3 mètres"
@@ -501,15 +501,15 @@
         "question_text": "Qu'est-ce qui distingue la tortue luth des autres tortues marines ?",
         "answer_one": "Sa carapace dure",
         "answer_two": "Sa capacité à voler",
-        "answer_three": "Sa carapace en cuir"
+        "answer_three": "Sa carapace souple, semblable au cuir"
     },
     {
         "id": 64,
         "id_question": 64,
         "question_text": "Quel est le régime alimentaire principal de la tortue luth ?",
-        "answer_one": "Algues",
-        "answer_two": "Petits poissons",
-        "answer_three": "Méduses"
+        "answer_one": "Des algues",
+        "answer_two": "Des petits poissons",
+        "answer_three": "Des méduses"
     },
     {
         "id": 65,
@@ -522,10 +522,10 @@
     {
         "id": 66,
         "id_question": 66,
-        "question_text": "Quelle est une caractéristique distinctive du grand-duc d'Amérique ?",
-        "answer_one": "Touffes de plumes sur les oreilles",
-        "answer_two": "Plumes brillantes",
-        "answer_three": "Longues ailes"
+        "question_text": "Laquelle de ces réponses est une caractéristique distinctive du grand-duc d'Amérique ?",
+        "answer_one": "Ses touffes de plumes sur les oreilles",
+        "answer_two": "Ses plumes brillantes",
+        "answer_three": "Ses longues ailes"
     },
     {
         "id": 67,
@@ -539,14 +539,14 @@
         "id": 68,
         "id_question": 68,
         "question_text": "Quel est le nom du groupe dans lequel vivent les orques ?",
-        "answer_one": "Bancs",
-        "answer_two": "Écoles",
-        "answer_three": "Troupes"
+        "answer_one": "Pods",
+        "answer_two": "Bancs",
+        "answer_three": "Troupeaux"
     },
     {
         "id": 69,
         "id_question": 69,
-        "question_text": "Quelle est une caractéristique principale des orques ?",
+        "question_text": "Laquelle de ces réponses est une caractéristique principale des orques ?",
         "answer_one": "Elles vivent en groupes familiaux",
         "answer_two": "Elles migrent seules",
         "answer_three": "Elles chassent en solitaire"
@@ -554,7 +554,7 @@
     {
         "id": 70,
         "id_question": 70,
-        "question_text": "Pourquoi les orques sont-elles appelées 'épaulards' ?",
+        "question_text": "Pourquoi les orques sont-elles appelées 'tueuses de baleines' ?",
         "answer_one": "Parce qu'elles consomment de grandes quantités de poissons",
         "answer_two": "Parce qu'elles attaquent de grands mammifères marins",
         "answer_three": "Parce qu'elles étaient souvent confondues avec des baleines"
@@ -565,7 +565,7 @@
         "question_text": "Pourquoi les baleines franches sont-elles considérées comme en danger ?",
         "answer_one": "Parce qu'elles ne vivent que dans les eaux froides",
         "answer_two": "À cause de la surpêche",
-        "answer_three": "En raison de la chasse passée et des menaces actuelles comme les collisions avec des navires"
+        "answer_three": "En raison de la chasse par le passé et des menaces actuelles comme les collisions avec des navires"
     },
     {
         "id": 72,
@@ -578,7 +578,7 @@
     {
         "id": 73,
         "id_question": 73,
-        "question_text": "Que signifie le fait que les baleines franches sont des filtreurs ?",
+        "question_text": "Que veut-on dire lorsque l'on dit que les baleines franches sont des filtreurs ?",
         "answer_one": "Elles utilisent des fanons pour filtrer le zooplancton dans l’eau",
         "answer_two": "Elles chassent en groupe pour attraper de plus gros poissons",
         "answer_three": "Elles avalent leur nourriture entière sans la mâcher"

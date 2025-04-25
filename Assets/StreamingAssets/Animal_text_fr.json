@@ -3,7 +3,7 @@
         "id": 1,
         "id_animal": 1,
         "name": "Éléphant d'Afrique",
-        "general_info": "L'éléphant d'Afrique est le plus grand animal terrestre vivant, atteignant normalement de 6 à 7,3 mètres de long et de 3,5 à 4 mètres de hauteur au niveau de l'épaule, et pesant entre 6 000 et 9 000 kg. L'éléphant africain est un animal herbivore. Son alimentation varie en fonction de son habitat ; les éléphants vivant dans les forêts, les déserts partiels et les prairies mangent des proportions différentes d'herbes et de feuilles d'arbres ou d'arbustes. Les éléphants vivant sur les rives du lac Kariba ont été observés en train de manger de la végétation aquatique. Pour décomposer les plantes qu'il consomme, l'éléphant africain possède quatre grandes molaires, deux dans chaque mandibule. Chacune de ces molaires mesure 10 cm de large et 30 cm de long. Avec le temps, ces molaires s'usent et de nouvelles poussent pour les remplacer à mesure que l'éléphant vieillit.",
+        "general_info": "L'éléphant d'Afrique est le plus grand animal terrestre vivant, atteignant normalement de 6 à 7,3 mètres de long et de 3,5 à 4 mètres de hauteur au niveau de l'épaule, et pesant entre 6 000 et 9 000 kg. L'éléphant africain est un animal herbivore. Son alimentation varie en fonction de son habitat ; les éléphants vivant dans les forêts, les déserts partiels et les prairies mangent des proportions différentes d'herbes et de feuilles d'arbres ou d'arbustes. Les éléphants vivant sur les rives du lac Kariba ont été observés en train de manger de la végétation aquatique. Pour broyer les plantes qu'il consomme, l'éléphant africain possède quatre grandes molaires, deux dans chaque mandibule. Chacune de ces molaires mesure 10 cm de large et 30 cm de long. Avec le temps, ces molaires s'usent et de nouvelles poussent pour les remplacer à mesure que l'éléphant vieillit.",
         "endangerment_status": "En danger critique",
         "habitat": "Savane",
         "diet": "Herbivore"
@@ -48,7 +48,7 @@
         "id": 6,
         "id_animal": 6,
         "name": "Aigle royal",
-        "general_info": "Les aigles royaux sont de grands oiseaux de proie connus pour leur acuité visuelle et leurs puissantes capacités de chasse. Ils se nourrissent principalement de petits à moyens mammifères et oiseaux, utilisant leur vitesse et leurs serres acérées pour attraper leur proie. Ces aigles se trouvent dans des terrains ouverts, tels que les montagnes et les toundras.",
+        "general_info": "Les aigles royaux sont de grands oiseaux de proie connus pour être d'excellents chasseurs et pour leur acuité visuelle. Ils se nourrissent principalement de mammifères et d'oiseaux de petite à moyenne taille, utilisant leur vitesse et leurs serres acérées pour attraper leur proie. Ces aigles vivent dans des environnements ouverts, tels que les montagnes et les toundras.",
         "endangerment_status": "Non menacé",
         "habitat": "Toundra",
         "diet": "Carnivore"
@@ -57,7 +57,7 @@
         "id": 7,
         "id_animal": 7,
         "name": "Dauphin",
-        "general_info": "Les dauphins sont des mammifères marins très intelligents, connus pour leur comportement joueur et leurs structures sociales complexes. Ils utilisent l'écholocation pour naviguer et chasser, se nourrissant principalement de poissons et de calmars. Les dauphins communiquent en utilisant une variété de clics et de sifflements.",
+        "general_info": "Les dauphins sont des mammifères marins très intelligents, connus pour leur comportement joueur et leurs structures sociales complexes. Ils utilisent l'écholocalisation pour naviguer et chasser et se nourrissent principalement de poissons et de calmars. Les dauphins communiquent en utilisant une variété de clics et de sifflements.",
         "endangerment_status": "Vulnérable",
         "habitat": "Océan, mer",
         "diet": "Carnivore"
@@ -146,8 +146,8 @@
     {
         "id": 17,
         "id_animal": 17,
-        "name": "Corbeau freux",
-        "general_info": "Le corbeau freux est un oiseau très intelligent que l'on trouve à travers l'Europe et certaines parties de l'Asie, connu pour son plumage entièrement noir et son cri caractéristique. Les corbeaux freux sont connus pour utiliser des outils, comme des bâtons, pour extraire de la nourriture de lieux difficiles d'accès, montrant ainsi leurs remarquables compétences en résolution de problèmes.",
+        "name": "Corneille noire",
+        "general_info": "La corneille noire, connue pour son plumage entièrement noir et son cri caractéristique, est un oiseau très intelligent que l'on trouve à travers l'Europe et certaines parties de l'Asie. Les corneilles noires sont connues pour utiliser des outils, comme des bâtons, pour extraire de la nourriture de lieux difficiles d'accès, montrant ainsi leurs remarquables compétences en résolution de problèmes.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "Partout",
         "diet": "Omnivore"
@@ -155,8 +155,8 @@
     {
         "id": 18,
         "id_animal": 18,
-        "name": "Chèvre de Guernesey dorée",
-        "general_info": "La chèvre de Guernesey dorée est une race rare et distinctive originaire des îles Anglo-Normandes, reconnue pour son pelage doré ou crème et son caractère docile. Les Golden Guernsey sont d'excellentes productrices de lait, et leur lait riche et savoureux est souvent utilisé pour fabriquer de délicieux fromages.",
+        "name": "Chèvre dorée de Guernesey",
+        "general_info": "La chèvre dorée de Guernesey est une race rare et distinctive originaire des îles Anglo-Normandes, reconnue pour son pelage doré ou crème et son caractère docile. Les chèvres dorées de Guernesey sont d'excellentes productrices de lait, et leur lait riche et savoureux est souvent utilisé pour fabriquer de délicieux fromages.",
         "endangerment_status": "En danger",
         "habitat": "Îles Anglo-Normandes",
         "diet": "Herbivore"
@@ -164,8 +164,8 @@
     {
         "id": 19,
         "id_animal": 19,
-        "name": "Calmar de Humboldt",
-        "general_info": "Le calmar de Humboldt, également connu sous le nom de calmar géant, est un gros céphalopode trouvé dans l'océan Pacifique oriental. Il est connu pour sa capacité à changer rapidement de couleur et à chasser en groupes coordonnés. Il peut atteindre jusqu'à 1,5 mètre de long et est un prédateur opportuniste, se nourrissant de poissons et d'autres calmars à l'aide de son bec tranchant et de ses puissants tentacules.",
+        "name": "Encornet géant",
+        "general_info": "L'encornet géant, également connu sous le nom de calmar de Humboldt, est un gros céphalopode trouvé dans l'océan Pacifique oriental. Il est connu pour sa capacité à changer rapidement de couleur et à chasser en groupes coordonnés. Il peut atteindre jusqu'à 1,5 mètre de long et est un prédateur opportuniste, se nourrissant de poissons et d'autres calmars à l'aide de son bec tranchant et de ses puissants tentacules.",
         "endangerment_status": "Non classé",
         "habitat": "Profondeurs de 200m à 700m",
         "diet": "Carnivore"
@@ -174,7 +174,7 @@
         "id": 20,
         "id_animal": 20,
         "name": "Tortue luth",
-        "general_info": "La tortue luth est la plus grande de toutes les tortues marines, distinguée par sa carapace unique en cuir au lieu d'une carapace dure. C'est une espèce hautement migratrice, parcourant des milliers de kilomètres à travers les océans pour se nourrir de méduses, qu'elle consomme en grandes quantités.",
+        "general_info": "La tortue luth est la plus grande de toutes les tortues marines, reconnaissable à sa carapace unique, souple et cuirassée, contrairement aux carapaces rigides des autres tortues. C'est une espèce fortement migratoire, parcourant des milliers de kilomètres à travers les océans pour se nourrir de méduses, qu'elle consomme en grande quantité.",
         "endangerment_status": "En danger",
         "habitat": "Eaux marines de tous les océans",
         "diet": "Pélagique"
@@ -183,7 +183,7 @@
         "id": 21,
         "id_animal": 21,
         "name": "Grand-duc d'Amérique",
-        "general_info": "Le grand-duc d'Amérique est un puissant et adaptable oiseau de proie que l'on trouve à travers les Amériques, connu pour ses touffes distinctives sur les oreilles et son cri profond. C'est un chasseur habile avec une excellente vision nocturne et une prise forte, capable d'abattre des proies beaucoup plus grandes que lui",
+        "general_info": "Le grand-duc d'Amérique est un puissant oiseau de proie ayant une bonne capacité d'adaptation que l'on trouve à travers les Amériques. Il est reconnaissable à ses touffes distinctives sur les oreilles et son cri profond. Capable d'abattre des proies beaucoup plus grandes que lui, c'est un chasseur habile avec une excellente vision nocturne et des serres acérées.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, jungles",
         "diet": "Carnivore"
@@ -201,7 +201,7 @@
         "id": 23,
         "id_animal": 23,
         "name": "Orque",
-        "general_info": "Les orques, également connues sous le nom de baleines tueuses, sont des mammifères marins hautement intelligents et sociaux vivant dans des groupes familiaux complexes appelés groupes. Ce sont des prédateurs apex ayant un régime alimentaire varié, utilisant des techniques de chasse sophistiquées pour capturer des proies allant des poissons aux grands mammifères marins.",
+        "general_info": "Les orques, également connues sous le nom de tueuses de baleines, sont des mammifères marins hautement intelligents et sociaux vivant dans des groupes familiaux complexes appelés groupes. Ces prédateurs sont au sommet de la chaîne alimentaire, ils ont un régime varié et utilisent des techniques de chasse sophistiquées pour capturer des proies allant de poissons aux grands mammifères marins.",
         "endangerment_status": "Données insuffisantes",
         "habitat": "océans froids et tempérés",
         "diet": "Carnivore"
@@ -210,7 +210,7 @@
         "id": 24,
         "id_animal": 24,
         "name": "Baleine franche",
-        "general_info": "Les baleines franches sont de grandes baleines à fanons à mouvement lent, connues pour leurs têtes massives couvertes de taches rugueuses appelées callosités. Ce sont des filtreurs qui consomment principalement de minuscules zooplanctons et font partie des espèces de baleines les plus menacées en raison de la chasse à la baleine passée et des menaces continues telles que les collisions avec des navires et l'enchevêtrement dans les équipements de pêche.",
+        "general_info": "Les baleines franches sont de grandes baleines à fanons à mouvement lent, connues pour leurs têtes massives couvertes de taches rugueuses appelées callosités. Ce sont des filtreurs qui consomment principalement de minuscules zooplanctons et font partie des espèces de baleines les plus menacées en raison de la chasse à la baleine par le passé et des menaces persistantes comme des collisions avec des bateaux et le risque d'être pris dans des filets de pêche.",
         "endangerment_status": "En danger",
         "habitat": "Océan Atlantique",
         "diet": "Carnivore (plancton)"
@@ -219,7 +219,7 @@
         "id": 25,
         "id_animal": 25,
         "name": "Canard colvert",
-        "general_info": "Le Canard colvert est un oiseau aquatique très adaptable que l'on trouve dans les lacs, les rivières et les zones humides du monde entier, connu pour ses grandes capacités de vol et son plumage varié. Il est omnivore, se nourrissant de plantes, d'insectes et de petites créatures aquatiques, et de nombreuses espèces migrent saisonnièrement sur de longues distances.",
+        "general_info": "Le canard sauvage et le canard colvert sont des oiseaux aquatiques très doués pour s'adapter et vivent dans des lacs, des rivières et des zones humides partout dans le monde. Ils sont connus pour leur excellente habileté à voler et leurs plumages divers. Ils sont omnivores et se nourrissent de plantes, d'insectes et de petits animaux aquatiques. Beaucoup d'espèces migrent chaque saison sur de longues distances.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "zones humides",
         "diet": "Omnivore"
@@ -237,7 +237,7 @@
         "id": 27,
         "id_animal": 27,
         "name": "Goéland argenté",
-        "general_info": "Le goéland argenté est un grand oiseau de mer largement répandu le long des côtes de l'Europe, connu pour son plumage blanc et gris frappant et son cri bruyant et aigu. C'est une nourrice opportuniste, cherchant souvent de la nourriture dans les zones urbaines et sur les bateaux de pêche, et elle peut vivre dans une variété d'habitats côtiers et intérieurs.",
+        "general_info": "Le goéland argenté est un grand oiseau de mer largement répandu le long des côtes de l'Europe, connu pour son remarquable plumage blanc et gris et son cri bruyant et aigu. C’est un animal opportuniste, qui se nourrit souvent de restes dans les zones urbaines ou sur les bateaux de pêche, et qui peut vivre dans une grande variété d’habitats côtiers et terrestres.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "zones côtières",
         "diet": "Omnivore"
@@ -246,7 +246,7 @@
         "id": 28,
         "id_animal": 28,
         "name": "Biche",
-        "general_info": "Une biche est une femelle cerf, généralement trouvée dans une variété d'espèces, y compris le cerf à queue blanche, le cerf mulet et le cerf rouge. Connues pour leurs mouvements gracieux, les biches broutent principalement de la végétation et jouent un rôle clé dans les cycles reproductifs des populations de cerfs.",
+        "general_info": "La biche est la femelle du cerf, présente chez différentes espèces comme le cerf de Virginie, le cerf mulet ou le cerf élaphe. Connue pour sa démarche gracieuse, elle se nourrit principalement de végétation et joue un rôle essentiel dans le cycle de reproduction des populations de cervidés.",
         "endangerment_status": "En danger",
         "habitat": "environnements rocheux",
         "diet": "Herbivore"
@@ -255,7 +255,7 @@
         "id": 29,
         "id_animal": 29,
         "name": "Renard roux",
-        "general_info": "Le renard roux est un mammifère hautement adaptable avec un pelage distinctif rouge-orangé, que l'on trouve dans une large gamme d'habitats, des forêts aux zones urbaines. C'est un prédateur omnivore, chassant de petits animaux, des oiseaux et des insectes, mais se nourrissant également de fruits, de légumes et de restes alimentaires humains.",
+        "general_info": "Le renard roux est un mammifère aux très bonnes capacités d'adaptation et au pelage distinctif rouge-orangé, que l'on trouve dans une large variété d'habitats, allant des forêts aux zones urbaines. C'est un prédateur omnivore, chassant de petits animaux, des oiseaux et des insectes, mais se nourrissant également de fruits, de légumes et de restes alimentaires humains.",
         "endangerment_status": "Préoccupation mineure",
         "habitat": "forêts, champs",
         "diet": "Omnivore"

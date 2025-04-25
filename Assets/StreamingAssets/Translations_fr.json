@@ -113,7 +113,7 @@
         "hard": "Difficile"
     },
     "welcome_scene": {
-        "hello_text": "Bonjour ! HoloZoo est un jeu éducatif sur les animaux et leur statut de mise en danger dans la nature.\n\nLe jeu utilise deux appareils Android qui doivent être connectés via Bluetooth pour afficher un hologramme avec lequel vous pouvez interagir.\n\nNe vous inquiétez pas ! Si vous ne souhaitez pas utiliser deux appareils, l'hologramme sera toujours affiché sur cet appareil.\n\nApprenez à créer un hologramme pyramidal dans les étapes suivantes.",
+        "hello_text": "Bonjour ! HoloZoo est un jeu éducatif sur les animaux et leur statut de conservation dans la nature.\n\nLe jeu utilise deux appareils Android qui doivent être connectés via Bluetooth pour afficher un hologramme avec lequel vous pouvez interagir.\n\nNe vous inquiétez pas ! Si vous ne souhaitez pas utiliser deux appareils, l'hologramme sera quand même affiché sur cet appareil.\n\nApprenez à créer un hologramme pyramidal grâce au tutoriel qui suit.",
         "welcome": "BIENVENUE"
     },
     "privacy_scene": {
