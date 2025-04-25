@@ -6,9 +6,12 @@ public class FillLearnAnimals : MonoBehaviour
 {
     [SerializeField]
     GameObject list_element, lockedAnimalElement;
+    public ScrollRect scrollRect;
 
     void Start()
     {
+        StartCoroutine(ScrollToTopCoroutine());
+        
         if (PlayerPrefs.HasKey("ID"))
         {
             StartCoroutine(FillAnimals());
@@ -41,5 +44,12 @@ public class FillLearnAnimals : MonoBehaviour
         ApplyAccessibility.Instance.LoadAndStyle();
 
         yield break;
+    }
+
+     IEnumerator ScrollToTopCoroutine()
+    {
+        yield return new WaitForEndOfFrame();  // Wait for UI to render
+        LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+        scrollRect.verticalNormalizedPosition = 1f;
     }
 }

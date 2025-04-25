@@ -13,10 +13,12 @@ public class FillAnimal : MonoBehaviour
     public Text dietText;
     public Text populationText;
     public GameObject animal_photo;
+    public ScrollRect scrollRect;
 
     void Start()
     {
         FillAnimalInfo();
+        StartCoroutine(ScrollToTopCoroutine());
     }
 
     private void FillAnimalInfo()
@@ -51,5 +53,12 @@ public class FillAnimal : MonoBehaviour
         img.sprite = Sprite.Create(myTexture, new Rect(0, 0, myTexture.width, myTexture.height), new Vector2());
 
         ApplyAccessibility.Instance.ApplyAccessibilitySettings();
+    }
+    
+     IEnumerator ScrollToTopCoroutine()
+    {
+        yield return new WaitForEndOfFrame();  // Wait for UI to render
+        LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+        scrollRect.verticalNormalizedPosition = 1f;
     }
 }
